@@ -633,6 +633,47 @@ impl GuiButtonColorProp {
         }
     }
 }
+/// `RBX::Reflection::PropDescriptor<GuiTextButton, BrickColor>`
+/// cutover (IDA 0x67630c): name/category/attributes/permissions.
+/// The getter/setter member-pointer pair folds into the `text_color`
+/// id cache (reads derive via `closest`; same gap as `TextBox`).
+#[derive(Debug, Clone)]
+pub struct GuiButtonBrickProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonBrickProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EnumPropDescriptor<GuiTextButton, Font>`
+/// cutover (IDA 0x6764b0): name/category/attributes/permissions.
+/// The member pair folds into the `font` field.
+#[derive(Debug, Clone)]
+pub struct GuiButtonFontProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonFontProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).

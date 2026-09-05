@@ -7,10 +7,11 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    GuiButtonBoolProp, GuiButtonBoolSlot, GuiButtonColorProp, GuiButtonColorSlot, GuiButtonFloatProp,
-    GuiButtonFloatSlot, GuiButtonXAlignProp, GuiButtonYAlignProp, GuiTextButtonState, XAlignmentVariant,
-    YAlignmentVariant, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, xalignment_index, xalignment_name,
-    yalignment_index, yalignment_name,
+    FontVariant, GuiButtonBoolProp, GuiButtonBoolSlot, GuiButtonBrickProp, GuiButtonColorProp,
+    GuiButtonColorSlot, GuiButtonFloatProp, GuiButtonFloatSlot, GuiButtonFontProp, GuiButtonXAlignProp,
+    GuiButtonYAlignProp, GuiTextButtonState, XAlignmentVariant, YAlignmentVariant, XALIGNMENT_ITEMS,
+    YALIGNMENT_ITEMS, xalignment_index, xalignment_name, yalignment_index, yalignment_name, FONT_ITEMS,
+    font_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -1028,8 +1029,10 @@ pub fn stub_676290() -> bool {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_676294() -> ! {
-    todo!("0x676294 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_676294() -> bool {
+    // IDA 0x676294 (`GetSetImpl<GuiTextButton Color3>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x676298 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -1037,8 +1040,13 @@ pub fn stub_676294() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_676298() -> ! {
-    todo!("0x676298 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_676298(state: &GuiTextButtonState, slot: GuiButtonColorSlot) -> [f32; 3] {
+    // IDA 0x676298 (`GetSetImpl<GuiTextButton Color3>::getValue`):
+    // the member-pointer resolve (null described reads at offset 0
+    // with the +800 `Instance`-to-mixin adjust; virtual when the low
+    // bit is set) tail-calling the getter. Host: the `slot` selects
+    // the `GuiTextButtonState` color.
+    state.color_slot(slot)
 }
 
 // 0x6762d0 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -1046,8 +1054,16 @@ pub fn stub_676298() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_6762d0() -> ! {
-    todo!("0x6762d0 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_6762d0(state: &mut GuiTextButtonState, slot: GuiButtonColorSlot, value: [f32; 3]) -> bool {
+    // IDA 0x6762d0 (`GetSetImpl<GuiTextButton Color3>::setValue`):
+    // copies the input and tail-calls the setter member-pointer
+    // (host: the `slot` selects the member setter twin —
+    // `setTextColor3`/`setTextStrokeColor3` at 0x673288/0x673780,
+    // whose raises fold into the changed flag).
+    match slot {
+        GuiButtonColorSlot::TextColor3 => crate::generated_audio_wd_watchdog_Y::stub_673288(state, value),
+        GuiButtonColorSlot::TextStrokeColor3 => crate::generated_audio_wd_watchdog_Y::stub_673780(state, value),
+    }
 }
 
 // 0x67630c — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1055,8 +1071,13 @@ pub fn stub_6762d0() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_67630c() -> ! {
-    todo!("0x67630c __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_67630c(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonBrickProp {
+    // IDA 0x67630c (`PropDescriptor<GuiTextButton,
+    // BrickColor>::PropDescriptor`): builds the `GetSetImpl`
+    // member-pair cell plus the typed descriptor identity with
+    // name/category/attributes/permissions. The pair folds into the
+    // `text_color` id cache. Host: the identity half.
+    GuiButtonBrickProp::new(name, category, attributes, permissions)
 }
 
 // 0x676420 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEED0Ev
@@ -1073,8 +1094,10 @@ pub fn stub_676420() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_67644c() -> ! {
-    todo!("0x67644c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_67644c() -> bool {
+    // IDA 0x67644c (`GetSetImpl<GuiTextButton BrickColor>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x676450 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
@@ -1082,8 +1105,10 @@ pub fn stub_67644c() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_676450() -> ! {
-    todo!("0x676450 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_676450() -> bool {
+    // IDA 0x676450 (`GetSetImpl<GuiTextButton BrickColor>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x676454 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -1091,8 +1116,12 @@ pub fn stub_676450() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_676454() -> ! {
-    todo!("0x676454 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_676454(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x676454 (`GetSetImpl<GuiTextButton BrickColor>::getValue`):
+    // dispatches the stored getter member-pointer (the member is
+    // `getTextColor`, which recomputes via `closest`; same palette
+    // gap as the mixin twin). Host: the cached `TextColor` id.
+    state.text_color
 }
 
 // 0x67648c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
@@ -1100,8 +1129,12 @@ pub fn stub_676454() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_67648c() -> ! {
-    todo!("0x67648c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_67648c(state: &mut GuiTextButtonState, value: u32) {
+    // IDA 0x67648c (`GetSetImpl<GuiTextButton BrickColor>::setValue`):
+    // dispatches the stored setter member-pointer (the member is
+    // `setTextColor`; its palette conversion is ungrounded).
+    // Host: the id cache half (host: the 0x673268 twin).
+    crate::generated_audio_wd_watchdog_Y::stub_673268(state, value);
 }
 
 // 0x6764b0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1109,8 +1142,15 @@ pub fn stub_67648c() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::EnumPropDescriptor<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font)>(char const*,char const*,RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::Font),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_6764b0() -> ! {
-    todo!("0x6764b0 __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_6764b0(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonFontProp {
+    // IDA 0x6764b0 (`EnumPropDescriptor<GuiTextButton, Font>` ctor):
+    // the `GuiTextButton` `classDescriptor` call, the
+    // `EnumDesc<Font>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `font` field. Same shape as the `TextBox` twin at 0x66f2fc.
+    GuiButtonFontProp::new(name, category, attributes, permissions)
 }
 
 // 0x676664 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEED0Ev
@@ -1127,8 +1167,11 @@ pub fn stub_676664() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10isReadOnlyEv")]
-pub fn stub_676690() -> ! {
-    todo!("0x676690 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10isReadOnlyEv")
+pub fn stub_676690() -> bool {
+    // IDA 0x676690 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::isReadOnly`): delegates to the inner `GetSet` at +44 —
+    // always readable.
+    false
 }
 
 // 0x6766a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11isWriteOnlyEv
@@ -1136,8 +1179,11 @@ pub fn stub_676690() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11isWriteOnlyEv")]
-pub fn stub_6766a0() -> ! {
-    todo!("0x6766a0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11isWriteOnlyEv")
+pub fn stub_6766a0() -> bool {
+    // IDA 0x6766a0 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::isWriteOnly`): delegates to the inner `GetSet` at +44 —
+    // always writable.
+    false
 }
 
 // 0x6766b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -1145,8 +1191,12 @@ pub fn stub_6766a0() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_6766b0() -> ! {
-    todo!("0x6766b0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_6766b0(first: &GuiTextButtonState, second: &GuiTextButtonState) -> bool {
+    // IDA 0x6766b0 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the fonts.
+    first.font == second.font
 }
 
 // 0x6766d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -1154,8 +1204,12 @@ pub fn stub_6766b0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_6766d8() -> ! {
-    todo!("0x6766d8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_6766d8(state: &GuiTextButtonState) -> FontVariant {
+    // IDA 0x6766d8 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::getVariant`): reads the inner value, tags it with the
+    // plain-`int` singleton and placement-moves it in. Host: the
+    // `Font` tag.
+    FontVariant::Font(state.font)
 }
 
 // 0x6766fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -1163,8 +1217,17 @@ pub fn stub_6766d8() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_6766fc() -> ! {
-    todo!("0x6766fc __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_6766fc(state: &mut GuiTextButtonState, variant: &FontVariant) {
+    // IDA 0x6766fc (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setVariant`): an int-typed variant runs `any_cast<int>`;
+    // anything else runs `Variant::convert<int>` (throws on
+    // failure); then the +72 setter. Host: convert-or-throw, then
+    // store.
+    let value = match *variant {
+        FontVariant::Font(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x6766fc)"),
+    };
+    state.font = value;
 }
 
 // 0x676848 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -1172,8 +1235,11 @@ pub fn stub_6766fc() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_676848() -> ! {
-    todo!("0x676848 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_676848(first: &GuiTextButtonState, second: &mut GuiTextButtonState) {
+    // IDA 0x676848 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::copyValue`): inner `getValue` on the source then inner
+    // `setValue` on the target. Host: copy the font.
+    second.font = first.font;
 }
 
 // 0x67686c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14hasStringValueEv
@@ -1181,8 +1247,10 @@ pub fn stub_676848() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14hasStringValueEv")]
-pub fn stub_67686c() -> ! {
-    todo!("0x67686c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14hasStringValueEv")
+pub fn stub_67686c() -> bool {
+    // IDA 0x67686c (`EnumPropDescriptor<GuiTextButton,
+    // Font>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x676870 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE
@@ -1190,8 +1258,12 @@ pub fn stub_67686c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_676870() -> ! {
-    todo!("0x676870 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_676870(state: &GuiTextButtonState) -> String {
+    // IDA 0x676870 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::getStringValue`): inner value via the +44 `GetSet`
+    // plus `EnumDesc::convertToString`. Host: the grounded item
+    // name.
+    font_name(state.font).to_owned()
 }
 
 // 0x676894 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -1199,8 +1271,18 @@ pub fn stub_676870() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_676894() -> ! {
-    todo!("0x676894 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_676894(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x676894 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setStringValue`): `Name::lookup` +
+    // `EnumDesc::convertToValue`; on a hit the inner `setValue`
+    // runs and 1 returns, else 0. Host: table position decides.
+    match FONT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font = FONT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x6768d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -1208,8 +1290,13 @@ pub fn stub_676894() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_6768d4() -> ! {
-    todo!("0x6768d4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_6768d4(state: &GuiTextButtonState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x6768d4 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::writeValue`): inner `getValue`, `clearValue`, int tag
+    // `5` at +16, value at +20, returns 5.
+    out.value_type = 5;
+    out.int_value = state.font as i32;
+    5
 }
 
 // 0x6768f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -1217,8 +1304,42 @@ pub fn stub_6768d4() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_6768f4() -> ! {
-    todo!("0x6768f4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_6768f4(state: &mut GuiTextButtonState, xml: &XmlReadValue) {
+    // IDA 0x6768f4 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, font)) = FONT_ITEMS.get(*value as usize) {
+                    state.font = *font;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6768f4)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_676894(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6768f4)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6768f4)");
+            }
+        }
+    }
 }
 
 // 0x676b34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -1226,8 +1347,16 @@ pub fn stub_6768f4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_676b34() -> ! {
-    todo!("0x676b34 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_676b34(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x676b34 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x676b50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -1235,8 +1364,18 @@ pub fn stub_676b34() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_676b50() -> ! {
-    todo!("0x676b50 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_676b50(state: &mut GuiTextButtonState, index: u32) -> bool {
+    // IDA 0x676b50 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setIndexValue`): bounds-checks the index against the
+    // item count, stores `items[index]` through the inner `setValue`
+    // and returns 1, else 0.
+    match FONT_ITEMS.get(index as usize) {
+        Some((_, font)) => {
+            state.font = *font;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x676b84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -1244,8 +1383,10 @@ pub fn stub_676b50() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_676b84() -> ! {
-    todo!("0x676b84 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_676b84(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x676b84 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::getEnumValue`): the inner `getValue` straight through.
+    state.font
 }
 
 // 0x676b8c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -1253,8 +1394,17 @@ pub fn stub_676b84() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_676b8c() -> ! {
-    todo!("0x676b8c __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_676b8c(state: &mut GuiTextButtonState, value: u32) -> bool {
+    // IDA 0x676b8c (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setEnumValue`): `find_if` with `equalValue` over the
+    // items; on a hit the inner `setValue` runs and 1 returns, else
+    // 0. Host: membership decides.
+    if FONT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.font = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x676bd8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -1262,8 +1412,16 @@ pub fn stub_676b8c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_676bd8() -> ! {
-    todo!("0x676bd8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_676bd8(state: &GuiTextButtonState) -> i32 {
+    // IDA 0x676bd8 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x676bf8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -1271,8 +1429,13 @@ pub fn stub_676bd8() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GuiTextButton,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_676bf8() -> ! {
-    todo!("0x676bf8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_676bf8(state: &mut GuiTextButtonState, name: &str) -> bool {
+    // IDA 0x676bf8 (`EnumPropDescriptor<GuiTextButton,
+    // Font>::setStringValue` over `Name`): `convertToValue` on the
+    // name; on a hit the inner `setValue` runs and 1 returns, else
+    // 0. Same string edge as 0x676894 — host forwards into that
+    // twin (`Name` folds into `&str`).
+    stub_676894(state, name)
 }
 
 // 0x676c2c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13GuiTextButtonENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi
