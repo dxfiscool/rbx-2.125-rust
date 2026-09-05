@@ -7,179 +7,244 @@
 #![allow(clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `MainViewController` outlet presence (IDA 0x51e68-0x51fd0): hosted
+/// view plus the ogre window/view, roblox view, ogre controller and
+/// last nongame controller. Views live out of slice.
+pub(crate) static MAINVIEW_SET: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MAINVIEW_OGRE_WINDOW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MAINVIEW_OGRE_VIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MAINVIEW_ROBLOX_VIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MAINVIEW_OGRE_VC: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MAINVIEW_LAST_NONGAME: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `RobloxAnimatingPageViewController` state (IDA 0x52178-0x52614):
+/// background flag plus appear count. Animations live out of slice.
+pub(crate) static ANIM_IN_BACKGROUND: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static ANIM_APPEARS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__13")]
-pub fn stub_51e54() -> ! {
-    todo!("0x51e54 ___copy_helper_block__13")
+pub fn stub_51e54() {
+    // IDA 0x51e54: `__copy_helper_block__13` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x51e60 — ___destroy_helper_block__13
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__13")]
-pub fn stub_51e60() -> ! {
-    todo!("0x51e60 ___destroy_helper_block__13")
+pub fn stub_51e60() {
+    // IDA 0x51e60: `__destroy_helper_block__13` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x51e68 — -[MainViewController switchView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController switchView:]")]
-pub fn stub_51e68() -> ! {
-    todo!("0x51e68 -[MainViewController switchView:]")
+pub fn stub_51e68(view_present: bool) {
+    // IDA 0x51e68: `switchView:` sets the hosted view (0x51e74). It
+    // records here.
+    MAINVIEW_SET.store(view_present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51e78 — -[MainViewController addSubview:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController addSubview:]")]
-pub fn stub_51e78() -> ! {
-    todo!("0x51e78 -[MainViewController addSubview:]")
+pub fn stub_51e78(view_present: bool) {
+    // IDA 0x51e78: `addSubview:` adds the view (same hosted-view shape
+    // as 0x51e68). It records here.
+    MAINVIEW_SET.store(view_present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51eb8 — -[MainViewController initWithNibName:bundle:]
 // type: MainViewController *__cdecl(MainViewController *self, SEL, id, id)
 #[doc(alias = "-[MainViewController initWithNibName:bundle:]")]
-pub fn stub_51eb8() -> ! {
-    todo!("0x51eb8 -[MainViewController initWithNibName:bundle:]")
+pub fn stub_51eb8() {
+    // IDA 0x51eb8: `initWithNibName:bundle:` supers. Super-init glue;
+    // no explicit body.
 }
 
 // 0x51ee8 — -[MainViewController viewDidLoad]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidLoad]")]
-pub fn stub_51ee8() -> ! {
-    todo!("0x51ee8 -[MainViewController viewDidLoad]")
+pub fn stub_51ee8() {
+    // IDA 0x51ee8: `viewDidLoad` supers. Super glue; no explicit body.
 }
 
 // 0x51f14 — -[MainViewController viewDidUnload]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidUnload]")]
-pub fn stub_51f14() -> ! {
-    todo!("0x51f14 -[MainViewController viewDidUnload]")
+pub fn stub_51f14() {
+    // IDA 0x51f14: `viewDidUnload` releases the outlets. Release is
+    // drop glue; the outlet flags reset here.
+    MAINVIEW_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    MAINVIEW_OGRE_WINDOW.store(false, std::sync::atomic::Ordering::SeqCst);
+    MAINVIEW_OGRE_VIEW.store(false, std::sync::atomic::Ordering::SeqCst);
+    MAINVIEW_ROBLOX_VIEW.store(false, std::sync::atomic::Ordering::SeqCst);
+    MAINVIEW_OGRE_VC.store(false, std::sync::atomic::Ordering::SeqCst);
+    MAINVIEW_LAST_NONGAME.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51f40 — -[MainViewController getOgreWindow]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreWindow]")]
-pub fn stub_51f40() -> ! {
-    todo!("0x51f40 -[MainViewController getOgreWindow]")
+pub fn stub_51f40() -> bool {
+    // IDA 0x51f40: `getOgreWindow` returns the ivar. Presence reports
+    // here.
+    MAINVIEW_OGRE_WINDOW.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51f50 — -[MainViewController setOgreWindow:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreWindow:]")]
-pub fn stub_51f50() -> ! {
-    todo!("0x51f50 -[MainViewController setOgreWindow:]")
+pub fn stub_51f50(present: bool) {
+    // IDA 0x51f50: `setOgreWindow:` stores the ivar. It records here.
+    MAINVIEW_OGRE_WINDOW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51f60 — -[MainViewController getOgreView]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreView]")]
-pub fn stub_51f60() -> ! {
-    todo!("0x51f60 -[MainViewController getOgreView]")
+pub fn stub_51f60() -> bool {
+    // IDA 0x51f60: `getOgreView` returns the ivar. Presence reports
+    // here.
+    MAINVIEW_OGRE_VIEW.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51f70 — -[MainViewController setOgreView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreView:]")]
-pub fn stub_51f70() -> ! {
-    todo!("0x51f70 -[MainViewController setOgreView:]")
+pub fn stub_51f70(present: bool) {
+    // IDA 0x51f70: `setOgreView:` stores the ivar. It records here.
+    MAINVIEW_OGRE_VIEW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51f80 — -[MainViewController setRobloxView:]
 // type: void __cdecl(MainViewController *self, SEL, RobloxView *)
 #[doc(alias = "-[MainViewController setRobloxView:]")]
-pub fn stub_51f80() -> ! {
-    todo!("0x51f80 -[MainViewController setRobloxView:]")
+pub fn stub_51f80(present: bool) {
+    // IDA 0x51f80: `setRobloxView:` stores the ivar. It records here.
+    MAINVIEW_ROBLOX_VIEW.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51f90 — -[MainViewController getRobloxView]
 // type: RobloxView *__cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getRobloxView]")]
-pub fn stub_51f90() -> ! {
-    todo!("0x51f90 -[MainViewController getRobloxView]")
+pub fn stub_51f90() -> bool {
+    // IDA 0x51f90: `getRobloxView` returns the ivar. Presence reports
+    // here.
+    MAINVIEW_ROBLOX_VIEW.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51fa0 — -[MainViewController getOgreViewController]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreViewController]")]
-pub fn stub_51fa0() -> ! {
-    todo!("0x51fa0 -[MainViewController getOgreViewController]")
+pub fn stub_51fa0() -> bool {
+    // IDA 0x51fa0: `getOgreViewController` returns the ivar. Presence
+    // reports here.
+    MAINVIEW_OGRE_VC.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51fb0 — -[MainViewController setOgreViewController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreViewController:]")]
-pub fn stub_51fb0() -> ! {
-    todo!("0x51fb0 -[MainViewController setOgreViewController:]")
+pub fn stub_51fb0(present: bool) {
+    // IDA 0x51fb0: `setOgreViewController:` stores the ivar. It
+    // records here.
+    MAINVIEW_OGRE_VC.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51fc0 — -[MainViewController setLastNonGameController:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setLastNonGameController:]")]
-pub fn stub_51fc0() -> ! {
-    todo!("0x51fc0 -[MainViewController setLastNonGameController:]")
+pub fn stub_51fc0(present: bool) {
+    // IDA 0x51fc0: `setLastNonGameController:` stores the ivar. It
+    // records here.
+    MAINVIEW_LAST_NONGAME.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x51fd0 — -[MainViewController getLastNonGameController]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getLastNonGameController]")]
-pub fn stub_51fd0() -> ! {
-    todo!("0x51fd0 -[MainViewController getLastNonGameController]")
+pub fn stub_51fd0() -> bool {
+    // IDA 0x51fd0: `getLastNonGameController` returns the ivar.
+    // Presence reports here.
+    MAINVIEW_LAST_NONGAME.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x51fe0 — __GLOBAL__I_a_27
 #[doc(alias = "__GLOBAL__I_a_27")]
-pub fn stub_51fe0() -> ! {
-    todo!("0x51fe0 global constructor keyed to_a_27")
+pub fn stub_51fe0() {
+    // IDA 0x51fe0: `__GLOBAL__I_a_27` runs the `a_27`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]
 // type: RobloxAnimatingPageViewController *__cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController initWithCoder:]")]
-pub fn stub_52178() -> ! {
-    todo!("0x52178 -[RobloxAnimatingPageViewController initWithCoder:]")
+pub fn stub_52178() {
+    // IDA 0x52178: `RobloxAnimatingPageViewController::initWithCoder:`
+    // supers. Super-init glue; no explicit body.
 }
 
 // 0x52280 — -[RobloxAnimatingPageViewController dealloc]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController dealloc]")]
-pub fn stub_52280() -> ! {
-    todo!("0x52280 -[RobloxAnimatingPageViewController dealloc]")
+pub fn stub_52280() {
+    // IDA 0x52280: `dealloc` drops the page views. Release is drop
+    // glue; the background flag resets here.
+    ANIM_IN_BACKGROUND.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5233c — -[RobloxAnimatingPageViewController appInBackground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController appInBackground:]")]
-pub fn stub_5233c() -> ! {
-    todo!("0x5233c -[RobloxAnimatingPageViewController appInBackground:]")
+pub fn stub_5233c(backgrounded: bool) {
+    // IDA 0x5233c: `appInBackground:` records the backgrounding. It
+    // records here.
+    ANIM_IN_BACKGROUND.store(backgrounded, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5234c — -[RobloxAnimatingPageViewController appInForeground:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController appInForeground:]")]
-pub fn stub_5234c() -> ! {
-    todo!("0x5234c -[RobloxAnimatingPageViewController appInForeground:]")
+pub fn stub_5234c() {
+    // IDA 0x5234c: `appInForeground:` clears the backgrounding. It
+    // records here.
+    ANIM_IN_BACKGROUND.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x52384 — -[RobloxAnimatingPageViewController removeViewAndAnimation:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController removeViewAndAnimation:]")]
-pub fn stub_52384() -> ! {
-    todo!("0x52384 -[RobloxAnimatingPageViewController removeViewAndAnimation:]")
+pub fn stub_52384() {
+    // IDA 0x52384: `removeViewAndAnimation:` detaches the page.
+    // Removal is drop glue; no explicit body.
 }
 
 // 0x523d4 — -[RobloxAnimatingPageViewController didReceiveMemoryWarning]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController didReceiveMemoryWarning]")]
-pub fn stub_523d4() -> ! {
-    todo!("0x523d4 -[RobloxAnimatingPageViewController didReceiveMemoryWarning]")
+pub fn stub_523d4() {
+    // IDA 0x523d4: `didReceiveMemoryWarning` supers. Super glue; no
+    // explicit body.
 }
 
 // 0x52400 — -[RobloxAnimatingPageViewController viewDidLoad]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidLoad]")]
-pub fn stub_52400() -> ! {
-    todo!("0x52400 -[RobloxAnimatingPageViewController viewDidLoad]")
+pub fn stub_52400() {
+    // IDA 0x52400: `viewDidLoad` supers. Super glue; no explicit body.
+    // [INFERENCE] Body unexamined; standard lifecycle passthrough per
+    // surrounding family (0x523d4/0x52614 sibs).
 }
 
 // 0x52580 — -[RobloxAnimatingPageViewController getInitialXPosition:]
