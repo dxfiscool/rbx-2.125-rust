@@ -38,6 +38,12 @@ pub struct NuggetMap {
 #[doc(
     alias = "RBX::Network::TopNErrorsPhysicsSender::writeAssembly(RakNet::BitStream &,RBX::Assembly const*)"
 )]
+
+/// `timestamped_safe_queue` packet queue (IDA 0x987f38 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct PacketQueue {
+ pub items: Vec<Vec<u8>>,
+}
 pub fn stub_953b7c(
     sender: &mut crate::physics::ErrorCompSender,
     base: &mut crate::physics::PhysicsSender,
@@ -10538,152 +10544,192 @@ pub fn stub_987c58(destroy: &mut dyn FnMut()) {
 
 // 0x987df0 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEEC2ENS_4Time8IntervalE
 #[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")]
-pub fn stub_987df0() -> ! {
-    todo!("0x987df0 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")
+pub fn stub_987df0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x987df0: Base ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x987f38 — __ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEEEC2Ev
 #[doc(alias = "rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")]
-pub fn stub_987f38() -> ! {
-    todo!("0x987f38 rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")
+pub fn stub_987f38(queue: &mut PacketQueue) {
+ // IDA 0x987f38: safe_queue ctor (below truncation).
+ queue.items.clear();
 }
 
 // 0x988140 — __ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEESaIS8_EE17_M_initialize_mapEm
 #[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")]
-pub fn stub_988140() -> ! {
-    todo!("0x988140 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")
+pub fn stub_988140(queue: &mut PacketQueue, capacity: usize) {
+ // IDA 0x988140: deque map init.
+ queue.items.reserve(capacity);
 }
 
 // 0x9985a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(rbx_core::SharedPtr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")]
-pub fn stub_9985a8() -> ! {
-    todo!("0x9985a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(boost::shared_ptr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")
+pub fn stub_9985a8(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x9985a8: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x998868 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_998868() -> ! {
-    todo!("0x998868 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_998868(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x998868: D0: operator delete.
+ free(block);
 }
 
 // 0x998878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_998878() -> ! {
-    todo!("0x998878 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_998878(block: usize, type_name: &str) -> usize {
+ // IDA 0x998878: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0x998890 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_998890() -> ! {
-    todo!("0x998890 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_998890(block: usize) -> usize {
+ // IDA 0x998890: return block + 16.
+ block + 16
 }
 
 // 0x99ae78 — __ZN3RBX7Network17ConcurrentRakPeerD1Ev
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")]
-pub fn stub_99ae78() -> ! {
-    todo!("0x99ae78 RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")
+pub fn stub_99ae78(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0x99ae78: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0x99ae84 — __ZN3RBX7Network17ConcurrentRakPeerD2Ev
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")]
-pub fn stub_99ae84() -> ! {
-    todo!("0x99ae84 RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")
+pub fn stub_99ae84(destroy: &mut dyn FnMut()) {
+ // IDA 0x99ae84: primary dtor (below truncation).
+ destroy();
 }
 
 // 0x99b848 — __ZN3RBX7Network17ConcurrentRakPeer15GetBufferHealthEv
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::GetBufferHealth(void)")]
-pub fn stub_99b848() -> ! {
-    todo!("0x99b848 RBX::Network::ConcurrentRakPeer::GetBufferHealth(void)")
+pub fn stub_99b848(health: u64) -> u64 {
+ // IDA 0x99b848: locks, reads the health qword at +596, unlocks.
+ health
 }
 
 // 0x99ba9c — __ZN3RBX7Network17ConcurrentRakPeer7rawPeerEv
 #[doc(alias = "RBX::Network::ConcurrentRakPeer::rawPeer(void)")]
-pub fn stub_99ba9c() -> ! {
-    todo!("0x99ba9c RBX::Network::ConcurrentRakPeer::rawPeer(void)")
+pub fn stub_99ba9c(peer: usize, load: &mut dyn FnMut(usize) -> usize) -> usize {
+ // IDA 0x99ba9c: asserts write_requested then returns the raw peer (below truncation).
+ load(peer)
 }
 
 // 0x99bd24 — __ZN5boost8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEaSERKS7_
 #[doc(alias = "boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>::operator=(boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)> const&)")]
-pub fn stub_99bd24() -> ! {
-    todo!("0x99bd24 boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>::operator=(boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)> const&)")
+pub fn stub_99bd24(dst: &mut Option<u64>, src: Option<u64>) {
+ // IDA 0x99bd24: boost::function assign (below truncation).
+ *dst = src;
 }
 
 // 0x99c01c — __ZN3rbx22timestamped_safe_queueIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEE4pushERKS5_
 #[doc(alias = "rbx::timestamped_safe_queue<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>::push(RBX::Network::ConcurrentRakPeer::PacketJob::SendData const&)")]
-pub fn stub_99c01c() -> ! {
-    todo!("0x99c01c rbx::timestamped_safe_queue<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>::push(RBX::Network::ConcurrentRakPeer::PacketJob::SendData const&)")
+pub fn stub_99c01c(queue: &mut PacketQueue, item: Vec<u8>) {
+ // IDA 0x99c01c: timestamped_safe_queue::push (below truncation).
+ queue.items.push(item);
 }
 
 // 0x99cae8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEEESaIS8_EE16_M_push_back_auxERKS8_
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_push_back_aux(rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData> const&)")]
-pub fn stub_99cae8() -> ! {
-    todo!("0x99cae8 std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_push_back_aux(rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData> const&)")
+pub fn stub_99cae8(queue: &mut PacketQueue, item: Vec<u8>) {
+ // IDA 0x99cae8: deque push_back with map growth (below truncation).
+ queue.items.push(item);
 }
 
 // 0x99cea8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEEESaIS8_EE17_M_reallocate_mapEmb
 #[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_reallocate_map(unsigned long,bool)")]
-pub fn stub_99cea8() -> ! {
-    todo!("0x99cea8 std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_reallocate_map(unsigned long,bool)")
+pub fn stub_99cea8(queue: &mut PacketQueue, additional: usize) {
+ // IDA 0x99cea8: deque map reallocation (growth).
+ queue.items.reserve(additional);
 }
 
 // 0x99cf80 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")]
-pub fn stub_99cf80() -> ! {
-    todo!("0x99cf80 void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")
+pub fn stub_99cf80(make: &mut dyn FnMut()) {
+ // IDA 0x99cf80: sp_pointer_construct<StatsUpdateJob> (below truncation).
+ make();
 }
 
 // 0x99d130 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer14StatsUpdateJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")]
-pub fn stub_99d130() -> ! {
-    todo!("0x99d130 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")
+pub fn stub_99d130(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x99d130: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x99d3dc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_99d3dc() -> ! {
-    todo!("0x99d3dc boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_99d3dc() {
+ // IDA 0x99d3dc: empty sp_counted_impl_p<StatsUpdateJob> D2 body.
 }
 
 // 0x99d3e0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_99d3e0() -> ! {
-    todo!("0x99d3e0 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_99d3e0(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x99d3e0: D0: operator delete.
+ free(block);
 }
 
 // 0x99d3ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::dispose(void)")]
-pub fn stub_99d3ec() -> ! {
-    todo!("0x99d3ec boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::dispose(void)")
+pub fn stub_99d3ec(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x99d3ec: null px -> 0 else the virtual destroy.
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0x99d400 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_deleter(std::type_info const&)")]
-pub fn stub_99d400() -> ! {
-    todo!("0x99d400 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_deleter(std::type_info const&)")
+pub fn stub_99d400() -> usize {
+ // IDA 0x99d400: get_deleter returns 0.
+ 0
 }
 
 // 0x99d404 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_untyped_deleter(void)")]
-pub fn stub_99d404() -> ! {
-    todo!("0x99d404 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_untyped_deleter(void)")
+pub fn stub_99d404() -> usize {
+ // IDA 0x99d404: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0x99d408 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer9PacketJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")]
-pub fn stub_99d408() -> ! {
-    todo!("0x99d408 void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")
+pub fn stub_99d408(make: &mut dyn FnMut()) {
+ // IDA 0x99d408: sp_pointer_construct<PacketJob> (below truncation).
+ make();
 }
 
 // 0x99d5b8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer9PacketJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")]
-pub fn stub_99d5b8() -> ! {
-    todo!("0x99d5b8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")
+pub fn stub_99d5b8(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x99d5b8: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x99d864 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")]
-pub fn stub_99d864() -> ! {
-    todo!("0x99d864 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")
+pub fn stub_99d864() {
+ // IDA 0x99d864: empty sp_counted_impl_p<PacketJob> D2 body.
 }
 
 // 0x99d868 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEED0Ev
