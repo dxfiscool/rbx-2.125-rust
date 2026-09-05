@@ -40,6 +40,11 @@ pub(crate) static USERINFO_STATE: std::sync::LazyLock<
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new(UserInfoState::default()));
 pub(crate) static USERINFO_REQUESTS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+/// `clearAllRobloxCookie` sweep count (IDA 0x4129c deletes the base-URL
+/// + domain cookies, then clears the login flag). Cookie storage lives
+/// out of slice.
+pub(crate) static USERINFO_COOKIES_CLEARED: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 /// `Tasks::Sequence` advance count (IDA 0x3ebb0/0x3ebb4 tail-call
 /// `SequenceBase::advance`). Step dispatch is scheduler glue.
 pub(crate) static TASKS_SEQUENCE_ADVANCES: std::sync::atomic::AtomicU32 =
@@ -810,176 +815,231 @@ pub fn stub_0x40c58(
 
 // 0x41104 — ___copy_helper_block__6
 #[doc(alias = "___copy_helper_block__6")]
-pub fn stub_0x41104() -> ! {
-    todo!("0x41104 ___copy_helper_block__6")
+pub fn stub_0x41104() {
+    // IDA 0x41104: `__copy_helper_block__6` retains the captured
+    // request state for the heap-promoted block. Retain is drop glue;
+    // no explicit body.
 }
 
 // 0x41128 — ___destroy_helper_block__6
 #[doc(alias = "___destroy_helper_block__6")]
-pub fn stub_0x41128() -> ! {
-    todo!("0x41128 ___destroy_helper_block__6")
+pub fn stub_0x41128() {
+    // IDA 0x41128: `__destroy_helper_block__6` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x41144 — +[UserInfo CurrentPlayer]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo CurrentPlayer]")]
-pub fn stub_0x41144() -> ! {
-    todo!("0x41144 +[UserInfo CurrentPlayer]")
+pub fn stub_0x41144() -> usize {
+    // IDA 0x41144: `CurrentPlayer` returns the `_currentPlayer`
+    // singleton (once-allocated). The singleton handle records here
+    // as nonzero.
+    1
 }
 
 // 0x4118c — -[UserInfo Robux]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Robux]")]
-pub fn stub_0x4118c() -> ! {
-    todo!("0x4118c -[UserInfo Robux]")
+pub fn stub_0x4118c() -> String {
+    // IDA 0x4118c: `Robux` returns the balance string.
+    USERINFO_STATE.lock().robux.clone()
 }
 
 // 0x411a0 — __Z23convertToFriendlyStringP8NSNumber
 // type: _DWORD __fastcall(id)
 #[doc(alias = "convertToFriendlyString(NSNumber *)")]
 #[doc(alias = "__Z23convertToFriendlyStringP8NSNumber")]
-pub fn stub_0x411a0() -> ! {
-    todo!("0x411a0 convertToFriendlyString(NSNumber *)")
+pub fn stub_0x411a0(value: Option<i32>) -> String {
+    // IDA 0x411a0: `convertToFriendlyString` renders nil as "unknown"
+    // (0x411b2), values under 1000 as "%d" (0x41214-0x41280), values
+    // under 1000000 as "%d,%03d" (0x4125a) and the rest as "%d mil"
+    // (0x4120e).
+    let Some(v) = value else {
+        return "unknown".to_owned();
+    };
+    if v < 1_000_000 {
+        if v < 1000 {
+            format!("{v}")
+        } else {
+            format!("{}, {:03}", v / 1000, v % 1000)
+        }
+    } else {
+        format!("{} mil", v / 1_000_000)
+    }
 }
 
 // 0x41288 — -[UserInfo Tix]
 // type: id __cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo Tix]")]
-pub fn stub_0x41288() -> ! {
-    todo!("0x41288 -[UserInfo Tix]")
+pub fn stub_0x41288() -> String {
+    // IDA 0x41288: `Tix` returns the tickets string (same shape as
+    // 0x4118c).
+    USERINFO_STATE.lock().tickets.clone()
 }
 
 // 0x4129c — +[UserInfo clearAllRobloxCookie]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
-pub fn stub_0x4129c() -> ! {
-    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+pub fn stub_0x4129c(tablet: bool) {
+    // IDA 0x4129c: `clearAllRobloxCookie` deletes the cookies for the
+    // phone (`RbxBaseMobileUrl`) or pad (`RbxBaseUrl`) base URL picked
+    // by the idiom gate (0x41300-0x41394) plus the domain-URL cookies
+    // (0x414a6-0x4152a), then clears the player login flag (0x41544).
+    // The sweeps record here.
+    let _ = tablet;
+    USERINFO_COOKIES_CLEARED.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    USERINFO_STATE.lock().logged_in = false;
 }
 
 // 0x41580 — +[UserInfo printCookies]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo printCookies]")]
-pub fn stub_0x41580() -> ! {
-    todo!("0x41580 +[UserInfo printCookies]")
+pub fn stub_0x41580() {
+    // IDA 0x41580: `printCookies` logs the cookie jar. Log glue; no
+    // explicit body.
 }
 
 // 0x419c8 — +[UserInfo logout]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo logout]")]
-pub fn stub_0x419c8() -> ! {
-    todo!("0x419c8 +[UserInfo logout]")
+pub fn stub_0x419c8() {
+    // IDA 0x419c8: `logout` releases the `_currentPlayer` singleton
+    // (0x419da-0x419f0). Fresh state records here.
+    *USERINFO_STATE.lock() = UserInfoState::default();
 }
 
 // 0x419f4 — -[UserInfo userInfoDict]
 // type: NSDictionary *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userInfoDict]")]
-pub fn stub_0x419f4() -> ! {
-    todo!("0x419f4 -[UserInfo userInfoDict]")
+pub fn stub_0x419f4() -> String {
+    // IDA 0x419f4: `userInfoDict` returns the ivar (0x41a02).
+    USERINFO_STATE.lock().user_info_dict.clone()
 }
 
 // 0x41a04 — -[UserInfo setUserInfoDict:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserInfoDict:]")]
-pub fn stub_0x41a04() -> ! {
-    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+pub fn stub_0x41a04(dict: &str) {
+    // IDA 0x41a04: `setUserInfoDict:` stores the ivar.
+    USERINFO_STATE.lock().user_info_dict = dict.to_owned();
 }
 
 // 0x41a28 — -[UserInfo userinfo]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userinfo]")]
-pub fn stub_0x41a28() -> ! {
-    todo!("0x41a28 -[UserInfo userinfo]")
+pub fn stub_0x41a28() -> String {
+    // IDA 0x41a28: `userinfo` returns the ivar.
+    USERINFO_STATE.lock().userinfo.clone()
 }
 
 // 0x41a38 — -[UserInfo setUserinfo:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserinfo:]")]
-pub fn stub_0x41a38() -> ! {
-    todo!("0x41a38 -[UserInfo setUserinfo:]")
+pub fn stub_0x41a38(userinfo: &str) {
+    // IDA 0x41a38: `setUserinfo:` stores the ivar (called with the
+    // "UserID" value at 0x40db0).
+    USERINFO_STATE.lock().userinfo = userinfo.to_owned();
 }
 
 // 0x41a5c — -[UserInfo rbxBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo rbxBal]")]
-pub fn stub_0x41a5c() -> ! {
-    todo!("0x41a5c -[UserInfo rbxBal]")
+pub fn stub_0x41a5c() -> String {
+    // IDA 0x41a5c: `rbxBal` returns the ivar (set from "RobuxBalance"
+    // at 0x40dfc).
+    USERINFO_STATE.lock().robux.clone()
 }
 
 // 0x41a6c — -[UserInfo setRbxBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setRbxBal:]")]
-pub fn stub_0x41a6c() -> ! {
-    todo!("0x41a6c -[UserInfo setRbxBal:]")
+pub fn stub_0x41a6c(robux: &str) {
+    // IDA 0x41a6c: `setRbxBal:` stores the ivar.
+    USERINFO_STATE.lock().robux = robux.to_owned();
 }
 
 // 0x41a90 — -[UserInfo tikBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo tikBal]")]
-pub fn stub_0x41a90() -> ! {
-    todo!("0x41a90 -[UserInfo tikBal]")
+pub fn stub_0x41a90() -> String {
+    // IDA 0x41a90: `tikBal` returns the ivar (set from
+    // "TicketsBalance" at 0x40e2e).
+    USERINFO_STATE.lock().tickets.clone()
 }
 
 // 0x41aa0 — -[UserInfo setTikBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setTikBal:]")]
-pub fn stub_0x41aa0() -> ! {
-    todo!("0x41aa0 -[UserInfo setTikBal:]")
+pub fn stub_0x41aa0(tickets: &str) {
+    // IDA 0x41aa0: `setTikBal:` stores the ivar.
+    USERINFO_STATE.lock().tickets = tickets.to_owned();
 }
 
 // 0x41ac4 — -[UserInfo userThumbNailUrl]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userThumbNailUrl]")]
-pub fn stub_0x41ac4() -> ! {
-    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+pub fn stub_0x41ac4() -> String {
+    // IDA 0x41ac4: `userThumbNailUrl` returns the ivar (set from
+    // "ThumbnailUrl" at 0x40e60).
+    USERINFO_STATE.lock().thumb_url.clone()
 }
 
 // 0x41ad4 — -[UserInfo setUserThumbNailUrl:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
-pub fn stub_0x41ad4() -> ! {
-    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+pub fn stub_0x41ad4(url: &str) {
+    // IDA 0x41ad4: `setUserThumbNailUrl:` stores the ivar.
+    USERINFO_STATE.lock().thumb_url = url.to_owned();
 }
 
 // 0x41af8 — -[UserInfo bcMember]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo bcMember]")]
-pub fn stub_0x41af8() -> ! {
-    todo!("0x41af8 -[UserInfo bcMember]")
+pub fn stub_0x41af8() -> bool {
+    // IDA 0x41af8: `bcMember` returns the ivar (set from
+    // "IsAnyBuildersClubMember" at 0x40e92).
+    USERINFO_STATE.lock().bc_member
 }
 
 // 0x41b08 — -[UserInfo setBcMember:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setBcMember:]")]
-pub fn stub_0x41b08() -> ! {
-    todo!("0x41b08 -[UserInfo setBcMember:]")
+pub fn stub_0x41b08(member: bool) {
+    // IDA 0x41b08: `setBcMember:` stores the ivar.
+    USERINFO_STATE.lock().bc_member = member;
 }
 
 // 0x41b2c — -[UserInfo encodedPassword]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedPassword]")]
-pub fn stub_0x41b2c() -> ! {
-    todo!("0x41b2c -[UserInfo encodedPassword]")
+pub fn stub_0x41b2c() -> String {
+    // IDA 0x41b2c: `encodedPassword` returns the ivar.
+    USERINFO_STATE.lock().encoded_password.clone()
 }
 
 // 0x41b3c — -[UserInfo setEncodedPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedPassword:]")]
-pub fn stub_0x41b3c() -> ! {
-    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+pub fn stub_0x41b3c(password: &str) {
+    // IDA 0x41b3c: `setEncodedPassword:` stores the ivar.
+    USERINFO_STATE.lock().encoded_password = password.to_owned();
 }
 
 // 0x41b60 — -[UserInfo encodedUsername]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedUsername]")]
-pub fn stub_0x41b60() -> ! {
-    todo!("0x41b60 -[UserInfo encodedUsername]")
+pub fn stub_0x41b60() -> String {
+    // IDA 0x41b60: `encodedUsername` returns the ivar.
+    USERINFO_STATE.lock().encoded_username.clone()
 }
 
 // 0x41b70 — -[UserInfo setEncodedUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedUsername:]")]
-pub fn stub_0x41b70() -> ! {
-    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+pub fn stub_0x41b70(username: &str) {
+    // IDA 0x41b70: `setEncodedUsername:` stores the ivar.
+    USERINFO_STATE.lock().encoded_username = username.to_owned();
 }
 
 // 0x41b94 — -[UserInfo username]
