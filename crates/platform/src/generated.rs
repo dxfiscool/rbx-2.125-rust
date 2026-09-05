@@ -666,6 +666,10 @@ pub struct CameraMoveState {
     move_begin: parking_lot::Mutex<f64>,
     begin_calls: AtomicU32,
     cancel_calls: AtomicU32,
+    last_rotate: parking_lot::Mutex<(f32, f32)>,
+    rotate_calls: AtomicU32,
+    jumped_once: AtomicBool,
+    jump_calls: AtomicU32,
 }
 impl CameraMoveState {
     fn bump(&self, c: &AtomicU32) {
@@ -706,26 +710,259 @@ impl CameraMoveState {
     /// `-[CameraMove touchesEnded:withEvent:]` (0x632f0) /
     /// `touchesCancelled:` (0x633c0): the tracked touch runs
     /// `cancelMovement`.
-    pub fn end_touches(&self, touches: &[ControlTouch]) -> bool {
+    pub fn end_touches(&self, touches: &[ControlTouch], has_service: bool, now: f64) -> bool {
         let tracked = *self.thumbstick_touch.lock();
         if tracked.is_some() && touches.iter().any(|t| Some(t.id) == tracked) {
-            self.cancel_movement();
+            self.cancel_movement(has_service, now);
             return true;
         }
         false
     }
-    /// `-[CameraMove cancelMovement]` (0x63490, next in slice): clears
-    /// the tracked touch.
-    pub fn cancel_movement(&self) {
+    /// `-[CameraMove cancelMovement]` (IDA 0x63490): super cancel; with a
+    /// service, `rotateCameraSpeed(zero)` stops rotation (0x634d0..0x634e4);
+    /// a move longer than 0.2 s fires `jumpOnceLocalCharacter`
+    /// (0x634e8..0x63518).
+    pub fn cancel_movement(&self, has_service: bool, now: f64) {
         *self.thumbstick_touch.lock() = None;
         self.bump(&self.cancel_calls);
+        if has_service {
+            *self.last_rotate.lock() = (0.0, 0.0);
+            self.bump(&self.rotate_calls);
+        }
+        if now - *self.move_begin.lock() > 0.2 {
+            self.jumped_once.store(true, Ordering::SeqCst);
+            self.bump(&self.jump_calls);
+        }
     }
     pub fn cancel_call_count(&self) -> u32 {
         self.cancel_calls.load(Ordering::SeqCst)
     }
+    pub fn jumped_once(&self) -> bool {
+        self.jumped_once.load(Ordering::SeqCst)
+    }
+    /// `-[CameraMove touchesMoved:withEvent:]` (IDA 0x63528): super
+    /// first; the tracked touch computes the rotate speeds — x from
+    /// (outer−inner)*0.05, y from (inner−outer)*0.02 — each folded into
+    /// ±1, then `rotateCameraSpeed`. Nil service skips. Returns the speeds.
+    pub fn move_camera(
+        &self,
+        touches: &[ControlTouch],
+        has_service: bool,
+        inner: (f32, f32),
+        outer: (f32, f32),
+    ) -> Option<(f32, f32)> {
+        let tracked = *self.thumbstick_touch.lock();
+        let Some(id) = tracked else { return None };
+        if touches.iter().all(|t| Some(t.id) != Some(id)) {
+            return None;
+        }
+        if !has_service {
+            return None;
+        }
+        let fold = |v: f32| {
+            if v.abs() < 1.0 {
+                0.0
+            } else {
+                v - v.signum()
+            }
+        };
+        let speeds = (
+            fold((outer.0 - inner.0) * 0.05),
+            fold((inner.1 - outer.1) * 0.02),
+        );
+        *self.last_rotate.lock() = speeds;
+        self.bump(&self.rotate_calls);
+        Some(speeds)
+    }
+    pub fn last_rotate(&self) -> (f32, f32) {
+        *self.last_rotate.lock()
+    }
+    pub fn rotate_call_count(&self) -> u32 {
+        self.rotate_calls.load(Ordering::SeqCst)
+    }
 }
 static CAMERA_MOVE: std::sync::LazyLock<CameraMoveState> =
     std::sync::LazyLock::new(CameraMoveState::default);
+/// Host id standing in for the `FunctionMarshaller` `self`.
+const MARSHALLER_ID: ControlId = 26;
+/// Minimal `FunctionMarshaller` counterpart (IDA 0x639b8..0x639f8): the
+/// opaque `pClosure` word plus handled/release counters for the
+/// `RBX::FunctionMarshaller` steps out of slice.
+#[derive(Debug, Default)]
+pub struct MarshallerState {
+    initialized: AtomicBool,
+    closure: parking_lot::Mutex<Option<usize>>,
+    handled: AtomicU32,
+    releases: AtomicU32,
+}
+impl MarshallerState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-marshallFunction` (IDA 0x639b8): `handleAppEvent` on the closure
+    /// (0x639cc), then releases self (0x639e2). A missing service skips
+    /// the marshal; the release always runs.
+    pub fn marshall(&self, has_service: bool) {
+        if has_service && self.closure.lock().is_some() {
+            self.bump(&self.handled);
+        }
+        self.bump(&self.releases);
+    }
+    pub fn handled_count(&self) -> u32 {
+        self.handled.load(Ordering::SeqCst)
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-pClosure` (IDA 0x639e8).
+    pub fn p_closure(&self) -> Option<usize> {
+        *self.closure.lock()
+    }
+    /// `-setPClosure:` (IDA 0x639f8): plain assign.
+    pub fn set_p_closure(&self, closure: Option<usize>) {
+        *self.closure.lock() = closure;
+        self.initialized.store(true, Ordering::SeqCst);
+    }
+}
+static MARSHALLER: std::sync::LazyLock<MarshallerState> =
+    std::sync::LazyLock::new(MarshallerState::default);
+/// Host id standing in for the `RobloxCachedFlags` `self`.
+const FLAGS_ID: ControlId = 27;
+/// Minimal `RobloxCachedFlags` counterpart (IDA 0x63d30..0x64050): a
+/// `NSUserDefaults`-shaped typed map plus sync/release counters.
+#[derive(Debug, Default)]
+pub struct FlagsState {
+    initialized: AtomicBool,
+    bools: parking_lot::Mutex<std::collections::BTreeMap<String, bool>>,
+    ints: parking_lot::Mutex<std::collections::BTreeMap<String, i32>>,
+    strings: parking_lot::Mutex<std::collections::BTreeMap<String, String>>,
+    syncs: AtomicU32,
+    releases: AtomicU32,
+}
+impl FlagsState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-init` (IDA 0x63ddc): super init, then `sync` on success.
+    pub fn init_flags(&self) -> Option<ControlId> {
+        self.bump(&self.syncs);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(FLAGS_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x63e20): super only.
+    pub fn dealloc(&self) {
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-sync` (IDA 0x63e4c): `synchronize` the defaults.
+    pub fn sync(&self) {
+        self.bump(&self.syncs);
+    }
+    pub fn sync_count(&self) -> u32 {
+        self.syncs.load(Ordering::SeqCst)
+    }
+    /// `-getBool:withValue:` (IDA 0x63e80): the stored flag when the key
+    /// exists, else 0.
+    pub fn get_bool(&self, key: &str) -> Option<bool> {
+        self.bools.lock().get(key).copied()
+    }
+    /// `-getInt:withValue:` (IDA 0x63ee8).
+    pub fn get_int(&self, key: &str) -> Option<i32> {
+        self.ints.lock().get(key).copied()
+    }
+    /// `-getString:withValue:` (IDA 0x63f50).
+    pub fn get_string(&self, key: &str) -> Option<String> {
+        self.strings.lock().get(key).cloned()
+    }
+    /// `-setBool:withValue:` (IDA 0x63fb0): `setBool:forKey:` + sync.
+    pub fn set_bool(&self, key: &str, value: bool) {
+        self.bools.lock().insert(key.to_owned(), value);
+        self.sync();
+    }
+    /// `-setInt:withValue:` (IDA 0x64000): `setInteger:forKey:` + sync.
+    pub fn set_int(&self, key: &str, value: i32) {
+        self.ints.lock().insert(key.to_owned(), value);
+        self.sync();
+    }
+    /// `-setString:withValue:` (IDA 0x64050): `setObject:forKey:` + sync.
+    pub fn set_string(&self, key: &str, value: &str) {
+        self.strings.lock().insert(key.to_owned(), value.to_owned());
+        self.sync();
+    }
+}
+static FLAGS: std::sync::LazyLock<FlagsState> =
+    std::sync::LazyLock::new(FlagsState::default);
+/// `+sharedInstance` cell (IDA 0x63d30, `dword_130C6A8`): the
+/// `dispatch_once` initializer lives with the cell.
+static FLAGS_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        FLAGS.init_flags();
+        FLAGS_ID
+    });
+/// Host `+sharedInstance` (IDA 0x63d30).
+pub fn shared_flags_id() -> Option<ControlId> {
+    Some(*FLAGS_SHARED)
+}
+/// Host id standing in for the `CrashReporter` `self`.
+const CRASH_ID: ControlId = 28;
+/// Minimal `CrashReporter` counterpart (IDA 0x640a0..0x64140): the init
+/// latch plus the reporter-select inputs behind
+/// `-activeCrashReporterString`.
+#[derive(Debug, Default)]
+pub struct CrashState {
+    initialized: AtomicBool,
+    testflight_active: AtomicBool,
+    bugsense_active: AtomicBool,
+    releases: AtomicU32,
+}
+impl CrashState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `__31-sharedInstance_block_invoke` (IDA 0x64140, via
+    /// `dispatch_once`, inline): alloc + init.
+    pub fn init_reporter(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(CRASH_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-activeCrashReporterString` (IDA 0x640a0): TestFlight when
+    /// active, else BugSense when active, else None. The inputs latch.
+    pub fn active_string(&self, testflight: bool, bugsense: bool) -> &'static str {
+        self.testflight_active.store(testflight, Ordering::SeqCst);
+        self.bugsense_active.store(bugsense, Ordering::SeqCst);
+        if testflight {
+            "TestFlight"
+        } else if bugsense {
+            "BugSense"
+        } else {
+            "None"
+        }
+    }
+    pub fn dealloc(&self) {
+        self.bump(&self.releases);
+    }
+}
+static CRASH: std::sync::LazyLock<CrashState> =
+    std::sync::LazyLock::new(CrashState::default);
+/// `+sharedInstance` cell (IDA 0x640e4, `dword_130C6C4`): the
+/// `dispatch_once` initializer lives with the cell.
+static CRASH_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        CRASH.init_reporter();
+        CRASH_ID
+    });
+/// Host `+sharedInstance` (IDA 0x640e4).
+pub fn shared_crash_id() -> Option<ControlId> {
+    Some(*CRASH_SHARED)
+}
 /// `-[ControlComponent init]` (IDA 0x47178): super init (0x4719c, nil stays
 /// nil) then `setUserInteractionEnabled:1` (0x471b4).
 pub fn control_component_init(super_ok: bool) -> Option<ControlId> {
@@ -17883,152 +18120,192 @@ pub fn stub_63280(touches: &[ControlTouch], inside_outer: bool, now: f64) -> boo
 // 0x632f0 — -[CameraMove touchesEnded:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesEnded:withEvent:]")]
-pub fn stub_632f0(touches: &[ControlTouch]) {
+pub fn stub_632f0(touches: &[ControlTouch], has_service: bool, now: f64) {
     // IDA 0x632f0 `-[CameraMove touchesEnded:withEvent:]`: enumerate the
     // touches; the tracked `thumbstickTouch` lifting runs `cancelMovement`
     // (0x63326..0x633a4).
-    CAMERA_MOVE.end_touches(touches);
+    CAMERA_MOVE.end_touches(touches, has_service, now);
 }
 
 // 0x633c0 — -[CameraMove touchesCancelled:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesCancelled:withEvent:]")]
-pub fn stub_633c0(touches: &[ControlTouch]) {
+pub fn stub_633c0(touches: &[ControlTouch], has_service: bool, now: f64) {
     // IDA 0x633c0 `-[CameraMove touchesCancelled:withEvent:]`: same shape
     // as `touchesEnded:` above; the tracked touch runs `cancelMovement`.
-    CAMERA_MOVE.end_touches(touches);
+    CAMERA_MOVE.end_touches(touches, has_service, now);
 }
 
 // 0x63490 — -[CameraMove cancelMovement]
 // type: void __cdecl(CameraMove *self, SEL)
 #[doc(alias = "-[CameraMove cancelMovement]")]
-pub fn stub_63490() -> ! {
-    todo!("0x63490 -[CameraMove cancelMovement]")
+pub fn stub_63490(has_service: bool, now: f64) {
+    // IDA 0x63490 `-[CameraMove cancelMovement]`: super cancel
+    // (0x634ae..0x634b6), `rotateCameraSpeed(zero)` on the service
+    // (0x634d0..0x634e4); a move longer than 0.2 s fires
+    // `jumpOnceLocalCharacter` (0x634e8..0x63518).
+    CAMERA_MOVE.cancel_movement(has_service, now);
 }
 
 // 0x63528 — -[CameraMove touchesMoved:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesMoved:withEvent:]")]
-pub fn stub_63528() -> ! {
-    todo!("0x63528 -[CameraMove touchesMoved:withEvent:]")
+pub fn stub_63528(touches: &[ControlTouch], has_service: bool, inner: (f32, f32), outer: (f32, f32)) -> Option<(f32, f32)> {
+    // IDA 0x63528 `-[CameraMove touchesMoved:withEvent:]`: super first
+    // (0x63576); the tracked touch computes the rotate speeds — x from
+    // (outer−inner)*0.05 (0x6362e..0x63694), y from (inner−outer)*0.02
+    // (0x636bc..0x636ee) — each folded into ±1 (0x6370c..0x63756), then
+    // `rotateCameraSpeed` (0x6376e). Nil service skips.
+    CAMERA_MOVE.move_camera(touches, has_service, inner, outer)
 }
 // 0x639b8 — -[FunctionMarshaller marshallFunction]
 // type: void __cdecl(FunctionMarshaller *self, SEL)
 #[doc(alias = "-[FunctionMarshaller marshallFunction]")]
-pub fn stub_639b8() -> ! {
-    todo!("0x639b8 -[FunctionMarshaller marshallFunction]")
+pub fn stub_639b8(has_service: bool) {
+    // IDA 0x639b8 `-marshallFunction`: `handleAppEvent` on the closure
+    // (0x639cc), then releases self (0x639e2).
+    MARSHALLER.marshall(has_service);
 }
 
 // 0x639e8 — -[FunctionMarshaller pClosure]
 // type: void *__cdecl(FunctionMarshaller *self, SEL)
 #[doc(alias = "-[FunctionMarshaller pClosure]")]
-pub fn stub_639e8() -> ! {
-    todo!("0x639e8 -[FunctionMarshaller pClosure]")
+pub fn stub_639e8() -> Option<usize> {
+    // IDA 0x639e8 `-pClosure` (0x639f6).
+    MARSHALLER.p_closure()
 }
 
 // 0x639f8 — -[FunctionMarshaller setPClosure:]
 // type: void __cdecl(FunctionMarshaller *self, SEL, void *)
 #[doc(alias = "-[FunctionMarshaller setPClosure:]")]
-pub fn stub_639f8() -> ! {
-    todo!("0x639f8 -[FunctionMarshaller setPClosure:]")
+pub fn stub_639f8(closure: Option<usize>) {
+    // IDA 0x639f8 `-setPClosure:`: plain assign (0x63a04).
+    MARSHALLER.set_p_closure(closure);
 }
 
 // 0x63d30 — +[RobloxCachedFlags sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxCachedFlags sharedInstance]")]
-pub fn stub_63d30() -> ! {
-    todo!("0x63d30 +[RobloxCachedFlags sharedInstance]")
+pub fn stub_63d30() -> Option<ControlId> {
+    // IDA 0x63d30 `+sharedInstance`: `dispatch_once` runs the `__35…`
+    // block (0x63d5c..0x63d8c); the cell holds the singleton after.
+    shared_flags_id()
 }
 
 // 0x63d94 — ___35+[RobloxCachedFlags sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35+[RobloxCachedFlags sharedInstance]_block_invoke")]
-pub fn stub_63d94() -> ! {
-    todo!("0x63d94 ___35+[RobloxCachedFlags sharedInstance]_block_invoke")
+pub fn stub_63d94() {
+    // IDA 0x63d94 `__35-sharedInstance_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x63da6..0x63dc4).
+    FLAGS.init_flags();
 }
 
 // 0x63ddc — -[RobloxCachedFlags init]
 // type: RobloxCachedFlags *__cdecl(RobloxCachedFlags *self, SEL)
 #[doc(alias = "-[RobloxCachedFlags init]")]
-pub fn stub_63ddc() -> ! {
-    todo!("0x63ddc -[RobloxCachedFlags init]")
+pub fn stub_63ddc() -> Option<ControlId> {
+    // IDA 0x63ddc `-init`: super init (0x63e00); syncs on success
+    // (0x63e06..0x63e16).
+    FLAGS.init_flags()
 }
 
 // 0x63e20 — -[RobloxCachedFlags dealloc]
 // type: void __cdecl(RobloxCachedFlags *self, SEL)
 #[doc(alias = "-[RobloxCachedFlags dealloc]")]
-pub fn stub_63e20() -> ! {
-    todo!("0x63e20 -[RobloxCachedFlags dealloc]")
+pub fn stub_63e20() {
+    // IDA 0x63e20 `-dealloc`: super only (0x63e3a..0x63e44).
+    FLAGS.dealloc();
 }
 
 // 0x63e4c — -[RobloxCachedFlags sync]
 // type: void __cdecl(RobloxCachedFlags *self, SEL)
 #[doc(alias = "-[RobloxCachedFlags sync]")]
-pub fn stub_63e4c() -> ! {
-    todo!("0x63e4c -[RobloxCachedFlags sync]")
+pub fn stub_63e4c() {
+    // IDA 0x63e4c `-sync`: `synchronize` the defaults (0x63e68..0x63e7c).
+    FLAGS.sync();
 }
 
 // 0x63e80 — -[RobloxCachedFlags getBool:withValue:]
 // type: char __cdecl(RobloxCachedFlags *self, SEL, id, char *)
 #[doc(alias = "-[RobloxCachedFlags getBool:withValue:]")]
-pub fn stub_63e80() -> ! {
-    todo!("0x63e80 -[RobloxCachedFlags getBool:withValue:]")
+pub fn stub_63e80(key: &str) -> Option<bool> {
+    // IDA 0x63e80 `-getBool:withValue:`: the stored flag when the key
+    // exists, else 0 (0x63ea6..0x63ee6).
+    FLAGS.get_bool(key)
 }
 
 // 0x63ee8 — -[RobloxCachedFlags getInt:withValue:]
 // type: char __cdecl(RobloxCachedFlags *self, SEL, id, int *)
 #[doc(alias = "-[RobloxCachedFlags getInt:withValue:]")]
-pub fn stub_63ee8() -> ! {
-    todo!("0x63ee8 -[RobloxCachedFlags getInt:withValue:]")
+pub fn stub_63ee8(key: &str) -> Option<i32> {
+    // IDA 0x63ee8 `-getInt:withValue:`: the stored integer when the key
+    // exists, else 0 (0x63f0e..0x63f4e).
+    FLAGS.get_int(key)
 }
 
 // 0x63f50 — -[RobloxCachedFlags getString:withValue:]
 // type: char __cdecl(RobloxCachedFlags *self, SEL, id, id)
 #[doc(alias = "-[RobloxCachedFlags getString:withValue:]")]
-pub fn stub_63f50() -> ! {
-    todo!("0x63f50 -[RobloxCachedFlags getString:withValue:]")
+pub fn stub_63f50(key: &str) -> Option<String> {
+    // IDA 0x63f50 `-getString:withValue:`: the stored string when the key
+    // exists, else 0 (0x63f70..0x63faa).
+    FLAGS.get_string(key)
 }
 
 // 0x63fb0 — -[RobloxCachedFlags setBool:withValue:]
 // type: void __cdecl(RobloxCachedFlags *self, SEL, id, char)
 #[doc(alias = "-[RobloxCachedFlags setBool:withValue:]")]
-pub fn stub_63fb0() -> ! {
-    todo!("0x63fb0 -[RobloxCachedFlags setBool:withValue:]")
+pub fn stub_63fb0(key: &str, value: bool) {
+    // IDA 0x63fb0 `-setBool:withValue:`: `setBool:forKey:` + sync
+    // (0x63fce..0x63ffc).
+    FLAGS.set_bool(key, value);
 }
 
 // 0x64000 — -[RobloxCachedFlags setInt:withValue:]
 // type: void __cdecl(RobloxCachedFlags *self, SEL, id, int)
 #[doc(alias = "-[RobloxCachedFlags setInt:withValue:]")]
-pub fn stub_64000() -> ! {
-    todo!("0x64000 -[RobloxCachedFlags setInt:withValue:]")
+pub fn stub_64000(key: &str, value: i32) {
+    // IDA 0x64000 `-setInt:withValue:`: `setInteger:forKey:` + sync
+    // (0x64022..0x6404c).
+    FLAGS.set_int(key, value);
 }
 
 // 0x64050 — -[RobloxCachedFlags setString:withValue:]
 // type: void __cdecl(RobloxCachedFlags *self, SEL, id, id)
 #[doc(alias = "-[RobloxCachedFlags setString:withValue:]")]
-pub fn stub_64050() -> ! {
-    todo!("0x64050 -[RobloxCachedFlags setString:withValue:]")
+pub fn stub_64050(key: &str, value: &str) {
+    // IDA 0x64050 `-setString:withValue:`: `setObject:forKey:` + sync
+    // (0x64072..0x6409c).
+    FLAGS.set_string(key, value);
 }
 
 // 0x640a0 — -[CrashReporter activeCrashReporterString]
 // type: id __cdecl(CrashReporter *self, SEL)
 #[doc(alias = "-[CrashReporter activeCrashReporterString]")]
-pub fn stub_640a0() -> ! {
-    todo!("0x640a0 -[CrashReporter activeCrashReporterString]")
+pub fn stub_640a0(testflight: bool, bugsense: bool) -> String {
+    // IDA 0x640a0 `-activeCrashReporterString`: TestFlight when active
+    // (0x640b2..0x640b8), else BugSense when active (0x640da..0x640de),
+    // else None (0x640e0).
+    CRASH.active_string(testflight, bugsense).to_owned()
 }
 
 // 0x640e4 — +[CrashReporter sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[CrashReporter sharedInstance]")]
-pub fn stub_640e4() -> ! {
-    todo!("0x640e4 +[CrashReporter sharedInstance]")
+pub fn stub_640e4() -> Option<ControlId> {
+    // IDA 0x640e4 `+sharedInstance`: `dispatch_once` runs the `__31…`
+    // block (0x64110..0x6413a); the cell holds the singleton after.
+    shared_crash_id()
 }
 
 // 0x64140 — ___31+[CrashReporter sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___31+[CrashReporter sharedInstance]_block_invoke")]
-pub fn stub_64140() -> ! {
-    todo!("0x64140 ___31+[CrashReporter sharedInstance]_block_invoke")
+pub fn stub_64140() {
+    // IDA 0x64140 `__31-sharedInstance_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x64152..0x64170).
+    CRASH.init_reporter();
 }
 
 // 0x64188 — -[CrashReporter setupBugsense]

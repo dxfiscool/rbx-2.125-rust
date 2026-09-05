@@ -1143,42 +1143,72 @@ pub fn init_global_a32_63040() {
 
 // 0x637a0 — __GLOBAL__I_a_33
 #[doc(alias = "global constructor keyed to_a_33")]
-pub fn stub_637a0() -> ! {
-    todo!("0x637a0 global constructor keyed to_a_33")
+pub fn init_global_a33_637a0() {
+// IDA 0x637a0: global ctor keyed to _a_33 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x63b58 — __GLOBAL__I_a_34
 #[doc(alias = "global constructor keyed to_a_34")]
-pub fn stub_63b58() -> ! {
-    todo!("0x63b58 global constructor keyed to_a_34")
+pub fn init_global_a34_63b58() {
+// IDA 0x63b58: global ctor keyed to _a_34 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x63dc8 — ___copy_helper_block__22
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__22")]
-pub fn stub_63dc8() -> ! {
-    todo!("0x63dc8 ___copy_helper_block__22")
+pub unsafe fn copy_block_capture_63dc8(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x63dc8: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x63dd4 — ___destroy_helper_block__22
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__22")]
-pub fn stub_63dd4() -> ! {
-    todo!("0x63dd4 ___destroy_helper_block__22")
+pub unsafe fn destroy_block_capture_63dd4(block: *mut core::ffi::c_void) {
+// IDA 0x63dd4: _Block_object_dispose(block+20, 3) (126B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x64174 — ___copy_helper_block__23
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__23")]
-pub fn stub_64174() -> ! {
-    todo!("0x64174 ___copy_helper_block__23")
+pub unsafe fn copy_block_capture_64174(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x64174: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x64180 — ___destroy_helper_block__23
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__23")]
-pub fn stub_64180() -> ! {
-    todo!("0x64180 ___destroy_helper_block__23")
+pub unsafe fn destroy_block_capture_64180(block: *mut core::ffi::c_void) {
+// IDA 0x64180: _Block_object_dispose(block+20, 3) (126B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x646fc — __ZL13fastLogMesagehPKc
