@@ -12649,176 +12649,215 @@ pub fn stub_9b7efc(current: &mut f64, value: f64, notify: &mut dyn FnMut()) {
 // 0x9b7f58 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsEC2IMS2_KFKSsvEMS2_FvRS5_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::PropDescriptor<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>(char const*,char const*,std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b7f58() -> ! {
-    todo!("0x9b7f58 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::PropDescriptor<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>(char const*,char const*,std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b7f58(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b7f58: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b8180 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")]
-pub fn stub_9b8180() -> ! {
-    todo!("0x9b8180 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")
+pub fn stub_9b8180(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b8180: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b81a8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isReadOnly(void)const")]
-pub fn stub_9b81a8() -> ! {
-    todo!("0x9b81a8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isReadOnly(void)const")
+pub fn stub_9b81a8() -> bool {
+ // IDA 0x9b81a8: isReadOnly returns 0.
+ false
 }
 
 // 0x9b81ac — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isWriteOnly(void)const")]
-pub fn stub_9b81ac() -> ! {
-    todo!("0x9b81ac RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::isWriteOnly(void)const")
+pub fn stub_9b81ac() -> bool {
+ // IDA 0x9b81ac: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b81b0 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b81b0() -> ! {
-    todo!("0x9b81b0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b81b0(get: &mut dyn FnMut() -> String) -> String {
+ // IDA 0x9b81b0: getValue copies the string member (below truncation).
+ get()
 }
 
 // 0x9b81d8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsE10GetSetImplIMS2_KFKSsvEMS2_FvRS5_EE8setValueEPNS0_13DescribedBaseES8_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_9b81d8() -> ! {
-    todo!("0x9b81d8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::GetSetImpl<std::string const (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(std::string const&)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_9b81d8(current: &mut String, value: String, notify: &mut dyn FnMut()) {
+ // IDA 0x9b81d8: setValue stores the string; raisePropertyChanged (below truncation).
+ *current = value;
+ notify();
 }
 
 // 0x9b8200 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::PropDescriptor<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>(char const*,char const*,double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b8200() -> ! {
-    todo!("0x9b8200 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::PropDescriptor<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>(char const*,char const*,double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b8200(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b8200: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b8428 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")]
-pub fn stub_9b8428() -> ! {
-    todo!("0x9b8428 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")
+pub fn stub_9b8428(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b8428: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b8450 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isReadOnly(void)const")]
-pub fn stub_9b8450() -> ! {
-    todo!("0x9b8450 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isReadOnly(void)const")
+pub fn stub_9b8450() -> bool {
+ // IDA 0x9b8450: isReadOnly returns 0.
+ false
 }
 
 // 0x9b8454 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isWriteOnly(void)const")]
-pub fn stub_9b8454() -> ! {
-    todo!("0x9b8454 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::isWriteOnly(void)const")
+pub fn stub_9b8454() -> bool {
+ // IDA 0x9b8454: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b8458 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b8458() -> ! {
-    todo!("0x9b8458 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b8458(get: &mut dyn FnMut() -> f64) -> f64 {
+ // IDA 0x9b8458: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b847c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8setValueEPNS0_13DescribedBaseERKd
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
-pub fn stub_9b847c() -> ! {
-    todo!("0x9b847c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::GetSetImpl<double (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+pub fn stub_9b847c(set: &mut dyn FnMut(f64), value: f64) {
+ // IDA 0x9b847c: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0x9b84ac — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_15NetworkSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, char, int, int, int, int, int, __guard *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,bool RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b84ac() -> ! {
-    todo!("0x9b84ac RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,bool RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b84ac(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b84ac: BoundProp ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b86c4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
-pub fn stub_9b86c4() -> ! {
-    todo!("0x9b86c4 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_9b86c4() -> bool {
+ // IDA 0x9b86c4: isReadOnly returns 0.
+ false
 }
 
 // 0x9b86c8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
-pub fn stub_9b86c8() -> ! {
-    todo!("0x9b86c8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_9b86c8() -> bool {
+ // IDA 0x9b86c8: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b86cc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b86cc() -> ! {
-    todo!("0x9b86cc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b86cc(flag: bool) -> bool {
+ // IDA 0x9b86cc: getValue loads the byte member.
+ flag
 }
 
 // 0x9b86d8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_9b86d8() -> ! {
-    todo!("0x9b86d8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_9b86d8(current: &mut bool, value: bool, notify: &mut dyn FnMut()) {
+ // IDA 0x9b86d8: stores when different; raisePropertyChanged on change.
+ if *current != value {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b8724 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_15NetworkSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, char, int, int, int, int, int, __guard *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,float RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b8724() -> ! {
-    todo!("0x9b8724 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::NetworkSettings>(char const*,char const*,float RBX::NetworkSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b8724(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b8724: BoundProp ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b893c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")]
-pub fn stub_9b893c() -> ! {
-    todo!("0x9b893c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isReadOnly(void)const")
+pub fn stub_9b893c() -> bool {
+ // IDA 0x9b893c: isReadOnly returns 0.
+ false
 }
 
 // 0x9b8940 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")]
-pub fn stub_9b8940() -> ! {
-    todo!("0x9b8940 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::isWriteOnly(void)const")
+pub fn stub_9b8940() -> bool {
+ // IDA 0x9b8940: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b8944 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b8944() -> ! {
-    todo!("0x9b8944 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b8944(value: f32) -> f32 {
+ // IDA 0x9b8944: getValue loads the float member.
+ value
 }
 
 // 0x9b8950 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_15NetworkSettingsEE8setValueEPNS0_13DescribedBaseERKf
 // type: float *__fastcall(int, int, float *)
 #[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
-pub fn stub_9b8950() -> ! {
-    todo!("0x9b8950 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::NetworkSettings>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+pub fn stub_9b8950(current: &mut f32, value: f32, notify: &mut dyn FnMut()) {
+ // IDA 0x9b8950: stores when different; raisePropertyChanged on change.
+ if *current != value {
+ *current = value;
+ notify();
+ }
 }
 
 // 0x9b89ac — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::PropDescriptor<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>(char const*,char const*,float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b89ac() -> ! {
-    todo!("0x9b89ac RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::PropDescriptor<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>(char const*,char const*,float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b89ac(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b89ac: PropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b8bd4 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isReadOnly(void)const")]
-pub fn stub_9b8bd4() -> ! {
-    todo!("0x9b8bd4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isReadOnly(void)const")
+pub fn stub_9b8bd4() -> bool {
+ // IDA 0x9b8bd4: isReadOnly returns 0.
+ false
 }
 
 // 0x9b8bd8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isWriteOnly(void)const")]
-pub fn stub_9b8bd8() -> ! {
-    todo!("0x9b8bd8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetSetImpl<float (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(float)>::isWriteOnly(void)const")
+pub fn stub_9b8bd8() -> bool {
+ // IDA 0x9b8bd8: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b8bdc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
