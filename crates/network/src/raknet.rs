@@ -20566,148 +20566,193 @@ pub fn stub_a82018(save: &mut dyn FnMut()) {
 // 0xa82300 — __ZN3RBX7Network6Player11loadBooleanESs
 // type: int __fastcall(int, const void **, bool)
 #[doc(alias = "RBX::Network::Player::loadBoolean(std::string)")]
-pub fn stub_a82300() -> ! {
-    todo!("0xa82300 RBX::Network::Player::loadBoolean(std::string)")
+pub fn stub_a82300(load: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa82300: loadBoolean (below truncation).
+ load()
 }
 
 // 0xa82574 — __ZN3RBX7Network6Player11saveBooleanESsb
 // type: void __fastcall(int, const std::string *, int)
 #[doc(alias = "RBX::Network::Player::saveBoolean(std::string,bool)")]
-pub fn stub_a82574() -> ! {
-    todo!("0xa82574 RBX::Network::Player::saveBoolean(std::string,bool)")
+pub fn stub_a82574(save: &mut dyn FnMut()) {
+ // IDA 0xa82574: saveBoolean (below truncation).
+ save();
 }
 
 // 0xa8285c — __ZN3RBX7Network6Player10loadNumberESs
 // type: __int64 __fastcall(int, const void **, bool)
 #[doc(alias = "RBX::Network::Player::loadNumber(std::string)")]
-pub fn stub_a8285c() -> ! {
-    todo!("0xa8285c RBX::Network::Player::loadNumber(std::string)")
+pub fn stub_a8285c(load: &mut dyn FnMut() -> f64) -> f64 {
+ // IDA 0xa8285c: loadNumber (below truncation).
+ load()
 }
 
 // 0xa82ad8 — __ZN3RBX7Network6Player10saveNumberESsd
 // type: void __fastcall(int, const std::string *, _BOOL4, unsigned int)
 #[doc(alias = "RBX::Network::Player::saveNumber(std::string,double)")]
-pub fn stub_a82ad8() -> ! {
-    todo!("0xa82ad8 RBX::Network::Player::saveNumber(std::string,double)")
+pub fn stub_a82ad8(save: &mut dyn FnMut()) {
+ // IDA 0xa82ad8: saveNumber (below truncation).
+ save();
 }
 
 // 0xa82dc8 — __ZN3RBX7Network6Player12loadInstanceESs
 // type: void __fastcall(RBX::Network::PersistentDataStore *, int, const void **)
 #[doc(alias = "RBX::Network::Player::loadInstance(std::string)")]
-pub fn stub_a82dc8() -> ! {
-    todo!("0xa82dc8 RBX::Network::Player::loadInstance(std::string)")
+pub fn stub_a82dc8(load: &mut dyn FnMut()) {
+ // IDA 0xa82dc8: loadInstance (below truncation).
+ load();
 }
 
 // 0xa83044 — __ZN3RBX7Network6Player12saveInstanceESsN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, const std::string *, int *)
 #[doc(alias = "RBX::Network::Player::saveInstance(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a83044() -> ! {
-    todo!("0xa83044 RBX::Network::Player::saveInstance(std::string,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a83044(save: &mut dyn FnMut()) {
+ // IDA 0xa83044: saveInstance (below truncation).
+ save();
 }
 
 // 0xa835ec — __ZN3RBX7Network6Player16luaLoadCharacterEb
 // type: void __fastcall(RBX::Network::Player *this, const char *, int, const void *)
 #[doc(alias = "RBX::Network::Player::luaLoadCharacter(bool)")]
-pub fn stub_a835ec() -> ! {
-    todo!("0xa835ec RBX::Network::Player::luaLoadCharacter(bool)")
+pub fn stub_a835ec(load: &mut dyn FnMut()) {
+ // IDA 0xa835ec: luaLoadCharacter (below truncation).
+ load();
 }
 
 // 0xa837d8 — __ZN3RBX7Network6Player15removeCharacterEv
 // type: void __fastcall(RBX::Network::Player *this, int, bool)
 #[doc(alias = "RBX::Network::Player::removeCharacter(void)")]
-pub fn stub_a837d8() -> ! {
-    todo!("0xa837d8 RBX::Network::Player::removeCharacter(void)")
+pub fn stub_a837d8(remove: &mut dyn FnMut()) {
+ // IDA 0xa837d8: removeCharacter (below truncation).
+ remove();
 }
 
 // 0xa83950 — __ZN3RBX7Network6Player10setUnder13Eb
 // type: int __fastcall(int this, int)
 #[doc(alias = "RBX::Network::Player::setUnder13(bool)")]
-pub fn stub_a83950() -> ! {
-    todo!("0xa83950 RBX::Network::Player::setUnder13(bool)")
+pub fn stub_a83950(slot: usize, flag: &mut bool, value: bool) -> usize {
+ // IDA 0xa83950: stores at +154 without notify; returns this.
+ if value != *flag {
+ *flag = value;
+ }
+ slot
 }
 
 // 0xa83960 — __ZN3RBX7Network6Player16setSuperSafeChatEb
 // type: int __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::setSuperSafeChat(bool)")]
-pub fn stub_a83960() -> ! {
-    todo!("0xa83960 RBX::Network::Player::setSuperSafeChat(bool)")
+pub fn stub_a83960(flag: &mut bool, value: bool, notify: &mut dyn FnMut(), notify2: &mut dyn FnMut()) {
+ // IDA 0xa83960: stores at +153; two raisePropertyChanged on change.
+ if value != *flag {
+ *flag = value;
+ notify();
+ notify2();
+ }
 }
 
 // 0xa83998 — __ZN3RBX7Network6Player17setMembershipTypeENS1_14MembershipTypeE
 // type: int __fastcall(RBX::Instance *, int)
 #[doc(alias = "RBX::Network::Player::setMembershipType(RBX::Network::Player::MembershipType)")]
-pub fn stub_a83998() -> ! {
-    todo!("0xa83998 RBX::Network::Player::setMembershipType(RBX::Network::Player::MembershipType)")
+pub fn stub_a83998(current: &mut i32, value: i32, notify: &mut dyn FnMut(), notify2: &mut dyn FnMut()) {
+ // IDA 0xa83998: stores at +79; two raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ notify2();
+ }
 }
 
 // 0xa839cc — __ZN3RBX7Network6Player13setAccountAgeEi
 // type: int __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::setAccountAge(int)")]
-pub fn stub_a839cc() -> ! {
-    todo!("0xa839cc RBX::Network::Player::setAccountAge(int)")
+pub fn stub_a839cc(current: &mut i32, value: i32, notify: &mut dyn FnMut(), notify2: &mut dyn FnMut()) {
+ // IDA 0xa839cc: stores at +80; two raisePropertyChanged on change.
+ if value != *current {
+ *current = value;
+ notify();
+ notify2();
+ }
 }
 
 // 0xa83a00 — __ZN3RBX7Network6Player4kickEv
 // type: void __fastcall(RBX::Network::Player *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::kick(void)")]
-pub fn stub_a83a00() -> ! {
-    todo!("0xa83a00 RBX::Network::Player::kick(void)")
+pub fn stub_a83a00(kick: &mut dyn FnMut()) {
+ // IDA 0xa83a00: kick (below truncation).
+ kick();
 }
 
 // 0xa83bac — __ZN3RBX7Network6Player12setCharacterEPNS_13ModelInstanceE
 // type: void __fastcall(RBX::Network::Player *this, RBX::ModelInstance *)
 #[doc(alias = "RBX::Network::Player::setCharacter(RBX::ModelInstance *)")]
-pub fn stub_a83bac() -> ! {
-    todo!("0xa83bac RBX::Network::Player::setCharacter(RBX::ModelInstance *)")
+pub fn stub_a83bac(set: &mut dyn FnMut()) {
+ // IDA 0xa83bac: setCharacter (below truncation).
+ set();
 }
 
 // 0xa84aec — __ZN3RBX7Network6Player22setCharacterAppearanceERKSs
 // type: void __fastcall(RBX::Network::Player *this, const std::string *)
 #[doc(alias = "RBX::Network::Player::setCharacterAppearance(std::string const&)")]
-pub fn stub_a84aec() -> ! {
-    todo!("0xa84aec RBX::Network::Player::setCharacterAppearance(std::string const&)")
+pub fn stub_a84aec(set: &mut dyn FnMut()) {
+ // IDA 0xa84aec: setCharacterAppearance (below truncation).
+ set();
 }
 
 // 0xa85160 — __ZN3RBX7Network6Player29setCanLoadCharacterAppearanceEb
 // type: RBX::Instance *__fastcall(RBX::Instance *this, int)
 #[doc(alias = "RBX::Network::Player::setCanLoadCharacterAppearance(bool)")]
-pub fn stub_a85160() -> ! {
-    todo!("0xa85160 RBX::Network::Player::setCanLoadCharacterAppearance(bool)")
+pub fn stub_a85160(slot: usize, flag: &mut bool, value: bool, notify: &mut dyn FnMut()) -> usize {
+ // IDA 0xa85160: stores at +152; raisePropertyChanged on change; returns this.
+ if value != *flag {
+ *flag = value;
+ notify();
+ }
+ slot
 }
 
 // 0xa85188 — __ZN3RBX7Network6Player31removeCharacterAppearanceScriptEv
 // type: _DWORD __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "RBX::Network::Player::removeCharacterAppearanceScript(void)")]
-pub fn stub_a85188() -> ! {
-    todo!("0xa85188 RBX::Network::Player::removeCharacterAppearanceScript(void)")
+pub fn stub_a85188(has_appearance: bool, visit: &mut dyn FnMut()) {
+ // IDA 0xa85188: visits children with setAppearanceParentNullScript when present (disasm only, no decomp).
+ if has_appearance {
+ visit();
+ }
 }
 
 // 0xa851a8 — __ZN3RBX7Network6Player29loadCharacterAppearanceScriptEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Network::Player::loadCharacterAppearanceScript(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a851a8() -> ! {
-    todo!("0xa851a8 RBX::Network::Player::loadCharacterAppearanceScript(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a851a8(load: &mut dyn FnMut()) {
+ // IDA 0xa851a8: loadCharacterAppearanceScript (below truncation).
+ load();
 }
 
 // 0xa85408 — __ZN3RBX7Network6Player9setUserIdEi
 // type: void __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::setUserId(int)")]
-pub fn stub_a85408() -> ! {
-    todo!("0xa85408 RBX::Network::Player::setUserId(int)")
+pub fn stub_a85408(current: &mut i32, value: i32, notify: &mut dyn FnMut()) {
+ // IDA 0xa85408: stores at +39; security context work; raisePropertyChanged (below truncation).
+ if value != *current {
+ *current = value;
+ notify();
+ }
 }
 
 // 0xa85560 — __ZN3RBX7Network6Player21distanceFromCharacterEN3G3D7Vector3E
 // type: int __fastcall(int, int, __int32, __int32)
 #[doc(alias = "RBX::Network::Player::distanceFromCharacter(G3D::Vector3)")]
-pub fn stub_a85560() -> ! {
-    todo!("0xa85560 RBX::Network::Player::distanceFromCharacter(G3D::Vector3)")
+pub fn stub_a85560(compute: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa85560: distanceFromCharacter (below truncation).
+ compute()
 }
 
 // 0xa8572c — __ZN3RBX7Network6Player15getFriendStatusEN5boost10shared_ptrINS_8InstanceEEE
 // type: RBX::ServiceProvider *__fastcall(RBX::ServiceProvider *, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, char, void *, void *, char, char, int, int, int, int)
 #[doc(alias = "RBX::Network::Player::getFriendStatus(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_a8572c() -> ! {
-    todo!("0xa8572c RBX::Network::Player::getFriendStatus(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_a8572c(query: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa8572c: getFriendStatus (below truncation).
+ query()
 }
 
 // 0xa85b14 — __ZN3RBX7Network6Player14getRoleInGroupEiN5boost8functionIFvSsEEES5_
@@ -20715,29 +20760,37 @@ pub fn stub_a8572c() -> ! {
 #[doc(
     alias = "RBX::Network::Player::getRoleInGroup(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)"
 )]
-pub fn stub_a85b14() -> ! {
-    todo!("0xa85b14 RBX::Network::Player::getRoleInGroup(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_a85b14(query: &mut dyn FnMut()) {
+ // IDA 0xa85b14: getRoleInGroup (below truncation).
+ query();
 }
 
 // 0xa85d98 — __ZNK3RBX7Network6Player16getSuperSafeChatEv
 // type: bool __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getSuperSafeChat(void)const")]
-pub fn stub_a85d98() -> ! {
-    todo!("0xa85d98 RBX::Network::Player::getSuperSafeChat(void)const")
+pub fn stub_a85d98(crisp: bool, user_id: i32, flag: bool) -> bool {
+ // IDA 0xa85d98: crisp flag -> userId sign bit else the byte at +153.
+ if crisp { user_id < 0 } else { flag }
 }
 
 // 0xa85dc0 — __ZNK3RBX7Network6Player11getChatModeEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getChatMode(void)const")]
-pub fn stub_a85dc0() -> ! {
-    todo!("0xa85dc0 RBX::Network::Player::getChatMode(void)const")
+pub fn stub_a85dc0(crisp: bool, user_id: i32, flag: bool) -> bool {
+ // IDA 0xa85dc0: crisp flag -> userId >= 0 else inverted byte at +153.
+ if crisp { user_id >= 0 } else { !flag }
 }
 
 // 0xa85de8 — __ZN3RBX7Network6Player12setTeamColorENS_10BrickColorE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Network::Player::setTeamColor(RBX::BrickColor)")]
-pub fn stub_a85de8() -> ! {
-    todo!("0xa85de8 RBX::Network::Player::setTeamColor(RBX::BrickColor)")
+pub fn stub_a85de8(current: &mut i32, value: i32, refresh: &mut dyn FnMut(), notify: &mut dyn FnMut()) {
+ // IDA 0xa85de8: stores at +100; spawn-location refresh; raisePropertyChanged (below truncation).
+ if value != *current {
+ *current = value;
+ refresh();
+ notify();
+ }
 }
 
 // 0xa85e44 — __ZN3RBX7Network6Player10setNeutralEb
