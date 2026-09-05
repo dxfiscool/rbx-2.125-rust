@@ -6,177 +6,260 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::HashMap;
+
+/// Google Analytics tracker state (IDA 0x41f74 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct GaTracker {
+ pub initialized: bool,
+ pub queued_views: Vec<String>,
+ pub queued_events: Vec<(String, String, String, i32)>,
+ pub queued_vars: Vec<(String, String)>,
+}
+
+/// `RobloxWebUtility` cached settings (IDA 0x427c0 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct WebUtility {
+ pub shared: bool,
+ pub cached_settings: Option<usize>,
+ pub last_request_time: f64,
+}
+
+/// Static-init state for `__GLOBAL__I_a_12` (IDA 0x42580).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA12 {
+ pub done: bool,
+}
 
 // 0x41cf0 — ___35+[RobloxGoogleAnalytics initialize]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
-pub fn stub_41cf0() -> ! {
-    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+pub fn stub_41cf0(setup: &mut dyn FnMut()) {
+    // IDA 0x41cf0: analytics init block — GAI tracker setup from settings (below truncation).
+    setup();
 }
 
 // 0x41f28 — +[RobloxGoogleAnalytics release]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics release]")]
-pub fn stub_41f28() -> ! {
-    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+pub fn stub_41f28() {
+    // IDA 0x41f28: empty release body.
 }
 
 // 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
-pub fn stub_41f2c() -> ! {
-    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+pub fn stub_41f2c(url: Option<&str>, track: &mut dyn FnMut(&str)) {
+    // IDA 0x41f2c: page-tracking callback forwards dict url.
+    if let Some(u) = url {
+        track(u);
+    }
 }
 
 // 0x41f74 — +[RobloxGoogleAnalytics setPageViewTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
-pub fn stub_41f74() -> ! {
-    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+pub fn stub_41f74(state: &mut GaTracker, url: String, send: &mut dyn FnMut(&str)) {
+    // IDA 0x41f74: initialized ? sendView : queue for later.
+    if state.initialized {
+        send(&url);
+    } else {
+        state.queued_views.push(url);
+    }
 }
 
 // 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
-pub fn stub_4203c() -> ! {
-    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+pub fn stub_4203c(category: &str, action: &str, label: &str, value: i32, track: &mut dyn FnMut(&str, &str, &str, i32)) {
+    // IDA 0x4203c: event-tracking callback unpacks dict fields.
+    track(category, action, label, value);
 }
 
 // 0x420e4 — +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id, id, int)
 #[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
-pub fn stub_420e4() -> ! {
-    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+pub fn stub_420e4(state: &mut GaTracker, category: String, action: String, label: String, value: i32, send: &mut dyn FnMut(&str, &str, &str, i32)) {
+    // IDA 0x420e4: initialized ? sendEvent : queue for later.
+    if state.initialized {
+        send(&category, &action, &label, value);
+    } else {
+        state.queued_events.push((category, action, label, value));
+    }
 }
 
 // 0x42230 — +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
-pub fn stub_42230() -> ! {
-    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+pub fn stub_42230(label: &str, value: &str, set: &mut dyn FnMut(&str, &str)) {
+    // IDA 0x42230: custom-variable callback unpacks label/value.
+    set(label, value);
 }
 
 // 0x42298 — +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
-pub fn stub_42298() -> ! {
-    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+pub fn stub_42298(state: &mut GaTracker, label: String, value: String, send: &mut dyn FnMut(&str, &str)) {
+    // IDA 0x42298: initialized ? set:value : queue for later.
+    if state.initialized {
+        send(&label, &value);
+    } else {
+        state.queued_vars.push((label, value));
+    }
 }
 
 // 0x42374 — +[RobloxGoogleAnalytics debugCountersPrint]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
-pub fn stub_42374() -> ! {
-    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+pub fn stub_42374(print: &mut dyn FnMut()) {
+    // IDA 0x42374: debugCountersPrint — read debug_* defaults + log (below truncation).
+    print();
 }
 
 // 0x424cc — +[RobloxGoogleAnalytics debugCounterIncrement:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
-pub fn stub_424cc() -> ! {
-    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+pub fn stub_424cc(counters: &mut HashMap<String, i64>, name: &str) {
+    // IDA 0x424cc: debug_<name> counter +1 in user defaults.
+    *counters.entry(format!("debug_{}", name)).or_insert(0) += 1;
 }
 
 // 0x42580 — __GLOBAL__I_a_12
 // demangled: global constructor keyed to_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
-pub fn stub_42580() -> ! {
-    todo!("0x42580 global constructor keyed to_a_12")
+pub fn stub_42580(state: &mut GlobalInitA12, init: &mut dyn FnMut()) {
+    // IDA 0x42580: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxWebUtility sharedInstance]")]
-pub fn stub_42718() -> ! {
-    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+pub fn stub_42718(slot: &mut Option<usize>, alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x42718: dispatch_once sharedInstance.
+    if let Some(v) = *slot {
+        return v;
+    }
+    let v = alloc();
+    *slot = Some(v);
+    v
 }
 
 // 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
 #[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
-pub fn stub_42774() -> ! {
-    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+pub fn stub_42774(alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x42774: sharedInstance block — alloc + init.
+    alloc()
 }
 
 // 0x427a8 — ___copy_helper_block__7
 #[doc(alias = "___copy_helper_block__7")]
-pub fn stub_427a8() -> ! {
-    todo!("0x427a8 ___copy_helper_block__7")
+pub fn stub_427a8(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x427a8: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x427b4 — ___destroy_helper_block__7
 #[doc(alias = "___destroy_helper_block__7")]
-pub fn stub_427b4() -> ! {
-    todo!("0x427b4 ___destroy_helper_block__7")
+pub fn stub_427b4(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x427b4: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x427c0 — -[RobloxWebUtility init]
 // type: RobloxWebUtility *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility init]")]
-pub fn stub_427c0() -> ! {
-    todo!("0x427c0 -[RobloxWebUtility init]")
+pub fn stub_427c0(ok: bool, util: &mut WebUtility) -> bool {
+    // IDA 0x427c0: super init; epoch lastSettingsRequestTime; create queues (below truncation).
+    if !ok {
+        return false;
+    }
+    util.last_request_time = 0.0;
+    true
 }
 
 // 0x42880 — -[RobloxWebUtility dealloc]
 // type: void __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility dealloc]")]
-pub fn stub_42880() -> ! {
-    todo!("0x42880 -[RobloxWebUtility dealloc]")
+pub fn stub_42880(util: &mut WebUtility, teardown: &mut dyn FnMut()) {
+    // IDA 0x42880: release cached objects + queues; super dealloc (below truncation).
+    util.cached_settings = None;
+    util.last_request_time = 0.0;
+    teardown();
 }
 
 // 0x4290c — -[RobloxWebUtility getiOSLogQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSLogQueue]")]
-pub fn stub_4290c() -> ! {
-    todo!("0x4290c -[RobloxWebUtility getiOSLogQueue]")
+pub fn stub_4290c(queue: usize) -> usize {
+    // IDA 0x4290c: return iOSLogQueue.
+    queue
 }
 
 // 0x4291c — -[RobloxWebUtility getiOSSettingsQueue]
 // type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsQueue]")]
-pub fn stub_4291c() -> ! {
-    todo!("0x4291c -[RobloxWebUtility getiOSSettingsQueue]")
+pub fn stub_4291c(queue: usize) -> usize {
+    // IDA 0x4291c: return iOSSettingsQueue.
+    queue
 }
 
 // 0x4292c — -[RobloxWebUtility setCachediOSSettings:]
 // type: void __cdecl(RobloxWebUtility *self, SEL, iOSSettingsService *)
 #[doc(alias = "-[RobloxWebUtility setCachediOSSettings:]")]
-pub fn stub_4292c() -> ! {
-    todo!("0x4292c -[RobloxWebUtility setCachediOSSettings:]")
+pub fn stub_4292c(util: &mut WebUtility, settings: usize) {
+    // IDA 0x4292c: store cachediOSSettings.
+    util.cached_settings = Some(settings);
 }
 
 // 0x4293c — -[RobloxWebUtility getCachediOSSettings]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getCachediOSSettings]")]
-pub fn stub_4293c() -> ! {
-    todo!("0x4293c -[RobloxWebUtility getCachediOSSettings]")
+pub fn stub_4293c(util: &WebUtility) -> Option<usize> {
+    // IDA 0x4293c: return cachediOSSettings.
+    util.cached_settings
 }
 
 // 0x4294c — -[RobloxWebUtility getLastSettingsRequestTime]
 // type: id __cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getLastSettingsRequestTime]")]
-pub fn stub_4294c() -> ! {
-    todo!("0x4294c -[RobloxWebUtility getLastSettingsRequestTime]")
+pub fn stub_4294c(util: &WebUtility) -> f64 {
+    // IDA 0x4294c: return lastSettingsRequestTime.
+    util.last_request_time
 }
 
 // 0x4295c — -[RobloxWebUtility getiOSSettingsServiceFromWeb]
 // type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
 #[doc(alias = "-[RobloxWebUtility getiOSSettingsServiceFromWeb]")]
-pub fn stub_4295c() -> ! {
-    todo!("0x4295c -[RobloxWebUtility getiOSSettingsServiceFromWeb]")
+pub fn stub_4295c(util: &mut WebUtility, alloc: &mut dyn FnMut(usize) -> usize, fetch: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x4295c: new iOSSettingsService; fetch client settings; cache (below truncation).
+    let s = alloc(0xB4);
+    fetch(s);
+    util.cached_settings = Some(s);
+    s
 }
 
 // 0x42a98 — +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]
 // type: iOSSettingsService *__cdecl(id, SEL, char)
 #[doc(alias = "+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")]
-pub fn stub_42a98() -> ! {
-    todo!("0x42a98 +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")
+pub fn stub_42a98(util: &WebUtility, forced: bool, fetch: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x42a98: forced ? fetch from web : cached (below truncation).
+    if forced {
+        fetch()
+    } else {
+        util.cached_settings.unwrap_or(0)
+    }
 }
 
 // 0x42bc8 — ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke
 // type: iOSSettingsService *__fastcall(int)
 #[doc(alias = "___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")]
-pub fn stub_42bc8() -> ! {
-    todo!("0x42bc8 ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")
+pub fn stub_42bc8(assemble: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x42bc8: settings-service block — date + cached flags assembly (below truncation).
+    assemble()
 }
 
 // 0x42dd8 — ___copy_helper_block_65
