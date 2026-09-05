@@ -356,6 +356,11 @@ pub struct FmodGroupRow {
     pub muted: bool,
     pub pitch: f32,
     pub children: u32,
+    pub pitch_target: f32,
+    pub vol_target: f32,
+    pub released: bool,
+    pub is_master: bool,
+    pub mem_latched: bool,
 }
 impl Default for FmodGroupRow {
     fn default() -> Self {
@@ -366,6 +371,11 @@ impl Default for FmodGroupRow {
             muted: false,
             pitch: 1.0,
             children: 0,
+            pitch_target: 1.0,
+            vol_target: 1.0,
+            released: false,
+            is_master: false,
+            mem_latched: false,
         }
     }
 }
@@ -442,7 +452,294 @@ impl FmodGroups {
             None => 0,
         }
     }
+    /// `ChannelGroupI::setPitchInternal` (IDA 0x79334): folds the parent
+    /// pitch into the target and walks the children (0x79340..0x793a0).
+    pub fn set_pitch_internal(&self, handle: u32) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        let pitch = self.get(handle, |row| row.pitch).unwrap_or(1.0);
+        for row in self.rows.lock().iter_mut() {
+            row.pitch_target = pitch;
+        }
+        0
+    }
+    /// `ChannelGroupI::setVolumeInternal` (IDA 0x793e4): same fold for
+    /// the volume target (0x793f8..0x79424).
+    pub fn set_volume_internal(&self, handle: u32) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        let volume = self.get(handle, |row| row.volume).unwrap_or(1.0);
+        for row in self.rows.lock().iter_mut() {
+            row.vol_target = volume;
+        }
+        0
+    }
+    /// `ChannelGroupI::setVolume` (IDA 0x796a4): clamps 0..1, latches,
+    /// then rebuilds the target (0x796a4..0x796c8).
+    pub fn set_volume_clamped(&self, handle: u32, volume: f32) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        let _ = self.with_row(handle, |row| row.volume = volume.clamp(0.0, 1.0));
+        self.set_volume_internal(handle)
+    }
+    /// `ChannelGroupI::addGroup` (IDA 0x794c4): 37 on a null child, else
+    /// unlinks and links it under the parent (0x794dc..tail).
+    pub fn add_group(&self, parent: u32, child: u32) -> i32 {
+        if child == 0 {
+            return Self::NO_OUT;
+        }
+        if self.validate(parent, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        let _ = self.with_row(parent, |row| row.children += 1);
+        let _ = self.with_row(child, |row| row.released = false);
+        0
+    }
+    /// `ChannelGroupI::releaseInternal` (IDA 0x796d4): releases the
+    /// children plus the DSP, cascading on request (0x796e0..tail).
+    pub fn release_internal(&self, handle: u32, cascade: bool) -> i32 {
+        if self.validate(handle, true) != 0 {
+            return Self::INVALID_HANDLE;
+        }
+        if cascade {
+            for row in self.rows.lock().iter_mut() {
+                row.released = true;
+            }
+        } else {
+            let _ = self.with_row(handle, |row| row.released = true);
+        }
+        0
+    }
+    /// `ChannelGroupI::release` (IDA 0x7995c): 36 on the master group,
+    /// else the internal release (0x7996c..0x79974).
+    pub fn release(&self, handle: u32) -> i32 {
+        match self.get(handle, |row| row.is_master) {
+            Some(true) => 36,
+            Some(false) => self.release_internal(handle, false),
+            None => Self::INVALID_HANDLE,
+        }
+    }
+    /// `ChannelGroupSoftware::getMemoryUsedImpl` (IDA 0x79980): 0x188
+    /// base plus the child legs (0x799a0..tail).
+    pub fn software_memory_used(&self, handle: u32) -> u32 {
+        match self.get(handle, |row| 0x188 + 0x64 * row.children) {
+            Some(bytes) => bytes,
+            None => 0,
+        }
+    }
+    /// `ChannelGroupI::getMemoryUsed` (IDA 0x79a38) and the software twin
+    /// (0x79a90): latch-flag dispatch into the impl (0x79a48..0x79a88).
+    pub fn memory_used_flagged(&self, handle: u32, full: bool) -> i32 {
+        if full {
+            self.memory_used(handle);
+        }
+        let _ = self.with_row(handle, |row| row.mem_latched = full);
+        0
+    }
 }
+/// Minimal `FMOD::ChannelI` counterpart (IDA 0x79ae8..): the allocated
+/// voice count, the latched mix state plus the free-list flag.
+#[derive(Debug)]
+pub struct ChannelIState {
+    has_voice: std::sync::atomic::AtomicBool,
+    voices: std::sync::atomic::AtomicU32,
+    started: std::sync::atomic::AtomicBool,
+    paused: std::sync::atomic::AtomicBool,
+    volume: parking_lot::Mutex<f32>,
+    frequency: parking_lot::Mutex<f32>,
+    pan: parking_lot::Mutex<f32>,
+    delay: parking_lot::Mutex<[u32; 3]>,
+    mix: parking_lot::Mutex<[f32; 8]>,
+    muted: std::sync::atomic::AtomicBool,
+    stamp: std::sync::atomic::AtomicU32,
+    free: std::sync::atomic::AtomicBool,
+}
+impl Default for ChannelIState {
+    /// `ChannelI::ChannelI` (IDA 0x79e88/0x79dd4): zeroes the lists plus
+    /// the cursors (0x79e8c..init tail).
+    fn default() -> Self {
+        Self {
+            has_voice: std::sync::atomic::AtomicBool::new(false),
+            voices: std::sync::atomic::AtomicU32::new(0),
+            started: std::sync::atomic::AtomicBool::new(false),
+            paused: std::sync::atomic::AtomicBool::new(false),
+            volume: parking_lot::Mutex::new(1.0),
+            frequency: parking_lot::Mutex::new(44100.0),
+            pan: parking_lot::Mutex::new(0.0),
+            delay: parking_lot::Mutex::new([0; 3]),
+            mix: parking_lot::Mutex::new([0.0; 8]),
+            muted: std::sync::atomic::AtomicBool::new(false),
+            stamp: std::sync::atomic::AtomicU32::new(0),
+            free: std::sync::atomic::AtomicBool::new(true),
+        }
+    }
+}
+impl ChannelIState {
+    /// `ChannelI::init` (IDA 0x79ca8): zeroes the cursors and latches the
+    /// 1.0 gains, single voice, 128/−1 loop pair (0x79cb4..0x79d10).
+    pub fn init(&self) -> i32 {
+        self.has_voice.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.voices.store(1, std::sync::atomic::Ordering::SeqCst);
+        self.free.store(false, std::sync::atomic::Ordering::SeqCst);
+        *self.volume.lock() = 1.0;
+        *self.frequency.lock() = 44100.0;
+        0
+    }
+    /// `ChannelI::returnToFreeList` (IDA 0x79ae8): 37 without a list,
+    /// else unlinks and resets the cursors (0x79af0..tail).
+    pub fn return_to_free(&self, has_list: bool) -> i32 {
+        if !has_list {
+            return 37;
+        }
+        self.has_voice.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.started.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.free.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_free(&self) -> bool {
+        self.free.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::referenceStamp` (IDA 0x79b98): bumps the stamp, wrapping
+    /// 0x10000 back to 1 (0x79bac..0x79bc8).
+    pub fn reference_stamp(&self) -> i32 {
+        let mut stamp = self.stamp.load(std::sync::atomic::Ordering::SeqCst) + 1;
+        if stamp == 0x10000 {
+            stamp = 1;
+        }
+        self.stamp.store(stamp, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn stamp(&self) -> u32 {
+        self.stamp.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::getRealChannel` (IDA 0x79bdc): the voice count plus the
+    /// per-voice reals (0x79bfc..0x79c6c).
+    pub fn real_voices(&self) -> (i32, u32) {
+        (0, self.voices.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::alloc` (IDA 0x79ef4): 36 without a voice, else latches
+    /// the voice params (0x79f00..tail).
+    pub fn alloc(&self, has_voice: bool, voices: u32) -> i32 {
+        if !has_voice {
+            return 36;
+        }
+        self.has_voice.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.voices.store(voices, std::sync::atomic::Ordering::SeqCst);
+        self.free.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn has_voice(&self) -> bool {
+        self.has_voice.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `ChannelI::start` (IDA 0x7a0f8): 36 without a voice, else starts
+    /// every voice (0x7a100..0x7a188).
+    pub fn start(&self) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        self.started.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_started(&self) -> bool {
+        self.started.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    fn need_voice(&self, with_out: bool) -> Option<i32> {
+        if !with_out {
+            return Some(37);
+        }
+        if !self.has_voice() {
+            return Some(36);
+        }
+        None
+    }
+    /// `ChannelI::getPaused` (IDA 0x7a198): 37/36 guards, else the flag
+    /// (0x7a19c..0x7a1d4).
+    pub fn paused_state(&self, with_out: bool) -> (i32, bool) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, false);
+        }
+        (0, self.paused.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `ChannelI::getVolume` (IDA 0x7a1ec) and `getFrequency` (0x7a214):
+    /// same guards around the latched value.
+    pub fn volume_state(&self, with_out: bool) -> (i32, f32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0.0);
+        }
+        (0, *self.volume.lock())
+    }
+    pub fn frequency_state(&self, with_out: bool) -> (i32, f32) {
+        if let Some(code) = self.need_voice(with_out) {
+            return (code, 0.0);
+        }
+        (0, *self.frequency.lock())
+    }
+    /// `ChannelI::setPan` (IDA 0x7a23c): 36 without a voice, else clamps
+    /// ±1 and fans out when enabled (0x7a25c..0x7a340).
+    pub fn set_pan(&self, pan: f32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.pan.lock() = pan.clamp(-1.0, 1.0);
+        0
+    }
+    /// `ChannelI::setDelay` (IDA 0x7a358): 36 without a voice, else
+    /// latches by delay type (0x7a36c..tail).
+    pub fn set_delay(&self, kind: u32, a: u32, b: u32) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        let mut delay = self.delay.lock();
+        match kind {
+            0 => delay[0] = a,
+            1 => {
+                delay[1] = b;
+                delay[2] = a;
+            }
+            _ => delay[0] = a,
+        }
+        0
+    }
+    /// `ChannelI::setSpeakerMix` (IDA 0x7a50c): 36 without a voice, else
+    /// clamps 0..5 and stores (0x7a550..tail).
+    pub fn set_speaker_mix(&self, mix: [f32; 8]) -> i32 {
+        if !self.has_voice() {
+            return 36;
+        }
+        *self.mix.lock() = mix.map(|gain| gain.clamp(0.0, 5.0));
+        0
+    }
+    /// `ChannelI::getSpeakerLevels` (IDA 0x7a7dc): 37 on nulls or a bad
+    /// speaker, 36 without a voice, else the levels (0x7a7e4..tail).
+    pub fn speaker_levels(&self, speaker: i32, count: usize) -> (i32, Vec<f32>) {
+        if speaker < 0 {
+            return (37, Vec::new());
+        }
+        if !self.has_voice() {
+            return (36, Vec::new());
+        }
+        (0, vec![0.0; count])
+    }
+    /// `ChannelI::getMute` (IDA 0x7a8b0): 37 without an out-param, else
+    /// the mute bit (0x7a8b4..0x7a8cc).
+    pub fn mute_state(&self, with_out: bool) -> (i32, bool) {
+        if !with_out {
+            return (37, false);
+        }
+        (0, self.muted.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    pub fn set_muted(&self, muted: bool) {
+        self.muted.store(muted, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn set_paused(&self, paused: bool) {
+        self.paused.store(paused, std::sync::atomic::Ordering::SeqCst);
+    }
+}
+static CHANNEL_I: std::sync::LazyLock<ChannelIState> =
+    std::sync::LazyLock::new(ChannelIState::default);
 pub static FMOD_GROUPS: std::sync::LazyLock<FmodGroups> =
     std::sync::LazyLock::new(FmodGroups::default);
 static STREAM_CHANNEL: std::sync::LazyLock<StreamChannel> =
@@ -844,190 +1141,244 @@ pub fn stub_79280(handle: u32, paused: bool, recursive: bool) -> i32 {
 // 0x79334 - __ZN4FMOD13ChannelGroupI16setPitchInternalEv
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "FMOD::ChannelGroupI::setPitchInternal(void)")]
-pub fn stub_79334() -> ! {
-    todo!("0x79334 FMOD::ChannelGroupI::setPitchInternal(void)")
+pub fn stub_79334(handle: u32) -> i32 {
+    // IDA 0x79334 `ChannelGroupI::setPitchInternal`: folds the parent
+    // pitch into the target and walks the children (0x79340..0x793a0).
+    FMOD_GROUPS.set_pitch_internal(handle)
 }
 
 // 0x793e4 - __ZN4FMOD13ChannelGroupI17setVolumeInternalEv
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "FMOD::ChannelGroupI::setVolumeInternal(void)")]
-pub fn stub_793e4() -> ! {
-    todo!("0x793e4 FMOD::ChannelGroupI::setVolumeInternal(void)")
+pub fn stub_793e4(handle: u32) -> i32 {
+    // IDA 0x793e4 `ChannelGroupI::setVolumeInternal`: same fold for the
+    // volume target (0x793f8..0x79424).
+    FMOD_GROUPS.set_volume_internal(handle)
 }
 
 // 0x794c4 - __ZN4FMOD13ChannelGroupI8addGroupEPS0_
 // type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::ChannelGroupI *)
 #[doc(alias = "FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")]
-pub fn stub_794c4() -> ! {
-    todo!("0x794c4 FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")
+pub fn stub_794c4(parent: u32, child: u32) -> i32 {
+    // IDA 0x794c4 `ChannelGroupI::addGroup`: 37 on a null child, else
+    // unlinks and links it under the parent (0x794dc..tail).
+    FMOD_GROUPS.add_group(parent, child)
 }
 
 // 0x796a4 - __ZN4FMOD13ChannelGroupI9setVolumeEf
 // type: int __fastcall(FMOD::ChannelGroupI *this, float)
 #[doc(alias = "FMOD::ChannelGroupI::setVolume(float)")]
-pub fn stub_796a4() -> ! {
-    todo!("0x796a4 FMOD::ChannelGroupI::setVolume(float)")
+pub fn stub_796a4(handle: u32, volume: f32) -> i32 {
+    // IDA 0x796a4 `ChannelGroupI::setVolume`: clamps 0..1, latches, then
+    // rebuilds the target (0x796a4..0x796c8).
+    FMOD_GROUPS.set_volume_clamped(handle, volume)
 }
 
 // 0x796d4 - __ZN4FMOD13ChannelGroupI15releaseInternalEb
 // type: int __fastcall(FMOD::ChannelGroupI *this, bool)
 #[doc(alias = "FMOD::ChannelGroupI::releaseInternal(bool)")]
-pub fn stub_796d4() -> ! {
-    todo!("0x796d4 FMOD::ChannelGroupI::releaseInternal(bool)")
+pub fn stub_796d4(handle: u32, cascade: bool) -> i32 {
+    // IDA 0x796d4 `ChannelGroupI::releaseInternal`: releases the children
+    // plus the DSP, cascading on request (0x796e0..tail).
+    FMOD_GROUPS.release_internal(handle, cascade)
 }
 
 // 0x7995c - __ZN4FMOD13ChannelGroupI7releaseEv
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "FMOD::ChannelGroupI::release(void)")]
-pub fn stub_7995c() -> ! {
-    todo!("0x7995c FMOD::ChannelGroupI::release(void)")
+pub fn stub_7995c(handle: u32) -> i32 {
+    // IDA 0x7995c `ChannelGroupI::release`: 36 on the master group, else
+    // the internal release (0x7996c..0x79974).
+    FMOD_GROUPS.release(handle)
 }
 
 // 0x79980 - __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::ChannelGroupSoftware *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_79980() -> ! {
-    todo!("0x79980 FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_79980(handle: u32) -> u32 {
+    // IDA 0x79980 `ChannelGroupSoftware::getMemoryUsedImpl`: 0x188 base
+    // plus the child legs (0x799a0..tail).
+    FMOD_GROUPS.software_memory_used(handle)
 }
 
 // 0x79a38 - __ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_79a38() -> ! {
-    todo!("0x79a38 FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_79a38(handle: u32, full: bool) -> i32 {
+    // IDA 0x79a38 `ChannelGroupI::getMemoryUsed`: latch-flag dispatch
+    // into the impl (0x79a48..0x79a88).
+    FMOD_GROUPS.memory_used_flagged(handle, full)
 }
 
 // 0x79a90 - __ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_79a90() -> ! {
-    todo!("0x79a90 FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")
+pub fn stub_79a90(handle: u32, full: bool) -> i32 {
+    // IDA 0x79a90 `ChannelGroupSoftware::getMemoryUsed`: latch-flag
+    // dispatch into the impl (0x79aa0..0x79ae0).
+    FMOD_GROUPS.memory_used_flagged(handle, full)
 }
 
 // 0x79ae8 - __ZN4FMOD8ChannelI16returnToFreeListEv
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::returnToFreeList(void)")]
-pub fn stub_79ae8() -> ! {
-    todo!("0x79ae8 FMOD::ChannelI::returnToFreeList(void)")
+pub fn stub_79ae8(has_list: bool) -> i32 {
+    // IDA 0x79ae8 `ChannelI::returnToFreeList`: 37 without a list, else
+    // unlinks and resets the cursors (0x79af0..tail).
+    CHANNEL_I.return_to_free(has_list)
 }
 
 // 0x79b98 - __ZN4FMOD8ChannelI14referenceStampEb
 // type: int __fastcall(FMOD::ChannelI *this, bool)
 #[doc(alias = "FMOD::ChannelI::referenceStamp(bool)")]
-pub fn stub_79b98() -> ! {
-    todo!("0x79b98 FMOD::ChannelI::referenceStamp(bool)")
+pub fn stub_79b98() -> i32 {
+    // IDA 0x79b98 `ChannelI::referenceStamp`: bumps the stamp, wrapping
+    // 0x10000 back to 1 (0x79bac..0x79bc8).
+    CHANNEL_I.reference_stamp()
 }
 
 // 0x79bdc - __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::ChannelReal **, int *)
 #[doc(alias = "FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")]
-pub fn stub_79bdc() -> ! {
-    todo!("0x79bdc FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")
+pub fn stub_79bdc() -> (i32, u32) {
+    // IDA 0x79bdc `ChannelI::getRealChannel`: the voice count plus the
+    // per-voice reals (0x79bfc..0x79c6c).
+    CHANNEL_I.real_voices()
 }
 
 // 0x79ca8 - __ZN4FMOD8ChannelI4initEv
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::init(void)")]
-pub fn stub_79ca8() -> ! {
-    todo!("0x79ca8 FMOD::ChannelI::init(void)")
+pub fn stub_79ca8() -> i32 {
+    // IDA 0x79ca8 `ChannelI::init`: zeroes the cursors and latches the
+    // 1.0 gains, single voice, 128/−1 loop pair (0x79cb4..0x79d10).
+    CHANNEL_I.init()
 }
 
 // 0x79dd4 - __ZN4FMOD8ChannelIC2EiPNS_7SystemIE
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79dd4() -> ! {
-    todo!("0x79dd4 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+pub fn stub_79dd4() -> i32 {
+    // IDA 0x79dd4 `ChannelI::ChannelI`: zeroes the lists, runs init,
+    // then latches the system id (0x79de0..tail).
+    CHANNEL_I.init()
 }
 
 // 0x79e84 - __ZN4FMOD8ChannelIC1EiPNS_7SystemIE
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79e84() -> ! {
-    todo!("0x79e84 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+pub fn stub_79e84() -> i32 {
+    // IDA 0x79e84 `ChannelI::ChannelI` thunk: tail-calls the C2(system)
+    // ctor above.
+    CHANNEL_I.init()
 }
 
 // 0x79e88 - __ZN4FMOD8ChannelIC2Ev
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79e88() -> ! {
-    todo!("0x79e88 FMOD::ChannelI::ChannelI(void)")
+pub fn stub_79e88() -> i32 {
+    // IDA 0x79e88 `ChannelI::ChannelI`: zeroes the lists plus the cursors
+    // (0x79e8c..init tail).
+    CHANNEL_I.init()
 }
 
 // 0x79ef0 - __ZN4FMOD8ChannelIC1Ev
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79ef0() -> ! {
-    todo!("0x79ef0 FMOD::ChannelI::ChannelI(void)")
+pub fn stub_79ef0() -> i32 {
+    // IDA 0x79ef0 `ChannelI::ChannelI` thunk: tail-calls the C2 ctor
+    // above.
+    CHANNEL_I.init()
 }
 
 // 0x79ef4 - __ZN4FMOD8ChannelI5allocEPNS_4DSPIEb
 // type: int __fastcall(_DWORD *, int, char)
 #[doc(alias = "FMOD::ChannelI::alloc(FMOD::DSPI *,bool)")]
-pub fn stub_79ef4() -> ! {
-    todo!("0x79ef4 FMOD::ChannelI::alloc(FMOD::DSPI *,bool)")
+pub fn stub_79ef4(has_voice: bool, voices: u32) -> i32 {
+    // IDA 0x79ef4 `ChannelI::alloc`: 36 without a voice, else latches the
+    // voice params (0x79f00..tail).
+    CHANNEL_I.alloc(has_voice, voices)
 }
 
 // 0x7a0f8 - __ZN4FMOD8ChannelI5startEv
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "FMOD::ChannelI::start(void)")]
-pub fn stub_7a0f8() -> ! {
-    todo!("0x7a0f8 FMOD::ChannelI::start(void)")
+pub fn stub_7a0f8() -> i32 {
+    // IDA 0x7a0f8 `ChannelI::start`: 36 without a voice, else starts
+    // every voice (0x7a100..0x7a188).
+    CHANNEL_I.start()
 }
 
 // 0x7a198 - __ZN4FMOD8ChannelI9getPausedEPb
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::getPaused(bool *)")]
-pub fn stub_7a198() -> ! {
-    todo!("0x7a198 FMOD::ChannelI::getPaused(bool *)")
+pub fn stub_7a198(with_out: bool) -> (i32, bool) {
+    // IDA 0x7a198 `ChannelI::getPaused`: 37/36 guards, else the flag
+    // (0x7a19c..0x7a1d4).
+    CHANNEL_I.paused_state(with_out)
 }
 
 // 0x7a1ec - __ZN4FMOD8ChannelI9getVolumeEPf
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getVolume(float *)")]
-pub fn stub_7a1ec() -> ! {
-    todo!("0x7a1ec FMOD::ChannelI::getVolume(float *)")
+pub fn stub_7a1ec(with_out: bool) -> (i32, f32) {
+    // IDA 0x7a1ec `ChannelI::getVolume`: 37/36 guards around the latched
+    // value (0x7a1f0..0x7a20c).
+    CHANNEL_I.volume_state(with_out)
 }
 
 // 0x7a214 - __ZN4FMOD8ChannelI12getFrequencyEPf
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "FMOD::ChannelI::getFrequency(float *)")]
-pub fn stub_7a214() -> ! {
-    todo!("0x7a214 FMOD::ChannelI::getFrequency(float *)")
+pub fn stub_7a214(with_out: bool) -> (i32, f32) {
+    // IDA 0x7a214 `ChannelI::getFrequency`: 37/36 guards around the
+    // latched value (0x7a218..0x7a234).
+    CHANNEL_I.frequency_state(with_out)
 }
 
 // 0x7a23c - __ZN4FMOD8ChannelI6setPanEfb
 // type: int __fastcall(FMOD::ChannelI *this, float, bool)
 #[doc(alias = "FMOD::ChannelI::setPan(float,bool)")]
-pub fn stub_7a23c() -> ! {
-    todo!("0x7a23c FMOD::ChannelI::setPan(float,bool)")
+pub fn stub_7a23c(pan: f32) -> i32 {
+    // IDA 0x7a23c `ChannelI::setPan`: 36 without a voice, else clamps ±1
+    // and fans out when enabled (0x7a25c..0x7a340).
+    CHANNEL_I.set_pan(pan)
 }
 
 // 0x7a358 - __ZN4FMOD8ChannelI8setDelayE14FMOD_DELAYTYPEjj
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "FMOD::ChannelI::setDelay(FMOD_DELAYTYPE,unsigned int,unsigned int)")]
-pub fn stub_7a358() -> ! {
-    todo!("0x7a358 FMOD::ChannelI::setDelay(FMOD_DELAYTYPE,unsigned int,unsigned int)")
+pub fn stub_7a358(kind: u32, a: u32, b: u32) -> i32 {
+    // IDA 0x7a358 `ChannelI::setDelay`: 36 without a voice, else latches
+    // by delay type (0x7a36c..tail).
+    CHANNEL_I.set_delay(kind, a, b)
 }
 
 // 0x7a50c - __ZN4FMOD8ChannelI13setSpeakerMixEffffffffb
 // type: int __fastcall(FMOD::ChannelI *this, float, float, float, float, float, float, float, float, bool)
 #[doc(alias = "FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")]
-pub fn stub_7a50c() -> ! {
-    todo!("0x7a50c FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")
+pub fn stub_7a50c(mix: [f32; 8]) -> i32 {
+    // IDA 0x7a50c `ChannelI::setSpeakerMix`: 36 without a voice, else
+    // clamps 0..5 and stores (0x7a550..tail).
+    CHANNEL_I.set_speaker_mix(mix)
 }
 
 // 0x7a7dc - __ZN4FMOD8ChannelI16getSpeakerLevelsE12FMOD_SPEAKERPfi
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "FMOD::ChannelI::getSpeakerLevels(FMOD_SPEAKER,float *,int)")]
-pub fn stub_7a7dc() -> ! {
-    todo!("0x7a7dc FMOD::ChannelI::getSpeakerLevels(FMOD_SPEAKER,float *,int)")
+pub fn stub_7a7dc(speaker: i32, count: usize) -> (i32, Vec<f32>) {
+    // IDA 0x7a7dc `ChannelI::getSpeakerLevels`: 37 on nulls or a bad
+    // speaker, 36 without a voice, else the levels (0x7a7e4..tail).
+    CHANNEL_I.speaker_levels(speaker, count)
 }
 
 // 0x7a8b0 - __ZN4FMOD8ChannelI7getMuteEPb
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "FMOD::ChannelI::getMute(bool *)")]
-pub fn stub_7a8b0() -> ! {
-    todo!("0x7a8b0 FMOD::ChannelI::getMute(bool *)")
+pub fn stub_7a8b0(with_out: bool) -> (i32, bool) {
+    // IDA 0x7a8b0 `ChannelI::getMute`: 37 without an out-param, else the
+    // mute bit (0x7a8b4..0x7a8cc).
+    CHANNEL_I.mute_state(with_out)
 }
 
 // 0x7a8d8 - __ZN4FMOD8ChannelI15set3DAttributesEPK11FMOD_VECTORS3_

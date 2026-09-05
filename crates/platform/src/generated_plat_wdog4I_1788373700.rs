@@ -436,8 +436,9 @@ pub fn stub_79280(handle: u32, paused: bool, recursive: bool) -> i32 {
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI16setPitchInternalEv")]
 #[doc(alias = "FMOD::ChannelGroupI::setPitchInternal(void)")]
-pub fn stub_79334() -> ! {
-    todo!("0x79334 __ZN4FMOD13ChannelGroupI16setPitchInternalEv")
+pub fn stub_79334(handle: u32) -> i32 {
+    // Dupe of 0x79334 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79334(handle)
 }
 
 // 0x793e4 — __ZN4FMOD13ChannelGroupI17setVolumeInternalEv
@@ -445,8 +446,9 @@ pub fn stub_79334() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI17setVolumeInternalEv")]
 #[doc(alias = "FMOD::ChannelGroupI::setVolumeInternal(void)")]
-pub fn stub_793e4() -> ! {
-    todo!("0x793e4 __ZN4FMOD13ChannelGroupI17setVolumeInternalEv")
+pub fn stub_793e4(handle: u32) -> i32 {
+    // Dupe of 0x793e4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_793e4(handle)
 }
 
 // 0x794c4 — __ZN4FMOD13ChannelGroupI8addGroupEPS0_
@@ -454,8 +456,9 @@ pub fn stub_793e4() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::ChannelGroupI *)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI8addGroupEPS0_")]
 #[doc(alias = "FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")]
-pub fn stub_794c4() -> ! {
-    todo!("0x794c4 __ZN4FMOD13ChannelGroupI8addGroupEPS0_")
+pub fn stub_794c4(parent: u32, child: u32) -> i32 {
+    // Dupe of 0x794c4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_794c4(parent, child)
 }
 
 // 0x796a4 — __ZN4FMOD13ChannelGroupI9setVolumeEf
@@ -463,8 +466,9 @@ pub fn stub_794c4() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupI *this, float)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI9setVolumeEf")]
 #[doc(alias = "FMOD::ChannelGroupI::setVolume(float)")]
-pub fn stub_796a4() -> ! {
-    todo!("0x796a4 __ZN4FMOD13ChannelGroupI9setVolumeEf")
+pub fn stub_796a4(handle: u32, volume: f32) -> i32 {
+    // Dupe of 0x796a4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_796a4(handle, volume)
 }
 
 // 0x796d4 — __ZN4FMOD13ChannelGroupI15releaseInternalEb
@@ -472,8 +476,9 @@ pub fn stub_796a4() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupI *this, bool)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI15releaseInternalEb")]
 #[doc(alias = "FMOD::ChannelGroupI::releaseInternal(bool)")]
-pub fn stub_796d4() -> ! {
-    todo!("0x796d4 __ZN4FMOD13ChannelGroupI15releaseInternalEb")
+pub fn stub_796d4(handle: u32, cascade: bool) -> i32 {
+    // Dupe of 0x796d4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_796d4(handle, cascade)
 }
 
 // 0x7995c — __ZN4FMOD13ChannelGroupI7releaseEv
@@ -481,8 +486,9 @@ pub fn stub_796d4() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupI *this)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI7releaseEv")]
 #[doc(alias = "FMOD::ChannelGroupI::release(void)")]
-pub fn stub_7995c() -> ! {
-    todo!("0x7995c __ZN4FMOD13ChannelGroupI7releaseEv")
+pub fn stub_7995c(handle: u32) -> i32 {
+    // Dupe of 0x7995c (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7995c(handle)
 }
 
 // 0x79980 — __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -490,8 +496,9 @@ pub fn stub_7995c() -> ! {
 // type: int __fastcall(FMOD::ChannelGroupSoftware *this, FMOD::MemoryTracker *)
 #[doc(alias = "__ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE")]
 #[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_79980() -> ! {
-    todo!("0x79980 __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_79980(handle: u32) -> u32 {
+    // Dupe of 0x79980 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79980(handle)
 }
 
 // 0x79a38 — __ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE
@@ -499,8 +506,9 @@ pub fn stub_79980() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE")]
 #[doc(alias = "FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_79a38() -> ! {
-    todo!("0x79a38 __ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_79a38(handle: u32, full: bool) -> i32 {
+    // Dupe of 0x79a38 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79a38(handle, full)
 }
 
 // 0x79a90 — __ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE
@@ -508,8 +516,9 @@ pub fn stub_79a38() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE")]
 #[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_79a90() -> ! {
-    todo!("0x79a90 __ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_79a90(handle: u32, full: bool) -> i32 {
+    // Dupe of 0x79a90 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79a90(handle, full)
 }
 
 // 0x79ae8 — __ZN4FMOD8ChannelI16returnToFreeListEv
@@ -517,8 +526,9 @@ pub fn stub_79a90() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "__ZN4FMOD8ChannelI16returnToFreeListEv")]
 #[doc(alias = "FMOD::ChannelI::returnToFreeList(void)")]
-pub fn stub_79ae8() -> ! {
-    todo!("0x79ae8 __ZN4FMOD8ChannelI16returnToFreeListEv")
+pub fn stub_79ae8(has_list: bool) -> i32 {
+    // Dupe of 0x79ae8 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79ae8(has_list)
 }
 
 // 0x79b98 — __ZN4FMOD8ChannelI14referenceStampEb
@@ -526,8 +536,9 @@ pub fn stub_79ae8() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, bool)
 #[doc(alias = "__ZN4FMOD8ChannelI14referenceStampEb")]
 #[doc(alias = "FMOD::ChannelI::referenceStamp(bool)")]
-pub fn stub_79b98() -> ! {
-    todo!("0x79b98 __ZN4FMOD8ChannelI14referenceStampEb")
+pub fn stub_79b98() -> i32 {
+    // Dupe of 0x79b98 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79b98()
 }
 
 // 0x79bdc — __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi
@@ -535,8 +546,9 @@ pub fn stub_79b98() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, FMOD::ChannelReal **, int *)
 #[doc(alias = "__ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi")]
 #[doc(alias = "FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")]
-pub fn stub_79bdc() -> ! {
-    todo!("0x79bdc __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi")
+pub fn stub_79bdc() -> (i32, u32) {
+    // Dupe of 0x79bdc (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79bdc()
 }
 
 // 0x79ca8 — __ZN4FMOD8ChannelI4initEv
@@ -544,8 +556,9 @@ pub fn stub_79bdc() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "__ZN4FMOD8ChannelI4initEv")]
 #[doc(alias = "FMOD::ChannelI::init(void)")]
-pub fn stub_79ca8() -> ! {
-    todo!("0x79ca8 __ZN4FMOD8ChannelI4initEv")
+pub fn stub_79ca8() -> i32 {
+    // Dupe of 0x79ca8 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79ca8()
 }
 
 // 0x79dd4 — __ZN4FMOD8ChannelIC2EiPNS_7SystemIE
@@ -553,8 +566,9 @@ pub fn stub_79ca8() -> ! {
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "__ZN4FMOD8ChannelIC2EiPNS_7SystemIE")]
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79dd4() -> ! {
-    todo!("0x79dd4 __ZN4FMOD8ChannelIC2EiPNS_7SystemIE")
+pub fn stub_79dd4() -> i32 {
+    // Dupe of 0x79dd4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79dd4()
 }
 
 // 0x79e84 — __ZN4FMOD8ChannelIC1EiPNS_7SystemIE
@@ -562,8 +576,9 @@ pub fn stub_79dd4() -> ! {
 // type: int __fastcall(FMOD::ChannelI *, int, int)
 #[doc(alias = "__ZN4FMOD8ChannelIC1EiPNS_7SystemIE")]
 #[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
-pub fn stub_79e84() -> ! {
-    todo!("0x79e84 __ZN4FMOD8ChannelIC1EiPNS_7SystemIE")
+pub fn stub_79e84() -> i32 {
+    // Dupe of 0x79e84 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79e84()
 }
 
 // 0x79e88 — __ZN4FMOD8ChannelIC2Ev
@@ -571,8 +586,9 @@ pub fn stub_79e84() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "__ZN4FMOD8ChannelIC2Ev")]
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79e88() -> ! {
-    todo!("0x79e88 __ZN4FMOD8ChannelIC2Ev")
+pub fn stub_79e88() -> i32 {
+    // Dupe of 0x79e88 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79e88()
 }
 
 // 0x79ef0 — __ZN4FMOD8ChannelIC1Ev
@@ -580,8 +596,9 @@ pub fn stub_79e88() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "__ZN4FMOD8ChannelIC1Ev")]
 #[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
-pub fn stub_79ef0() -> ! {
-    todo!("0x79ef0 __ZN4FMOD8ChannelIC1Ev")
+pub fn stub_79ef0() -> i32 {
+    // Dupe of 0x79ef0 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79ef0()
 }
 
 // 0x79ef4 — __ZN4FMOD8ChannelI5allocEPNS_4DSPIEb
@@ -589,8 +606,9 @@ pub fn stub_79ef0() -> ! {
 // type: int __fastcall(_DWORD *, int, char)
 #[doc(alias = "__ZN4FMOD8ChannelI5allocEPNS_4DSPIEb")]
 #[doc(alias = "FMOD::ChannelI::alloc(FMOD::DSPI *,bool)")]
-pub fn stub_79ef4() -> ! {
-    todo!("0x79ef4 __ZN4FMOD8ChannelI5allocEPNS_4DSPIEb")
+pub fn stub_79ef4(has_voice: bool, voices: u32) -> i32 {
+    // Dupe of 0x79ef4 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_79ef4(has_voice, voices)
 }
 
 // 0x7a0f8 — __ZN4FMOD8ChannelI5startEv
@@ -598,8 +616,9 @@ pub fn stub_79ef4() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this)
 #[doc(alias = "__ZN4FMOD8ChannelI5startEv")]
 #[doc(alias = "FMOD::ChannelI::start(void)")]
-pub fn stub_7a0f8() -> ! {
-    todo!("0x7a0f8 __ZN4FMOD8ChannelI5startEv")
+pub fn stub_7a0f8() -> i32 {
+    // Dupe of 0x7a0f8 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a0f8()
 }
 
 // 0x7a198 — __ZN4FMOD8ChannelI9getPausedEPb
@@ -607,8 +626,9 @@ pub fn stub_7a0f8() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "__ZN4FMOD8ChannelI9getPausedEPb")]
 #[doc(alias = "FMOD::ChannelI::getPaused(bool *)")]
-pub fn stub_7a198() -> ! {
-    todo!("0x7a198 __ZN4FMOD8ChannelI9getPausedEPb")
+pub fn stub_7a198(with_out: bool) -> (i32, bool) {
+    // Dupe of 0x7a198 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a198(with_out)
 }
 
 // 0x7a1ec — __ZN4FMOD8ChannelI9getVolumeEPf
@@ -616,8 +636,9 @@ pub fn stub_7a198() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "__ZN4FMOD8ChannelI9getVolumeEPf")]
 #[doc(alias = "FMOD::ChannelI::getVolume(float *)")]
-pub fn stub_7a1ec() -> ! {
-    todo!("0x7a1ec __ZN4FMOD8ChannelI9getVolumeEPf")
+pub fn stub_7a1ec(with_out: bool) -> (i32, f32) {
+    // Dupe of 0x7a1ec (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a1ec(with_out)
 }
 
 // 0x7a214 — __ZN4FMOD8ChannelI12getFrequencyEPf
@@ -625,8 +646,9 @@ pub fn stub_7a1ec() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, float *)
 #[doc(alias = "__ZN4FMOD8ChannelI12getFrequencyEPf")]
 #[doc(alias = "FMOD::ChannelI::getFrequency(float *)")]
-pub fn stub_7a214() -> ! {
-    todo!("0x7a214 __ZN4FMOD8ChannelI12getFrequencyEPf")
+pub fn stub_7a214(with_out: bool) -> (i32, f32) {
+    // Dupe of 0x7a214 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a214(with_out)
 }
 
 // 0x7a23c — __ZN4FMOD8ChannelI6setPanEfb
@@ -634,8 +656,9 @@ pub fn stub_7a214() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, float, bool)
 #[doc(alias = "__ZN4FMOD8ChannelI6setPanEfb")]
 #[doc(alias = "FMOD::ChannelI::setPan(float,bool)")]
-pub fn stub_7a23c() -> ! {
-    todo!("0x7a23c __ZN4FMOD8ChannelI6setPanEfb")
+pub fn stub_7a23c(pan: f32) -> i32 {
+    // Dupe of 0x7a23c (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a23c(pan)
 }
 
 // 0x7a358 — __ZN4FMOD8ChannelI8setDelayE14FMOD_DELAYTYPEjj
@@ -643,8 +666,9 @@ pub fn stub_7a23c() -> ! {
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "__ZN4FMOD8ChannelI8setDelayE14FMOD_DELAYTYPEjj")]
 #[doc(alias = "FMOD::ChannelI::setDelay(FMOD_DELAYTYPE,unsigned int,unsigned int)")]
-pub fn stub_7a358() -> ! {
-    todo!("0x7a358 __ZN4FMOD8ChannelI8setDelayE14FMOD_DELAYTYPEjj")
+pub fn stub_7a358(kind: u32, a: u32, b: u32) -> i32 {
+    // Dupe of 0x7a358 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a358(kind, a, b)
 }
 
 // 0x7a50c — __ZN4FMOD8ChannelI13setSpeakerMixEffffffffb
@@ -652,8 +676,9 @@ pub fn stub_7a358() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, float, float, float, float, float, float, float, float, bool)
 #[doc(alias = "__ZN4FMOD8ChannelI13setSpeakerMixEffffffffb")]
 #[doc(alias = "FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")]
-pub fn stub_7a50c() -> ! {
-    todo!("0x7a50c __ZN4FMOD8ChannelI13setSpeakerMixEffffffffb")
+pub fn stub_7a50c(mix: [f32; 8]) -> i32 {
+    // Dupe of 0x7a50c (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a50c(mix)
 }
 
 // 0x7a7dc — __ZN4FMOD8ChannelI16getSpeakerLevelsE12FMOD_SPEAKERPfi
@@ -661,8 +686,9 @@ pub fn stub_7a50c() -> ! {
 // type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "__ZN4FMOD8ChannelI16getSpeakerLevelsE12FMOD_SPEAKERPfi")]
 #[doc(alias = "FMOD::ChannelI::getSpeakerLevels(FMOD_SPEAKER,float *,int)")]
-pub fn stub_7a7dc() -> ! {
-    todo!("0x7a7dc __ZN4FMOD8ChannelI16getSpeakerLevelsE12FMOD_SPEAKERPfi")
+pub fn stub_7a7dc(speaker: i32, count: usize) -> (i32, Vec<f32>) {
+    // Dupe of 0x7a7dc (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a7dc(speaker, count)
 }
 
 // 0x7a8b0 — __ZN4FMOD8ChannelI7getMuteEPb
@@ -670,8 +696,9 @@ pub fn stub_7a7dc() -> ! {
 // type: int __fastcall(FMOD::ChannelI *this, bool *)
 #[doc(alias = "__ZN4FMOD8ChannelI7getMuteEPb")]
 #[doc(alias = "FMOD::ChannelI::getMute(bool *)")]
-pub fn stub_7a8b0() -> ! {
-    todo!("0x7a8b0 __ZN4FMOD8ChannelI7getMuteEPb")
+pub fn stub_7a8b0(with_out: bool) -> (i32, bool) {
+    // Dupe of 0x7a8b0 (canonical impl in generated_next_w): forwards.
+    crate::generated_next_w::stub_7a8b0(with_out)
 }
 
 // 0x7a8d8 — __ZN4FMOD8ChannelI15set3DAttributesEPK11FMOD_VECTORS3_
