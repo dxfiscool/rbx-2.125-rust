@@ -11,6 +11,17 @@ pub struct NavBar {
  pub back_enabled: bool,
  pub loading: bool,
  pub need_robux_refresh: bool,
+ pub web_view: Option<usize>,
+ pub activity_indicator: Option<usize>,
+ pub btn_back: Option<usize>,
+ pub bar_top_toolbar: Option<usize>,
+ pub lbl_robux: Option<String>,
+ pub lbl_tix: Option<String>,
+ pub toolbar: Option<usize>,
+ pub page_indicator: Option<usize>,
+ pub loading_overlay: Option<usize>,
+ pub jump_place_id: i32,
+ pub jump_in_progress: bool,
 }
 
 // 0x54104 — -[RobloxNavBarViewController viewDidLoad]
@@ -236,176 +247,215 @@ pub fn stub_54e40(update: &mut dyn FnMut(bool), animate: bool) {
 // 0x54ff0 — -[RobloxNavBarViewController MenuClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController MenuClick:]")]
-pub fn stub_54ff0() -> ! {
-    todo!("0x54ff0 -[RobloxNavBarViewController MenuClick:]")
+pub fn stub_54ff0(playing: bool, dismiss: &mut dyn FnMut()) {
+    // IDA 0x54ff0: not playing ? dispatch dismiss block.
+    if !playing {
+        dismiss();
+    }
 }
 
 // 0x55074 — ___40-[RobloxNavBarViewController MenuClick:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[RobloxNavBarViewController MenuClick:]_block_invoke")]
-pub fn stub_55074() -> ! {
-    todo!("0x55074 ___40-[RobloxNavBarViewController MenuClick:]_block_invoke")
+pub fn stub_55074(dismiss: &mut dyn FnMut(bool)) {
+    // IDA 0x55074: dismissViewControllerAnimated:YES.
+    dismiss(true);
 }
 
 // 0x5508c — ___copy_helper_block_240
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_240")]
-pub fn stub_5508c() -> ! {
-    todo!("0x5508c ___copy_helper_block_240")
+pub fn stub_5508c(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x5508c: _Block_object_assign(dst+20, src+20, 3).
+    *dst20 = retain(src20);
 }
 
 // 0x55098 — ___destroy_helper_block_241
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_241")]
-pub fn stub_55098() -> ! {
-    todo!("0x55098 ___destroy_helper_block_241")
+pub fn stub_55098(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x55098: _Block_object_dispose(slot+20, 3).
+    release(*slot20);
 }
 
 // 0x550a0 — +[RobloxNavBarViewController mostRecentViewController]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxNavBarViewController mostRecentViewController]")]
-pub fn stub_550a0() -> ! {
-    todo!("0x550a0 +[RobloxNavBarViewController mostRecentViewController]")
+pub fn stub_550a0(recent: usize) -> usize {
+    // IDA 0x550a0: return mostRecentViewController.
+    recent
 }
 
 // 0x550b0 — -[RobloxNavBarViewController setMainWebView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setMainWebView:]")]
-pub fn stub_550b0() -> ! {
-    todo!("0x550b0 -[RobloxNavBarViewController setMainWebView:]")
+pub fn stub_550b0(nav: &mut NavBar, view: Option<usize>, create: &mut dyn FnMut() -> usize) {
+    // IDA 0x550b0: set webView or lazy-create + load.
+    match view {
+        Some(v) => nav.web_view = Some(v),
+        None => {
+            if nav.web_view.is_none() {
+                nav.web_view = Some(create());
+            }
+        }
+    }
 }
 
 // 0x551d8 — -[RobloxNavBarViewController backButtonClick:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController backButtonClick:]")]
-pub fn stub_551d8() -> ! {
-    todo!("0x551d8 -[RobloxNavBarViewController backButtonClick:]")
+pub fn stub_551d8(before: bool, after: bool, go_back: &mut dyn FnMut(), hide: &mut dyn FnMut()) {
+    // IDA 0x551d8: canGoBack ? goBack; !canGoBack -> hideBackButton.
+    if before {
+        go_back();
+    }
+    if !after {
+        hide();
+    }
 }
 
 // 0x5523c — -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")]
-pub fn stub_5523c() -> ! {
-    todo!("0x5523c -[RobloxNavBarViewController setJumpToPlacePageAndLaunchGameWithID:]")
+pub fn stub_5523c(nav: &mut NavBar, place_id: i32) {
+    // IDA 0x5523c: jumpToPlaceIDNavigate = id.
+    nav.jump_place_id = place_id;
 }
 
 // 0x5524c — -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, int)
 #[doc(alias = "-[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")]
-pub fn stub_5524c() -> ! {
-    todo!("0x5524c -[RobloxNavBarViewController setJumpToPlaceIDGameInProgress:]")
+pub fn stub_5524c(nav: &mut NavBar, in_progress: bool) {
+    // IDA 0x5524c: jumpToPlaceIDGameInProgress = flag.
+    nav.jump_in_progress = in_progress;
 }
 
 // 0x5525c — -[RobloxNavBarViewController activityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController activityIndicator]")]
-pub fn stub_5525c() -> ! {
-    todo!("0x5525c -[RobloxNavBarViewController activityIndicator]")
+pub fn stub_5525c(nav: &NavBar) -> Option<usize> {
+    // IDA 0x5525c: return activityIndicator.
+    nav.activity_indicator
 }
 
 // 0x5526c — -[RobloxNavBarViewController setActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setActivityIndicator:]")]
-pub fn stub_5526c() -> ! {
-    todo!("0x5526c -[RobloxNavBarViewController setActivityIndicator:]")
+pub fn stub_5526c(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x5526c: objc_setProperty activityIndicator.
+    nav.activity_indicator = value;
 }
 
 // 0x55290 — -[RobloxNavBarViewController btnBack]
 // type: UIBarButtonItem *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController btnBack]")]
-pub fn stub_55290() -> ! {
-    todo!("0x55290 -[RobloxNavBarViewController btnBack]")
+pub fn stub_55290(nav: &NavBar) -> Option<usize> {
+    // IDA 0x55290: return btnBack.
+    nav.btn_back
 }
 
 // 0x552a0 — -[RobloxNavBarViewController setBtnBack:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBtnBack:]")]
-pub fn stub_552a0() -> ! {
-    todo!("0x552a0 -[RobloxNavBarViewController setBtnBack:]")
+pub fn stub_552a0(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x552a0: objc_setProperty btnBack.
+    nav.btn_back = value;
 }
 
 // 0x552c4 — -[RobloxNavBarViewController barTopToolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController barTopToolbar]")]
-pub fn stub_552c4() -> ! {
-    todo!("0x552c4 -[RobloxNavBarViewController barTopToolbar]")
+pub fn stub_552c4(nav: &NavBar) -> Option<usize> {
+    // IDA 0x552c4: return barTopToolbar.
+    nav.bar_top_toolbar
 }
 
 // 0x552d4 — -[RobloxNavBarViewController setBarTopToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBarTopToolbar:]")]
-pub fn stub_552d4() -> ! {
-    todo!("0x552d4 -[RobloxNavBarViewController setBarTopToolbar:]")
+pub fn stub_552d4(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x552d4: objc_setProperty barTopToolbar.
+    nav.bar_top_toolbar = value;
 }
 
 // 0x552f8 — -[RobloxNavBarViewController lblRobux]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblRobux]")]
-pub fn stub_552f8() -> ! {
-    todo!("0x552f8 -[RobloxNavBarViewController lblRobux]")
+pub fn stub_552f8(nav: &NavBar) -> Option<String> {
+    // IDA 0x552f8: return _lblRobux.
+    nav.lbl_robux.clone()
 }
 
 // 0x55308 — -[RobloxNavBarViewController setLblRobux:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblRobux:]")]
-pub fn stub_55308() -> ! {
-    todo!("0x55308 -[RobloxNavBarViewController setLblRobux:]")
+pub fn stub_55308(nav: &mut NavBar, value: Option<String>) {
+    // IDA 0x55308: objc_setProperty lblRobux.
+    nav.lbl_robux = value;
 }
 
 // 0x5532c — -[RobloxNavBarViewController lblTix]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController lblTix]")]
-pub fn stub_5532c() -> ! {
-    todo!("0x5532c -[RobloxNavBarViewController lblTix]")
+pub fn stub_5532c(nav: &NavBar) -> Option<String> {
+    // IDA 0x5532c: return _lblTix.
+    nav.lbl_tix.clone()
 }
 
 // 0x5533c — -[RobloxNavBarViewController setLblTix:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLblTix:]")]
-pub fn stub_5533c() -> ! {
-    todo!("0x5533c -[RobloxNavBarViewController setLblTix:]")
+pub fn stub_5533c(nav: &mut NavBar, value: Option<String>) {
+    // IDA 0x5533c: objc_setProperty lblTix.
+    nav.lbl_tix = value;
 }
 
 // 0x55360 — -[RobloxNavBarViewController toolbar]
 // type: UIToolbar *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController toolbar]")]
-pub fn stub_55360() -> ! {
-    todo!("0x55360 -[RobloxNavBarViewController toolbar]")
+pub fn stub_55360(nav: &NavBar) -> Option<usize> {
+    // IDA 0x55360: return _toolbar.
+    nav.toolbar
 }
 
 // 0x55370 — -[RobloxNavBarViewController setToolbar:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setToolbar:]")]
-pub fn stub_55370() -> ! {
-    todo!("0x55370 -[RobloxNavBarViewController setToolbar:]")
+pub fn stub_55370(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x55370: objc_setProperty toolbar.
+    nav.toolbar = value;
 }
 
 // 0x55394 — -[RobloxNavBarViewController pageLoadActivityIndicator]
 // type: UIActivityIndicatorView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController pageLoadActivityIndicator]")]
-pub fn stub_55394() -> ! {
-    todo!("0x55394 -[RobloxNavBarViewController pageLoadActivityIndicator]")
+pub fn stub_55394(nav: &NavBar) -> Option<usize> {
+    // IDA 0x55394: return _pageLoadActivityIndicator.
+    nav.page_indicator
 }
 
 // 0x553a4 — -[RobloxNavBarViewController setPageLoadActivityIndicator:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setPageLoadActivityIndicator:]")]
-pub fn stub_553a4() -> ! {
-    todo!("0x553a4 -[RobloxNavBarViewController setPageLoadActivityIndicator:]")
+pub fn stub_553a4(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x553a4: objc_setProperty pageLoadActivityIndicator.
+    nav.page_indicator = value;
 }
 
 // 0x553c8 — -[RobloxNavBarViewController loadingOverlay]
 // type: UIView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController loadingOverlay]")]
-pub fn stub_553c8() -> ! {
-    todo!("0x553c8 -[RobloxNavBarViewController loadingOverlay]")
+pub fn stub_553c8(nav: &NavBar) -> Option<usize> {
+    // IDA 0x553c8: return _loadingOverlay.
+    nav.loading_overlay
 }
 
 // 0x553d8 — -[RobloxNavBarViewController setLoadingOverlay:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLoadingOverlay:]")]
-pub fn stub_553d8() -> ! {
-    todo!("0x553d8 -[RobloxNavBarViewController setLoadingOverlay:]")
+pub fn stub_553d8(nav: &mut NavBar, value: Option<usize>) {
+    // IDA 0x553d8: objc_setProperty loadingOverlay.
+    nav.loading_overlay = value;
 }
 
 // 0x553fc — -[RobloxNavBarViewController loadingLabel]
