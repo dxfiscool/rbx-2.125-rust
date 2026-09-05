@@ -219,8 +219,26 @@ pub fn stub_0xf44274() -> ! {
 // type: int()
 #[doc(alias = "RBX::Sky const* RBX::Instance::findConstFirstChildOfType<RBX::Sky>(void)const")]
 #[doc(alias = "j___ZNK3RBX8Instance25findConstFirstChildOfTypeINS_3SkyEEEPKT_v")]
-pub fn stub_0xf44614() -> ! {
-    todo!("0xf44614 RBX::Sky const* RBX::Instance::findConstFirstChildOfType<RBX::Sky>(void)const")
+pub fn stub_0xf44614(parent: *const crate::generated_05::Instance) -> Option<SharedPtr<crate::generated_05::Instance>> {
+    // `findConstFirstChildOfType<Sky>` — `j__` thunk to the template
+    // body; the body is the standard child scan (null parent returns
+    // null, else first `isA Sky` hit wins, miss returns null), same
+    // shape as 0xf40fa4 (`ScreenGui`) and 0xaa7a00 (`StarterGear`).
+    // The jump collapses into the direct implementation.
+    // SAFETY: `parent` must be null or point to a valid `Instance`.
+    use crate::generated_05::instance_is_a;
+    if parent.is_null() {
+        return None;
+    }
+    unsafe {
+        let children: &[SharedPtr<crate::generated_05::Instance>] = &(*parent).children;
+        for child in children.iter() {
+            if instance_is_a(SharedPtr::as_ptr(child), "Sky") {
+                return Some(child.clone());
+            }
+        }
+        None
+    }
 }
 
 // 0xf44734 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_4HintEEEN5boost10shared_ptrIT_EEv
@@ -679,8 +697,10 @@ pub fn stub_0xf47544() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv")]
 // was: boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)
-pub fn stub_0xf476a4() -> ! {
-    todo!("0xf476a4 rbx_core::SharedPtr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")
+pub fn stub_0xf476a4() -> SharedPtr<crate::instance::Sky> {
+    // IDA 0xf476a4: `Creatable::create<Sky>` — `operator new` + default ctor
+    // + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::Sky::default())
 }
 
 // 0xf476b4 — j___ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -705,8 +725,10 @@ pub fn stub_0xf476c4() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv")]
 // was: boost::shared_ptr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)
-pub fn stub_0xf47764() -> ! {
-    todo!("0xf47764 rbx_core::SharedPtr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")
+pub fn stub_0xf47764() -> SharedPtr<crate::instance::Smoke> {
+    // IDA 0xf47764: `Creatable::create<Smoke>` — `operator new` + default ctor
+    // + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::Smoke::default())
 }
 
 // 0xf47774 — j___ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -739,8 +761,15 @@ pub fn stub_0xf47974() -> ! {
 // type: int()
 #[doc(alias = "RBX::DebrisService * RBX::ServiceProvider::create<RBX::DebrisService>(RBX::Instance const*)")]
 #[doc(alias = "j___ZN3RBX15ServiceProvider6createINS_13DebrisServiceEEEPT_PKNS_8InstanceE")]
-pub fn stub_0xf479c4() -> ! {
-    todo!("0xf479c4 RBX::DebrisService * RBX::ServiceProvider::create<RBX::DebrisService>(RBX::Instance const*)")
+pub fn stub_0xf479c4(instance: *const crate::generated_05::Instance) -> Option<SharedPtr<crate::instance::DebrisService>> {
+    // `ServiceProvider::create<DebrisService>` — provider lookup, null
+    // yields empty, else default-construct + adopt. Same shape as 0x545740
+    // (`CoreGuiService`).
+    // SAFETY: `instance` must be null or point to a valid `Instance`.
+    if instance.is_null() {
+        return None;
+    }
+    Some(SharedPtr::new(crate::instance::DebrisService::default()))
 }
 
 // 0xf479f4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv
@@ -748,8 +777,10 @@ pub fn stub_0xf479c4() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv")]
 // was: boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)
-pub fn stub_0xf479f4() -> ! {
-    todo!("0xf479f4 rbx_core::SharedPtr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")
+pub fn stub_0xf479f4() -> SharedPtr<crate::instance::SpawnLocation> {
+    // IDA 0xf479f4: `Creatable::create<SpawnLocation>` — `operator new` + default ctor
+    // + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::SpawnLocation::default())
 }
 
 // 0xf47a04 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14SpawnerServiceEEEN5boost10shared_ptrIT_EEv
@@ -757,8 +788,10 @@ pub fn stub_0xf479f4() -> ! {
 #[doc(alias = "rbx_core::SharedPtr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)")]
 #[doc(alias = "j___ZN3RBX9CreatableINS_8InstanceEE6createINS_14SpawnerServiceEEEN5boost10shared_ptrIT_EEv")]
 // was: boost::shared_ptr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)
-pub fn stub_0xf47a04() -> ! {
-    todo!("0xf47a04 rbx_core::SharedPtr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)")
+pub fn stub_0xf47a04() -> SharedPtr<crate::instance::SpawnerService> {
+    // IDA 0xf47a04: `Creatable::create<SpawnerService>` — `operator new` + default ctor
+    // + adoption; same collapse as 0x4f0004 (`Fire`).
+    SharedPtr::new(crate::instance::SpawnerService::default())
 }
 
 // 0xf47a14 — j___ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -894,4 +927,50 @@ pub use crate::generated_datamodel_shard_276::stub_0x8df0c4 as stub_0xf5a5c4;
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,int,bool)>::remote_signal(void)
 pub fn stub_0xf5a6a4() -> ! {
     todo!("0xf5a6a4 rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,int,bool)>::remote_signal(void)")
+}
+
+#[cfg(test)]
+mod jump_tests {
+    use super::*;
+
+    #[test]
+    fn find_sky_null_parent_returns_none() {
+        assert!(stub_0xf44614(core::ptr::null()).is_none());
+    }
+
+    #[test]
+    fn find_sky_hit_returns_first_sky_child() {
+        let mut parent = crate::generated_05::Instance::default();
+        let other = SharedPtr::new(crate::generated_05::Instance::default());
+        let mut sky = crate::generated_05::Instance::default();
+        sky.class_name = "Sky";
+        let sky_child = SharedPtr::new(sky);
+        parent.children.push(other);
+        parent.children.push(sky_child.clone());
+        let hit = stub_0xf44614(&parent as *const _);
+        assert!(hit.is_some());
+        assert!(SharedPtr::ptr_eq(&hit.unwrap(), &sky_child));
+    }
+
+    #[test]
+    fn find_sky_miss_returns_none() {
+        let parent = crate::generated_05::Instance::default();
+        assert!(stub_0xf44614(&parent as *const _).is_none());
+    }
+
+    #[test]
+    fn create_leaves_construct() {
+        assert_eq!(SharedPtr::strong_count(&stub_0xf476a4()), 1);
+        assert_eq!(SharedPtr::strong_count(&stub_0xf47764()), 1);
+        assert_eq!(SharedPtr::strong_count(&stub_0xf479f4()), 1);
+        assert_eq!(SharedPtr::strong_count(&stub_0xf47a04()), 1);
+    }
+
+    #[test]
+    fn debris_service_create_null_yields_empty() {
+        assert!(stub_0xf479c4(core::ptr::null()).is_none());
+        let parent = crate::generated_05::Instance::default();
+        let svc = stub_0xf479c4(&parent as *const _).expect("provider create");
+        assert!(svc.items.is_empty());
+    }
 }

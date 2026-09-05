@@ -1226,6 +1226,20 @@ pub struct Lighting {
     pub sky: Option<SharedPtr<Instance>>,
 }
 
+/// Rust model of `RBX::Sky` (IDA `0xf44614`, `0xf476a4`): the sky leaf behind
+/// `Lighting`'s sky slot; members land with the render batch.
+#[derive(Default)]
+pub struct Sky {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::Smoke` (IDA `0xf47764`): the smoke leaf; members land
+/// with the render batch.
+#[derive(Default)]
+pub struct Smoke {
+    _opaque: (),
+}
+
 /// Rust model of `RBX::AssetService` (IDA `0x448914`): the asset service;
 /// members land with the service batch.
 #[derive(Default)]
@@ -1779,6 +1793,20 @@ pub struct FlagStand {
 /// service leaf; members land with the service batch.
 #[derive(Default)]
 pub struct FlagStandService {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::SpawnLocation` (IDA `0xf479f4`): the spawn-location
+/// leaf; members land with the game batch.
+#[derive(Default)]
+pub struct SpawnLocation {
+    _opaque: (),
+}
+
+/// Rust model of `RBX::SpawnerService` (IDA `0xf47a04`): the spawner service;
+/// members land with the service batch.
+#[derive(Default)]
+pub struct SpawnerService {
     _opaque: (),
 }
 
