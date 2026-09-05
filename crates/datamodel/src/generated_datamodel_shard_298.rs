@@ -51,6 +51,7 @@ pub use crate::instance::stub_0x5b908c as stub_0xf43af4;
 #[doc(alias = "j___ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPN3RBX16KeyframeSequenceEEEEclIPFvNS_10shared_ptrINS5_8InstanceEEEPSC_ENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::KeyframeSequence *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Instance*),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Instance*) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf43ba4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf43ba4 void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::KeyframeSequence *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Instance*),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Instance*) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -60,6 +61,7 @@ pub fn stub_0xf43ba4() -> ! {
 #[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIPKN3RBX16KeyframeSequenceEEENS_3argILi1EEENS2_IPSt6vectorIPNS3_10CachedPoseESaISC_EEEEEclINS_4_mfi4cmf2IvS4_RKNS_10shared_ptrINS3_8InstanceEEESF_EENS0_5list1ISP_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>::operator()<boost::_mfi::cmf2<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::cmf2<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf43bb4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf43bb4 void boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>::operator()<boost::_mfi::cmf2<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::cmf2<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -69,6 +71,7 @@ pub fn stub_0xf43bb4() -> ! {
 #[doc(alias = "j___ZN5boost3_bi6bind_tIvNS_4_mfi4cmf1IvN3RBX16KeyframeSequenceERKNS_10shared_ptrINS4_8InstanceEEEEENS0_5list2INS0_5valueIPKS5_EENS_3argILi1EEEEEEclIS8_EEvRKT_")]
 // was: void boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)
 pub fn stub_0xf43bc4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf43bc4 void boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>>::operator()<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")
 }
 
@@ -78,6 +81,7 @@ pub fn stub_0xf43bc4() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi4cmf1IvNS_16KeyframeSequenceERKNS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPKS7_EENS2_3argILi1EEEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>> const&)const
 pub fn stub_0xf43c04() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf43c04 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::cmf1<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list2<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>>> const&)const")
 }
 
@@ -87,6 +91,7 @@ pub fn stub_0xf43c04() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi4cmf2IvNS_16KeyframeSequenceERKNS2_10shared_ptrIS0_EEPSt6vectorIPNS_10CachedPoseESaISE_EEEENS3_5list3INS3_5valueIPKS7_EENS2_3argILi1EEENSK_ISH_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::cmf2<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>>>(boost::_bi::bind_t<void,boost::_mfi::cmf2<void,RBX::KeyframeSequence,boost::shared_ptr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>> const&)const
 pub fn stub_0xf43c14() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf43c14 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::cmf2<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>>>(boost::_bi::bind_t<void,boost::_mfi::cmf2<void,RBX::KeyframeSequence,rbx_core::SharedPtr<RBX::Instance> const&,std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>,boost::_bi::list3<boost::_bi::value<RBX::KeyframeSequence const*>,boost::arg<1>,boost::_bi::value<std::vector<RBX::CachedPose *,std::allocator<RBX::CachedPose *>> *>>> const&)const")
 }
 
@@ -96,6 +101,7 @@ pub fn stub_0xf43c14() -> ! {
 #[doc(alias = "j___ZN3RBX10Reflection11Call1HelperINS_24KeyframeSequenceProviderEMS2_FN5boost10shared_ptrINS_8InstanceEEENS_9ContentIdEES7_S6_E4callEPS2_S9_RNS0_7VariantERKS7_")]
 // was: RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,boost::shared_ptr<RBX::Instance> (RBX::KeyframeSequenceProvider::*)(RBX::ContentId),RBX::ContentId,boost::shared_ptr<RBX::Instance>>::call(RBX::KeyframeSequenceProvider*,boost::shared_ptr<RBX::Instance> (RBX::KeyframeSequenceProvider::*)(RBX::ContentId),RBX::Reflection::Variant &,RBX::ContentId const&)
 pub fn stub_0xf43ec4() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf43ec4 RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,rbx_core::SharedPtr<RBX::Instance> (RBX::KeyframeSequenceProvider::*)(RBX::ContentId),RBX::ContentId,rbx_core::SharedPtr<RBX::Instance>>::call(RBX::KeyframeSequenceProvider*,rbx_core::SharedPtr<RBX::Instance> (RBX::KeyframeSequenceProvider::*)(RBX::ContentId),RBX::Reflection::Variant &,RBX::ContentId const&)")
 }
 
@@ -105,6 +111,7 @@ pub fn stub_0xf43ec4() -> ! {
 #[doc(alias = "j___ZN3RBX10Reflection11Call1HelperINS_24KeyframeSequenceProviderEMS2_FNS_9ContentIdEN5boost10shared_ptrINS_8InstanceEEEES7_S3_E4callEPS2_S9_RNS0_7VariantERKS7_")]
 // was: RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,RBX::ContentId>::call(RBX::KeyframeSequenceProvider*,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
 pub fn stub_0xf43ed4() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf43ed4 RBX::Reflection::Call1Helper<RBX::KeyframeSequenceProvider,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::Instance>,RBX::ContentId>::call(RBX::KeyframeSequenceProvider*,RBX::ContentId (RBX::KeyframeSequenceProvider::*)(rbx_core::SharedPtr<RBX::Instance>),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&)")
 }
 
@@ -168,6 +175,7 @@ pub use crate::instance::stub_0x5be9f8 as stub_0xf43ff4;
 #[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX16KeyframeSequenceEEEEENS2_INS_10shared_ptrIS5_EEEEEclIPFvS6_S9_ENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>::operator()<void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>) &,boost::_bi::list1<RBX::DataModel *&> &,int)
 pub fn stub_0xf44034() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44034 void boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>::operator()<void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
 }
 
@@ -185,6 +193,7 @@ pub use crate::instance::stub_0x5beba8 as stub_0xf440a4;
 #[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_16KeyframeSequenceEEENS_10shared_ptrIS9_EEENS6_5list2INS6_5valueISA_EENSG_ISC_EEEEEEEEvT_")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>)
 pub fn stub_0xf440f4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf440f4 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>)")
 }
 
@@ -194,6 +203,7 @@ pub fn stub_0xf440f4() -> ! {
 #[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_16KeyframeSequenceEEENS_10shared_ptrISB_EEENS8_5list2INS8_5valueISC_EENSI_ISE_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 pub fn stub_0xf44254() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44254 void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
@@ -203,6 +213,7 @@ pub fn stub_0xf44254() -> ! {
 #[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_16KeyframeSequenceEEENS_10shared_ptrISB_EEENS8_5list2INS8_5valueISC_EENSI_ISE_EEEEEEEEbT_RNS1_15function_bufferE")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &)const
 pub fn stub_0xf44264() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44264 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &)const")
 }
 
@@ -212,6 +223,7 @@ pub fn stub_0xf44264() -> ! {
 #[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_16KeyframeSequenceEEENS_10shared_ptrISB_EEENS8_5list2INS8_5valueISC_EENSI_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::KeyframeSequence>,boost::shared_ptr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::KeyframeSequence>>,boost::_bi::value<boost::shared_ptr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 pub fn stub_0xf44274() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44274 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::KeyframeSequence>,rbx_core::SharedPtr<RBX::KeyframeSequence>),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::KeyframeSequence>>,boost::_bi::value<rbx_core::SharedPtr<RBX::KeyframeSequence>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
@@ -299,6 +311,7 @@ pub use crate::instance::stub_0x5caa64 as stub_0xf44784;
 #[doc(alias = "j___ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPN3G3D7Vector3EEEEclIPFvNS_10shared_ptrIN3RBX8InstanceEEEPKS6_ENS0_5list1IRKSE_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3 *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3 const*) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf44884() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44884 void boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3 *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3 const*) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -308,6 +321,7 @@ pub fn stub_0xf44884() -> ! {
 #[doc(alias = "j___ZN5boost3_bi5list2INS_3argILi1EEENS_17reference_wrapperIN3RBX7ExtentsEEEEclIPFvNS_10shared_ptrINS5_8InstanceEEERS6_ENS0_5list1IRKSC_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents&),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents&) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf44894() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf44894 void boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents&),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents&) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -317,6 +331,7 @@ pub fn stub_0xf44894() -> ! {
 #[doc(alias = "j___ZN5boost3_bi5list3INS_3argILi1EEENS0_5valueIPN3G3D15CoordinateFrameEEENS4_IPNS5_7Vector3EEEEclIPFvNS_10shared_ptrIN3RBX8InstanceEEEPKS6_PKS9_ENS0_5list1IRKSH_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame *>,boost::_bi::value<G3D::Vector3 *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf448a4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf448a4 void boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame *>,boost::_bi::value<G3D::Vector3 *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -326,6 +341,7 @@ pub fn stub_0xf448a4() -> ! {
 #[doc(alias = "j___ZN5boost3_bi5list3INS_3argILi1EEENS0_5valueIPPN3RBX12PartInstanceEEENS4_IPfEEEclIPFvNS_10shared_ptrINS5_8InstanceEEES8_SA_ENS0_5list1IRKSG_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf448b4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf448b4 void boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::PartInstance **,float *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -335,6 +351,7 @@ pub fn stub_0xf448b4() -> ! {
 #[doc(alias = "j___ZN5boost3_bi5list3INS_3argILi1EEENS_17reference_wrapperIN3RBX7ExtentsEEENS4_IKN3G3D15CoordinateFrameEEEEclIPFvNS_10shared_ptrINS5_8InstanceEEERS6_RSA_ENS0_5list1IRKSG_EEEEvNS0_4typeIvEERT_RT0_i")]
 // was: void boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents&,G3D::CoordinateFrame const&),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents&,G3D::CoordinateFrame const&) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_0xf448c4() -> ! {
+    // BLOCKED: core-owned `boost::bind` infra (no exact-EA native anywhere)
     todo!("0xf448c4 void boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents&,G3D::CoordinateFrame const&),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents&,G3D::CoordinateFrame const&) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
 }
 
@@ -343,6 +360,7 @@ pub fn stub_0xf448c4() -> ! {
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0xf448d4() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf448d4 RBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
@@ -352,6 +370,7 @@ pub fn stub_0xf448d4() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EEPKN3G3D15CoordinateFrameEPKNS7_7Vector3EENS3_5list3INS2_3argILi1EEENS3_5valueIPS8_EENSJ_IPSB_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame*>,boost::_bi::value<G3D::Vector3*>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame*>,boost::_bi::value<G3D::Vector3*>>> const&)const
 pub fn stub_0xf448e4() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf448e4 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame*>,boost::_bi::value<G3D::Vector3*>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::CoordinateFrame const*,G3D::Vector3 const*),boost::_bi::list3<boost::arg<1>,boost::_bi::value<G3D::CoordinateFrame*>,boost::_bi::value<G3D::Vector3*>>> const&)const")
 }
 
@@ -361,6 +380,7 @@ pub fn stub_0xf448e4() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EEPKN3G3D7Vector3EENS3_5list2INS2_3argILi1EEENS3_5valueIPS8_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3*>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3*>>> const&)const
 pub fn stub_0xf448f4() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf448f4 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3*>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3 const*),boost::_bi::list2<boost::arg<1>,boost::_bi::value<G3D::Vector3*>>> const&)const")
 }
 
@@ -370,6 +390,7 @@ pub fn stub_0xf448f4() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EEPPNS_12PartInstanceEPfENS3_5list3INS2_3argILi1EEENS3_5valueIS9_EENSG_ISA_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>> const&)const
 pub fn stub_0xf44904() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf44904 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::PartInstance **,float *),boost::_bi::list3<boost::arg<1>,boost::_bi::value<RBX::PartInstance **>,boost::_bi::value<float *>>> const&)const")
 }
 
@@ -379,6 +400,7 @@ pub fn stub_0xf44904() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EERNS_7ExtentsEENS3_5list2INS2_3argILi1EEENS2_17reference_wrapperIS7_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>> const&)const
 pub fn stub_0xf44914() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf44914 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents &),boost::_bi::list2<boost::arg<1>,boost::reference_wrapper<RBX::Extents>>> const&)const")
 }
 
@@ -388,6 +410,7 @@ pub fn stub_0xf44914() -> ! {
 #[doc(alias = "j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrIS0_EERNS_7ExtentsERKN3G3D15CoordinateFrameEENS3_5list3INS2_3argILi1EEENS2_17reference_wrapperIS7_EENSI_ISB_EEEEEEEEvRKT_")]
 // was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents &,G3D::CoordinateFrame const&),boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Extents &,G3D::CoordinateFrame const&),boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>> const&)const
 pub fn stub_0xf44924() -> ! {
+    // BLOCKED: functor-based descendant-visit infra (bind functor types unmodeled)
     todo!("0xf44924 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents &,G3D::CoordinateFrame const&),boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Extents &,G3D::CoordinateFrame const&),boost::_bi::list3<boost::arg<1>,boost::reference_wrapper<RBX::Extents>,boost::reference_wrapper<G3D::CoordinateFrame const>>> const&)const")
 }
 
@@ -396,6 +419,7 @@ pub fn stub_0xf44924() -> ! {
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0xf44a14() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf44a14 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
@@ -404,6 +428,7 @@ pub fn stub_0xf44a14() -> ! {
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "j___ZNK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_0xf44a24() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf44a24 RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
@@ -439,6 +464,7 @@ pub use crate::instance::stub_0x5d799c as stub_0xf44ac4;
 #[doc(alias = "j___ZN3RBX10Reflection11Call1HelperINS_12PartInstanceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbEbSB_E4callEPS2_SD_RNS0_7VariantERKb")]
 // was: RBX::Reflection::Call1Helper<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::PartInstance*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)
 pub fn stub_0xf44b64() -> ! {
+    // BLOCKED: reflection descriptor/dispatch glue (no exact-EA native anywhere)
     todo!("0xf44b64 RBX::Reflection::Call1Helper<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::PartInstance*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")
 }
 
@@ -493,6 +519,7 @@ pub use crate::instance::stub_0x5ebe34 as stub_0xf44e54;
 #[doc(alias = "j___ZN3RBX12PartInstance13TouchedSignal11TouchedSlotC2ERKN5boost8functionIFvNS3_10shared_ptrINS_8InstanceEEEEEEPS0_")]
 // was: RBX::PartInstance::TouchedSignal::TouchedSlot::TouchedSlot(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&,RBX::PartInstance*)
 pub fn stub_0xf44ec4() -> ! {
+    // BLOCKED: core-owned `TouchedSignal`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0xf44ec4 RBX::PartInstance::TouchedSignal::TouchedSlot::TouchedSlot(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)> const&,RBX::PartInstance*)")
 }
 
@@ -502,6 +529,7 @@ pub fn stub_0xf44ec4() -> ! {
 #[doc(alias = "j___ZN3RBX12PartInstance13TouchedSignal11TouchedSlotclEN5boost10shared_ptrINS_8InstanceEEE")]
 // was: RBX::PartInstance::TouchedSignal::TouchedSlot::operator()(boost::shared_ptr<RBX::Instance>)
 pub fn stub_0xf44ef4() -> ! {
+    // BLOCKED: core-owned `TouchedSignal`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0xf44ef4 RBX::PartInstance::TouchedSignal::TouchedSlot::operator()(rbx_core::SharedPtr<RBX::Instance>)")
 }
 
@@ -511,6 +539,7 @@ pub fn stub_0xf44ef4() -> ! {
 #[doc(alias = "j___ZN3RBX12PartInstance13TouchedSignal7connectIN5boost8functionIFvNS3_10shared_ptrINS_8InstanceEEEEEEEEN3rbx7signals10connectionET_")]
 // was: rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
 pub fn stub_0xf44f04() -> ! {
+    // BLOCKED: core-owned `TouchedSignal`/`boost::bind` slot infra (no exact-EA native anywhere)
     todo!("0xf44f04 rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")
 }
 
