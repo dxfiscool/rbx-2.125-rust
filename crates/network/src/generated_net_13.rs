@@ -1236,107 +1236,869 @@ pub fn stub_13136c(smooth: u16, rm1: &[u8], r0: &[u8], r1: &[u8], rp1: &[u8], ou
     }
 }
 
+/// Downsample method selected by `jinit_downsampler` (IDA 0x131a2c).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DownsampleMethod {
+    FullsizeSmooth,
+    Fullsize,
+    H2v1,
+    H2v2Smooth,
+    H2v2,
+    Int { h: u8, v: u8 },
+}
+
+/// Input-controller pump step (IDA 0x1322d4/0x1325cc).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PassPump {
+    Progress,
+    Stalled,
+    Done,
+}
+
+/// Input-ready pump step for `jpeg_start_decompress` (IDA 0x1325cc).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum InputPump {
+    More,
+    Sos,
+    Suspended,
+}
+
+/// Consume-input dispatch (IDA 0x131d68).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ConsumeAction {
+    NeedHeader,
+    Delegate,
+    Done,
+}
+
+/// Colors guessed from markers at input init (IDA 0x131d68 state-201 tail: +40 space, +44 count).
+#[derive(Clone, Copy, Debug)]
+pub struct InputColors {
+    pub out_space: u32,
+    pub out_count: u32,
+}
+
+/// JPEG source byte buffer (IDA 0x1326e0 `get_byte`).
+#[derive(Clone, Debug, Default)]
+pub struct JpegSrc {
+    pub data: Vec<u8>,
+    pub pos: usize,
+}
+
+/// Arithmetic-decoder working state (IDA 0x132744: C +12, A +16, CT +20 words).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ArithDecoder {
+    pub c: u32,
+    pub a: u32,
+    pub ct: i32,
+}
+
+/// Arithmetic entropy-reader bundle for the decode_mcu family (IDA 0x132b08: decoder + jaritab + source).
+#[derive(Clone, Debug, Default)]
+pub struct ArithReader {
+    pub dec: ArithDecoder,
+    pub jaritab: Vec<u32>,
+    pub unread_marker: u32,
+}
+
+impl ArithReader {
+    /// One MPS/LPS decision bit (IDA 0x132744 `arith_decode`).
+    pub fn bit(&mut self, prob: &mut u8, get_byte: &mut dyn FnMut() -> u8) -> u8 {
+        stub_132744(&mut self.dec, prob, &self.jaritab, &mut self.unread_marker, get_byte)
+    }
+}
+
+/// Arithmetic-decoder init result (IDA 0x1328a4: 16 DC + 16 AC stat pairs, per-component DAC areas).
+#[derive(Clone, Debug)]
+pub struct ArithDecoderInit {
+    pub dc_stats: [[u8; 16]; 16],
+    pub ac_stats: [[u8; 16]; 16],
+    pub dac: Vec<i32>,
+}
+
+/// Per-component table numbers for the arith decode reset (IDA 0x1329f0).
+#[derive(Clone, Copy, Debug)]
+pub struct ArithDecodeComp {
+    pub dc_tbl: u32,
+    pub ac_tbl: u32,
+}
+
+/// Restart countdown for the decode_mcu family (IDA 0x132b08 prologue).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ArithDecodeRestart {
+    pub left: u32,
+    pub interval: u32,
+}
+
+/// Per-block DC context for the arith baseline decode (IDA 0x132b08: table, prediction, state selector, magnitude limits).
+#[derive(Debug)]
+pub struct ArithDcCtx<'a> {
+    pub coef: &'a mut [i16; 64],
+    pub dc_tbl: usize,
+    pub ac_tbl: usize,
+    pub pred: i32,
+    pub sel: usize,
+    pub max0: u8,
+    pub max1: u8,
+}
+
+/// Arith progressive-decode method selected by `start_pass` (IDA 0x133980).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ArithDecodeMethod {
+    Baseline,
+    DcFirst,
+    AcFirst,
+    DcRefine,
+    AcRefine,
+}
+
+/// iMCU-row cursor for the input controller (IDA 0x133d60: height +7, counters +5/+6).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct ImcuRow0 {
+    pub rows_this: u32,
+    pub row_ctr: u32,
+    pub rows_done: u32,
+}
+
 // 0x13179c — _fullsize_smooth_downsample
 #[doc(alias = "_fullsize_smooth_downsample")]
-pub fn stub_13179c() -> ! { todo!("0x13179c _fullsize_smooth_downsample") }
+pub fn stub_13179c(smooth: u16, top: &[u8], mid: &[u8], bot: &[u8], out: &mut [u8]) { // IDA 0x13179c: fullsize smooth downsample; weights 0x10000 - 512*smooth on the center tap and 64*smooth on the 8 surround taps (3×3 minus center); head/tail/odd-width specials folded to clamped taps.
+    let w6 = (smooth as u32) << 6;
+    let w29 = 0x10000 - ((smooth as u32) << 9);
+    let at = |row: &[u8], i: isize| row[i.clamp(0, row.len() as isize - 1) as usize] as u32;
+    for (x, o) in out.iter_mut().enumerate() {
+        let xi = x as isize;
+        let c = at(mid, xi);
+        let n = at(top, xi - 1) + at(top, xi) + at(top, xi + 1) + at(mid, xi - 1) + at(mid, xi + 1) + at(bot, xi - 1) + at(bot, xi) + at(bot, xi + 1);
+        *o = ((w29 * c + 0x8000 + w6 * n) >> 16) as u8;
+    }
+}
 
 // 0x131a2c — _jinit_downsampler
 #[doc(alias = "_jinit_downsampler")]
-pub fn stub_131a2c() -> ! { todo!("0x131a2c _jinit_downsampler") }
+pub fn stub_131a2c(fancy_unsupported: bool, smooth: bool, max_h: u32, max_v: u32, comps: &[(u32, u32)]) -> Vec<DownsampleMethod> { // IDA 0x131a2c: fancy sampling → error 26; fullsize/h2v1/h2v2 (smooth variants when set) else integer factors (uneven → error 39); smooth with no h2v1/integer component → error 101.
+    if fancy_unsupported {
+        panic!("jinit_downsampler: bad sampling (26)");
+    }
+    let mut all_smooth = true;
+    let methods = comps
+        .iter()
+        .map(|&(h, v)| {
+            if max_h == h && max_v == v {
+                if smooth {
+                    DownsampleMethod::FullsizeSmooth
+                } else {
+                    DownsampleMethod::Fullsize
+                }
+            } else if 2 * h == max_h && max_v == v {
+                all_smooth = false;
+                DownsampleMethod::H2v1
+            } else if max_h == 2 * h && max_v == 2 * v {
+                if smooth {
+                    DownsampleMethod::H2v2Smooth
+                } else {
+                    DownsampleMethod::H2v2
+                }
+            } else {
+                if max_h % h != 0 || max_v % v != 0 {
+                    panic!("jinit_downsampler: bad sampling (39)");
+                }
+                all_smooth = false;
+                DownsampleMethod::Int { h: (max_h / h) as u8, v: (max_v / v) as u8 }
+            }
+        })
+        .collect();
+    if smooth && all_smooth {
+        panic!("jinit_downsampler: smoothing needs context rows (101)");
+    }
+    methods
+}
 
 // 0x131d08 — _fullsize_downsample
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "_fullsize_downsample")]
-pub fn stub_131d08() -> ! { todo!("0x131d08 _fullsize_downsample") }
+pub fn stub_131d08(src: &[Vec<u8>], dst: &mut [Vec<u8>], valid_w: usize) { // IDA 0x131d08: row copy then right-edge expand over the destination rows.
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        let n = valid_w.min(s.len()).min(d.len());
+        d[..n].copy_from_slice(&s[..n]);
+    }
+    stub_130aec(dst, valid_w);
+}
 
 // 0x131d68 — _jpeg_consume_input
 #[doc(alias = "_jpeg_consume_input")]
-pub fn stub_131d68() -> ! { todo!("0x131d68 _jpeg_consume_input") }
+pub fn stub_131d68(state: u32) -> ConsumeAction { // IDA 0x131d68: 200/201 → header path, 202 → done, 203-208/210 → delegate to the input controller, else error 21.
+    match state {
+        200 | 201 => ConsumeAction::NeedHeader,
+        202 => ConsumeAction::Done,
+        203 | 204 | 205 | 206 | 207 | 208 | 210 => ConsumeAction::Delegate,
+        _ => panic!("jpeg_consume_input: bad state (21)"),
+    }
+}
 
 // 0x132034 — _jpeg_finish_decompress
 #[doc(alias = "_jpeg_finish_decompress")]
-pub fn stub_132034() -> ! { todo!("0x132034 _jpeg_finish_decompress") }
+pub fn stub_132034(needs_finish: bool, output_done: bool, output_lines: u32, expected_lines: u32, finish_pass: &mut dyn FnMut(), pump: &mut dyn FnMut() -> bool, eoi: &mut dyn FnMut() -> bool, teardown: &mut dyn FnMut()) -> bool { // IDA 0x132034: states 205/206 → finish-pass (unfinished lines → error 69) then state 210; 207 → 210; else error 21 (caller checks); pump to EOI (FALSE on suspension); teardown; TRUE.
+    if needs_finish && !output_done {
+        if output_lines < expected_lines {
+            panic!("jpeg_finish_decompress: unfinished output (69)");
+        }
+        finish_pass();
+    }
+    while !eoi() {
+        if !pump() {
+            return false;
+        }
+    }
+    teardown();
+    true
+}
 
 // 0x132124 — _jpeg_read_header
 #[doc(alias = "_jpeg_read_header")]
-pub fn stub_132124() -> ! { todo!("0x132124 _jpeg_read_header") }
+pub fn stub_132124(state_ok: bool, require_image: bool, consume: &mut dyn FnMut() -> i32, abort: &mut dyn FnMut()) -> i32 { // IDA 0x132124: state 200/201 else error 21 (caller checks); SOS already reached + require-image → error 53 + abort; returns the consume result.
+    if !state_ok {
+        panic!("jpeg_read_header: bad state (21)");
+    }
+    let v = consume();
+    if v == 2 {
+        if require_image {
+            panic!("jpeg_read_header: SOS already reached (53)");
+        }
+        abort();
+    }
+    v
+}
 
 // 0x1321b0 — _jpeg_destroy_decompress
 #[doc(alias = "_jpeg_destroy_decompress")]
-pub fn stub_1321b0() -> ! { todo!("0x1321b0 _jpeg_destroy_decompress") }
+pub fn stub_1321b0(destroy: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x1321b0: tail-call jpeg_destroy.
+    destroy()
+}
 
 // 0x1321c0 — _jpeg_CreateDecompress
 // type: int __fastcall(void *__b)
 #[doc(alias = "_jpeg_CreateDecompress")]
-pub fn stub_1321c0() -> ! { todo!("0x1321c0 _jpeg_CreateDecompress") }
+pub fn stub_1321c0(version_ok: bool, size_ok: bool, init: &mut dyn FnMut()) -> u32 { // IDA 0x1321c0: version != 70 → error 13; size != 432 → error 22; zero the struct (caller) + init memory/marker/input managers; state 200.
+    if !version_ok {
+        panic!("jpeg_CreateDecompress: version mismatch (13)");
+    }
+    if !size_ok {
+        panic!("jpeg_CreateDecompress: struct size mismatch (22)");
+    }
+    init();
+    200
+}
 
 // 0x1322d4 — _output_pass_setup
 #[doc(alias = "_output_pass_setup")]
-pub fn stub_1322d4() -> ! { todo!("0x1322d4 _output_pass_setup") }
+pub fn stub_1322d4(state: &mut u32, raw: bool, finish_input: &mut dyn FnMut(), pump: &mut dyn FnMut() -> PassPump) -> bool { // IDA 0x1322d4: not at SOS end → finish the input pass and reset; pump rows to completion (FALSE on stall); state 205 (206 when raw); TRUE. The two nested feed loops fold into the pump closure.
+    if *state != 204 {
+        finish_input();
+        *state = 204;
+    }
+    loop {
+        match pump() {
+            PassPump::Progress => {}
+            PassPump::Stalled => return false,
+            PassPump::Done => break,
+        }
+    }
+    *state = if raw { 206 } else { 205 };
+    true
+}
 
 // 0x1323d4 — _jpeg_read_scanlines
 #[doc(alias = "_jpeg_read_scanlines")]
-pub fn stub_1323d4() -> ! { todo!("0x1323d4 _jpeg_read_scanlines") }
+pub fn stub_1323d4(state_ok: bool, done: &mut u32, total: u32, progress: Option<&mut dyn FnMut()>, read: &mut dyn FnMut(usize) -> usize, max: usize) -> usize { // IDA 0x1323d4: state 205 else error 21 (caller checks); past end → error 126; progress hook; read at most max rows; returns rows read.
+    if !state_ok {
+        panic!("jpeg_read_scanlines: bad state (21)");
+    }
+    if *done >= total {
+        panic!("jpeg_read_scanlines: scanline overflow (126)");
+    }
+    if let Some(p) = progress {
+        p();
+    }
+    let n = read(max);
+    *done += n as u32;
+    n
+}
 
 // 0x1324bc — _jpeg_read_raw_data
 #[doc(alias = "_jpeg_read_raw_data")]
-pub fn stub_1324bc() -> ! { todo!("0x1324bc _jpeg_read_raw_data") }
+pub fn stub_1324bc(state_ok: bool, done: &mut u32, total: u32, bw: u32, bh: u32, max_blocks: u32, read: &mut dyn FnMut() -> bool) -> usize { // IDA 0x1324bc: state 206 else error 21 (caller checks); past end → error 126; blocks over budget → error 24; FALSE read → 0, else advance by the block count.
+    if !state_ok {
+        panic!("jpeg_read_raw_data: bad state (21)");
+    }
+    if *done >= total {
+        panic!("jpeg_read_raw_data: scanline overflow (126)");
+    }
+    let n = bw * bh;
+    if n > max_blocks {
+        panic!("jpeg_read_raw_data: bad buffer size (24)");
+    }
+    if !read() {
+        return 0;
+    }
+    *done += n;
+    n as usize
+}
 
 // 0x1325cc — _jpeg_start_decompress
 #[doc(alias = "_jpeg_start_decompress")]
-pub fn stub_1325cc() -> ! { todo!("0x1325cc _jpeg_start_decompress") }
+pub fn stub_1325cc(state: &mut u32, raw: bool, init_master: &mut dyn FnMut(), pump: &mut dyn FnMut() -> InputPump, setup_output: &mut dyn FnMut(), output_pass: &mut dyn FnMut() -> bool) -> bool { // IDA 0x1325cc: 202 → master init (raw → 207 done); 203 → pump input to SOS (FALSE on suspension) then output setup; 204 → output setup; else error 21.
+    if *state == 202 {
+        init_master();
+        *state = if raw { 207 } else { 203 };
+        if raw {
+            return true;
+        }
+    } else if *state != 203 && *state != 204 {
+        panic!("jpeg_start_decompress: bad state (21)");
+    }
+    if *state == 203 {
+        loop {
+            match pump() {
+                InputPump::Suspended => return false,
+                InputPump::Sos => break,
+                InputPump::More => {}
+            }
+        }
+        setup_output();
+    }
+    output_pass()
+}
 
 // 0x1326e0 — _get_byte
 #[doc(alias = "_get_byte")]
-pub fn stub_1326e0() -> ! { todo!("0x1326e0 _get_byte") }
+pub fn stub_1326e0(src: &mut JpegSrc, refill: &mut dyn FnMut(&mut JpegSrc) -> bool) -> u8 { // IDA 0x1326e0: next source byte; dry → refill, still dry → error 25.
+    if src.pos >= src.data.len() && !refill(src) {
+        panic!("get_byte: error 25");
+    }
+    let b = src.data[src.pos];
+    src.pos += 1;
+    b
+}
 
 // 0x132744 — _arith_decode
 #[doc(alias = "_arith_decode")]
-pub fn stub_132744() -> ! { todo!("0x132744 _arith_decode") }
+pub fn stub_132744(st: &mut ArithDecoder, prob: &mut u8, jaritab: &[u32], unread_marker: &mut u32, get_byte: &mut dyn FnMut() -> u8) -> u8 { // IDA 0x132744: renormalize (A <<= 1 per step; byte refill with 0xFF-marker skip into unread_marker; old-CT == -9 guard forces A = 0x8000, verified against disasm); jaritab probability split with MPS/LPS exchange. jaritab words 64-95 pending IDA re-read (0xf75a60). ARM `LSL Rn` masks the count to 8 bits, so a negative CT shifts to 0 (emulated).
+    while st.a <= 0x7FFF {
+        st.ct -= 1;
+        if st.ct < 0 {
+            let byte = if *unread_marker != 0 {
+                0
+            } else {
+                let b = get_byte();
+                if b == 0xFF {
+                    let m = loop {
+                        let m = get_byte();
+                        if m != 0xFF {
+                            break m;
+                        }
+                    };
+                    if m != 0 {
+                        *unread_marker = m as u32;
+                        0
+                    } else {
+                        0xFF
+                    }
+                } else {
+                    b
+                }
+            };
+            let old = st.ct;
+            st.ct += 8;
+            st.c = (byte as u32) | (st.c << 8);
+            if st.ct < 0 && old == -9 {
+                st.ct = 0;
+                st.a = 0x8000;
+            }
+        }
+        st.a <<= 1;
+    }
+    let v11 = *prob;
+    let qe = jaritab[(v11 & 0x7F) as usize];
+    let q = qe >> 16;
+    let a_new = st.a.wrapping_sub(q);
+    let shifted = if st.ct >= 0 { a_new.wrapping_shl(st.ct as u32) } else { 0 };
+    st.a = a_new;
+    if shifted <= st.c {
+        st.c -= shifted;
+        if q > a_new {
+            st.a = q;
+            *prob = ((qe & 0xFF) ^ u32::from(v11 & 0x80)) as u8;
+            return v11 >> 7;
+        }
+        st.a = q;
+        let flipped = v11 ^ 0x80;
+        *prob = ((qe & 0xFF) ^ u32::from(v11 & 0x80)) as u8;
+        return flipped >> 7;
+    }
+    if a_new <= 0x7FFF {
+        if q > a_new {
+            let flipped = v11 ^ 0x80;
+            *prob = ((qe & 0xFF) ^ u32::from(v11 & 0x80)) as u8;
+            return flipped >> 7;
+        }
+        *prob = (((qe >> 8) & 0xFF) ^ u32::from(v11 & 0x80)) as u8;
+        return v11 >> 7;
+    }
+    v11 >> 7
+}
 
 // 0x1328a4 — _jinit_arith_decoder
 #[doc(alias = "_jinit_arith_decoder")]
-pub fn stub_1328a4() -> ! { todo!("0x1328a4 _jinit_arith_decoder") }
+pub fn stub_1328a4(arith_code: bool, num_comps: u32) -> ArithDecoderInit { // IDA 0x1328a4: install start_pass; zero the 16 DC + 16 AC stat pairs; arith coding → per-component 64-word DAC areas preset to -1.
+    ArithDecoderInit {
+        dc_stats: [[0; 16]; 16],
+        ac_stats: [[0; 16]; 16],
+        dac: if arith_code { vec![-1; 64 * num_comps as usize] } else { Vec::new() },
+    }
+}
 
 // 0x1329f0 — _process_restart
 #[doc(alias = "_process_restart")]
-pub fn stub_1329f0() -> ! { todo!("0x1329f0 _process_restart") }
+pub fn stub_1329f0(st: &mut ArithDecoder, restart_rows: &mut u32, restart_interval: u32, arith_code: bool, ah: u32, ss: u32, comps: &[ArithDecodeComp], zero_dc: &mut dyn FnMut(u32), zero_ac: &mut dyn FnMut(u32), finish: &mut dyn FnMut() -> bool) { // IDA 0x1329f0: finish-pass hook (FALSE → error 25); baseline → zero DC+AC stats; arith first-scan with Ss → skip both; arith DC-first → DC only; arith refine → both; C = A = 0, CT = -16, restart rows reloaded.
+    if !finish() {
+        panic!("process_restart: error 25");
+    }
+    for c in comps {
+        let skip_both = arith_code && ah == 0 && ss != 0;
+        if !skip_both {
+            zero_dc(c.dc_tbl);
+            if !arith_code || ah != 0 {
+                zero_ac(c.ac_tbl);
+            }
+        }
+    }
+    st.c = 0;
+    st.a = 0;
+    st.ct = -16;
+    *restart_rows = restart_interval;
+}
 
 // 0x132b08 — _decode_mcu
 #[doc(alias = "_decode_mcu")]
-pub fn stub_132b08() -> ! { todo!("0x132b08 _decode_mcu") }
+pub fn stub_132b08(rd: &mut ArithReader, rst: &mut ArithDecodeRestart, do_restart: &mut dyn FnMut(), dc_stats: &mut [Vec<u8>], ac_stats: &mut [Vec<u8>], ctx: &mut [ArithDcCtx], tbl_cap: &[u8], get_byte: &mut dyn FnMut() -> u8) -> bool { // IDA 0x132b08: restart countdown; per-block DC decode (sign/magnitude tree with stats update; magnitude overflow → error 117) + zigzag AC decode (state bit ends the scan; Duff-unrolled zero-run skip, past-63 → error 117; magnitude refine); TRUE. Verified against disasm (EOB branch at 0x132d1c → next block). The -1 death latch is subsumed by the diverging error-117 panic.
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            do_restart();
+            rst.left = rst.interval;
+        }
+        rst.left -= 1;
+    }
+    for cx in ctx.iter_mut() {
+        let cap = tbl_cap[cx.ac_tbl];
+        let dcs = &mut dc_stats[cx.dc_tbl];
+        let sign = rd.bit(&mut dcs[cx.sel], get_byte);
+        if sign != 0 {
+            let mag0 = rd.bit(&mut dcs[cx.sel + 1], get_byte);
+            let j = cx.sel + mag0 as usize + 2;
+            let mut mag = rd.bit(&mut dcs[j], get_byte) as i32;
+            if mag != 0 {
+                let mut kk = 20usize;
+                loop {
+                    if rd.bit(&mut dcs[kk], get_byte) == 0 {
+                        break;
+                    }
+                    mag = mag.wrapping_mul(2);
+                    if mag == 0x8000 {
+                        panic!("decode_mcu: bad magnitude (117)");
+                    }
+                    kk += 1;
+                }
+            }
+            let half0 = (1 << cx.max0) >> 1;
+            if mag < half0 {
+                cx.sel = 0;
+            } else {
+                let half1 = (1 << cx.max1) >> 1;
+                cx.sel = if mag <= half1 { 4 * (sign as usize + 1) } else { 4 * sign as usize + 12 };
+            }
+            let mut rstate = j + 14;
+            let mut v = mag;
+            let mut m = mag;
+            loop {
+                m >>= 1;
+                if m == 0 {
+                    break;
+                }
+                if rd.bit(&mut dcs[rstate], get_byte) != 0 {
+                    v |= m;
+                }
+                rstate += 1;
+            }
+            let diff = v + 1;
+            cx.pred += if sign != 0 { -(diff) } else { diff };
+        } else {
+            cx.sel = 0;
+        }
+        cx.coef[0] = cx.pred as i16;
+        let acs = &mut ac_stats[cx.ac_tbl];
+        let mut k = 1usize;
+        loop {
+            if rd.bit(&mut acs[k * 3 - 3], get_byte) != 0 {
+                break;
+            }
+            let mut j = k;
+            loop {
+                if rd.bit(&mut acs[j * 3 - 2], get_byte) != 0 {
+                    break;
+                }
+                j += 1;
+                if j > 63 {
+                    panic!("decode_mcu: bad zero run (117)");
+                }
+            }
+            k = j;
+            acs[245] = 0;
+            let asign = rd.bit(&mut acs[245], get_byte);
+            let mag0 = rd.bit(&mut acs[k * 3 - 1], get_byte);
+            let mut mag = mag0 as i32;
+            if mag0 != 0 {
+                let mag1 = rd.bit(&mut acs[k * 3 - 1], get_byte);
+                if mag1 != 0 {
+                    mag = 2;
+                    let mut ks = if cap < k as u8 { 217 } else { 189 };
+                    loop {
+                        if rd.bit(&mut acs[ks], get_byte) == 0 {
+                            break;
+                        }
+                        mag = mag.wrapping_mul(2);
+                        if mag == 0x8000 {
+                            panic!("decode_mcu: bad magnitude (117)");
+                        }
+                        ks += 1;
+                    }
+                }
+            }
+            let mut rstate = k * 3 - 1 + 14;
+            let mut v = mag;
+            let mut m = mag;
+            loop {
+                m >>= 1;
+                if m == 0 {
+                    break;
+                }
+                if rd.bit(&mut acs[rstate], get_byte) != 0 {
+                    v |= m;
+                }
+                rstate += 1;
+            }
+            let diff = v + 1;
+            let idx = crate::generated_net_12::JPEG_NATURAL_ORDER[k] as usize;
+            cx.coef[idx] = if asign != 0 { -(diff as i16) } else { diff as i16 };
+            k += 1;
+            if k > 63 {
+                break;
+            }
+        }
+    }
+    true
+}
 
 // 0x13307c — _decode_mcu_AC_refine
 #[doc(alias = "_decode_mcu_AC_refine")]
-pub fn stub_13307c() -> ! { todo!("0x13307c _decode_mcu_AC_refine") }
+pub fn stub_13307c(rd: &mut ArithReader, rst: &mut ArithDecodeRestart, do_restart: &mut dyn FnMut(), ac_stats: &mut [Vec<u8>], coef: &mut [i16; 64], ac_tbl: usize, ss: usize, se: usize, al: u32, get_byte: &mut dyn FnMut() -> u8) -> bool { // IDA 0x13307c: restart countdown; EOBx prescan from Se down ((Se&7) Duff head + 8-wide body, same outcome as the plain reverse scan); per-k refine (known-nonzero → correction bit, new-nonzero → sign + 2^Al magnitude); overrun → error 117; TRUE. Death latch subsumed by the panic.
+    use crate::generated_net_12::JPEG_NATURAL_ORDER;
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            do_restart();
+            rst.left = rst.interval;
+        }
+        rst.left -= 1;
+    }
+    let order = JPEG_NATURAL_ORDER;
+    let mut gate = 1usize;
+    for k in (1..=se).rev() {
+        if coef[order[k] as usize] != 0 {
+            gate = k + 1;
+            break;
+        }
+    }
+    let acs = &mut ac_stats[ac_tbl];
+    let mut i = ss;
+    while i <= se {
+        if i >= gate {
+            if rd.bit(&mut acs[3 * i - 3], get_byte) != 0 {
+                break;
+            }
+        }
+        let idx = order[i] as usize;
+        if coef[idx] != 0 {
+            if rd.bit(&mut acs[3 * i - 1], get_byte) == 0 {
+                i += 1;
+                continue;
+            }
+            let bit = 1 << al;
+            if coef[idx] < 0 {
+                coef[idx] -= bit;
+            } else {
+                coef[idx] += bit;
+            }
+            i += 1;
+            continue;
+        }
+        let mut j = i;
+        loop {
+            if rd.bit(&mut acs[3 * j - 2], get_byte) != 0 {
+                break;
+            }
+            j += 1;
+            if j > se {
+                panic!("decode_mcu_AC_refine: bad zero run (117)");
+            }
+        }
+        i = j;
+        let idx = order[i] as usize;
+        acs[245] = 0;
+        let sign = rd.bit(&mut acs[245], get_byte);
+        coef[idx] = if sign != 0 { -(1 << al) } else { 1 << al };
+        i += 1;
+    }
+    true
+}
 
 // 0x1334a8 — _decode_mcu_DC_refine
 #[doc(alias = "_decode_mcu_DC_refine")]
-pub fn stub_1334a8() -> ! { todo!("0x1334a8 _decode_mcu_DC_refine") }
+pub fn stub_1334a8(rd: &mut ArithReader, rst: &mut ArithDecodeRestart, do_restart: &mut dyn FnMut(), blocks: &mut [&mut [i16; 64]], al: u32, get_byte: &mut dyn FnMut() -> u8) -> bool { // IDA 0x1334a8: restart countdown; per-block single refinement bit ORed as 1 << Al; TRUE.
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            do_restart();
+            rst.left = rst.interval;
+        }
+        rst.left -= 1;
+    }
+    let bit = 1 << al;
+    for b in blocks.iter_mut() {
+        let mut st = 0u8;
+        if rd.bit(&mut st, get_byte) != 0 {
+            b[0] |= bit;
+        }
+    }
+    true
+}
 
 // 0x133548 — _decode_mcu_AC_first
 #[doc(alias = "_decode_mcu_AC_first")]
-pub fn stub_133548() -> ! { todo!("0x133548 _decode_mcu_AC_first") }
+pub fn stub_133548(rd: &mut ArithReader, rst: &mut ArithDecodeRestart, do_restart: &mut dyn FnMut(), ac_stats: &mut [Vec<u8>], coef: &mut [i16; 64], ac_tbl: usize, ss: usize, se: usize, al: u32, tbl_cap: u8, get_byte: &mut dyn FnMut() -> u8) -> bool { // IDA 0x133548: restart countdown; zigzag AC first-scan decode (zero-run skip, sign, magnitude tree with 189/217 selector, refine); overrun/overflow → error 117; TRUE.
+    use crate::generated_net_12::JPEG_NATURAL_ORDER;
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            do_restart();
+            rst.left = rst.interval;
+        }
+        rst.left -= 1;
+    }
+    let acs = &mut ac_stats[ac_tbl];
+    let mut k = ss;
+    while k <= se {
+        if rd.bit(&mut acs[3 * k - 3], get_byte) != 0 {
+            break;
+        }
+        let mut j = k;
+        loop {
+            if rd.bit(&mut acs[3 * j - 2], get_byte) != 0 {
+                break;
+            }
+            j += 1;
+            if j > se {
+                panic!("decode_mcu_AC_first: bad zero run (117)");
+            }
+        }
+        k = j;
+        acs[245] = 0;
+        let sign = rd.bit(&mut acs[245], get_byte);
+        let mag0 = rd.bit(&mut acs[3 * k - 1], get_byte);
+        let mut mag = mag0 as i32;
+        if mag0 != 0 {
+            let mag1 = rd.bit(&mut acs[3 * k - 1], get_byte);
+            if mag1 != 0 {
+                mag = 2;
+                let mut ks = if tbl_cap < k as u8 { 217 } else { 189 };
+                loop {
+                    if rd.bit(&mut acs[ks], get_byte) == 0 {
+                        break;
+                    }
+                    mag = mag.wrapping_mul(2);
+                    if mag == 0x8000 {
+                        panic!("decode_mcu_AC_first: bad magnitude (117)");
+                    }
+                    ks += 1;
+                }
+            }
+        }
+        let mut rstate = 3 * k - 1 + 14;
+        let mut v = mag;
+        let mut m = mag;
+        loop {
+            m >>= 1;
+            if m == 0 {
+                break;
+            }
+            if rd.bit(&mut acs[rstate], get_byte) != 0 {
+                v |= m;
+            }
+            rstate += 1;
+        }
+        let diff = v + 1;
+        let idx = JPEG_NATURAL_ORDER[k] as usize;
+        coef[idx] = ((if sign != 0 { -(diff) } else { diff }) << al) as i16;
+        k += 1;
+    }
+    true
+}
 
 // 0x133758 — _decode_mcu_DC_first
 #[doc(alias = "_decode_mcu_DC_first")]
-pub fn stub_133758() -> ! { todo!("0x133758 _decode_mcu_DC_first") }
+pub fn stub_133758(rd: &mut ArithReader, rst: &mut ArithDecodeRestart, do_restart: &mut dyn FnMut(), dc_stats: &mut [Vec<u8>], ctx: &mut [ArithDcCtx], al: u32, get_byte: &mut dyn FnMut() -> u8) -> bool { // IDA 0x133758: restart countdown; per-block DC first-scan decode (same magnitude tree/stats update as decode_mcu); result stored shifted by Al; TRUE.
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            do_restart();
+            rst.left = rst.interval;
+        }
+        rst.left -= 1;
+    }
+    for cx in ctx.iter_mut() {
+        let dcs = &mut dc_stats[cx.dc_tbl];
+        let sign = rd.bit(&mut dcs[cx.sel], get_byte);
+        if sign != 0 {
+            let mag0 = rd.bit(&mut dcs[cx.sel + 1], get_byte);
+            let j = cx.sel + mag0 as usize + 2;
+            let mut mag = rd.bit(&mut dcs[j], get_byte) as i32;
+            if mag != 0 {
+                let mut kk = 20usize;
+                loop {
+                    if rd.bit(&mut dcs[kk], get_byte) == 0 {
+                        break;
+                    }
+                    mag = mag.wrapping_mul(2);
+                    if mag == 0x8000 {
+                        panic!("decode_mcu_DC_first: bad magnitude (117)");
+                    }
+                    kk += 1;
+                }
+            }
+            let half0 = (1 << cx.max0) >> 1;
+            if mag < half0 {
+                cx.sel = 0;
+            } else {
+                let half1 = (1 << cx.max1) >> 1;
+                cx.sel = if mag <= half1 { 4 * (sign as usize + 1) } else { 4 * sign as usize + 12 };
+            }
+            let mut rstate = j + 14;
+            let mut v = mag;
+            let mut m = mag;
+            loop {
+                m >>= 1;
+                if m == 0 {
+                    break;
+                }
+                if rd.bit(&mut dcs[rstate], get_byte) != 0 {
+                    v |= m;
+                }
+                rstate += 1;
+            }
+            let diff = v + 1;
+            cx.pred += if sign != 0 { -(diff) } else { diff };
+        } else {
+            cx.sel = 0;
+        }
+        cx.coef[0] = (cx.pred << al) as i16;
+    }
+    true
+}
 
 // 0x133980 — _start_pass_0
 #[doc(alias = "_start_pass_0")]
-pub fn stub_133980() -> ! { todo!("0x133980 _start_pass_0") }
+pub fn stub_133980(arith_code: bool, ss: u32, se: u32, ah: u32, al: u32, comps: &[(u32, u32)], dac: &mut [Vec<i32>], dc_stats: &mut Vec<Vec<u8>>, ac_stats: &mut Vec<Vec<u8>>) -> ArithDecodeMethod { // IDA 0x133980: baseline → full-band check (else error 125); progressive → band validation (error 17), DAC overlap checks (error 118, entries must equal Ah then take Al); per-comp DC (64B) + AC (256B) stat areas ensured and zeroed; method select.
+    if !arith_code {
+        if ss != 0 || se != 63 || ah != 0 {
+            panic!("start_pass: bad baseline band (125)");
+        }
+        return ArithDecodeMethod::Baseline;
+    }
+    if ss == 0 {
+        if se != 0 {
+            panic!("start_pass: bad spectral band (17)");
+        }
+        if ah != 0 && ah - 1 != al {
+            panic!("start_pass: bad successive approximation (17)");
+        }
+        if al > 13 {
+            panic!("start_pass: bad successive approximation (17)");
+        }
+    } else if ss > se || se > 63 || ah > 13 {
+        panic!("start_pass: bad spectral band (17)");
+    }
+    for (i, &(dc_tbl, _)) in comps.iter().enumerate() {
+        if dc_tbl > 15 {
+            panic!("start_pass: bad DC table (50)");
+        }
+        if ss != 0 && dac[dc_tbl as usize][ss as usize] < 0 {
+            panic!("start_pass: overlapping scans (118)");
+        }
+        for k in ss..=se {
+            let v = dac[dc_tbl as usize][k as usize];
+            if v.max(0) != ah as i32 {
+                panic!("start_pass: overlapping scans (118)");
+            }
+            dac[dc_tbl as usize][k as usize] = al as i32;
+        }
+        let _ = i;
+    }
+    while dc_stats.len() < comps.len() {
+        dc_stats.push(vec![0; 64]);
+    }
+    while ac_stats.len() < comps.len() {
+        ac_stats.push(vec![0; 256]);
+    }
+    for d in dc_stats.iter_mut().take(comps.len()) {
+        d.fill(0);
+    }
+    for a in ac_stats.iter_mut().take(comps.len()) {
+        a.fill(0);
+    }
+    if ah != 0 {
+        if ss != 0 {
+            ArithDecodeMethod::AcRefine
+        } else {
+            ArithDecodeMethod::DcRefine
+        }
+    } else if ss != 0 {
+        ArithDecodeMethod::AcFirst
+    } else {
+        ArithDecodeMethod::DcFirst
+    }
+}
 
 // 0x133d60 — _start_iMCU_row_0
 #[doc(alias = "_start_iMCU_row_0")]
-pub fn stub_133d60() -> ! { todo!("0x133d60 _start_iMCU_row_0") }
+pub fn stub_133d60(cur: &mut ImcuRow0, comps_in_scan: i32, cur_row: u32, last_row: u32, first_h: u32, last_h: u32) -> i32 { // IDA 0x133d60: single-component scans pick the row height by position, else 1; zero the counters; 0.
+    if comps_in_scan <= 1 {
+        cur.rows_this = if cur_row >= last_row { last_h } else { first_h };
+    } else {
+        cur.rows_this = 1;
+    }
+    cur.row_ctr = 0;
+    cur.rows_done = 0;
+    0
+}
 
 // 0x133dac — _start_input_pass
 #[doc(alias = "_start_input_pass")]
-pub fn stub_133dac() -> ! { todo!("0x133dac _start_input_pass") }
+pub fn stub_133dac(cur: &mut ImcuRow0, input_row: &mut u32, comps_in_scan: i32, last_row: u32, first_h: u32, last_h: u32) -> i32 { // IDA 0x133dac: reset the input row, then the iMCU-row prologue.
+    *input_row = 0;
+    stub_133d60(cur, comps_in_scan, 0, last_row, first_h, last_h)
+}
 
 // 0x133db8 — _dummy_consume_data
 #[doc(alias = "_dummy_consume_data")]
-pub fn stub_133db8() -> ! { todo!("0x133db8 _dummy_consume_data") }
+pub fn stub_133db8() -> i32 { // IDA 0x133db8: dummy consume-data hook; returns 0.
+    0
+}
 
 // 0x133dc0 — _consume_data
 #[doc(alias = "_consume_data")]
