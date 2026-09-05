@@ -162,8 +162,11 @@ pub fn stub_665958() -> ! {
 
 // 0x668cf0 — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_668cf0() -> ! {
-    todo!("0x668cf0 __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv")
+pub fn stub_668cf0() -> &'static str {
+    // IDA 0x668cf0 (`RBX::FactoryProduct<TextBox, GuiObject,
+    // sTextBox, Instance>::getClassName`): resolves the static
+    // creator (0x668cf4) and returns its class name — "TextBox".
+    "TextBox"
 }
 
 // 0x668e3c — __ZThn32_NK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE12getClassNameEv

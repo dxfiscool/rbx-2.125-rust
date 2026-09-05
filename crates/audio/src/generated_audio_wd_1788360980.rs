@@ -332,7 +332,7 @@ pub fn stub_666e84(
     let commit = state.focus_text.clone();
     stub_665da0(state, &commit, filter_pass);
     state.focused = false;
-    state.external_focus = false;
+    state.cursor_visible = false;
     state.key_phase = 0;
     fire_focused(submitted);
 }
@@ -399,7 +399,7 @@ pub fn stub_667144(
     // datamodel flag sets fold away.
     state.cursor = state.focus_text.len();
     state.focused = true;
-    state.external_focus = true;
+    state.cursor_visible = true;
     if state.clear_text_on_focus {
         state.focus_text.clear();
         state.cursor = 0;
@@ -435,7 +435,7 @@ pub fn stub_667388(state: &mut TextBoxState, submitted: bool, filter_pass: bool,
     let commit = state.focus_text.clone();
     stub_665da0(state, &commit, filter_pass);
     state.focused = false;
-    state.external_focus = false;
+    state.cursor_visible = false;
     state.key_phase = 0;
     fire_focused(submitted);
 }
@@ -748,17 +748,20 @@ pub fn stub_667b80(
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getTextWithCursor(void)")]
 #[doc(alias = "__ZN3RBX7TextBox17getTextWithCursorEv")]
-pub fn stub_667dd8(state: &TextBoxState, new_fonts: bool) -> String {
+pub fn stub_667dd8(state: &mut TextBoxState, new_fonts: bool) -> String {
     // IDA 0x667dd8 (`RBX::TextBox::getTextWithCursor`): the
     // cursor>=0 assert (TextBox.cpp:444) rides the `usize` cursor;
-    // the cursor clamps to the +608 length (0x667e86-0x667ea2)
-    // and the marker goes in at the cursor — `\x01` under the new
-    // fonts flag (0x667ec6-0x667eda), `|` otherwise (0x667ef2).
-    let at = snap_idx(&state.focus_text, state.cursor);
+    // the cursor clamps to the +608 length and the clamped value
+    // is written back (0x667e86-0x667ea2); the marker goes in at
+    // the cursor — `\x01` under the new fonts flag
+    // Binary clamps both ways (0x667e86-0x667ea2); `snap_idx`
+    // already floors to 0..=len.
+    let clamped = snap_idx(&state.focus_text, state.cursor);
+    state.cursor = clamped;
     let marker = if new_fonts { "\x01" } else { "|" };
-    let mut out = state.focus_text[..at].to_owned();
+    let mut out = state.focus_text[..clamped].to_owned();
     out.push_str(marker);
-    out.push_str(&state.focus_text[at..]);
+    out.push_str(&state.focus_text[clamped..]);
     out
 }
 
@@ -768,8 +771,17 @@ pub fn stub_667dd8(state: &TextBoxState, new_fonts: bool) -> String {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getTextWithBlankCursor(void)")]
 #[doc(alias = "__ZN3RBX7TextBox22getTextWithBlankCursorEv")]
-pub fn stub_667f3c() -> ! {
-    todo!("0x667f3c __ZN3RBX7TextBox22getTextWithBlankCursorEv")
+pub fn stub_667f3c(state: &mut TextBoxState, new_fonts: bool) -> String {
+    // IDA 0x667f3c (`RBX::TextBox::getTextWithBlankCursor`): the
+    // cursor>=0 assert (TextBox.cpp:460) rides the `usize` cursor;
+    // same clamp-and-write-back as `getTextWithCursor`
+    let clamped = snap_idx(&state.focus_text, state.cursor);
+    state.cursor = clamped;
+    let mut out = state.focus_text.clone();
+    if !new_fonts {
+        out.insert(clamped, '\x01');
+    }
+    out
 }
 
 
@@ -778,8 +790,22 @@ pub fn stub_667f3c() -> ! {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::TextBox::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX7TextBox8render2dEPNS_5AdornE")]
-pub fn stub_668088() -> ! {
-    todo!("0x668088 __ZN3RBX7TextBox8render2dEPNS_5AdornE")
+pub fn stub_668088(state: &mut TextBoxState, now: f64) {
+    // IDA 0x668088 (`RBX::TextBox::render2d`): gated on +605
+    // (0x6680b6); past 0.5 since the +612 focus time the +606
+    // cursor-blink flag toggles and +612 refreshes
+    // (0x6680ea-0x668122, host: the `now` step); the blink-on
+    // path draws `getTextWithCursor`, the blink-off path
+    // `getTextWithBlankCursor` (both read-only), each through
+    // `getRenderBackgroundColor4`/`render2dTextImpl` triplets —
+    // the `Adorn` rasterization folds away (no host renderer).
+    if !state.focused {
+        return;
+    }
+    if now - state.focus_time > 0.5 {
+        state.cursor_visible = !state.cursor_visible;
+        state.focus_time = now;
+    }
 }
 
 
@@ -798,8 +824,10 @@ pub fn stub_66856c() {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getMultiLine(void)const")]
 #[doc(alias = "__ZNK3RBX7TextBox12getMultiLineEv")]
-pub fn stub_668574() -> ! {
-    todo!("0x668574 __ZNK3RBX7TextBox12getMultiLineEv")
+pub fn stub_668574(state: &TextBoxState) -> bool {
+    // IDA 0x668574 (`RBX::TextBox::getMultiLine`): returns the +652
+    // byte (0x668578).
+    state.multi_line
 }
 
 
@@ -817,8 +845,10 @@ pub fn stub_66857c() {
 // type: _DWORD __fastcall(RBX::TextBox *__hidden this)
 #[doc(alias = "RBX::TextBox::getClearTextOnFocus(void)const")]
 #[doc(alias = "__ZNK3RBX7TextBox19getClearTextOnFocusEv")]
-pub fn stub_6685a0() -> ! {
-    todo!("0x6685a0 __ZNK3RBX7TextBox19getClearTextOnFocusEv")
+pub fn stub_6685a0(state: &TextBoxState) -> bool {
+    // IDA 0x6685a0 (`RBX::TextBox::getClearTextOnFocus`): returns
+    // the +607 byte (0x6685a4).
+    state.clear_text_on_focus
 }
 
 
@@ -845,8 +875,10 @@ pub fn stub_6685cc() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getText(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin7getTextEv")]
-pub fn stub_6685f0() -> ! {
-    todo!("0x6685f0 __ZNK3RBX12GuiTextMixin7getTextEv")
+pub fn stub_6685f0(state: &TextBoxState) -> String {
+    // IDA 0x6685f0 (`RBX::GuiTextMixin::getText`): copies the
+    // mixin +4 string (0x6685fa) — the `TextBox` +540 `Text`.
+    state.text.clone()
 }
 
 
@@ -864,8 +896,10 @@ pub fn stub_6685fc() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getFontSize(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin11getFontSizeEv")]
-pub fn stub_668620() -> ! {
-    todo!("0x668620 __ZNK3RBX12GuiTextMixin11getFontSizeEv")
+pub fn stub_668620(state: &TextBoxState) -> u32 {
+    // IDA 0x668620 (`RBX::GuiTextMixin::getFontSize`): returns
+    // mixin word 2 (0x668622) — the `TextBox` +544 `FontSize` id.
+    state.font_size
 }
 
 
@@ -883,8 +917,10 @@ pub fn stub_668624() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getFont(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin7getFontEv")]
-pub fn stub_668648() -> ! {
-    todo!("0x668648 __ZNK3RBX12GuiTextMixin7getFontEv")
+pub fn stub_668648(state: &TextBoxState) -> u32 {
+    // IDA 0x668648 (`RBX::GuiTextMixin::getFont`): returns mixin
+    // word 14 (0x66864a) — the `TextBox` +592 `Font` id.
+    state.font
 }
 
 
@@ -902,8 +938,13 @@ pub fn stub_66864c() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextColor(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin12getTextColorEv")]
-pub fn stub_668670() -> ! {
-    todo!("0x668670 __ZNK3RBX12GuiTextMixin12getTextColorEv")
+pub fn stub_668670(state: &TextBoxState) -> u32 {
+    // IDA 0x668670 (`RBX::GuiTextMixin::getTextColor`):
+    // `BrickColor::closest` over the mixin words 3-5 color3
+    // (0x668678-0x66868a). The recompute needs the runtime
+    // `BrickMap` palette (same gap as `setTextColor` at
+    // 0x665fcc): host returns the cached `TextColor` id.
+    state.text_color
 }
 
 
@@ -921,8 +962,11 @@ pub fn stub_66868c() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextColor3(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin13getTextColor3Ev")]
-pub fn stub_6686b0() -> ! {
-    todo!("0x6686b0 __ZNK3RBX12GuiTextMixin13getTextColor3Ev")
+pub fn stub_6686b0(state: &TextBoxState) -> [f32; 3] {
+    // IDA 0x6686b0 (`RBX::GuiTextMixin::getTextColor3`): copies
+    // mixin words 3-5 (0x6686b2-0x6686ba) — the `TextBox`
+    // +548/+552/+556 `TextColor3`.
+    state.text_color3
 }
 
 
@@ -940,8 +984,11 @@ pub fn stub_6686c0() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextTransparency(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin19getTextTransparencyEv")]
-pub fn stub_6686e4() -> ! {
-    todo!("0x6686e4 __ZNK3RBX12GuiTextMixin19getTextTransparencyEv")
+pub fn stub_6686e4(state: &TextBoxState) -> f32 {
+    // IDA 0x6686e4 (`RBX::GuiTextMixin::getTextTransparency`):
+    // returns mixin word 6 (0x6686e6) — the `TextBox` +560
+    // `TextTransparency`.
+    state.text_transparency
 }
 
 
@@ -959,8 +1006,10 @@ pub fn stub_6686e8() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextWrap(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin11getTextWrapEv")]
-pub fn stub_66870c() -> ! {
-    todo!("0x66870c __ZNK3RBX12GuiTextMixin11getTextWrapEv")
+pub fn stub_66870c(state: &TextBoxState) -> bool {
+    // IDA 0x66870c (`RBX::GuiTextMixin::getTextWrap`): returns
+    // mixin byte 44 (0x668710) — the `TextBox` +580 `TextWrap`.
+    state.text_wrap
 }
 
 
@@ -969,8 +1018,10 @@ pub fn stub_66870c() -> ! {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextScale(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin12getTextScaleEv")]
-pub fn stub_668714() -> ! {
-    todo!("0x668714 __ZNK3RBX12GuiTextMixin12getTextScaleEv")
+pub fn stub_668714(state: &TextBoxState) -> bool {
+    // IDA 0x668714 (`RBX::GuiTextMixin::getTextScale`): returns
+    // mixin byte 45 (0x668718) — the `TextBox` +581 `TextScaled`.
+    state.text_scaled
 }
 
 
@@ -979,8 +1030,10 @@ pub fn stub_668714() -> ! {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getXAlignment(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin13getXAlignmentEv")]
-pub fn stub_66871c() -> ! {
-    todo!("0x66871c __ZNK3RBX12GuiTextMixin13getXAlignmentEv")
+pub fn stub_66871c(state: &TextBoxState) -> u32 {
+    // IDA 0x66871c (`RBX::GuiTextMixin::getXAlignment`): returns
+    // mixin word 12 (0x66871e) — the `TextBox` +584 alignment id.
+    state.x_alignment
 }
 
 
@@ -998,8 +1051,10 @@ pub fn stub_668720() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getYAlignment(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin13getYAlignmentEv")]
-pub fn stub_668744() -> ! {
-    todo!("0x668744 __ZNK3RBX12GuiTextMixin13getYAlignmentEv")
+pub fn stub_668744(state: &TextBoxState) -> u32 {
+    // IDA 0x668744 (`RBX::GuiTextMixin::getYAlignment`): returns
+    // mixin word 13 (0x668746) — the `TextBox` +588 alignment id.
+    state.y_alignment
 }
 
 
@@ -1026,8 +1081,11 @@ pub fn stub_66876c() {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextStrokeColor3(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin19getTextStrokeColor3Ev")]
-pub fn stub_668790() -> ! {
-    todo!("0x668790 __ZNK3RBX12GuiTextMixin19getTextStrokeColor3Ev")
+pub fn stub_668790(state: &TextBoxState) -> [f32; 3] {
+    // IDA 0x668790 (`RBX::GuiTextMixin::getTextStrokeColor3`):
+    // copies mixin words 7-9 (0x668792-0x66879a) — the `TextBox`
+    // +564/+568/+572 `TextStrokeColor3`.
+    state.text_stroke_color3
 }
 
 
@@ -1036,8 +1094,11 @@ pub fn stub_668790() -> ! {
 // type: _DWORD __fastcall(RBX::GuiTextMixin *__hidden this)
 #[doc(alias = "RBX::GuiTextMixin::getTextStrokeTransparency(void)const")]
 #[doc(alias = "__ZNK3RBX12GuiTextMixin25getTextStrokeTransparencyEv")]
-pub fn stub_6687a0() -> ! {
-    todo!("0x6687a0 __ZNK3RBX12GuiTextMixin25getTextStrokeTransparencyEv")
+pub fn stub_6687a0(state: &TextBoxState) -> f32 {
+    // IDA 0x6687a0 (`RBX::GuiTextMixin::getTextStrokeTransparency`):
+    // returns mixin word 10 (0x6687a2) — the `TextBox` +576
+    // `TextStrokeTransparency`.
+    state.text_stroke_transparency
 }
 
 
@@ -1046,8 +1107,12 @@ pub fn stub_6687a0() -> ! {
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this, float)
 #[doc(alias = "RBX::GuiObject::setTransparencyLegacy(float)")]
 #[doc(alias = "__ZN3RBX9GuiObject21setTransparencyLegacyEf")]
-pub fn stub_6687a4() -> ! {
-    todo!("0x6687a4 __ZN3RBX9GuiObject21setTransparencyLegacyEf")
+pub fn stub_6687a4() {
+    // IDA 0x6687a4 (`RBX::GuiObject::setTransparencyLegacy`,
+    // thunk): forwards straight to `setBackgroundTransparency`
+    // (0x6687a4) — GuiObject-layer only, no `TextBox`-member
+    // effect (unlike the `TextBox` override at 0x6665a4).
+    // Carrier no-op.
 }
 
 
@@ -1056,8 +1121,12 @@ pub fn stub_6687a4() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::TextService * RBX::ServiceProvider::create<RBX::TextService>(RBX::Instance const*)")]
 #[doc(alias = "__ZN3RBX15ServiceProvider6createINS_11TextServiceEEEPT_PKNS_8InstanceE")]
-pub fn stub_6687a8() -> ! {
-    todo!("0x6687a8 __ZN3RBX15ServiceProvider6createINS_11TextServiceEEEPT_PKNS_8InstanceE")
+pub fn stub_6687a8() -> bool {
+    // IDA 0x6687a8 (`RBX::ServiceProvider::create<RBX::TextService>`):
+    // resolves the provider (0x6687ac) and recurses, else
+    // returns 0 (0x6687b4). Service-locator plumbing with no host
+    // provider: the exact no-provider floor.
+    false
 }
 
 
@@ -1066,8 +1135,26 @@ pub fn stub_6687a8() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::GuiObject::convertFontSize(RBX::TextService::FontSize)")]
 #[doc(alias = "__ZN3RBX9GuiObject15convertFontSizeENS_11TextService8FontSizeE")]
-pub fn stub_6687c0() -> ! {
-    todo!("0x6687c0 __ZN3RBX9GuiObject15convertFontSizeENS_11TextService8FontSizeE")
+pub fn stub_6687c0(size: u32) -> f32 {
+    // IDA 0x6687c0 (`RBX::GuiObject::convertFontSize`): the
+    // `FontSize`-id to point-size table — 0..=9 map to 8, 9, 10,
+    // 11, 12, 14, 18, 24, 36, 48 (0x668824-0x668866); anything
+    // else asserts (`GuiObject.h:141`) and yields 0.0
+    // (0x6687cc-0x66881e, host: silent floor per the crate's
+    // assert-folding convention).
+    match size {
+        0 => 8.0,
+        1 => 9.0,
+        2 => 10.0,
+        3 => 11.0,
+        4 => 12.0,
+        5 => 14.0,
+        6 => 18.0,
+        7 => 24.0,
+        8 => 36.0,
+        9 => 48.0,
+        _ => 0.0,
+    }
 }
 
 
@@ -1076,8 +1163,10 @@ pub fn stub_6687c0() -> ! {
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "RBX::GuiObject::getPersistentDataCost(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiObject21getPersistentDataCostEv")]
-pub fn stub_668878() -> ! {
-    todo!("0x668878 __ZNK3RBX9GuiObject21getPersistentDataCostEv")
+pub fn stub_668878(base: i32) -> i32 {
+    // IDA 0x668878 (`RBX::GuiObject::getPersistentDataCost`): the
+    // `Instance` base cost (0x668882, host: `base`) plus 6.
+    base + 6
 }
 
 
@@ -1086,8 +1175,13 @@ pub fn stub_668878() -> ! {
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(char const*,bool)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_")]
-pub fn stub_668884() -> ! {
-    todo!("0x668884 __ZN3rbx7signals6signalIFvPKcbEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvN3RBX7TextBoxES3_bEENS8_5list3INS8_5valueIPSD_EENS7_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_668884() {
+    // IDA 0x668884 (`rbx::signals::signal<void (char
+    // const*,bool)>::connect` for the `externalReleaseFocus`
+    // bind): allocates the slot, inserts it into the signal and
+    // hands back the connection (0x66889c-0x6688f4). Connection
+    // management folds into the host fire-closure seams. Carrier
+    // no-op.
 }
 
 
@@ -1096,8 +1190,12 @@ pub fn stub_668884() -> ! {
 // type: int(void)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::operator()(rbx_core::SharedPtr<RBX::TextBox>)")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_")]
-pub fn stub_6688f8() -> ! {
-    todo!("0x6688f8 __ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_")
+pub fn stub_6688f8() {
+    // IDA 0x6688f8 (`rbx::signals::signal_with_args<1, void
+    // (shared_ptr<TextBox>)>::operator()`): slot iteration and
+    // invocation for the `Focused` fire (0x66890a-0x668ab4). The
+    // fire itself is the host closure (`capture/gainFocus`).
+    // Carrier no-op.
 }
 
 
@@ -1106,8 +1204,13 @@ pub fn stub_6688f8() -> ! {
 // type: int(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")]
 #[doc(alias = "__ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_")]
-pub fn stub_668adc() -> ! {
-    todo!("0x668adc __ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_")
+pub fn stub_668adc() {
+    // IDA 0x668adc (`RBX::shared_from<RBX::TextBox>`): lifts the
+    // weak `enable_shared_from_this` to a `shared_ptr`
+    // (0x668b2a-0x668ba0), throwing `bad_weak_ptr` when expired
+    // (0x668bde-0x668bf8). `SharedPtr` is `Arc` in the host and
+    // the pre-fire lift folds into the fire-closure seams (the
+    // object is borrowed live). Carrier no-op.
 }
 
 
@@ -1136,8 +1239,12 @@ pub fn stub_668c50() {
 // type: _DWORD __fastcall(RBX::GuiObject *__hidden this)
 #[doc(alias = "RBX::GuiObject::canProcessMeAndDescendants(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiObject26canProcessMeAndDescendantsEv")]
-pub fn stub_668d00() -> ! {
-    todo!("0x668d00 __ZNK3RBX9GuiObject26canProcessMeAndDescendantsEv")
+pub fn stub_668d00(can_process: bool) -> bool {
+    // IDA 0x668d00 (`RBX::GuiObject::canProcessMeAndDescendants`):
+    // returns the +512 byte (0x668d04) — a `GuiObject`-base cell
+    // outside the modeled `TextBox` members. Host: pass-through
+    // seam for the base flag.
+    can_process
 }
 
 

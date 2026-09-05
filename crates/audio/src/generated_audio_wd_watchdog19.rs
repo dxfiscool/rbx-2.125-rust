@@ -1381,7 +1381,7 @@ pub fn stub_665c98(state: &mut TextBoxState, input_service_created: bool, fire_f
     // the cleared focus text, the armed cell and the gated call.
     state.cursor = state.focus_text.len();
     state.focused = true;
-    state.external_focus = true;
+    state.cursor_visible = true;
     state.focus_text.clear();
     state.cursor = 0;
     state.focus_armed = true;

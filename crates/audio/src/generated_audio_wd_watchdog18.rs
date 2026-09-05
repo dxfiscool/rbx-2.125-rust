@@ -61,7 +61,7 @@ pub enum XAlignmentVariant {
 /// "TextBox") and focus-composition (+608) strings, the +620
 /// compose cursor, the +612 focus time, the +628/+632/+636/
 /// +640/+648 held-key (type, code, char, time, phase) repeat
-/// driver, the +604 armed / +605 focused / +606 external-focus /
+/// driver, the +604 armed / +605 focused / +606 cursor-blink /
 /// +607 clear-on-focus / +652 multi-line cells (C2: 0/0/0/1/0).
 /// `Default` replays the C2-grounded values (a fresh `TextBox`).
 #[derive(Debug, Clone)]
@@ -81,7 +81,7 @@ pub struct TextBoxState {
     pub clear_text_on_focus: bool,
     pub focus_armed: bool,
     pub focused: bool,
-    pub external_focus: bool,
+    pub cursor_visible: bool,
     pub focus_text: String,
     pub text: String,
     pub cursor: usize,
@@ -111,7 +111,7 @@ impl Default for TextBoxState {
             clear_text_on_focus: true,
             focus_armed: false,
             focused: false,
-            external_focus: false,
+            cursor_visible: false,
             focus_text: String::new(),
             text: "TextBox".to_owned(),
             cursor: 0,
