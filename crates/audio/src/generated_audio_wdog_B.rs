@@ -8,8 +8,8 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    FontSizeVariant, GuiButtonFontSizeProp, GuiTextButtonState, FONTSIZE_ITEMS, fontsize_index,
-    fontsize_name,
+    FontSizeVariant, GuiButtonFontSizeProp, GuiButtonStringProp, GuiTextButtonState, TextLabelState,
+    FONTSIZE_ITEMS, fontsize_index, fontsize_name,
 };
 
 const _: () = {
@@ -345,22 +345,37 @@ pub fn stub_0x677484() -> bool {
 // 0x677488 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x677488() -> ! {
-    todo!("0x677488 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x677488(state: &GuiTextButtonState) -> u32 {
+    // IDA 0x677488 (`GetSetImpl<GuiTextButton FontSize>::getValue`):
+    // the member-pointer resolve (null described reads at offset 0
+    // with the +800 `Instance`-to-mixin adjust; virtual when the low
+    // bit is set) tail-calling the getter. The member is
+    // `getFontSize`; the pointer folds into the field.
+    state.font_size
 }
 
 // 0x6774b4 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(RBX::TextService::FontSize)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::FontSize const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_0x6774b4() -> ! {
-    todo!("0x6774b4 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_0x6774b4(state: &mut GuiTextButtonState, value: u32) {
+    // IDA 0x6774b4 (`GetSetImpl<GuiTextButton FontSize>::setValue`):
+    // the member-pointer resolve over +12/+16 tail-calling the
+    // setter with the input word. The member is `setFontSize`; the
+    // pointer folds into the field (its raises fold into the store).
+    state.font_size = value;
 }
 
 // 0x6774d8 — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::PropDescriptor<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>(char const*,char const*,std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x6774d8() -> ! {
-    todo!("0x6774d8 __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_0x6774d8(name: &str, category: &str, attributes: u32, permissions: u32) -> GuiButtonStringProp {
+    // IDA 0x6774d8 (`PropDescriptor<GuiTextButton,
+    // string>::PropDescriptor`): builds the `GetSetImpl` member-pair
+    // cell plus the typed descriptor identity with name/category/
+    // attributes/permissions. The pair folds into the `text` field
+    // (`getText`/`setText`). Host: the identity half. Same shape as
+    // the `TextBox` twin at 0x671804.
+    GuiButtonStringProp::new(name, category, attributes, permissions)
 }
 
 // 0x6775ec — __ZN3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsED0Ev
@@ -373,155 +388,297 @@ pub fn stub_0x6775ec() {
 // 0x677618 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_0x677618() -> ! {
-    todo!("0x677618 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_0x677618() -> bool {
+    // IDA 0x677618 (`GetSetImpl<GuiTextButton string>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67761c — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_0x67761c() -> ! {
-    todo!("0x67761c __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_0x67761c() -> bool {
+    // IDA 0x67761c (`GetSetImpl<GuiTextButton string>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x677620 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x677620() -> ! {
-    todo!("0x677620 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_0x677620(state: &GuiTextButtonState) -> String {
+    // IDA 0x677620 (`GetSetImpl<GuiTextButton string>::getValue`):
+    // the member-pointer resolve (+800 adjust) tail-calling the
+    // getter. The member is `getText`; the pointer folds into the
+    // field.
+    state.text.clone()
 }
 
 // 0x677658 — __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiTextButton,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::GuiTextButton::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x677658() -> ! {
-    todo!("0x677658 __ZNK3RBX10Reflection14PropDescriptorINS_13GuiTextButtonESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_0x677658(state: &mut GuiTextButtonState, text: &str, filter_pass: bool) {
+    // IDA 0x677658 (`GetSetImpl<GuiTextButton string>::setValue`):
+    // copies the input and tail-calls the setter member-pointer.
+    // The member is `setText`; the pointer folds into the 0x67303c
+    // twin with its filter seam.
+    crate::generated_audio_wd_watchdog_Y::stub_67303c(state, text, filter_pass);
 }
 
 // 0x6782ec — __ZN3RBX9TextLabelC1Ev
 #[doc(alias = "RBX::TextLabel::TextLabel(void)")]
 #[doc(alias = "__ZN3RBX9TextLabelC1Ev")]
-pub fn stub_0x6782ec() -> ! {
-    todo!("0x6782ec __ZN3RBX9TextLabelC1Ev")
+pub fn stub_0x6782ec() -> TextLabelState {
+    // IDA 0x6782ec (`RBX::TextLabel::TextLabel`, C1): thunk
+    // forwarding to the C2 (host: the 0x6782f0 twin).
+    stub_0x6782f0()
 }
 
 // 0x6782f0 — __ZN3RBX9TextLabelC2Ev
 #[doc(alias = "RBX::TextLabel::TextLabel(void)")]
 #[doc(alias = "__ZN3RBX9TextLabelC2Ev")]
-pub fn stub_0x6782f0() -> ! {
-    todo!("0x6782f0 __ZN3RBX9TextLabelC2Ev")
+pub fn stub_0x6782f0() -> TextLabelState {
+    // IDA 0x6782f0 (`RBX::TextLabel::TextLabel`, C2): the
+    // `GuiLabel` base, vtables, class descriptor and registrar
+    // fold away; the member stores ground `TextLabelState::default`
+    // — +540 `Text` = "Label", +548..+556 the palette-26
+    // `BrickColor::color3`, +560/+564..+572 zero
+    // transparencies/colors, +576 the 1.0 stroke transparency,
+    // +580/+581 cleared wrap/scale, +584 = 2 / +588 = 1 alignments,
+    // +544/+592 cleared font ids.
+    TextLabelState::default()
 }
 
 // 0x6785c8 — __ZN3RBX9TextLabel7setTextESs
 #[doc(alias = "RBX::TextLabel::setText(std::string)")]
 #[doc(alias = "__ZN3RBX9TextLabel7setTextESs")]
-pub fn stub_0x6785c8() -> ! {
-    todo!("0x6785c8 __ZN3RBX9TextLabel7setTextESs")
+pub fn stub_0x6785c8(state: &mut TextLabelState, text: &str, filter_pass: bool) {
+    // IDA 0x6785c8 (`RBX::TextLabel::setText`): over-0x400 inputs
+    // are cut down; a profanity hit without the fw+22 override skips
+    // silently; on difference from the +540 text it assigns it,
+    // zeroes word 134 (+536) and raises three descriptors (folds
+    // into the mutation). Same shape as the `TextBox` twin at
+    // 0x665da0. Host: mutate on change only.
+    if !filter_pass {
+        return;
+    }
+    let mut clipped = text.to_owned();
+    if clipped.len() > 0x400 {
+        let mut end = 0x400;
+        while !clipped.is_char_boundary(end) {
+            end -= 1;
+        }
+        clipped.truncate(end);
+    }
+    if state.text == clipped {
+        return;
+    }
+    state.text = clipped;
 }
 
 // 0x678784 — __ZN3RBX9TextLabel11setFontSizeENS_11TextService8FontSizeE
 #[doc(alias = "RBX::TextLabel::setFontSize(RBX::TextService::FontSize)")]
 #[doc(alias = "__ZN3RBX9TextLabel11setFontSizeENS_11TextService8FontSizeE")]
-pub fn stub_0x678784() -> ! {
-    todo!("0x678784 __ZN3RBX9TextLabel11setFontSizeENS_11TextService8FontSizeE")
+pub fn stub_0x678784(state: &mut TextLabelState, font_size: u32) -> bool {
+    // IDA 0x678784 (`RBX::TextLabel::setFontSize`): compares word
+    // 136 (+544); on change stores it and raises twice, else returns
+    // unchanged. The raises fold into the changed flag.
+    if state.font_size == font_size {
+        return false;
+    }
+    state.font_size = font_size;
+    true
 }
 
 // 0x6787bc — __ZN3RBX9TextLabel7setFontENS_11TextService4FontE
 #[doc(alias = "RBX::TextLabel::setFont(RBX::TextService::Font)")]
 #[doc(alias = "__ZN3RBX9TextLabel7setFontENS_11TextService4FontE")]
-pub fn stub_0x6787bc() -> ! {
-    todo!("0x6787bc __ZN3RBX9TextLabel7setFontENS_11TextService4FontE")
+pub fn stub_0x6787bc(state: &mut TextLabelState, font: u32) -> bool {
+    // IDA 0x6787bc (`RBX::TextLabel::setFont`): compares word 148
+    // (+592); on change stores it and raises twice, else returns
+    // unchanged. The raises fold into the changed flag.
+    if state.font == font {
+        return false;
+    }
+    state.font = font;
+    true
 }
 
 // 0x6787f4 — __ZN3RBX9TextLabel12setTextColorENS_10BrickColorE
 #[doc(alias = "RBX::TextLabel::setTextColor(RBX::BrickColor)")]
 #[doc(alias = "__ZN3RBX9TextLabel12setTextColorENS_10BrickColorE")]
-pub fn stub_0x6787f4() -> ! {
-    todo!("0x6787f4 __ZN3RBX9TextLabel12setTextColorENS_10BrickColorE")
+pub fn stub_0x6787f4(state: &mut TextLabelState, text_color: u32) {
+    // IDA 0x6787f4 (`RBX::TextLabel::setTextColor`): converts the
+    // `BrickColor` id via `BrickColor::color3` (runtime `BrickMap`
+    // palette — ungrounded in this range) and delegates to
+    // `setTextColor3` (host: stub_0x678814). The id itself is cached
+    // (reads derive via `closest`; same gap as the `TextBox` twin at
+    // 0x665fcc).
+    state.text_color = text_color;
 }
 
 // 0x678814 — __ZN3RBX9TextLabel13setTextColor3EN3G3D6Color3E
 #[doc(alias = "RBX::TextLabel::setTextColor3(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX9TextLabel13setTextColor3EN3G3D6Color3E")]
-pub fn stub_0x678814() -> ! {
-    todo!("0x678814 __ZN3RBX9TextLabel13setTextColor3EN3G3D6Color3E")
+pub fn stub_0x678814(state: &mut TextLabelState, color: [f32; 3]) -> bool {
+    // IDA 0x678814 (`RBX::TextLabel::setTextColor3`): compares words
+    // 137-139 (+548); on any difference stores all three and raises
+    // twice. The raises fold into the changed flag.
+    if state.text_color3 == color {
+        return false;
+    }
+    state.text_color3 = color;
+    true
 }
 
 // 0x678894 — __ZN3RBX9TextLabel19setTextTransparencyEf
 #[doc(alias = "RBX::TextLabel::setTextTransparency(float)")]
 #[doc(alias = "__ZN3RBX9TextLabel19setTextTransparencyEf")]
-pub fn stub_0x678894() -> ! {
-    todo!("0x678894 __ZN3RBX9TextLabel19setTextTransparencyEf")
+pub fn stub_0x678894(state: &mut TextLabelState, transparency: f32) -> bool {
+    // IDA 0x678894 (`RBX::TextLabel::setTextTransparency`): compares
+    // word 140 (+560); on change stores it and raises, else returns
+    // unchanged. The raise folds into the changed flag.
+    if state.text_transparency == transparency {
+        return false;
+    }
+    state.text_transparency = transparency;
+    true
 }
 
 // 0x6788bc — __ZN3RBX9TextLabel11setTextWrapEb
 #[doc(alias = "RBX::TextLabel::setTextWrap(bool)")]
 #[doc(alias = "__ZN3RBX9TextLabel11setTextWrapEb")]
-pub fn stub_0x6788bc() -> ! {
-    todo!("0x6788bc __ZN3RBX9TextLabel11setTextWrapEb")
+pub fn stub_0x6788bc(state: &mut TextLabelState, wrap: bool) -> bool {
+    // IDA 0x6788bc (`RBX::TextLabel::setTextWrap`): compares the
+    // +580 byte; on change stores it and raises three descriptors,
+    // else returns unchanged. The raises fold into the changed flag.
+    if state.text_wrap == wrap {
+        return false;
+    }
+    state.text_wrap = wrap;
+    true
 }
 
 // 0x6788fc — __ZN3RBX9TextLabel12setTextScaleEb
 #[doc(alias = "RBX::TextLabel::setTextScale(bool)")]
 #[doc(alias = "__ZN3RBX9TextLabel12setTextScaleEb")]
-pub fn stub_0x6788fc() -> ! {
-    todo!("0x6788fc __ZN3RBX9TextLabel12setTextScaleEb")
+pub fn stub_0x6788fc(state: &mut TextLabelState, scale: bool) -> bool {
+    // IDA 0x6788fc (`RBX::TextLabel::setTextScale`): compares the
+    // +581 byte; on change stores it, raises, and — when enabling —
+    // delegates to `setTextWrap(this, 1)` (host: the 0x6788bc twin);
+    // disabling raises twice more instead. All raises fold into the
+    // changed flag.
+    if state.text_scaled == scale {
+        return false;
+    }
+    state.text_scaled = scale;
+    if scale {
+        stub_0x6788bc(state, true);
+    }
+    true
 }
 
 // 0x678950 — __ZN3RBX9TextLabel13setXAlignmentENS_11TextService10XAlignmentE
 #[doc(alias = "RBX::TextLabel::setXAlignment(RBX::TextService::XAlignment)")]
 #[doc(alias = "__ZN3RBX9TextLabel13setXAlignmentENS_11TextService10XAlignmentE")]
-pub fn stub_0x678950() -> ! {
-    todo!("0x678950 __ZN3RBX9TextLabel13setXAlignmentENS_11TextService10XAlignmentE")
+pub fn stub_0x678950(state: &mut TextLabelState, value: u32) -> bool {
+    // IDA 0x678950 (`RBX::TextLabel::setXAlignment`): compares word
+    // 146 (+584); on change stores it and raises three descriptors,
+    // else returns unchanged. The raises fold into the changed flag.
+    if state.x_alignment == value {
+        return false;
+    }
+    state.x_alignment = value;
+    true
 }
 
 // 0x678990 — __ZN3RBX9TextLabel13setYAlignmentENS_11TextService10YAlignmentE
 #[doc(alias = "RBX::TextLabel::setYAlignment(RBX::TextService::YAlignment)")]
 #[doc(alias = "__ZN3RBX9TextLabel13setYAlignmentENS_11TextService10YAlignmentE")]
-pub fn stub_0x678990() -> ! {
-    todo!("0x678990 __ZN3RBX9TextLabel13setYAlignmentENS_11TextService10YAlignmentE")
+pub fn stub_0x678990(state: &mut TextLabelState, value: u32) -> bool {
+    // IDA 0x678990 (`RBX::TextLabel::setYAlignment`): compares word
+    // 147 (+588); on change stores it and raises three descriptors,
+    // else returns unchanged. The raises fold into the changed flag.
+    if state.y_alignment == value {
+        return false;
+    }
+    state.y_alignment = value;
+    true
 }
 
 // 0x6789d0 — __ZNK3RBX9TextLabel13getTextBoundsEv
 #[doc(alias = "RBX::TextLabel::getTextBounds(void)const")]
 #[doc(alias = "__ZNK3RBX9TextLabel13getTextBoundsEv")]
-pub fn stub_0x6789d0() -> ! {
-    todo!("0x6789d0 __ZNK3RBX9TextLabel13getTextBoundsEv")
+pub fn stub_0x6789d0() -> [f32; 2] {
+    // IDA 0x6789d0 (`RBX::TextLabel::getTextBounds`): the same
+    // no-frontend/no-`TextService`/no-typesetter zero path as the
+    // `TextBox` twin at 0x6661a8 (the measurable path reads the
+    // +540/+544/+580 cells through `TextService` rasterization:
+    // gap). Host: the shared floor.
+    crate::generated_audio_wd_1788360980::stub_6661a8()
 }
 
 // 0x678b5c — __ZNK3RBX9TextLabel11getTextFitsEv
 #[doc(alias = "RBX::TextLabel::getTextFits(void)const")]
 #[doc(alias = "__ZNK3RBX9TextLabel11getTextFitsEv")]
-pub fn stub_0x678b5c() -> ! {
-    todo!("0x678b5c __ZNK3RBX9TextLabel11getTextFitsEv")
+pub fn stub_0x678b5c() -> bool {
+    // IDA 0x678b5c (`RBX::TextLabel::getTextFits`): every
+    // unmeasurable path yields 0, like the `TextBox` twin at
+    // 0x666334. Host: the shared floor.
+    crate::generated_audio_wd_1788360980::stub_666334()
 }
 
 // 0x678d0c — __ZN3RBX9TextLabel19setTextStrokeColor3EN3G3D6Color3E
 #[doc(alias = "RBX::TextLabel::setTextStrokeColor3(G3D::Color3)")]
 #[doc(alias = "__ZN3RBX9TextLabel19setTextStrokeColor3EN3G3D6Color3E")]
-pub fn stub_0x678d0c() -> ! {
-    todo!("0x678d0c __ZN3RBX9TextLabel19setTextStrokeColor3EN3G3D6Color3E")
+pub fn stub_0x678d0c(state: &mut TextLabelState, color: [f32; 3]) -> bool {
+    // IDA 0x678d0c (`RBX::TextLabel::setTextStrokeColor3`): compares
+    // words 141-143 (+564); on any difference stores all three and
+    // raises. The raise folds into the changed flag.
+    if state.text_stroke_color3 == color {
+        return false;
+    }
+    state.text_stroke_color3 = color;
+    true
 }
 
 // 0x678d74 — __ZN3RBX9TextLabel25setTextStrokeTransparencyEf
 #[doc(alias = "RBX::TextLabel::setTextStrokeTransparency(float)")]
 #[doc(alias = "__ZN3RBX9TextLabel25setTextStrokeTransparencyEf")]
-pub fn stub_0x678d74() -> ! {
-    todo!("0x678d74 __ZN3RBX9TextLabel25setTextStrokeTransparencyEf")
+pub fn stub_0x678d74(state: &mut TextLabelState, transparency: f32) -> bool {
+    // IDA 0x678d74 (`RBX::TextLabel::setTextStrokeTransparency`):
+    // compares word 144 (+576); on change stores it and raises, else
+    // returns unchanged. The raise folds into the changed flag.
+    if state.text_stroke_transparency == transparency {
+        return false;
+    }
+    state.text_stroke_transparency = transparency;
+    true
 }
 
 // 0x678da0 — __ZN3RBX9TextLabel14checkForResizeEv
 #[doc(alias = "RBX::TextLabel::checkForResize(void)")]
 #[doc(alias = "__ZN3RBX9TextLabel14checkForResizeEv")]
-pub fn stub_0x678da0() -> ! {
-    todo!("0x678da0 __ZN3RBX9TextLabel14checkForResizeEv")
+pub fn stub_0x678da0() {
+    // IDA 0x678da0 (`RBX::TextLabel::checkForResize`): the
+    // `GuiObject::checkForResize` body plus two
+    // `raisePropertyChanged` calls — no `TextLabel`-member effect.
+    // Carrier no-op.
 }
 
 // 0x678dcc — __ZN3RBX9TextLabel21setTransparencyLegacyEf
 #[doc(alias = "RBX::TextLabel::setTransparencyLegacy(float)")]
 #[doc(alias = "__ZN3RBX9TextLabel21setTransparencyLegacyEf")]
-pub fn stub_0x678dcc() -> ! {
-    todo!("0x678dcc __ZN3RBX9TextLabel21setTransparencyLegacyEf")
+pub fn stub_0x678dcc(state: &mut TextLabelState, transparency: f32) -> bool {
+    // IDA 0x678dcc (`RBX::TextLabel::setTransparencyLegacy`): on
+    // change of word 140 (+560) stores it and raises; the
+    // `GuiObject::setBackgroundTransparency` tail owns the GuiObject
+    // layer and folds away. Host: the member half as a changed flag.
+    if state.text_transparency == transparency {
+        return false;
+    }
+    state.text_transparency = transparency;
+    true
 }
 
 // 0x678e14 — __ZNK3RBX9TextLabel21getPersistentDataCostEv

@@ -718,6 +718,74 @@ pub fn fontsize_name(value: u32) -> &'static str {
         .map(|(n, _)| *n)
         .unwrap_or("")
 }
+/// `RBX::Reflection::PropDescriptor<GuiTextButton, std::string>`
+/// cutover (IDA 0x6774d8): name/category/attributes/permissions.
+/// The member pair folds into the `text` field
+/// (`getText`/`setText`).
+#[derive(Debug, Clone)]
+pub struct GuiButtonStringProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl GuiButtonStringProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::TextLabel` cutover (IDA 0x6782f0): the same
+/// `GuiTextMixin` subobject as `TextBox` at the same +536 base —
+/// word 134 (+536) mixin word 0, `Text` at word 135 (+540, C2 seeds
+/// "Label"), `FontSize` word 136 (+544),
+/// `TextColor3` words 137-139 (+548/+552/+556, palette-26
+/// `BrickColor::color3` — `MOVS R0, #0x1A` at 0x67840c),
+/// `TextTransparency` word 140 (+560), `TextStrokeColor3` words
+/// 141-143 (+564/+568/+572), `TextStrokeTransparency` word 144
+/// (+576, C2 stores 1.0), `TextWrap`/`TextScaled` bytes +580/+581,
+/// `XAlignment` word 146 (+584, C2 stores 2), `YAlignment` word
+/// 147 (+588, C2 stores 1), `Font` word 148 (+592). Labels never
+/// focus, so only the text members are modeled. `Default` replays
+/// the C2-grounded values (a fresh `TextLabel`).
+#[derive(Debug, Clone)]
+pub struct TextLabelState {
+    pub text: String,
+    pub text_color: u32,
+    pub text_color3: [f32; 3],
+    pub text_stroke_color3: [f32; 3],
+    pub text_transparency: f32,
+    pub text_stroke_transparency: f32,
+    pub text_wrap: bool,
+    pub text_scaled: bool,
+    pub x_alignment: u32,
+    pub y_alignment: u32,
+    pub font: u32,
+    pub font_size: u32,
+}
+
+impl Default for TextLabelState {
+    fn default() -> Self {
+        Self {
+            text: "Label".to_owned(),
+            text_color: 26,
+            text_color3: [0.0, 0.0, 0.0],
+            text_stroke_color3: [0.0, 0.0, 0.0],
+            text_transparency: 0.0,
+            text_stroke_transparency: 1.0,
+            text_wrap: false,
+            text_scaled: false,
+            x_alignment: 2,
+            y_alignment: 1,
+            font: 0,
+            font_size: 0,
+        }
+    }
+}
 /// Item index of a `FontSize` value, -1 when it has no item (the
 /// `enumToItem` read in `convertToIndex`).
 pub fn fontsize_index(value: u32) -> i32 {

@@ -603,8 +603,12 @@ pub fn stub_677af0() {
 // 0x677b94 — __GLOBAL__I_a_271
 // type: int()
 #[doc(alias = "global constructor keyed to_a_271")]
-pub fn stub_677b94() -> ! {
-    todo!("0x677b94 global constructor keyed to_a_271")
+pub fn stub_677b94() {
+    // IDA 0x677b94 (`__GLOBAL__I_a_271`): static init constructing
+    // the `GuiTextButton` descriptor set — every `PropDescriptor`
+    // with its getter/setter member pointers, the enum descriptors
+    // and the sibling creators. All registry construction folds
+    // away. Carrier no-op.
 }
 
 // 0x679360 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE12getClassNameEv
