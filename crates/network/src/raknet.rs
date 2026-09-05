@@ -11998,57 +11998,67 @@ pub fn stub_9b5b10(get: &mut dyn FnMut() -> i32) -> i32 {
 // 0x9b5b34 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_9b5b34() -> ! {
-    todo!("0x9b5b34 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_9b5b34(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0x9b5b34: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter(*a3).
+ set(value);
 }
 
 // 0x9b5b5c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, __guard *, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_9b5b5c() -> ! {
-    todo!("0x9b5b5c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::EnumPropDescriptor<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>(char const*,char const*,PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b5b5c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b5b5c: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b5e5c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev")]
-pub fn stub_9b5e5c() -> ! {
-    todo!("0x9b5e5c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+pub fn stub_9b5e5c(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x9b5e5c: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x9b5e84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10isReadOnlyEv")]
-pub fn stub_9b5e84() -> ! {
-    todo!("0x9b5e84 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::isReadOnly(void)const")
+pub fn stub_9b5e84(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x9b5e84: forwards to the impl at +44.
+ inner()
 }
 
 // 0x9b5e94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11isWriteOnlyEv")]
-pub fn stub_9b5e94() -> ! {
-    todo!("0x9b5e94 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::isWriteOnly(void)const")
+pub fn stub_9b5e94(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x9b5e94: forwards to the impl at +44.
+ inner()
 }
 
 // 0x9b5ea4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11equalValuesEPKNS0_13DescribedBaseES7_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_9b5ea4() -> ! {
-    todo!("0x9b5ea4 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b5ea4(current: i32, candidate: i32) -> bool {
+ // IDA 0x9b5ea4: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0x9b5ecc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_9b5ecc() -> ! {
-    todo!("0x9b5ecc RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_9b5ecc(value: i32) -> (String, i32) {
+ // IDA 0x9b5ecc: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0x9b5f7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_9b5f7c() -> ! {
-    todo!("0x9b5f7c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_9b5f7c(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b5f7c: Variant::get<int> then setValue.
+ set(value);
 }
 
 
@@ -12056,120 +12066,151 @@ pub fn stub_9b5f7c() -> ! {
 // 0x9b5f98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE9copyValueEPKNS0_13DescribedBaseEPS5_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_9b5f98() -> ! {
-    todo!("0x9b5f98 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_9b5f98(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b5f98: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0x9b5fbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::hasStringValue(void)const")]
-pub fn stub_9b5fbc() -> ! {
-    todo!("0x9b5fbc RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::hasStringValue(void)const")
+pub fn stub_9b5fbc() -> bool {
+ // IDA 0x9b5fbc: hasStringValue returns 1.
+ true
 }
 
 // 0x9b5fc0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b5fc0() -> ! {
-    todo!("0x9b5fc0 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b5fc0(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
+ // IDA 0x9b5fc0: converts the enum value to its name (below truncation).
+ to_string(value)
 }
 
 // 0x9b5fe4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_9b5fe4() -> ! {
-    todo!("0x9b5fe4 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_9b5fe4(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b5fe4: Name::lookup then setValue (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0x9b6088 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_9b6088() -> ! {
-    todo!("0x9b6088 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_9b6088(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0x9b6088: clears the pair, writes type 5 + value; returns 5.
+ write(value);
+ 5
 }
 
 // 0x9b60a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_9b60a8() -> ! {
-    todo!("0x9b60a8 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_9b60a8(parse: &mut dyn FnMut()) {
+ // IDA 0x9b60a8: readValue parses the pair (below truncation).
+ parse();
 }
 
 // 0x9b636c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b636c() -> ! {
-    todo!("0x9b636c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b636c(value: i32) -> i32 {
+ // IDA 0x9b636c: asserts the enum value > -1, returns it.
+ debug_assert!(value > -1);
+ value
 }
 
 // 0x9b63e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_9b63e8() -> ! {
-    todo!("0x9b63e8 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_9b63e8(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0x9b63e8: in-range index -> set + return 1 else 0.
+ if items.len() > index {
+ set(items[index]);
+ 1
+ } else {
+ 0
+ }
 }
 
 // 0x9b641c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b641c() -> ! {
-    todo!("0x9b641c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b641c(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b641c: getEnumValue forwards to the impl.
+ get()
 }
 
 // 0x9b642c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_9b642c() -> ! {
-    todo!("0x9b642c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_9b642c(items: &[i32], value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b642c: finds the value in the item list then sets it (below truncation).
+ if items.contains(&value) {
+ set(value);
+ }
 }
 
 // 0x9b64f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b64f8() -> ! {
-    todo!("0x9b64f8 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b64f8(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0x9b64f8: EnumDesc::convertToItem on the impl value.
+ convert(value)
 }
 
 // 0x9b6518 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_9b6518() -> ! {
-    todo!("0x9b6518 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_9b6518(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0x9b6518: walks the item list for the name then sets it (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0x9b65ac — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsE14PacketPriorityE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::isReadOnly(void)const")]
-pub fn stub_9b65ac() -> ! {
-    todo!("0x9b65ac RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::isReadOnly(void)const")
+pub fn stub_9b65ac() -> bool {
+ // IDA 0x9b65ac: isReadOnly returns 0.
+ false
 }
 
 // 0x9b65b0 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsE14PacketPriorityE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::isWriteOnly(void)const")]
-pub fn stub_9b65b0() -> ! {
-    todo!("0x9b65b0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::isWriteOnly(void)const")
+pub fn stub_9b65b0() -> bool {
+ // IDA 0x9b65b0: isWriteOnly returns 0.
+ false
 }
 
 // 0x9b65b4 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsE14PacketPriorityE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_9b65b4() -> ! {
-    todo!("0x9b65b4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_9b65b4(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9b65b4: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0x9b65d8 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsE14PacketPriorityE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::setValue(RBX::Reflection::DescribedBase *,PacketPriority const&)const")]
-pub fn stub_9b65d8() -> ! {
-    todo!("0x9b65d8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,PacketPriority>::GetSetImpl<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>::setValue(RBX::Reflection::DescribedBase *,PacketPriority const&)const")
+pub fn stub_9b65d8(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0x9b65d8: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0x9b6600 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, __guard *, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::EnumPropDescriptor<RBX::NetworkSettings::PhysicsReceiveMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsReceiveMethod const&)>(char const*,char const*,RBX::NetworkSettings::PhysicsReceiveMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsReceiveMethod const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_9b6600() -> ! {
-    todo!("0x9b6600 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::EnumPropDescriptor<RBX::NetworkSettings::PhysicsReceiveMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsReceiveMethod const&)>(char const*,char const*,RBX::NetworkSettings::PhysicsReceiveMethod (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(RBX::NetworkSettings::PhysicsReceiveMethod const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_9b6600(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x9b6600: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x9b6900 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED0Ev
