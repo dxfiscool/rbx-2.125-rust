@@ -48,6 +48,35 @@ pub struct ProfileCpu {
     pub packets: u32,
 }
 
+
+/// `FMOD::ProfileDsp` observable state (IDA 0x68864..0x6907c): the seen
+/// DSP node ids, posted packet count, and the doubled-on-grow node/packet
+/// capacities. The pool/critical-section glue folds into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ProfileDsp {
+    pub nodes: Vec<u64>,
+    pub packets: u32,
+    pub node_cap: usize,
+    pub packet_cap: usize,
+}
+
+/// `FMOD::ProfileModule` registration latch (IDA 0x691a0..0x6920c).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ProfileModule {
+    pub registered: bool,
+}
+
+/// `FMOD::ProfileClient` observable state (IDA 0x69284..0x693f4): the
+/// requested (type, subtype) watches, the send gate, pending/sent bytes,
+/// and the last sequence number. The socket glue folds into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ProfileClient {
+    pub watch: Vec<(u8, u8)>,
+    pub enabled: bool,
+    pub pending: u32,
+    pub sent: u32,
+    pub last_seq: u32,
+}
 // 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
 // type: UserInputService *__cdecl(ControlComponent *self, SEL)
 #[doc(alias = "-[ControlComponent getUserInputServiceForGameDataModel]")]
@@ -680,176 +709,251 @@ pub fn stub_0x68758() -> u32 {
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
-pub fn stub_0x68794() -> ! {
-    todo!("0x68794 __ZN4FMOD10ProfileCpuC2Ev")
+pub fn stub_0x68794() -> ProfileCpu {
+    // IDA 0x68794: `ProfileCpu` C2 ctor zeroes the counters; folds into
+    // `Default`.
+    ProfileCpu::default()
 }
 
 // 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void) [0x687bc]")]
-pub fn stub_0x687bc() -> ! {
-    todo!("0x687bc __ZN4FMOD10ProfileCpuC1Ev")
+pub fn stub_0x687bc() -> ProfileCpu {
+    // IDA 0x687bc: `ProfileCpu` C1 ctor — same zero-init as C2.
+    ProfileCpu::default()
 }
 
 // 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
-pub fn stub_0x687c0() -> ! {
-    todo!("0x687c0 __ZN4FMOD22FMOD_ProfileCpu_CreateEv")
+pub fn stub_0x687c0() -> ProfileCpu {
+    // IDA 0x687c0: `FMOD_ProfileCpu_Create` news and inits the profiler;
+    // the pool glue folds into the host.
+    ProfileCpu::default()
 }
 
 // 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy
 // type: int __fastcall(FMOD::ProfileDsp *this, unsigned __int64)
 #[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
-pub fn stub_0x68864() -> ! {
-    todo!("0x68864 __ZN4FMOD10ProfileDsp15isNodeDuplicateEy")
+pub fn stub_0x68864(dsp: &ProfileDsp, id: u64) -> bool {
+    // IDA 0x68864: `isNodeDuplicate` scans the seen node ids (0x6887c..)
+    // and answers whether `id` is already recorded (0x6892c/0x6893c).
+    dsp.nodes.contains(&id)
 }
 
 // 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *)
 #[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
-pub fn stub_0x68944() -> ! {
-    todo!("0x68944 __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE")
+pub fn stub_0x68944(dsp: &mut ProfileDsp, usage: f32) -> u32 {
+    // IDA 0x68944: `sendPacket` reads the CPU usage (0x68964..0x68978),
+    // sizes the packet from the node count (0x68984..0x689c0), and posts
+    // it; the packet glue folds into the host. Silence posts silence.
+    let _ = usage;
+    dsp.packets += 1;
+    0
 }
 
 // 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
-pub fn stub_0x68a6c() -> ! {
-    todo!("0x68a6c __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv")
+pub fn stub_0x68a6c(dsp: &mut ProfileDsp) -> u32 {
+    // IDA 0x68a6c: `growNodeStackSpace` doubles the node capacity
+    // (0x68a88) via pool realloc (0x68ab8..) and answers 0, or 44 on
+    // OOM (0x68ac4); the host alloc never fails.
+    dsp.node_cap = dsp.node_cap.max(1) * 2;
+    0
 }
 
 // 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
-pub fn stub_0x68adc() -> ! {
-    todo!("0x68adc __ZN4FMOD10ProfileDsp15growPacketSpaceEv")
+pub fn stub_0x68adc(dsp: &mut ProfileDsp) -> u32 {
+    // IDA 0x68adc: `growPacketSpace` doubles the packet capacity
+    // (0x68b00) via pool realloc (0x68b38..); same success shape as
+    // 0x68a6c.
+    dsp.packet_cap = dsp.packet_cap.max(1) * 2;
+    0
 }
 
 // 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj
 // type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_0x68b68() -> ! {
-    todo!("0x68b68 __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj")
+pub fn stub_0x68b68(dsp: &mut ProfileDsp, seen: &[u64]) -> u32 {
+    // IDA 0x68b68: `update` enters the critical section (0x68b8c),
+    // resets the node count (0x68b9c), walks the DSP graph from the head
+    // (0x68ba0..), and records each node; the graph walk folds into the
+    // host and the seen set is observed deduplicated.
+    dsp.nodes.clear();
+    for id in seen {
+        if !dsp.nodes.contains(id) {
+            dsp.nodes.push(*id);
+        }
+    }
+    0
 }
 
 // 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::release(void)")]
-pub fn stub_0x68dfc() -> ! {
-    todo!("0x68dfc __ZN4FMOD10ProfileDsp7releaseEv")
+pub fn stub_0x68dfc(dsp: &mut ProfileDsp) {
+    // IDA 0x68dfc: `release` frees the node/packet buffers and zeroes
+    // the pointers (0x68e04..0x68e74); drop glue covers it and the
+    // record resets.
+    *dsp = ProfileDsp::default();
 }
 
 // 0x68ebc — __ZN4FMOD10ProfileDsp4initEv
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::init(void)")]
-pub fn stub_0x68ebc() -> ! {
-    todo!("0x68ebc __ZN4FMOD10ProfileDsp4initEv")
+pub fn stub_0x68ebc(dsp: &mut ProfileDsp) -> u32 {
+    // IDA 0x68ebc: `init` allocs the node stack and packet space
+    // (0x68f04..0x68f60); the pool glue folds into the host and success
+    // is answered.
+    dsp.node_cap = dsp.node_cap.max(1);
+    dsp.packet_cap = dsp.packet_cap.max(1);
+    0
 }
 
 // 0x69028 — __ZN4FMOD10ProfileDspC2Ev
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
-pub fn stub_0x69028() -> ! {
-    todo!("0x69028 __ZN4FMOD10ProfileDspC2Ev")
+pub fn stub_0x69028() -> ProfileDsp {
+    // IDA 0x69028: `ProfileDsp` C2 ctor zeroes the record; folds into
+    // `Default`.
+    ProfileDsp::default()
 }
 
 // 0x69078 — __ZN4FMOD10ProfileDspC1Ev
 // type: int __fastcall(FMOD::ProfileDsp *this)
 #[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void) [0x69078]")]
-pub fn stub_0x69078() -> ! {
-    todo!("0x69078 __ZN4FMOD10ProfileDspC1Ev")
+pub fn stub_0x69078() -> ProfileDsp {
+    // IDA 0x69078: `ProfileDsp` C1 ctor — same zero-init as C2.
+    ProfileDsp::default()
 }
 
 // 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
 // type: int __fastcall(FMOD *this)
 #[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
-pub fn stub_0x6907c() -> ! {
-    todo!("0x6907c __ZN4FMOD22FMOD_ProfileDsp_CreateEv")
+pub fn stub_0x6907c() -> ProfileDsp {
+    // IDA 0x6907c: `FMOD_ProfileDsp_Create` news and inits the profiler;
+    // the pool glue folds into the host.
+    ProfileDsp::default()
 }
 
 // 0x6914c — __ZN4FMOD7ProfileC2Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void)")]
-pub fn stub_0x6914c() -> ! {
-    todo!("0x6914c __ZN4FMOD7ProfileC2Ev")
+pub fn stub_0x6914c() {
+    // IDA 0x6914c: `Profile` C2 ctor inits the module list; the list
+    // glue folds into the host — no-op.
 }
 
 // 0x6919c — __ZN4FMOD7ProfileC1Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Profile::Profile(void) [0x6919c]")]
-pub fn stub_0x6919c() -> ! {
-    todo!("0x6919c __ZN4FMOD7ProfileC1Ev")
+pub fn stub_0x6919c() {
+    // IDA 0x6919c: `Profile` C1 ctor — same list-init as C2 — no-op.
 }
 
 // 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE
 // type: int __fastcall(int, int)
 #[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
-pub fn stub_0x691a0() -> ! {
-    todo!("0x691a0 __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE")
+pub fn stub_0x691a0(module: &mut ProfileModule) -> u32 {
+    // IDA 0x691a0: `registerModule` splices the module into the
+    // intrusive list (0x691a8..0x691c0) and answers success (0x691c4);
+    // the list glue folds into the host.
+    module.registered = true;
+    0
 }
 
 // 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev
 // type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
-pub fn stub_0x691c8() -> ! {
-    todo!("0x691c8 __ZN4FMOD13ProfileModuleC2Ev")
+pub fn stub_0x691c8() -> ProfileModule {
+    // IDA 0x691c8: `ProfileModule` C2 ctor zeroes the record; folds into
+    // `Default`.
+    ProfileModule::default()
 }
 
 // 0x691fc — __ZN4FMOD13ProfileModule4initEv
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::init(void)")]
-pub fn stub_0x691fc() -> ! {
-    todo!("0x691fc __ZN4FMOD13ProfileModule4initEv")
+pub fn stub_0x691fc() -> u32 {
+    // IDA 0x691fc: `ProfileModule::init` answers success (same
+    // success-code shape as 0x686a4).
+    0
 }
 
 // 0x69204 — __ZN4FMOD13ProfileModule7releaseEv
 // type: int __fastcall(FMOD::ProfileModule *this)
 #[doc(alias = "FMOD::ProfileModule::release(void)")]
-pub fn stub_0x69204() -> ! {
-    todo!("0x69204 __ZN4FMOD13ProfileModule7releaseEv")
+pub fn stub_0x69204() -> u32 {
+    // IDA 0x69204: `ProfileModule::release` frees the module (same pool
+    // shape as 0x68758) and answers success.
+    0
 }
 
 // 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj
 // type: int()
 #[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_0x6920c() -> ! {
-    todo!("0x6920c __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj")
+pub fn stub_0x6920c() -> u32 {
+    // IDA 0x6920c: `ProfileModule::update` answers success (0x69210).
+    0
 }
 
 // 0x69214 — __ZN4FMOD13ProfileClientC2Ev
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
-pub fn stub_0x69214() -> ! {
-    todo!("0x69214 __ZN4FMOD13ProfileClientC2Ev")
+pub fn stub_0x69214() -> ProfileClient {
+    // IDA 0x69214: `ProfileClient` C2 ctor zeroes the record; folds into
+    // `Default`.
+    ProfileClient::default()
 }
 
 // 0x69280 — __ZN4FMOD13ProfileClientC1Ev
 // type: char *__fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::ProfileClient(void) [0x69280]")]
-pub fn stub_0x69280() -> ! {
-    todo!("0x69280 __ZN4FMOD13ProfileClientC1Ev")
+pub fn stub_0x69280() -> ProfileClient {
+    // IDA 0x69280: `ProfileClient` C1 ctor — same zero-init as C2.
+    ProfileClient::default()
 }
 
 // 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj
 // type: int __fastcall(FMOD::ProfileClient *this, int, int, unsigned int)
 #[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
-pub fn stub_0x69284() -> ! {
-    todo!("0x69284 __ZN4FMOD13ProfileClient15requestDataTypeEhhj")
+pub fn stub_0x69284(client: &mut ProfileClient, kind: u8, sub: u8) {
+    // IDA 0x69284: `requestDataType` scans the 32 watch slots for the
+    // (type, subtype) pair (0x692a0..0x692cc) and arms it; the slot
+    // bit-twiddling folds into the host.
+    if !client.watch.contains(&(kind, sub)) {
+        client.watch.push((kind, sub));
+    }
+    client.enabled = true;
 }
 
 // 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE
 // type: bool __fastcall(int, unsigned __int8 *)
 #[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
-pub fn stub_0x69358() -> ! {
-    todo!("0x69358 __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE")
+pub fn stub_0x69358(client: &ProfileClient, kind: u8, sub: u8, seq: u32) -> bool {
+    // IDA 0x69358: `wantsData` bails when disabled (0x69364..0x69368),
+    // finds the watch slot (0x69370..0x69384), and answers whether the
+    // packet sequence is newer than the window (0x693e8).
+    client.enabled && client.watch.contains(&(kind, sub)) && seq > client.last_seq
 }
 
 // 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv
 // type: int __fastcall(FMOD::ProfileClient *this)
 #[doc(alias = "FMOD::ProfileClient::sendData(void)")]
-pub fn stub_0x693f4() -> ! {
-    todo!("0x693f4 __ZN4FMOD13ProfileClient8sendDataEv")
+pub fn stub_0x693f4(client: &mut ProfileClient) -> u32 {
+    // IDA 0x693f4: `sendData` answers 0 when disabled (0x6941c) or the
+    // buffer is empty (0x69424..0x69428), else drains the buffer to the
+    // socket in 16K chunks (0x6943c..0x69468); the socket glue folds
+    // into the host.
+    if client.enabled && client.pending > 0 {
+        client.sent += client.pending;
+        client.pending = 0;
+    }
+    0
 }
 
 #[cfg(test)]
@@ -975,5 +1079,65 @@ mod app_launch_batch_tests {
         assert_eq!(cpu.last, [1.0, 2.0, 3.0, 4.0]);
         assert_eq!(cpu.packets, 1);
         assert_eq!(stub_0x68758(), 0);
+    }
+}
+
+#[cfg(test)]
+mod profile_batch_tests {
+    use super::*;
+
+    #[test]
+    fn cpu_lifecycle() {
+        assert_eq!(stub_0x68794(), ProfileCpu::default());
+        assert_eq!(stub_0x687bc(), ProfileCpu::default());
+        assert_eq!(stub_0x687c0(), ProfileCpu::default());
+    }
+
+    #[test]
+    fn dsp_pipeline() {
+        let mut dsp = stub_0x69028();
+        assert_eq!(stub_0x68ebc(&mut dsp), 0);
+        assert_eq!(dsp.node_cap, 1);
+        assert_eq!(stub_0x68a6c(&mut dsp), 0);
+        assert_eq!(dsp.node_cap, 2);
+        assert_eq!(stub_0x68adc(&mut dsp), 0);
+        assert_eq!(dsp.packet_cap, 2);
+        assert_eq!(stub_0x68b68(&mut dsp, &[7, 9, 7]), 0);
+        assert_eq!(dsp.nodes, vec![7, 9]);
+        assert!(stub_0x68864(&dsp, 7));
+        assert!(!stub_0x68864(&dsp, 8));
+        assert_eq!(stub_0x68944(&mut dsp, 0.5), 0);
+        assert_eq!(dsp.packets, 1);
+        stub_0x68dfc(&mut dsp);
+        assert_eq!(dsp, ProfileDsp::default());
+        assert_eq!(stub_0x69078(), ProfileDsp::default());
+        assert_eq!(stub_0x6907c(), ProfileDsp::default());
+    }
+
+    #[test]
+    fn modules_and_client() {
+        stub_0x6914c();
+        stub_0x6919c();
+        let mut module = stub_0x691c8();
+        assert!(!module.registered);
+        assert_eq!(stub_0x691a0(&mut module), 0);
+        assert!(module.registered);
+        assert_eq!(stub_0x691fc(), 0);
+        assert_eq!(stub_0x69204(), 0);
+        assert_eq!(stub_0x6920c(), 0);
+        let mut client = stub_0x69214();
+        assert!(!stub_0x69358(&client, 3, 1, 10));
+        assert_eq!(stub_0x693f4(&mut client), 0);
+        stub_0x69284(&mut client, 3, 1);
+        assert!(!stub_0x69358(&client, 3, 1, 0));
+        assert!(stub_0x69358(&client, 3, 1, 10));
+        assert!(!stub_0x69358(&client, 3, 2, 10));
+        client.pending = 100;
+        client.last_seq = 10;
+        assert!(!stub_0x69358(&client, 3, 1, 10));
+        assert_eq!(stub_0x693f4(&mut client), 0);
+        assert_eq!(client.pending, 0);
+        assert_eq!(client.sent, 100);
+        assert_eq!(stub_0x69280(), ProfileClient::default());
     }
 }
