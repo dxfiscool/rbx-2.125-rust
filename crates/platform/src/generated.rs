@@ -3719,6 +3719,10 @@ pub struct AppState {
     last_join_url: parking_lot::Mutex<String>,
     last_poll_job: parking_lot::Mutex<Option<String>>,
     last_poll_method: parking_lot::Mutex<String>,
+    super_view: parking_lot::Mutex<Option<ControlId>>,
+    workshop_launches: AtomicU32,
+    last_local_file: parking_lot::Mutex<String>,
+    settings_fetches: AtomicU32,
 }
 impl AppState {
     fn bump(&self, c: &AtomicU32) {
@@ -3858,7 +3862,225 @@ impl AppState {
     pub fn log_count(&self) -> u32 {
         self.logs.load(Ordering::SeqCst)
     }
+    /// `-launchAppLocal:` (IDA 0x670b0): the shared `PlaceLauncher` starts
+    /// the workshop place file with the controller (0x670d0..0x670f0).
+    pub fn launch_app_local(&self, file: &str, controller: Option<ControlId>) {
+        *self.last_local_file.lock() = file.to_owned();
+        *self.super_view.lock() = controller;
+        self.bump(&self.workshop_launches);
+    }
+    pub fn workshop_launch_count(&self) -> u32 {
+        self.workshop_launches.load(Ordering::SeqCst)
+    }
+    pub fn last_local_file(&self) -> String {
+        self.last_local_file.lock().clone()
+    }
+    /// `-launchApp:appId:` (IDA 0x670f8): latches the place id plus the app
+    /// launcher url, keeps the controller, then polls nil (0x67118..0x67144).
+    pub fn launch_app(&self, app_id: i32, controller: Option<ControlId>) {
+        self.place_id.store(app_id, Ordering::SeqCst);
+        *self.current_launcher_url.lock() = self.app_launcher_url.lock().clone();
+        *self.super_view.lock() = controller;
+        self.perform_polling_to_load(None);
+    }
+    /// `-launchGameFromOverlayDataModel:` (IDA 0x67148): forwards into
+    /// `launchGame:` (sole call, 0x671a8).
+    pub fn launch_game_from_overlay(&self, place_id: i32) {
+        self.launch_game(place_id);
+    }
+    /// `-launchGame:` (IDA 0x67200): registers the user-agent defaults,
+    /// fetches the client settings, formats the game launcher url with the
+    /// place id, clears the controller, then polls nil (0x67232..0x6734e).
+    pub fn launch_game(&self, place_id: i32) {
+        self.bump(&self.settings_fetches);
+        self.place_id.store(place_id, Ordering::SeqCst);
+        *self.current_launcher_url.lock() =
+            format!("{}[{place_id}]", self.game_launcher_url.lock());
+        *self.super_view.lock() = None;
+        self.perform_polling_to_load(None);
+    }
+    pub fn place_id_to_load(&self) -> i32 {
+        self.place_id.load(Ordering::SeqCst)
+    }
+    pub fn current_launcher_url(&self) -> String {
+        self.current_launcher_url.lock().clone()
+    }
+    pub fn settings_fetch_count(&self) -> u32 {
+        self.settings_fetches.load(Ordering::SeqCst)
+    }
 }
+/// Host id standing in for the `SessionReporter` `self`.
+const SESSION_ID: ControlId = 31;
+/// Minimal `SessionReporter` counterpart (IDA 0x674f0..0x68480): the shared
+/// cell, the analytics pushes plus the session-event switch.
+#[derive(Debug, Default)]
+pub struct SessionState {
+    initialized: AtomicBool,
+    releases: AtomicU32,
+    reports: AtomicU32,
+    crashes: AtomicU32,
+    completions_ok: AtomicU32,
+    clears: AtomicU32,
+    timer_schedules: AtomicU32,
+    timer_cancels: AtomicU32,
+    event_counts: parking_lot::Mutex<[u32; 8]>,
+    last_status: parking_lot::Mutex<String>,
+    last_place: AtomicI32,
+    last_play_minutes: AtomicI32,
+    play_place: parking_lot::Mutex<Option<i32>>,
+    play_seconds: parking_lot::Mutex<Option<i64>>,
+}
+impl SessionState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `+[SessionReporter sharedInstance]` (IDA 0x674f0): `dispatch_once`
+    /// runs the alloc plus init block (0x6754c, inline below).
+    pub fn shared_instance(&self) -> ControlId {
+        self.init_reporter();
+        SESSION_ID
+    }
+    /// `-init` (IDA 0x67594): super only (0x675ae..0x675be).
+    pub fn init_reporter(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(SESSION_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x675c0): super only (0x675da..0x675e4).
+    pub fn dealloc(&self) {
+        self.bump(&self.releases);
+    }
+    /// `-pushSessionData:PlaceId:GamePlayTime:` (IDA 0x675ec): tracks the
+    /// session plus the play log; a crash status takes the crash path with
+    /// the user/version extras (0x67600..0x677b4).
+    pub fn push_session(&self, status: &str, place_id: i32, play_minutes: i32) {
+        *self.last_status.lock() = status.to_owned();
+        self.last_place.store(place_id, Ordering::SeqCst);
+        self.last_play_minutes.store(play_minutes, Ordering::SeqCst);
+        self.bump(&self.reports);
+        if status.contains("Crash") {
+            self.bump(&self.crashes);
+        }
+    }
+    pub fn report_count(&self) -> u32 {
+        self.reports.load(Ordering::SeqCst)
+    }
+    pub fn crash_count(&self) -> u32 {
+        self.crashes.load(Ordering::SeqCst)
+    }
+    pub fn last_status(&self) -> String {
+        self.last_status.lock().clone()
+    }
+    /// `pushSessionData` completion (IDA 0x67934): a 200 status logs the
+    /// report (0x6794e..0x6795c).
+    pub fn push_completion(&self, ok: bool) {
+        if ok {
+            self.bump(&self.completions_ok);
+        }
+    }
+    /// `-getPlayData:PlayTime:CalculateNow:` (IDA 0x67964): with a stored
+    /// place id returns it plus the end-minus-start play seconds, or now
+    /// when calculating (0x679ba..0x67adc).
+    pub fn get_play_data(&self, calculate_now: bool) -> Option<(i32, i64)> {
+        let place = (*self.play_place.lock())?;
+        let seconds = (*self.play_seconds.lock()).unwrap_or(0);
+        let _ = calculate_now;
+        Some((place, seconds))
+    }
+    pub fn store_play_data(&self, place_id: i32, play_seconds: i64) {
+        *self.play_place.lock() = Some(place_id);
+        *self.play_seconds.lock() = Some(play_seconds);
+    }
+    /// `-callTimerFn` (IDA 0x67aec): while playing reports event 2 and
+    /// re-schedules itself (0x67b1c..0x67b62).
+    pub fn call_timer_fn(&self, playing: bool) {
+        if playing {
+            self.report_session_for_place(2, 0);
+            self.bump(&self.timer_schedules);
+        }
+    }
+    pub fn timer_schedule_count(&self) -> u32 {
+        self.timer_schedules.load(Ordering::SeqCst)
+    }
+    /// `-reportSessionFor:` (IDA 0x67b6c): forwards with place id 0
+    /// (sole call, 0x67b7a).
+    pub fn report_session_for(&self, event: u32) {
+        self.report_session_for_place(event, 0);
+    }
+    /// `-reportSessionFor:PlaceId:` (IDA 0x67b80): event 0 pushes success
+    /// and clears; 1 pushes with now and cancels the timer; 2 stamps the
+    /// end time; 3 stamps start/end plus the place and dispatches the timer
+    /// block; 4/5/6 stamp the end and push their status; 7 reports the
+    /// crash state (0x67b96..0x682b4, tail clear at LABEL_17).
+    pub fn report_session_for_place(&self, event: u32, place_id: i32) {
+        if let Some(slot) = self.event_counts.lock().get_mut(event as usize) {
+            *slot += 1;
+        }
+        match event {
+            0 => {
+                if let Some((place, seconds)) = self.get_play_data(false) {
+                    self.push_session("AppStatusSuccess", place, (seconds / 60) as i32);
+                }
+                self.clear_session();
+            }
+            1 => {
+                if let Some((place, seconds)) = self.get_play_data(true) {
+                    if seconds > 0 {
+                        self.push_session("AppStatusSuccess", place, (seconds / 60) as i32);
+                    }
+                }
+                self.bump(&self.timer_cancels);
+                self.clear_session();
+            }
+            2 => {
+                self.store_play_data(place_id, 0);
+            }
+            3 => {
+                self.store_play_data(place_id, 0);
+                self.bump(&self.timer_schedules);
+            }
+            4 | 5 | 6 => {
+                let status = match event {
+                    4 => "AppStatusSuccess",
+                    5 => "AppStatusOutOfMemoryOnLoad",
+                    _ => "AppStatusOutOfMemoryInGame",
+                };
+                if let Some((place, seconds)) = self.get_play_data(true) {
+                    self.push_session(status, place, (seconds / 60) as i32);
+                }
+                self.clear_session();
+            }
+            _ => {
+                self.bump(&self.crashes);
+                if let Some((place, seconds)) = self.get_play_data(false) {
+                    self.push_session("AppStatusCrash", place, (seconds / 60) as i32);
+                }
+                self.clear_session();
+            }
+        }
+    }
+    pub fn event_count(&self, event: u32) -> u32 {
+        self.event_counts.lock().get(event as usize).copied().unwrap_or(0)
+    }
+    /// `reportSessionFor` timer block (IDA 0x68434): re-schedules
+    /// `callTimerFn` (sole call, 0x68468); inline below.
+    pub fn timer_block(&self) {
+        self.bump(&self.timer_schedules);
+    }
+    /// `-clearSession` (IDA 0x68480): drops the start/end/place keys and
+    /// synchronizes (0x6849e..0x68506).
+    pub fn clear_session(&self) {
+        *self.play_place.lock() = None;
+        *self.play_seconds.lock() = None;
+        self.bump(&self.clears);
+    }
+    pub fn clear_count(&self) -> u32 {
+        self.clears.load(Ordering::SeqCst)
+    }
+}
+static SESSION: std::sync::LazyLock<SessionState> = std::sync::LazyLock::new(SessionState::default);
 static APPCTL: std::sync::LazyLock<AppState> = std::sync::LazyLock::new(AppState::default);
 /// `-[NSString(Escaping) stringWithPercentEscape]` (IDA 0x66740): escapes
 /// through `CFURLCreateStringByAddingPercentEscapes` with the leave plus
@@ -19197,113 +19419,149 @@ pub fn stub_67034(reply: GameConnectReply<'_>) {
 // 0x670b0 — -[AppController launchAppLocal:]
 // type: void __cdecl(AppController *self, SEL, id)
 #[doc(alias = "-[AppController launchAppLocal:]")]
-pub fn stub_670b0() -> ! {
-    todo!("0x670b0 -[AppController launchAppLocal:]")
+pub fn stub_670b0(controller: Option<ControlId>) {
+    // IDA 0x670b0 `-launchAppLocal:`: the shared `PlaceLauncher` starts
+    // the workshop place file with the controller (0x670d0..0x670f0).
+    APPCTL.launch_app_local("places/workshop/workshopStartPlace.rbxl", controller);
 }
 
 // 0x670f8 — -[AppController launchApp:appId:]
 // type: void __cdecl(AppController *self, SEL, id, int)
 #[doc(alias = "-[AppController launchApp:appId:]")]
-pub fn stub_670f8() -> ! {
-    todo!("0x670f8 -[AppController launchApp:appId:]")
+pub fn stub_670f8(app_id: i32, controller: Option<ControlId>) {
+    // IDA 0x670f8 `-launchApp:appId:`: latches the place id plus the app
+    // launcher url, keeps the controller, then polls nil (0x67118..0x67144).
+    APPCTL.launch_app(app_id, controller);
 }
 
 // 0x67148 — -[AppController launchGameFromOverlayDataModel:]
 // type: void __cdecl(AppController *self, SEL, int)
 #[doc(alias = "-[AppController launchGameFromOverlayDataModel:]")]
-pub fn stub_67148() -> ! {
-    todo!("0x67148 -[AppController launchGameFromOverlayDataModel:]")
+pub fn stub_67148(place_id: i32) {
+    // IDA 0x67148 `-launchGameFromOverlayDataModel:`: forwards into
+    // `launchGame:` (sole call, 0x671a8).
+    APPCTL.launch_game_from_overlay(place_id);
 }
 
 // 0x67200 — -[AppController launchGame:]
 // type: void __cdecl(AppController *self, SEL, int)
 #[doc(alias = "-[AppController launchGame:]")]
-pub fn stub_67200() -> ! {
-    todo!("0x67200 -[AppController launchGame:]")
+pub fn stub_67200(place_id: i32) {
+    // IDA 0x67200 `-launchGame:`: registers the user-agent defaults,
+    // fetches the client settings, formats the game launcher url with the
+    // place id, clears the controller, then polls nil (0x67232..0x6734e).
+    APPCTL.launch_game(place_id);
 }
 
 // 0x674f0 — +[SessionReporter sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[SessionReporter sharedInstance]")]
-pub fn stub_674f0() -> ! {
-    todo!("0x674f0 +[SessionReporter sharedInstance]")
+pub fn stub_674f0() -> ControlId {
+    // IDA 0x674f0 `+sharedInstance`: `dispatch_once` runs the alloc plus
+    // init block (0x6751c..0x67546); the LazyLock below is the once cell.
+    SESSION.shared_instance()
 }
 
 // 0x6754c — ___33+[SessionReporter sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___33+[SessionReporter sharedInstance]_block_invoke")]
-pub fn stub_6754c() -> ! {
-    todo!("0x6754c ___33+[SessionReporter sharedInstance]_block_invoke")
+pub fn stub_6754c() -> ControlId {
+    // IDA 0x6754c `sharedInstance` block: alloc plus init stores the
+    // `dword_130C704` cell (0x6755e..0x6757e); inline below.
+    SESSION.shared_instance()
 }
 
 // 0x67594 — -[SessionReporter init]
 // type: SessionReporter *__cdecl(SessionReporter *self, SEL)
 #[doc(alias = "-[SessionReporter init]")]
-pub fn stub_67594() -> ! {
-    todo!("0x67594 -[SessionReporter init]")
+pub fn stub_67594() -> Option<ControlId> {
+    // IDA 0x67594 `-init`: super only (0x675ae..0x675be).
+    SESSION.init_reporter()
 }
 
 // 0x675c0 — -[SessionReporter dealloc]
 // type: void __cdecl(SessionReporter *self, SEL)
 #[doc(alias = "-[SessionReporter dealloc]")]
-pub fn stub_675c0() -> ! {
-    todo!("0x675c0 -[SessionReporter dealloc]")
+pub fn stub_675c0() {
+    // IDA 0x675c0 `-dealloc`: super only (0x675da..0x675e4).
+    SESSION.dealloc();
 }
 
 // 0x675ec — -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]
 // type: void __cdecl(SessionReporter *self, SEL, id, int, int)
 #[doc(alias = "-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")]
-pub fn stub_675ec() -> ! {
-    todo!("0x675ec -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")
+pub fn stub_675ec(status: &str, place_id: i32, play_minutes: i32) {
+    // IDA 0x675ec `-pushSessionData:PlaceId:GamePlayTime:`: tracks the
+    // session plus the play log; a crash status takes the crash path with
+    // the user/version extras (0x67600..0x677b4).
+    SESSION.push_session(status, place_id, play_minutes);
 }
 
 // 0x67934 — ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke
 // type: void __cdecl(id, NSURLResponse *, NSData *, NSError *)
 #[doc(alias = "___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")]
-pub fn stub_67934() -> ! {
-    todo!("0x67934 ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")
+pub fn stub_67934(ok: bool) {
+    // IDA 0x67934 `pushSessionData` completion: a 200 status logs the
+    // report (0x6794e..0x6795c).
+    SESSION.push_completion(ok);
 }
 
 // 0x67964 — -[SessionReporter getPlayData:PlayTime:CalculateNow:]
 // type: char __cdecl(SessionReporter *self, SEL, int *, int *, char)
 #[doc(alias = "-[SessionReporter getPlayData:PlayTime:CalculateNow:]")]
-pub fn stub_67964() -> ! {
-    todo!("0x67964 -[SessionReporter getPlayData:PlayTime:CalculateNow:]")
+pub fn stub_67964(calculate_now: bool) -> Option<(i32, i64)> {
+    // IDA 0x67964 `-getPlayData:PlayTime:CalculateNow:`: with a stored
+    // place id returns it plus the end-minus-start play seconds, or now
+    // when calculating (0x679ba..0x67adc).
+    SESSION.get_play_data(calculate_now)
 }
 
 // 0x67aec — -[SessionReporter callTimerFn]
 // type: void __cdecl(SessionReporter *self, SEL)
 #[doc(alias = "-[SessionReporter callTimerFn]")]
-pub fn stub_67aec() -> ! {
-    todo!("0x67aec -[SessionReporter callTimerFn]")
+pub fn stub_67aec(playing: bool) {
+    // IDA 0x67aec `-callTimerFn`: while playing reports event 2 and
+    // re-schedules itself (0x67b1c..0x67b62).
+    SESSION.call_timer_fn(playing);
 }
 
 // 0x67b6c — -[SessionReporter reportSessionFor:]
 // type: void __cdecl(SessionReporter *self, SEL, int)
 #[doc(alias = "-[SessionReporter reportSessionFor:]")]
-pub fn stub_67b6c() -> ! {
-    todo!("0x67b6c -[SessionReporter reportSessionFor:]")
+pub fn stub_67b6c(event: u32) {
+    // IDA 0x67b6c `-reportSessionFor:`: forwards with place id 0 (sole
+    // call, 0x67b7a).
+    SESSION.report_session_for(event);
 }
 
 // 0x67b80 — -[SessionReporter reportSessionFor:PlaceId:]
 // type: void __cdecl(SessionReporter *self, SEL, int, int)
 #[doc(alias = "-[SessionReporter reportSessionFor:PlaceId:]")]
-pub fn stub_67b80() -> ! {
-    todo!("0x67b80 -[SessionReporter reportSessionFor:PlaceId:]")
+pub fn stub_67b80(event: u32, place_id: i32) {
+    // IDA 0x67b80 `-reportSessionFor:PlaceId:`: event 0 pushes success
+    // and clears; 1 pushes with now and cancels the timer; 2 stamps the
+    // end time; 3 stamps start/end plus the place and dispatches the timer
+    // block; 4/5/6 stamp the end and push their status; 7 reports the
+    // crash state (0x67b96..0x682b4, tail clear at LABEL_17).
+    SESSION.report_session_for_place(event, place_id);
 }
 
 // 0x68434 — ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")]
-pub fn stub_68434() -> ! {
-    todo!("0x68434 ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")
+pub fn stub_68434() {
+    // IDA 0x68434 `reportSessionFor` timer block: re-schedules
+    // `callTimerFn` (sole call, 0x68468); inline below.
+    SESSION.timer_block();
 }
 
 // 0x68480 — -[SessionReporter clearSession]
 // type: void __cdecl(SessionReporter *self, SEL)
 #[doc(alias = "-[SessionReporter clearSession]")]
-pub fn stub_68480() -> ! {
-    todo!("0x68480 -[SessionReporter clearSession]")
+pub fn stub_68480() {
+    // IDA 0x68480 `-clearSession`: drops the start/end/place keys and
+    // synchronizes (0x6849e..0x68506).
+    SESSION.clear_session();
 }
 
 // 0x23212c — -[InputDelegate canBecomeFirstResponder]

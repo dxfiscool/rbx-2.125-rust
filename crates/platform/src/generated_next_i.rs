@@ -1558,7 +1558,7 @@ pub unsafe fn destroy_block_capture_661bc(block: *mut core::ffi::c_void) {
 // IDA 0x661bc: _Block_object_dispose(block+20, 3) (126B) — the destroy
 // half of the 0x661b0 pair.
     if !block.is_null() {
-        *(block as *mut *const core::ffi::c_void).byte_add(20)
+        (block as *mut *const core::ffi::c_void).byte_add(20)
             .write(core::ptr::null());
     }
 }
@@ -1636,7 +1636,7 @@ pub unsafe fn destroy_block_capture_665ec(block: *mut core::ffi::c_void) {
 // IDA 0x665ec: _Block_object_dispose(block+20, 3) (126B) — same
 // single-capture shape as the earlier singles.
     if !block.is_null() {
-        *(block as *mut *const core::ffi::c_void).byte_add(20)
+        (block as *mut *const core::ffi::c_void).byte_add(20)
             .write(core::ptr::null());
     }
 }
@@ -1660,7 +1660,7 @@ pub unsafe fn destroy_block_capture_66600(block: *mut core::ffi::c_void) {
 // IDA 0x66600: _Block_object_dispose(block+20, 3) (126B) — same
 // single-capture shape as the earlier singles.
     if !block.is_null() {
-        *(block as *mut *const core::ffi::c_void).byte_add(20)
+        (block as *mut *const core::ffi::c_void).byte_add(20)
             .write(core::ptr::null());
     }
 }
@@ -1684,7 +1684,7 @@ pub unsafe fn destroy_block_capture_66830(block: *mut core::ffi::c_void) {
 // IDA 0x66830: _Block_object_dispose(block+20, 3) (126B) — the destroy
 // half of the 0x66824 pair.
     if !block.is_null() {
-        *(block as *mut *const core::ffi::c_void).byte_add(20)
+        (block as *mut *const core::ffi::c_void).byte_add(20)
             .write(core::ptr::null());
     }
 }
@@ -1719,77 +1719,151 @@ pub unsafe fn destroy_block_2capture_66c9c(block: *mut core::ffi::c_void) {
 // 0x67070 — ___copy_helper_block_131
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_131")]
-pub fn stub_67070() -> ! {
-    todo!("0x67070 ___copy_helper_block_131")
+pub unsafe fn copy_block_2capture_67070(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x67070: _Block_object_assign(dst+20, src+20, 3) plus dst+24/src+24
+// (234B) — dual-capture copy; the 0x67094 helper is its destroy half.
+    if !dst.is_null() && !src.is_null() {
+        let d = dst as *mut *const core::ffi::c_void;
+        let s = src as *const *const core::ffi::c_void;
+        *d.byte_add(20) = *s.byte_add(20);
+        *d.byte_add(24) = *s.byte_add(24);
+    }
 }
 
 // 0x67094 — ___destroy_helper_block_132
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_132")]
-pub fn stub_67094() -> ! {
-    todo!("0x67094 ___destroy_helper_block_132")
+pub unsafe fn destroy_block_2capture_67094(block: *mut core::ffi::c_void) {
+// IDA 0x67094: _Block_object_dispose(block+20, 3) plus block+24
+// (193B + decompile 193B) — the destroy half of the 0x67070 pair.
+    if !block.is_null() {
+        let slot = block as *mut *const core::ffi::c_void;
+        slot.byte_add(20).write(core::ptr::null());
+        slot.byte_add(24).write(core::ptr::null());
+    }
 }
 
 // 0x67354 — __GLOBAL__I_a_36
 #[doc(alias = "global constructor keyed to_a_36")]
-pub fn stub_67354() -> ! {
-    todo!("0x67354 global constructor keyed to_a_36")
+pub fn init_global_a36_67354() {
+// IDA 0x67354: global ctor keyed to _a_36 — boost::system generic_category
+// (x2) plus system_category slots (disasm; decompile failed). Same
+// once-only shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x67580 — ___copy_helper_block__26
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__26")]
-pub fn stub_67580() -> ! {
-    todo!("0x67580 ___copy_helper_block__26")
+pub unsafe fn copy_block_capture_67580(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x67580: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    if !dst.is_null() && !src.is_null() {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x6758c — ___destroy_helper_block__26
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__26")]
-pub fn stub_6758c() -> ! {
-    todo!("0x6758c ___destroy_helper_block__26")
+pub unsafe fn destroy_block_capture_6758c(block: *mut core::ffi::c_void) {
+// IDA 0x6758c: _Block_object_dispose(block+20, 3) (126B) — the destroy
+// half of the 0x67580 pair.
+    if !block.is_null() {
+        (block as *mut *const core::ffi::c_void).byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x6846c — ___copy_helper_block_157
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_157")]
-pub fn stub_6846c() -> ! {
-    todo!("0x6846c ___copy_helper_block_157")
+pub unsafe fn copy_block_capture_6846c(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x6846c: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    if !dst.is_null() && !src.is_null() {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x68478 — ___destroy_helper_block_158
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_158")]
-pub fn stub_68478() -> ! {
-    todo!("0x68478 ___destroy_helper_block_158")
+pub unsafe fn destroy_block_capture_68478(block: *mut core::ffi::c_void) {
+// IDA 0x68478: _Block_object_dispose(block+20, 3) (126B) — the destroy
+// half of the 0x6846c pair.
+    if !block.is_null() {
+        (block as *mut *const core::ffi::c_void).byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x6850c — __GLOBAL__I_a_37
 #[doc(alias = "global constructor keyed to_a_37")]
-pub fn stub_6850c() -> ! {
-    todo!("0x6850c global constructor keyed to_a_37")
+pub fn init_global_a37_6850c() {
+// IDA 0x6850c: global ctor keyed to _a_37 — boost::system generic_category
+// (x2) plus system_category slots (disasm; decompile failed). Same
+// once-only shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
-pub fn stub_686a4() -> ! {
-    todo!("0x686a4 FMOD::ProfileCpu::init(void)")
+pub fn init_fmod_profile_cpu_686a4() -> i32 {
+// IDA 0x686a4 `ProfileCpu::init` — returns 0 (0x686a8).
+    0
 }
 
 // 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
 // type: int __fastcall(FMOD::ProfileCpu *this, FMOD::SystemI *, unsigned int)
 #[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
-pub fn stub_686ac() -> ! {
-    todo!("0x686ac FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")
+pub fn update_fmod_profile_cpu_686ac(dsp: f32, stream: f32, geometry: f32, update: f32) -> i32 {
+// IDA 0x686ac `ProfileCpu::update` — reads the CPU usage out-params and
+// posts the 28-byte packet (0x686c0..0x68748); nonzero usage result
+// passes through instead.
+    FMOD_PROFILE_CPU.push_packet(dsp, stream, geometry, update);
+    0
 }
 
 // 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
 // type: int __fastcall(FMOD::ProfileCpu *this)
 #[doc(alias = "FMOD::ProfileCpu::release(void)")]
-pub fn stub_68758() -> ! {
-    todo!("0x68758 FMOD::ProfileCpu::release(void)")
+pub fn release_fmod_profile_cpu_68758() -> i32 {
+// IDA 0x68758 `ProfileCpu::release` — frees through the pool, returns 0
+// (0x68780..0x68788).
+    FMOD_PROFILE_CPU.released.store(true, std::sync::atomic::Ordering::SeqCst);
+    0
 }
+/// Minimal `FMOD::ProfileCpu` counterpart (IDA 0x686a4..0x68758): the
+/// last posted usage packet plus the release latch.
+#[derive(Debug, Default)]
+pub struct FmodProfileCpu {
+    packets: std::sync::atomic::AtomicU32,
+    last_dsp: parking_lot::Mutex<f32>,
+    last_stream: parking_lot::Mutex<f32>,
+    last_geometry: parking_lot::Mutex<f32>,
+    last_update: parking_lot::Mutex<f32>,
+    released: std::sync::atomic::AtomicBool,
+}
+impl FmodProfileCpu {
+    pub fn push_packet(&self, dsp: f32, stream: f32, geometry: f32, update: f32) {
+        *self.last_dsp.lock() = dsp;
+        *self.last_stream.lock() = stream;
+        *self.last_geometry.lock() = geometry;
+        *self.last_update.lock() = update;
+        self.packets.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    pub fn packet_count(&self) -> u32 {
+        self.packets.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static FMOD_PROFILE_CPU: std::sync::LazyLock<FmodProfileCpu> =
+    std::sync::LazyLock::new(FmodProfileCpu::default);
 
 // 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
 // type: int __fastcall(FMOD::ProfileCpu *this)
