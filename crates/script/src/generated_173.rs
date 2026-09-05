@@ -67,10 +67,10 @@ pub struct PageVC {
     pub appeared: bool,
 }
 
-/// `LoginManager` observable state (IDA 0x59038..0x5a6a8): the
+/// `LoginManager` observable state (IDA 0x59038..0x5b150): the
 /// remember-password latch, notification names, current user, login
-/// latch, login/logout tallies, and the termination latch. Keychain/net
-/// peers fold into the host.
+/// latch, login/logout/failure tallies, and the termination latch.
+/// Keychain/net peers fold into the host.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct LoginMgr {
     pub remember: bool,
@@ -80,7 +80,35 @@ pub struct LoginMgr {
     pub logged_in: bool,
     pub logins: u32,
     pub logouts: u32,
+    pub failures: u32,
     pub terminated: bool,
+}
+/// `AgreementController` observable state (IDA 0x5b4a0..0x5bad4): the
+/// agreement URL, dismissal, load latch, and toolbar/close/webview
+/// handles. WebKit peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct AgreeVC {
+    pub url: String,
+    pub dismissed: bool,
+    pub loaded: bool,
+    pub toolbar: Option<u32>,
+    pub close_btn: Option<u32>,
+    pub webview: Option<u32>,
+}
+
+/// `SignUpErrorViewController` observable state (IDA 0x5baf8..0x5bf68):
+/// the message, suggested username, signup controller, dismiss touch,
+/// dismissal, load latch, and text-view handle. UIKit peers fold into
+/// the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct SignUpErr {
+    pub message: String,
+    pub suggested: String,
+    pub signup: Option<u32>,
+    pub dismiss_touch: Option<u32>,
+    pub dismissed: bool,
+    pub loaded: bool,
+    pub text_view: Option<u32>,
 }
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
@@ -1311,176 +1339,230 @@ pub fn stub_0x5a6a8(mgr: &mut LoginMgr) {
 // 0x5ac78 — -[LoginManager processSuccessfulLogoutResponse:httpResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLogoutResponse:httpResponse:]")]
-pub fn stub_0x5ac78() -> ! {
-    todo!("0x5ac78 -[LoginManager processSuccessfulLogoutResponse:httpResponse:]")
+pub fn stub_0x5ac78(mgr: &mut LoginMgr) {
+    // IDA 0x5ac78: `processSuccessfulLogoutResponse:...` books a clean
+    // logout; the response-parse glue folds into the host.
+    mgr.logged_in = false;
+    mgr.logouts += 1;
 }
 
 // 0x5ae50 — -[LoginManager processFailureLoginResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLoginResponse:]")]
-pub fn stub_0x5ae50() -> ! {
-    todo!("0x5ae50 -[LoginManager processFailureLoginResponse:]")
+pub fn stub_0x5ae50(mgr: &mut LoginMgr) {
+    // IDA 0x5ae50: `processFailureLoginResponse:` tracks a failed login
+    // and alerts; the alert glue folds into the host.
+    mgr.failures += 1;
 }
 
 // 0x5b150 — -[LoginManager processFailureLogoutResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id)
 #[doc(alias = "-[LoginManager processFailureLogoutResponse:]")]
-pub fn stub_0x5b150() -> ! {
-    todo!("0x5b150 -[LoginManager processFailureLogoutResponse:]")
+pub fn stub_0x5b150(mgr: &mut LoginMgr) {
+    // IDA 0x5b150: `processFailureLogoutResponse:` tracks a failed
+    // logout and alerts; the alert glue folds into the host.
+    mgr.failures += 1;
 }
 
 // 0x5b4a0 — -[AgreementController initWithCoder:]
 // type: AgreementController *__cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController initWithCoder:]")]
-pub fn stub_0x5b4a0() -> ! {
-    todo!("0x5b4a0 -[AgreementController initWithCoder:]")
+pub fn stub_0x5b4a0() -> AgreeVC {
+    // IDA 0x5b4a0: `initWithCoder:` chains to super (0x5b4ba..0x5b4c4)
+    // and clears the webview (0x5b4d8); the nib glue folds into the
+    // host.
+    AgreeVC::default()
 }
 
 // 0x5b4e0 — -[AgreementController init:]
 // type: id __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController init:]")]
-pub fn stub_0x5b4e0() -> ! {
-    todo!("0x5b4e0 -[AgreementController init:]")
+pub fn stub_0x5b4e0(url: &str) -> AgreeVC {
+    // IDA 0x5b4e0: `init:` chains to super (0x5b4fc..0x5b50e), clears
+    // the webview, and stores the URL (0x5b528..0x5b53e); the popover
+    // sizing folds into the host.
+    AgreeVC { url: url.to_string(), ..AgreeVC::default() }
 }
 
 // 0x5b550 — -[AgreementController init:newFrame:]
 // type: id __cdecl(AgreementController *self, SEL, id, CGRect)
 #[doc(alias = "-[AgreementController init:newFrame:]")]
-pub fn stub_0x5b550() -> ! {
-    todo!("0x5b550 -[AgreementController init:newFrame:]")
+pub fn stub_0x5b550(url: &str) -> AgreeVC {
+    // IDA 0x5b550: `init:newFrame:` chains to super (0x5b570..0x5b584),
+    // clears the webview, stores the URL, and seats the frame
+    // (0x5b5a6..0x5bd2); the geometry folds into the host.
+    AgreeVC { url: url.to_string(), ..AgreeVC::default() }
 }
 
 // 0x5b5fc — -[AgreementController dealloc]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController dealloc]")]
-pub fn stub_0x5b5fc() -> ! {
-    todo!("0x5b5fc -[AgreementController dealloc]")
+pub fn stub_0x5b5fc(vc: &mut AgreeVC) {
+    // IDA 0x5b5fc: `dealloc` releases the webview/toolbar/close button
+    // (0x5b610..0x5b654) and chains to super; drop glue covers it and
+    // the record resets.
+    *vc = AgreeVC::default();
 }
 
 // 0x5b680 — -[AgreementController setUrl:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setUrl:]")]
-pub fn stub_0x5b680() -> ! {
-    todo!("0x5b680 -[AgreementController setUrl:]")
+pub fn stub_0x5b680(vc: &mut AgreeVC, url: &str) {
+    // IDA 0x5b680: `setUrl:` stores the URL (0x5b68c).
+    vc.url = url.to_string();
 }
 
 // 0x5b690 — -[AgreementController cancelTouch:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController cancelTouch:]")]
-pub fn stub_0x5b690() -> ! {
-    todo!("0x5b690 -[AgreementController cancelTouch:]")
+pub fn stub_0x5b690(vc: &mut AgreeVC) {
+    // IDA 0x5b690: `cancelTouch:` dismisses the controller (0x5b6a0).
+    vc.dismissed = true;
 }
 
 // 0x5b6a4 — -[AgreementController viewDidLoad]
 // type: void __cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController viewDidLoad]")]
-pub fn stub_0x5b6a4() -> ! {
-    todo!("0x5b6a4 -[AgreementController viewDidLoad]")
+pub fn stub_0x5b6a4(vc: &mut AgreeVC) {
+    // IDA 0x5b6a4: `viewDidLoad` builds the toolbar, buttons, and the
+    // agreement webview; the UIKit glue folds into the host.
+    vc.loaded = true;
 }
 
 // 0x5ba90 — -[AgreementController toolBar]
 // type: UIToolbar *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController toolBar]")]
-pub fn stub_0x5ba90() -> ! {
-    todo!("0x5ba90 -[AgreementController toolBar]")
+pub fn stub_0x5ba90(vc: &AgreeVC) -> Option<u32> {
+    // IDA 0x5ba90: `toolBar` answers the toolbar (0x5ba9e).
+    vc.toolbar
 }
 
 // 0x5baa0 — -[AgreementController setToolBar:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setToolBar:]")]
-pub fn stub_0x5baa0() -> ! {
-    todo!("0x5baa0 -[AgreementController setToolBar:]")
+pub fn stub_0x5baa0(vc: &mut AgreeVC, toolbar: u32) {
+    // IDA 0x5baa0: `setToolBar:` stores the toolbar (0x5babc).
+    vc.toolbar = Some(toolbar);
 }
 
 // 0x5bac4 — -[AgreementController closeButton]
 // type: UIBarButtonItem *__cdecl(AgreementController *self, SEL)
 #[doc(alias = "-[AgreementController closeButton]")]
-pub fn stub_0x5bac4() -> ! {
-    todo!("0x5bac4 -[AgreementController closeButton]")
+pub fn stub_0x5bac4(vc: &AgreeVC) -> Option<u32> {
+    // IDA 0x5bac4: `closeButton` answers the button (0x5bad2).
+    vc.close_btn
 }
 
 // 0x5bad4 — -[AgreementController setCloseButton:]
 // type: void __cdecl(AgreementController *self, SEL, id)
 #[doc(alias = "-[AgreementController setCloseButton:]")]
-pub fn stub_0x5bad4() -> ! {
-    todo!("0x5bad4 -[AgreementController setCloseButton:]")
+pub fn stub_0x5bad4(vc: &mut AgreeVC, btn: u32) {
+    // IDA 0x5bad4: `setCloseButton:` stores the button (0x5baf0).
+    vc.close_btn = Some(btn);
 }
 
 // 0x5baf8 — -[SignUpErrorViewController initWithCoder:]
 // type: SignUpErrorViewController *__cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController initWithCoder:]")]
-pub fn stub_0x5baf8() -> ! {
-    todo!("0x5baf8 -[SignUpErrorViewController initWithCoder:]")
+pub fn stub_0x5baf8() -> SignUpErr {
+    // IDA 0x5baf8: `initWithCoder:` chains to super (0x5bb12..0x5bb1c)
+    // and clears the message/username (0x5bb3a..0x5bb3e); the nib glue
+    // folds into the host.
+    SignUpErr::default()
 }
 
 // 0x5bb44 — -[SignUpErrorViewController dealloc]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController dealloc]")]
-pub fn stub_0x5bb44() -> ! {
-    todo!("0x5bb44 -[SignUpErrorViewController dealloc]")
+pub fn stub_0x5bb44(vc: &mut SignUpErr) {
+    // IDA 0x5bb44: `dealloc` unobserves the text view (0x5bb5c..0x5bb7c)
+    // and releases the strings; drop glue covers it and the record
+    // resets.
+    *vc = SignUpErr::default();
 }
 
 // 0x5bc00 — -[SignUpErrorViewController viewDidLoad]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController viewDidLoad]")]
-pub fn stub_0x5bc00() -> ! {
-    todo!("0x5bc00 -[SignUpErrorViewController viewDidLoad]")
+pub fn stub_0x5bc00(vc: &mut SignUpErr) {
+    // IDA 0x5bc00: `viewDidLoad` chains to super (0x5bc20..0x5bc2a),
+    // clears the text, and observes the content size (0x5bc3e..0x5bc8a);
+    // the observer glue folds into the host.
+    vc.loaded = true;
 }
 
 // 0x5bcb8 — -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id, id, void *)
 #[doc(alias = "-[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")]
-pub fn stub_0x5bcb8() -> ! {
-    todo!("0x5bcb8 -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")
+pub fn stub_0x5bcb8() {
+    // IDA 0x5bcb8: `observeValueForKeyPath:...` re-lays-out on content
+    // size changes (0x5bcce..); pure layout folds into the host — no-op.
 }
 
 // 0x5bd70 — -[SignUpErrorViewController didReceiveMemoryWarning]
 // type: void __cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController didReceiveMemoryWarning]")]
-pub fn stub_0x5bd70() -> ! {
-    todo!("0x5bd70 -[SignUpErrorViewController didReceiveMemoryWarning]")
+pub fn stub_0x5bd70() {
+    // IDA 0x5bd70: `didReceiveMemoryWarning` chains to super
+    // (0x5bd8a..0x5bd94) — no-op.
 }
 
 // 0x5bd9c — -[SignUpErrorViewController setSuggestedUsername:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setSuggestedUsername:]")]
-pub fn stub_0x5bd9c() -> ! {
-    todo!("0x5bd9c -[SignUpErrorViewController setSuggestedUsername:]")
+pub fn stub_0x5bd9c(vc: &mut SignUpErr, name: &str) {
+    // IDA 0x5bd9c: `setSuggestedUsername:` retains the name (0x5bdb2..).
+    vc.suggested = name.to_string();
 }
 
 // 0x5bdbc — -[SignUpErrorViewController setMessage:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setMessage:]")]
-pub fn stub_0x5bdbc() -> ! {
-    todo!("0x5bdbc -[SignUpErrorViewController setMessage:]")
+pub fn stub_0x5bdbc(vc: &mut SignUpErr, message: &str) {
+    // IDA 0x5bdbc: `setMessage:` retains the message (0x5bdd8..) and
+    // pushes it to the text view when seated (0x5bdf2..0x5be18); the
+    // text-view write folds into the host.
+    vc.message = message.to_string();
 }
 
 // 0x5be1c — -[SignUpErrorViewController setSignupController:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id)
 #[doc(alias = "-[SignUpErrorViewController setSignupController:]")]
-pub fn stub_0x5be1c() -> ! {
-    todo!("0x5be1c -[SignUpErrorViewController setSignupController:]")
+pub fn stub_0x5be1c(vc: &mut SignUpErr, signup: u32) {
+    // IDA 0x5be1c: `setSignupController:` stores the controller
+    // (0x5be28).
+    vc.signup = Some(signup);
 }
 
 // 0x5be2c — -[SignUpErrorViewController touchesBegan:withEvent:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
 #[doc(alias = "-[SignUpErrorViewController touchesBegan:withEvent:]")]
-pub fn stub_0x5be2c() -> ! {
-    todo!("0x5be2c -[SignUpErrorViewController touchesBegan:withEvent:]")
+pub fn stub_0x5be2c(vc: &mut SignUpErr, touch: u32) {
+    // IDA 0x5be2c: `touchesBegan` claims the dismiss touch when none is
+    // held (0x5be3e..0x5be58).
+    if vc.dismiss_touch.is_none() {
+        vc.dismiss_touch = Some(touch);
+    }
 }
 
 // 0x5be5c — -[SignUpErrorViewController touchesEnded:withEvent:]
 // type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
 #[doc(alias = "-[SignUpErrorViewController touchesEnded:withEvent:]")]
-pub fn stub_0x5be5c() -> ! {
-    todo!("0x5be5c -[SignUpErrorViewController touchesEnded:withEvent:]")
+pub fn stub_0x5be5c(vc: &mut SignUpErr, touch: Option<u32>) {
+    // IDA 0x5be5c: `touchesEnded` dismisses on a matching dismiss touch
+    // (0x5be8a..); the enumeration folds into the host.
+    if touch.is_some() && touch == vc.dismiss_touch {
+        vc.dismiss_touch = None;
+        vc.dismissed = true;
+    }
 }
 
 // 0x5bf68 — -[SignUpErrorViewController messageTextView]
 // type: UITextView *__cdecl(SignUpErrorViewController *self, SEL)
 #[doc(alias = "-[SignUpErrorViewController messageTextView]")]
-pub fn stub_0x5bf68() -> ! {
-    todo!("0x5bf68 -[SignUpErrorViewController messageTextView]")
+pub fn stub_0x5bf68(vc: &SignUpErr) -> Option<u32> {
+    // IDA 0x5bf68: `messageTextView` answers the text view (0x5bf76).
+    vc.text_view
 }
 
 #[cfg(test)]
@@ -1808,5 +1890,71 @@ mod page_login_batch_tests {
         assert!(mgr.logged_in);
         stub_0x5a42c(&mut mgr, true);
         assert!(!mgr.logged_in);
+    }
+}
+
+#[cfg(test)]
+mod agree_signup_batch_tests {
+    use super::*;
+
+    #[test]
+    fn login_outcomes() {
+        let mut mgr = stub_0x59038();
+        stub_0x5ac78(&mut mgr);
+        assert!(!mgr.logged_in);
+        assert_eq!(mgr.logouts, 1);
+        stub_0x5ae50(&mut mgr);
+        stub_0x5b150(&mut mgr);
+        assert_eq!(mgr.failures, 2);
+    }
+
+    #[test]
+    fn agreement() {
+        let mut vc = stub_0x5b4a0();
+        assert_eq!(vc.url, "");
+        let mut vc2 = stub_0x5b4e0("https://tos/");
+        assert_eq!(vc2.url, "https://tos/");
+        let vc3 = stub_0x5b550("https://tos/");
+        assert_eq!(vc3.url, "https://tos/");
+        stub_0x5b680(&mut vc2, "https://new/");
+        assert_eq!(vc2.url, "https://new/");
+        stub_0x5b6a4(&mut vc2);
+        assert!(vc2.loaded);
+        stub_0x5baa0(&mut vc2, 1);
+        assert_eq!(stub_0x5ba90(&vc2), Some(1));
+        stub_0x5bad4(&mut vc2, 2);
+        assert_eq!(stub_0x5bac4(&vc2), Some(2));
+        stub_0x5b690(&mut vc2);
+        assert!(vc2.dismissed);
+        stub_0x5b5fc(&mut vc2);
+        assert_eq!(vc2, AgreeVC::default());
+        stub_0x5b5fc(&mut vc);
+    }
+
+    #[test]
+    fn signup_error() {
+        let mut vc = stub_0x5baf8();
+        stub_0x5bc00(&mut vc);
+        assert!(vc.loaded);
+        stub_0x5bcb8();
+        stub_0x5bd70();
+        stub_0x5bd9c(&mut vc, "suggested1");
+        assert_eq!(vc.suggested, "suggested1");
+        stub_0x5bdbc(&mut vc, "taken");
+        assert_eq!(vc.message, "taken");
+        stub_0x5be1c(&mut vc, 7);
+        assert_eq!(vc.signup, Some(7));
+        assert_eq!(stub_0x5bf68(&vc), None);
+        stub_0x5be2c(&mut vc, 3);
+        assert_eq!(vc.dismiss_touch, Some(3));
+        stub_0x5be2c(&mut vc, 4);
+        assert_eq!(vc.dismiss_touch, Some(3));
+        stub_0x5be5c(&mut vc, Some(4));
+        assert!(!vc.dismissed);
+        stub_0x5be5c(&mut vc, Some(3));
+        assert!(vc.dismissed);
+        assert_eq!(vc.dismiss_touch, None);
+        stub_0x5bb44(&mut vc);
+        assert_eq!(vc, SignUpErr::default());
     }
 }
