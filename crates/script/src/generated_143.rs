@@ -7,167 +7,236 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
+
+/// Opaque `signal<const PropertyDescriptor*>` static mutex handle (IDA
+/// 0x3d5b0: guarded once-init at 0x3d60c..0x3d66a, same shape as the
+/// UIEvent mutex).
+static SIGNAL_PROPDESC_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// Opaque slot static mutex handle (IDA 0x3d938, thunk to the slot mutex).
+static SLOT_PROPDESC_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `signal<void(const PropertyDescriptor*)>` connection state (IDA
+/// 0x3a278..0x4a150): slot allocation (0x3a290..0x3a2ce) and list insert
+/// (0x3d2f4) fold into the count; removal unlinks with an expiry assert
+/// (signal.h:261, 0x3d85c..0x3d890, folds into saturation); invocation runs
+/// the bound member (0x3d830..0x3d844).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct PropChangeSignal {
+    pub slots: u32,
+    pub next_id: u32,
+    pub fired: u32,
+}
+
+impl PropChangeSignal {
+    /// `connect` (IDA 0x3a278/0x46c18): allocates the slot and answers the
+    /// connection id.
+    pub fn connect(&mut self) -> u32 {
+        self.slots += 1;
+        self.next_id += 1;
+        self.next_id
+    }
+
+    /// `insert` (IDA 0x3d2f4): links a slot under the mutex.
+    pub fn insert(&mut self) {
+        self.slots += 1;
+    }
+
+    /// `remove` (IDA 0x3d848): unlinks the slot.
+    pub fn remove(&mut self) {
+        self.slots = self.slots.saturating_sub(1);
+    }
+
+    /// Bind `operator()` (IDA 0x3d830): the virtual-aware member call.
+    pub fn fire(&mut self) {
+        self.fired += 1;
+    }
+}
 
 // 0x380a0 — __ZN10RobloxView16onPlaceIDChangedEPKN3RBX10Reflection18PropertyDescriptorE
 // type: _DWORD __fastcall(RobloxView *__hidden this, const PropertyDescriptor *)
 #[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x380a0() -> ! {
-    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x380a0() {
+    // IDA 0x380a0: `RobloxView::onPlaceIDChanged` has an empty body —
+    // no-op.
 }
 
 // 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
-pub fn stub_0x3a278() -> ! {
-    todo!("0x3a278 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")
+pub fn stub_0x3a278(sig: &mut PropChangeSignal) -> u32 {
+    // IDA 0x3a278: `connect` for the `RobloxView` member bind — see
+    // `PropChangeSignal::connect`.
+    sig.connect()
 }
 
 // 0x3d2f4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6insertEPNS8_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_0x3d2f4() -> ! {
-    todo!("0x3d2f4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_0x3d2f4(sig: &mut PropChangeSignal) {
+    // IDA 0x3d2f4: `insert` — see `PropChangeSignal::insert` (mutex
+    // plumbing folds into the host).
+    sig.insert();
 }
 
 // 0x3d508 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEEaSERKSC_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
-pub fn stub_0x3d508() -> ! {
-    todo!("0x3d508 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")
+pub fn stub_0x3d508() {
+    // IDA 0x3d508: `intrusive_ptr<slot>::operator=` add-refs, swaps, and
+    // releases (same shape as 0x3c0c8); `Arc` glue covers it — no-op.
 }
 
 // 0x3d5b0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x3d5b0() -> ! {
-    todo!("0x3d5b0 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x3d5b0() -> u32 {
+    // IDA 0x3d5b0: `safe_static_do_get_mutex` — see
+    // `SIGNAL_PROPDESC_MUTEX`.
+    *SIGNAL_PROPDESC_MUTEX
 }
 
 // 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_0x3d6a8() -> ! {
-    todo!("0x3d6a8 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3d6a8() {
+    // IDA 0x3d6a8: `callable_slot` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x3d754 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot() [0x3d754]")]
-pub fn stub_0x3d754() -> ! {
-    todo!("0x3d754 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x3d754() {
+    // IDA 0x3d754: `callable_slot` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x3d808() -> ! {
-    todo!("0x3d808 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d808(sig: &mut PropChangeSignal) {
+    // IDA 0x3d808: `callable::call` forwards to the bind call (0x3d81a).
+    stub_0x3d830(sig);
 }
 
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x3d81c() -> ! {
-    todo!("0x3d81c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x3d81c(sig: &mut PropChangeSignal) {
+    // IDA 0x3d81c: thn4 `call` adjusts `this` and forwards to `call`.
+    stub_0x3d808(sig);
 }
 
 // 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
 // type: int(void)
 #[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
-pub fn stub_0x3d830() -> ! {
-    todo!("0x3d830 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+pub fn stub_0x3d830(sig: &mut PropChangeSignal) {
+    // IDA 0x3d830: bind `operator()` — see `PropChangeSignal::fire`.
+    sig.fire();
 }
 
 // 0x3d848 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6removeEPNS8_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_0x3d848() -> ! {
-    todo!("0x3d848 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::remove(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_0x3d848(sig: &mut PropChangeSignal) {
+    // IDA 0x3d848: `remove` — see `PropChangeSignal::remove` (assert and
+    // log at 0x3d85c..0x3d8be fold into the host).
+    sig.remove();
 }
 
 // 0x3d938 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x3d938() -> ! {
-    todo!("0x3d938 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x3d938() -> u32 {
+    // IDA 0x3d938: `slot::safe_static_init_mutex` — see
+    // `SLOT_PROPDESC_MUTEX`.
+    *SLOT_PROPDESC_MUTEX
 }
 
 // 0x3d940 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotD0Ev
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")]
-pub fn stub_0x3d940() -> ! {
-    todo!("0x3d940 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")
+pub fn stub_0x3d940() {
+    // IDA 0x3d940: `slot` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_0x3d9f0() -> ! {
-    todo!("0x3d9f0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x3d9f0() {
+    // IDA 0x3d9f0: `callable` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x3da9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable() [0x3da9c]")]
-pub fn stub_0x3da9c() -> ! {
-    todo!("0x3da9c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x3da9c() {
+    // IDA 0x3da9c: `callable` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x46c18 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
-pub fn stub_0x46c18() -> ! {
-    todo!("0x46c18 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+pub fn stub_0x46c18(sig: &mut PropChangeSignal) -> u32 {
+    // IDA 0x46c18: `connect` for the ObjC `CharacterMove` bind flavor
+    // (0x46c30..0x46c6e) — same slot record as 0x3a278.
+    sig.connect()
 }
 
 // 0x46c8c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
-pub fn stub_0x46c8c() -> ! {
-    todo!("0x46c8c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x46c8c() {
+    // IDA 0x46c8c: `callable_slot` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x46d38 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot() [0x46d38]")]
-pub fn stub_0x46d38() -> ! {
-    todo!("0x46d38 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_0x46d38() {
+    // IDA 0x46d38: `callable_slot` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x46de8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x46de8() -> ! {
-    todo!("0x46de8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x46de8(sig: &mut PropChangeSignal) {
+    // IDA 0x46de8: ObjC-flavor `callable::call` invoking the bound method;
+    // the closure call folds into the fire count.
+    sig.fire();
 }
 
 // 0x46df8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x46df8() -> ! {
-    todo!("0x46df8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x46df8(sig: &mut PropChangeSignal) {
+    // IDA 0x46df8: thn4 `call` adjusts `this` and forwards.
+    stub_0x46de8(sig);
 }
 
 // 0x46e08 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
-pub fn stub_0x46e08() -> ! {
-    todo!("0x46e08 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x46e08() {
+    // IDA 0x46e08: `callable` D1 dtor; drop glue covers it — no-op.
 }
 
 // 0x46eb4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable() [0x46eb4]")]
-pub fn stub_0x46eb4() -> ! {
-    todo!("0x46eb4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+pub fn stub_0x46eb4() {
+    // IDA 0x46eb4: `callable` D0 dtor; drop glue covers it — no-op.
 }
 
 // 0x4a04c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_EC2IPS9_EERKSD_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")]
-pub fn stub_0x4a04c() -> ! {
-    todo!("0x4a04c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>*)")
+pub fn stub_0x4a04c() {
+    // IDA 0x4a04c: `callable` ctor installs vtables (0x4a07e..0x4a0a6) and
+    // assigns the function (0x4a0cc); slot-construction glue — no-op.
 }
 
 // 0x4a148 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4a148() -> ! {
-    todo!("0x4a148 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4a148(sig: &mut PropChangeSignal) {
+    // IDA 0x4a148: function-flavor `call` runs the stored function
+    // (folds into the fire count).
+    sig.fire();
 }
 
 // 0x4a150 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost8functionIS8_EELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_0x4a150() -> ! {
-    todo!("0x4a150 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(RBX::Reflection::PropertyDescriptor const*)>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+pub fn stub_0x4a150(sig: &mut PropChangeSignal) {
+    // IDA 0x4a150: thn4 `call` adjusts `this` and forwards.
+    stub_0x4a148(sig);
 }
 
 // 0x4a158 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_
@@ -690,4 +759,66 @@ pub fn stub_0x25df50() -> ! {
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 pub fn stub_0x25dff4() -> ! {
     todo!("0x25dff4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+#[cfg(test)]
+mod prop_signal_batch_tests {
+    use super::*;
+
+    #[test]
+    fn connect_insert_remove() {
+        let mut sig = PropChangeSignal::default();
+        assert_eq!(stub_0x3a278(&mut sig), 1);
+        assert_eq!(stub_0x46c18(&mut sig), 2);
+        assert_eq!(sig.slots, 2);
+        stub_0x3d2f4(&mut sig);
+        assert_eq!(sig.slots, 3);
+        stub_0x3d848(&mut sig);
+        assert_eq!(sig.slots, 2);
+        stub_0x3d848(&mut sig);
+        stub_0x3d848(&mut sig);
+        stub_0x3d848(&mut sig);
+        assert_eq!(sig.slots, 0);
+    }
+
+    #[test]
+    fn call_chains_fire_once() {
+        let mut sig = PropChangeSignal::default();
+        stub_0x3d830(&mut sig);
+        assert_eq!(sig.fired, 1);
+        stub_0x3d808(&mut sig);
+        assert_eq!(sig.fired, 2);
+        stub_0x3d81c(&mut sig);
+        assert_eq!(sig.fired, 3);
+        stub_0x46de8(&mut sig);
+        assert_eq!(sig.fired, 4);
+        stub_0x46df8(&mut sig);
+        assert_eq!(sig.fired, 5);
+        stub_0x4a148(&mut sig);
+        assert_eq!(sig.fired, 6);
+        stub_0x4a150(&mut sig);
+        assert_eq!(sig.fired, 7);
+    }
+
+    #[test]
+    fn static_mutexes() {
+        assert_eq!(stub_0x3d5b0(), *SIGNAL_PROPDESC_MUTEX);
+        assert_eq!(stub_0x3d938(), *SLOT_PROPDESC_MUTEX);
+    }
+
+    #[test]
+    fn glue_noops() {
+        stub_0x380a0();
+        stub_0x3d508();
+        stub_0x3d6a8();
+        stub_0x3d754();
+        stub_0x3d940();
+        stub_0x3d9f0();
+        stub_0x3da9c();
+        stub_0x46c8c();
+        stub_0x46d38();
+        stub_0x46e08();
+        stub_0x46eb4();
+        stub_0x4a04c();
+    }
 }
