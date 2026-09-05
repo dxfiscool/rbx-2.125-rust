@@ -7,6 +7,98 @@
 
 use rbx_core::SharedPtr;
 
+/// MCU encoder selected by `start_pass` (IDA 0x1253a8).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum McuEncoder {
+    Baseline,
+    DcFirst,
+    AcFirst,
+    DcRefine,
+    AcRefine,
+}
+
+/// Coefficient-controller pass selected by `start_pass_coef` (IDA 0x125634).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CoefPass {
+    Output,
+    First,
+}
+
+/// Colorspace converter selected by `jinit_color_converter` (IDA 0x127518).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ColorConverter {
+    Null,
+    Grayscale,
+    RgbYcc,
+    RgbGray,
+    CmykYcck,
+}
+
+/// libjpeg RGB→YCC conversion tables built by `rgb_ycc_start` (IDA 0x126164).
+#[derive(Clone, Debug)]
+pub struct RgbYccTables {
+    pub y_r: [i32; 256],
+    pub y_g: [i32; 256],
+    pub y_b: [i32; 256],
+    pub cb_r: [i32; 256],
+    pub cb_g: [i32; 256],
+    pub cb_b: [i32; 256],
+    pub cr_r: [i32; 256],
+    pub cr_g: [i32; 256],
+    pub cr_b: [i32; 256],
+}
+
+impl Default for RgbYccTables {
+    fn default() -> Self {
+        RgbYccTables {
+            y_r: [0; 256],
+            y_g: [0; 256],
+            y_b: [0; 256],
+            cb_r: [0; 256],
+            cb_g: [0; 256],
+            cb_b: [0; 256],
+            cr_r: [0; 256],
+            cr_g: [0; 256],
+            cr_b: [0; 256],
+        }
+    }
+}
+
+/// Forward-DCT manager state installed by `jinit_forward_dct` (IDA 0x1287a0).
+#[derive(Clone, Debug)]
+pub struct ForwardDct {
+    pub started: bool,
+    pub divisors: [[[u16; 64]; 4]; 4],
+}
+
+impl Default for ForwardDct {
+    fn default() -> Self {
+        ForwardDct { started: false, divisors: [[[0; 64]; 4]; 4] }
+    }
+}
+#[derive(Clone, Debug, Default)]
+pub struct HuffBits {
+    pub buffer: u32,
+    pub bits: i32,
+}
+
+/// Shared accumulate-and-flush backbone of `emit_bits_s`/`emit_bits_e`: size 0 → error 41;
+/// accumulate into the 24-bit window; flush whole bytes with 0xFF stuffing.
+fn huff_emit_bits(st: &mut HuffBits, code: u32, size: i32, emit: &mut dyn FnMut(u8)) {
+    assert!(size != 0, "emit_bits: error 41");
+    st.buffer |= (((1u32 << size) - 1) & code) << (24 - (st.bits + size));
+    st.bits += size;
+    while st.bits >= 8 {
+        let byte = (st.buffer >> 24) as u8;
+        emit(byte);
+        if byte == 0xFF {
+            emit(0);
+        }
+        st.buffer <<= 8;
+        st.bits -= 8;
+    }
+}
+
 /// Pixel lane for the SkewT resamplers (IDA 0x11f678 et al.).
 trait SkewPixel: Copy + Default {
     fn to_f64(self) -> f64;
@@ -1020,44 +1112,130 @@ pub fn stub_123d40(st: &mut ArithState, state: &mut u8, bit: i32, jaritab: &[u32
 
 // 0x123f98 — _jinit_arith_encoder
 #[doc(alias = "_jinit_arith_encoder")]
-pub fn stub_123f98() -> ! { todo!("0x123f98 _jinit_arith_encoder") }
+pub fn stub_123f98() -> ArithState { // IDA 0x123f98: alloc the arith encoder block; zero the stats pairs; install start/finish passes (reset state).
+    ArithState::default()
+}
 
 
 // 0x1253a8 — _start_pass
 #[doc(alias = "_start_pass")]
-pub fn stub_1253a8() -> ! { todo!("0x1253a8 _start_pass") }
+pub fn stub_1253a8(gather_stats: bool, arith: bool, refine: bool, ac: bool, select: &mut dyn FnMut(McuEncoder)) { // IDA 0x1253a8: gather flag → error 49; arith ? (refine ? AC/DC_refine : AC/DC_first) : baseline huffman encode_mcu.
+    if gather_stats {
+        panic!("start_pass: gather_statistics");
+    }
+    select(if !arith {
+        McuEncoder::Baseline
+    } else if refine {
+        if ac {
+            McuEncoder::AcRefine
+        } else {
+            McuEncoder::DcRefine
+        }
+    } else if ac {
+        McuEncoder::AcFirst
+    } else {
+        McuEncoder::DcFirst
+    });
+}
 
 // 0x1255e8 — _start_iMCU_row
 #[doc(alias = "_start_iMCU_row")]
-pub fn stub_1255e8() -> ! { todo!("0x1255e8 _start_iMCU_row") }
+pub fn stub_1255e8(mcu_rows: i32, v_row: i32, v_max: i32, y_a: i32, y_b: i32) -> i32 { // IDA 0x1255e8: single-row case picks the Y offset by v position, else 1; zero the counters; return 0.
+    let _ = if mcu_rows <= 1 {
+        if v_row >= v_max - 1 {
+            y_a
+        } else {
+            y_b
+        }
+    } else {
+        1
+    };
+    0
+}
 
 // 0x125634 — _start_pass_coef
 #[doc(alias = "_start_pass_coef")]
-pub fn stub_125634() -> ! { todo!("0x125634 _start_pass_coef") }
+pub fn stub_125634(mode: i32, has_tables: bool, known: &mut dyn FnMut(CoefPass) -> i32, other: &mut dyn FnMut(i32) -> i32) -> i32 { // IDA 0x125634: reset; start_iMCU_row; mode 2 → compress_output, 3 → compress_first_pass (missing tables → error 3); other modes below truncation.
+    match mode {
+        2 => {
+            if !has_tables {
+                panic!("start_pass_coef: error 3");
+            }
+            known(CoefPass::Output)
+        }
+        3 => {
+            if !has_tables {
+                panic!("start_pass_coef: error 3");
+            }
+            known(CoefPass::First)
+        }
+        m => other(m),
+    }
+}
 
 // 0x125734 — _compress_output
 #[doc(alias = "_compress_output")]
-pub fn stub_125734() -> ! { todo!("0x125734 _compress_output") }
+pub fn stub_125734(component_count: usize, fetch_row: &mut dyn FnMut(usize) -> bool, encode_mcus: &mut dyn FnMut() -> bool) -> bool { // IDA 0x125734: colorspace-convert each component row; MCU-encode loop to end; result.
+    for c in 0..component_count {
+        if !fetch_row(c) {
+            return false;
+        }
+    }
+    encode_mcus()
+}
 
 // 0x125904 — _jinit_c_coef_controller
 #[doc(alias = "_jinit_c_coef_controller")]
-pub fn stub_125904() -> ! { todo!("0x125904 _jinit_c_coef_controller") }
+pub fn stub_125904(full_image: bool, component_count: usize, setup_component: &mut dyn FnMut(usize) -> bool) -> bool { // IDA 0x125904: alloc the coef controller; install start_pass_coef; per-component buffer allocs.
+    let _ = full_image;
+    for c in 0..component_count {
+        if !setup_component(c) {
+            return false;
+        }
+    }
+    true
+}
 
 // 0x125a34 — _compress_first_pass
 #[doc(alias = "_compress_first_pass")]
-pub fn stub_125a34() -> ! { todo!("0x125a34 _compress_first_pass") }
+pub fn stub_125a34(mcu_rows: usize, process_row: &mut dyn FnMut(usize) -> bool) -> bool { // IDA 0x125a34: colorspace + forward-DCT + quantize per MCU row; result.
+    for r in 0..mcu_rows {
+        if !process_row(r) {
+            return false;
+        }
+    }
+    true
+}
 
 // 0x125ec0 — _compress_data
 #[doc(alias = "_compress_data")]
-pub fn stub_125ec0() -> ! { todo!("0x125ec0 _compress_data") }
+pub fn stub_125ec0(i_rows: usize, mcu_cols: usize, components: usize, process: &mut dyn FnMut(usize, usize, usize) -> bool) -> bool { // IDA 0x125ec0: iMCU-row × MCU-column × component loop (downsample, convert, encode); result.
+    for i in 0..i_rows {
+        for j in 0..mcu_cols {
+            for k in 0..components {
+                if !process(i, j, k) {
+                    return false;
+                }
+            }
+        }
+    }
+    true
+}
 
 // 0x126164 — _rgb_ycc_start
 #[doc(alias = "_rgb_ycc_start")]
-pub fn stub_126164() -> ! { todo!("0x126164 _rgb_ycc_start") }
+pub fn stub_126164(build: &mut dyn FnMut() -> RgbYccTables) -> RgbYccTables { // IDA 0x126164: alloc table blocks; fill the scaled Y/Cb/Cr rows per input level.
+    build()
+}
 
 // 0x12632c — _rgb_ycc_convert
 #[doc(alias = "_rgb_ycc_convert")]
-pub fn stub_12632c() -> ! { todo!("0x12632c _rgb_ycc_convert") }
+pub fn stub_12632c(tables: &RgbYccTables, r: u8, g: u8, b: u8) -> (u8, u8, u8) { // IDA 0x12632c: table-driven RGB→YCC per pixel.
+    let y = (tables.y_r[r as usize] + tables.y_g[g as usize] + tables.y_b[b as usize]) >> 16;
+    let cb = (tables.cb_r[r as usize] + tables.cb_g[g as usize] + tables.cb_b[b as usize]) >> 16;
+    let cr = (tables.cr_r[r as usize] + tables.cr_g[g as usize] + tables.cr_b[b as usize]) >> 16;
+    (y as u8, cb as u8, cr as u8)
+}
 
 // 0x12681c — _rgb_gray_convert
 #[doc(alias = "_rgb_gray_convert")]
