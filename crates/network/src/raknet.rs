@@ -9949,205 +9949,259 @@ pub fn stub_97bca4(this: usize, destroy_at: &mut dyn FnMut(usize)) {
 
 // 0x97bcb0 — __ZThn1180_N3RBX7Network16ClientReplicatorD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
-pub fn stub_97bcb0() -> ! {
-    todo!("0x97bcb0 non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")
+pub fn stub_97bcb0(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x97bcb0: this-1180 adjust then tail-call the primary dtor.
+ destroy_at(this - 1180);
 }
 
 // 0x97bcc0 — __ZThn1192_N3RBX7Network16ClientReplicatorD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
-pub fn stub_97bcc0() -> ! {
-    todo!("0x97bcc0 non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")
+pub fn stub_97bcc0(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x97bcc0: this-1192 adjust then tail-call the primary dtor.
+ destroy_at(this - 1192);
 }
 
 // 0x97bcd0 — __ZNK3RBX7Network16ClientReplicator16findTargetPlayerEv
 #[doc(alias = "RBX::Network::ClientReplicator::findTargetPlayer(void)const")]
-pub fn stub_97bcd0() -> ! {
-    todo!("0x97bcd0 RBX::Network::ClientReplicator::findTargetPlayer(void)const")
+pub fn stub_97bcd0(target: usize, load: &mut dyn FnMut(usize) -> usize) -> usize {
+ // IDA 0x97bcd0: *(this + 387); null -> 0 else *(target + 188).
+ if target == 0 { 0 } else { load(target) }
 }
 
 // 0x97bce0 — __ZN3RBX7Network16ClientReplicator19isLegalSendInstanceEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::ClientReplicator::isLegalSendInstance(RBX::Instance const*)")]
-pub fn stub_97bce0() -> ! {
-    todo!("0x97bce0 RBX::Network::ClientReplicator::isLegalSendInstance(RBX::Instance const*)")
+pub fn stub_97bce0(has_instance: bool, check: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x97bce0: null instance -> true else class-descriptor checks (below truncation).
+ if has_instance { check() } else { true }
 }
 
 // 0x97be30 — __ZN3RBX7Network16ClientReplicator19isLegalSendPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::ClientReplicator::isLegalSendProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_97be30() -> ! {
-    todo!("0x97be30 RBX::Network::ClientReplicator::isLegalSendProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_97be30() -> bool {
+ // IDA 0x97be30: returns 1.
+ true
 }
 
 // 0x97be34 — __ZN3RBX7Network16ClientReplicator12canSendItemsEv
 #[doc(alias = "RBX::Network::ClientReplicator::canSendItems(void)")]
-pub fn stub_97be34() -> ! {
-    todo!("0x97be34 RBX::Network::ClientReplicator::canSendItems(void)")
+pub fn stub_97be34(flag: u8) -> bool {
+ // IDA 0x97be34: return *(u8*)(this + 6040).
+ flag != 0
 }
 
 // 0x97ca88 — __ZN3RBX7Network16ClientReplicator17postProcessPacketEv
 #[doc(alias = "RBX::Network::ClientReplicator::postProcessPacket(void)")]
-pub fn stub_97ca88() -> ! {
-    todo!("0x97ca88 RBX::Network::ClientReplicator::postProcessPacket(void)")
+pub fn stub_97ca88(needs_update: bool, update: &mut dyn FnMut()) {
+ // IDA 0x97ca88: flag at +3720 gates updateClientCapacity.
+ if needs_update {
+ update();
+ }
 }
 
 // 0x97ca9c — __ZN3RBX7Network16ClientReplicator20updateClientCapacityEv
 #[doc(alias = "RBX::Network::ClientReplicator::updateClientCapacity(void)")]
-pub fn stub_97ca9c() -> ! {
-    todo!("0x97ca9c RBX::Network::ClientReplicator::updateClientCapacity(void)")
+pub fn stub_97ca9c(step: &mut dyn FnMut()) {
+ // IDA 0x97ca9c: updateClientCapacity (below truncation).
+ step();
 }
 
 // 0x97d0c8 — __ZN3RBX7Network16ClientReplicator23checkDistributedReceiveEPNS_12PartInstanceE
 #[doc(alias = "RBX::Network::ClientReplicator::checkDistributedReceive(RBX::PartInstance *)")]
-pub fn stub_97d0c8() -> ! {
-    todo!("0x97d0c8 RBX::Network::ClientReplicator::checkDistributedReceive(RBX::PartInstance *)")
+pub fn stub_97d0c8(owner: u64, local: u64) -> bool {
+ // IDA 0x97d0c8: true when the owner address differs from the local address.
+ owner != local
 }
 
 // 0x97d0f8 — __ZN3RBX7Network16ClientReplicator20checkDistributedSendEPKNS_12PartInstanceE
 #[doc(alias = "RBX::Network::ClientReplicator::checkDistributedSend(RBX::PartInstance const*)")]
-pub fn stub_97d0f8() -> ! {
-    todo!("0x97d0f8 RBX::Network::ClientReplicator::checkDistributedSend(RBX::PartInstance const*)")
+pub fn stub_97d0f8() -> bool {
+ // IDA 0x97d0f8: returns 1.
+ true
 }
 
 // 0x97d0fc — __ZN3RBX7Network16ClientReplicator24checkDistributedSendFastEPKNS_12PartInstanceE
 #[doc(alias = "RBX::Network::ClientReplicator::checkDistributedSendFast(RBX::PartInstance const*)")]
-pub fn stub_97d0fc() -> ! {
-    todo!("0x97d0fc RBX::Network::ClientReplicator::checkDistributedSendFast(RBX::PartInstance const*)")
+pub fn stub_97d0fc() -> bool {
+ // IDA 0x97d0fc: returns 1.
+ true
 }
 
 // 0x97d100 — __ZN3RBX7Network16ClientReplicator16requestCharacterEv
 #[doc(alias = "RBX::Network::ClientReplicator::requestCharacter(void)")]
-pub fn stub_97d100() -> ! {
-    todo!("0x97d100 RBX::Network::ClientReplicator::requestCharacter(void)")
+pub fn stub_97d100(request: &mut dyn FnMut()) {
+ // IDA 0x97d100: requestCharacter (below truncation).
+ request();
 }
 
 // 0x97d3f0 — __ZN3RBX7Network16ClientReplicator22onPlayerCharacterAddedEv
 #[doc(alias = "RBX::Network::ClientReplicator::onPlayerCharacterAdded(void)")]
-pub fn stub_97d3f0() -> ! {
-    todo!("0x97d3f0 RBX::Network::ClientReplicator::onPlayerCharacterAdded(void)")
+pub fn stub_97d3f0(conn: u64, disconnect: &mut dyn FnMut(u64), pending: &mut bool) -> i32 {
+ // IDA 0x97d3f0: disconnects, clears the flag at +3672, returns 0.
+ disconnect(conn);
+ *pending = false;
+ 0
 }
 
 // 0x97d408 — __ZN3RBX7Network16ClientReplicator6needGCEv
 #[doc(alias = "RBX::Network::ClientReplicator::needGC(void)")]
-pub fn stub_97d408() -> ! {
-    todo!("0x97d408 RBX::Network::ClientReplicator::needGC(void)")
+pub fn stub_97d408(count: i32, pending: u32) -> bool {
+ // IDA 0x97d408: count > 0 -> true else the count at +1550 < 3.
+ if count > 0 { true } else { pending < 3 }
 }
 
 // 0x97d42c — __ZN3RBX7Network16ClientReplicator11dataOutStepEv
 #[doc(alias = "RBX::Network::ClientReplicator::dataOutStep(void)")]
-pub fn stub_97d42c() -> ! {
-    todo!("0x97d42c RBX::Network::ClientReplicator::dataOutStep(void)")
+pub fn stub_97d42c(expire: &mut dyn FnMut(), step: &mut dyn FnMut()) {
+ // IDA 0x97d42c: expireItems(this + 5900) then Replicator::dataOutStep.
+ expire();
+ step();
 }
 
 // 0x97dbd0 — __ZN3RBX7Network16ClientReplicator17streamOutInstanceEPNS_8InstanceEb
 #[doc(alias = "RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")]
-pub fn stub_97dbd0() -> ! {
-    todo!("0x97dbd0 RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")
+pub fn stub_97dbd0(stream: &mut dyn FnMut()) {
+ // IDA 0x97dbd0: streamOutInstance (below truncation).
+ stream();
 }
 // 0x97e86c — __ZNK3RBX7Network16ClientReplicator33isLimitedByOutgoingBandwidthLimitEv
 #[doc(alias = "RBX::Network::ClientReplicator::isLimitedByOutgoingBandwidthLimit(void)const")]
-pub fn stub_97e86c() -> ! {
-    todo!("0x97e86c RBX::Network::ClientReplicator::isLimitedByOutgoingBandwidthLimit(void)const")
+pub fn stub_97e86c(stats: Option<u8>) -> bool {
+ // IDA 0x97e86c: null stats -> true; else the outgoing-limit byte at +132.
+ match stats {
+ None => true,
+ Some(b) => b != 0,
+ }
 }
 
 // 0x97e8e8 — __ZN3RBX7Network16ClientReplicator21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
 #[doc(alias = "RBX::Network::ClientReplicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
-pub fn stub_97e8e8() -> ! {
-    todo!("0x97e8e8 RBX::Network::ClientReplicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+pub fn stub_97e8e8(base: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0x97e8e8: delegates to Replicator::filterChangedProperty (below truncation).
+ base()
 }
 
 // 0x97ea58 — __ZN3RBX7Network16ClientReplicator17onServiceProviderEPNS_15ServiceProviderES3_
 #[doc(alias = "RBX::Network::ClientReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_97ea58() -> ! {
-    todo!("0x97ea58 RBX::Network::ClientReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_97ea58(handle: &mut dyn FnMut()) {
+ // IDA 0x97ea58: onServiceProvider (below truncation).
+ handle();
 }
 
 // 0x97ecf4 — __ZNK3RBX7Network16ClientReplicator21canUseProtocolVersionEi
 #[doc(alias = "RBX::Network::ClientReplicator::canUseProtocolVersion(int)const")]
-pub fn stub_97ecf4() -> ! {
-    todo!("0x97ecf4 RBX::Network::ClientReplicator::canUseProtocolVersion(int)const")
+pub fn stub_97ecf4(version: i32) -> bool {
+ // IDA 0x97ecf4: return version < 19.
+ version < 19
 }
 
 // 0x97ef48 — __ZN3RBX7Network16ClientReplicator19streamOutPartHelperERKNS_4Guid4DataEPNS_12PartInstanceEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::ClientReplicator::streamOutPartHelper(RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_97ef48() -> ! {
-    todo!("0x97ef48 RBX::Network::ClientReplicator::streamOutPartHelper(RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_97ef48(stream: &mut dyn FnMut()) {
+ // IDA 0x97ef48: streamOutPartHelper (below truncation).
+ stream();
 }
 
 // 0x97f3c8 — __ZN3RBX7Network16ClientReplicator20streamOutJointHelperESt6vectorIPNS_12PartInstanceESaIS4_EEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "RBX::Network::ClientReplicator::streamOutJointHelper(std::vector<RBX::PartInstance *,std::allocator<RBX::PartInstance *>>,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_97f3c8() -> ! {
-    todo!("0x97f3c8 RBX::Network::ClientReplicator::streamOutJointHelper(std::vector<RBX::PartInstance *,std::allocator<RBX::PartInstance *>>,boost::shared_ptr<RBX::Instance>)")
+pub fn stub_97f3c8(stream: &mut dyn FnMut()) {
+ // IDA 0x97f3c8: streamOutJointHelper (below truncation).
+ stream();
 }
 
 // 0x97f8f4 — __ZN3RBX7Network16ClientReplicator16streamOutTerrainERKN3G3D12Vector3int16E
 #[doc(alias = "RBX::Network::ClientReplicator::streamOutTerrain(G3D::Vector3int16 const&)")]
-pub fn stub_97f8f4() -> ! {
-    todo!("0x97f8f4 RBX::Network::ClientReplicator::streamOutTerrain(G3D::Vector3int16 const&)")
+pub fn stub_97f8f4(flag: &mut bool, set_cell: &mut dyn FnMut()) {
+ // IDA 0x97f8f4: saves the flag at +1513, sets it, setCellInternal, restores.
+ let saved = *flag;
+ *flag = true;
+ set_cell();
+ *flag = saved;
 }
 
 // 0x97f9c4 — __ZN3RBX7Network16ClientReplicator21renderStreamedRegionsEPNS_5AdornE
 #[doc(alias = "RBX::Network::ClientReplicator::renderStreamedRegions(RBX::Adorn *)")]
-pub fn stub_97f9c4() -> ! {
-    todo!("0x97f9c4 RBX::Network::ClientReplicator::renderStreamedRegions(RBX::Adorn *)")
+pub fn stub_97f9c4(has_gc: bool, render: &mut dyn FnMut()) {
+ // IDA 0x97f9c4: null GC job -> null else render3dAdorn.
+ if has_gc {
+ render();
+ }
 }
 
 // 0x97f9d8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7Network16ClientReplicator15ClientStatsItemEN5boost10shared_ptrIS5_EEEENS8_IT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,rbx_core::SharedPtr<RBX::Network::ClientReplicator>>(rbx_core::SharedPtr<RBX::Network::ClientReplicator>)")]
-pub fn stub_97f9d8() -> ! {
-    todo!("0x97f9d8 boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,boost::shared_ptr<RBX::Network::ClientReplicator>>(boost::shared_ptr<RBX::Network::ClientReplicator>)")
+pub fn stub_97f9d8(make: &mut dyn FnMut()) {
+ // IDA 0x97f9d8: create<ClientStatsItem> (below truncation).
+ make();
 }
 
 // 0x97fd24 — __ZN3RBX11shared_fromINS_7Network16ClientReplicatorEEEN5boost10shared_ptrIT_EEPS5_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")]
-pub fn stub_97fd24() -> ! {
-    todo!("0x97fd24 boost::shared_ptr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")
+pub fn stub_97fd24(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x97fd24: shared_from<ClientReplicator> adopt/share gate (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x97ffbc — __ZN3RBX7Network8PropSync5Slave25onReceivedPropertyChangedENS_10Reflection13ConstPropertyEb
 #[doc(alias = "RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")]
-pub fn stub_97ffbc() -> ! {
-    todo!("0x97ffbc RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")
+pub fn stub_97ffbc(handle: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x97ffbc: onReceivedPropertyChanged (below truncation).
+ handle()
 }
 
 // 0x9803b8 — __ZN3RBX7Network8PropSync5Slave14onPropertySendENS_10Reflection13ConstPropertyERi
 #[doc(alias = "RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")]
-pub fn stub_9803b8() -> ! {
-    todo!("0x9803b8 RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")
+pub fn stub_9803b8(handle: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0x9803b8: onPropertySend (below truncation).
+ handle()
 }
 
 // 0x9804d0 — __ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob>::reset(void)")]
-pub fn stub_9804d0() -> ! {
-    todo!("0x9804d0 boost::shared_ptr<RBX::Network::ClientReplicator::GCJob>::reset(void)")
+pub fn stub_9804d0(slot: &mut Option<u64>, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9804d0: reset clears both words and releases the old count.
+ if let Some(id) = slot.take() {
+ release(id);
+ }
 }
 
 // 0x981138 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network16ClientReplicatorERKNS_4Guid4DataEPNS_12PartInstanceENS2_10shared_ptrIS0_EEEENS3_5list4INS3_5valueIPS8_EENSJ_ISA_EENSJ_ISE_EENS2_3argILi1EEEEEEEEEvRKT_
 #[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")]
-pub fn stub_981138() -> ! {
-    todo!("0x981138 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")
+pub fn stub_981138(visit: &mut dyn FnMut()) {
+ // IDA 0x981138: visitDescendants with the stream-out bind (below truncation).
+ visit();
 }
 
 // 0x9813d4 — __ZN3RBX7Network16ClientReplicator21setPropSyncExpirationEd
 #[doc(alias = "RBX::Network::ClientReplicator::setPropSyncExpiration(double)")]
-pub fn stub_9813d4() -> ! {
-    todo!("0x9813d4 RBX::Network::ClientReplicator::setPropSyncExpiration(double)")
+pub fn stub_9813d4(slot: usize, expiration: &mut f64, value: f64) -> usize {
+ // IDA 0x9813d4: stores the expiration at +5900; returns this.
+ *expiration = value;
+ slot
 }
 
 // 0x9813e4 — __ZNK3RBX7Network16ClientReplicator15getRemotePlayerEv
 #[doc(alias = "RBX::Network::ClientReplicator::getRemotePlayer(void)const")]
-pub fn stub_9813e4() -> ! {
-    todo!("0x9813e4 RBX::Network::ClientReplicator::getRemotePlayer(void)const")
+pub fn stub_9813e4() -> usize {
+ // IDA 0x9813e4: returns 0.
+ 0
 }
 
 // 0x9813e8 — __ZNK3RBX7Network10Replicator20UsesReliabilityLayerEv
 #[doc(alias = "RBX::Network::Replicator::UsesReliabilityLayer(void)const")]
-pub fn stub_9813e8() -> ! {
-    todo!("0x9813e8 RBX::Network::Replicator::UsesReliabilityLayer(void)const")
+pub fn stub_9813e8() -> bool {
+ // IDA 0x9813e8: UsesReliabilityLayer returns 1.
+ true
 }
 
 // 0x9813ec — __ZN3RBX7Network16ClientReplicator24isProtectedStringEnabledEv
 #[doc(alias = "RBX::Network::ClientReplicator::isProtectedStringEnabled(void)")]
-pub fn stub_9813ec() -> ! {
-    todo!("0x9813ec RBX::Network::ClientReplicator::isProtectedStringEnabled(void)")
+pub fn stub_9813ec() -> bool {
+ // IDA 0x9813ec: isProtectedStringEnabled returns 1.
+ true
 }
 
 // 0x98164c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS4_4Guid4DataEPNS4_12PartInstanceENS_10shared_ptrINS4_8InstanceEEEEENS0_5list4INS0_5valueIPS6_EENSI_IS8_EENSI_ISC_EENS_3argILi1EEEEEEclISF_EEvRKT_
@@ -10166,98 +10220,126 @@ pub fn stub_9818d0<A, B, C>(slot: &mut dyn FnMut(A, B, C), a: A, b: B, c: C) {
 
 // 0x9822cc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_7Network16ClientReplicatorEEENSA_5list1INSA_5valueIPSF_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")]
-pub fn stub_9822cc() -> ! {
-    todo!("0x9822cc rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")
+pub fn stub_9822cc(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x9822cc: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0x982328 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_7Network16ClientReplicatorEEENSA_5list1INSA_5valueIPSF_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")]
-pub fn stub_982328() -> ! {
-    todo!("0x982328 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")
+pub fn stub_982328(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0x982328: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0x982430 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_7Network16ClientReplicatorEEENSB_5list1INSB_5valueIPSG_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_982430() -> ! {
-    todo!("0x982430 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_982430(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+ // IDA 0x982430: mf0 inline dispatch (virtual adjust); obj->method().
+ call(obj, is_virtual);
 }
 
 // 0x98244c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_7Network16ClientReplicatorEEENSB_5list1INSB_5valueIPSG_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_98244c() -> ! {
-    todo!("0x98244c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_98244c(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+ // IDA 0x98244c: non-virtual thunk adjusts inward then tail-calls the operator().
+ call(obj, is_virtual);
 }
 
 // 0x982468 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 #[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")]
-pub fn stub_982468() -> ! {
-    todo!("0x982468 void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")
+pub fn stub_982468(make: &mut dyn FnMut()) {
+ // IDA 0x982468: sp_pointer_construct<GCJob> (below truncation).
+ make();
 }
 
 // 0x982618 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")]
-pub fn stub_982618() -> ! {
-    todo!("0x982618 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")
+pub fn stub_982618(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x982618: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x9828c4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")]
-pub fn stub_9828c4() -> ! {
-    todo!("0x9828c4 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")
+pub fn stub_9828c4() {
+ // IDA 0x9828c4: empty sp_counted_impl_p<GCJob> D2 body.
 }
 
 // 0x9828c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")]
-pub fn stub_9828c8() -> ! {
-    todo!("0x9828c8 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")
+pub fn stub_9828c8(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9828c8: D0: operator delete.
+ free(block);
 }
 
 // 0x9828d4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::dispose(void)")]
-pub fn stub_9828d4() -> ! {
-    todo!("0x9828d4 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::dispose(void)")
+pub fn stub_9828d4(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x9828d4: null px -> 0 else the virtual destroy.
+ if px == 0 { 0 } else { destroy(px) }
 }
 
 // 0x9828e8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_deleter(std::type_info const&)")]
-pub fn stub_9828e8() -> ! {
-    todo!("0x9828e8 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_deleter(std::type_info const&)")
+pub fn stub_9828e8() -> usize {
+ // IDA 0x9828e8: get_deleter returns 0.
+ 0
 }
 
 // 0x9828ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_untyped_deleter(void)")]
-pub fn stub_9828ec() -> ! {
-    todo!("0x9828ec boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_untyped_deleter(void)")
+pub fn stub_9828ec() -> usize {
+ // IDA 0x9828ec: get_untyped_deleter returns 0.
+ 0
 }
 
 // 0x982cf8 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemC2ERKN5boost10shared_ptrIKS1_EE
 #[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(rbx_core::SharedPtr<RBX::Network::ClientReplicator const> const&)")]
-pub fn stub_982cf8() -> ! {
-    todo!("0x982cf8 RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)")
+pub fn stub_982cf8(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x982cf8: ClientStatsItem ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x983070 — __ZN3RBX7Network10Replicator9StatsItemC2ERKN5boost10shared_ptrIKS1_EE
 #[doc(alias = "RBX::Network::Replicator::StatsItem::StatsItem(rbx_core::SharedPtr<RBX::Network::Replicator const> const&)")]
-pub fn stub_983070() -> ! {
-    todo!("0x983070 RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)")
+pub fn stub_983070(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0x983070: StatsItem ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0x983cf4 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
 #[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_983cf4() -> ! {
-    todo!("0x983cf4 RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_983cf4(destroy: &mut dyn FnMut()) {
+ // IDA 0x983cf4: D1: tail-calls the StatsItem base dtor.
+ destroy();
 }
 
 // 0x983d00 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
 #[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_983d00() -> ! {
-    todo!("0x983d00 RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_983d00(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0x983d00: D0: base dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0x983da0 — __ZN3RBX7Network16ClientReplicator15ClientStatsItem6updateEv
 #[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::update(void)")]
-pub fn stub_983da0() -> ! {
-    todo!("0x983da0 RBX::Network::ClientReplicator::ClientStatsItem::update(void)")
+pub fn stub_983da0(update: &mut dyn FnMut()) {
+ // IDA 0x983da0: ClientStatsItem::update (below truncation).
+ update();
 }
 
 // 0x984144 — __ZThn32_N3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
