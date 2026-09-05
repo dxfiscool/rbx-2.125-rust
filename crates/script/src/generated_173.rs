@@ -59,6 +59,29 @@ pub struct WebCache {
     pub flushed: u32,
     pub homed: u32,
 }
+/// `RobloxPageViewController` observable state (IDA 0x58d48..0x58eb8):
+/// the load/appear latches. Nib/glue peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct PageVC {
+    pub loaded: bool,
+    pub appeared: bool,
+}
+
+/// `LoginManager` observable state (IDA 0x59038..0x5a6a8): the
+/// remember-password latch, notification names, current user, login
+/// latch, login/logout tallies, and the termination latch. Keychain/net
+/// peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LoginMgr {
+    pub remember: bool,
+    pub failed_note: String,
+    pub ok_note: String,
+    pub user: String,
+    pub logged_in: bool,
+    pub logins: u32,
+    pub logouts: u32,
+    pub terminated: bool,
+}
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, int, int)
@@ -1041,176 +1064,248 @@ pub fn stub_0x58a08(cache: &WebCache, url: &str) -> Option<u32> {
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameFailure]")]
-pub fn stub_0x58d48() -> ! {
-    todo!("0x58d48 -[RobloxPageViewController handleStartGameFailure]")
+pub fn stub_0x58d48() {
+    // IDA 0x58d48: `handleStartGameFailure` — empty body; no-op.
 }
 
 // 0x58d4c — -[RobloxPageViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameSuccess]")]
-pub fn stub_0x58d4c() -> ! {
-    todo!("0x58d4c -[RobloxPageViewController handleStartGameSuccess]")
+pub fn stub_0x58d4c() {
+    // IDA 0x58d4c: `handleStartGameSuccess` — empty body; no-op.
 }
 
 // 0x58d50 — -[RobloxPageViewController initWithCoder:]
 // type: RobloxPageViewController *__cdecl(RobloxPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxPageViewController initWithCoder:]")]
-pub fn stub_0x58d50() -> ! {
-    todo!("0x58d50 -[RobloxPageViewController initWithCoder:]")
+pub fn stub_0x58d50() -> PageVC {
+    // IDA 0x58d50: `initWithCoder:` chains to super (0x58d6a..0x58d7a);
+    // the nib glue folds into the host.
+    PageVC::default()
 }
 
 // 0x58d7c — -[RobloxPageViewController viewDidLoad]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController viewDidLoad]")]
-pub fn stub_0x58d7c() -> ! {
-    todo!("0x58d7c -[RobloxPageViewController viewDidLoad]")
+pub fn stub_0x58d7c(vc: &mut PageVC) {
+    // IDA 0x58d7c: `viewDidLoad` chains to super (0x58d96..0x58da0) and
+    // registers the user-agent defaults; the defaults glue folds into
+    // the host.
+    vc.loaded = true;
 }
 
 // 0x58e20 — -[RobloxPageViewController viewWillAppear:]
 // type: void __cdecl(RobloxPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxPageViewController viewWillAppear:]")]
-pub fn stub_0x58e20() -> ! {
-    todo!("0x58e20 -[RobloxPageViewController viewWillAppear:]")
+pub fn stub_0x58e20(vc: &mut PageVC) {
+    // IDA 0x58e20: `viewWillAppear:` chains to super (0x58e3a..0x58e44).
+    vc.appeared = true;
 }
 
 // 0x58e4c — -[RobloxPageViewController shouldAutorotate]
 // type: char __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotate]")]
-pub fn stub_0x58e4c() -> ! {
-    todo!("0x58e4c -[RobloxPageViewController shouldAutorotate]")
+pub fn stub_0x58e4c() -> bool {
+    // IDA 0x58e4c: `shouldAutorotate` answers true (0x58e4e).
+    true
 }
 
 // 0x58e50 — -[RobloxPageViewController supportedInterfaceOrientations]
 // type: unsigned int __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController supportedInterfaceOrientations]")]
-pub fn stub_0x58e50() -> ! {
-    todo!("0x58e50 -[RobloxPageViewController supportedInterfaceOrientations]")
+pub fn stub_0x58e50(is_pad: bool) -> u32 {
+    // IDA 0x58e50: `supportedInterfaceOrientations` answers 24 for pad
+    // idiom and 6 for phone (0x58e92..0x58eb0); the idiom check folds
+    // into the host.
+    if is_pad { 24 } else { 6 }
 }
 
 // 0x58eb8 — -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]
 // type: char __cdecl(RobloxPageViewController *self, SEL, int)
 #[doc(alias = "-[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")]
-pub fn stub_0x58eb8() -> ! {
-    todo!("0x58eb8 -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")
+pub fn stub_0x58eb8(orientation: u32, is_pad: bool) -> bool {
+    // IDA 0x58eb8: `shouldAutorotateToInterfaceOrientation:` on pad
+    // allows 3/4 (0x58f1a..0x58f26), on phone allows all (0x58f2a..).
+    if is_pad { orientation == 3 || orientation == 4 } else { true }
 }
 
 // 0x58f40 — -[NSString(Escaping) stringWithPercentEscape]_0
 // type: NSString *__cdecl(NSString *self, SEL)
 #[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_0")]
-pub fn stub_0x58f40() -> ! {
-    todo!("0x58f40 -[NSString(Escaping) stringWithPercentEscape]_0")
+pub fn stub_0x58f40(input: &str) -> String {
+    // IDA 0x58f40: `stringWithPercentEscape` escapes via
+    // `CFURLCreateStringByAddingPercentEscapes` (0x58f64..0x58f82); the
+    // Foundation glue folds into the host.
+    let mut out = String::new();
+    for b in input.bytes() {
+        if b.is_ascii_alphanumeric() || matches!(b, b'-' | b'_' | b'.' | b'~') {
+            out.push(b as char);
+        } else {
+            out.push_str(&format!("%{b:02X}"));
+        }
+    }
+    out
 }
 
 // 0x59038 — -[LoginManager init]
 // type: LoginManager *__cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager init]")]
-pub fn stub_0x59038() -> ! {
-    todo!("0x59038 -[LoginManager init]")
+pub fn stub_0x59038() -> LoginMgr {
+    // IDA 0x59038: `LoginManager init` chains to super (0x59056..0x59064)
+    // and installs the login notification names (0x59086..0x590ba); the
+    // string glue folds into the host.
+    LoginMgr {
+        failed_note: "RBXLoginFailedNotifier".to_string(),
+        ok_note: "RBXLoginSuccessfulNotifier".to_string(),
+        ..LoginMgr::default()
+    }
 }
 
 // 0x5913c — -[LoginManager dealloc]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager dealloc]")]
-pub fn stub_0x5913c() -> ! {
-    todo!("0x5913c -[LoginManager dealloc]")
+pub fn stub_0x5913c(mgr: &mut LoginMgr) {
+    // IDA 0x5913c: `dealloc` releases the notification names
+    // (0x59160..0x59174) and chains to super; drop glue covers it and
+    // the record resets.
+    *mgr = LoginMgr::default();
 }
 
 // 0x591a0 — -[LoginManager applicationWillTerminate]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager applicationWillTerminate]")]
-pub fn stub_0x591a0() -> ! {
-    todo!("0x591a0 -[LoginManager applicationWillTerminate]")
+pub fn stub_0x591a0(mgr: &mut LoginMgr) {
+    // IDA 0x591a0: `applicationWillTerminate` persists the username and
+    // flags (0x591c8..); the defaults glue folds into the host.
+    mgr.terminated = true;
 }
 
 // 0x592a0 — -[LoginManager getRememberPassword]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getRememberPassword]")]
-pub fn stub_0x592a0() -> ! {
-    todo!("0x592a0 -[LoginManager getRememberPassword]")
+pub fn stub_0x592a0(mgr: &LoginMgr) -> bool {
+    // IDA 0x592a0: `getRememberPassword` answers the latch (0x592ae).
+    mgr.remember
 }
 
 // 0x592b0 — -[LoginManager setRememberPassword:]
 // type: void __cdecl(LoginManager *self, SEL, char)
 #[doc(alias = "-[LoginManager setRememberPassword:]")]
-pub fn stub_0x592b0() -> ! {
-    todo!("0x592b0 -[LoginManager setRememberPassword:]")
+pub fn stub_0x592b0(mgr: &mut LoginMgr, remember: bool) {
+    // IDA 0x592b0: `setRememberPassword:` persists the latch to the
+    // defaults; the defaults glue folds into the host.
+    mgr.remember = remember;
 }
 
 // 0x594e4 — -[LoginManager getLoginFailedNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginFailedNotification]")]
-pub fn stub_0x594e4() -> ! {
-    todo!("0x594e4 -[LoginManager getLoginFailedNotification]")
+pub fn stub_0x594e4(mgr: &LoginMgr) -> String {
+    // IDA 0x594e4: `getLoginFailedNotification` answers the name
+    // (0x594f2).
+    mgr.failed_note.clone()
 }
 
 // 0x594f4 — -[LoginManager getLoginSuccessfulNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginSuccessfulNotification]")]
-pub fn stub_0x594f4() -> ! {
-    todo!("0x594f4 -[LoginManager getLoginSuccessfulNotification]")
+pub fn stub_0x594f4(mgr: &LoginMgr) -> String {
+    // IDA 0x594f4: `getLoginSuccessfulNotification` answers the name
+    // (0x59502).
+    mgr.ok_note.clone()
 }
 
 // 0x59504 — -[LoginManager updateUserInfo:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager updateUserInfo:password:]")]
-pub fn stub_0x59504() -> ! {
-    todo!("0x59504 -[LoginManager updateUserInfo:password:]")
+pub fn stub_0x59504(mgr: &mut LoginMgr, user: &str) {
+    // IDA 0x59504: `updateUserInfo:password:` applies the user-info
+    // response to the current player (0x5952c..); the player glue folds
+    // into the host.
+    mgr.user = user.to_string();
+    mgr.logged_in = true;
 }
 
 // 0x59690 — -[LoginManager isConnectedToInternet]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager isConnectedToInternet]")]
-pub fn stub_0x59690() -> ! {
-    todo!("0x59690 -[LoginManager isConnectedToInternet]")
+pub fn stub_0x59690(connected: bool) -> bool {
+    // IDA 0x59690: `isConnectedToInternet` answers the reachability
+    // status; the reachability glue folds into the host.
+    connected
 }
 
 // 0x598e4 — -[LoginManager doLogout]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager doLogout]")]
-pub fn stub_0x598e4() -> ! {
-    todo!("0x598e4 -[LoginManager doLogout]")
+pub fn stub_0x598e4(mgr: &mut LoginMgr, connected: bool) {
+    // IDA 0x598e4: `doLogout` posts the logout request when online
+    // (0x598fe..); the net glue folds into the host and the reply books
+    // via `stub_0x5a42c`.
+    if connected {
+        mgr.logouts += 1;
+    }
 }
 
 // 0x59a6c — ___24-[LoginManager doLogout]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___24-[LoginManager doLogout]_block_invoke")]
-pub fn stub_0x59a6c() -> ! {
-    todo!("0x59a6c ___24-[LoginManager doLogout]_block_invoke")
+pub fn stub_0x59a6c(mgr: &mut LoginMgr, ok: bool) {
+    // IDA 0x59a6c: the logout block forwards the reply to
+    // `processLogOutResponse` (0x59a8a) — see `stub_0x5a42c`.
+    stub_0x5a42c(mgr, ok);
 }
 
 // 0x59ae8 — -[LoginManager doLoginWithUsername:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager doLoginWithUsername:password:]")]
-pub fn stub_0x59ae8() -> ! {
-    todo!("0x59ae8 -[LoginManager doLoginWithUsername:password:]")
+pub fn stub_0x59ae8(mgr: &mut LoginMgr, user: &str) {
+    // IDA 0x59ae8: `doLoginWithUsername:password:` posts the login
+    // request; the net glue folds into the host and the reply books via
+    // `stub_0x5a0e4`.
+    mgr.user = user.to_string();
 }
 
 // 0x59ecc — ___45-[LoginManager doLoginWithUsername:password:]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___45-[LoginManager doLoginWithUsername:password:]_block_invoke")]
-pub fn stub_0x59ecc() -> ! {
-    todo!("0x59ecc ___45-[LoginManager doLoginWithUsername:password:]_block_invoke")
+pub fn stub_0x59ecc() {
+    // IDA 0x59ecc: the login block builds the login-info dictionary for
+    // the reply (0x59efa..); the dictionary folds into the host — no-op.
 }
 
 // 0x5a0e4 — -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id, id)
 #[doc(alias = "-[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")]
-pub fn stub_0x5a0e4() -> ! {
-    todo!("0x5a0e4 -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")
+pub fn stub_0x5a0e4(mgr: &mut LoginMgr, ok: bool) {
+    // IDA 0x5a0e4: `processLoginResponse:...` books a successful login
+    // via `processSuccessfulLoginResponse` (see `stub_0x5a6a8`), else
+    // notifies failure; the alert glue folds into the host.
+    if ok {
+        stub_0x5a6a8(mgr);
+    }
 }
 
 // 0x5a42c — -[LoginManager processLogOutResponse:logoutData:logoutError:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processLogOutResponse:logoutData:logoutError:]")]
-pub fn stub_0x5a42c() -> ! {
-    todo!("0x5a42c -[LoginManager processLogOutResponse:logoutData:logoutError:]")
+pub fn stub_0x5a42c(mgr: &mut LoginMgr, ok: bool) {
+    // IDA 0x5a42c: `processLogOutResponse:...` clears the login on a
+    // clean logout; the alert glue folds into the host.
+    if ok {
+        mgr.logged_in = false;
+    }
 }
 
 // 0x5a6a8 — -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")]
-pub fn stub_0x5a6a8() -> ! {
-    todo!("0x5a6a8 -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")
+pub fn stub_0x5a6a8(mgr: &mut LoginMgr) {
+    // IDA 0x5a6a8: `processSuccessfulLoginResponse:...` applies the
+    // logged-in player and posts the success notification; the player
+    // glue folds into the host.
+    mgr.logged_in = true;
+    mgr.logins += 1;
 }
 
 // 0x5ac78 — -[LoginManager processSuccessfulLogoutResponse:httpResponse:]
@@ -1641,5 +1736,77 @@ mod store_cache_batch_tests {
         assert!(cache.initialized);
         stub_0x58858(&mut cache);
         assert_eq!(cache.homed, 2);
+    }
+}
+
+#[cfg(test)]
+mod page_login_batch_tests {
+    use super::*;
+
+    #[test]
+    fn page_vc() {
+        let mut vc = stub_0x58d50();
+        stub_0x58d48();
+        stub_0x58d4c();
+        stub_0x58d7c(&mut vc);
+        assert!(vc.loaded);
+        stub_0x58e20(&mut vc);
+        assert!(vc.appeared);
+        assert!(stub_0x58e4c());
+        assert_eq!(stub_0x58e50(true), 24);
+        assert_eq!(stub_0x58e50(false), 6);
+        assert!(stub_0x58eb8(3, true));
+        assert!(stub_0x58eb8(4, true));
+        assert!(!stub_0x58eb8(1, true));
+        assert!(stub_0x58eb8(1, false));
+    }
+
+    #[test]
+    fn percent_escape() {
+        assert_eq!(stub_0x58f40("abc-_.~"), "abc-_.~");
+        assert_eq!(stub_0x58f40("a b=c"), "a%20b%3Dc");
+        assert_eq!(stub_0x58f40("100%"), "100%25");
+        assert_eq!(stub_0x58f40(""), "");
+    }
+
+    #[test]
+    fn login_mgr() {
+        let mut mgr = stub_0x59038();
+        assert_eq!(stub_0x594e4(&mgr), "RBXLoginFailedNotifier");
+        assert_eq!(stub_0x594f4(&mgr), "RBXLoginSuccessfulNotifier");
+        assert!(!stub_0x592a0(&mgr));
+        stub_0x592b0(&mut mgr, true);
+        assert!(stub_0x592a0(&mgr));
+        assert!(stub_0x59690(true));
+        assert!(!stub_0x59690(false));
+        stub_0x59504(&mut mgr, "alice");
+        assert_eq!(mgr.user, "alice");
+        assert!(mgr.logged_in);
+        stub_0x591a0(&mut mgr);
+        assert!(mgr.terminated);
+        stub_0x5913c(&mut mgr);
+        assert_eq!(mgr, LoginMgr::default());
+    }
+
+    #[test]
+    fn login_flow() {
+        let mut mgr = stub_0x59038();
+        stub_0x59ae8(&mut mgr, "bob");
+        assert_eq!(mgr.user, "bob");
+        assert!(!mgr.logged_in);
+        stub_0x59ecc();
+        stub_0x5a0e4(&mut mgr, false);
+        assert!(!mgr.logged_in);
+        stub_0x5a0e4(&mut mgr, true);
+        assert!(mgr.logged_in);
+        assert_eq!(mgr.logins, 1);
+        stub_0x598e4(&mut mgr, false);
+        assert_eq!(mgr.logouts, 0);
+        stub_0x598e4(&mut mgr, true);
+        assert_eq!(mgr.logouts, 1);
+        stub_0x59a6c(&mut mgr, false);
+        assert!(mgr.logged_in);
+        stub_0x5a42c(&mut mgr, true);
+        assert!(!mgr.logged_in);
     }
 }
