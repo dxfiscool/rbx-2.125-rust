@@ -22780,8 +22780,9 @@ pub fn stub_aaae28(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
 #[doc(
     alias = "void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)"
 )]
-pub fn stub_aaafe8() -> ! {
-    todo!("0xaaafe8 void boost::detail::sp_pointer_construct<RBX::Network::PersistentDataStore,RBX::Network::PersistentDataStore>(boost::shared_ptr<RBX::Network::PersistentDataStore> *,RBX::Network::PersistentDataStore *,boost::detail::shared_count &)")
+pub fn stub_aaafe8(make: &mut dyn FnMut()) {
+ // IDA 0xaaafe8: sp_pointer_construct<PersistentDataStore> (below truncation).
+ make();
 }
 
 // 0xaab194 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network19PersistentDataStoreEED1Ev
@@ -23020,8 +23021,11 @@ pub fn stub_aada9c(get: &mut dyn FnMut() -> i32) -> i32 {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const"
 )]
-pub fn stub_aadaac() -> ! {
-    todo!("0xaadaac RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_aadaac(items: &[i32], value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaadaac: finds the value in the item list then sets it (below truncation).
+ if items.contains(&value) {
+ set(value);
+ }
 }
 
 // 0xaadb78 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -23029,8 +23033,9 @@ pub fn stub_aadaac() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aadb78() -> ! {
-    todo!("0xaadb78 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aadb78(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0xaadb78: EnumDesc::convertToItem on the impl value.
+ convert(value)
 }
 
 // 0xaadb98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -23038,8 +23043,11 @@ pub fn stub_aadb78() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const"
 )]
-pub fn stub_aadb98() -> ! {
-    todo!("0xaadb98 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_aadb98(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0xaadb98: walks the item list for the name then sets it (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0xaadc2c — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE10isReadOnlyEv
@@ -23047,8 +23055,9 @@ pub fn stub_aadb98() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isReadOnly(void)const"
 )]
-pub fn stub_aadc2c() -> ! {
-    todo!("0xaadc2c RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isReadOnly(void)const")
+pub fn stub_aadc2c() -> bool {
+ // IDA 0xaadc2c: isReadOnly returns 0.
+ false
 }
 
 // 0xaadc30 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE11isWriteOnlyEv
@@ -23056,8 +23065,9 @@ pub fn stub_aadc2c() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isWriteOnly(void)const"
 )]
-pub fn stub_aadc30() -> ! {
-    todo!("0xaadc30 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::isWriteOnly(void)const")
+pub fn stub_aadc30() -> bool {
+ // IDA 0xaadc30: isWriteOnly returns 0.
+ false
 }
 
 // 0xaadc34 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE8getValueEPKNS0_13DescribedBaseE
@@ -23065,8 +23075,9 @@ pub fn stub_aadc30() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::getValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_aadc34() -> ! {
-    todo!("0xaadc34 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_aadc34(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xaadc34: getValue: obj (a2 ? a2 - 36 : 0), virtual adjust; getter().
+ get()
 }
 
 // 0xaadc58 — __ZNK3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEE10GetSetImplIMS3_KFS5_vEMS3_FvS5_EE8setValueEPNS0_13DescribedBaseERKS5_
@@ -23074,8 +23085,9 @@ pub fn stub_aadc34() -> ! {
 #[doc(
     alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::Camera::CameraMode const&)const"
 )]
-pub fn stub_aadc58() -> ! {
-    todo!("0xaadc58 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::GetSetImpl<RBX::Camera::CameraMode (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Camera::CameraMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::Camera::CameraMode const&)const")
+pub fn stub_aadc58(set: &mut dyn FnMut(i32), value: i32) {
+ // IDA 0xaadc58: setValue: obj (a2 ? a2 - 36 : 0), virtual adjust; setter().
+ set(value);
 }
 
 // 0xaadc80 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEED0Ev
@@ -23083,8 +23095,9 @@ pub fn stub_aadc58() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()"
 )]
-pub fn stub_aadc80() -> ! {
-    todo!("0xaadc80 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()")
+pub fn stub_aadc80(destroy: &mut dyn FnMut()) {
+ // IDA 0xaadc80: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xaadd5c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -23092,8 +23105,11 @@ pub fn stub_aadc80() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
 )]
-pub fn stub_aadd5c() -> ! {
-    todo!("0xaadd5c RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_aadd5c(conns: &mut Vec<ClientEventConn>) -> u64 {
+ // IDA 0xaadd5c: connectGeneric — new connection (below truncation).
+ let id = conns.len() as u64;
+ conns.push(ClientEventConn { id, live: true });
+ id
 }
 
 // 0xaae1f4 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE12isScriptableEv
@@ -23101,8 +23117,9 @@ pub fn stub_aadd5c() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isScriptable(void)const"
 )]
-pub fn stub_aae1f4() -> ! {
-    todo!("0xaae1f4 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isScriptable(void)const")
+pub fn stub_aae1f4(flags: u32) -> bool {
+ // IDA 0xaae1f4: isScriptable tests bit 0 at +48.
+ flags & 1 != 0
 }
 
 // 0xaae1fc — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE11isBroadcastEv
@@ -23110,8 +23127,9 @@ pub fn stub_aae1f4() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isBroadcast(void)const"
 )]
-pub fn stub_aae1fc() -> ! {
-    todo!("0xaae1fc RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::isBroadcast(void)const")
+pub fn stub_aae1fc(flags: u32) -> bool {
+ // IDA 0xaae1fc: isBroadcast tests bit 0 at +44.
+ flags & 1 != 0
 }
 
 // 0xaae204 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
@@ -23119,8 +23137,9 @@ pub fn stub_aae1fc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_aae204() -> ! {
-    todo!("0xaae204 RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_aae204(fire: &mut dyn FnMut()) {
+ // IDA 0xaae204: fireEvent (below truncation).
+ fire();
 }
 
 // 0xaae40c — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
@@ -23128,8 +23147,9 @@ pub fn stub_aae204() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_aae40c() -> ! {
-    todo!("0xaae40c RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_aae40c(send: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xaae40c: sendEvent forwards via the +12 slot.
+ send()
 }
 
 // 0xaae424 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
@@ -23147,8 +23167,10 @@ pub fn stub_aae424(list: &mut crate::signal::SlotList) {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_aae600() -> ! {
-    todo!("0xaae600 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_aae600(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xaae600: EventDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xaae8b0 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_ED1Ev
@@ -23156,8 +23178,9 @@ pub fn stub_aae600() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_aae8b0() -> ! {
-    todo!("0xaae8b0 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_aae8b0(destroy: &mut dyn FnMut()) {
+ // IDA 0xaae8b0: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xaae8f8 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_ED0Ev
@@ -23165,8 +23188,9 @@ pub fn stub_aae8b0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_aae8f8() -> ! {
-    todo!("0xaae8f8 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_aae8f8(destroy: &mut dyn FnMut()) {
+ // IDA 0xaae8f8: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xaae9d4 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEED0Ev
@@ -23174,8 +23198,9 @@ pub fn stub_aae8f8() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()"
 )]
-pub fn stub_aae9d4() -> ! {
-    todo!("0xaae9d4 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()")
+pub fn stub_aae9d4(destroy: &mut dyn FnMut()) {
+ // IDA 0xaae9d4: RemoteEventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xaaeab0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
@@ -23183,8 +23208,11 @@ pub fn stub_aae9d4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
 )]
-pub fn stub_aaeab0() -> ! {
-    todo!("0xaaeab0 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_aaeab0(conns: &mut Vec<ClientEventConn>) -> u64 {
+ // IDA 0xaaeab0: connectGeneric — new connection (below truncation).
+ let id = conns.len() as u64;
+ conns.push(ClientEventConn { id, live: true });
+ id
 }
 
 // 0xaaef48 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE12isScriptableEv
@@ -23192,8 +23220,9 @@ pub fn stub_aaeab0() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isScriptable(void)const"
 )]
-pub fn stub_aaef48() -> ! {
-    todo!("0xaaef48 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isScriptable(void)const")
+pub fn stub_aaef48(flags: u32) -> bool {
+ // IDA 0xaaef48: isScriptable tests bit 0 at +48.
+ flags & 1 != 0
 }
 
 // 0xaaef50 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE11isBroadcastEv
@@ -23201,8 +23230,9 @@ pub fn stub_aaef48() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isBroadcast(void)const"
 )]
-pub fn stub_aaef50() -> ! {
-    todo!("0xaaef50 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::isBroadcast(void)const")
+pub fn stub_aaef50(flags: u32) -> bool {
+ // IDA 0xaaef50: isBroadcast tests bit 0 at +44.
+ flags & 1 != 0
 }
 
 // 0xaaef58 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISF_EE
@@ -23210,8 +23240,9 @@ pub fn stub_aaef50() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_aaef58() -> ! {
-    todo!("0xaaef58 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_aaef58(fire: &mut dyn FnMut()) {
+ // IDA 0xaaef58: fireEvent (below truncation).
+ fire();
 }
 
 // 0xaaf1cc — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISE_EE
@@ -23219,8 +23250,9 @@ pub fn stub_aaef58() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_aaf1cc() -> ! {
-    todo!("0xaaf1cc RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_aaf1cc(send: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xaaf1cc: sendEvent forwards via the +12 slot.
+ send()
 }
 
 // 0xaaf1e4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_E13disconnectAllEPNS0_11EventSourceE
@@ -23238,8 +23270,10 @@ pub fn stub_aaf1e4(list: &mut crate::signal::SlotList) {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_ab12d4() -> ! {
-    todo!("0xab12d4 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::EventDesc(rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_ab12d4(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xab12d4: EventDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xab1670 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_ED1Ev
@@ -23247,8 +23281,9 @@ pub fn stub_ab12d4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_ab1670() -> ! {
-    todo!("0xab1670 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>,rbx::remote_signal<void ()(std::string,G3D::Vector3)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_ab1670(destroy: &mut dyn FnMut()) {
+ // IDA 0xab1670: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xab16b8 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_ED0Ev
