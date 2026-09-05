@@ -1316,6 +1316,13 @@ pub struct ArithDecoderInit {
     pub dac: Vec<i32>,
 }
 
+/// Huffman-decoder init result (IDA 0x138bc0: per-component DAC areas + 8 flag words).
+#[derive(Clone, Debug, Default)]
+pub struct HuffDecoderInit {
+    pub dac: Vec<i32>,
+    pub flags: [u32; 8],
+}
+
 /// Per-component table numbers for the arith decode reset (IDA 0x1329f0).
 #[derive(Clone, Copy, Debug)]
 pub struct ArithDecodeComp {
@@ -2100,106 +2107,785 @@ pub fn stub_133db8() -> i32 { // IDA 0x133db8: dummy consume-data hook; returns 
     0
 }
 
+/// Huffman decoder bit-buffer state (IDA 0x136e7c: get_buffer + bits_left).
+#[derive(Clone, Debug, Default)]
+pub struct HuffBitState {
+    pub get_buffer: u32,
+    pub bits_left: i32,
+}
+
+/// Canonical Huffman decode tables (IDA 0x136fcc: maxcode/valoffset + symbols; the +17 symbol bias from the disasm folds into the stored valoffset).
+#[derive(Clone, Debug, Default)]
+pub struct HuffDecodeTable {
+    pub maxcode: [i32; 18],
+    pub valoffset: [i32; 18],
+    pub symbols: Vec<u8>,
+}
+
+/// Bit masks for Huffman code extension (IDA `bmask`).
+pub const HUFF_BMASK: [u32; 32] = [
+    0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071,
+    262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727,
+    268435455, 536870911, 1073741823, 2147483647,
+];
+
+/// Premature-EOI warning latch for the bit-buffer fill (IDA 0x136e7c LABEL_17).
+pub struct FillEoi<'a> {
+    pub warned: &'a mut bool,
+    pub warn: &'a mut dyn FnMut(),
+}
+
+/// Huff baseline DC context per block (IDA 0x1386c4: table + running prediction).
+#[derive(Clone, Copy, Debug)]
+pub struct HuffDcCtx0 {
+    pub tbl: usize,
+    pub pred: i32,
+}
+
+/// Decompress-row pump status (IDA 0x133dc0: 0 suspend, 3 row done, 4 image done).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ConsumeStatus {
+    Suspended,
+    NeedMore,
+    Finished,
+}
+
+/// Decompress method selected by `start_output_pass` (IDA 0x134188).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DecompressMethod {
+    Data,
+    Smooth,
+}
+
+/// Decompress-side coef controller (IDA 0x134328: whole-image virtual arrays or 1280-word strip).
+#[derive(Clone, Debug)]
+pub struct DCoefController {
+    pub full_image: bool,
+    pub bufs: Vec<Vec<i16>>,
+}
+
+/// One-pass decompress cursor (IDA 0x1344e8: column/row within the iMCU row).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct OnepassCursor {
+    pub col: u32,
+    pub row: u32,
+}
+
+/// YCC→RGB conversion tables built by `build_ycc_rgb_table` (IDA 0x135064).
+#[derive(Clone, Debug)]
+pub struct YccRgbTable {
+    pub r_cr: [i32; 256],
+    pub b_cb: [i32; 256],
+    pub g_cb: [i32; 256],
+    pub g_cr: [i32; 256],
+}
+
+/// Decompress-side color converter selected by `jinit_color_deconverter` (IDA 0x1362a8).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DColorConverter {
+    Null,
+    Grayscale,
+    GrayRgb,
+    YccRgb,
+    YcckCmyk,
+}
+
+/// Inverse-DCT method selected by `start_pass` (IDA 0x1364ec).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum IdctMethod {
+    Islow,
+    Ifast,
+    Float,
+    Small(u8, u8),
+}
+
+/// Inverse-DCT dequantizer tables (IDA 0x1364ec: ifast scaled, float multiplied, islow copied).
+#[derive(Clone, Debug)]
+pub enum IdctTable {
+    Islow([u16; 64]),
+    Ifast([i32; 64]),
+    Float([f32; 64]),
+}
+
+/// Smoothing prediction tap for fancy upsampling (IDA 0x1348ec: signed rounding division with bit-limit clamping; k = 36/36/9/5/9 per tap).
+pub fn smooth_predict(diff: i32, k: i32, qscale: i32, q: i32, bits: u32) -> i16 {
+    let v = diff * k * qscale;
+    let m = if v < 0 {
+        let m = ((q << 7) - v) / (q << 8);
+        -(if bits > 0 && m >= 1 << bits { (1 << bits) - 1 } else { m })
+    } else {
+        let m = (v + (q << 7)) / (q << 8);
+        if bits > 0 && m >= 1 << bits {
+            (1 << bits) - 1
+        } else {
+            m
+        }
+    };
+    m as i16
+}
+
+/// Standard Huffman extend-sign helper (IDA 0x137180 LABEL_17: magnitude over half-mask stays positive, else bias down).
+pub fn huff_extend(mag: u32, size: u32) -> i32 {
+    if mag > HUFF_BMASK[(size - 1) as usize] {
+        mag as i32
+    } else {
+        mag as i32 - HUFF_BMASK[size as usize] as i32
+    }
+}
+
 // 0x133dc0 — _consume_data
 #[doc(alias = "_consume_data")]
-pub fn stub_133dc0() -> ! { todo!("0x133dc0 _consume_data") }
+pub fn stub_133dc0(comp_count: usize, mcu_rows: u32, row_done: &mut u32, irow: &mut u32, y_done: &mut u32, rows_per_i: u32, fetch: &mut dyn FnMut(usize) -> Vec<i16>, decode: &mut dyn FnMut(&[i16]) -> bool, start_row: &mut dyn FnMut()) -> ConsumeStatus { // IDA 0x133dc0: downsample each component row; MCU-decode loop to end (FALSE → save cursors, Suspended); row done → next iMCU (Finished at image end, else NeedMore).
+    let mut coef = vec![0i16; 64 * comp_count];
+    for c in 0..comp_count {
+        let rows = fetch(c);
+        coef[c * 64..(c + 1) * 64].copy_from_slice(&rows[..64.min(rows.len())]);
+    }
+    while *y_done < rows_per_i {
+        for _ in *row_done..mcu_rows {
+            if !decode(&coef) {
+                return ConsumeStatus::Suspended;
+            }
+            *row_done += 1;
+        }
+        *row_done = 0;
+        *y_done += 1;
+    }
+    *irow += 1;
+    start_row();
+    if *irow >= mcu_rows {
+        ConsumeStatus::Finished
+    } else {
+        ConsumeStatus::NeedMore
+    }
+}
 
 // 0x133fb4 — _decompress_data
 #[doc(alias = "_decompress_data")]
-pub fn stub_133fb4() -> ! { todo!("0x133fb4 _decompress_data") }
+pub fn stub_133fb4(input_ready: &mut dyn FnMut() -> bool, comps: usize, process_comp: &mut dyn FnMut(usize) -> bool, out_row: &mut u32, out_max: u32) -> ConsumeStatus { // IDA 0x133fb4: pump input (FALSE → Suspended); fancy-upsample each component row (FALSE → Suspended); row done → NeedMore, image done → Finished.
+    if !input_ready() {
+        return ConsumeStatus::Suspended;
+    }
+    for c in 0..comps {
+        if !process_comp(c) {
+            return ConsumeStatus::Suspended;
+        }
+    }
+    *out_row += 1;
+    if *out_row >= out_max {
+        ConsumeStatus::Finished
+    } else {
+        ConsumeStatus::NeedMore
+    }
+}
 
 // 0x134188 — _start_output_pass
 #[doc(alias = "_start_output_pass")]
-pub fn stub_134188() -> ! { todo!("0x134188 _start_output_pass") }
+pub fn stub_134188(need_context: bool, fancy_ok: bool, arith: bool, quant_ready: bool, comps_need_smooth: &[bool]) -> DecompressMethod { // IDA 0x134188: context + (fancy-off/arith/missing tables) → plain data; else smooth iff any component's quant table calls for it (caller inspects the tables).
+    if need_context && (!fancy_ok || arith || !quant_ready) {
+        return DecompressMethod::Data;
+    }
+    if comps_need_smooth.iter().any(|&s| s) {
+        DecompressMethod::Smooth
+    } else {
+        DecompressMethod::Data
+    }
+}
 
 // 0x134328 — _jinit_d_coef_controller
 #[doc(alias = "_jinit_d_coef_controller")]
-pub fn stub_134328() -> ! { todo!("0x134328 _jinit_d_coef_controller") }
+pub fn stub_134328(whole_image: bool, comp_dims: &[(usize, usize)], alloc: &mut dyn FnMut(usize) -> Vec<i16>) -> DCoefController { // IDA 0x134328: install start_input_pass; whole-image → per-component virtual arrays + consume/decompress data pair; else 1280-word strip + dummy/onepass pair.
+    if whole_image {
+        let bufs = comp_dims.iter().map(|&(w, h)| alloc(w * h)).collect();
+        DCoefController { full_image: true, bufs }
+    } else {
+        DCoefController { full_image: false, bufs: vec![alloc(1280)] }
+    }
+}
 
 // 0x1344e8 — _decompress_onepass
 #[doc(alias = "_decompress_onepass")]
-pub fn stub_1344e8() -> ! { todo!("0x1344e8 _decompress_onepass") }
+pub fn stub_1344e8(cur: &mut OnepassCursor, last_col: u32, decode_row: &mut dyn FnMut() -> bool, upsample: &mut dyn FnMut(usize, u32), advance: &mut dyn FnMut() -> ConsumeStatus) -> ConsumeStatus { // IDA 0x1344e8: zero the coef buffer (caller); decode one MCU row (FALSE → save cursors, Suspended); fancy-upsample each component column group (Duff counts folded); advance (NeedMore/Finished).
+    while cur.col <= last_col {
+        if !decode_row() {
+            return ConsumeStatus::Suspended;
+        }
+        upsample(0, cur.col);
+        cur.col += 1;
+    }
+    cur.col = 0;
+    advance()
+}
 
 // 0x1348ec — _decompress_smooth_data
 #[doc(alias = "_decompress_smooth_data")]
-pub fn stub_1348ec() -> ! { todo!("0x1348ec _decompress_smooth_data") }
+pub fn stub_1348ec(pump_input: &mut dyn FnMut() -> bool, out_row: &mut u32, out_max: u32, comps: usize, smooth_row: &mut dyn FnMut(usize), finish: &mut dyn FnMut() -> ConsumeStatus) -> ConsumeStatus { // IDA 0x1348ec: pump input rows (FALSE → Suspended); per-component smoothing prediction + fancy row upsample (caller owns the coefficient taps via smooth_predict); finish (NeedMore/Finished).
+    if !pump_input() {
+        return ConsumeStatus::Suspended;
+    }
+    for c in 0..comps {
+        smooth_row(c);
+    }
+    *out_row += 1;
+    if *out_row >= out_max {
+        return finish();
+    }
+    finish()
+}
 
 // 0x135064 — _build_ycc_rgb_table
 #[doc(alias = "_build_ycc_rgb_table")]
-pub fn stub_135064() -> ! { todo!("0x135064 _build_ycc_rgb_table") }
+pub fn stub_135064() -> YccRgbTable { // IDA 0x135064: YCC→RGB conversion tables, 4-wide unrolled (base steps 367524/464520/-187208/-90216 with per-lane offsets).
+    let mut t = YccRgbTable { r_cr: [0; 256], b_cb: [0; 256], g_cb: [0; 256], g_cr: [0; 256] };
+    let (mut v7, mut v8, mut v3, mut v4) = (-11728000i32, -14831872i32, 5990656i32, 2919680i32);
+    let mut x = 0usize;
+    while x != 256 {
+        t.r_cr[x] = v7 >> 16;
+        t.b_cb[x] = v8 >> 16;
+        t.g_cb[x] = v3;
+        t.g_cr[x] = v4;
+        t.r_cr[x + 1] = (v7 + 91881) >> 16;
+        t.b_cb[x + 1] = (v8 + 116130) >> 16;
+        t.g_cb[x + 1] = v3 - 46802;
+        t.g_cr[x + 1] = v4 - 22554;
+        t.r_cr[x + 2] = (v7 + 183762) >> 16;
+        t.b_cb[x + 2] = (v8 + 232260) >> 16;
+        t.g_cb[x + 2] = v3 - 93604;
+        t.g_cr[x + 2] = v4 - 45108;
+        t.r_cr[x + 3] = (v7 + 275643) >> 16;
+        t.b_cb[x + 3] = (v8 + 348390) >> 16;
+        t.g_cb[x + 3] = v3 - 140406;
+        t.g_cr[x + 3] = v4 - 67662;
+        v7 += 367524;
+        v8 += 464520;
+        v3 -= 187208;
+        v4 -= 90216;
+        x += 4;
+    }
+    t
+}
 
 // 0x135268 — _ycc_rgb_convert
 #[doc(alias = "_ycc_rgb_convert")]
-pub fn stub_135268() -> ! { todo!("0x135268 _ycc_rgb_convert") }
+pub fn stub_135268(t: &YccRgbTable, limit: &[u8], center: usize, y: &[u8], cb: &[u8], cr: &[u8], out: &mut [u8]) { // IDA 0x135268: per-pixel YCC→RGB via the conversion tables + centered range limiter; IDA unrolls 8-wide with a (w&7) prologue.
+    for (i, o) in out.chunks_mut(3).enumerate() {
+        let yi = y[i] as i32;
+        o[0] = limit[(center as i32 + yi + t.r_cr[cr[i] as usize]) as usize];
+        o[1] = limit[(center as i32 + yi + ((t.g_cb[cb[i] as usize] + t.g_cr[cr[i] as usize]) >> 16)) as usize];
+        o[2] = limit[(center as i32 + yi + t.b_cb[cb[i] as usize]) as usize];
+    }
+}
 
 // 0x135810 — _null_convert_0
 #[doc(alias = "_null_convert_0")]
-pub fn stub_135810() -> ! { todo!("0x135810 _null_convert_0") }
+pub fn stub_135810(inputs: &[&[u8]], num_out: usize, out: &mut [u8]) { // IDA 0x135810: interleave planar component rows into packed output rows; IDA unrolls 8-wide with a (w&7) prologue per component.
+    for (j, src) in inputs.iter().enumerate() {
+        for (i, &s) in src.iter().enumerate() {
+            out[j + i * num_out] = s;
+        }
+    }
+}
 
 // 0x135980 — _gray_rgb_convert
 #[doc(alias = "_gray_rgb_convert")]
-pub fn stub_135980() -> ! { todo!("0x135980 _gray_rgb_convert") }
+pub fn stub_135980(row: &[u8], out: &mut [u8]) { // IDA 0x135980: triplicate each gray sample into RGB; IDA unrolls 8-wide with a (w&7) prologue.
+    for (i, o) in out.chunks_mut(3).enumerate() {
+        let v = row[i];
+        o[0] = v;
+        o[1] = v;
+        o[2] = v;
+    }
+}
 
 // 0x135b68 — _ycck_cmyk_convert
 #[doc(alias = "_ycck_cmyk_convert")]
-pub fn stub_135b68() -> ! { todo!("0x135b68 _ycck_cmyk_convert") }
+pub fn stub_135b68(t: &YccRgbTable, limit: &[u8], center: usize, y: &[u8], cb: &[u8], cr: &[u8], k: &[u8], out: &mut [u8]) { // IDA 0x135b68: inverted-YCC→CMYK with K passthrough; IDA unrolls 8-wide with a (w&7) prologue.
+    for (i, o) in out.chunks_mut(4).enumerate() {
+        let yi = 255 - y[i] as i32;
+        o[0] = limit[(center as i32 + yi - t.r_cr[cb[i] as usize]) as usize];
+        o[1] = limit[(center as i32 + yi - ((t.g_cb[cb[i] as usize] + t.g_cr[cr[i] as usize]) >> 16)) as usize];
+        o[2] = limit[(center as i32 + yi - t.b_cb[cr[i] as usize]) as usize];
+        o[3] = k[i];
+    }
+}
 
 // 0x1362a4 — _start_pass_dcolor
 #[doc(alias = "_start_pass_dcolor")]
-pub fn stub_1362a4() -> ! { todo!("0x1362a4 _start_pass_dcolor") }
+pub fn stub_1362a4() { // IDA 0x1362a4: empty start-pass body.
+}
 
 // 0x1362a8 — _jinit_color_deconverter
 #[doc(alias = "_jinit_color_deconverter")]
-pub fn stub_1362a8() -> ! { todo!("0x1362a8 _jinit_color_deconverter") }
+pub fn stub_1362a8(in_space: i32, in_comps: u32, out_space: i32, quantize: bool) -> (DColorConverter, bool, u32) { // IDA 0x1362a8: component-count validation (error 11), out-space dispatch (error 28); returns (converter, ycc-table-needed, out components or 1 when quantizing).
+    match in_space {
+        1 => assert!(in_comps == 1, "jinit_color_deconverter: bad components (11)"),
+        2 | 3 => assert!(in_comps == 3, "jinit_color_deconverter: bad components (11)"),
+        4 | 5 => assert!(in_comps == 4, "jinit_color_deconverter: bad components (11)"),
+        _ => assert!(in_comps > 0, "jinit_color_deconverter: bad components (11)"),
+    }
+    let (conv, table, comps) = match out_space {
+        2 => match in_space {
+            3 => (DColorConverter::YccRgb, true, 3),
+            1 => (DColorConverter::GrayRgb, false, 3),
+            2 => (DColorConverter::Null, false, 3),
+            _ => panic!("jinit_color_deconverter: unsupported conversion (28)"),
+        },
+        4 => match in_space {
+            5 => (DColorConverter::YcckCmyk, true, 4),
+            4 => (DColorConverter::Null, false, 4),
+            _ => panic!("jinit_color_deconverter: unsupported conversion (28)"),
+        },
+        1 => match in_space {
+            3 | 1 => (DColorConverter::Grayscale, false, 1),
+            _ => panic!("jinit_color_deconverter: unsupported conversion (28)"),
+        },
+        _ => {
+            if out_space == in_space {
+                (DColorConverter::Null, false, in_comps)
+            } else {
+                panic!("jinit_color_deconverter: unsupported conversion (28)")
+            }
+        }
+    };
+    (conv, table, if quantize { 1 } else { comps })
+}
 
 // 0x1364b0 — _grayscale_convert_0
 // type: int __fastcall(int, int, int, int, int)
 #[doc(alias = "_grayscale_convert_0")]
-pub fn stub_1364b0() -> ! { todo!("0x1364b0 _grayscale_convert_0") }
+pub fn stub_1364b0(src: &[Vec<u8>], dst: &mut [Vec<u8>], rows: usize) { // IDA 0x1364b0: sample-row copy helper (jcopy_sample_rows over full rows).
+    for (d, s) in dst.iter_mut().zip(src.iter()).take(rows) {
+        d.clone_from(s);
+    }
+}
 
 // 0x1364ec — _start_pass_1
 #[doc(alias = "_start_pass_1")]
-pub fn stub_1364ec() -> ! { todo!("0x1364ec _start_pass_1") }
+pub fn stub_1364ec(h: u32, v: u32, method: i32, quant: &[u16; 64]) -> (IdctMethod, IdctTable) { // IDA 0x1364ec: (h<<8)|v → jpeg_idct_HxV (unknown → error 7; 8x8 via dct_method, bad → error 49); ifast (q*scale+2048)>>12, float q*row*col, islow plain copy.
+    let kind = match (h << 8) | v {
+        0x101 => IdctMethod::Small(1, 1),
+        0x102 => IdctMethod::Small(1, 2),
+        0x201 => IdctMethod::Small(2, 1),
+        0x202 => IdctMethod::Small(2, 2),
+        0x204 => IdctMethod::Small(2, 4),
+        0x402 => IdctMethod::Small(4, 2),
+        0x404 => IdctMethod::Small(4, 4),
+        0x408 => IdctMethod::Small(4, 8),
+        0x303 => IdctMethod::Small(3, 3),
+        0x306 => IdctMethod::Small(3, 6),
+        0x505 => IdctMethod::Small(5, 5),
+        0x50a => IdctMethod::Small(5, 10),
+        0x606 => IdctMethod::Small(6, 6),
+        0x603 => IdctMethod::Small(6, 3),
+        0x60c => IdctMethod::Small(6, 12),
+        0x707 => IdctMethod::Small(7, 7),
+        0x70e => IdctMethod::Small(7, 14),
+        0x804 => IdctMethod::Small(8, 4),
+        0x810 => IdctMethod::Small(8, 16),
+        0x909 => IdctMethod::Small(9, 9),
+        0xa05 => IdctMethod::Small(10, 5),
+        0xa0a => IdctMethod::Small(10, 10),
+        0xb0b => IdctMethod::Small(11, 11),
+        0xc0c => IdctMethod::Small(12, 12),
+        0xc06 => IdctMethod::Small(12, 6),
+        0xd0d => IdctMethod::Small(13, 13),
+        0xe07 => IdctMethod::Small(14, 7),
+        0xe0e => IdctMethod::Small(14, 14),
+        0xf0f => IdctMethod::Small(15, 15),
+        0x1008 => IdctMethod::Small(16, 8),
+        0x1010 => IdctMethod::Small(16, 16),
+        0x808 => match method {
+            0 => IdctMethod::Islow,
+            1 => IdctMethod::Ifast,
+            2 => IdctMethod::Float,
+            _ => panic!("start_pass: bad IDCT method (49)"),
+        },
+        _ => panic!("start_pass: unsupported IDCT scaling ({}, {}) (7)", h, v),
+    };
+    let table = match kind {
+        IdctMethod::Ifast => {
+            let mut t = [0i32; 64];
+            for i in 0..64 {
+                t[i] = (quant[i] as i32 * crate::generated_net_12::AAN_SCALES[i] + 2048) >> 12;
+            }
+            IdctTable::Ifast(t)
+        }
+        IdctMethod::Float => {
+            let mut t = [0f32; 64];
+            for i in 0..64 {
+                t[i] = quant[i] as f32 * crate::generated_net_12::AAN_ROW_SCALE[i / 8] as f32 * crate::generated_net_12::AAN_ROW_SCALE[i % 8] as f32;
+            }
+            IdctTable::Float(t)
+        }
+        _ => {
+            let mut t = [0u16; 64];
+            t.copy_from_slice(quant);
+            IdctTable::Islow(t)
+        }
+    };
+    (kind, table)
+}
 
 // 0x136de4 — _jinit_inverse_dct
 #[doc(alias = "_jinit_inverse_dct")]
-pub fn stub_136de4() -> ! { todo!("0x136de4 _jinit_inverse_dct") }
+pub fn stub_136de4(num_comps: usize, alloc: &mut dyn FnMut() -> Vec<i16>) -> Vec<Vec<i16>> { // IDA 0x136de4: install start_pass; per-component 64-word multiplier table, zeroed.
+    (0..num_comps)
+        .map(|_| {
+            let mut v = alloc();
+            for x in v.iter_mut() {
+                *x = 0;
+            }
+            v
+        })
+        .collect()
+}
 
 // 0x136e7c — _jpeg_fill_bit_buffer
 #[doc(alias = "_jpeg_fill_bit_buffer")]
-pub fn stub_136e7c() -> ! { todo!("0x136e7c _jpeg_fill_bit_buffer") }
+pub fn stub_136e7c(st: &mut HuffBitState, src: &mut JpegSrc, nbits: i32, unread_marker: &mut u32, eoi: &mut FillEoi, refill: &mut dyn FnMut(&mut JpegSrc) -> bool) -> bool { // IDA 0x136e7c: arith-cutoff mode pads with the EOI warning; Huff mode pulls bytes with 0xFF/marker handling (FALSE when the source runs dry; source cursor commits only on success).
+    if *unread_marker != 0 {
+        if st.bits_left < nbits {
+            if !*eoi.warned {
+                (eoi.warn)();
+                *eoi.warned = true;
+            }
+            st.get_buffer <<= 25 - st.bits_left;
+            st.bits_left = 25;
+        }
+        return true;
+    }
+    let mut pos = src.pos;
+    while st.bits_left <= 24 {
+        if pos >= src.data.len() {
+            src.pos = pos;
+            if !refill(src) {
+                return false;
+            }
+            pos = src.pos;
+            if pos >= src.data.len() {
+                return false;
+            }
+        }
+        let mut b = src.data[pos];
+        pos += 1;
+        if b == 0xFF {
+            loop {
+                if pos >= src.data.len() {
+                    src.pos = pos;
+                    if !refill(src) {
+                        return false;
+                    }
+                    pos = src.pos;
+                    if pos >= src.data.len() {
+                        return false;
+                    }
+                }
+                let m = src.data[pos];
+                pos += 1;
+                if m != 0xFF {
+                    if m != 0 {
+                        *unread_marker = m as u32;
+                        src.pos = pos;
+                        if st.bits_left < nbits {
+                            if !*eoi.warned {
+                                (eoi.warn)();
+                                *eoi.warned = true;
+                            }
+                            st.get_buffer <<= 25 - st.bits_left;
+                            st.bits_left = 25;
+                        }
+                        return true;
+                    }
+                    b = 0xFF;
+                    break;
+                }
+            }
+        }
+        st.get_buffer = (b as u32) | (st.get_buffer << 8);
+        st.bits_left += 8;
+    }
+    src.pos = pos;
+    true
+}
 
 // 0x136fcc — _jpeg_huff_decode
 #[doc(alias = "_jpeg_huff_decode")]
-pub fn stub_136fcc() -> ! { todo!("0x136fcc _jpeg_huff_decode") }
+pub fn stub_136fcc(st: &mut HuffBitState, tbl: &HuffDecodeTable, mut nb: i32, fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, error121: &mut dyn FnMut()) -> i32 { // IDA 0x136fcc: ensure min bits (dry → -1); bit-by-bit extension against maxcode (the 8-bit lookahead folds in: same symbols); over 16 bits → error 121; consumes the full code length; returns the symbol (-1 when dry). Verified against disasm (R2 ends at bits - L).
+    if nb > st.bits_left && !fill(st, nb) {
+        return -1;
+    }
+    let mut code = (HUFF_BMASK[nb as usize] & (st.get_buffer >> (st.bits_left - nb))) as i32;
+    let mut mi = nb;
+    while mi < 17 && code > tbl.maxcode[mi as usize] {
+        if st.bits_left - nb <= 0 && !fill(st, 1) {
+            return -1;
+        }
+        code = ((st.get_buffer >> (st.bits_left - nb - 1)) & 1 | (2 * code as u32)) as i32;
+        nb += 1;
+        mi += 1;
+    }
+    st.bits_left -= nb;
+    if nb > 16 {
+        error121();
+        return 0;
+    }
+    tbl.symbols[(code + tbl.valoffset[mi as usize] + 17) as usize] as i32
+}
 
 // 0x1370e4 — _process_restart_0
 #[doc(alias = "_process_restart_0")]
-pub fn stub_1370e4() -> ! { todo!("0x1370e4 _process_restart_0") }
+pub fn stub_1370e4(consumed_bits: u32, skip_input: &mut dyn FnMut(u32), bits: &mut HuffBitState, refill: &mut dyn FnMut() -> bool, dc_pred: &mut [i32], restart_interval: u32, restart_rows: &mut u32, unread_marker: &mut u32, gather: &mut bool) -> bool { // IDA 0x1370e4: skip consumed input bytes; refill (FALSE → FALSE); clear DC predictions, EOB state (caller), reload restart rows; arith with marker keeps gather, else clear it; always TRUE past refill.
+    skip_input(consumed_bits / 8);
+    bits.bits_left = 0;
+    if !refill() {
+        return false;
+    }
+    for p in dc_pred.iter_mut() {
+        *p = 0;
+    }
+    *restart_rows = restart_interval;
+    if *unread_marker == 0 {
+        *gather = false;
+    }
+    true
+}
 
 // 0x137180 — _decode_mcu_DC_first_0
 #[doc(alias = "_decode_mcu_DC_first_0")]
-pub fn stub_137180() -> ! { todo!("0x137180 _decode_mcu_DC_first_0") }
+pub fn stub_137180(st: &mut HuffBitState, gather: bool, rst: &mut ArithDecodeRestart, eob_skip: &mut u32, do_restart: &mut dyn FnMut() -> bool, tbls: &[HuffDecodeTable], ctx: &mut [HuffDcCtx0], blocks: &mut [&mut [i16]], al: u32, fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, err121: &mut dyn FnMut()) -> bool { // IDA 0x137180: restart prologue (FALSE → FALSE); gather mode → epilogue only; EOBRUN skip countdown; per-block DC-first decode (size → extend → pred += diff, stored << Al); epilogue always ticks; FALSE when dry.
+    if rst.interval != 0 && rst.left == 0 && !do_restart() {
+        return false;
+    }
+    if gather {
+        rst.left = rst.left.wrapping_sub(1);
+        return true;
+    }
+    if *eob_skip != 0 {
+        *eob_skip -= 1;
+    } else {
+        for (n, cx) in ctx.iter_mut().enumerate() {
+            let size = stub_136fcc(st, &tbls[cx.tbl], 1, fill, err121);
+            if size < 0 {
+                return false;
+            }
+            let diff = if size == 0 {
+                0
+            } else {
+                if st.bits_left < size && !fill(st, size) {
+                    return false;
+                }
+                st.bits_left -= size;
+                huff_extend(HUFF_BMASK[size as usize] & (st.get_buffer >> st.bits_left), size as u32)
+            };
+            cx.pred += diff;
+            blocks[n][0] = (cx.pred << al) as i16;
+        }
+    }
+    rst.left = rst.left.wrapping_sub(1);
+    true
+}
 
 // 0x1373f0 — _decode_mcu_AC_first_0
 #[doc(alias = "_decode_mcu_AC_first_0")]
-pub fn stub_1373f0() -> ! { todo!("0x1373f0 _decode_mcu_AC_first_0") }
+pub fn stub_1373f0(st: &mut HuffBitState, gather: bool, rst: &mut ArithDecodeRestart, eobrun: &mut u32, do_restart: &mut dyn FnMut() -> bool, tbls: &[HuffDecodeTable], coef: &mut [i16; 64], ac_tbl: usize, ss: usize, se: usize, al: u32, fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, err121: &mut dyn FnMut()) -> bool { // IDA 0x1373f0: restart prologue; gather → epilogue; EOBRUN skip countdown; per-k symbol decode (nonzero → magnitude store at k+run; run<15 → new EOBRUN countdown, run 15 → ZRL); epilogue ticks; FALSE when dry.
+    use crate::generated_net_12::JPEG_NATURAL_ORDER;
+    if rst.interval != 0 && rst.left == 0 && !do_restart() {
+        return false;
+    }
+    if gather {
+        rst.left = rst.left.wrapping_sub(1);
+        return true;
+    }
+    if *eobrun != 0 {
+        *eobrun -= 1;
+    } else {
+        let mut k = ss;
+        while k <= se {
+            let sym = stub_136fcc(st, &tbls[ac_tbl], 1, fill, err121);
+            if sym < 0 {
+                return false;
+            }
+            let run = (sym >> 4) as usize;
+            let size = (sym & 0xF) as i32;
+            if size != 0 {
+                if st.bits_left < size && !fill(st, size) {
+                    return false;
+                }
+                st.bits_left -= size;
+                let mag = huff_extend(HUFF_BMASK[size as usize] & (st.get_buffer >> st.bits_left), size as u32);
+                coef[JPEG_NATURAL_ORDER[k + run] as usize] = (mag << al) as i16;
+                k += run + 1;
+            } else if run != 15 {
+                let mut eob = 1 << run;
+                if run != 0 {
+                    if st.bits_left < run as i32 && !fill(st, run as i32) {
+                        return false;
+                    }
+                    st.bits_left -= run as i32;
+                    eob += HUFF_BMASK[run] & (st.get_buffer >> st.bits_left);
+                }
+                *eobrun = eob - 1;
+                break;
+            } else {
+                k += 16;
+            }
+        }
+    }
+    rst.left = rst.left.wrapping_sub(1);
+    true
+}
 
 // 0x13766c — _decode_mcu_DC_refine_0
 #[doc(alias = "_decode_mcu_DC_refine_0")]
-pub fn stub_13766c() -> ! { todo!("0x13766c _decode_mcu_DC_refine_0") }
+pub fn stub_13766c(st: &mut HuffBitState, rst: &mut ArithDecodeRestart, blocks: &mut [&mut [i16]], al: u32, fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, do_restart: &mut dyn FnMut() -> bool) -> bool { // IDA 0x13766c: restart prologue (FALSE → FALSE); per-block stream bit → OR 1<<Al; epilogue ticks; TRUE (FALSE when dry).
+    if rst.interval != 0 && rst.left == 0 && !do_restart() {
+        return false;
+    }
+    for b in blocks.iter_mut() {
+        if st.bits_left <= 0 && !fill(st, 1) {
+            return false;
+        }
+        st.bits_left -= 1;
+        if ((st.get_buffer >> st.bits_left) & 1) != 0 {
+            b[0] |= 1 << al;
+        }
+    }
+    rst.left = rst.left.wrapping_sub(1);
+    true
+}
 
 // 0x137774 — _decode_mcu_AC_refine_0
 #[doc(alias = "_decode_mcu_AC_refine_0")]
-pub fn stub_137774() -> ! { todo!("0x137774 _decode_mcu_AC_refine_0") }
+pub fn stub_137774(st: &mut HuffBitState, gather: bool, rst: &mut ArithDecodeRestart, eobrun: &mut u32, do_restart: &mut dyn FnMut() -> bool, tbls: &[HuffDecodeTable], coef: &mut [i16; 64], ac_tbl: usize, ss: usize, se: usize, al: u32, fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, err121: &mut dyn FnMut()) -> bool { // IDA 0x137774: restart prologue; gather → epilogue; eobrun nonzero → decrement; else symbol loop (size>1 → error 121; new nonzero ±2^Al; run<15 → EOBRUN, run 15 → ZRL); refine existing nonzeros with correction bits (unset Al bit only); restart epilogue; FALSE when dry.
+    use crate::generated_net_12::JPEG_NATURAL_ORDER;
+    if rst.interval != 0 && rst.left == 0 && !do_restart() {
+        return false;
+    }
+    if gather {
+        rst.left = rst.left.wrapping_sub(1);
+        return true;
+    }
+    let order = JPEG_NATURAL_ORDER;
+    if *eobrun == 0 {
+        let mut k = ss;
+        loop {
+            if k > se {
+                break;
+            }
+            let sym = stub_136fcc(st, &tbls[ac_tbl], 1, fill, err121);
+            if sym < 0 {
+                return false;
+            }
+            let run = (sym >> 4) as usize;
+            let size = (sym & 0xF) as i32;
+            if size != 0 {
+                if size != 1 {
+                    panic!("decode_mcu_AC_refine: bad size (121)");
+                }
+                if st.bits_left < 1 && !fill(st, 1) {
+                    return false;
+                }
+                st.bits_left -= 1;
+                let bit = (st.get_buffer >> st.bits_left) & 1;
+                let idx = order[k + run] as usize;
+                coef[idx] = if bit != 0 { 1 << al } else { -(1 << al) };
+                break;
+            } else if run == 15 {
+                k += 16;
+            } else {
+                let mut eob = 1 << run;
+                if run != 0 {
+                    if st.bits_left < run as i32 && !fill(st, run as i32) {
+                        return false;
+                    }
+                    st.bits_left -= run as i32;
+                    eob += HUFF_BMASK[run] & (st.get_buffer >> st.bits_left);
+                }
+                *eobrun = eob - 1;
+                break;
+            }
+        }
+    } else {
+        *eobrun -= 1;
+    }
+    for kk in ss..=se {
+        let ii = order[kk] as usize;
+        if coef[ii] != 0 {
+            if st.bits_left < 1 && !fill(st, 1) {
+                return false;
+            }
+            st.bits_left -= 1;
+            let b = (st.get_buffer >> st.bits_left) & 1;
+            if b != 0 && (coef[ii] & (1 << al)) == 0 {
+                coef[ii] += if coef[ii] >= 0 { 1 << al } else { -(1 << al) };
+            }
+        }
+    }
+    rst.left = rst.left.wrapping_sub(1);
+    true
+}
 
 // 0x1386c4 — _decode_mcu_0
 #[doc(alias = "_decode_mcu_0")]
-pub fn stub_1386c4() -> ! { todo!("0x1386c4 _decode_mcu_0") }
+pub fn stub_1386c4(st: &mut HuffBitState, gather: bool, rst: &mut ArithDecodeRestart, preds: &mut [i32], do_restart: &mut dyn FnMut() -> bool, tbls: &[HuffDecodeTable], blocks: &mut [&mut [i16; 64]], dc_tbls: &[usize], ac_tbls: &[usize], fill: &mut dyn FnMut(&mut HuffBitState, i32) -> bool, err121: &mut dyn FnMut()) -> bool { // IDA 0x1386c4: restart prologue; gather → epilogue; per-block DC decode (size → extend → pred) + zigzag AC decode (nonzero → store; run<15 EOB ends block, run 15 ZRL); epilogue ticks; FALSE when dry.
+    use crate::generated_net_12::JPEG_NATURAL_ORDER;
+    if rst.interval != 0 && rst.left == 0 && !do_restart() {
+        return false;
+    }
+    if gather {
+        rst.left = rst.left.wrapping_sub(1);
+        return true;
+    }
+    for (n, b) in blocks.iter_mut().enumerate() {
+        let size = stub_136fcc(st, &tbls[dc_tbls[n]], 1, fill, err121);
+        if size < 0 {
+            return false;
+        }
+        if size != 0 {
+            if st.bits_left < size && !fill(st, size) {
+                return false;
+            }
+            st.bits_left -= size;
+            preds[n] += huff_extend(HUFF_BMASK[size as usize] & (st.get_buffer >> st.bits_left), size as u32);
+        }
+        b[0] = preds[n] as i16;
+        let order = JPEG_NATURAL_ORDER;
+        let mut k = 1usize;
+        while k <= 63 {
+            let sym = stub_136fcc(st, &tbls[ac_tbls[n]], 1, fill, err121);
+            if sym < 0 {
+                return false;
+            }
+            let run = (sym >> 4) as usize;
+            let size = (sym & 0xF) as i32;
+            if size != 0 {
+                if st.bits_left < size && !fill(st, size) {
+                    return false;
+                }
+                st.bits_left -= size;
+                let mag = huff_extend(HUFF_BMASK[size as usize] & (st.get_buffer >> st.bits_left), size as u32);
+                b[order[k + run] as usize] = mag as i16;
+                k += run + 1;
+            } else if run != 15 {
+                break;
+            } else {
+                k += 16;
+            }
+        }
+    }
+    rst.left = rst.left.wrapping_sub(1);
+    true
+}
 
 // 0x138bc0 — _jinit_huff_decoder
 #[doc(alias = "_jinit_huff_decoder")]
-pub fn stub_138bc0() -> ! { todo!("0x138bc0 _jinit_huff_decoder") }
+pub fn stub_138bc0(arith_code: bool, num_comps: u32) -> HuffDecoderInit { // IDA 0x138bc0: install start_pass_huff_decoder; arith → per-component 64-word DAC areas preset to -1 (returns 0); else stamp the 8 flag words (returns 0xD44; both zero here).
+    if arith_code {
+        HuffDecoderInit { dac: vec![-1; 64 * num_comps as usize], flags: [0; 8] }
+    } else {
+        HuffDecoderInit { dac: Vec::new(), flags: [0; 8] }
+    }
+}
 
 // 0x138ccc — _jpeg_make_d_derived_tbl
 #[doc(alias = "_jpeg_make_d_derived_tbl")]
