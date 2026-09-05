@@ -7,6 +7,34 @@
 
 use rbx_core::SharedPtr;
 
+/// `UserInfo` ObjC model (IDA 0x419f4 et al.: ivar offsets).
+#[derive(Clone, Debug, Default)]
+pub struct UserInfo {
+ pub user_info_dict: Option<String>,
+ pub userinfo: Option<String>,
+ pub rbx_bal: Option<i32>,
+ pub tik_bal: Option<i32>,
+ pub thumb_url: Option<String>,
+ pub bc_member: Option<String>,
+ pub encoded_password: Option<String>,
+ pub encoded_username: Option<String>,
+ pub username: Option<String>,
+ pub password: Option<String>,
+ pub logged_in: bool,
+}
+
+/// Static-init state for `__GLOBAL__I_a_11` (IDA 0x41bfc).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA11 {
+ pub done: bool,
+}
+
+/// Analytics init state (IDA 0x41cc4).
+#[derive(Clone, Debug, Default)]
+pub struct AnalyticsInit {
+ pub done: bool,
+}
+
 /// `UserInfo` login state (IDA 0x409b0 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct UserLogin {
@@ -732,173 +760,206 @@ pub fn stub_4129c(clear: &mut dyn FnMut()) {
 // 0x41580 — +[UserInfo printCookies]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo printCookies]")]
-pub fn stub_41580() -> ! {
-    todo!("0x41580 +[UserInfo printCookies]")
+pub fn stub_41580(dump: &mut dyn FnMut()) {
+    // IDA 0x41580: printCookies — cookie jar dump (below truncation).
+    dump();
 }
 
 // 0x419c8 — +[UserInfo logout]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[UserInfo logout]")]
-pub fn stub_419c8() -> ! {
-    todo!("0x419c8 +[UserInfo logout]")
+pub fn stub_419c8(player: &mut Option<usize>, release: &mut dyn FnMut(usize)) {
+    // IDA 0x419c8: release _currentPlayer; nil it.
+    if let Some(p) = player.take() {
+        release(p);
+    }
 }
 
 // 0x419f4 — -[UserInfo userInfoDict]
 // type: NSDictionary *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userInfoDict]")]
-pub fn stub_419f4() -> ! {
-    todo!("0x419f4 -[UserInfo userInfoDict]")
+pub fn stub_419f4(user: &UserInfo) -> Option<String> {
+    // IDA 0x419f4: return userInfoDict.
+    user.user_info_dict.clone()
 }
 
 // 0x41a04 — -[UserInfo setUserInfoDict:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserInfoDict:]")]
-pub fn stub_41a04() -> ! {
-    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+pub fn stub_41a04(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41a04: objc_setProperty userInfoDict.
+    user.user_info_dict = value;
 }
 
 // 0x41a28 — -[UserInfo userinfo]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userinfo]")]
-pub fn stub_41a28() -> ! {
-    todo!("0x41a28 -[UserInfo userinfo]")
+pub fn stub_41a28(user: &UserInfo) -> Option<String> {
+    // IDA 0x41a28: return userinfo.
+    user.userinfo.clone()
 }
 
 // 0x41a38 — -[UserInfo setUserinfo:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserinfo:]")]
-pub fn stub_41a38() -> ! {
-    todo!("0x41a38 -[UserInfo setUserinfo:]")
+pub fn stub_41a38(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41a38: objc_setProperty userinfo.
+    user.userinfo = value;
 }
 
 // 0x41a5c — -[UserInfo rbxBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo rbxBal]")]
-pub fn stub_41a5c() -> ! {
-    todo!("0x41a5c -[UserInfo rbxBal]")
+pub fn stub_41a5c(user: &UserInfo) -> Option<i32> {
+    // IDA 0x41a5c: return rbxBal.
+    user.rbx_bal
 }
 
 // 0x41a6c — -[UserInfo setRbxBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setRbxBal:]")]
-pub fn stub_41a6c() -> ! {
-    todo!("0x41a6c -[UserInfo setRbxBal:]")
+pub fn stub_41a6c(user: &mut UserInfo, value: Option<i32>) {
+    // IDA 0x41a6c: objc_setProperty rbxBal.
+    user.rbx_bal = value;
 }
 
 // 0x41a90 — -[UserInfo tikBal]
 // type: NSNumber *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo tikBal]")]
-pub fn stub_41a90() -> ! {
-    todo!("0x41a90 -[UserInfo tikBal]")
+pub fn stub_41a90(user: &UserInfo) -> Option<i32> {
+    // IDA 0x41a90: return tikBal.
+    user.tik_bal
 }
 
 // 0x41aa0 — -[UserInfo setTikBal:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setTikBal:]")]
-pub fn stub_41aa0() -> ! {
-    todo!("0x41aa0 -[UserInfo setTikBal:]")
+pub fn stub_41aa0(user: &mut UserInfo, value: Option<i32>) {
+    // IDA 0x41aa0: objc_setProperty tikBal.
+    user.tik_bal = value;
 }
 
 // 0x41ac4 — -[UserInfo userThumbNailUrl]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo userThumbNailUrl]")]
-pub fn stub_41ac4() -> ! {
-    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+pub fn stub_41ac4(user: &UserInfo) -> Option<String> {
+    // IDA 0x41ac4: return userThumbNailUrl.
+    user.thumb_url.clone()
 }
 
 // 0x41ad4 — -[UserInfo setUserThumbNailUrl:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
-pub fn stub_41ad4() -> ! {
-    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+pub fn stub_41ad4(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41ad4: objc_setProperty userThumbNailUrl.
+    user.thumb_url = value;
 }
 
 // 0x41af8 — -[UserInfo bcMember]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo bcMember]")]
-pub fn stub_41af8() -> ! {
-    todo!("0x41af8 -[UserInfo bcMember]")
+pub fn stub_41af8(user: &UserInfo) -> Option<String> {
+    // IDA 0x41af8: return bcMember.
+    user.bc_member.clone()
 }
 
 // 0x41b08 — -[UserInfo setBcMember:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setBcMember:]")]
-pub fn stub_41b08() -> ! {
-    todo!("0x41b08 -[UserInfo setBcMember:]")
+pub fn stub_41b08(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41b08: objc_setProperty bcMember.
+    user.bc_member = value;
 }
 
 // 0x41b2c — -[UserInfo encodedPassword]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedPassword]")]
-pub fn stub_41b2c() -> ! {
-    todo!("0x41b2c -[UserInfo encodedPassword]")
+pub fn stub_41b2c(user: &UserInfo) -> Option<String> {
+    // IDA 0x41b2c: return encodedPassword.
+    user.encoded_password.clone()
 }
 
 // 0x41b3c — -[UserInfo setEncodedPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedPassword:]")]
-pub fn stub_41b3c() -> ! {
-    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+pub fn stub_41b3c(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41b3c: objc_setProperty encodedPassword.
+    user.encoded_password = value;
 }
 
 // 0x41b60 — -[UserInfo encodedUsername]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo encodedUsername]")]
-pub fn stub_41b60() -> ! {
-    todo!("0x41b60 -[UserInfo encodedUsername]")
+pub fn stub_41b60(user: &UserInfo) -> Option<String> {
+    // IDA 0x41b60: return encodedUsername.
+    user.encoded_username.clone()
 }
 
 // 0x41b70 — -[UserInfo setEncodedUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setEncodedUsername:]")]
-pub fn stub_41b70() -> ! {
-    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+pub fn stub_41b70(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41b70: objc_setProperty encodedUsername.
+    user.encoded_username = value;
 }
 
 // 0x41b94 — -[UserInfo username]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo username]")]
-pub fn stub_41b94() -> ! {
-    todo!("0x41b94 -[UserInfo username]")
+pub fn stub_41b94(user: &UserInfo) -> Option<String> {
+    // IDA 0x41b94: return _username.
+    user.username.clone()
 }
 
 // 0x41ba4 — -[UserInfo setUsername:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setUsername:]")]
-pub fn stub_41ba4() -> ! {
-    todo!("0x41ba4 -[UserInfo setUsername:]")
+pub fn stub_41ba4(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41ba4: objc_setProperty username.
+    user.username = value;
 }
 
 // 0x41bc8 — -[UserInfo password]
 // type: NSString *__cdecl(UserInfo *self, SEL)
 #[doc(alias = "-[UserInfo password]")]
-pub fn stub_41bc8() -> ! {
-    todo!("0x41bc8 -[UserInfo password]")
+pub fn stub_41bc8(user: &UserInfo) -> Option<String> {
+    // IDA 0x41bc8: return _password.
+    user.password.clone()
 }
 
 // 0x41bd8 — -[UserInfo setPassword:]
 // type: void __cdecl(UserInfo *self, SEL, id)
 #[doc(alias = "-[UserInfo setPassword:]")]
-pub fn stub_41bd8() -> ! {
-    todo!("0x41bd8 -[UserInfo setPassword:]")
+pub fn stub_41bd8(user: &mut UserInfo, value: Option<String>) {
+    // IDA 0x41bd8: objc_setProperty password.
+    user.password = value;
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
 // demangled: global constructor keyed to_a_11
 #[doc(alias = "global constructor keyed to_a_11")]
-pub fn stub_41bfc() -> ! {
-    todo!("0x41bfc global constructor keyed to_a_11")
+pub fn stub_41bfc(state: &mut GlobalInitA11, init: &mut dyn FnMut()) {
+    // IDA 0x41bfc: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x41cc4 — +[RobloxGoogleAnalytics initialize]
 // type: void __cdecl(id, SEL)
 #[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
-pub fn stub_41cc4() -> ! {
-    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+pub fn stub_41cc4(state: &mut AnalyticsInit, dispatch: &mut dyn FnMut()) {
+    // IDA 0x41cc4: once-guard + dispatch_async(main, init block).
+    if !state.done {
+        dispatch();
+        state.done = true;
+    }
 }
 
 // 0xecd6e8 — _TFCreateCrashSocket
 #[doc(alias = "_TFCreateCrashSocket")]
-pub fn stub_ecd6e8() -> ! {
-    todo!("0xecd6e8 _TFCreateCrashSocket")
+pub fn stub_ecd6e8(host: &str, connect: &mut dyn FnMut(&str) -> i32) -> i32 {
+    // IDA 0xecd6e8: TFCreateCrashSocket — resolve + connect crash socket (below truncation).
+    connect(host)
 }
