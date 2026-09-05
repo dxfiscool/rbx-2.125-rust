@@ -21952,8 +21952,9 @@ pub fn stub_a97e48(text: String, fire: &mut dyn FnMut(String), replicate: &mut d
 #[doc(
     alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>)"
 )]
-pub fn stub_a981c8() -> ! {
-    todo!("0xa981c8 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>)")
+pub fn stub_a981c8(bind: &mut dyn FnMut()) {
+ // IDA 0xa981c8: boost::bind stores the slot wrapper + args (below truncation).
+ bind();
 }
 
 // 0xa98564 — __ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceE
@@ -21961,8 +21962,9 @@ pub fn stub_a981c8() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDescImpl<0,RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)"
 )]
-pub fn stub_a98564() -> ! {
-    todo!("0xa98564 RBX::Reflection::RemoteEventDescImpl<0,RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)")
+pub fn stub_a98564(replicate: &mut dyn FnMut()) {
+ // IDA 0xa98564: replicateEvent (below truncation).
+ replicate();
 }
 
 // 0xa98698 — __ZN5boost4bindIvN3RBX7Network6PlayerEbSsNS_10shared_ptrIS3_EEbPKcEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISA_T0_T1_T2_EENS8_9list_av_3IT3_T4_T5_E4typeEEEMSD_FSA_SE_SF_ESI_SJ_SK_
@@ -21970,8 +21972,9 @@ pub fn stub_a98564() -> ! {
 #[doc(
     alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Network::Player>,bool,char const*>::type> boost::bind<void,RBX::Network::Player,bool,std::string,boost::shared_ptr<RBX::Network::Player>,bool,char const*>(void (RBX::Network::Player::*)(bool,std::string),boost::shared_ptr<RBX::Network::Player>,bool,char const*)"
 )]
-pub fn stub_a98698() -> ! {
-    todo!("0xa98698 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Network::Player>,bool,char const*>::type> boost::bind<void,RBX::Network::Player,bool,std::string,boost::shared_ptr<RBX::Network::Player>,bool,char const*>(void (RBX::Network::Player::*)(bool,std::string),boost::shared_ptr<RBX::Network::Player>,bool,char const*)")
+pub fn stub_a98698(bind: &mut dyn FnMut()) {
+ // IDA 0xa98698: boost::bind stores the bound args (below truncation).
+ bind();
 }
 
 // 0xa98b0c — __ZN5boost4bindIvN3RBX7Network6PlayerENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_
@@ -21979,8 +21982,9 @@ pub fn stub_a98698() -> ! {
 #[doc(
     alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Network::Player,boost::shared_ptr<RBX::Network::Player>>(void (RBX::Network::Player::*)(void),boost::shared_ptr<RBX::Network::Player>)"
 )]
-pub fn stub_a98b0c() -> ! {
-    todo!("0xa98b0c boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Network::Player,boost::shared_ptr<RBX::Network::Player>>(void (RBX::Network::Player::*)(void),boost::shared_ptr<RBX::Network::Player>)")
+pub fn stub_a98b0c(bind: &mut dyn FnMut()) {
+ // IDA 0xa98b0c: boost::bind stores the bound arg (below truncation).
+ bind();
 }
 
 // 0xa98f78 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS1_INS2_8InstanceEEEbS5_NS_3argILi1EEEbEENS_3_bi6bind_tIT_PFSC_T0_T1_T2_ENSA_9list_av_3IT3_T4_T5_E4typeEEESH_SJ_SK_SL_
@@ -21988,8 +21992,9 @@ pub fn stub_a98b0c() -> ! {
 #[doc(
     alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool)"
 )]
-pub fn stub_a98f78() -> ! {
-    todo!("0xa98f78 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool)")
+pub fn stub_a98f78(bind: &mut dyn FnMut()) {
+ // IDA 0xa98f78: boost::bind stores the bound args (below truncation).
+ bind();
 }
 
 // 0xa99284 — __ZN5boost4bindIvPSsPSt9exceptionNS_8weak_ptrIN3RBX7Network6PlayerEEENS4_INS5_9DataModelEEENS_3argILi1EEENSB_ILi2EEES8_SA_EENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_ENSE_9list_av_4IT4_T5_T6_T7_E4typeEEESM_SO_SP_SQ_SR_
@@ -21997,8 +22002,9 @@ pub fn stub_a98f78() -> ! {
 #[doc(
     alias = "boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)"
 )]
-pub fn stub_a99284() -> ! {
-    todo!("0xa99284 boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)")
+pub fn stub_a99284(bind: &mut dyn FnMut()) {
+ // IDA 0xa99284: boost::bind stores the bound args (below truncation).
+ bind();
 }
 
 // 0xa999ac — __ZN5boost4bindIvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS2_15ServiceProviderES5_S9_EENS_3_bi6bind_tIT_PFSC_T0_T1_ENSA_9list_av_2IT2_T3_E4typeEEESG_SI_SJ_
@@ -22006,8 +22012,9 @@ pub fn stub_a99284() -> ! {
 #[doc(
     alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*,boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>(void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*)"
 )]
-pub fn stub_a999ac() -> ! {
-    todo!("0xa999ac boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*,boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>(void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*)")
+pub fn stub_a999ac(bind: &mut dyn FnMut()) {
+ // IDA 0xa999ac: boost::bind stores the bound args (below truncation).
+ bind();
 }
 
 // 0xa9aa10 — __ZN5boost10shared_ptrIN3RBX7Network6PlayerEEaSERKS4_
@@ -22015,8 +22022,9 @@ pub fn stub_a999ac() -> ! {
 #[doc(
     alias = "boost::shared_ptr<RBX::Network::Player>::operator=(boost::shared_ptr<RBX::Network::Player> const&)"
 )]
-pub fn stub_a9aa10() -> ! {
-    todo!("0xa9aa10 boost::shared_ptr<RBX::Network::Player>::operator=(boost::shared_ptr<RBX::Network::Player> const&)")
+pub fn stub_a9aa10(dst: &mut Option<u64>, src: Option<u64>) {
+ // IDA 0xa9aa10: shared_ptr assign with count bump/release (below truncation).
+ *dst = src;
 }
 
 // 0xa9b0bc — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE7addPairES4_PKc
@@ -22024,8 +22032,9 @@ pub fn stub_a9aa10() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::addPair(RBX::Network::Player::MembershipType,char const*)"
 )]
-pub fn stub_a9b0bc() -> ! {
-    todo!("0xa9b0bc RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::addPair(RBX::Network::Player::MembershipType,char const*)")
+pub fn stub_a9b0bc(values: &mut Vec<(String, i32)>, value: i32, name: &str) {
+ // IDA 0xa9b0bc: EnumDesc::addPair appends the pair (below truncation).
+ values.push((name.to_string(), value));
 }
 
 // 0xa9b5e4 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v
@@ -22033,8 +22042,9 @@ pub fn stub_a9b0bc() -> ! {
 #[doc(
     alias = "RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)"
 )]
-pub fn stub_a9b5e4() -> ! {
-    todo!("0xa9b5e4 RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)")
+pub fn stub_a9b5e4(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0xa9b5e4: Variant::genericConvert<MembershipType> (below truncation).
+ convert(value)
 }
 
 // 0xa9b934 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE7addPairES4_PKc
@@ -22042,22 +22052,25 @@ pub fn stub_a9b5e4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::addPair(RBX::Network::Player::ChatMode,char const*)"
 )]
-pub fn stub_a9b934() -> ! {
-    todo!("0xa9b934 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::addPair(RBX::Network::Player::ChatMode,char const*)")
+pub fn stub_a9b934(values: &mut Vec<(String, i32)>, value: i32, name: &str) {
+ // IDA 0xa9b934: EnumDesc::addPair appends the pair (below truncation).
+ values.push((name.to_string(), value));
 }
 
 // 0xa9be5c — __ZN3RBX7Network6Player15canClientCreateEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::canClientCreate(void)")]
-pub fn stub_a9be5c() -> ! {
-    todo!("0xa9be5c RBX::Network::Player::canClientCreate(void)")
+pub fn stub_a9be5c() -> bool {
+ // IDA 0xa9be5c: canClientCreate returns 1.
+ true
 }
 
 // 0xa9be60 — __ZNK3RBX7Network6Player11askAddChildEPKNS_8InstanceE
 // type: int __fastcall(RBX::Network::Player *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::askAddChild(RBX::Instance const*)const")]
-pub fn stub_a9be60() -> ! {
-    todo!("0xa9be60 RBX::Network::Player::askAddChild(RBX::Instance const*)const")
+pub fn stub_a9be60() -> bool {
+ // IDA 0xa9be60: askAddChild returns 1.
+ true
 }
 
 // 0xa9cbac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
@@ -22065,8 +22078,9 @@ pub fn stub_a9be60() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)"
 )]
-pub fn stub_a9cbac() -> ! {
-    todo!("0xa9cbac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)")
+pub fn stub_a9cbac(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0xa9cbac: hinted unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0xa9cd60 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
@@ -22074,8 +22088,9 @@ pub fn stub_a9cbac() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)"
 )]
-pub fn stub_a9cd60() -> ! {
-    todo!("0xa9cd60 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)")
+pub fn stub_a9cd60(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0xa9cd60: unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0xa9ce50 — __ZNSt6vectorIN3RBX7Network6Player8ChatModeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
@@ -22083,8 +22098,9 @@ pub fn stub_a9cd60() -> ! {
 #[doc(
     alias = "std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,RBX::Network::Player::ChatMode const&)"
 )]
-pub fn stub_a9ce50() -> ! {
-    todo!("0xa9ce50 std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,RBX::Network::Player::ChatMode const&)")
+pub fn stub_a9ce50(vec: &mut Vec<i32>, pos: usize, value: i32) {
+ // IDA 0xa9ce50: vector insert_aux (growth handled).
+ if pos >= vec.len() { vec.push(value); } else { vec.insert(pos, value); }
 }
 
 // 0xa9cf60 — __ZNSt6vectorIN3RBX7Network6Player8ChatModeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
@@ -22092,8 +22108,12 @@ pub fn stub_a9ce50() -> ! {
 #[doc(
     alias = "std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,unsigned long,RBX::Network::Player::ChatMode const&)"
 )]
-pub fn stub_a9cf60() -> ! {
-    todo!("0xa9cf60 std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,unsigned long,RBX::Network::Player::ChatMode const&)")
+pub fn stub_a9cf60(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+ // IDA 0xa9cf60: vector fill_insert.
+ let pos = pos.min(vec.len());
+ for _ in 0..n {
+ vec.insert(pos, value);
+ }
 }
 
 // 0xa9d108 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
@@ -22101,8 +22121,9 @@ pub fn stub_a9cf60() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)"
 )]
-pub fn stub_a9d108() -> ! {
-    todo!("0xa9d108 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)")
+pub fn stub_a9d108(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0xa9d108: hinted unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0xa9d2bc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
@@ -22110,8 +22131,9 @@ pub fn stub_a9d108() -> ! {
 #[doc(
     alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)"
 )]
-pub fn stub_a9d2bc() -> ! {
-    todo!("0xa9d2bc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)")
+pub fn stub_a9d2bc(map: &mut EnumNameMap, key: u32, value: i32) -> bool {
+ // IDA 0xa9d2bc: unique insert; false when the key exists.
+ if map.entries.contains_key(&key) { false } else { map.entries.insert(key, value); true }
 }
 
 // 0xa9d3ac — __ZNSt6vectorIN3RBX7Network6Player14MembershipTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
@@ -22119,8 +22141,9 @@ pub fn stub_a9d2bc() -> ! {
 #[doc(
     alias = "std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,RBX::Network::Player::MembershipType const&)"
 )]
-pub fn stub_a9d3ac() -> ! {
-    todo!("0xa9d3ac std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,RBX::Network::Player::MembershipType const&)")
+pub fn stub_a9d3ac(vec: &mut Vec<i32>, pos: usize, value: i32) {
+ // IDA 0xa9d3ac: vector insert_aux (growth handled).
+ if pos >= vec.len() { vec.push(value); } else { vec.insert(pos, value); }
 }
 
 // 0xa9d4bc — __ZNSt6vectorIN3RBX7Network6Player14MembershipTypeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
@@ -22128,8 +22151,12 @@ pub fn stub_a9d3ac() -> ! {
 #[doc(
     alias = "std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,unsigned long,RBX::Network::Player::MembershipType const&)"
 )]
-pub fn stub_a9d4bc() -> ! {
-    todo!("0xa9d4bc std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,unsigned long,RBX::Network::Player::MembershipType const&)")
+pub fn stub_a9d4bc(vec: &mut Vec<i32>, pos: usize, n: usize, value: i32) {
+ // IDA 0xa9d4bc: vector fill_insert.
+ let pos = pos.min(vec.len());
+ for _ in 0..n {
+ vec.insert(pos, value);
+ }
 }
 
 // 0xaa2324 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEbi
@@ -22137,8 +22164,9 @@ pub fn stub_a9d4bc() -> ! {
 #[doc(
     alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::replicateEvent(RBX::Reflection::EventSource *,bool,int)"
 )]
-pub fn stub_aa2324() -> ! {
-    todo!("0xaa2324 RBX::Reflection::RemoteEventDescImpl<2,RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::replicateEvent(RBX::Reflection::EventSource *,bool,int)")
+pub fn stub_aa2324(b: bool, i: i32, replicate: &mut dyn FnMut(bool, i32)) {
+ // IDA 0xaa2324: replicateEvent (below truncation).
+ replicate(b, i);
 }
 
 // 0xaa2d08 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
@@ -22146,8 +22174,12 @@ pub fn stub_aa2324() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()"
 )]
-pub fn stub_aa2d08() -> ! {
-    todo!("0xaa2d08 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_aa2d08(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xaa2d08: D1: vtable resets; intrusive release (no delete).
+ if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+ s.live = false;
+ release(s.id);
+ }
 }
 
 // 0xaa2d64 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev
@@ -22155,8 +22187,12 @@ pub fn stub_aa2d08() -> ! {
 #[doc(
     alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()"
 )]
-pub fn stub_aa2d64() -> ! {
-    todo!("0xaa2d64 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+pub fn stub_aa2d64(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+ // IDA 0xaa2d64: D0: vtable resets; intrusive release; operator delete.
+ if let Some(pos) = slots.iter().position(|s| s.id == id) {
+ let s = slots.remove(pos);
+ release(s.id);
+ }
 }
 
 // 0xaa2e6c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
@@ -22164,8 +22200,9 @@ pub fn stub_aa2d64() -> ! {
 #[doc(
     alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)"
 )]
-pub fn stub_aa2e6c() -> ! {
-    todo!("0xaa2e6c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+pub fn stub_aa2e6c(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+ // IDA 0xaa2e6c: mf1 inline dispatch (virtual adjust); obj->method().
+ call(obj, is_virtual);
 }
 
 // 0xaa2f88 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
