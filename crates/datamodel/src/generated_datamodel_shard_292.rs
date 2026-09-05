@@ -1118,17 +1118,50 @@ pub fn stub_0x578a94(bin: &mut crate::instance::HopperBin, name: &str) -> bool {
 // 0x578ad4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_0x578ad4() -> ! {
-    // BLOCKED: needs XmlElement serialization infra
-    todo!("0x578ad4 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x578ad4(bin: &crate::instance::HopperBin) -> i32 {
+    // IDA 0x578ad4 (decompiled): `EnumPropDescriptor::writeValue` — `getValue`
+    // through the `+44` slot `+8` (0x578ae2), then the XML pair is cleared and
+    // tagged int (`clearValue`, `a3[4] = 5`) with the value stored
+    // (0x578ae8-0x578af0), returning 5 (0x578af2). The XML store is out of
+    // domain; the modeled half is the raw value, as in 0x3bd890.
+    bin.bin_type
 }
 
 // 0x578af4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_0x578af4() -> ! {
-    // BLOCKED: needs XmlElement + IReferenceBinder deserialization infra
-    todo!("0x578af4 RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x578af4(bin: &mut crate::instance::HopperBin, value: &Variant) {
+    // IDA 0x578af4 (decompiled): `EnumPropDescriptor::readValue` — `xsi:nil`
+    // returns early (0x578b18); an int payload routes through `setIntValue`
+    // (0x578b60-0x578b70); else a string payload goes through `Name::lookup`
+    // + `EnumDesc::convertToValue` into the `+44` slot-`+12` setter
+    // (0x578b78-0x578bda); an empty string falls back to the defaulted setter
+    // (0x578bfc-0x578cae) and any other miss hits `ReleaseAssert("false",
+    // Reflection.h:359)`. Same shape as the `BasicPartInstance` twin
+    // (0x3bd8b0); XML/names collapse into the resolved `Variant` (`Null` is
+    // nil, `Int` the int payload, `Text` the string payload). The defaulted
+    // setter restores `0` (`"Script"`); a missed lookup writes nothing — the
+    // assert is collapsed, as in `setVariant` (0x5788fc).
+    match value {
+        Variant::Null => {}
+        Variant::Int(raw) => {
+            if HOPPER_BIN_TYPE_ITEMS.iter().any(|(v, _)| *v == *raw) {
+                bin.bin_type = *raw;
+            }
+        }
+        Variant::Text(text) => {
+            if text.is_empty() {
+                bin.bin_type = 0;
+            } else if let Some(found) = HOPPER_BIN_TYPE_ITEMS
+                .iter()
+                .find(|(_, name)| *name == text)
+                .map(|(v, _)| *v)
+            {
+                bin.bin_type = found;
+            }
+        }
+        _ => {}
+    }
 }
 
 // 0x578d34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -1423,6 +1456,24 @@ mod batch_e_tests {
         assert!(bin.active);
     }
 
+    #[test]
+    fn bintype_xml_value_round_trip() {
+        let mut bin = HopperBin::default();
+        bin.bin_type = 2;
+        assert_eq!(stub_0x578ad4(&bin), 2);
+        stub_0x578af4(&mut bin, &Variant::Int(4));
+        assert_eq!(bin.bin_type, 4);
+        stub_0x578af4(&mut bin, &Variant::Int(99));
+        assert_eq!(bin.bin_type, 4);
+        stub_0x578af4(&mut bin, &Variant::Text("Grab".to_string()));
+        assert_eq!(bin.bin_type, 2);
+        stub_0x578af4(&mut bin, &Variant::Text(String::new()));
+        assert_eq!(bin.bin_type, 0);
+        stub_0x578af4(&mut bin, &Variant::Text("Nope".to_string()));
+        assert_eq!(bin.bin_type, 0);
+        stub_0x578af4(&mut bin, &Variant::Null);
+        assert_eq!(bin.bin_type, 0);
+    }
     #[test]
     fn bintype_virtuals_round_trip() {
         let prop = stub_0x5786b0("BinType", "Behavior");
