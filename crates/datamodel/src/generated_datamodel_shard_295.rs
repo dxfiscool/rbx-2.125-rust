@@ -354,63 +354,58 @@ pub use rbx_reflection::generated::stub_0x585bec as stub_0x585bec;
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEESsiESA_Li2EED1Ev")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()
-pub fn stub_0x585c2c() -> ! {
-    todo!("0x585c2c RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(std::string,int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,2>::~BoundYieldFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585c2c as stub_0x585c2c;
 
 // 0x585c74 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_Li0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,0>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvESA_Li0EED1Ev")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,0>::~BoundYieldFuncDesc()
-pub fn stub_0x585c74() -> ! {
-    todo!("0x585c74 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,0>::~BoundYieldFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585c74 as stub_0x585c74;
 
 // 0x585c98 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEiESA_Li1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,1>::~BoundYieldFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEiESA_Li1EED1Ev")]
 // was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(int),boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,1>::~BoundYieldFuncDesc()
-pub fn stub_0x585c98() -> ! {
-    todo!("0x585c98 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(int),rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,1>::~BoundYieldFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585c98 as stub_0x585c98;
 
 // 0x585cd8 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvbbELi2EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(bool,bool),2>::~BoundFuncDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvbbELi2EED1Ev")]
-pub fn stub_0x585cd8() -> ! {
-    todo!("0x585cd8 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(bool,bool),2>::~BoundFuncDesc()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x585cd8 as stub_0x585cd8;
 
 // 0x585f30 — __ZNSt3mapISsN3RBX13InsertService8CallbackESt4lessISsESaISt4pairIKSsS2_EEEixERS6_
 // type: int(void)
 #[doc(alias = "std::map<std::string,RBX::InsertService::Callback,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::operator[](std::string const&)")]
 #[doc(alias = "__ZNSt3mapISsN3RBX13InsertService8CallbackESt4lessISsESaISt4pairIKSsS2_EEEixERS6_")]
 pub fn stub_0x585f30() -> ! {
+    // BLOCKED: STL `std::map` callback-registry infra (no native anywhere; the
+    // `Callback` map itself is unmodeled)
     todo!("0x585f30 std::map<std::string,RBX::InsertService::Callback,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::InsertService::Callback>>>::operator[](std::string const&)")
 }
 
 // 0x5861fc — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceESsii
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<3,RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,int,int)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceESsii")]
-pub fn stub_0x5861fc() -> ! {
-    todo!("0x5861fc RBX::Reflection::RemoteEventDescImpl<3,RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,int,int)")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x5861fc as stub_0x5861fc;
 
 // 0x586390 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_Ssii
 // type: int __fastcall(int, int, std::string *, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>,rbx::remote_signal<void ()(std::string,int,int)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,int,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi3ENS_13InsertServiceEFvSsiiEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_Ssii")]
-pub fn stub_0x586390() -> ! {
-    todo!("0x586390 RBX::Reflection::EventDescImpl<3,RBX::InsertService,void ()(std::string,int,int),rbx::remote_signal<void ()(std::string,int,int)>,rbx::remote_signal<void ()(std::string,int,int)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,int,int)const")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x586390 as stub_0x586390;
 
 // 0x586b90 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEE21fireAndReplicateEventEPS2_SsSs
 // type: int __fastcall(int, int, std::string *)
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::fireAndReplicateEvent(RBX::InsertService*,std::string,std::string)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEE21fireAndReplicateEventEPS2_SsSs")]
-pub fn stub_0x586b90() -> ! {
-    todo!("0x586b90 RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::fireAndReplicateEvent(RBX::InsertService*,std::string,std::string)")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x586b90 as stub_0x586b90;
 
 // 0x586e58 — __ZN3RBX11shared_fromINS_25ScriptInformationProviderEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
@@ -418,6 +413,9 @@ pub fn stub_0x586b90() -> ! {
 #[doc(alias = "__ZN3RBX11shared_fromINS_25ScriptInformationProviderEEEN5boost10shared_ptrIT_EEPS4_")]
 // was: boost::shared_ptr<RBX::ScriptInformationProvider> RBX::shared_from<RBX::ScriptInformationProvider>(RBX::ScriptInformationProvider*)
 pub fn stub_0x586e58() -> ! {
+    // BLOCKED: IDA 0x586e58 is the standard weak-lock `shared_from` shape
+    // (same as 0x39410c), but `ScriptInformationProvider` is opaque with no
+    // `weak_owner` wiring; needs provider ownership infra
     todo!("0x586e58 rbx_core::SharedPtr<RBX::ScriptInformationProvider> RBX::shared_from<RBX::ScriptInformationProvider>(RBX::ScriptInformationProvider*)")
 }
 
@@ -425,71 +423,79 @@ pub fn stub_0x586e58() -> ! {
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZN3RBX13InsertServiceD1Ev")]
-pub fn stub_0x5871a4() -> ! {
-    todo!("0x5871a4 RBX::InsertService::~InsertService()")
+pub fn stub_0x5871a4(_svc: &mut crate::instance::InsertService) {
+    // IDA 0x5871a4 (decompiled): `InsertService::D1` — thunk tail-calling the
+    // `D2` body; the members are plain strings/float and the
+    // signal/mutex/vtable teardown lives in core. Drop glue — no-op.
 }
 
 // 0x5871a8 — __ZN3RBX13InsertServiceD0Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "RBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZN3RBX13InsertServiceD0Ev")]
-pub fn stub_0x5871a8() -> ! {
-    todo!("0x5871a8 RBX::InsertService::~InsertService()")
+pub fn stub_0x5871a8(_svc: &mut crate::instance::InsertService) {
+    // IDA 0x5871a8 (decompiled): `InsertService::D0` — calls the `D1` body
+    // (0x5871f8) then `operator delete` (0x5871fe). Same drop glue as
+    // 0x5871a4 — no-op.
 }
 
 // 0x587258 — __ZThn32_N3RBX13InsertServiceD1Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD1Ev")]
-pub fn stub_0x587258() -> ! {
-    todo!("0x587258 non-virtual thunk toRBX::InsertService::~InsertService()")
+pub fn stub_0x587258(_svc: &mut crate::instance::InsertService) {
+    // `Thn32_InsertService::D1` — `SUBS R0, #0x20` then the `D2` duplicate
+    // body; same drop glue as 0x5871a4 — no-op.
 }
 
 // 0x587260 — __ZThn32_N3RBX13InsertServiceD0Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD0Ev")]
-pub fn stub_0x587260() -> ! {
-    todo!("0x587260 non-virtual thunk toRBX::InsertService::~InsertService()")
+pub fn stub_0x587260(_svc: &mut crate::instance::InsertService) {
+    // `Thn32_InsertService::D0` — this-adjust + deleting-dtor duplicate body;
+    // same drop glue as 0x5871a8 — no-op.
 }
 
 // 0x587314 — __ZThn36_N3RBX13InsertServiceD1Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD1Ev")]
-pub fn stub_0x587314() -> ! {
-    todo!("0x587314 non-virtual thunk toRBX::InsertService::~InsertService()")
+pub fn stub_0x587314(_svc: &mut crate::instance::InsertService) {
+    // `Thn36_InsertService::D1` — `SUBS R0, #0x24` then the `D2` duplicate
+    // body; same drop glue as 0x5871a4 — no-op.
 }
 
 // 0x58731c — __ZThn36_N3RBX13InsertServiceD0Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD0Ev")]
-pub fn stub_0x58731c() -> ! {
-    todo!("0x58731c non-virtual thunk toRBX::InsertService::~InsertService()")
+pub fn stub_0x58731c(_svc: &mut crate::instance::InsertService) {
+    // `Thn36_InsertService::D0` — this-adjust + deleting-dtor duplicate body;
+    // same drop glue as 0x5871a8 — no-op.
 }
 
 // 0x5882a4 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_SsSs
 // type: int __fastcall(int, int, std::string *)
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>,rbx::remote_signal<void ()(std::string,std::string)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,std::string)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPS2_SsSs")]
-pub fn stub_0x5882a4() -> ! {
-    todo!("0x5882a4 RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>,rbx::remote_signal<void ()(std::string,std::string)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,std::string)const")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x5882a4 as stub_0x5882a4;
 
 // 0x58844c — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceESsSs
 // type: int(void)
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,std::string)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsSsEN3rbx13remote_signalIS3_EEE14replicateEventEPNS0_11EventSourceESsSs")]
-pub fn stub_0x58844c() -> ! {
-    todo!("0x58844c RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,std::string),rbx::remote_signal<void ()(std::string,std::string)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,std::string)")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x58844c as stub_0x58844c;
 
 // 0x589a2c — __ZN3rbx7signals16signal_with_argsILi3EFvSsiiEEclESsii
 // type: int(void)
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(std::string,int,int)>::operator()(std::string,int,int)")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi3EFvSsiiEEclESsii")]
 pub fn stub_0x589a2c() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native
+    // in core)
     todo!("0x589a2c rbx::signals::signal_with_args<3,void ()(std::string,int,int)>::operator()(std::string,int,int)")
 }
 
@@ -498,21 +504,27 @@ pub fn stub_0x589a2c() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::on_error(std::exception &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE8on_errorERSt9exception")]
 pub fn stub_0x589e14() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native
+    // in core)
     todo!("0x589e14 rbx::signals::signal<void ()(std::string,int,int)>::on_error(std::exception &)")
 }
 
 // 0x589e60 — __ZN3rbx7signals6signalIFvSsiiEE24safe_static_do_get_mutexEv
+// type: int(void)
 #[doc(alias = "rbx::signals::signal<void ()(std::string,int,int)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsiiEE24safe_static_do_get_mutexEv")]
 pub fn stub_0x589e60() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native
+    // in core)
     todo!("0x589e60 rbx::signals::signal<void ()(std::string,int,int)>::safe_static_do_get_mutex(void)")
 }
-
 // 0x589f58 — __ZN3rbx7signals6signalIFvSsSsEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS6_5list3INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string,std::string)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsSsEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS6_5list3INS6_5valueIPSB_EENS5_3argILi1EEENSH_ILi2EEEEEEEEENS0_10connectionERKT_")]
 pub fn stub_0x589f58() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native
+    // in core)
     todo!("0x589f58 rbx::signals::connection rbx::signals::signal<void ()(std::string,std::string)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")
 }
 
@@ -871,5 +883,30 @@ mod batch_b_tests {
         stub_0x585b6c();
         stub_0x585bac();
         stub_0x585bec();
+    }
+}
+
+#[cfg(test)]
+mod batch_c_tests {
+    use super::*;
+    use crate::instance::InsertService;
+
+    #[test]
+    fn dtors_and_thunks_are_drop_glue() {
+        let mut svc = InsertService::default();
+        stub_0x5871a4(&mut svc);
+        stub_0x5871a8(&mut svc);
+        stub_0x587258(&mut svc);
+        stub_0x587260(&mut svc);
+        stub_0x587314(&mut svc);
+        stub_0x58731c(&mut svc);
+    }
+
+    #[test]
+    fn yield_desc_dtors_resolve() {
+        stub_0x585c2c();
+        stub_0x585c74();
+        stub_0x585c98();
+        stub_0x585cd8();
     }
 }
