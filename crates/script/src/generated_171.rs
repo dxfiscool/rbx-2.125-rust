@@ -8,6 +8,11 @@
 
 use rbx_core::SharedPtr;
 use std::sync::LazyLock;
+use crate::generated_112::{SlotConn, SlotFn, SlotList};
+
+/// `DataModel*`-flavor slot static mutex (IDA 0x4b4bc..0x4b4c0, same shape
+/// as 0x45fa0).
+static SLOT_DATAMODEL_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 
 /// Bound ObjC-forwarding functor for the UIEvent signal (IDA 0x463cc,
 /// 0x4642c): the stored target/selector pair plus the armed latch and
@@ -559,172 +564,231 @@ pub fn stub_0x49acc(view: &mut CtrlView) {
 // 0x49bb4 — -[ControlView gestureRecognizer:shouldReceiveTouch:]
 // type: char __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView gestureRecognizer:shouldReceiveTouch:]")]
-pub fn stub_0x49bb4() -> ! {
-    todo!("0x49bb4 -[ControlView gestureRecognizer:shouldReceiveTouch:]")
+pub fn stub_0x49bb4(_view: &CtrlView, is_pinch: bool, hit_self: bool) -> bool {
+    // IDA 0x49bb4: `gestureRecognizer:shouldReceiveTouch:` answers true
+    // outright (0x49bd2) except for the pinch recognizer (0x49bd6),
+    // which takes the touch only when the hit test lands on the view or
+    // its camera peer (0x49bf6..); the hit test folds into the host.
+    if !is_pinch {
+        true
+    } else {
+        hit_self
+    }
 }
 
 // 0x49ca0 — -[ControlView .cxx_destruct]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView .cxx_destruct]")]
-pub fn stub_0x49ca0() -> ! {
-    todo!("0x49ca0 -[ControlView .cxx_destruct]")
+pub fn stub_0x49ca0(view: &mut CtrlView) {
+    // IDA 0x49ca0: `.cxx_destruct` disconnects the three connections
+    // (0x49d00..0x49d54) and releases the C++ ivars (game included);
+    // the release glue folds into the host.
+    view.events_up = false;
+    view.game = None;
+    view.input_bound = false;
 }
 
 // 0x49e18 — -[ControlView .cxx_construct]
 // type: id __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView .cxx_construct]")]
-pub fn stub_0x49e18() -> ! {
-    todo!("0x49e18 -[ControlView .cxx_construct]")
+pub fn stub_0x49e18() -> CtrlView {
+    // IDA 0x49e18: `.cxx_construct` zeroes the frame size, tap origin,
+    // game, and connections (0x49e30..0x49e78); folds into `Default`.
+    CtrlView::default()
 }
 
 // 0x49e7c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")]
-pub fn stub_0x49e7c() -> ! {
-    todo!("0x49e7c rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")
+pub fn stub_0x49e7c(list: &mut SlotList) -> u32 {
+    // IDA 0x49e7c: `DataModel*` `connect` — same new/construct/insert
+    // shape as 0x49f64.
+    list.slots += 1;
+    list.slots
 }
 
 // 0x4b010 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX7TextBoxEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x4b010() -> ! {
-    todo!("0x4b010 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x4b010(slot: &mut BindSlot, op: u32) {
+    // IDA 0x4b010: `functor_manager<TextBox-bind>::manage` — identical
+    // clone/destroy/type op shape to 0x463cc (0x4b01a..0x4b038).
+    stub_0x463cc(slot, op);
 }
 
 // 0x4b070 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX7TextBoxEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")]
-pub fn stub_0x4b070() -> ! {
-    todo!("0x4b070 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")
+pub fn stub_0x4b070(slot: &mut BindSlot) {
+    // IDA 0x4b070: `void_function_obj_invoker1::invoke` for the TextBox
+    // bind — same call-through shape as 0x4642c.
+    stub_0x4642c(slot);
 }
 
 // 0x4b088 — __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX7TextBoxEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")]
-pub fn stub_0x4b088() -> ! {
-    todo!("0x4b088 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,rbx_core::SharedPtr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")
+pub fn stub_0x4b088(slot: &mut BindSlot) {
+    // IDA 0x4b088: `list3<TextBox-bind>::operator()` applies the stored
+    // target/selector to the box argument; the ObjC send folds into the
+    // host.
+    stub_0x4642c(slot);
 }
 
 // 0x4b164 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6insertEPNS6_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::insert(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")]
-pub fn stub_0x4b164() -> ! {
-    todo!("0x4b164 rbx::signals::signal<void ()(RBX::DataModel *)>::insert(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")
+pub fn stub_0x4b164(list: &mut SlotList) {
+    // IDA 0x4b164: `DataModel*` `insert` — same lock-and-append shape as
+    // 0x4a28c.
+    list.slots += 1;
 }
 
 // 0x4b374 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")]
-pub fn stub_0x4b374() -> ! {
-    todo!("0x4b374 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")
+pub fn stub_0x4b374() {
+    // IDA 0x4b374: `intrusive_ptr<DataModel-slot>::operator=` from a raw
+    // slot pointer (same shape as 0x4a49c); `Arc` glue covers it — no-op.
 }
 
 // 0x4b418 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")]
-pub fn stub_0x4b418() -> ! {
-    todo!("0x4b418 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")
+pub fn stub_0x4b418() {
+    // IDA 0x4b418: `intrusive_ptr<DataModel-slot>::operator=` from a
+    // const ref (same shape as 0x45808); `Arc` glue covers it — no-op.
 }
 
 // 0x4b4bc — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")]
-pub fn stub_0x4b4bc() -> ! {
-    todo!("0x4b4bc rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_init_mutex(void)")
+pub fn stub_0x4b4bc() -> u32 {
+    // IDA 0x4b4bc: `DataModel*` signal `safe_static_init_mutex` — see
+    // `SLOT_DATAMODEL_MUTEX`.
+    *SLOT_DATAMODEL_MUTEX
 }
 
 // 0x4b4c0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x4b4c0() -> ! {
-    todo!("0x4b4c0 rbx::signals::signal<void ()(RBX::DataModel *)>::safe_static_do_get_mutex(void)")
+pub fn stub_0x4b4c0() -> u32 {
+    // IDA 0x4b4c0: `DataModel*` signal `safe_static_do_get_mutex` — same
+    // guarded once-init shape as 0x45fa4.
+    *SLOT_DATAMODEL_MUTEX
 }
 
 // 0x4b5b8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_
 // type: _DWORD *__fastcall(_DWORD *, int, int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")]
-pub fn stub_0x4b5b8() -> ! {
-    todo!("0x4b5b8 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")
+pub fn stub_0x4b5b8() {
+    // IDA 0x4b5b8: `DataModel*` `callable<...,1>` ctor — same
+    // vtable-install/function-copy shape as 0x4a544; construction glue
+    // covers it — no-op.
 }
 
 // 0x4b6b4 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
-pub fn stub_0x4b6b4() -> ! {
-    todo!("0x4b6b4 rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")
+pub fn stub_0x4b6b4() {
+    // IDA 0x4b6b4: `DataModel*` `callable_slot` D1 dtor; drop glue covers
+    // it — no-op.
 }
 
 // 0x4b788 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot() [0x4b788]")]
-pub fn stub_0x4b788() -> ! {
-    todo!("0x4b788 rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")
+pub fn stub_0x4b788() {
+    // IDA 0x4b788: `DataModel*` `callable_slot` D0 deleting dtor; drop
+    // glue covers it — no-op.
 }
 
 // 0x4b860 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot10disconnectEv
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")]
-pub fn stub_0x4b860() -> ! {
-    todo!("0x4b860 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::disconnect(void)")
+pub fn stub_0x4b860(slot: &mut SlotConn) {
+    // IDA 0x4b860: `DataModel*` `slot::disconnect` — same guarded
+    // mutex-lock-and-remove shape as 0x45c4c.
+    slot.connected = false;
 }
 
 // 0x4b970 — __ZNK3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")]
-pub fn stub_0x4b970() -> ! {
-    todo!("0x4b970 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::connected(void)const")
+pub fn stub_0x4b970(slot: &SlotConn) -> bool {
+    // IDA 0x4b970: `DataModel*` `slot::connected` — same `a1+12 != 0`
+    // shape as 0x45d5c.
+    slot.connected
 }
 
 // 0x4b97c — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-pub fn stub_0x4b97c() -> ! {
-    todo!("0x4b97c rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+pub fn stub_0x4b97c(f: &mut SlotFn) {
+    // IDA 0x4b97c: `DataModel*` `callable<...,1>::call` — same
+    // throw-or-dispatch shape as 0x45d68.
+    stub_0x4b98c(f);
 }
 
 // 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-pub fn stub_0x4b984() -> ! {
-    todo!("0x4b984 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+pub fn stub_0x4b984(f: &mut SlotFn) {
+    // IDA 0x4b984: `DataModel*` `Thn4` adjustor thunk — same shape as
+    // 0x45d98.
+    stub_0x4b98c(f);
 }
 
 // 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")]
-pub fn stub_0x4b98c() -> ! {
-    todo!("0x4b98c boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")
+pub fn stub_0x4b98c(f: &mut SlotFn) {
+    // IDA 0x4b98c: `DataModel*` `function1::operator()` — same
+    // throw-or-dispatch shape as 0x4a9e4.
+    if !f.armed {
+        panic!("bad_function_call");
+    }
+    f.calls += 1;
 }
 
 // 0x4ba50 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE6removeEPNS6_4slotE
 // type: int __fastcall(char **, char *, int, const void *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")]
-pub fn stub_0x4ba50() -> ! {
-    todo!("0x4ba50 rbx::signals::signal<void ()(RBX::DataModel *)>::remove(rbx::signals::signal<void ()(RBX::DataModel *)>::slot *)")
+pub fn stub_0x4ba50(list: &mut SlotList) {
+    // IDA 0x4ba50: `DataModel*` `signal::remove` — same assert/log/unlink
+    // shape as 0x45eb0.
+    list.slots = list.slots.saturating_sub(1);
+    list.removed += 1;
 }
 
 // 0x4bb40 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot22safe_static_init_mutexEv
 // type: int()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_0x4bb40() -> ! {
-    todo!("0x4bb40 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_init_mutex(void)")
+pub fn stub_0x4bb40() -> u32 {
+    // IDA 0x4bb40: `DataModel*` slot `safe_static_init_mutex` — see
+    // `SLOT_DATAMODEL_MUTEX`.
+    *SLOT_DATAMODEL_MUTEX
 }
 
 // 0x4bb44 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slot24safe_static_do_get_mutexEv
 // type: void *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_0x4bb44() -> ! {
-    todo!("0x4bb44 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_0x4bb44() -> u32 {
+    // IDA 0x4bb44: `DataModel*` slot `safe_static_do_get_mutex` — same
+    // guarded once-init shape as 0x45fa4.
+    *SLOT_DATAMODEL_MUTEX
 }
 
 // 0x4bc34 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
-pub fn stub_0x4bc34() -> ! {
-    todo!("0x4bc34 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn stub_0x4bc34() {
+    // IDA 0x4bc34: `DataModel*` `callable<...,1>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x4bd08 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable() [0x4bd08]")]
-pub fn stub_0x4bd08() -> ! {
-    todo!("0x4bd08 rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")
+pub fn stub_0x4bd08() {
+    // IDA 0x4bd08: `DataModel*` `callable<...,1>` D0 deleting dtor; drop
+    // glue covers it — no-op.
 }
 
 // 0x4bde0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD1Ev
@@ -1437,5 +1501,75 @@ mod control_view_event_tests {
         stub_0x4918c(&mut view);
         stub_0x49acc(&mut view);
         assert_eq!(view.mouse_events, 3);
+    }
+}
+
+#[cfg(test)]
+mod datamodel_signal_batch_tests {
+    use super::*;
+    use crate::generated_112::{SlotConn, SlotFn, SlotList};
+
+    #[test]
+    fn view_teardown() {
+        let view = stub_0x47638([1.0, 2.0, 3.0, 4.0], Some(5));
+        assert!(stub_0x49bb4(&view, false, false));
+        assert!(stub_0x49bb4(&view, true, true));
+        assert!(!stub_0x49bb4(&view, true, false));
+        assert_eq!(stub_0x49e18(), CtrlView::default());
+        let mut live = view.clone();
+        live.events_up = true;
+        live.input_bound = true;
+        stub_0x49ca0(&mut live);
+        assert!(!live.events_up);
+        assert_eq!(live.game, None);
+        assert!(!live.input_bound);
+        assert_eq!(live.frame, [1.0, 2.0, 3.0, 4.0]);
+    }
+
+    #[test]
+    fn textbox_bind() {
+        let mut slot = BindSlot::default();
+        stub_0x4b010(&mut slot, 0);
+        assert!(slot.bound);
+        stub_0x4b070(&mut slot);
+        stub_0x4b088(&mut slot);
+        assert_eq!(slot.calls, 2);
+        stub_0x4b010(&mut slot, 1);
+        assert!(!slot.bound);
+    }
+
+    #[test]
+    fn datamodel_signal() {
+        let mut list = SlotList::default();
+        assert_eq!(stub_0x49e7c(&mut list), 1);
+        stub_0x4b164(&mut list);
+        assert_eq!(list.slots, 2);
+        stub_0x4ba50(&mut list);
+        assert_eq!(list, SlotList { slots: 1, removed: 1 });
+        let mut slot = SlotConn { connected: true };
+        assert!(stub_0x4b970(&slot));
+        stub_0x4b860(&mut slot);
+        assert!(!stub_0x4b970(&slot));
+        let mut f = SlotFn { armed: true, calls: 0 };
+        stub_0x4b97c(&mut f);
+        stub_0x4b984(&mut f);
+        assert_eq!(f.calls, 2);
+        assert_eq!(stub_0x4b4bc(), 1);
+        assert_eq!(stub_0x4b4c0(), 1);
+        assert_eq!(stub_0x4bb40(), 1);
+        assert_eq!(stub_0x4bb44(), 1);
+        stub_0x4b374();
+        stub_0x4b418();
+        stub_0x4b5b8();
+        stub_0x4b6b4();
+        stub_0x4b788();
+        stub_0x4bc34();
+        stub_0x4bd08();
+    }
+
+    #[test]
+    #[should_panic(expected = "bad_function_call")]
+    fn datamodel_empty_throws() {
+        stub_0x4b98c(&mut SlotFn::default());
     }
 }
