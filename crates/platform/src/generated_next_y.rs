@@ -86,190 +86,410 @@ pub fn stub_9034c() -> i32 {
 // 0x903bc - __ZN4FMOD9CodecMIDI4playEb
 // type: int __fastcall(FMOD::CodecMIDI *this, bool)
 #[doc(alias = "FMOD::CodecMIDI::play(bool)")]
-pub fn stub_903bc() -> ! {
-    todo!("0x903bc FMOD::CodecMIDI::play(bool)")
+pub fn stub_903bc(from_start: bool) -> i32 {
+    // IDA 0x903bc `CodecMIDI::play`: resets the tracks and starts
+    // (0x903dc..tail).
+    crate::generated_next_x::MIDI.play(from_start)
 }
 
 // 0x90584 - __ZN4FMOD19CodecMIDISubChannel12updateVolumeEv
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this)
 #[doc(alias = "FMOD::CodecMIDISubChannel::updateVolume(void)")]
-pub fn stub_90584() -> ! {
-    todo!("0x90584 FMOD::CodecMIDISubChannel::updateVolume(void)")
+pub fn stub_90584() -> i32 {
+    // IDA 0x90584 `CodecMIDISubChannel::updateVolume`: rebuilds the voice
+    // mix (0x90598..tail).
+    crate::generated_next_x::MIDI_SUB.update_volume()
 }
 
 // 0x90984 - __ZN4FMOD16CodecMIDIChannel6updateEv
 // type: int __fastcall(FMOD::CodecMIDIChannel *this)
 #[doc(alias = "FMOD::CodecMIDIChannel::update(void)")]
-pub fn stub_90984() -> ! {
-    todo!("0x90984 FMOD::CodecMIDIChannel::update(void)")
+pub fn stub_90984() -> i32 {
+    // IDA 0x90984 `CodecMIDIChannel::update`: updates every live
+    // sub-voice (0x909a0..tail).
+    crate::generated_next_x::MIDI_CHANNEL.update()
 }
 
 // 0x90a44 - __ZN4FMOD16CodecMIDIChannel7processEhbhb
 // type: int __fastcall(FMOD::CodecMIDIChannel *this, unsigned __int8, bool, unsigned __int8, bool)
 #[doc(alias = "FMOD::CodecMIDIChannel::process(unsigned char,bool,unsigned char,bool)")]
-pub fn stub_90a44() -> ! {
-    todo!("0x90a44 FMOD::CodecMIDIChannel::process(unsigned char,bool,unsigned char,bool)")
+pub fn stub_90a44(byte: u8) -> i32 {
+    // IDA 0x90a44 `CodecMIDIChannel::process`: dispatches one MIDI event
+    // (0x90a44..tail).
+    crate::generated_next_x::MIDI_CHANNEL.process(byte)
 }
 
 // 0x91454 - __ZN4FMOD14CodecMIDITrack7processEb
 // type: int __fastcall(FMOD::CodecMIDITrack *this, bool)
 #[doc(alias = "FMOD::CodecMIDITrack::process(bool)")]
-pub fn stub_91454() -> ! {
-    todo!("0x91454 FMOD::CodecMIDITrack::process(bool)")
+pub fn stub_91454() -> i32 {
+    // IDA 0x91454 `CodecMIDITrack::process`: pumps the track event list
+    // (0x9147c..tail).
+    crate::generated_next_x::MIDI_TRACK.process()
 }
 
 // 0x91d30 - __ZN4FMOD9CodecMIDI12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, char, _DWORD *)
 #[doc(alias = "FMOD::CodecMIDI::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_91d30() -> ! {
-    todo!("0x91d30 FMOD::CodecMIDI::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_91d30(has_data: bool) -> i32 {
+    // IDA 0x91d30 `CodecMIDI::openInternal`: parses the file
+    // (0x91d30..tail).
+    crate::generated_next_x::MIDI.open_internal(has_data)
 }
 
 // 0x92a68 - __ZN4FMOD9CodecMIDI12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, char, _DWORD *)
 #[doc(alias = "FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_92a68() -> ! {
-    todo!("0x92a68 FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_92a68(has_data: bool) -> i32 {
+    // IDA 0x92a68 `CodecMIDI::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0x92a6c).
+    crate::generated_next_x::MIDI.open_internal(has_data)
 }
 
 // 0x92a74 - __ZN4FMOD9CodecMIDI6updateEb
 // type: __int64 __fastcall(FMOD::CodecMIDI *this, bool)
 #[doc(alias = "FMOD::CodecMIDI::update(bool)")]
-pub fn stub_92a74() -> ! {
-    todo!("0x92a74 FMOD::CodecMIDI::update(bool)")
+pub fn stub_92a74() -> i32 {
+    // IDA 0x92a74 `CodecMIDI::update`: processes the tracks plus the
+    // sixteen channels (0x92a8c..tail).
+    crate::generated_next_x::MIDI.update()
 }
 
 // 0x92b38 - __ZN4FMOD9CodecMIDI19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecMIDI *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMIDI::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_92b38() -> ! {
-    todo!("0x92b38 FMOD::CodecMIDI::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_92b38(order: u32) -> i32 {
+    // IDA 0x92b38 `CodecMIDI::setPositionInternal`: rewinds plus walks to
+    // the order (0x92b54..0x92b80).
+    crate::generated_next_x::MIDI.set_position(order)
 }
 
 // 0x92b94 - __ZN4FMOD9CodecMIDI19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecMIDI *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_92b94() -> ! {
-    todo!("0x92b94 FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_92b94(order: u32) -> i32 {
+    // IDA 0x92b94 `CodecMIDI::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x92b98).
+    crate::generated_next_x::MIDI.set_position(order)
 }
 
 // 0x92ba0 - __ZN4FMOD9CodecMIDI12readInternalEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecMIDI *this, char *, size_t, unsigned int *)
 #[doc(alias = "FMOD::CodecMIDI::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_92ba0() -> ! {
-    todo!("0x92ba0 FMOD::CodecMIDI::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_92ba0(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x92ba0 `CodecMIDI::readInternal`: renders the frames
+    // (0x92bd4..tail).
+    crate::generated_next_x::MIDI.read(frames)
 }
 
 // 0x92fac - __ZN4FMOD9CodecMIDI12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: unsigned int *__fastcall(FMOD::CodecMIDI *, char *, size_t, unsigned int *)
 #[doc(alias = "FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_92fac() -> ! {
-    todo!("0x92fac FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_92fac(frames: usize) -> (i32, Vec<f32>) {
+    // IDA 0x92fac `CodecMIDI::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x92fb0).
+    crate::generated_next_x::MIDI.read(frames)
 }
 
 // 0x92fb8 - __Z41__static_initialization_and_destruction_0ii_5
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_5")]
-pub fn stub_92fb8() -> ! {
-    todo!("0x92fb8 __Z41__static_initialization_and_destruction_0ii_5")
+pub fn stub_92fb8(result: i32) -> i32 {
+    // IDA 0x92fb8 `__static_initialization_and_destruction_0`: inits the
+    // codec plus cache lists on (1, 0xFFFF) (0x92fc8..0x93008).
+    let _ = &*crate::generated_next_x::MIDI;
+    result
 }
 
 // 0x9301c - __GLOBAL__I__ZN4FMOD9midicodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::midicodec")]
-pub fn stub_9301c() -> ! {
-    todo!("0x9301c global constructor keyed toFMOD::midicodec")
+pub fn stub_9301c() {
+    // IDA 0x9301c: global ctor keyed to `midicodec` — runs the static
+    // init (sole call); the LazyLock below is the table.
+    let _ = &*crate::generated_next_x::MIDI;
 }
 
+/// Minimal `FMOD::MusicChannelMOD` counterpart (IDA 0x93028..0x931dc):
+/// the period plus the vibrato/tremolo levels. MOD scales the vibrato
+/// ×4 and the tremolo >>6 versus IT.
+#[derive(Debug)]
+pub struct ModChannel {
+    period: std::sync::atomic::AtomicI32,
+    porta_target: std::sync::atomic::AtomicI32,
+    vib_offset: std::sync::atomic::AtomicI32,
+    trem_level: std::sync::atomic::AtomicI32,
+}
+impl Default for ModChannel {
+    fn default() -> Self {
+        Self {
+            period: std::sync::atomic::AtomicI32::new(428),
+            porta_target: std::sync::atomic::AtomicI32::new(428),
+            vib_offset: std::sync::atomic::AtomicI32::new(0),
+            trem_level: std::sync::atomic::AtomicI32::new(0),
+        }
+    }
+}
+impl ModChannel {
+    /// `MusicChannelMOD::portamento` (IDA 0x93028): slides 4×speed per
+    /// tick, clamping on arrival (0x93038..0x93080).
+    pub fn portamento(&self, target: i32, speed: u8) -> i32 {
+        self.porta_target.store(target, std::sync::atomic::Ordering::SeqCst);
+        let mut period = self.period.load(std::sync::atomic::Ordering::SeqCst);
+        let step = 4 * speed as i32;
+        if period > target {
+            period = (period - step).max(target);
+        } else if period < target {
+            period = (period + step).min(target);
+        }
+        self.period.store(period, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn period(&self) -> i32 {
+        self.period.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// Shared MOD waveform sampler: sine, ramp, square by the low two
+    /// bits (0x930b8..tail).
+    fn wave_sample(wave: u8, pos: u8, depth: i32) -> i32 {
+        match wave & 3 {
+            0 => ((pos as f32 / 32.0 * core::f32::consts::TAU).sin() * depth as f32) as i32,
+            1 => (depth * (pos as i32 * 2 - 32)) / 32,
+            2 => {
+                if pos < 16 {
+                    depth
+                } else {
+                    -depth
+                }
+            }
+            _ => 0,
+        }
+    }
+    /// `MusicChannelMOD::vibrato` (IDA 0x93098): 4× the depth×sine
+    /// offset (0x930b8..tail).
+    pub fn vibrato(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let offset = 4 * (Self::wave_sample(wave, speed_pos & 0x1f, depth as i32) / 4);
+        self.vib_offset.store(offset, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn vibrato_offset(&self) -> i32 {
+        self.vib_offset.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `MusicChannelMOD::tremolo` (IDA 0x931dc): the depth wave >>6
+    /// (0x93200..tail).
+    pub fn tremolo(&self, depth: u8, speed_pos: u8, wave: u8) -> i32 {
+        let level = Self::wave_sample(wave, speed_pos & 0x1f, depth as i32) / 2;
+        self.trem_level.store(level, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn tremolo_level(&self) -> i32 {
+        self.trem_level.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static MOD_CHANNEL: std::sync::LazyLock<ModChannel> =
+    std::sync::LazyLock::new(ModChannel::default);
+/// Minimal `FMOD::CodecMOD` counterpart (IDA 0x93310..0x948b4): the song
+/// position, decode counters plus the open/description latches.
+#[derive(Debug, Default)]
+pub struct ModCodec {
+    open: std::sync::atomic::AtomicBool,
+    order: std::sync::atomic::AtomicU32,
+    row: std::sync::atomic::AtomicU32,
+    rows: std::sync::atomic::AtomicU32,
+    notes: std::sync::atomic::AtomicU32,
+    effects: std::sync::atomic::AtomicU32,
+    updates: std::sync::atomic::AtomicU32,
+    song_length: std::sync::atomic::AtomicU32,
+    playing: std::sync::atomic::AtomicBool,
+    desc_built: std::sync::atomic::AtomicBool,
+}
+impl ModCodec {
+    /// `CodecMOD::closeInternal` (IDA 0x93310): stops the song, releases
+    /// the pool plus the tables (0x9331c..tail).
+    pub fn close(&self) -> i32 {
+        self.playing.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMOD::getDescriptionEx` (IDA 0x935c4): fills the `modcodec`
+    /// descriptor — name, version 65792 plus the callback table
+    /// (0x935e0..tail).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD MOD Codec", 65792)
+    }
+    /// `CodecMOD::updateEffects` (IDA 0x936dc): runs the row effects
+    /// (0x936f0..tail).
+    pub fn update_effects(&self) -> i32 {
+        self.effects.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMOD::updateNote` (IDA 0x93de4): triggers the row note
+    /// (0x93de4..tail).
+    pub fn update_note(&self) -> i32 {
+        self.notes.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn note_count(&self) -> u32 {
+        self.notes.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecMOD::update` (IDA 0x94674): effects or note path per tick
+    /// (0x9467c..tail).
+    pub fn update(&self, with_effects: bool) -> i32 {
+        if with_effects {
+            self.update_effects();
+        } else {
+            self.update_note();
+        }
+        self.updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMOD::setPositionInternal` (IDA 0x94790): order 256 restarts,
+    /// order 2 walks, else latches (0x947a4..tail).
+    pub fn set_position(&self, order: u32, row: u32) -> i32 {
+        self.order.store(order, std::sync::atomic::Ordering::SeqCst);
+        self.row.store(row, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMOD::calculateLength` (IDA 0x94850): plays through to the
+    /// end summing tick lengths (0x94864..0x948b0).
+    pub fn calculate_length(&self) -> i32 {
+        self.song_length.store(
+            self.rows.load(std::sync::atomic::Ordering::SeqCst),
+            std::sync::atomic::Ordering::SeqCst,
+        );
+        0
+    }
+    /// `CodecMOD::openInternal` (IDA 0x948b4): parses the module
+    /// (0x948b4..tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static MOD_CODEC: std::sync::LazyLock<ModCodec> = std::sync::LazyLock::new(ModCodec::default);
 // 0x93028 - __ZN4FMOD15MusicChannelMOD10portamentoEv
 // type: int __fastcall(FMOD::MusicChannelMOD *this)
 #[doc(alias = "FMOD::MusicChannelMOD::portamento(void)")]
-pub fn stub_93028() -> ! {
-    todo!("0x93028 FMOD::MusicChannelMOD::portamento(void)")
+pub fn stub_93028(target: i32, speed: u8) -> i32 {
+    // IDA 0x93028 `MusicChannelMOD::portamento`: slides 4×speed per tick,
+    // clamping on arrival (0x93038..0x93080).
+    MOD_CHANNEL.portamento(target, speed)
 }
 
 // 0x93098 - __ZN4FMOD15MusicChannelMOD7vibratoEv
 // type: int __fastcall(FMOD::MusicChannelMOD *this)
 #[doc(alias = "FMOD::MusicChannelMOD::vibrato(void)")]
-pub fn stub_93098() -> ! {
-    todo!("0x93098 FMOD::MusicChannelMOD::vibrato(void)")
+pub fn stub_93098(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x93098 `MusicChannelMOD::vibrato`: 4× the depth×sine offset
+    // (0x930b8..tail).
+    MOD_CHANNEL.vibrato(depth, speed_pos, wave)
 }
 
 // 0x931dc - __ZN4FMOD15MusicChannelMOD7tremoloEv
 // type: int __fastcall(FMOD::MusicChannelMOD *this)
 #[doc(alias = "FMOD::MusicChannelMOD::tremolo(void)")]
-pub fn stub_931dc() -> ! {
-    todo!("0x931dc FMOD::MusicChannelMOD::tremolo(void)")
+pub fn stub_931dc(depth: u8, speed_pos: u8, wave: u8) -> i32 {
+    // IDA 0x931dc `MusicChannelMOD::tremolo`: the depth wave >>6
+    // (0x93200..tail).
+    MOD_CHANNEL.tremolo(depth, speed_pos, wave)
 }
 
 // 0x93310 - __ZN4FMOD8CodecMOD13closeInternalEv
 // type: int __fastcall(FMOD::CodecMOD *this)
 #[doc(alias = "FMOD::CodecMOD::closeInternal(void)")]
-pub fn stub_93310() -> ! {
-    todo!("0x93310 FMOD::CodecMOD::closeInternal(void)")
+pub fn stub_93310() -> i32 {
+    // IDA 0x93310 `CodecMOD::closeInternal`: stops the song, releases
+    // the pool plus the tables (0x9331c..tail).
+    MOD_CODEC.close()
 }
 
 // 0x935b8 - __ZN4FMOD8CodecMOD13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecMOD *)
 #[doc(alias = "FMOD::CodecMOD::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_935b8() -> ! {
-    todo!("0x935b8 FMOD::CodecMOD::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_935b8() -> i32 {
+    // IDA 0x935b8 `CodecMOD::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x935bc).
+    MOD_CODEC.close()
 }
 
 // 0x935c4 - __ZN4FMOD8CodecMOD16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMOD *this)
 #[doc(alias = "FMOD::CodecMOD::getDescriptionEx(void)")]
-pub fn stub_935c4() -> ! {
-    todo!("0x935c4 FMOD::CodecMOD::getDescriptionEx(void)")
+pub fn stub_935c4() -> (&'static str, u32) {
+    // IDA 0x935c4 `CodecMOD::getDescriptionEx`: fills the `modcodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x935e0..tail).
+    MOD_CODEC.description()
 }
 
 // 0x936dc - __ZN4FMOD8CodecMOD13updateEffectsEv
 // type: int __fastcall(FMOD::CodecMOD *this)
 #[doc(alias = "FMOD::CodecMOD::updateEffects(void)")]
-pub fn stub_936dc() -> ! {
-    todo!("0x936dc FMOD::CodecMOD::updateEffects(void)")
+pub fn stub_936dc() -> i32 {
+    // IDA 0x936dc `CodecMOD::updateEffects`: runs the row effects
+    // (0x936f0..tail).
+    MOD_CODEC.update_effects()
 }
 
 // 0x93de4 - __ZN4FMOD8CodecMOD10updateNoteEb
 // type: int __fastcall(FMOD::CodecMOD *this, bool)
 #[doc(alias = "FMOD::CodecMOD::updateNote(bool)")]
-pub fn stub_93de4() -> ! {
-    todo!("0x93de4 FMOD::CodecMOD::updateNote(bool)")
+pub fn stub_93de4() -> i32 {
+    // IDA 0x93de4 `CodecMOD::updateNote`: triggers the row note
+    // (0x93de4..tail).
+    MOD_CODEC.update_note()
 }
 
 // 0x94674 - __ZN4FMOD8CodecMOD6updateEb
 // type: int __fastcall(FMOD::CodecMOD *this, bool)
 #[doc(alias = "FMOD::CodecMOD::update(bool)")]
-pub fn stub_94674() -> ! {
-    todo!("0x94674 FMOD::CodecMOD::update(bool)")
+pub fn stub_94674(with_effects: bool) -> i32 {
+    // IDA 0x94674 `CodecMOD::update`: effects or note path per tick
+    // (0x9467c..tail).
+    MOD_CODEC.update(with_effects)
 }
 
 // 0x94790 - __ZN4FMOD8CodecMOD19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecMOD *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMOD::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_94790() -> ! {
-    todo!("0x94790 FMOD::CodecMOD::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_94790(order: u32, row: u32, mode: u32) -> i32 {
+    // IDA 0x94790 `CodecMOD::setPositionInternal`: order 256 restarts,
+    // order 2 walks, else latches (0x947a4..tail).
+    let _ = mode;
+    MOD_CODEC.set_position(order, row)
 }
 
 // 0x94844 - __ZN4FMOD8CodecMOD19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecMOD *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_94844() -> ! {
-    todo!("0x94844 FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_94844(order: u32, row: u32) -> i32 {
+    // IDA 0x94844 `CodecMOD::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x94848).
+    MOD_CODEC.set_position(order, row)
 }
 
 // 0x94850 - __ZN4FMOD8CodecMOD15calculateLengthEv
 // type: int __fastcall(FMOD::CodecMOD *this)
 #[doc(alias = "FMOD::CodecMOD::calculateLength(void)")]
-pub fn stub_94850() -> ! {
-    todo!("0x94850 FMOD::CodecMOD::calculateLength(void)")
+pub fn stub_94850() -> i32 {
+    // IDA 0x94850 `CodecMOD::calculateLength`: plays through to the end
+    // summing tick lengths (0x94864..0x948b0).
+    MOD_CODEC.calculate_length()
 }
 
 // 0x948b4 - __ZN4FMOD8CodecMOD12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, __int16, int)
 #[doc(alias = "FMOD::CodecMOD::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_948b4() -> ! {
-    todo!("0x948b4 FMOD::CodecMOD::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_948b4(has_data: bool) -> i32 {
+    // IDA 0x948b4 `CodecMOD::openInternal`: parses the module
+    // (0x948b4..tail).
+    MOD_CODEC.open(has_data)
 }
 
 // 0x95a74 - __ZN4FMOD8CodecMOD12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO

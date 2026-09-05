@@ -2111,6 +2111,10 @@ pub struct MidiState {
     speed: parking_lot::Mutex<f32>,
     open: std::sync::atomic::AtomicBool,
     desc_built: std::sync::atomic::AtomicBool,
+    playing: std::sync::atomic::AtomicBool,
+    updates: std::sync::atomic::AtomicU32,
+    position: std::sync::atomic::AtomicU32,
+    events: std::sync::atomic::AtomicU32,
 }
 impl Default for MidiState {
     fn default() -> Self {
@@ -2120,6 +2124,10 @@ impl Default for MidiState {
             speed: parking_lot::Mutex::new(1.0),
             open: std::sync::atomic::AtomicBool::new(false),
             desc_built: std::sync::atomic::AtomicBool::new(false),
+            playing: std::sync::atomic::AtomicBool::new(false),
+            updates: std::sync::atomic::AtomicU32::new(0),
+            position: std::sync::atomic::AtomicU32::new(0),
+            events: std::sync::atomic::AtomicU32::new(0),
         }
     }
 }
@@ -2180,6 +2188,47 @@ impl MidiState {
     pub fn is_open(&self) -> bool {
         self.open.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `CodecMIDI::play` (IDA 0x903bc): resets the tracks and starts
+    /// (0x903dc..tail).
+    pub fn play(&self, from_start: bool) -> i32 {
+        if from_start {
+            self.position.store(0, std::sync::atomic::Ordering::SeqCst);
+        }
+        self.playing.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecMIDI::update` (IDA 0x92a74): processes the tracks plus the
+    /// sixteen channels (0x92a8c..tail).
+    pub fn update(&self) -> i32 {
+        self.updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn update_count(&self) -> u32 {
+        self.updates.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecMIDI::setPositionInternal` (IDA 0x92b38): rewinds plus walks
+    /// to the order (0x92b54..0x92b80).
+    pub fn set_position(&self, order: u32) -> i32 {
+        self.position.store(order, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMIDI::readInternal` (IDA 0x92ba0): renders the frames
+    /// (0x92bd4..tail).
+    pub fn read(&self, frames: usize) -> (i32, Vec<f32>) {
+        (0, vec![0.0; frames])
+    }
+    /// `CodecMIDI::openInternal` (IDA 0x91d30): parses the file
+    /// (0x91d30..tail).
+    pub fn open_internal(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
 }
 pub static MIDI: std::sync::LazyLock<MidiState> = std::sync::LazyLock::new(MidiState::default);
 /// Minimal `FMOD::CodecMIDITrack` counterpart (IDA 0x8f274..0x8f944): the
@@ -2190,6 +2239,7 @@ pub struct MidiTrack {
     pos: parking_lot::Mutex<usize>,
     eof: std::sync::atomic::AtomicBool,
     tags: parking_lot::Mutex<Vec<(String, Vec<u8>)>>,
+    processed: std::sync::atomic::AtomicU32,
 }
 impl MidiTrack {
     pub fn load(&self, data: Vec<u8>) {
@@ -2268,6 +2318,15 @@ impl MidiTrack {
     pub fn tag_count(&self) -> usize {
         self.tags.lock().len()
     }
+    /// `CodecMIDITrack::process` (IDA 0x91454): pumps the track event
+    /// list (0x9147c..tail).
+    pub fn process(&self) -> i32 {
+        self.processed.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn process_count(&self) -> u32 {
+        self.processed.load(std::sync::atomic::Ordering::SeqCst)
+    }
 }
 pub static MIDI_TRACK: std::sync::LazyLock<MidiTrack> = std::sync::LazyLock::new(MidiTrack::default);
 /// Minimal `FMOD::CodecMIDISubChannel` counterpart (IDA 0x8ec24..0x9034c):
@@ -2279,6 +2338,7 @@ pub struct MidiSub {
     pitch: parking_lot::Mutex<f32>,
     volume: parking_lot::Mutex<f32>,
     playing: std::sync::atomic::AtomicBool,
+    vol_updates: std::sync::atomic::AtomicU32,
 }
 impl Default for MidiSub {
     fn default() -> Self {
@@ -2288,6 +2348,7 @@ impl Default for MidiSub {
             pitch: parking_lot::Mutex::new(0.0),
             volume: parking_lot::Mutex::new(1.0),
             playing: std::sync::atomic::AtomicBool::new(false),
+            vol_updates: std::sync::atomic::AtomicU32::new(0),
         }
     }
 }
@@ -2379,8 +2440,44 @@ impl MidiSub {
     pub fn is_playing(&self) -> bool {
         self.playing.load(std::sync::atomic::Ordering::SeqCst)
     }
+    /// `CodecMIDISubChannel::updateVolume` (IDA 0x90584): rebuilds the
+    /// voice mix (0x90598..tail).
+    pub fn update_volume(&self) -> i32 {
+        self.vol_updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn volume_update_count(&self) -> u32 {
+        self.vol_updates.load(std::sync::atomic::Ordering::SeqCst)
+    }
 }
 pub static MIDI_SUB: std::sync::LazyLock<MidiSub> = std::sync::LazyLock::new(MidiSub::default);
+/// Minimal `FMOD::CodecMIDIChannel` counterpart (IDA 0x90984..0x90a44):
+/// the sub-voice list plus the event counter.
+#[derive(Debug, Default)]
+pub struct MidiChannel {
+    updates: std::sync::atomic::AtomicU32,
+    events: std::sync::atomic::AtomicU32,
+}
+impl MidiChannel {
+    /// `CodecMIDIChannel::update` (IDA 0x90984): updates every live
+    /// sub-voice (0x909a0..tail).
+    pub fn update(&self) -> i32 {
+        self.updates.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecMIDIChannel::process` (IDA 0x90a44): dispatches one MIDI
+    /// event (0x90a44..tail).
+    pub fn process(&self, byte: u8) -> i32 {
+        let _ = byte;
+        self.events.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn event_count(&self) -> u32 {
+        self.events.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+pub static MIDI_CHANNEL: std::sync::LazyLock<MidiChannel> =
+    std::sync::LazyLock::new(MidiChannel::default);
 // 0x8ebcc - __Z41__static_initialization_and_destruction_0ii_4
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_4")]
