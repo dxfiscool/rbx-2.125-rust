@@ -76,6 +76,35 @@ pub struct RenderIntPropDesc {
     pub setter: fn(&mut CRenderSettingsItem, u32),
 }
 
+// 0x1070c/0x10820 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2/D0Ev
+/// Rust model of `PropDescriptor<CRenderSettingsItem, bool>` (IDA `0x1070c`
+/// C2 / `0x10820` D0): name/category plus the bound member pair — the
+/// `bool (CRenderSettingsItem::*)() const` getter and the
+/// `void (CRenderSettingsItem::*)(bool)` setter stored in the heap impl
+/// (cf. the int twin at 0xfbca..0xfbd8). Same collapse as
+/// `RenderIntPropDesc`.
+pub struct RenderBoolPropDesc {
+    pub name: &'static str,
+    pub category: &'static str,
+    pub getter: fn(&CRenderSettingsItem) -> bool,
+    pub setter: fn(&mut CRenderSettingsItem, bool),
+}
+
+// 0x1089c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFivEMS2_FviEEE
+/// Rust model of the `int`-member instantiation of
+/// `PropDescriptor<CRenderSettingsItem, int>` (IDA `0x1089c` C2): same
+/// name/category shape as `RenderIntPropDesc`, but the bound pair is the
+/// `int (CRenderSettings::*)() const` getter and the
+/// `void (CRenderSettingsItem::*)(int)` setter — a sibling `GetSetImpl`
+/// instantiation of the `unsigned` one behind `RenderIntPropDesc` (IDA
+/// 0xfb74), so it gets its own model.
+pub struct RenderInt32PropDesc {
+    pub name: &'static str,
+    pub category: &'static str,
+    pub getter: fn(&CRenderSettingsItem) -> i32,
+    pub setter: fn(&mut CRenderSettingsItem, i32),
+}
+
 /// Rust model of `BoundFuncDesc<CRenderSettingsItem, int(), 0>` (IDA `0xfd0c`
 /// C2 / `0xfe04` D0): the bound zero-arg member returning int plus the
 /// `int` return-type tag (IDA `0xfda2` `Type::getSingleton<int>`). Signature
@@ -1478,113 +1507,218 @@ pub fn stub_0x1055c(desc: &RenderEnumPropDesc, item: &CRenderSettingsItem) -> i3
 // 0x10564 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x10564() -> ! {
-    todo!("0x10564 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x10564(desc: &RenderEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) -> bool {
+    // IDA 0x10564..0x105ac (decompiled): `setEnumValue` — `find_if` with
+    // `equalValue` over the enum items (0x1058e), miss returns 0 (0x10590),
+    // hit sets through the `+44` slot `+12` (0x105a2) and returns 1
+    // (0x105a4). The item search collapses into the pair-table membership
+    // check; same set path as 0x100d0.
+    if resolution_preset_enum_desc().pairs.iter().any(|(v, _)| *v == value) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x105b0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x105b0() -> ! {
-    todo!("0x105b0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x105b0(desc: &RenderEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x105b0..0x105ce (decompiled, disasm 0x105b6 `LDRD R4,R5,[R0,#0x2C]`
+    // splits desc+44 impl / desc+48 enum table): `getEnumItem` — `getValue`
+    // through the `+44` slot `+8` (0x105c2), then
+    // `EnumDesc<ResolutionPreset>::convertToItem` (0x105ce), which is the
+    // identity-table body of 0xc9d8. Same shape as 0x1055c plus the item
+    // conversion.
+    let value = (desc.getter)(item);
+    let table = resolution_preset_enum_desc();
+    if value >= 0 && (value as usize) < table.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0x105d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x105d0() -> ! {
-    todo!("0x105d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x105d0(desc: &RenderEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x105d0..0x10602 (decompiled): `setStringValue` —
+    // `EnumDesc<ResolutionPreset>::convertToValue` on the `Name` (0x105e6),
+    // miss returns 0 (0x105e8), hit sets through the `+44` slot `+12`
+    // (0x105fc) and returns 1 (0x105fe). `Name::c_str` collapses into the
+    // `&str` itself; same shape as 0x1026c.
+    if let Some(value) = resolution_preset_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x10604 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToIndexES3_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")]
-pub fn stub_0x10604() -> ! {
-    todo!("0x10604 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToIndex(RBX::CRenderSettings::ResolutionPreset)const")
+pub fn stub_0x10604(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0x10604..0x10672 (decompiled): `convertToIndex` —
+    // `ReleaseAssert(value >= 0)` (enumconverter.h:350, 0x10618..0x10658)
+    // falls through, then `value < table ? table[value] : -1`
+    // (0x10666..0x10672) over the value→index remap at `+156`. The remap is
+    // identity over the registered pairs here, so the position search stands
+    // in; miss returns -1 (cf. 0x1050c).
+    debug_assert!(value >= 0, "0x10604: value>=0");
+    desc.pairs.iter().position(|(v, _)| *v == value).map(|i| i as i32).unwrap_or(-1)
 }
 
 // 0x10674 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x10674() -> ! {
-    todo!("0x10674 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x10674(desc: &RenderEnumPropDesc, item: &mut CRenderSettingsItem, index: i32) -> bool {
+    // IDA 0x10674..0x106b0 (decompiled): `setIntValue` — `index >= 0` gate
+    // (0x1067e), bounds check against the value table (0x1068c..0x10690),
+    // `-1`-hole check (0x1069c), `+44` slot `+12` set (0x106a8), return 1
+    // (0x106aa); miss returns 0. Same shape as `setIndexValue` (0x10528)
+    // plus the hole check.
+    if index >= 0 {
+        if let Some((value, _)) = resolution_preset_enum_desc().pairs.get(index as usize) {
+            if *value != -1 {
+                (desc.setter)(item, *value);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x106b4 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const")]
-pub fn stub_0x106b4() -> ! {
-    todo!("0x106b4 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isReadOnly(void)const")
+pub fn stub_0x106b4() -> bool {
+    // IDA 0x106b4..0x106b6 (decompiled):
+    // `GetSetImpl<ResolutionPreset (CRenderSettings::*)() const, void
+    // (CRenderSettingsItem::*)(ResolutionPreset)>::isReadOnly` returns `0`.
+    // Same shape as 0xfcb4.
+    false
 }
 
 // 0x106b8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const")]
-pub fn stub_0x106b8() -> ! {
-    todo!("0x106b8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::isWriteOnly(void)const")
+pub fn stub_0x106b8() -> bool {
+    // IDA 0x106b8..0x106ba (decompiled): the `GetSetImpl` `isWriteOnly`
+    // twin — returns `0`. Same shape as 0xfcb8.
+    false
 }
 
 // 0x106bc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x106bc() -> ! {
-    todo!("0x106bc RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x106bc(desc: &RenderEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x106bc..0x106e6 (decompiled): `GetSetImpl<...>::getValue` —
+    // resolves the bound `ResolutionPreset (CRenderSettings::*)() const`
+    // member through the `+4` slot (0x106c0..0x106e4) and invokes it. The
+    // member-pointer dance collapses into the stored getter fn; same shape
+    // as 0xfcbc.
+    (desc.getter)(item)
 }
 
 // 0x106e8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_0x106e8() -> ! {
-    todo!("0x106e8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::GetSetImpl<RBX::CRenderSettings::ResolutionPreset (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::ResolutionPreset)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::ResolutionPreset const&)const")
+pub fn stub_0x106e8(desc: &RenderEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) {
+    // IDA 0x106e8..0x10708 (decompiled): `GetSetImpl<...>::setValue` —
+    // resolves the bound `void (CRenderSettingsItem::*)(ResolutionPreset)`
+    // member through the `+12` slot (0x106f4..0x10704) and invokes it with
+    // `*a3`. Collapses into the stored setter fn; same shape as 0xfce8.
+    (desc.setter)(item, value)
 }
 
 // 0x1070c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x1070c() -> ! {
-    todo!("0x1070c RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::PropDescriptor<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>(char const*,char const*,bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x1070c(
+    name: &'static str,
+    category: &'static str,
+    getter: fn(&CRenderSettingsItem) -> bool,
+    setter: fn(&mut CRenderSettingsItem, bool),
+) -> RenderBoolPropDesc {
+    // IDA 0x1070c (decompiled prologue through the `classDescriptor()` touch,
+    // same call shape as 0xfb74..0xfb9c): `PropDescriptor<CRenderSettingsItem,
+    // bool>::C2` — same construction shape as the int twin (0xfb74):
+    // GetSetImpl alloc, member-pointer stores, `TypedPropertyDescriptor`
+    // C2, vtable install. The member pointers collapse into the
+    // getter/setter fns.
+    RenderBoolPropDesc { name, category, getter, setter }
 }
 
 // 0x10820 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor()")]
-pub fn stub_0x10820() -> ! {
-    todo!("0x10820 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor()")
+pub fn stub_0x10820(_desc: *mut RenderBoolPropDesc) {
+    // IDA 0x10820..0x10840 (decompiled): `PropDescriptor<CRenderSettingsItem,
+    // bool>::D0` — vtable install (0x10834), impl `delete` on the `+0x28`
+    // slot (0x10836..0x1083c), `operator delete`. Drops collapse into Rust
+    // ownership; drop glue, no-op. Same shape as 0xfc88.
 }
 
 // 0x1084c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x1084c() -> ! {
-    todo!("0x1084c RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0x1084c() -> bool {
+    // IDA 0x1084c..0x1084e (decompiled):
+    // `GetSetImpl<bool (CRenderSettingsItem::*)() const, void
+    // (CRenderSettingsItem::*)(bool)>::isReadOnly` returns `0`. Same shape
+    // as 0xfcb4.
+    false
 }
 
 // 0x10850 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x10850() -> ! {
-    todo!("0x10850 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0x10850() -> bool {
+    // IDA 0x10850..0x10852 (decompiled): the bool `GetSetImpl`
+    // `isWriteOnly` twin — returns `0`. Same shape as 0xfcb8.
+    false
 }
 
 // 0x10854 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x10854() -> ! {
-    todo!("0x10854 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x10854(desc: &RenderBoolPropDesc, item: &CRenderSettingsItem) -> bool {
+    // IDA 0x10854 (decompiled): `GetSetImpl<...>::getValue` — resolves the
+    // bound `bool (CRenderSettingsItem::*)() const` member and invokes it.
+    // The member-pointer dance collapses into the stored getter fn; same
+    // shape as 0xfcbc.
+    (desc.getter)(item)
 }
 
 // 0x10878 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItembE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x10878() -> ! {
-    todo!("0x10878 RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::GetSetImpl<bool (CRenderSettingsItem::*)(void)const,void (CRenderSettingsItem::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0x10878(desc: &RenderBoolPropDesc, item: &mut CRenderSettingsItem, value: bool) {
+    // IDA 0x10878..0x10898 (decompiled): `GetSetImpl<...>::setValue` —
+    // resolves the bound `void (CRenderSettingsItem::*)(bool)` member
+    // through the `+12` slot (0x10884..0x10894) and invokes it with `*a3`.
+    // Collapses into the stored setter fn; same shape as 0xfce8.
+    (desc.setter)(item, value)
 }
 
 // 0x1089c — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiEC2IMNS_15CRenderSettingsEKFivEMS2_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x1089c() -> ! {
-    todo!("0x1089c RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::PropDescriptor<int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int)>(char const*,char const*,int (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x1089c(
+    name: &'static str,
+    category: &'static str,
+    getter: fn(&CRenderSettingsItem) -> i32,
+    setter: fn(&mut CRenderSettingsItem, i32),
+) -> RenderInt32PropDesc {
+    // IDA 0x1089c (decompiled prologue through the `classDescriptor()` touch,
+    // same call shape as 0xfb74..0xfb9c): `PropDescriptor<CRenderSettingsItem,
+    // int>::C2` with the `int (CRenderSettings::*)() const` member-pointer
+    // pair — same construction shape as the `unsigned` twin (0xfb74), just a
+    // sibling `GetSetImpl` instantiation, so it builds the sibling model.
+    RenderInt32PropDesc { name, category, getter, setter }
 }
 
 #[cfg(test)]
