@@ -1253,8 +1253,12 @@ pub fn stub_668d00(can_process: bool) -> bool {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "RBX::GuiBase2d::getZIndex(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d9getZIndexEv")]
-pub fn stub_668d08() -> ! {
-    todo!("0x668d08 __ZNK3RBX9GuiBase2d9getZIndexEv")
+pub fn stub_668d08(z_index: i32) -> i32 {
+    // IDA 0x668d08 (`RBX::GuiBase2d::getZIndex`): returns word 34
+    // (0x668d0c) — a `GuiBase2d`-base cell outside the modeled
+    // `TextBox` members. Host: pass-through seam for the base
+    // field.
+    z_index
 }
 
 
@@ -1263,8 +1267,11 @@ pub fn stub_668d08() -> ! {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "RBX::GuiBase2d::getGuiQueue(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d11getGuiQueueEv")]
-pub fn stub_668d10() -> ! {
-    todo!("0x668d10 __ZNK3RBX9GuiBase2d11getGuiQueueEv")
+pub fn stub_668d10(gui_queue: i32) -> i32 {
+    // IDA 0x668d10 (`RBX::GuiBase2d::getGuiQueue`): returns word
+    // 35 (0x668d14) — a `GuiBase2d`-base cell outside the modeled
+    // `TextBox` members. Host: pass-through seam.
+    gui_queue
 }
 
 
@@ -1273,8 +1280,10 @@ pub fn stub_668d10() -> ! {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "RBX::GuiBase2d::isGuiLeaf(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d9isGuiLeafEv")]
-pub fn stub_668d18() -> ! {
-    todo!("0x668d18 __ZNK3RBX9GuiBase2d9isGuiLeafEv")
+pub fn stub_668d18() -> bool {
+    // IDA 0x668d18 (`RBX::GuiBase2d::isGuiLeaf`): returns constant
+    // 0 (0x668d1a).
+    false
 }
 
 
@@ -1283,8 +1292,10 @@ pub fn stub_668d18() -> ! {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "RBX::GuiBase2d::getChildRect2D(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d14getChildRect2DEv")]
-pub fn stub_668d1c() -> ! {
-    todo!("0x668d1c __ZNK3RBX9GuiBase2d14getChildRect2DEv")
+pub fn stub_668d1c() {
+    // IDA 0x668d1c (`RBX::GuiBase2d::getChildRect2D`): forwards to
+    // `getRect2D` (0x668d24) — viewport geometry with no modeled
+    // cells. Carrier no-op.
 }
 
 
@@ -1293,8 +1304,10 @@ pub fn stub_668d1c() -> ! {
 // type: _DWORD __fastcall(RBX::GuiBase2d *__hidden this)
 #[doc(alias = "RBX::GuiBase2d::shouldRender2d(void)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d14shouldRender2dEv")]
-pub fn stub_668d28() -> ! {
-    todo!("0x668d28 __ZNK3RBX9GuiBase2d14shouldRender2dEv")
+pub fn stub_668d28() -> bool {
+    // IDA 0x668d28 (`RBX::GuiBase2d::shouldRender2d`): returns
+    // constant 0 (0x668d2a).
+    false
 }
 
 
@@ -1303,8 +1316,13 @@ pub fn stub_668d28() -> ! {
 // type: int(void)
 #[doc(alias = "RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZNK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")]
-pub fn stub_668d2c() -> ! {
-    todo!("0x668d2c __ZNK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")
+pub fn stub_668d2c(other: &[f32; 4], own: &[f32; 4]) -> bool {
+    // IDA 0x668d2c (`RBX::GuiBase2d::isVisible`): the `getRect2D`
+    // rect (0x668d38, host: `own` — viewport seam) overlapped
+    // against the input rect (0x668d4e-0x668d8a): `other[0] <
+    // own[2] && other[1] < own[3] && other[2] > own[0] &&
+    // other[3] > own[1]`.
+    other[0] < own[2] && other[1] < own[3] && other[2] > own[0] && other[3] > own[1]
 }
 
 
@@ -1391,8 +1409,13 @@ pub fn stub_668f10() {
 // demangled: boost::shared_ptr<RBX::TextBox> RBX::Creatable<RBX::Instance>::create<RBX::TextBox>(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox> RBX::Creatable<RBX::Instance>::create<RBX::TextBox>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_7TextBoxEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_669220() -> ! {
-    todo!("0x669220 __ZN3RBX9CreatableINS_8InstanceEE6createINS_7TextBoxEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_669220() -> TextBoxState {
+    // IDA 0x669220 (`RBX::Creatable<Instance>::create<TextBox>`):
+    // heap-allocates (0x669256), runs the `TextBox` C2 (0x66927a,
+    // host: the 0x666938 twin) and wraps it in the
+    // `shared_ptr`+`Deleter` (0x669288). Host: the fresh state
+    // (`SharedPtr` is `Arc` — ownership folds).
+    TextBoxState::default()
 }
 
 
@@ -1400,8 +1423,11 @@ pub fn stub_669220() -> ! {
 // demangled: boost::shared_ptr<RBX::TextBox>::shared_ptr<RBX::TextBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::shared_ptr<RBX::TextBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_6692d4() -> ! {
-    todo!("0x6692d4 __ZN5boost10shared_ptrIN3RBX7TextBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_6692d4() {
+    // IDA 0x6692d4 (`boost::shared_ptr<TextBox>::shared_ptr` with
+    // the `Creatable::Deleter`): installs the count and accepts
+    // the `enable_shared_from_this` owner (0x6692f2-0x66935c).
+    // `SharedPtr` is `Arc` in the host. Carrier no-op.
 }
 
 
@@ -1474,8 +1500,11 @@ pub fn stub_6695cc() {
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE")]
-pub fn stub_66996c() -> ! {
-    todo!("0x66996c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE")
+pub fn stub_66996c() {
+    // IDA 0x66996c (`rbx::signals::signal<shared_ptr<TextBox>>::
+    // next`): locked slot iteration for the `Focused` emission
+    // (0x66996c+). Dispatch folds into the host fire closures.
+    // Carrier no-op.
 }
 
 
@@ -1484,8 +1513,10 @@ pub fn stub_66996c() -> ! {
 // type: int(void)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::on_error(std::exception &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception")]
-pub fn stub_669acc() -> ! {
-    todo!("0x669acc __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception")
+pub fn stub_669acc() {
+    // IDA 0x669acc (`rbx::signals::signal<shared_ptr<TextBox>>::
+    // on_error`): returns the slot exception handler
+    // (0x669ae0-0x669af2). Carrier no-op.
 }
 
 
@@ -1494,8 +1525,12 @@ pub fn stub_669acc() -> ! {
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::insert(rbx::signals::signal<void ()(char const*,bool)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE6insertEPNS5_4slotE")]
-pub fn stub_669af4() -> ! {
-    todo!("0x669af4 __ZN3rbx7signals6signalIFvPKcbEE6insertEPNS5_4slotE")
+pub fn stub_669af4() {
+    // IDA 0x669af4 (`rbx::signals::signal<void (char
+    // const*,bool)>::insert`): locked slot-list insert with
+    // refcount handoff (0x669af4-0x669c82). Connection
+    // management folds into the host fire-closure seams. Carrier
+    // no-op.
 }
 
 
@@ -1504,8 +1539,10 @@ pub fn stub_669af4() -> ! {
 // type: int(void)
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(char const*,bool)>::slot>::operator=(rbx::signals::signal<void ()(char const*,bool)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKcbEE4slotEEaSEPS8_")]
-pub fn stub_669d00() -> ! {
-    todo!("0x669d00 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKcbEE4slotEEaSEPS8_")
+pub fn stub_669d00() {
+    // IDA 0x669d00 (`boost::intrusive_ptr<signal slot>::operator=`):
+    // addref-new/release-old (0x669d0a-0x669d1a). `Arc` move —
+    // carrier no-op.
 }
 
 
@@ -1531,8 +1568,12 @@ pub fn stub_669d50() {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::slot::disconnect(void)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE4slot10disconnectEv")]
-pub fn stub_669e24() -> ! {
-    todo!("0x669e24 __ZN3rbx7signals6signalIFvPKcbEE4slot10disconnectEv")
+pub fn stub_669e24() {
+    // IDA 0x669e24 (`rbx::signals::signal<void (char
+    // const*,bool)>::slot::disconnect`): clears the slot's +12
+    // cell and removes it from the signal (0x669eb4-0x669ec2).
+    // Connections fold into the host fire-closure seams. Carrier
+    // no-op.
 }
 
 
@@ -1540,8 +1581,12 @@ pub fn stub_669e24() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::slot::connected(void)const
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvPKcbEE4slot9connectedEv")]
-pub fn stub_669f34() -> ! {
-    todo!("0x669f34 __ZNK3rbx7signals6signalIFvPKcbEE4slot9connectedEv")
+pub fn stub_669f34() -> bool {
+    // IDA 0x669f34 (`rbx::signals::signal<void (char
+    // const*,bool)>::slot::connected`): the slot's +12 cell is
+    // nonzero (0x669f3c). No connection is ever modeled in the
+    // host: the exact unconnected floor.
+    false
 }
 
 
@@ -1549,8 +1594,19 @@ pub fn stub_669f34() -> ! {
 // demangled: rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(char const*,bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>,2,void ()(char const*,bool)>::call(char const*,bool)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")]
-pub fn stub_669f40() -> ! {
-    todo!("0x669f40 __ZN3rbx8callableINS_7signals6signalIFvPKcbEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf2IvN3RBX7TextBoxES4_bEENS9_5list3INS9_5valueIPSE_EENS8_3argILi1EEENSK_ILi2EEEEEEELi2ES5_E4callES4_b")
+pub fn stub_669f40(
+    state: &mut TextBoxState,
+    text: &str,
+    submitted: bool,
+    filter_pass: bool,
+    fire_focused: impl Fn(bool),
+) {
+    // IDA 0x669f40 (`rbx::callable<... TextBox::externalReleaseFocus
+    // bind ...>::call`): repacks the `(char const*, bool)` signal
+    // args (0x669f46-0x669f56) and dispatches through the bind
+    // (0x669f66, host: the 0x669f90 list-forward folds into this
+    // edge) into `externalReleaseFocus` — host: the 0x666e84 twin.
+    stub_666e84(state, text, submitted, filter_pass, fire_focused);
 }
 
 
@@ -1568,8 +1624,12 @@ pub fn stub_669f68() {
 // type: int(void)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::TextBox *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list2<char const*&,bool &>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool> &,boost::_bi::list2<char const*&,bool &> &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX7TextBoxEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_PKcbEENS0_5list2IRSF_RbEEEEvNS0_4typeIvEERT_RT0_i")]
-pub fn stub_669f90() -> ! {
-    todo!("0x669f90 __ZN5boost3_bi5list3INS0_5valueIPN3RBX7TextBoxEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_PKcbEENS0_5list2IRSF_RbEEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_669f90() {
+    // IDA 0x669f90 (`boost::_bi::list3<TextBox*, arg<1>,
+    // arg<2>>::operator()` for the `externalReleaseFocus` bind):
+    // forwards the box plus `(char const*, bool)` into the member
+    // (0x669f92-0x669fb0). Forwarding folds into the 0x669f40
+    // dispatch edge. Carrier no-op.
 }
 
 
@@ -1578,8 +1638,11 @@ pub fn stub_669f90() -> ! {
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::remove(rbx::signals::signal<void ()(char const*,bool)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE6removeEPNS5_4slotE")]
-pub fn stub_669fbc() -> ! {
-    todo!("0x669fbc __ZN3rbx7signals6signalIFvPKcbEE6removeEPNS5_4slotE")
+pub fn stub_669fbc() {
+    // IDA 0x669fbc (`rbx::signals::signal<void (char
+    // const*,bool)>::remove`): asserts the slot is live and
+    // unlinks it (0x669fd0-0x66a094, `signal.h:284`). Connections
+    // fold into the host fire-closure seams. Carrier no-op.
 }
 
 
@@ -1587,8 +1650,11 @@ pub fn stub_669fbc() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_init_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE4slot22safe_static_init_mutexEv")]
-pub fn stub_66a0ac() -> ! {
-    todo!("0x66a0ac __ZN3rbx7signals6signalIFvPKcbEE4slot22safe_static_init_mutexEv")
+pub fn stub_66a0ac() {
+    // IDA 0x66a0ac (`rbx::signals::signal<void (char
+    // const*,bool)>::slot::safe_static_init_mutex`): forwards to
+    // the once-mutex getter (host: the 0x66a0b0 twin folds).
+    // Carrier no-op.
 }
 
 
@@ -1596,8 +1662,11 @@ pub fn stub_66a0ac() -> ! {
 // demangled: rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_do_get_mutex(void)
 #[doc(alias = "rbx::signals::signal<void ()(char const*,bool)>::slot::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvPKcbEE4slot24safe_static_do_get_mutexEv")]
-pub fn stub_66a0b0() -> ! {
-    todo!("0x66a0b0 __ZN3rbx7signals6signalIFvPKcbEE4slot24safe_static_do_get_mutexEv")
+pub fn stub_66a0b0() {
+    // IDA 0x66a0b0 (`rbx::signals::signal<void (char
+    // const*,bool)>::slot::safe_static_do_get_mutex`): once-guarded
+    // static mutex init (0x66a10c-0x66a144). Host mutexes fold.
+    // Carrier no-op.
 }
 
 

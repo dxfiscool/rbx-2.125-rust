@@ -4,7 +4,7 @@
 //! Generated: 2026-09-01
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
-
+use crate::generated_audio_wd_watchdog18::TextBoxState;
 use rbx_core::SharedPtr;
 
 // Ensure SharedPtr is seen as used — mirrors boost::shared_ptr<T> -> rbx_core::SharedPtr<T>
@@ -191,40 +191,61 @@ pub fn stub_668fb8() {
 // 0x669054 — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_669054() -> ! {
-    todo!("0x669054 __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_669054() -> &'static str {
+    // IDA 0x669054 (`FactoryProduct<TextBox, ...>::Creator::
+    // getClassName`): asserts construction, runs the
+    // `callDoDeclare<sTextBox>` once-guard (0x6690b8-0x6690d0)
+    // and tail-calls `doDeclare<sTextBox>` (0x6690d8) — the
+    // declared name: "TextBox".
+    "TextBox"
 }
 
 // 0x6690dc — __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_6690dc() -> ! {
-    todo!("0x6690dc __ZNK3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7Creator6createEv")
+pub fn stub_6690dc() -> TextBoxState {
+    // IDA 0x6690dc (`FactoryProduct<TextBox, ...>::Creator::
+    // create`): asserts construction (0x669124-0x66917a) then
+    // builds through `Creatable::create<TextBox>` (0x669194,
+    // host: the 0x669220 twin) into the out `shared_ptr`
+    // (0x6691a2-0x6691c4). Host: the fresh state.
+    TextBoxState::default()
 }
 
 // 0x6695d0 — __ZN3RBX4Name13callDoDeclareILZNS_8sTextBoxEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_8sTextBoxEEEEvv")]
-pub fn stub_6695d0() -> ! {
-    todo!("0x6695d0 __ZN3RBX4Name13callDoDeclareILZNS_8sTextBoxEEEEvv")
+pub fn stub_6695d0() {
+    // IDA 0x6695d0 (`RBX::Name::callDoDeclare<sTextBox>`): thunk
+    // forwarding to `doDeclare` (host: the 0x6695d4 twin). The
+    // name registry folds away.
+    stub_6695d4();
 }
 
 // 0x6695d4 — __ZN3RBX4Name9doDeclareILZNS_8sTextBoxEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_8sTextBoxEEEERKS0_v")]
-pub fn stub_6695d4() -> ! {
-    todo!("0x6695d4 __ZN3RBX4Name9doDeclareILZNS_8sTextBoxEEEERKS0_v")
+pub fn stub_6695d4() {
+    // IDA 0x6695d4 (`RBX::Name::doDeclare<sTextBox>`): once-guarded
+    // `Name::declare(sTextBox)` (0x669630-0x669688). The name
+    // registry folds away. Carrier no-op.
 }
 
 // 0x6696b4 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_6696b4() -> ! {
-    todo!("0x6696b4 __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_6696b4() {
+    // IDA 0x6696b4 (`FactoryProduct<TextBox, ...>::Creator`
+    // C2): declares the `sTextBox` name once (0x6696ec-0x669702)
+    // and inserts the creator into the class registry
+    // (0x66970e-0x66978e). Registries fold away. Carrier no-op.
 }
 
 // 0x6698f8 — __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_6698f8() -> ! {
-    todo!("0x6698f8 __ZN3RBX14FactoryProductINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_6698f8() {
+    // IDA 0x6698f8 (`FactoryProduct<TextBox, ...>::
+    // static_getCreator`): asserts construction and returns the
+    // creator singleton (0x669908-0x66996a). Singletons fold
+    // away. Carrier no-op.
 }
 
 // 0x66a3a0 — __ZN3RBX18DescribedCreatableINS_7TextBoxENS_9GuiObjectELZNS_8sTextBoxEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -266,8 +287,11 @@ pub fn stub_66a4f8() {
 // 0x66a59c — __ZN3RBX10Reflection9DescribedINS_7TextBoxELZNS_8sTextBoxEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
 // type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7TextBoxELZNS_8sTextBoxEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
-pub fn stub_66a59c() -> ! {
-    todo!("0x66a59c __ZN3RBX10Reflection9DescribedINS_7TextBoxELZNS_8sTextBoxEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+pub fn stub_66a59c() {
+    // IDA 0x66a59c (`RBX::Reflection::Described<TextBox, ...>::
+    // classDescriptor`): once-guarded `ClassDescriptor`
+    // construction returning the singleton (0x66a5f8-0x66a68a).
+    // The reflection registry folds away. Carrier no-op.
 }
 
 // 0x66a6b8 — __ZN3RBX10Reflection9DescribedINS_7TextBoxELZNS_8sTextBoxEENS_14FactoryProductIS2_NS_9GuiObjectELZNS_8sTextBoxEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
