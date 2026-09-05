@@ -11,6 +11,16 @@ use super::generated_datamodel_shard_291::{
     BackpackTextureId, BackpackTextureProp, HOPPER_BIN_TYPE_ITEMS, stub_0x5713d0, stub_0x5713e8,
     stub_0x571428, stub_0x573688,
 };
+use crate::instance::Weld;
+
+/// Rust model of `RBX::IEquipable` (IDA `0x57bf9c`): the equipable mixin
+/// holding the shared `Weld` at `+8` (released by the `D2`, IDA `0x57c058`,
+/// with a `ReleaseAssert(!weld)` at `IEquipable.cpp:18`); the vtable word
+/// collapses.
+#[derive(Default)]
+pub struct IEquipable {
+    pub weld: Option<SharedPtr<Weld>>,
+}
 
 // 0x578d50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9HopperBinENS2_7BinTypeEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::HopperBin,RBX::HopperBin::BinType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
@@ -260,36 +270,44 @@ pub fn stub_0x5795ac(_bin: &mut crate::instance::HopperBin) {
 // 0x579f70 — __ZN3RBX17ICharacterSubjectC2Ev
 #[doc(alias = "RBX::ICharacterSubject::ICharacterSubject(void)")]
 pub fn stub_0x579f70() -> ! {
+    // BLOCKED: needs camera-subject (G3D/Workspace) infra — initializes the
+    // focus/distance state words (decompiled 0x579f70)
     todo!("0x579f70 RBX::ICharacterSubject::ICharacterSubject(void)")
 }
 
 // 0x579fcc — __ZN3RBX17ICharacterSubject10initCameraERN3G3D7Vector3ERNS1_15CoordinateFrameE
 #[doc(alias = "RBX::ICharacterSubject::initCamera(G3D::Vector3 &,G3D::CoordinateFrame &)")]
 pub fn stub_0x579fcc() -> ! {
+    // BLOCKED: needs camera (G3D::Vector3/CoordinateFrame) + Workspace infra
     todo!("0x579fcc RBX::ICharacterSubject::initCamera(G3D::Vector3 &,G3D::CoordinateFrame &)")
 }
 
 // 0x57a09c — __ZNK3RBX17ICharacterSubject13isFirstPersonEv
 #[doc(alias = "RBX::ICharacterSubject::isFirstPerson(void)const")]
 pub fn stub_0x57a09c() -> ! {
+    // BLOCKED: needs camera-subject infra — reads float at `+28 < 4.5`
+    // (decompiled 0x57a09c); the subject state word is unmodeled
     todo!("0x57a09c RBX::ICharacterSubject::isFirstPerson(void)const")
 }
 
 // 0x57a0b4 — __ZN3RBX17ICharacterSubject20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
 #[doc(alias = "RBX::ICharacterSubject::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 pub fn stub_0x57a0b4() -> ! {
+    // BLOCKED: needs camera (G3D) + Workspace infra
     todo!("0x57a0b4 RBX::ICharacterSubject::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x57a17c — __ZN3RBX17ICharacterSubject12doCameraMoveERN3G3D7Vector3ERNS1_15CoordinateFrameEd
 #[doc(alias = "RBX::ICharacterSubject::doCameraMove(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 pub fn stub_0x57a17c() -> ! {
+    // BLOCKED: needs camera (G3D) + Workspace infra
     todo!("0x57a17c RBX::ICharacterSubject::doCameraMove(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x57a6c8 — __ZN3RBX17ICharacterSubject15doCameraOccludeERN3G3D7Vector3ERKNS1_15CoordinateFrameEd
 #[doc(alias = "RBX::ICharacterSubject::doCameraOcclude(G3D::Vector3 &,G3D::CoordinateFrame const&,double)")]
 pub fn stub_0x57a6c8() -> ! {
+    // BLOCKED: needs camera occlusion (G3D) + Workspace infra
     todo!("0x57a6c8 RBX::ICharacterSubject::doCameraOcclude(G3D::Vector3 &,G3D::CoordinateFrame const&,double)")
 }
 
@@ -297,6 +315,7 @@ pub fn stub_0x57a6c8() -> ! {
 // was: RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const
 #[doc(alias = "RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const")]
 pub fn stub_0x57ab88() -> ! {
+    // BLOCKED: needs camera frustum (G3D) infra
     todo!("0x57ab88 RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const")
 }
 
@@ -304,62 +323,82 @@ pub fn stub_0x57ab88() -> ! {
 // was: RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)
 #[doc(alias = "RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)")]
 pub fn stub_0x57ad58() -> ! {
+    // BLOCKED: needs camera (G3D) infra
     todo!("0x57ad58 RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)")
 }
 
 // 0x57b03c — __ZN3RBX17ICharacterSubject22characterOcclusionTestERKN3G3D7Vector3ERKNS1_15CoordinateFrameE
 #[doc(alias = "RBX::ICharacterSubject::characterOcclusionTest(G3D::Vector3 const&,G3D::CoordinateFrame const&)")]
 pub fn stub_0x57b03c() -> ! {
+    // BLOCKED: needs camera occlusion (G3D) + Workspace infra
     todo!("0x57b03c RBX::ICharacterSubject::characterOcclusionTest(G3D::Vector3 const&,G3D::CoordinateFrame const&)")
 }
 
 // 0x57b5e4 — __ZN3RBX17ICharacterSubject4zoomEfRN3G3D15CoordinateFrameES3_
 #[doc(alias = "RBX::ICharacterSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 pub fn stub_0x57b5e4() -> ! {
+    // BLOCKED: needs camera (G3D) infra
     todo!("0x57b5e4 RBX::ICharacterSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x57bbe0 — __ZN3RBX17ICharacterSubject17onCameraHeartbeatERKN3G3D7Vector3ES4_
 #[doc(alias = "RBX::ICharacterSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")]
 pub fn stub_0x57bbe0() -> ! {
+    // BLOCKED: needs camera heartbeat (Workspace) infra
     todo!("0x57bbe0 RBX::ICharacterSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")
 }
 
 // 0x57bd7c — __ZN3RBX17ICharacterSubject13setCameraModeENS_6Camera10CameraModeE
 #[doc(alias = "RBX::ICharacterSubject::setCameraMode(RBX::Camera::CameraMode)")]
 pub fn stub_0x57bd7c() -> ! {
+    // BLOCKED: needs camera-mode (Camera) + subject infra
     todo!("0x57bd7c RBX::ICharacterSubject::setCameraMode(RBX::Camera::CameraMode)")
 }
 
 // 0x57bf9c — __ZN3RBX10IEquipableC2Ev
 #[doc(alias = "RBX::IEquipable::IEquipable(void)")]
-pub fn stub_0x57bf9c() -> ! {
-    todo!("0x57bf9c RBX::IEquipable::IEquipable(void)")
+pub fn stub_0x57bf9c() -> IEquipable {
+    // IDA 0x57bf9c (decompiled): `IEquipable::C2` — installs the vtable
+    // word (0x57bfac) and zeroes the weld words at `+4`/`+8`
+    // (0x57bfae-0x57bfb0). The vtable collapses; the observable state is
+    // the empty weld.
+    IEquipable::default()
 }
 
 // 0x57bfb4 — __ZN3RBX10IEquipableD0Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_0x57bfb4() -> ! {
-    todo!("0x57bfb4 RBX::IEquipable::~IEquipable()")
+pub fn stub_0x57bfb4(_equip: &mut IEquipable) {
+    // IDA 0x57bfb4: `IEquipable::D0` — runs the `D1` body then releases
+    // storage; same release as 0x57c054 — the weld link drops.
 }
 
 // 0x57c054 — __ZN3RBX10IEquipableD1Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_0x57c054() -> ! {
-    todo!("0x57c054 RBX::IEquipable::~IEquipable()")
+pub fn stub_0x57c054(equip: &mut IEquipable) {
+    // IDA 0x57c054: `IEquipable::D1` — same vtable-reset + weld-release
+    // shape as the `D2` (0x57c058); dropping the link is the same release.
+    equip.weld = None;
 }
 
 // 0x57c058 — __ZN3RBX10IEquipableD2Ev
 #[doc(alias = "RBX::IEquipable::~IEquipable()")]
-pub fn stub_0x57c058() -> ! {
-    todo!("0x57c058 RBX::IEquipable::~IEquipable()")
+pub fn stub_0x57c058(equip: &mut IEquipable) {
+    // IDA 0x57c058 (decompiled): `IEquipable::D2` — vtable reset (0x57c09c),
+    // `ReleaseAssert(!weld)` (`IEquipable.cpp:18`, 0x57c0a2-0x57c10e), then
+    // releases the shared weld at `+8` (0x57c10e-0x57c11a). The live build
+    // keeps the link empty at destroy; clearing it is the same release
+    // (the assert is a debug-only gate on model state).
+    equip.weld = None;
 }
 
 // 0x57c39c — __ZN5boost10shared_ptrIN3RBX4WeldEEaSERKS3_
 // was: boost::shared_ptr<RBX::Weld>::operator=(boost::shared_ptr<RBX::Weld> const&)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Weld>::operator=(rbx_core::SharedPtr<RBX::Weld> const&)")]
-pub fn stub_0x57c39c() -> ! {
-    todo!("0x57c39c rbx_core::SharedPtr<RBX::Weld>::operator=(rbx_core::SharedPtr<RBX::Weld> const&)")
+pub fn stub_0x57c39c(dst: &mut SharedPtr<Weld>, src: &SharedPtr<Weld>) {
+    // IDA 0x57c39c (decompiled): `shared_ptr<Weld>::operator=` — retains
+    // the new count (0x57c3b0), installs it (0x57c3ba-0x57c3c2), releases
+    // the old (0x57c3c6-0x57c3c8). Clone-assign is the same retain/release.
+    *dst = SharedPtr::clone(src);
 }
 
 // 0x57c644 — __ZN3RBX14GuiImageButtonC2Ev
@@ -746,5 +785,28 @@ mod batch_a_tests {
         bin.bin_type = 2;
         stub_0x5795ac(&mut bin);
         assert!(bin.active);
+    }
+}
+
+#[cfg(test)]
+mod batch_b_tests {
+    use super::*;
+    use crate::instance::Weld;
+
+    #[test]
+    fn equipable_weld_link_lifecycle() {
+        let mut equip = stub_0x57bf9c();
+        assert!(equip.weld.is_none());
+        let weld = SharedPtr::new(Weld::default());
+        let mut slot = SharedPtr::new(Weld::default());
+        stub_0x57c39c(&mut slot, &weld);
+        assert!(SharedPtr::ptr_eq(&slot, &weld));
+        equip.weld = Some(SharedPtr::clone(&weld));
+        stub_0x57c054(&mut equip);
+        assert!(equip.weld.is_none());
+        equip.weld = Some(weld);
+        stub_0x57c058(&mut equip);
+        assert!(equip.weld.is_none());
+        stub_0x57bfb4(&mut equip);
     }
 }
