@@ -60,6 +60,11 @@ pub enum BridgeVal {
     Region3(Region3),
     Region3i16(Region3int16),
     Instance(u64),
+    Vec2i16(Vector2int16),
+    Color3(Color3),
+    Ray(RbxRay),
+    InputObject([u32; 5]),
+    CellId(u32),
     Table(Vec<BridgeVal>),
 }
 #[derive(Clone, Debug, Default)]
@@ -89,6 +94,24 @@ impl BridgeState {
     }
     pub fn push_table(&mut self, elems: Vec<BridgeVal>) {
         self.stack.push(BridgeVal::Table(elems));
+    }
+    /// `pushNewObject` family (IDA 0x26e1d8..0x2705d0): 20-byte userdata
+    /// copies (0x26e1e2..0x26e1fc) plus class metatables (0x26e216..0x26e220)
+    /// fold into typed-slot pushes.
+    pub fn push_vec2i16(&mut self, v: Vector2int16) {
+        self.stack.push(BridgeVal::Vec2i16(v));
+    }
+    pub fn push_color3(&mut self, v: Color3) {
+        self.stack.push(BridgeVal::Color3(v));
+    }
+    pub fn push_ray(&mut self, v: RbxRay) {
+        self.stack.push(BridgeVal::Ray(v));
+    }
+    pub fn push_input_object(&mut self, words: [u32; 5]) {
+        self.stack.push(BridgeVal::InputObject(words));
+    }
+    pub fn push_cell_id(&mut self, id: u32) {
+        self.stack.push(BridgeVal::CellId(id));
     }
     // Bridge<T,true>::getValue readers (IDA 0x26b4d0/0x26b4fc/0x26b528/0x26b554
     // delegate here): typed-slot match, None on mismatch (false, no raise).
@@ -137,6 +160,18 @@ impl LuaArguments {
         self.base + n
     }
 }
+impl LuaArguments {
+    /// `size` (IDA 0x26dc28): exactly `lua_gettop - 1` (0x26dc34).
+    pub fn size(&self) -> i32 {
+        self.l.gettop() - 1
+    }
+    /// `getLong` (IDA 0x26dca8): calls `getDouble` virtually (vtable+16,
+    /// 0x26dcc0) then `lrint` (0x26dcd4, default round-half-even per file
+    /// convention); failure answers 0.
+    pub fn get_long(&self, n: i32) -> Option<i64> {
+        self.get_double(n).map(|v| v.round_ties_even() as i64)
+    }
+}
 impl BridgeState {
     pub fn push_str(&mut self, s: &[u8]) {
         self.stack.push(BridgeVal::Str(s.to_vec()));
@@ -166,6 +201,43 @@ impl BridgeState {
         match self.slot(idx) {
             BridgeVal::Bool(v) => Some(*v),
             _ => None,
+        }
+    }
+}
+impl BridgeState {
+    /// `safe_lua_tostring` (IDA 0x270210): tolstring (0x270216), null
+    /// answers empty (0x270224..0x27022c). Lua number conversion folds into
+    /// `Display`; other types answer empty.
+    pub fn safe_string(&self, idx: i32) -> Vec<u8> {
+        match self.slot(idx) {
+            BridgeVal::Str(v) => v.clone(),
+            BridgeVal::Num(v) => v.to_string().into_bytes(),
+            _ => Vec::new(),
+        }
+    }
+    /// `throwable_lua_tostring` (IDA 0x270230): strings and numbers convert;
+    /// anything else throws `runtime_error("String expected")`
+    /// (0x2702ce..0x270314).
+    pub fn throwable_string(&self, idx: i32) -> Vec<u8> {
+        match self.slot(idx) {
+            BridgeVal::Str(v) => v.clone(),
+            BridgeVal::Num(v) => v.to_string().into_bytes(),
+            _ => panic!("String expected"),
+        }
+    }
+    /// `lua_tofloat` (IDA 0x270448): tonumber (0x27044c) clamped through
+    /// the infinities into `f32` range (0x270460..0x2704aa).
+    pub fn to_float(v: f64) -> f32 {
+        if v == f64::INFINITY {
+            f32::INFINITY
+        } else if v == f64::NEG_INFINITY {
+            f32::NEG_INFINITY
+        } else if v > f32::MAX as f64 {
+            f32::MAX
+        } else if v < f32::MIN as f64 {
+            f32::MIN
+        } else {
+            v as f32
         }
     }
 }
@@ -229,6 +301,51 @@ static STARTER_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "StarterSc
 /// `Name::doDeclare<sCoreScript>` singleton (IDA 0x26a5e0: guarded once-init
 /// at 0x26a63c..0x26a666 answering the static at 0x26a694).
 static CORE_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "CoreScript");
+// Extra pushed value shapes (IDA 0x26e1d8..0x2708b0): two-int vector,
+// Color3 triple, and ray pair for the `pushNewObject` family.
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Vector2int16 {
+    pub x: i16,
+    pub y: i16,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct Color3 {
+    pub r: f32,
+    pub g: f32,
+    pub b: f32,
+}
+#[repr(C)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct RbxRay {
+    pub origin: Vector3,
+    pub direction: Vector3,
+}
+/// `rbx::placement_any` content for function refs (IDA 0x26f280..0x26fb60):
+/// the holder vtable folds into the enum discriminant.
+#[derive(Clone, Debug, PartialEq)]
+pub enum PlacedContent {
+    Empty,
+    Region(Region3),
+    WeakFunc(u64),
+}
+#[derive(Clone, Debug, Default)]
+pub struct PlacementAny {
+    pub content: PlacedContent,
+}
+impl Default for PlacedContent {
+    fn default() -> Self {
+        PlacedContent::Empty
+    }
+}
+/// Registered Lua class library record (IDA 0x270594/0x2708b0):
+/// `luaL_register` plus `lua_setreadonly` fold into the record.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct ClassLibrary {
+    pub name: &'static str,
+    pub readonly: bool,
+}
 
 // Script bootstrap records (IDA 0x26990..0x2c046): URL fetch, signature
 // verification, and threaded execution fold into host services; the request
@@ -764,176 +881,266 @@ pub fn stub_0x26c2ac(state: &BridgeState, idx: i32) -> Option<Region3> {
 // 0x26dc28 — __ZNK3RBX3Lua12LuaArguments4sizeEv
 // type: int __fastcall(RBX::Lua::LuaArguments *this)
 #[doc(alias = "RBX::Lua::LuaArguments::size(void)const")]
-pub fn stub_0x26dc28() -> ! {
-    todo!("0x26dc28 __ZNK3RBX3Lua12LuaArguments4sizeEv")
+pub fn stub_0x26dc28(args: &LuaArguments) -> i32 {
+    // IDA 0x26dc28: `size` — see `LuaArguments::size`.
+    args.size()
 }
 
 // 0x26dca8 — __ZNK3RBX3Lua12LuaArguments7getLongEiRl
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, int *)
 #[doc(alias = "RBX::Lua::LuaArguments::getLong(int,long &)const")]
-pub fn stub_0x26dca8() -> ! {
-    todo!("0x26dca8 __ZNK3RBX3Lua12LuaArguments7getLongEiRl")
+pub fn stub_0x26dca8(args: &LuaArguments, n: i32) -> Option<i64> {
+    // IDA 0x26dca8: `getLong` — see `LuaArguments::get_long`.
+    args.get_long(n)
 }
 
 // 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int *, int)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_0x26dce4() -> ! {
-    todo!("0x26dce4 __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE")
+pub fn stub_0x26dce4(state: &mut BridgeState, handle: u64) -> i32 {
+    // IDA 0x26dce4: `ArgumentPusher::operator()` pushes the shared Instance
+    // (0x26dd48, ownership folds into `Arc`) and answers 1 (0x26dd76).
+    state.push_instance(handle);
+    1
 }
 
 // 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
 // type: int __fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>)")]
-pub fn stub_0x26df08() -> ! {
-    todo!("0x26df08 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE")
+pub fn stub_0x26df08(state: &mut BridgeState, items: Option<&[u64]>) -> i32 {
+    // IDA 0x26df08: null pushes an empty table (0x26df24); otherwise the
+    // range goes through `pushArray` (0x26df18, see 0x26ef04). Answers 1.
+    match items {
+        Some(handles) => stub_0x26ef04(state, handles),
+        None => {
+            state.push_table(Vec::new());
+            1
+        }
+    }
 }
 
 // 0x26e1d8 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: _DWORD *__fastcall(int, _DWORD *)
 #[doc(alias = "RBX::InputObject* RBX::Lua::Bridge<RBX::InputObject,true>::pushNewObject<RBX::InputObject>(lua_State *,RBX::InputObject)")]
-pub fn stub_0x26e1d8() -> ! {
-    todo!("0x26e1d8 __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
+pub fn stub_0x26e1d8(state: &mut BridgeState, words: [u32; 5]) -> i32 {
+    // IDA 0x26e1d8: `Bridge<InputObject>::pushNewObject` copies 20 bytes
+    // into userdata (0x26e1e2..0x26e1fc) and sets the class metatable
+    // (0x26e216..0x26e220). Answers the stack top.
+    state.push_input_object(words);
+    state.gettop()
 }
 
 // 0x26e408 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::CellID* RBX::Lua::Bridge<RBX::CellID,true>::pushNewObject<RBX::CellID>(lua_State *,RBX::CellID)")]
-pub fn stub_0x26e408() -> ! {
-    todo!("0x26e408 __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
+pub fn stub_0x26e408(state: &mut BridgeState, id: u32) -> i32 {
+    // IDA 0x26e408: `Bridge<CellID>::pushNewObject` — same userdata plus
+    // metatable shape as 0x26e1d8; the id payload folds into the handle.
+    state.push_cell_id(id);
+    state.gettop()
 }
 
 // 0x26e738 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: int __fastcall(int, __int64 *)
 #[doc(alias = "RBX::Region3int16* RBX::Lua::Bridge<RBX::Region3int16,true>::pushNewObject<RBX::Region3int16>(lua_State *,RBX::Region3int16)")]
-pub fn stub_0x26e738() -> ! {
-    todo!("0x26e738 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
+pub fn stub_0x26e738(state: &mut BridgeState, value: Region3int16) -> i32 {
+    // IDA 0x26e738: `Bridge<Region3int16>::pushNewObject` — same shape as
+    // 0x26e1d8.
+    state.stack.push(BridgeVal::Region3i16(value));
+    state.gettop()
 }
 
 // 0x26e870 — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_
 // type: G3D::Matrix3 *__fastcall(int, int)
 #[doc(alias = "RBX::Region3* RBX::Lua::Bridge<RBX::Region3,true>::pushNewObject<RBX::Region3>(lua_State *,RBX::Region3)")]
-pub fn stub_0x26e870() -> ! {
-    todo!("0x26e870 __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13pushNewObjectIS2_EEPS2_P9lua_StateT_")
+pub fn stub_0x26e870(state: &mut BridgeState, value: Region3) -> i32 {
+    // IDA 0x26e870: `Bridge<Region3>::pushNewObject` — same shape as
+    // 0x26e1d8.
+    state.stack.push(BridgeVal::Region3(value));
+    state.gettop()
 }
 
 // 0x26e9c0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: _DWORD *__fastcall(int, int)
 #[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<G3D::Vector2int16>(lua_State *,G3D::Vector2int16)")]
-pub fn stub_0x26e9c0() -> ! {
-    todo!("0x26e9c0 __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0x26e9c0(state: &mut BridgeState, value: Vector2int16) -> i32 {
+    // IDA 0x26e9c0: `Bridge<Vector2int16>::pushNewObject` — same shape as
+    // 0x26e1d8.
+    state.push_vec2i16(value);
+    state.gettop()
 }
 
 // 0x26eaf0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
 // type: int __fastcall(int, int, __int16)
 #[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<G3D::Vector3int16>(lua_State *,G3D::Vector3int16)")]
-pub fn stub_0x26eaf0() -> ! {
-    todo!("0x26eaf0 __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0x26eaf0(state: &mut BridgeState, value: Vector3int16) -> i32 {
+    // IDA 0x26eaf0: `Bridge<Vector3int16>::pushNewObject` — same shape as
+    // 0x26e1d8.
+    state.stack.push(BridgeVal::Vec3i16(value));
+    state.gettop()
 }
 
 // 0x26ef04 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
 // type: int __fastcall(char ****, char ****, int)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,lua_State *)")]
-pub fn stub_0x26ef04() -> ! {
-    todo!("0x26ef04 __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State")
+pub fn stub_0x26ef04(state: &mut BridgeState, items: &[u64]) -> i32 {
+    // IDA 0x26ef04: `pushArray` creates a sized table (0x26ef46) and pushes
+    // each shared Instance (ownership folds into `Arc`). Answers 1.
+    state.push_table(items.iter().map(|&h| BridgeVal::Instance(h)).collect());
+    1
 }
 
 // 0x26f280 — __ZN3rbx8any_castIRKN3RBX3Lua15WeakFunctionRefENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: _DWORD **__fastcall(_DWORD **)
 #[doc(alias = "RBX::Lua::WeakFunctionRef const& rbx::any_cast<RBX::Lua::WeakFunctionRef const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x26f280() -> ! {
-    todo!("0x26f280 __ZN3rbx8any_castIRKN3RBX3Lua15WeakFunctionRefENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x26f280(any: &PlacementAny) -> u64 {
+    // IDA 0x26f280: `any_cast<WeakFunctionRef>` answers the held ref when
+    // the typeinfo matches (0x26f2de); otherwise it throws
+    // `bad_placement_any_cast` (0x26f336).
+    match &any.content {
+        PlacedContent::WeakFunc(id) => *id,
+        _ => panic!("rbx::bad_placement_any_cast"),
+    }
 }
 
 // 0x26faf8 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_3Lua15WeakFunctionRefEEERS3_RKT_
 // type: int **__fastcall(int **, const RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Lua::WeakFunctionRef>(RBX::Lua::WeakFunctionRef const&)")]
-pub fn stub_0x26faf8() -> ! {
-    todo!("0x26faf8 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_3Lua15WeakFunctionRefEEERS3_RKT_")
+pub fn stub_0x26faf8(any: &mut PlacementAny, id: u64) {
+    // IDA 0x26faf8: `placement_any::operator=` inits the singleton holder
+    // (0x26fb04, folds into the discriminant); same-type assignment copies
+    // (0x26fb30), otherwise the old content is destroyed (0x26fb24) and the
+    // new ref is constructed (0x26fb3c..0x26fb40).
+    any.content = PlacedContent::WeakFunc(id);
 }
 
 // 0x26fb50 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE14construct_funcEPKcPc
 // type: const RBX::Lua::WeakFunctionRef *__fastcall(const RBX::Lua::WeakFunctionRef *result, RBX::Lua::WeakFunctionRef *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::construct_func(char const*,char *)")]
-pub fn stub_0x26fb50() -> ! {
-    todo!("0x26fb50 __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE14construct_funcEPKcPc")
+pub fn stub_0x26fb50(into: Option<&mut u64>, value: u64) -> u64 {
+    // IDA 0x26fb50: `construct_func` copy-constructs into the slot
+    // (0x26fb5c) or answers the value when null (0x26fb56).
+    if let Some(slot) = into {
+        *slot = value;
+    }
+    value
 }
 
 // 0x26fb60 — __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE13destruct_funcEPc
 // type: int __fastcall(int)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Lua::WeakFunctionRef>::destruct_func(char *)")]
-pub fn stub_0x26fb60() -> ! {
-    todo!("0x26fb60 __ZN3rbx14implementation12typed_holderIN3RBX3Lua15WeakFunctionRefEE13destruct_funcEPc")
+pub fn stub_0x26fb60(any: &mut PlacementAny) {
+    // IDA 0x26fb60: `destruct_func` runs the holder dtor through the vtable
+    // (folds into resetting to empty).
+    any.content = PlacedContent::Empty;
 }
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::safe_lua_tostring(lua_State *,int)")]
-pub fn stub_0x270210() -> ! {
-    todo!("0x270210 __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei")
+pub fn stub_0x270210(state: &BridgeState, idx: i32) -> Vec<u8> {
+    // IDA 0x270210: `safe_lua_tostring` — see `BridgeState::safe_string`.
+    state.safe_string(idx)
 }
 
 // 0x270230 — __ZN3RBX3Lua22throwable_lua_tostringEP9lua_Statei
 // type: const char *__fastcall(int, int)
 #[doc(alias = "RBX::Lua::throwable_lua_tostring(lua_State *,int)")]
-pub fn stub_0x270230() -> ! {
-    todo!("0x270230 __ZN3RBX3Lua22throwable_lua_tostringEP9lua_Statei")
+pub fn stub_0x270230(state: &BridgeState, idx: i32) -> Vec<u8> {
+    // IDA 0x270230: `throwable_lua_tostring` — see
+    // `BridgeState::throwable_string`.
+    state.throwable_string(idx)
 }
 
 // 0x270448 — __ZN3RBX3Lua11lua_tofloatEP9lua_Statei
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Lua::lua_tofloat(lua_State *,int)")]
-pub fn stub_0x270448() -> ! {
-    todo!("0x270448 __ZN3RBX3Lua11lua_tofloatEP9lua_Statei")
+pub fn stub_0x270448(value: f64) -> f32 {
+    // IDA 0x270448: `lua_tofloat` — see `BridgeState::to_float` (tonumber
+    // at 0x27044c folds into the input).
+    BridgeState::to_float(value)
 }
 
 // 0x2704e0 — __ZN3RBX3Lua12Color3Bridge9newColor3EP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::newColor3(lua_State *)")]
-pub fn stub_0x2704e0() -> ! {
-    todo!("0x2704e0 __ZN3RBX3Lua12Color3Bridge9newColor3EP9lua_State")
+pub fn stub_0x2704e0(state: &mut BridgeState, comps: &[f32]) -> i32 {
+    // IDA 0x2704e0: `newColor3` reads up to 3 components through
+    // `lua_tofloat` (0x27052a..0x270540), zero-pads the rest (0x270570),
+    // and pushes the object (0x270578), answering 1 (0x27058e).
+    let mut rgb = [0.0f32; 3];
+    for (i, c) in comps.iter().take(3).enumerate() {
+        rgb[i] = *c;
+    }
+    state.push_color3(Color3 { r: rgb[0], g: rgb[1], b: rgb[2] });
+    1
 }
 
 // 0x270594 — __ZN3RBX3Lua12Color3Bridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Color3Bridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x270594() -> ! {
-    todo!("0x270594 __ZN3RBX3Lua12Color3Bridge20registerClassLibraryEP9lua_State")
+pub fn stub_0x270594() -> ClassLibrary {
+    // IDA 0x270594: registers the Color3 library read-only (0x2705b2..
+    // 0x2705be).
+    ClassLibrary { name: "Color3", readonly: true }
 }
 
 // 0x2705d0 — __ZN3RBX3Lua12Color3Bridge10pushColor3EP9lua_StateRKN3G3D6Color3E
 // type: int __fastcall(int, _DWORD *)
 #[doc(alias = "RBX::Lua::Color3Bridge::pushColor3(lua_State *,G3D::Color3 const&)")]
-pub fn stub_0x2705d0() -> ! {
-    todo!("0x2705d0 __ZN3RBX3Lua12Color3Bridge10pushColor3EP9lua_StateRKN3G3D6Color3E")
+pub fn stub_0x2705d0(state: &mut BridgeState, color: Color3) -> i32 {
+    // IDA 0x2705d0: `pushColor3` copies the triple (0x2705d8..0x2705e0) and
+    // pushes the object (0x2705ea).
+    state.push_color3(color);
+    state.gettop()
 }
 
 // 0x2705ec — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexERKS3_PKcP9lua_State
 // type: int __fastcall(float *, char *__s1, int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_index(G3D::Color3 const&,char const*,lua_State *)")]
-pub fn stub_0x2705ec() -> ! {
-    todo!("0x2705ec __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexERKS3_PKcP9lua_State")
+pub fn stub_0x2705ec(color: &Color3, key: &str) -> f32 {
+    // IDA 0x2705ec: `Bridge<Color3>::on_index` answers r/g/b (0x27064c..
+    // 0x270680) and throws `"%s is not a valid member"` otherwise
+    // (0x2706c6..0x2706fe); the pushnumber folds into the return.
+    match key {
+        "r" => color.r,
+        "g" => color.g,
+        "b" => color.b,
+        _ => panic!("{key} is not a valid member"),
+    }
 }
 
 // 0x270724 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexERS3_PKcP9lua_State
 // type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(G3D::Color3&,char const*,lua_State *)")]
-pub fn stub_0x270724() -> ! {
-    todo!("0x270724 __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexERS3_PKcP9lua_State")
+pub fn stub_0x270724(key: &str) -> ! {
+    // IDA 0x270724: `Bridge<Color3>::on_newindex` always throws `"%s cannot
+    // be assigned to"` (0x270758..0x2707d0).
+    panic!("{key} cannot be assigned to")
 }
 
 // 0x2707dc — __ZN3RBX3Lua12RbxRayBridge9newRbxRayEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::newRbxRay(lua_State *)")]
-pub fn stub_0x2707dc() -> ! {
-    todo!("0x2707dc __ZN3RBX3Lua12RbxRayBridge9newRbxRayEP9lua_State")
+pub fn stub_0x2707dc(state: &mut BridgeState, parts: &[Vector3]) -> i32 {
+    // IDA 0x2707dc: `newRbxRay` clamps to 2 args (0x2707f8..0x2707fe),
+    // type-checks Vector3 userdata (0x270828/0x270846, folds into the typed
+    // slice), pushes the ray (0x27089a), and answers 1 (0x2708ae).
+    let zero = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
+    let mut it = parts.iter();
+    let origin = it.next().copied().unwrap_or(zero);
+    let direction = it.next().copied().unwrap_or(zero);
+    state.push_ray(RbxRay { origin, direction });
+    1
 }
 
 // 0x2708b0 — __ZN3RBX3Lua12RbxRayBridge20registerClassLibraryEP9lua_State
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::RbxRayBridge::registerClassLibrary(lua_State *)")]
-pub fn stub_0x2708b0() -> ! {
-    todo!("0x2708b0 __ZN3RBX3Lua12RbxRayBridge20registerClassLibraryEP9lua_State")
+pub fn stub_0x2708b0() -> ClassLibrary {
+    // IDA 0x2708b0: registers the RbxRay library read-only (0x2708ce..
+    // 0x2708da).
+    ClassLibrary { name: "RbxRay", readonly: true }
 }
 
 // 0x2708ec — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexERKS2_PKcP9lua_State
@@ -1274,5 +1481,145 @@ mod lua_getter_batch_tests {
         stub_0x26aef0();
         stub_0x26aef8();
         stub_0x26aff4();
+    }
+}
+
+#[cfg(test)]
+mod lua_bridge_batch_tests {
+    use super::*;
+
+    fn args_with(stack: Vec<BridgeVal>) -> LuaArguments {
+        let mut args = LuaArguments::new(0);
+        for v in stack {
+            args.l.stack.push(v);
+        }
+        args
+    }
+
+    #[test]
+    fn size_and_long() {
+        let args = args_with(vec![BridgeVal::Num(1.0), BridgeVal::Num(2.0)]);
+        assert_eq!(stub_0x26dc28(&args), 1);
+        assert_eq!(LuaArguments::new(0).size(), -1);
+        let args = args_with(vec![BridgeVal::Num(2.5), BridgeVal::Str(b"x".to_vec())]);
+        assert_eq!(stub_0x26dca8(&args, 1), Some(2));
+        assert_eq!(stub_0x26dca8(&args, 2), None);
+        assert_eq!(stub_0x26dca8(&args, 3), None);
+    }
+
+    #[test]
+    fn pusher_and_array() {
+        let mut state = BridgeState::new();
+        assert_eq!(stub_0x26dce4(&mut state, 77), 1);
+        assert_eq!(stub_0x26df08(&mut state, Some(&[1, 2])), 1);
+        assert_eq!(stub_0x26df08(&mut state, None), 1);
+        assert_eq!(stub_0x26ef04(&mut state, &[3]), 1);
+        assert_eq!(state.gettop(), 4);
+        match &state.stack[1] {
+            BridgeVal::Table(items) => assert_eq!(items.len(), 2),
+            other => panic!("expected table, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn push_new_objects() {
+        let mut state = BridgeState::new();
+        assert_eq!(stub_0x26e1d8(&mut state, [1, 2, 3, 4, 5]), 1);
+        assert_eq!(stub_0x26e408(&mut state, 9), 2);
+        let r = Region3int16 {
+            min: Vector3int16 { x: 0, y: 0, z: 0 },
+            max: Vector3int16 { x: 1, y: 1, z: 1 },
+        };
+        assert_eq!(stub_0x26e738(&mut state, r), 3);
+        let v2 = Vector2int16 { x: 4, y: 5 };
+        assert_eq!(stub_0x26e9c0(&mut state, v2), 4);
+        assert_eq!(state.gettop(), 4);
+        match &state.stack[0] {
+            BridgeVal::InputObject(words) => assert_eq!(*words, [1, 2, 3, 4, 5]),
+            other => panic!("expected input object, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn placement_any_lifecycle() {
+        let mut any = PlacementAny::default();
+        stub_0x26faf8(&mut any, 1234);
+        assert_eq!(stub_0x26f280(&any), 1234);
+        let mut slot = 0u64;
+        assert_eq!(stub_0x26fb50(Some(&mut slot), 99), 99);
+        assert_eq!(slot, 99);
+        assert_eq!(stub_0x26fb50(None, 7), 7);
+        stub_0x26fb60(&mut any);
+        assert_eq!(any.content, PlacedContent::Empty);
+    }
+
+    #[test]
+    #[should_panic(expected = "bad_placement_any_cast")]
+    fn any_cast_throws_on_mismatch() {
+        let any = PlacementAny::default();
+        stub_0x26f280(&any);
+    }
+
+    #[test]
+    fn tostring_and_float() {
+        let state = BridgeState::new();
+        let mut state = state;
+        state.push_str(b"abc");
+        state.push_num(2.5);
+        state.push_bool(true);
+        assert_eq!(stub_0x270210(&state, 1), b"abc");
+        assert_eq!(stub_0x270210(&state, 2), b"2.5");
+        assert_eq!(stub_0x270210(&state, 3), b"");
+        assert_eq!(stub_0x270230(&state, 1), b"abc");
+        assert_eq!(stub_0x270230(&state, 2), b"2.5");
+        assert_eq!(stub_0x270448(2.5), 2.5f32);
+        assert_eq!(stub_0x270448(f64::INFINITY), f32::INFINITY);
+        assert_eq!(stub_0x270448(f64::NEG_INFINITY), f32::NEG_INFINITY);
+        assert_eq!(stub_0x270448(1e40), f32::MAX);
+        assert_eq!(stub_0x270448(-1e40), f32::MIN);
+    }
+
+    #[test]
+    #[should_panic(expected = "String expected")]
+    fn throwable_tostring_throws() {
+        let mut state = BridgeState::new();
+        state.push_bool(false);
+        stub_0x270230(&state, 1);
+    }
+
+    #[test]
+    fn color3_and_ray() {
+        let mut state = BridgeState::new();
+        assert_eq!(stub_0x2704e0(&mut state, &[1.0, 0.5]), 1);
+        assert_eq!(stub_0x2705d0(&mut state, Color3 { r: 1.0, g: 0.5, b: 0.25 }), 2);
+        let c = Color3 { r: 1.0, g: 0.5, b: 0.25 };
+        assert_eq!(stub_0x2705ec(&c, "r"), 1.0);
+        assert_eq!(stub_0x2705ec(&c, "g"), 0.5);
+        assert_eq!(stub_0x2705ec(&c, "b"), 0.25);
+        assert_eq!(stub_0x270594(), ClassLibrary { name: "Color3", readonly: true });
+        let o = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
+        let d = Vector3 { x: 0.0, y: 0.0, z: 1.0 };
+        assert_eq!(stub_0x2707dc(&mut state, &[o, d]), 1);
+        assert_eq!(stub_0x2707dc(&mut state, &[]), 1);
+        assert_eq!(stub_0x2708b0(), ClassLibrary { name: "RbxRay", readonly: true });
+        match &state.stack[2] {
+            BridgeVal::Ray(ray) => {
+                assert_eq!(ray.origin, o);
+                assert_eq!(ray.direction, d);
+            }
+            other => panic!("expected ray, got {other:?}"),
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "not a valid member")]
+    fn color_index_throws() {
+        stub_0x2705ec(&Color3 { r: 0.0, g: 0.0, b: 0.0 }, "a");
+    }
+
+    #[test]
+    #[should_panic(expected = "cannot be assigned to")]
+    fn color_newindex_throws() {
+        stub_0x270724("r");
     }
 }
