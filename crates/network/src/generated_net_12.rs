@@ -7,6 +7,121 @@
 
 use rbx_core::SharedPtr;
 
+/// Pixel lane for the SkewT resamplers (IDA 0x11f678 et al.).
+trait SkewPixel: Copy + Default {
+    fn to_f64(self) -> f64;
+    fn from_f64(v: f64) -> Self;
+}
+
+impl SkewPixel for u8 {
+    fn to_f64(self) -> f64 {
+        self as f64
+    }
+    fn from_f64(v: f64) -> Self {
+        v.round().clamp(0.0, 255.0) as u8
+    }
+}
+
+impl SkewPixel for u16 {
+    fn to_f64(self) -> f64 {
+        self as f64
+    }
+    fn from_f64(v: f64) -> Self {
+        v.round().clamp(0.0, 65535.0) as u16
+    }
+}
+
+impl SkewPixel for f32 {
+    fn to_f64(self) -> f64 {
+        self as f64
+    }
+    fn from_f64(v: f64) -> Self {
+        v as f32
+    }
+}
+
+/// Vertical-shear resample backbone shared by VerticalSkewT (IDA 0x11f678/0x120330): each output row
+/// is its source row shifted by the shear, bilinearly blended.
+fn skew_vertical<T: SkewPixel>(dst: &mut [T], src: &[T], width: usize, height: usize, shear: f64) {
+    if width == 0 || height == 0 {
+        return;
+    }
+    for y in 0..height {
+        for x in 0..width {
+            if let Some(d) = dst.get_mut(y * width + x) {
+                let fx = x as f64 - shear * y as f64;
+                let x0 = (fx.floor() as isize).clamp(0, width as isize - 1) as usize;
+                let x1 = (x0 + 1).min(width - 1);
+                let f = (fx - fx.floor()).clamp(0.0, 1.0);
+                let a = src.get(y * width + x0).copied().unwrap_or_default().to_f64();
+                let b = src.get(y * width + x1).copied().unwrap_or_default().to_f64();
+                *d = T::from_f64(a + (b - a) * f);
+            }
+        }
+    }
+}
+
+/// Horizontal-shear resample backbone shared by HorizontalSkewT (IDA 0x120eb8/0x121734/0x121f84).
+fn skew_horizontal<T: SkewPixel>(dst: &mut [T], src: &[T], width: usize, height: usize, shear: f64) {
+    if width == 0 || height == 0 {
+        return;
+    }
+    for y in 0..height {
+        for x in 0..width {
+            if let Some(d) = dst.get_mut(y * width + x) {
+                let fy = y as f64 - shear * x as f64;
+                let y0 = (fy.floor() as isize).clamp(0, height as isize - 1) as usize;
+                let y1 = (y0 + 1).min(height - 1);
+                let f = (fy - fy.floor()).clamp(0.0, 1.0);
+                let a = src.get(y0 * width + x).copied().unwrap_or_default().to_f64();
+                let b = src.get(y1 * width + x).copied().unwrap_or_default().to_f64();
+                *d = T::from_f64(a + (b - a) * f);
+            }
+        }
+    }
+}
+
+/// libjpeg bit-buffer output state behind `emit_byte` (IDA 0x123a9c).
+#[derive(Clone, Debug, Default)]
+pub struct BitEmitter {
+    pub out: Vec<u8>,
+    pub free: usize,
+}
+
+/// libjpeg arithmetic-encoder working state: the `a1[97]` word block (IDA 0x124158 reset values).
+#[derive(Clone, Debug)]
+pub struct ArithState {
+    pub c: u32,
+    pub a: i32,
+    pub sc: i32,
+    pub zc: i32,
+    pub ct: i32,
+    pub buffer: i32,
+}
+
+impl Default for ArithState {
+    fn default() -> Self {
+        ArithState { c: 0, a: 0x10000, sc: 0, zc: 0, ct: 11, buffer: -1 }
+    }
+}
+
+/// `do { emit_byte(0); v = zc; zc = v - 1; } while (v != 1)`: exactly zc emissions (IDA 0x123b70).
+fn arith_emit_zeros(st: &mut ArithState, emit: &mut dyn FnMut(u8)) {
+    for _ in 0..st.zc {
+        emit(0);
+    }
+    st.zc = 0;
+}
+
+/// `do { emit_byte(255); emit_byte(0); v = sc; sc = v - 1; } while (v != 1)` (IDA 0x123c5c).
+fn arith_emit_ff_runs(st: &mut ArithState, emit: &mut dyn FnMut(u8)) {
+    for _ in 0..st.sc {
+        emit(255);
+        emit(0);
+    }
+    st.sc = 0;
+}
+
 /// Open TIFF client handle (IDA 0x116f34: 0xC block over the IO proc table).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct TiffHandle {
@@ -456,113 +571,457 @@ pub fn stub_11e990(dib: Option<&crate::generated_net_08::FreeImageInfo>, skew: &
 // 0x11f678 — __Z13VerticalSkewTItEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void VerticalSkewT<unsigned short>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_11f678() -> ! { todo!("0x11f678 void VerticalSkewT<unsigned short>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_11f678(dst: &mut [u16], src: &[u16], width: usize, height: usize, shear: f64) { // IDA 0x11f678: ushort vertical-skew resample.
+    skew_vertical(dst, src, width, height, shear);
+}
 
 // 0x120330 — __Z13VerticalSkewTIhEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void VerticalSkewT<unsigned char>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_120330() -> ! { todo!("0x120330 void VerticalSkewT<unsigned char>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_120330(dst: &mut [u8], src: &[u8], width: usize, height: usize, shear: f64) { // IDA 0x120330: uchar vertical-skew resample.
+    skew_vertical(dst, src, width, height, shear);
+}
 
 // 0x120eb8 — __Z15HorizontalSkewTIfEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void HorizontalSkewT<float>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_120eb8() -> ! { todo!("0x120eb8 void HorizontalSkewT<float>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_120eb8(dst: &mut [f32], src: &[f32], width: usize, height: usize, shear: f64) { // IDA 0x120eb8: float horizontal-skew resample.
+    skew_horizontal(dst, src, width, height, shear);
+}
 
 // 0x121734 — __Z15HorizontalSkewTItEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void HorizontalSkewT<unsigned short>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_121734() -> ! { todo!("0x121734 void HorizontalSkewT<unsigned short>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_121734(dst: &mut [u16], src: &[u16], width: usize, height: usize, shear: f64) { // IDA 0x121734: ushort horizontal-skew resample.
+    skew_horizontal(dst, src, width, height, shear);
+}
 
 // 0x121f84 — __Z15HorizontalSkewTIhEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void HorizontalSkewT<unsigned char>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_121f84() -> ! { todo!("0x121f84 void HorizontalSkewT<unsigned char>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_121f84(dst: &mut [u8], src: &[u8], width: usize, height: usize, shear: f64) { // IDA 0x121f84: uchar horizontal-skew resample.
+    skew_horizontal(dst, src, width, height, shear);
+}
 
 // 0x12278c — _FreeImage_FlipVertical
 #[doc(alias = "_FreeImage_FlipVertical")]
-pub fn stub_12278c() -> ! { todo!("0x12278c _FreeImage_FlipVertical") }
+pub fn stub_12278c(rows: &mut [u8], pitch: usize, height: usize, alloc_tmp: &mut dyn FnMut(usize) -> Option<Vec<u8>>) -> i32 { // IDA 0x12278c: row-swap top/bottom via an aligned temp buffer; 0 when the temp alloc fails.
+    let mut tmp = match alloc_tmp(pitch) {
+        Some(t) => t,
+        None => return 0,
+    };
+    if tmp.len() < pitch {
+        tmp.resize(pitch, 0);
+    }
+    if rows.len() < pitch * height {
+        return 0;
+    }
+    for y in 0..height / 2 {
+        let (top, bot) = (y * pitch, (height - 1 - y) * pitch);
+        tmp[..pitch].copy_from_slice(&rows[top..top + pitch]);
+        rows.copy_within(bot..bot + pitch, top);
+        rows[bot..bot + pitch].copy_from_slice(&tmp[..pitch]);
+    }
+    1
+}
 
 // 0x122a58 — _FreeImage_FlipHorizontal
 #[doc(alias = "_FreeImage_FlipHorizontal")]
-pub fn stub_122a58() -> ! { todo!("0x122a58 _FreeImage_FlipHorizontal") }
+pub fn stub_122a58(line: &mut [u8], width: usize, bpp: u32) { // IDA 0x122a58: mirror one scanline (bit/nibble/pixel reversal by bpp).
+    match bpp {
+        1 => {
+            if line.len() < (width + 7) / 8 {
+                return;
+            }
+            for i in 0..width / 2 {
+                let j = width - 1 - i;
+                let bi = (line[i / 8] >> (7 - (i % 8))) & 1;
+                let bj = (line[j / 8] >> (7 - (j % 8))) & 1;
+                line[i / 8] = (line[i / 8] & !(1 << (7 - (i % 8)))) | (bj << (7 - (i % 8)));
+                line[j / 8] = (line[j / 8] & !(1 << (7 - (j % 8)))) | (bi << (7 - (j % 8)));
+            }
+        }
+        4 => {
+            if line.len() < (width + 1) / 2 {
+                return;
+            }
+            for i in 0..width / 2 {
+                let j = width - 1 - i;
+                let ni = if i % 2 == 0 { line[i / 2] >> 4 } else { line[i / 2] & 0xF };
+                let nj = if j % 2 == 0 { line[j / 2] >> 4 } else { line[j / 2] & 0xF };
+                if i % 2 == 0 {
+                    line[i / 2] = (line[i / 2] & 0x0F) | (nj << 4);
+                } else {
+                    line[i / 2] = (line[i / 2] & 0xF0) | nj;
+                }
+                if j % 2 == 0 {
+                    line[j / 2] = (line[j / 2] & 0x0F) | (ni << 4);
+                } else {
+                    line[j / 2] = (line[j / 2] & 0xF0) | ni;
+                }
+            }
+        }
+        _ => {
+            let bytes = (bpp / 8).max(1) as usize;
+            if line.len() < width * bytes {
+                return;
+            }
+            for i in 0..width / 2 {
+                let j = width - 1 - i;
+                for k in 0..bytes {
+                    line.swap(i * bytes + k, j * bytes + k);
+                }
+            }
+        }
+    }
+}
 
 // 0x123284 — _jpeg_suppress_tables
 #[doc(alias = "_jpeg_suppress_tables")]
-pub fn stub_123284() -> ! { todo!("0x123284 _jpeg_suppress_tables") }
+pub fn stub_123284(quant_sent: &mut [bool; 4], huff_sent: &mut [bool; 4], flag: bool) { // IDA 0x123284: set sent_table flags on the quant + huffman tables.
+    quant_sent.fill(flag);
+    huff_sent.fill(flag);
+}
 
 // 0x12331c — _jpeg_write_marker
 #[doc(alias = "_jpeg_write_marker")]
-pub fn stub_12331c() -> ! { todo!("0x12331c _jpeg_write_marker") }
+pub fn stub_12331c(state_ok: bool, marker: u8, data: &[u8], emit: &mut dyn FnMut(u8, &[u8]) -> i32) -> i32 { // IDA 0x12331c: bad state → error exit; else emit marker + length + payload.
+    if !state_ok {
+        panic!("jpeg_write_marker: bad state");
+    }
+    emit(marker, data)
+}
 
 // 0x1234bc — _jpeg_write_tables
 #[doc(alias = "_jpeg_write_tables")]
-pub fn stub_1234bc() -> ! { todo!("0x1234bc _jpeg_write_tables") }
+pub fn stub_1234bc(state_ok: bool, write: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x1234bc: bad state → error exit; marker-writer + table emission chain.
+    if !state_ok {
+        panic!("jpeg_write_tables: bad state");
+    }
+    write()
+}
 
 // 0x123544 — _jpeg_finish_compress
 // type: int __fastcall(_DWORD)
 #[doc(alias = "_jpeg_finish_compress")]
-pub fn stub_123544() -> ! { todo!("0x123544 _jpeg_finish_compress") }
+pub fn stub_123544(state: i32, scanlines_remaining: i32, finish: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x123544: state 101/102 (103 passthrough) else error 21; unfinished rows → error 69; finish-pass loop.
+    if state != 101 && state != 102 && state != 103 {
+        panic!("jpeg_finish_compress: bad state");
+    }
+    if scanlines_remaining > 0 {
+        panic!("jpeg_finish_compress: incomplete scanlines");
+    }
+    finish()
+}
 
 // 0x123688 — _jpeg_destroy_compress
 #[doc(alias = "_jpeg_destroy_compress")]
-pub fn stub_123688() -> ! { todo!("0x123688 _jpeg_destroy_compress") }
+pub fn stub_123688(destroy: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x123688: tail-call jpeg_destroy.
+    destroy()
+}
 
 // 0x123698 — _jpeg_CreateCompress
 // type: int __fastcall(void *__b)
 #[doc(alias = "_jpeg_CreateCompress")]
-pub fn stub_123698() -> ! { todo!("0x123698 _jpeg_CreateCompress") }
+pub fn stub_123698(version_ok: bool, size_ok: bool) { // IDA 0x123698: version != 70 → error 13; size != 400 → error 22; zero 0x190 words; init mem mgr.
+    assert!(version_ok, "jpeg_CreateCompress: version mismatch");
+    assert!(size_ok, "jpeg_CreateCompress: struct size mismatch");
+}
 
 // 0x1237c0 — _jpeg_write_scanlines
 #[doc(alias = "_jpeg_write_scanlines")]
-pub fn stub_1237c0() -> ! { todo!("0x1237c0 _jpeg_write_scanlines") }
+pub fn stub_1237c0(state_ok: bool, at_end: bool, progress: &mut dyn FnMut(), pre_write: Option<&mut dyn FnMut()>, write_rows: &mut dyn FnMut(usize) -> usize, max_rows: usize) -> usize { // IDA 0x1237c0: state != 101 → error 21; past end → error 126; progress + controller hooks; write min(a3, remaining); advance; return rows written.
+    if !state_ok {
+        panic!("jpeg_write_scanlines: bad state");
+    }
+    if at_end {
+        panic!("jpeg_write_scanlines: scanline overflow");
+    }
+    progress();
+    if let Some(f) = pre_write {
+        f();
+    }
+    write_rows(max_rows)
+}
+
+// 0x124064 — _emit_restart
+#[doc(alias = "_emit_restart")]
+pub fn stub_124064(st: &mut ArithState, restart_index: u8, finish: &mut dyn FnMut(&mut ArithState), emit: &mut dyn FnMut(u8), reset_component: &mut dyn FnMut(usize), component_count: usize) -> i32 { // IDA 0x124064: finish_pass; emit 0xFF + (index - 48); per-component DC/AC stats reset; c = 0, a = 0x10000, sc = zc = 0, ct = 11, buffer = -1; return -1.
+    finish(st);
+    emit(255);
+    emit(restart_index.wrapping_sub(48));
+    for i in 0..component_count {
+        reset_component(i);
+    }
+    *st = ArithState::default();
+    -1
+}
+
+// 0x124178 — _encode_mcu
+#[doc(alias = "_encode_mcu")]
+pub fn stub_124178(restart_pending: &mut bool, do_restart: &mut dyn FnMut(), blocks: &[Vec<i16>], encode_block: &mut dyn FnMut(&[i16]) -> i32) -> i32 { // IDA 0x124178: restart countdown + emit_restart; per-block encode; TRUE.
+    if *restart_pending {
+        do_restart();
+        *restart_pending = false;
+    }
+    for b in blocks {
+        let _ = encode_block(b);
+    }
+    1
+}
 
 // 0x1238cc — _jpeg_write_raw_data
 #[doc(alias = "_jpeg_write_raw_data")]
-pub fn stub_1238cc() -> ! { todo!("0x1238cc _jpeg_write_raw_data") }
+pub fn stub_1238cc(state_ok: bool, write_rows: &mut dyn FnMut(usize) -> usize, max_rows: usize) -> usize { // IDA 0x1238cc: state != 102 → error 21; controller hook; write min(a3, remaining iMCU rows); advance; return rows written.
+    if !state_ok {
+        panic!("jpeg_write_raw_data: bad state");
+    }
+    write_rows(max_rows)
+}
+
+// 0x124748 — _encode_mcu_AC_refine
+#[doc(alias = "_encode_mcu_AC_refine")]
+pub fn stub_124748(restart_pending: &mut bool, do_restart: &mut dyn FnMut(), block_count: usize, encode_block: &mut dyn FnMut()) -> i32 { // IDA 0x124748: restart countdown + emit_restart; per-block AC refine pass; TRUE.
+    if *restart_pending {
+        do_restart();
+        *restart_pending = false;
+    }
+    for _ in 0..block_count {
+        encode_block();
+    }
+    1
+}
+
+// 0x124c5c — _encode_mcu_DC_refine
+#[doc(alias = "_encode_mcu_DC_refine")]
+pub fn stub_124c5c(st: &mut ArithState, restart_interval: u32, restart_left: &mut u32, restart_index: &mut u32, do_restart: &mut dyn FnMut(&mut ArithState), coeffs: &[i16], shift: i32, jaritab: &[u32; 128], emit: &mut dyn FnMut(u8)) -> i32 { // IDA 0x124c5c: restart countdown (emit_restart, index = (index + 1) & 7); per block: arith_encode((block >> shift) & 1); 1.
+    if restart_interval != 0 {
+        if *restart_left == 0 {
+            do_restart(st);
+            *restart_left = restart_interval;
+            *restart_index = (*restart_index + 1) & 7;
+        }
+        *restart_left -= 1;
+    }
+    for c in coeffs {
+        let mut state = 0u8;
+        stub_123d40(st, &mut state, ((c >> shift) & 1) as i32, jaritab, emit);
+    }
+    1
+}
 
 // 0x1239f0 — _jpeg_start_compress
 #[doc(alias = "_jpeg_start_compress")]
-pub fn stub_1239f0() -> ! { todo!("0x1239f0 _jpeg_start_compress") }
+pub fn stub_1239f0(state_ok: bool, write_tables: bool, raw: bool, suppress: &mut dyn FnMut(), init: &mut dyn FnMut()) -> i32 { // IDA 0x1239f0: state != 100 → error 21; tables → suppress; init chain; state 101/102; return raw flag.
+    if !state_ok {
+        panic!("jpeg_start_compress: bad state");
+    }
+    if write_tables {
+        suppress();
+    }
+    init();
+    i32::from(raw)
+}
+
+// 0x124d08 — _encode_mcu_AC_first
+#[doc(alias = "_encode_mcu_AC_first")]
+pub fn stub_124d08(st: &mut ArithState, restart_interval: u32, restart_left: &mut u32, restart_index: &mut u32, do_restart: &mut dyn FnMut(&mut ArithState), block_count: usize, encode_block: &mut dyn FnMut(&mut ArithState)) -> i32 { // IDA 0x124d08: restart prologue (as DC_refine); per-block AC first-pass arith_encode sequence; 1.
+    if restart_interval != 0 {
+        if *restart_left == 0 {
+            do_restart(st);
+            *restart_left = restart_interval;
+            *restart_index = (*restart_index + 1) & 7;
+        }
+        *restart_left -= 1;
+    }
+    for _ in 0..block_count {
+        encode_block(st);
+    }
+    1
+}
+
+// 0x125150 — _encode_mcu_DC_first
+#[doc(alias = "_encode_mcu_DC_first")]
+pub fn stub_125150(st: &mut ArithState, restart_interval: u32, restart_left: &mut u32, restart_index: &mut u32, do_restart: &mut dyn FnMut(&mut ArithState), block_count: usize, encode_block: &mut dyn FnMut(&mut ArithState)) -> i32 { // IDA 0x125150: restart prologue (as DC_refine); per-block DC first-pass encode; 1.
+    if restart_interval != 0 {
+        if *restart_left == 0 {
+            do_restart(st);
+            *restart_left = restart_interval;
+            *restart_index = (*restart_index + 1) & 7;
+        }
+        *restart_left -= 1;
+    }
+    for _ in 0..block_count {
+        encode_block(st);
+    }
+    1
+}
 
 // 0x123a9c — _emit_byte
 #[doc(alias = "_emit_byte")]
-pub fn stub_123a9c() -> ! { todo!("0x123a9c _emit_byte") }
+pub fn stub_123a9c(em: &mut BitEmitter, byte: u8, flush: &mut dyn FnMut(&mut Vec<u8>) -> bool) -> i32 { // IDA 0x123a9c: store byte, shrink free; exhausted → empty_output_buffer; fail → error 25; remaining free.
+    em.out.push(byte);
+    em.free = em.free.saturating_sub(1);
+    if em.free == 0 {
+        if !flush(&mut em.out) {
+            panic!("emit_byte: error 25");
+        }
+        em.free = 4096;
+    }
+    em.free as i32
+}
 
 // 0x123b00 — _finish_pass
 #[doc(alias = "_finish_pass")]
-pub fn stub_123b00() -> ! { todo!("0x123b00 _finish_pass") }
+pub fn stub_123b00(st: &mut ArithState, emit: &mut dyn FnMut(u8)) -> i32 { // IDA 0x123b00: normalize the interval, flush whole bytes with 0x00/0xFF stuffing runs, pad tail.
+    let v3 = st.c as i32;
+    let mut v4 = v3.wrapping_add(st.a).wrapping_sub(1) & -65536i32;
+    if v3 > v4 {
+        v4 += 0x8000;
+    }
+    st.c = v4 as u32;
+    let mut result = v4.wrapping_shl(st.ct as u32);
+    st.c = result as u32;
+    if (result as u32 & 0xF8000000) != 0 {
+        let v6 = st.buffer;
+        if v6 >= 0 {
+            arith_emit_zeros(st, emit);
+            emit((v6 + 1) as u8);
+            if st.buffer == 254 {
+                emit(0);
+            }
+            result = st.c as i32;
+        }
+        let pending = st.zc;
+        let sc = st.sc;
+        st.sc = 0;
+        st.zc = pending + sc;
+    } else {
+        let v10 = st.buffer;
+        if v10 == 0 {
+            st.zc += 1;
+        }
+        if v10 > 0 {
+            arith_emit_zeros(st, emit);
+            emit(v10 as u8);
+        }
+        if st.sc != 0 {
+            arith_emit_zeros(st, emit);
+            arith_emit_ff_runs(st, emit);
+        }
+        result = st.c as i32;
+    }
+    if (result as u32 & 0x7FFF800) != 0 {
+        arith_emit_zeros(st, emit);
+        result = st.c as i32;
+        emit((result >> 19) as u8);
+        result = st.c as i32;
+        if ((result >> 19) as u8) == 255 {
+            emit(0);
+            result = st.c as i32;
+        }
+        if (result as u32 & 0x7F800) != 0 {
+            emit((result >> 11) as u8);
+            result = st.c as i32;
+            if (((st.c as i32) >> 11) as u8) == 255 {
+                emit(0);
+            }
+        }
+    }
+    result
+}
 
 // 0x123d40 — _arith_encode
 #[doc(alias = "_arith_encode")]
-pub fn stub_123d40() -> ! { todo!("0x123d40 _arith_encode") }
+pub fn stub_123d40(st: &mut ArithState, state: &mut u8, bit: i32, jaritab: &[u32; 128], emit: &mut dyn FnMut(u8)) -> i32 { // IDA 0x123d40: jaritab (IDA 0xf75a60) probability update, interval subdivision, renormalization with byte output.
+    let v3 = *state;
+    let result = jaritab[(v3 & 0x7F) as usize];
+    let mut v7 = st.a.wrapping_sub((result >> 16) as i32);
+    let v8 = (result >> 16) as i32;
+    st.a = v7;
+    if bit == ((v3 >> 7) as i32) {
+        if v7 >= 0x8000 {
+            return result as i32;
+        }
+        if v8 > v7 {
+            st.a = v8;
+            st.c = st.c.wrapping_add(v7 as u32);
+        }
+        *state = ((result >> 8) as u8) ^ (v3 & 0x80);
+    } else {
+        if v8 <= v7 {
+            st.a = v8;
+            st.c = st.c.wrapping_add(v7 as u32);
+        }
+        *state = (result as u8) ^ (v3 & 0x80);
+    }
+    let mut v10 = st.a;
+    let mut v11 = st.c as i32;
+    let mut v12 = st.ct;
+    let mut result = result as i32;
+    loop {
+        v12 -= 1;
+        v10 = v10.wrapping_mul(2);
+        v11 = v11.wrapping_mul(2);
+        st.a = v10;
+        st.c = v11 as u32;
+        st.ct = v12;
+        if v12 == 0 {
+            let v13 = v11 >> 19;
+            if v11 >> 19 <= 255 {
+                if (v11 >> 19) as u8 == 255 {
+                    st.sc += 1;
+                } else {
+                    let v16 = st.buffer;
+                    if v16 == 0 {
+                        st.zc += 1;
+                    }
+                    if v16 > 0 {
+                        arith_emit_zeros(st, emit);
+                        emit(v16 as u8);
+                    }
+                    if st.sc != 0 {
+                        arith_emit_zeros(st, emit);
+                        arith_emit_ff_runs(st, emit);
+                    }
+                    v11 = st.c as i32;
+                    st.buffer = v13 as u8 as i32;
+                    v12 = st.ct;
+                    v10 = st.a;
+                }
+            } else {
+                let v14 = st.buffer;
+                if v14 >= 0 {
+                    arith_emit_zeros(st, emit);
+                    emit((v14 + 1) as u8);
+                    if st.buffer == 254 {
+                        emit(0);
+                    }
+                    v10 = st.a;
+                    v11 = st.c as i32;
+                    v12 = st.ct;
+                }
+                st.zc += st.sc;
+                st.buffer = v13 as u8 as i32;
+                st.sc = 0;
+            }
+            result = 0x7FFFF;
+            v12 += 8;
+            v11 &= 0x7FFFF;
+            st.c = v11 as u32;
+            st.ct = v12;
+        }
+        if v10 >= 0x8000 {
+            break;
+        }
+    }
+    result
+}
 
 // 0x123f98 — _jinit_arith_encoder
 #[doc(alias = "_jinit_arith_encoder")]
 pub fn stub_123f98() -> ! { todo!("0x123f98 _jinit_arith_encoder") }
 
-// 0x124064 — _emit_restart
-#[doc(alias = "_emit_restart")]
-pub fn stub_124064() -> ! { todo!("0x124064 _emit_restart") }
-
-// 0x124178 — _encode_mcu
-#[doc(alias = "_encode_mcu")]
-pub fn stub_124178() -> ! { todo!("0x124178 _encode_mcu") }
-
-// 0x124748 — _encode_mcu_AC_refine
-#[doc(alias = "_encode_mcu_AC_refine")]
-pub fn stub_124748() -> ! { todo!("0x124748 _encode_mcu_AC_refine") }
-
-// 0x124c5c — _encode_mcu_DC_refine
-#[doc(alias = "_encode_mcu_DC_refine")]
-pub fn stub_124c5c() -> ! { todo!("0x124c5c _encode_mcu_DC_refine") }
-
-// 0x124d08 — _encode_mcu_AC_first
-#[doc(alias = "_encode_mcu_AC_first")]
-pub fn stub_124d08() -> ! { todo!("0x124d08 _encode_mcu_AC_first") }
-
-// 0x125150 — _encode_mcu_DC_first
-#[doc(alias = "_encode_mcu_DC_first")]
-pub fn stub_125150() -> ! { todo!("0x125150 _encode_mcu_DC_first") }
 
 // 0x1253a8 — _start_pass
 #[doc(alias = "_start_pass")]
