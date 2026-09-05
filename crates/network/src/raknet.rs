@@ -10344,152 +10344,196 @@ pub fn stub_983da0(update: &mut dyn FnMut()) {
 
 // 0x984144 — __ZThn32_N3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_984144() -> ! {
-    todo!("0x984144 non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_984144(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x984144: this-32 adjust then tail-call the StatsItem base dtor.
+ destroy_at(this - 32);
 }
 
 // 0x984150 — __ZThn32_N3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_984150() -> ! {
-    todo!("0x984150 non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_984150(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0x984150: this-32 adjust then the base dtor + delete.
+ destroy_at(this - 32);
+ free_at(this - 32);
 }
 
 // 0x9841f8 — __ZThn36_N3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_9841f8() -> ! {
-    todo!("0x9841f8 non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_9841f8(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x9841f8: this-36 adjust then tail-call the StatsItem base dtor.
+ destroy_at(this - 36);
 }
 
 // 0x984204 — __ZThn36_N3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
-pub fn stub_984204() -> ! {
-    todo!("0x984204 non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+pub fn stub_984204(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0x984204: this-36 adjust then the base dtor + delete.
+ destroy_at(this - 36);
+ free_at(this - 36);
 }
 
 // 0x985838 — __ZN3RBX7Network12RakStatsItemD0Ev
 #[doc(alias = "RBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_985838() -> ! {
-    todo!("0x985838 RBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_985838(destroy: &mut dyn FnMut()) {
+ // IDA 0x985838: RakStatsItem dtor (below truncation).
+ destroy();
 }
 
 // 0x985948 — __ZThn36_N3RBX7Network12RakStatsItemD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_985948() -> ! {
-    todo!("0x985948 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_985948(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0x985948: this-36 adjust; dtor body inline (below truncation).
+ destroy_at(this - 36);
 }
 
 // 0x9859c8 — __ZThn36_N3RBX7Network12RakStatsItemD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
-pub fn stub_9859c8() -> ! {
-    todo!("0x9859c8 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
+pub fn stub_9859c8(destroy: &mut dyn FnMut()) {
+ // IDA 0x9859c8: RakStatsItem dtor thunk (below truncation).
+ destroy();
 }
 
 // 0x986b18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_986b18() -> ! {
-    todo!("0x986b18 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_986b18() {
+ // IDA 0x986b18: empty sp_counted_impl_pd<RakStatsItem> D2 body.
 }
 
 // 0x986b20 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_986b20() -> ! {
-    todo!("0x986b20 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_986b20(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x986b20: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0x986b40 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
-pub fn stub_986b40() -> ! {
-    todo!("0x986b40 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")
+pub fn stub_986b40(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+ // IDA 0x986b40: weak_count::use_count gates the weak_this store (below truncation).
+ if use_count == 0 {
+ adopt();
+ } else {
+ share();
+ }
 }
 
 // 0x986dfc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_986dfc() -> ! {
-    todo!("0x986dfc boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_986dfc() {
+ // IDA 0x986dfc: empty sp_counted_impl_pd<ClientStatsItem> D2 body.
 }
 
 // 0x986e00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_986e00() -> ! {
-    todo!("0x986e00 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_986e00(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x986e00: D0: operator delete.
+ free(block);
 }
 
 // 0x986e0c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_986e0c() -> ! {
-    todo!("0x986e0c boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_986e0c(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+ // IDA 0x986e0c: predelete; null px -> result else virtual destroy.
+ let r = predelete(px);
+ if px != 0 {
+ destroy(px)
+ } else {
+ r
+ }
 }
 
 // 0x986e28 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_986e28() -> ! {
-    todo!("0x986e28 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_986e28(block: usize, type_name: &str) -> usize {
+ // IDA 0x986e28: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+ if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+ block + 16
+ } else {
+ 0
+ }
 }
 
 // 0x986e40 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_986e40() -> ! {
-    todo!("0x986e40 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_986e40(block: usize) -> usize {
+ // IDA 0x986e40: return block + 16.
+ block + 16
 }
 
 // 0x987068 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISC_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEbERSA_RKT_
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")]
-pub fn stub_987068() -> ! {
-    todo!("0x987068 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")
+pub fn stub_987068(map: &mut HashMap<u64, Vec<u8>>, key: u64, value: Vec<u8>) {
+ // IDA 0x987068: unordered_map emplace (below truncation).
+ map.entry(key).or_insert(value);
 }
 
 // 0x9872a8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_9872a8() -> ! {
-    todo!("0x9872a8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")
+pub fn stub_9872a8(map: &mut HashMap<u64, Vec<u8>>, additional: usize) {
+ // IDA 0x9872a8: reserve_for_insert (bucket growth).
+ map.reserve(additional);
 }
 
 // 0x987450 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")]
-pub fn stub_987450() -> ! {
-    todo!("0x987450 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")
+pub fn stub_987450(map: &mut HashMap<u64, Vec<u8>>, n: usize) -> usize {
+ // IDA 0x987450: create_buckets; returns the bucket count.
+ map.reserve(n);
+ n
 }
 
 // 0x987500 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEE11expireItemsEv
 #[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")]
-pub fn stub_987500() -> ! {
-    todo!("0x987500 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")
+pub fn stub_987500(expire: &mut dyn FnMut()) {
+ // IDA 0x987500: Base::expireItems walks the slave table (below truncation).
+ expire();
 }
 
 // 0x98769c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISC_EESM_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")]
-pub fn stub_98769c() -> ! {
-    todo!("0x98769c boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")
+pub fn stub_98769c(map: &mut HashMap<u64, Vec<u8>>, keys: &[u64]) {
+ // IDA 0x98769c: erase_nodes removes the listed nodes.
+ for k in keys {
+ map.remove(k);
+ }
 }
 
 // 0x987780 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItemD1Ev
 #[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")]
-pub fn stub_987780() -> ! {
-    todo!("0x987780 RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")
+pub fn stub_987780() {
+ // IDA 0x987780: empty ClientCapacityUpdateItem D2 body.
 }
 
 // 0x987784 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItemD0Ev
 #[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")]
-pub fn stub_987784() -> ! {
-    todo!("0x987784 RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")
+pub fn stub_987784(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x987784: D0: operator delete.
+ free(block);
 }
 
 // 0x9877b8 — __ZN3RBX7Network16ClientReplicator20RequestCharacterItemD1Ev
 #[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")]
-pub fn stub_9877b8() -> ! {
-    todo!("0x9877b8 RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")
+pub fn stub_9877b8() {
+ // IDA 0x9877b8: empty RequestCharacterItem D2 body.
 }
 
 // 0x9877bc — __ZN3RBX7Network16ClientReplicator20RequestCharacterItemD0Ev
 #[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")]
-pub fn stub_9877bc() -> ! {
-    todo!("0x9877bc RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")
+pub fn stub_9877bc(block: usize, free: &mut dyn FnMut(usize)) {
+ // IDA 0x9877bc: D0: operator delete.
+ free(block);
 }
 
 // 0x987c58 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEED2Ev
 #[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")]
-pub fn stub_987c58() -> ! {
-    todo!("0x987c58 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")
+pub fn stub_987c58(destroy: &mut dyn FnMut()) {
+ // IDA 0x987c58: Base dtor (mutex destroy, bucket frees; below truncation).
+ destroy();
 }
 
 // 0x987df0 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEEC2ENS_4Time8IntervalE
