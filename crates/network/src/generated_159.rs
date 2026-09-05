@@ -300,200 +300,266 @@ pub fn stub_3c680(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
 // demangled: boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")]
-pub fn stub_3c698() -> ! {
-    todo!("0x3c698 boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")
+pub fn stub_3c698(slot: &mut Option<usize>, value: Option<usize>, release: &mut dyn FnMut(usize) -> u32, add_ref: &mut dyn FnMut(usize) -> u32) -> u32 {
+    // IDA 0x3c698: release old (clear when last); store new; add_ref.
+    let mut result = 0;
+    if let Some(old) = *slot {
+        result = release(old);
+        if result == 1 {
+            result = 0;
+            *slot = None;
+        }
+    }
+    *slot = value;
+    if let Some(v) = value {
+        return add_ref(v);
+    }
+    result
 }
 
 // 0x3c6c8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")]
-pub fn stub_3c6c8() -> ! {
-    todo!("0x3c6c8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")
+pub fn stub_3c6c8(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3c6c8: clone_impl copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x3c920 — __ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")]
-pub fn stub_3c920() -> ! {
-    todo!("0x3c920 rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")
+pub fn stub_3c920(get: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3c920: thunk tail-calls safe_static_do_get_mutex.
+    get()
 }
 
 // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
 // demangled: boost::thread_resource_error::~thread_resource_error()
 // type: void __fastcall(boost::thread_resource_error *__hidden this)
 #[doc(alias = "boost::thread_resource_error::~thread_resource_error()")]
-pub fn stub_3c928() -> ! {
-    todo!("0x3c928 boost::thread_resource_error::~thread_resource_error()")
+pub fn stub_3c928(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c928: thread_resource_error D2 — vtable + member/base dtors.
+    destroy();
 }
 
 // 0x3c958 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev
 // demangled: boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 // type: int __fastcall(_DWORD)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
-pub fn stub_3c958() -> ! {
-    todo!("0x3c958 boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+pub fn stub_3c958(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c958: error_info_injector dtor — refcount release + member/base dtors.
+    destroy();
 }
 
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
 // demangled: non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 // type: 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
-pub fn stub_3c998() -> ! {
-    todo!("0x3c998 non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+pub fn stub_3c998(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c998: non-virtual thunk adjusts then runs the injector dtor.
+    destroy();
 }
 
 // 0x3c9e0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 // type: 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-pub fn stub_3c9e0() -> ! {
-    todo!("0x3c9e0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_3c9e0(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c9e0: virtual thunk adjusts then runs the clone_impl dtor.
+    destroy();
 }
 
 // 0x3ca28 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-pub fn stub_3ca28() -> ! {
-    todo!("0x3ca28 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_3ca28(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3ca28: clone_impl dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3ca70 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const
 // type: 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
-pub fn stub_3ca70() -> ! {
-    todo!("0x3ca70 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")
+pub fn stub_3ca70(alloc: &mut dyn FnMut(usize) -> usize, clone_into: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3ca70: clone — new(0x2C) + copy construct.
+    let p = alloc(0x2C);
+    clone_into(p);
+    p
 }
 
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
 // demangled: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 // type: 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-pub fn stub_3cb30() -> ! {
-    todo!("0x3cb30 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+pub fn stub_3cb30(destroy: &mut dyn FnMut()) {
+    // IDA 0x3cb30: non-virtual thunk (a1 - 20) runs the clone_impl dtor.
+    destroy();
 }
 
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const
 // type: 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
-pub fn stub_3cb38() -> ! {
-    todo!("0x3cb38 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")
+pub fn stub_3cb38(src: usize, alloc: &mut dyn FnMut(usize) -> usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3cb38: virtual thunk adjusts then clone_impl::clone.
+    let p = alloc(0x2C);
+    copy(p, src);
+    p
 }
 
 // 0x3cb48 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
 // demangled: boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 // type: 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
-pub fn stub_3cb48() -> ! {
-    todo!("0x3cb48 boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+pub fn stub_3cb48(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3cb48: error_info_injector D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3cb60 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS4_
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)
 // type: int __fastcall(int, int, int, int, std::exception *, std::string *, int, int, int, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")]
-pub fn stub_3cb60() -> ! {
-    todo!("0x3cb60 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::thread_resource_error> const&)")
+pub fn stub_3cb60(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3cb60: clone_impl copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
 // demangled: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
-pub fn stub_3cdb8() -> ! {
-    todo!("0x3cdb8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_3cdb8(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3cdb8: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
 // demangled: rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
-pub fn stub_3ce64() -> ! {
-    todo!("0x3ce64 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+pub fn stub_3ce64(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3ce64: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_3cf18() -> ! {
-    todo!("0x3cf18 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_3cf18(target: usize, invoke: &mut dyn FnMut(usize)) {
+    // IDA 0x3cf18: callable::call forwards to the bind_t at +16.
+    invoke(target);
 }
 
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 // demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)
 // type: 
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_3cf20() -> ! {
-    todo!("0x3cf20 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+pub fn stub_3cf20(target: usize, invoke: &mut dyn FnMut(usize)) {
+    // IDA 0x3cf20: non-virtual thunk adjusts to +12 then tail-calls.
+    invoke(target);
 }
 
 // 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
-pub fn stub_3cf28() -> ! {
-    todo!("0x3cf28 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+pub fn stub_3cf28(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x3cf28: mf0 dispatch (virtual adjust); obj->method().
+    call(obj, is_virtual);
 }
 
 // 0x3cf40 — __ZN3rbx7signals6signalIFvvEE6removeEPNS3_4slotE
 // demangled: rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")]
-pub fn stub_3cf40() -> ! {
-    todo!("0x3cf40 rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_3cf40(slots: &mut Vec<VoidSlot>, id: u64, expired: bool, remove: &mut dyn FnMut(u64)) {
+    // IDA 0x3cf40: ReleaseAssert(!expired); remove slot.
+    assert!(!expired, "!boost::intrusive_ptr_expired(item)");
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        remove(s.id);
+    }
 }
 
 // 0x3d030 — __ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv
 // demangled: rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)
 // type: 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_3d030() -> ! {
-    todo!("0x3d030 rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")
+pub fn stub_3d030(get: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3d030: thunk tail-calls safe_static_do_get_mutex.
+    get()
 }
 
 // 0x3d038 — __ZN3rbx7signals6signalIFvvEE4slotD1Ev
 // demangled: rbx::signals::signal<void ()(void)>::slot::~slot()
 // type: int __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::~slot()")]
-pub fn stub_3d038() -> ! {
-    todo!("0x3d038 rbx::signals::signal<void ()(void)>::slot::~slot()")
+pub fn stub_3d038(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d038: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x3d0e4 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED1Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_3d0e4() -> ! {
-    todo!("0x3d0e4 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_3d0e4(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d0e4: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
 // demangled: rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()
 // type: 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
-pub fn stub_3d190() -> ! {
-    todo!("0x3d190 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+pub fn stub_3d190(slots: &mut Vec<VoidSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x3d190: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x3d240 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EE6countsC2Ev
 // demangled: rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)
 // type: int __fastcall(_DWORD)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")]
-pub fn stub_3d240() -> ! {
-    todo!("0x3d240 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")
+pub fn stub_3d240(slot: &mut usize) {
+    // IDA 0x3d240: counts ctor — zero counts (alignment asserts elided).
+    *slot = 0;
 }
 
 // 0x3d2f4 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE6insertEPNS8_4slotE
 // demangled: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
-pub fn stub_3d2f4() -> ! {
-    todo!("0x3d2f4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot *)")
+pub fn stub_3d2f4(slots: &mut Vec<VoidSlot>, target: usize) -> u64 {
+    // IDA 0x3d2f4: signal<PropertyDescriptor>::insert — new islot; insert (below truncation).
+    let id = slots.len() as u64;
+    slots.push(VoidSlot { id, target, live: true });
+    id
 }
 
 // 0x3d508 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEEaSERKSC_
