@@ -7,6 +7,13 @@
 
 use rbx_core::SharedPtr;
 
+/// Open TIFF client handle (IDA 0x116f34: 0xC block over the IO proc table).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct TiffHandle {
+    pub writable: bool,
+    pub tiff: usize,
+}
+
 // 0x1142e4 — __ZL19SupportsExportDepthi_0
 // type: _DWORD __fastcall(int)
 #[doc(alias = "__ZL19SupportsExportDepthi_0")]
@@ -191,113 +198,260 @@ pub fn stub_116234(bpp: i32) -> bool { // IDA 0x116234: TIFF depths 4/1/24/8/32.
 
 // 0x116264 — __ZL18SupportsExportType15FREE_IMAGE_TYPE_1
 #[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_1")]
-pub fn stub_116264() -> ! { todo!("0x116264 __ZL18SupportsExportType15FREE_IMAGE_TYPE_1") }
+pub fn stub_116264(image_type: u32) -> bool { // IDA 0x116264: types 1..=11.
+    image_type.wrapping_sub(1) <= 0xA
+}
 
 // 0x116278 — __ZL19SupportsICCProfilesv_1
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL19SupportsICCProfilesv_1")]
-pub fn stub_116278() -> ! { todo!("0x116278 __ZL19SupportsICCProfilesv_1") }
+pub fn stub_116278() -> i32 { // IDA 0x116278: return 1.
+    1
+}
 
 // 0x116280 — __Z8InitTIFFP6Plugini
 #[doc(alias = "InitTIFF(Plugin *,int)")]
-pub fn stub_116280() -> ! { todo!("0x116280 InitTIFF(Plugin *,int)") }
+pub fn stub_116280(fif: i32, format_id: &mut i32) -> crate::generated_net_11::PluginNode { // IDA 0x116280: s_format_id = fif; install TIFF procs; null reserved slots.
+    *format_id = fif;
+    crate::generated_net_11::PluginNode { fif, format: "TIFF".to_owned(), procs: [0; 15] }
+}
 
 // 0x116378 — __ZL8ValidateP11FreeImageIOPv_1
 #[doc(alias = "__ZL8ValidateP11FreeImageIOPv_1")]
-pub fn stub_116378() -> ! { todo!("0x116378 __ZL8ValidateP11FreeImageIOPv_1") }
+pub fn stub_116378(read_four: &mut dyn FnMut() -> [u8; 4]) -> bool { // IDA 0x116378: read 4 bytes; match "II*" + nul or "MM" + nul + "*".
+    matches!(read_four(), [b'I', b'I', 0x2A, 0] | [b'M', b'M', 0, 0x2A])
+}
 
 // 0x116440 — __TIFFmemcmp
 #[doc(alias = "__TIFFmemcmp")]
-pub fn stub_116440() -> ! { todo!("0x116440 __TIFFmemcmp") }
+pub fn stub_116440(a: &[u8], b: &[u8], n: usize) -> i32 { // IDA 0x116440: return memcmp(a1, a2, a3) (sign).
+    a.iter().take(n).cmp(b.iter().take(n)) as i32
+}
 
 // 0x116450 — __TIFFmalloc
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__TIFFmalloc")]
-pub fn stub_116450() -> ! { todo!("0x116450 __TIFFmalloc") }
+pub fn stub_116450(size: usize) -> Vec<u8> { // IDA 0x116450: return malloc(size).
+    vec![0u8; size]
+}
 
 // 0x116460 — __TIFFfree
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__TIFFfree")]
-pub fn stub_116460() -> ! { todo!("0x116460 __TIFFfree") }
+pub fn stub_116460(block: Vec<u8>) { // IDA 0x116460: free(block) (drop).
+    drop(block);
+}
 
 // 0x116470 — __TIFFmemcpy
 // type: void *__fastcall(void *, const void *, size_t)
 #[doc(alias = "__TIFFmemcpy")]
-pub fn stub_116470() -> ! { todo!("0x116470 __TIFFmemcpy") }
+pub fn stub_116470(dst: &mut [u8], src: &[u8]) -> usize { // IDA 0x116470: memcpy(dst, src, n); return the byte count.
+    let n = dst.len().min(src.len());
+    dst[..n].copy_from_slice(&src[..n]);
+    n
+}
 
 // 0x116480 — __TIFFmemset
 #[doc(alias = "__TIFFmemset")]
-pub fn stub_116480() -> ! { todo!("0x116480 __TIFFmemset") }
+pub fn stub_116480(dst: &mut [u8], val: u8, n: usize) { // IDA 0x116480: memset(dst, val, n).
+    let n = n.min(dst.len());
+    dst[..n].fill(val);
+}
 
 // 0x116490 — __ZL11ReadPaletteP4tiffttP8FIBITMAP
 #[doc(alias = "ReadPalette(tiff *,unsigned short,unsigned short,FIBITMAP *)")]
-pub fn stub_116490() -> ! { todo!("0x116490 ReadPalette(tiff *,unsigned short,unsigned short,FIBITMAP *)") }
+pub fn stub_116490(colormap: &[[u16; 3]], palette: &mut [[u8; 4]]) -> i32 { // IDA 0x116490: expand the TIFF 16-bit colormap into palette entries (high bytes); entry count.
+    let n = colormap.len().min(palette.len());
+    for (dst, src) in palette.iter_mut().zip(colormap.iter()).take(n) {
+        *dst = [(src[0] >> 8) as u8, (src[1] >> 8) as u8, (src[2] >> 8) as u8, 255];
+    }
+    n as i32
+}
 
 // 0x116ba4 — __ZL15CreateImageType15FREE_IMAGE_TYPEiitt
 // type: int __fastcall(int, int, int, __int16, __int16)
 #[doc(alias = "CreateImageType(FREE_IMAGE_TYPE,int,int,unsigned short,unsigned short)")]
-pub fn stub_116ba4() -> ! { todo!("0x116ba4 CreateImageType(FREE_IMAGE_TYPE,int,int,unsigned short,unsigned short)") }
+pub fn stub_116ba4(photometric: i32, width: u32, height: u32, samples: u16, bits: u16, alloc: &mut dyn FnMut(u32, u32, u32) -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x116ba4: photometric 1: 16-bit gray → 16; RGB triple → 24; bits*samples 16/24/32 → matching; else null (truncated fallbacks).
+    let bpp = if photometric == 1 {
+        if bits == 16 {
+            if samples == 3 {
+                24
+            } else if samples == 1 {
+                16
+            } else {
+                return None;
+            }
+        } else {
+            match bits as u32 * samples as u32 {
+                16 | 24 | 32 => bits as u32 * samples as u32,
+                _ => return None,
+            }
+        }
+    } else {
+        return None;
+    };
+    alloc(width, height, bpp)
+}
 
 // 0x116cd0 — __ZL14ReadResolutionP4tiffP8FIBITMAP
 #[doc(alias = "ReadResolution(tiff *,FIBITMAP *)")]
-pub fn stub_116cd0() -> ! { todo!("0x116cd0 ReadResolution(tiff *,FIBITMAP *)") }
+pub fn stub_116cd0(unit: i32, xres: f64, yres: f64, set_dpm: &mut dyn FnMut(i32, i32)) { // IDA 0x116cd0: defaults unit 2, 300 dpi; inch → dpi * 100 / 2.54; cm (3) → res * 100 (+0.5 rounding).
+    match unit {
+        3 => {
+            set_dpm((xres * 100.0 + 0.5) as i32, (yres * 100.0 + 0.5) as i32);
+        }
+        2 => {
+            set_dpm((xres * 100.0 / 2.54 + 0.5) as i32, (yres * 100.0 / 2.54 + 0.5) as i32);
+        }
+        _ => {}
+    }
+}
 
 // 0x116e20 — __ZL9PageCountP11FreeImageIOPvS1_
 #[doc(alias = "PageCount(FreeImageIO *,void *,void *)")]
-pub fn stub_116e20() -> ! { todo!("0x116e20 PageCount(FreeImageIO *,void *,void *)") }
+pub fn stub_116e20(has_dir: bool, read_next: &mut dyn FnMut() -> bool) -> i32 { // IDA 0x116e20: null dir → 0; else 1 + each successful TIFFReadDirectory.
+    if !has_dir {
+        return 0;
+    }
+    let mut n = 1;
+    while read_next() {
+        n += 1;
+    }
+    n
+}
 
 // 0x116e58 — __ZL5CloseP11FreeImageIOPvS1_
 #[doc(alias = "Close(FreeImageIO *,void *,void *)")]
-pub fn stub_116e58() -> ! { todo!("0x116e58 Close(FreeImageIO *,void *,void *)") }
+pub fn stub_116e58(handle: Option<usize>, close_tiff: &mut dyn FnMut(usize)) { // IDA 0x116e58: null → no-op; TIFFClose(words+2); free the block.
+    if let Some(h) = handle {
+        close_tiff(h);
+    }
+}
 
 // 0x116e7c — __TIFFrealloc
 #[doc(alias = "__TIFFrealloc")]
-pub fn stub_116e7c() -> ! { todo!("0x116e7c __TIFFrealloc") }
+pub fn stub_116e7c(block: Vec<u8>, size: usize) -> Vec<u8> { // IDA 0x116e7c: return realloc(block, size).
+    let mut block = block;
+    block.resize(size, 0);
+    block
+}
 
 // 0x116e8c — __Z10TIFFFdOpenPvPKcS1_
 // type: _DWORD __fastcall(void *, const char *, const char *)
 #[doc(alias = "TIFFFdOpen(void *,char const*,char const*)")]
-pub fn stub_116e8c() -> ! { todo!("0x116e8c TIFFFdOpen(void *,char const*,char const*)") }
+pub fn stub_116e8c(open: &mut dyn FnMut() -> Option<usize>) -> Option<usize> { // IDA 0x116e8c: XTIFFInitialize; TIFFClientOpen with the tiff*Proc table; null on failure.
+    open()
+}
 
 // 0x116f34 — __ZL4OpenP11FreeImageIOPvi
 #[doc(alias = "Open(FreeImageIO *,void *,int)")]
-pub fn stub_116f34() -> ! { todo!("0x116f34 Open(FreeImageIO *,void *,int)") }
+pub fn stub_116f34(writable: bool, open_tiff: &mut dyn FnMut() -> Option<usize>, notify: &mut dyn FnMut(&str)) -> Option<TiffHandle> { // IDA 0x116f34: 0xC block; TIFFFdOpen fail → free + OutputMessage("Error while opening TIFF: data is invalid") + null.
+    let tiff = match open_tiff() {
+        Some(t) => t,
+        None => {
+            notify("Error while opening TIFF: data is invalid");
+            return None;
+        }
+    };
+    Some(TiffHandle { writable, tiff })
+}
 
 // 0x116fe8 — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__1
 #[doc(alias = "__ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__1")]
-pub fn stub_116fe8() -> ! { todo!("0x116fe8 __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__1") }
+pub fn stub_116fe8(dib: Option<&crate::generated_net_08::FreeImageInfo>, save: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> i32) -> i32 { // IDA 0x116fe8: null → 0; dispatch on color type/bpp to the TIFF tag/row path; result.
+    match dib {
+        Some(d) => save(d),
+        None => 0,
+    }
+}
 
 // 0x11855c — __ZL4LoadP11FreeImageIOPviiS1__1
 #[doc(alias = "__ZL4LoadP11FreeImageIOPviiS1__1")]
-pub fn stub_11855c() -> ! { todo!("0x11855c __ZL4LoadP11FreeImageIOPviiS1__1") }
+pub fn stub_11855c(load: &mut dyn FnMut() -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11855c: TIFF IFD/palette/scanline decode into a fresh dib; null on failure.
+    load()
+}
 
 // 0x11c0f8 — __Z24tiff_ConvertLineXYZToRGBPhS_di
 // type: float *__fastcall(float *result, float *, double, int)
 #[doc(alias = "tiff_ConvertLineXYZToRGB(unsigned char *,unsigned char *,double,int)")]
-pub fn stub_11c0f8() -> ! { todo!("0x11c0f8 tiff_ConvertLineXYZToRGB(unsigned char *,unsigned char *,double,int)") }
+pub fn stub_11c0f8(dst: &mut [f32], src: &[f32], count: usize) { // IDA 0x11c0f8: per-pixel XYZ→RGB rows (2.69/-1.276/-0.414, -1.022/1.978/0.044, 0.061/-0.224/1.163).
+    for i in 0..count {
+        let o = i * 3;
+        let x = src.get(o).copied().unwrap_or(0.0);
+        let y = src.get(o + 1).copied().unwrap_or(0.0);
+        let z = src.get(o + 2).copied().unwrap_or(0.0);
+        let d = i * 3;
+        if dst.len() >= d + 3 {
+            dst[d] = x * 2.69 + y * -1.276 + z * -0.414;
+            dst[d + 1] = x * -1.022 + y * 1.978 + z * 0.044;
+            dst[d + 2] = x * 0.061 + y * -0.224 + z * 1.163;
+        }
+    }
+}
 
 // 0x11c268 — __Z24tiff_ConvertLineRGBToXYZPhS_i
 // type: _DWORD __fastcall(unsigned __int8 *, unsigned __int8 *, int)
 #[doc(alias = "tiff_ConvertLineRGBToXYZ(unsigned char *,unsigned char *,int)")]
-pub fn stub_11c268() -> ! { todo!("0x11c268 tiff_ConvertLineRGBToXYZ(unsigned char *,unsigned char *,int)") }
+pub fn stub_11c268(dst: &mut [f32], src: &[f32], count: usize) { // IDA 0x11c268: per-pixel RGB→XYZ rows (0.497/0.339/0.164, 0.256/0.678/0.066, 0.023/0.113/0.864).
+    for i in 0..count {
+        let o = i * 3;
+        let r = src.get(o).copied().unwrap_or(0.0);
+        let g = src.get(o + 1).copied().unwrap_or(0.0);
+        let b = src.get(o + 2).copied().unwrap_or(0.0);
+        let d = i * 3;
+        if dst.len() >= d + 3 {
+            dst[d] = r * 0.497 + g * 0.339 + b * 0.164;
+            dst[d + 1] = r * 0.256 + g * 0.678 + b * 0.066;
+            dst[d + 2] = r * 0.023 + g * 0.113 + b * 0.864;
+        }
+    }
+}
 
 // 0x11c47c — __ZL14HorizontalSkewP8FIBITMAPS0_iidPKv
 // type: int __fastcall(int, int, int, int, char, int, void *)
 #[doc(alias = "HorizontalSkew(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_11c47c() -> ! { todo!("0x11c47c HorizontalSkew(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_11c47c(dib: Option<&crate::generated_net_08::FreeImageInfo>, skew_float: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> Option<crate::generated_net_08::FreeImageInfo>, skew_word: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> Option<crate::generated_net_08::FreeImageInfo>, skew_byte: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11c47c: type bit 0x1840 → SkewT<float>; 0x604 → SkewT<ushort>; bit 2 + 8..32 bpp → SkewT<uchar>; else null.
+    let dib = dib?;
+    let t = dib.image_type;
+    if t > 12 {
+        return None;
+    }
+    let bit = 1u32 << t;
+    if bit & 0x1840 != 0 {
+        return skew_float(dib);
+    }
+    if bit & 0x604 != 0 {
+        return skew_word(dib);
+    }
+    if bit & 2 != 0 && (8..=32).contains(&dib.bpp) {
+        return skew_byte(dib);
+    }
+    None
+}
 
 // 0x11c57c — __ZL9RotateAnyP8FIBITMAPdPKv
 #[doc(alias = "RotateAny(FIBITMAP *,double,void const*)")]
-pub fn stub_11c57c() -> ! { todo!("0x11c57c RotateAny(FIBITMAP *,double,void const*)") }
+pub fn stub_11c57c(dib: Option<&crate::generated_net_08::FreeImageInfo>, angle: f64, rotate: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo, f64) -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11c57c: null → null; arbitrary-angle affine resample into a fresh dib.
+    dib.and_then(|d| rotate(d, angle))
+}
 
 // 0x11e5e8 — _FreeImage_Rotate
 #[doc(alias = "_FreeImage_Rotate")]
-pub fn stub_11e5e8() -> ! { todo!("0x11e5e8 _FreeImage_Rotate") }
+pub fn stub_11e5e8(dib: Option<&crate::generated_net_08::FreeImageInfo>, angle: f64, clone: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> Option<crate::generated_net_08::FreeImageInfo>, rotate: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo, f64) -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11e5e8: null → null; 0.0 → Clone; else the affine path (palette/transparency carry-over).
+    let dib = dib?;
+    if angle == 0.0 {
+        clone(dib)
+    } else {
+        rotate(dib, angle)
+    }
+}
 
 // 0x11e990 — __Z13VerticalSkewTIfEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
 #[doc(alias = "void VerticalSkewT<float>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)")]
-pub fn stub_11e990() -> ! { todo!("0x11e990 void VerticalSkewT<float>(FIBITMAP *,FIBITMAP *,int,int,double,void const*)") }
+pub fn stub_11e990(dib: Option<&crate::generated_net_08::FreeImageInfo>, skew: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x11e990: float vertical-skew resample into a fresh dib; null on failure.
+    dib.and_then(|d| skew(d))
+}
 
 // 0x11f678 — __Z13VerticalSkewTItEvP8FIBITMAPS1_iidPKv
 // type: int __fastcall(int, int, int, int, double, void *__src)
