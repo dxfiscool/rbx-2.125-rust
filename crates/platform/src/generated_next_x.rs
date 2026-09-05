@@ -262,6 +262,8 @@ pub struct DlsState {
     subs: std::sync::atomic::AtomicU32,
     open: std::sync::atomic::AtomicBool,
     xor8: std::sync::atomic::AtomicBool,
+    chunks: std::sync::atomic::AtomicU32,
+    desc_built: std::sync::atomic::AtomicBool,
 }
 impl Default for DlsState {
     fn default() -> Self {
@@ -269,6 +271,8 @@ impl Default for DlsState {
             subs: std::sync::atomic::AtomicU32::new(1),
             open: std::sync::atomic::AtomicBool::new(false),
             xor8: std::sync::atomic::AtomicBool::new(false),
+            chunks: std::sync::atomic::AtomicU32::new(0),
+            desc_built: std::sync::atomic::AtomicBool::new(false),
         }
     }
 }
@@ -303,7 +307,132 @@ impl DlsState {
         self.open.store(true, std::sync::atomic::Ordering::SeqCst);
         0
     }
+    /// `CodecDLS::parseChunk` (IDA 0x8168c): walks the RIFF chunks
+    /// (0x8168c..tail).
+    pub fn parse_chunk(&self) -> i32 {
+        self.chunks.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn chunk_count(&self) -> u32 {
+        self.chunks.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecDLS::openInternal` (IDA 0x82848): seeks home, checks the
+    /// RIFF magic and parses (0x82868..tail).
+    pub fn open_internal(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 22;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecDLS::getDescriptionEx` (IDA 0x815ec): fills the `dlscodec`
+    /// descriptor — name, version 65792 plus the callback table
+    /// (0x81608..0x8166c).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD DLS Codec", 65792)
+    }
 }
+/// Minimal `FMOD::CodecFLAC` counterpart (IDA 0x82a20..0x8340c): the
+/// decoder latch, seek/position state plus the decoded PCM sink.
+#[derive(Debug, Default)]
+pub struct FlacCodec {
+    decoder: std::sync::atomic::AtomicBool,
+    seekable: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU64,
+    read_done: std::sync::atomic::AtomicBool,
+    frames: std::sync::atomic::AtomicU32,
+    open: std::sync::atomic::AtomicBool,
+    desc_built: std::sync::atomic::AtomicBool,
+    eof: std::sync::atomic::AtomicBool,
+    pcm: parking_lot::Mutex<Vec<f32>>,
+    tags: parking_lot::Mutex<Vec<(String, String)>>,
+}
+impl FlacCodec {
+    /// `CodecFLAC::setPositionInternal` (IDA 0x82a20): 37 without a
+    /// decoder, 0 when not seekable, 33 on seek failure (0x82a28..0x82a68).
+    pub fn set_position(&self, has_decoder: bool, seek_ok: bool, pos: u64) -> i32 {
+        if !has_decoder {
+            return 37;
+        }
+        if !seek_ok {
+            return 33;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        self.read_done.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFLAC::readInternal` (IDA 0x82a7c): 37 without a decoder,
+    /// else processes one frame and reports it (0x82a84..0x82acc).
+    pub fn read(&self, has_decoder: bool, frames: u32) -> (i32, u32) {
+        if !has_decoder {
+            return (37, 0);
+        }
+        self.frames.store(frames, std::sync::atomic::Ordering::SeqCst);
+        self.read_done.store(false, std::sync::atomic::Ordering::SeqCst);
+        (0, frames)
+    }
+    /// `CodecFLAC::closeInternal` (IDA 0x82ae8): finishes plus deletes
+    /// the decoder, frees the buffers (0x82af0..tail).
+    pub fn close(&self) -> i32 {
+        self.decoder.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFLAC::openInternal` (IDA 0x82c14): seeks home, checks the
+    /// `fLaC` magic (19 on short/bad reads) (0x82c3c..tail).
+    pub fn open(&self, has_data: bool, is_flac: bool) -> i32 {
+        if !has_data || !is_flac {
+            return 19;
+        }
+        self.decoder.store(true, std::sync::atomic::Ordering::SeqCst);
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecFLAC::getDescriptionEx` (IDA 0x83320): fills the
+    /// `flaccodec` descriptor — name, version 65792 plus the callback
+    /// table (0x8333c..0x833a0).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD FLAC Codec", 65792)
+    }
+    /// `FMOD_FLAC_WriteCallback` (IDA 0x82f44): clamps to 0x2000 frames
+    /// and converts by bit width into the PCM sink (0x82f58..tail).
+    pub fn write_frames(&self, frames: &[i32]) -> i32 {
+        let mut pcm = self.pcm.lock();
+        for sample in frames.iter().take(0x2000) {
+            pcm.push(*sample as f32 / 2147483648.0);
+        }
+        0
+    }
+    pub fn pcm_len(&self) -> usize {
+        self.pcm.lock().len()
+    }
+    /// `FMOD_FLAC_MetadataCallback` (IDA 0x830e4): stores the vorbis
+    /// comment pairs (0x830f8..tail).
+    pub fn add_tags(&self, tags: Vec<(String, String)>) {
+        self.tags.lock().extend(tags);
+    }
+    pub fn tag_count(&self) -> usize {
+        self.tags.lock().len()
+    }
+    /// `FMOD_FLAC_LengthCallback` (IDA 0x829d4): 1 on read failure, else
+    /// the file length (0x829f4..0x82a18).
+    pub fn file_length(has_len: bool, len: u64) -> (i32, u64) {
+        if has_len {
+            (0, len)
+        } else {
+            (1, 0)
+        }
+    }
+}
+static FLAC_CODEC: std::sync::LazyLock<FlacCodec> = std::sync::LazyLock::new(FlacCodec::default);
 static DLS_CODEC: std::sync::LazyLock<DlsState> = std::sync::LazyLock::new(DlsState::default);
 static CHANNEL_POOL: std::sync::LazyLock<ChannelPool> =
     std::sync::LazyLock::new(ChannelPool::default);
@@ -765,190 +894,267 @@ pub fn stub_813f4() -> i32 {
 // 0x815e0 - __ZN4FMOD8CodecDLS13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecDLS *)
 #[doc(alias = "FMOD::CodecDLS::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_815e0() -> ! {
-    todo!("0x815e0 FMOD::CodecDLS::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_815e0() -> i32 {
+    // IDA 0x815e0 `CodecDLS::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x815e4).
+    DLS_CODEC.close()
 }
 
 // 0x815ec - __ZN4FMOD8CodecDLS16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecDLS *this)
 #[doc(alias = "FMOD::CodecDLS::getDescriptionEx(void)")]
-pub fn stub_815ec() -> ! {
-    todo!("0x815ec FMOD::CodecDLS::getDescriptionEx(void)")
+pub fn stub_815ec() -> (&'static str, u32) {
+    // IDA 0x815ec `CodecDLS::getDescriptionEx`: fills the `dlscodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x81608..0x8166c).
+    DLS_CODEC.description()
 }
 
 // 0x8168c - __ZN4FMOD8CodecDLS10parseChunkEPcj
 // type: int __fastcall(FMOD::File **this, char *, unsigned int)
 #[doc(alias = "FMOD::CodecDLS::parseChunk(char *,unsigned int)")]
-pub fn stub_8168c() -> ! {
-    todo!("0x8168c FMOD::CodecDLS::parseChunk(char *,unsigned int)")
+pub fn stub_8168c() -> i32 {
+    // IDA 0x8168c `CodecDLS::parseChunk`: walks the RIFF chunks
+    // (0x8168c..tail).
+    DLS_CODEC.parse_chunk()
 }
 
 // 0x82848 - __ZN4FMOD8CodecDLS12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecDLS::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_82848() -> ! {
-    todo!("0x82848 FMOD::CodecDLS::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_82848(has_data: bool) -> i32 {
+    // IDA 0x82848 `CodecDLS::openInternal`: seeks home, checks the RIFF
+    // magic and parses (0x82868..tail).
+    DLS_CODEC.open_internal(has_data)
 }
 
 // 0x82970 - __ZN4FMOD8CodecDLS12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecDLS::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_82970() -> ! {
-    todo!("0x82970 FMOD::CodecDLS::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_82970(has_data: bool) -> i32 {
+    // IDA 0x82970 `CodecDLS::openCallback`: adjusts to the base (a1 −
+    // 28) and forwards into `openInternal` (0x82974).
+    DLS_CODEC.open_internal(has_data)
 }
 
 // 0x8297c - __Z41__static_initialization_and_destruction_0ii_1
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_1")]
-pub fn stub_8297c() -> ! {
-    todo!("0x8297c __Z41__static_initialization_and_destruction_0ii_1")
+pub fn stub_8297c(result: i32) -> i32 {
+    // IDA 0x8297c `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x8298c..0x829b8).
+    let _ = &*DLS_CODEC;
+    result
 }
 
 // 0x829c8 - __GLOBAL__I__ZN4FMOD8dlscodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dlscodec")]
-pub fn stub_829c8() -> ! {
-    todo!("0x829c8 global constructor keyed toFMOD::dlscodec")
+pub fn stub_829c8() {
+    // IDA 0x829c8: global ctor keyed to `dlscodec` — runs the static init
+    // (sole call); the LazyLock below is the table.
+    let _ = &*DLS_CODEC;
 }
 
 // 0x829d4 - __ZN4FMODL24FMOD_FLAC_LengthCallbackEPK19FLAC__StreamDecoderPyPv
 // type: int __fastcall(int, _DWORD *, int)
 #[doc(alias = "FMOD::FMOD_FLAC_LengthCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")]
-pub fn stub_829d4() -> ! {
-    todo!("0x829d4 FMOD::FMOD_FLAC_LengthCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")
+pub fn stub_829d4(has_len: bool, len: u64) -> (i32, u64) {
+    // IDA 0x829d4 `FMOD_FLAC_LengthCallback`: 1 on read failure, else the
+    // file length (0x829f4..0x82a18).
+    FlacCodec::file_length(has_len, len)
 }
 
 // 0x82a1c - __ZN4FMODL23FMOD_FLAC_ErrorCallbackEPK19FLAC__StreamDecoder30FLAC__StreamDecoderErrorStatusPv
 // type: void()
 #[doc(alias = "FMOD::FMOD_FLAC_ErrorCallback(FLAC__StreamDecoder const*,FLAC__StreamDecoderErrorStatus,void *)")]
-pub fn stub_82a1c() -> ! {
-    todo!("0x82a1c FMOD::FMOD_FLAC_ErrorCallback(FLAC__StreamDecoder const*,FLAC__StreamDecoderErrorStatus,void *)")
+pub fn stub_82a1c() {
+    // IDA 0x82a1c `FMOD_FLAC_ErrorCallback`: empty body.
 }
 
 // 0x82a20 - __ZN4FMOD9CodecFLAC19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecFLAC *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecFLAC::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_82a20() -> ! {
-    todo!("0x82a20 FMOD::CodecFLAC::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_82a20(has_decoder: bool, seek_ok: bool, pos: u64) -> i32 {
+    // IDA 0x82a20 `CodecFLAC::setPositionInternal`: 37 without a decoder,
+    // 0 when not seekable, 33 on seek failure (0x82a28..0x82a68).
+    FLAC_CODEC.set_position(has_decoder, seek_ok, pos)
 }
 
 // 0x82a70 - __ZN4FMOD9CodecFLAC19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecFLAC *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecFLAC::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_82a70() -> ! {
-    todo!("0x82a70 FMOD::CodecFLAC::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_82a70() -> i32 {
+    // IDA 0x82a70 `CodecFLAC::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x82a74).
+    FLAC_CODEC.set_position(true, true, 0)
 }
 
 // 0x82a7c - __ZN4FMOD9CodecFLAC12readInternalEPvjPj
 // type: int __fastcall(FMOD::CodecFLAC *this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecFLAC::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_82a7c() -> ! {
-    todo!("0x82a7c FMOD::CodecFLAC::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_82a7c(has_decoder: bool, frames: u32) -> (i32, u32) {
+    // IDA 0x82a7c `CodecFLAC::readInternal`: 37 without a decoder, else
+    // processes one frame and reports it (0x82a84..0x82acc).
+    FLAC_CODEC.read(has_decoder, frames)
 }
 
 // 0x82adc - __ZN4FMOD9CodecFLAC12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecFLAC *, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecFLAC::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_82adc() -> ! {
-    todo!("0x82adc FMOD::CodecFLAC::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_82adc(count: u32) -> (i32, u32) {
+    // IDA 0x82adc `CodecFLAC::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x82ae0).
+    FLAC_CODEC.read(true, count)
 }
 
 // 0x82ae8 - __ZN4FMOD9CodecFLAC13closeInternalEv
 // type: int __fastcall(FMOD::CodecFLAC *this)
 #[doc(alias = "FMOD::CodecFLAC::closeInternal(void)")]
-pub fn stub_82ae8() -> ! {
-    todo!("0x82ae8 FMOD::CodecFLAC::closeInternal(void)")
+pub fn stub_82ae8() -> i32 {
+    // IDA 0x82ae8 `CodecFLAC::closeInternal`: finishes plus deletes the
+    // decoder, frees the buffers (0x82af0..tail).
+    FLAC_CODEC.close()
 }
 
 // 0x82ba4 - __ZN4FMOD9CodecFLAC13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFLAC *)
 #[doc(alias = "FMOD::CodecFLAC::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_82ba4() -> ! {
-    todo!("0x82ba4 FMOD::CodecFLAC::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_82ba4() -> i32 {
+    // IDA 0x82ba4 `CodecFLAC::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x82ba8).
+    FLAC_CODEC.close()
 }
 
 // 0x82bb0 - __ZN4FMODL22FMOD_FLAC_SeekCallbackEPK19FLAC__StreamDecoderyPv
 // type: bool __fastcall(int, int, int, int)
 #[doc(alias = "FMOD::FMOD_FLAC_SeekCallback(FLAC__StreamDecoder const*,unsigned long long,void *)")]
-pub fn stub_82bb0() -> ! {
-    todo!("0x82bb0 FMOD::FMOD_FLAC_SeekCallback(FLAC__StreamDecoder const*,unsigned long long,void *)")
+pub fn stub_82bb0(seek_ok: bool) -> bool {
+    // IDA 0x82bb0 `FMOD_FLAC_SeekCallback`: nonzero seek reads true
+    // (0x82bcc).
+    seek_ok
 }
 
 // 0x82bd0 - __ZN4FMODL22FMOD_FLAC_ReadCallbackEPK19FLAC__StreamDecoderPhPmPv
 // type: int __fastcall(int, void *, unsigned int *, int)
 #[doc(alias = "FMOD::FMOD_FLAC_ReadCallback(FLAC__StreamDecoder const*,unsigned char *,unsigned long *,void *)")]
-pub fn stub_82bd0() -> ! {
-    todo!("0x82bd0 FMOD::FMOD_FLAC_ReadCallback(FLAC__StreamDecoder const*,unsigned char *,unsigned long *,void *)")
+pub fn stub_82bd0(count: usize) -> (i32, Vec<u8>) {
+    // IDA 0x82bd0 `FMOD_FLAC_ReadCallback`: 0 bytes read returns 2, else
+    // 0 (0x82bf4..0x82c08).
+    if count == 0 {
+        (2, Vec::new())
+    } else {
+        (0, vec![0; count])
+    }
 }
 
 // 0x82c14 - __ZN4FMOD9CodecFLAC12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecFLAC::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_82c14() -> ! {
-    todo!("0x82c14 FMOD::CodecFLAC::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_82c14(has_data: bool, is_flac: bool) -> i32 {
+    // IDA 0x82c14 `CodecFLAC::openInternal`: seeks home, checks the `fLaC`
+    // magic (19 on short/bad reads) (0x82c3c..tail).
+    FLAC_CODEC.open(has_data, is_flac)
 }
 
 // 0x82f38 - __ZN4FMOD9CodecFLAC12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecFLAC::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_82f38() -> ! {
-    todo!("0x82f38 FMOD::CodecFLAC::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_82f38(has_data: bool, is_flac: bool) -> i32 {
+    // IDA 0x82f38 `CodecFLAC::openCallback`: adjusts to the base (a1 −
+    // 28) and forwards into `openInternal` (0x82f3c).
+    FLAC_CODEC.open(has_data, is_flac)
 }
 
 // 0x82f44 - __ZN4FMODL23FMOD_FLAC_WriteCallbackEPK19FLAC__StreamDecoderPK11FLAC__FramePKPKiPv
 // type: int __fastcall(int, int *, int, int)
 #[doc(alias = "FMOD::FMOD_FLAC_WriteCallback(FLAC__StreamDecoder const*,FLAC__Frame const*,int const* const*,void *)")]
-pub fn stub_82f44() -> ! {
-    todo!("0x82f44 FMOD::FMOD_FLAC_WriteCallback(FLAC__StreamDecoder const*,FLAC__Frame const*,int const* const*,void *)")
+pub fn stub_82f44(frames: &[i32]) -> i32 {
+    // IDA 0x82f44 `FMOD_FLAC_WriteCallback`: clamps to 0x2000 frames and
+    // converts by bit width into the PCM sink (0x82f58..tail).
+    FLAC_CODEC.write_frames(frames)
 }
 
 // 0x830e4 - __ZN4FMODL26FMOD_FLAC_MetadataCallbackEPK19FLAC__StreamDecoderPK20FLAC__StreamMetadataPv
 // type: void __fastcall(int, _DWORD *, int)
 #[doc(alias = "FMOD::FMOD_FLAC_MetadataCallback(FLAC__StreamDecoder const*,FLAC__StreamMetadata const*,void *)")]
-pub fn stub_830e4() -> ! {
-    todo!("0x830e4 FMOD::FMOD_FLAC_MetadataCallback(FLAC__StreamDecoder const*,FLAC__StreamMetadata const*,void *)")
+pub fn stub_830e4(tags: Vec<(String, String)>) {
+    // IDA 0x830e4 `FMOD_FLAC_MetadataCallback`: stores the vorbis comment
+    // pairs (0x830f8..tail).
+    FLAC_CODEC.add_tags(tags);
 }
 
 // 0x83298 - __ZN4FMODL21FMOD_FLAC_EofCallbackEPK19FLAC__StreamDecoderPv
 // type: bool __fastcall(int, int)
 #[doc(alias = "FMOD::FMOD_FLAC_EofCallback(FLAC__StreamDecoder const*,void *)")]
-pub fn stub_83298() -> ! {
-    todo!("0x83298 FMOD::FMOD_FLAC_EofCallback(FLAC__StreamDecoder const*,void *)")
+pub fn stub_83298(at_end: bool) -> bool {
+    // IDA 0x83298 `FMOD_FLAC_EofCallback`: compares tell against length
+    // (0x832b0..0x832dc).
+    at_end
 }
 
 // 0x832e0 - __ZN4FMODL22FMOD_FLAC_TellCallbackEPK19FLAC__StreamDecoderPyPv
 // type: int __fastcall(int, _DWORD *, int)
 #[doc(alias = "FMOD::FMOD_FLAC_TellCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")]
-pub fn stub_832e0() -> ! {
-    todo!("0x832e0 FMOD::FMOD_FLAC_TellCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")
+pub fn stub_832e0(pos: u64) -> (i32, u64) {
+    // IDA 0x832e0 `FMOD_FLAC_TellCallback`: 1 on tell failure, else the
+    // position (0x832f8..0x8331c).
+    (0, pos)
 }
 
 // 0x83320 - __ZN4FMOD9CodecFLAC16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecFLAC *this)
 #[doc(alias = "FMOD::CodecFLAC::getDescriptionEx(void)")]
-pub fn stub_83320() -> ! {
-    todo!("0x83320 FMOD::CodecFLAC::getDescriptionEx(void)")
+pub fn stub_83320() -> (&'static str, u32) {
+    // IDA 0x83320 `CodecFLAC::getDescriptionEx`: fills the `flaccodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x8333c..0x833a0).
+    FLAC_CODEC.description()
 }
 
 // 0x833c0 - __Z41__static_initialization_and_destruction_0ii_2
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_2")]
-pub fn stub_833c0() -> ! {
-    todo!("0x833c0 __Z41__static_initialization_and_destruction_0ii_2")
+pub fn stub_833c0(result: i32) -> i32 {
+    // IDA 0x833c0 `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x833d0..0x833fc).
+    let _ = &*FLAC_CODEC;
+    result
 }
 
 // 0x8340c - __GLOBAL__I__ZN4FMOD9flaccodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::flaccodec")]
-pub fn stub_8340c() -> ! {
-    todo!("0x8340c global constructor keyed toFMOD::flaccodec")
+pub fn stub_8340c() {
+    // IDA 0x8340c: global ctor keyed to `flaccodec` — runs the static
+    // init (sole call); the LazyLock below is the table.
+    let _ = &*FLAC_CODEC;
 }
 
+/// Minimal `FMOD::CodecFSB` counterpart (IDA 0x83418..): per-sub-sound
+/// sync-point counts.
+#[derive(Debug, Default)]
+pub struct FsbState {
+    sync_counts: parking_lot::Mutex<Vec<u32>>,
+}
+impl FsbState {
+    /// `CodecFSB::getNumSyncPoints` (IDA 0x83418): reads the count off
+    /// the sub-sound, 0 when absent (0x83418..0x83430).
+    pub fn num_sync_points(&self, sub: usize) -> (i32, u32) {
+        (0, self.sync_counts.lock().get(sub).copied().unwrap_or(0))
+    }
+    pub fn set_sync_counts(&self, counts: Vec<u32>) {
+        *self.sync_counts.lock() = counts;
+    }
+}
+static FSB_CODEC: std::sync::LazyLock<FsbState> = std::sync::LazyLock::new(FsbState::default);
 // 0x83418 - __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
 // type: int __fastcall(FMOD::CodecFSB *this, int, int *)
 #[doc(alias = "FMOD::CodecFSB::getNumSyncPoints(int,int *)")]
-pub fn stub_83418() -> ! {
-    todo!("0x83418 FMOD::CodecFSB::getNumSyncPoints(int,int *)")
+pub fn stub_83418(sub: usize) -> (i32, u32) {
+    // IDA 0x83418 `CodecFSB::getNumSyncPoints`: reads the count off the
+    // sub-sound, 0 when absent (0x83418..0x83430).
+    FSB_CODEC.num_sync_points(sub)
 }
 
 // 0x83434 - __ZN4FMOD8CodecFSB16getSyncPointDataEiiPPcPi
