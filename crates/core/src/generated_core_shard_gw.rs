@@ -3,6 +3,373 @@
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
+/// Batch 1: 28 IDA-grounded ports 0x3a390-0x3d190 — the
+/// `rbx::signals::signal<void ()(void)>` slot lattice (`connect`, `insert`,
+/// `remove`, `callable_slot` C1/C2/D1/D0, `callable::call`/D1/D0 + the Thn4
+/// thunk, `bind_t::operator()`, `intrusive_ptr<slot>::operator=`, both
+/// `safe_static_init_mutex`) and the boost `lock_error` exception lattice
+/// (`throw_exception`, `lock_error` D0, `error_info_injector` D2/D0 + Thn20,
+/// `clone_impl` D0/C1/`clone` + Thn20/Tv0_n20, `refcount_ptr::adopt`) plus
+/// `thread_resource_error` D1/D2.
+/// Grounding: ida/export.json names/types for all 28 EAs (single-EA MCP
+/// disasm/decompile still timing out under parallel load — fine control-flow
+/// details below are marked `[INFERENCE]` until the MCP recovers).
+/// Conventions: `boost::mutex` -> `parking_lot::Mutex` guard discipline;
+/// `boost::intrusive_ptr<slot>` -> `Arc<SlotState>` (`Weak` for `connection`,
+/// cf. `crate::SharedPtr`); `boost::bind`/`function` -> `Box<dyn FnMut>`;
+/// `boost::exception` -> `thiserror`/`anyhow`; D0 (deleting dtor) = D1/D2
+/// body + free; non-virtual thunk `__ZThn<off>_` = `this -= off` then target;
+/// virtual thunk `__ZTv0_n<off>_` = vtable-slot adjust then target.
+pub mod signal_slots {
+    use parking_lot::Mutex;
+    use std::sync::atomic::{AtomicBool, Ordering};
+    use std::sync::{Arc, LazyLock, Weak};
+
+    /// was: the function-static `boost::mutex` of
+    /// `signal<void ()(void)>::safe_static_init_mutex` — guarded once-init.
+    // 0x3c920 — __ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv
+    static SIGNAL_MUTEX: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+    /// was: the function-static `boost::mutex` of
+    /// `signal<void ()(void)>::slot::safe_static_init_mutex`.
+    // 0x3d030 — __ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv
+    static SLOT_MUTEX: LazyLock<Mutex<()>> = LazyLock::new(|| Mutex::new(()));
+
+    /// IDA 0x3c920: guarded once-init of the signal static mutex.
+    pub fn ensure_signal_mutex() {
+        let _ = &*SIGNAL_MUTEX;
+    }
+    /// IDA 0x3d030: guarded once-init of the slot static mutex.
+    pub fn ensure_slot_mutex() {
+        let _ = &*SLOT_MUTEX;
+    }
+    /// (insert/remove drop the lock after unlinking, never before).
+    pub fn unlock_is_guard_drop() {}
+
+    /// was: `rbx::signals::signal<void ()(void)>::slot` — the intrusive
+    /// list node. `connected` is the signal back-pointer (`[INFERENCE]`:
+    /// exact word offset unconfirmed); the functor is the `callable` tail.
+    pub struct SlotState {
+        connected: AtomicBool,
+        callback: Mutex<Option<Box<dyn FnMut() + Send>>>,
+    }
+
+    impl SlotState {
+        /// was: `callable_slot` C1/C2 (0x3cdb8/0x3ce64) — slot base + copy
+        /// of the bound functor.
+        pub fn with_callback(f: Box<dyn FnMut() + Send>) -> Self {
+            Self { connected: AtomicBool::new(false), callback: Mutex::new(Some(f)) }
+        }
+        /// was: `callable::call` (0x3cf18) — invoke the stored functor.
+        /// D1/D0 (0x3d0e4/0x3d190) drop the functor, then the slot base;
+        /// D0 additionally frees (the caller's `drop`).
+        pub fn call(&self) {
+            let taken = self.callback.lock().take();
+            if let Some(mut f) = taken {
+                f();
+                *self.callback.lock() = Some(f);
+            }
+        }
+        pub fn is_connected(&self) -> bool {
+            self.connected.load(Ordering::Acquire)
+        }
+        /// was: `slot::~slot` (0x3d038) — disconnects a still-connected
+        /// slot, then destroys members.
+        pub fn destroy(sig: &SignalVoid, slot: &Arc<SlotState>) {
+            if slot.is_connected() {
+                sig.remove(slot);
+            }
+        }
+    }
+
+    /// was: `rbx::signals::signal<void ()(void)>` — the slot list head.
+    /// `[INFERENCE]`: insert appends at the tail, remove unlinks by pointer.
+    pub struct SignalVoid {
+        slots: Mutex<Vec<Arc<SlotState>>>,
+    }
+
+    impl SignalVoid {
+        pub fn new() -> Self {
+            Self { slots: Mutex::new(Vec::new()) }
+        }
+        /// IDA 0x3be00 `signal::insert(slot *)`: lock, link slot, unlock.
+        pub fn insert(&self, slot: Arc<SlotState>) {
+            slot.connected.store(true, Ordering::Release);
+            self.slots.lock().push(slot);
+        }
+        /// IDA 0x3cf40 `signal::remove(slot *)`: lock, unlink slot, unlock.
+        pub fn remove(&self, slot: &Arc<SlotState>) {
+            self.unlink_ptr(Arc::as_ptr(slot));
+            slot.connected.store(false, Ordering::Release);
+        }
+        fn unlink_ptr(&self, ptr: *const SlotState) {
+            self.slots.lock().retain(|s| !std::ptr::eq(Arc::as_ptr(s), ptr));
+        }
+        /// was: `signal::connect<bind_t<mf0 RobloxView>>` (0x3a390) —
+        /// wrap the functor in a `callable_slot`, insert, return the
+        /// `connection` handle.
+        pub fn connect(&self, f: Box<dyn FnMut() + Send>) -> Connection {
+            let slot = Arc::new(SlotState::with_callback(f));
+            self.insert(Arc::clone(&slot));
+            Connection(Arc::downgrade(&slot))
+        }
+        /// was: `signal::operator()` — invoke every live slot in list order.
+        pub fn fire(&self) {
+            let live: Vec<Arc<SlotState>> = self.slots.lock().clone();
+            for slot in &live {
+                slot.call();
+            }
+        }
+        pub fn len(&self) -> usize {
+            self.slots.lock().len()
+        }
+    }
+
+    impl Default for SignalVoid {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+
+    /// was: `rbx::signals::connection` — the intrusive `islot` handle
+    /// returned by `connect`.
+    pub struct Connection(Weak<SlotState>);
+
+    impl Connection {
+        pub fn connected(&self) -> bool {
+            self.0.strong_count() > 0
+        }
+        /// Disconnect through the owning signal (was: `connection::disconnect`
+        /// -> `signal::remove`).
+        pub fn disconnect(&self, sig: &SignalVoid) {
+            if let Some(slot) = self.0.upgrade() {
+                sig.remove(&slot);
+            }
+        }
+        /// Upgrade the weak handle (test/owner use; was: `intrusive_ptr` copy).
+        pub fn upgrade(&self) -> Option<Arc<SlotState>> {
+            self.0.upgrade()
+        }
+    }
+
+    /// IDA 0x3c0c8 `intrusive_ptr<slot>::operator=(slot *)`: `add_ref` the
+    /// new target, `release` the old, store. `Arc` move is exactly that.
+    pub fn intrusive_slot_assign(dst: &mut Option<Arc<SlotState>>, src: Option<Arc<SlotState>>) {
+        *dst = src;
+    }
+
+    /// was: `boost::_bi::bind_t<..., mf0<void,RobloxView>, ...>::operator()`
+    /// (0x3cf28) — `mf0` on the stored `RobloxView *`. The object + member
+    /// function fuse into one closure (AGENTS.md: bind -> `Box<dyn Fn>`);
+    /// the platform crate supplies the real capture.
+    pub fn view_callback<F: FnMut() + Send + 'static>(f: F) -> Box<dyn FnMut() + Send> {
+        Box::new(f)
+    }
+
+    /// IDA 0x3cf20 `__ZThn4_...callEv`: non-virtual thunk, `this -= 4`
+    /// (the `callable` base sits 4 bytes into `callable_slot`), then `call`.
+    pub const CALLABLE_CALL_THUNK_ADJ: isize = -4;
+    pub fn apply_thunk(addr: usize, adj: isize) -> usize {
+        addr.wrapping_add(adj as usize)
+    }
+}
+
+/// was: `boost::lock_error` / `boost::thread_resource_error` +
+/// `boost::exception_detail` injector/clone lattice (`thiserror`/`anyhow`).
+pub mod lock_error {
+    use std::sync::Arc;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    /// was: `boost::lock_error : boost::exception`.
+    // 0x3c470 — __ZN5boost10lock_errorD0Ev (deleting dtor: members + free)
+    #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+    #[error("boost::lock_error")]
+    pub struct LockError;
+    /// was: `boost::thread_resource_error : boost::exception`.
+    // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
+    #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+    #[error("boost::thread_resource_error")]
+    pub struct ThreadResourceError;
+
+    /// was: `boost::exception_detail::error_info_container` — the
+    /// refcounted payload behind an injected exception.
+    #[derive(Debug)]
+    pub struct ErrorInfo {
+        refs: AtomicUsize,
+    }
+
+    impl ErrorInfo {
+        pub fn new() -> Self {
+            Self { refs: AtomicUsize::new(1) }
+        }
+        /// was: `refcount_ptr::addref` — snapshot for tests.
+        pub fn ref_count(&self) -> usize {
+            self.refs.load(Ordering::Acquire)
+        }
+    }
+
+    impl Default for ErrorInfo {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+
+    /// was: `error_info_injector<E>` — `E` plus an optional info container.
+    #[derive(Debug, Clone)]
+    pub struct Injector<E> {
+        pub base: E,
+        pub info: Option<Arc<ErrorInfo>>,
+    }
+
+    impl<E> Injector<E> {
+        pub fn without_info(base: E) -> Self {
+            Self { base, info: None }
+        }
+        /// IDA 0x3c698 `refcount_ptr::adopt`: release the old container,
+        /// take `p` *without* extra addref. Passing `Arc` by value moves
+        /// the already-counted reference — exactly adopt.
+        pub fn adopt(&mut self, p: Option<Arc<ErrorInfo>>) {
+            self.info = p;
+        }
+    }
+    impl<E: std::fmt::Display> std::fmt::Display for Injector<E> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "{}", self.base)
+        }
+    }
+    impl<E> std::error::Error for Injector<E> where E: std::error::Error + std::fmt::Display + std::fmt::Debug {}
+
+    /// IDA 0x3c2a0 `throw_exception<lock_error>`: wrap + enable
+    /// `exception_ptr`, then throw. Rust has no throw — the throw site
+    /// becomes this `Err` return.
+    pub fn throw_lock_error() -> anyhow::Result<()> {
+        Err(anyhow::Error::new(Injector::without_info(LockError)))
+    }
+
+    /// IDA 0x3c4a0 `~error_info_injector<lock_error>` (D2): release the
+    /// info container, destroy the base. Drop glue covers it.
+    pub fn drop_injector_lock_error(_x: Injector<LockError>) {}
+    /// IDA 0x3c958 `~error_info_injector<thread_resource_error>` (D2).
+    pub fn drop_injector_thread_resource_error(_x: Injector<ThreadResourceError>) {}
+    /// IDA 0x3c680 `~error_info_injector<lock_error>` (D0) = D2 body + free.
+    pub fn delete_injector_lock_error(x: Box<Injector<LockError>>) {
+        drop(x);
+    }
+
+    /// was: `clone_impl<error_info_injector<lock_error>>` — copyable
+    /// exception clone (0x3c6c8 C1 copies injector + addrefs the container
+    /// via the `Arc` clone; 0x3c570 D0 drops + frees).
+    pub type LockErrorClone = Injector<LockError>;
+    /// IDA 0x3c5b8 `clone() const`: `new clone_impl(*this)`.
+    pub fn clone_lock_error(src: &LockErrorClone) -> LockErrorClone {
+        src.clone()
+    }
+    /// IDA 0x3c570 `~clone_impl` (D0 body).
+    pub fn drop_clone_impl(_x: LockErrorClone) {}
+
+    /// IDA 0x3c4e0 / 0x3c678 `__ZThn20_`: `this -= 20` (the `exception`
+    /// base sits 20 bytes into the injector), then the D1/D0 body.
+    pub const INJECTOR_DTOR_THUNK_ADJ: isize = -20;
+    /// IDA 0x3c528 `__ZTv0_n20_`: virtual thunk to the `clone_impl` dtor.
+    pub const CLONE_DTOR_VTHUNK_OFF: i32 = -20;
+}
+
+#[cfg(test)]
+mod batch1_tests {
+    use super::lock_error::*;
+    use super::signal_slots::*;
+    use std::sync::Arc;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    #[test]
+    fn connect_fire_remove_disconnect() {
+        let sig = SignalVoid::new();
+        let hits = Arc::new(AtomicI32::new(0));
+        let h1 = Arc::clone(&hits);
+        let c1 = sig.connect(view_callback(move || {
+            h1.fetch_add(1, Ordering::SeqCst);
+        }));
+        let h2 = Arc::clone(&hits);
+        let c2 = sig.connect(view_callback(move || {
+            h2.fetch_add(10, Ordering::SeqCst);
+        }));
+        assert!(c1.connected() && c2.connected());
+        sig.fire();
+        assert_eq!(hits.load(Ordering::SeqCst), 11);
+        // IDA 0x3cf40 remove: unlink one slot, the other still fires.
+        c1.disconnect(&sig);
+        assert_eq!(sig.len(), 1);
+        assert!(!c1.connected());
+        assert!(c2.connected());
+        sig.fire();
+        assert_eq!(hits.load(Ordering::SeqCst), 21);
+    }
+
+    #[test]
+    fn slot_destroy_disconnects() {
+        // IDA 0x3d038 slot::~slot disconnects a live slot.
+        let sig = SignalVoid::new();
+        let c = sig.connect(view_callback(|| {}));
+        assert_eq!(sig.len(), 1);
+        let slot = c.upgrade().expect("live slot");
+        SlotState::destroy(&sig, &slot);
+        assert_eq!(sig.len(), 0);
+        assert!(!slot.is_connected());
+    }
+
+    #[test]
+    fn intrusive_assign_releases_old() {
+        // IDA 0x3c0c8 intrusive_ptr<slot>::operator=: Arc move.
+        let sig = SignalVoid::new();
+        let a = sig.connect(view_callback(|| {}));
+        let slot = a.upgrade().expect("live slot");
+        let mut dst = Some(Arc::clone(&slot));
+        let before = Arc::strong_count(&slot);
+        intrusive_slot_assign(&mut dst, None);
+        assert!(dst.is_none());
+        assert_eq!(Arc::strong_count(&slot), before - 1);
+    }
+
+    #[test]
+    fn static_mutex_init_idempotent() {
+        // IDA 0x3c920 / 0x3d030 guarded once-init.
+        ensure_signal_mutex();
+        ensure_signal_mutex();
+        ensure_slot_mutex();
+        ensure_slot_mutex();
+        unlock_is_guard_drop();
+    }
+
+    #[test]
+    fn thunk_adjustments() {
+        // IDA 0x3cf20 __ZThn4_: this -= 4. 0x3c4e0 __ZThn20_: this -= 20.
+        assert_eq!(apply_thunk(0x1004, CALLABLE_CALL_THUNK_ADJ), 0x1000);
+        assert_eq!(apply_thunk(0x1020, INJECTOR_DTOR_THUNK_ADJ), 0x100C);
+        assert_eq!(CLONE_DTOR_VTHUNK_OFF, -20);
+    }
+
+    #[test]
+    fn throw_clone_adopt_cycle() {
+        // IDA 0x3c2a0 throw -> Err carrying LockError.
+        let err = throw_lock_error().unwrap_err();
+        assert!(err.downcast_ref::<Injector<LockError>>().is_some());
+        // IDA 0x3c5b8 clone() const round-trips the injector.
+        let src = Injector::without_info(LockError);
+        let dup = clone_lock_error(&src);
+        assert_eq!(dup.base, LockError);
+        drop_clone_impl(dup);
+        // IDA 0x3c698 adopt: old container released, new taken as-is.
+        let mut inj = Injector::without_info(LockError);
+        let info = Arc::new(ErrorInfo::new());
+        let weak = Arc::downgrade(&info);
+        inj.adopt(Some(info));
+        assert_eq!(inj.info.as_ref().unwrap().ref_count(), 1);
+        inj.adopt(None);
+        assert!(weak.upgrade().is_none());
+        drop_injector_lock_error(inj);
+        drop_injector_thread_resource_error(Injector::without_info(ThreadResourceError));
+        delete_injector_lock_error(Box::new(Injector::without_info(LockError)));
+    }
+}
 
 #[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // 0x350ec — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -155,7 +522,7 @@ pub fn stub_0x3a1bc() {
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
 pub fn stub_0x3a390() {
-    // IDA 0x3a390: shared_ptr ctor/op= (addref new, release old; derived-to-base coercion). Arc move — carrier no-op.
+    // IDA 0x3a390: signal::connect<bind_t<mf0 RobloxView>> — wrap functor in callable_slot, insert, return connection. See signal_slots::SignalVoid::connect.
 }
 
 #[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
@@ -313,7 +680,7 @@ pub fn stub_0x3bcb8() {
 #[doc(alias = "rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")]
 // 0x3be00 — __ZN3rbx7signals6signalIFvvEE6insertEPNS3_4slotE
 pub fn stub_0x3be00() {
-    // IDA 0x3be00: control-block ctor/dispose (Arc internals; cf. shared_ptr.rs). Drop glue — no-op.
+    // IDA 0x3be00: signal::insert(slot *) — lock, link slot at tail, unlock. See signal_slots::SignalVoid::insert.
 }
 
 #[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
@@ -327,100 +694,101 @@ pub fn stub_0x3c010() {
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)
 pub fn stub_0x3c0c8() {
-    // IDA 0x3c0c8: intrusive refcount op. Arc/Weak — carrier no-op.
+    // IDA 0x3c0c8: intrusive_ptr<slot>::operator= — add_ref new, release old, store (Arc move). See signal_slots::intrusive_slot_assign.
 }
 
 #[doc(alias = "boost::mutex::unlock(void)")]
 // 0x3c170 — __ZN5boost5mutex6unlockEv
 pub fn stub_0x3c170() {
-    // IDA 0x3c170: intrusive refcount op. Arc/Weak — carrier no-op.
+    // IDA 0x3c170: mutex::unlock — pthread_mutex_unlock; RAII guard drop. Lock order recorded in signal_slots::unlock_is_guard_drop.
 }
 
 #[doc(alias = "void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")]
 // 0x3c2a0 — __ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_
 pub fn stub_0x3c2a0() {
-    // IDA 0x3c2a0: intrusive refcount op. Arc/Weak — carrier no-op.
+    // IDA 0x3c2a0: throw_exception<lock_error> — wrap + throw; Rust throw site is Err. See lock_error::throw_lock_error.
 }
 
 #[doc(alias = "boost::lock_error::~lock_error()")]
 // 0x3c470 — __ZN5boost10lock_errorD0Ev
 pub fn stub_0x3c470() {
-    // IDA 0x3c470: intrusive refcount op. Arc/Weak — carrier no-op.
+    // IDA 0x3c470: lock_error::~lock_error (D0) — member teardown + free. Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // 0x3c4a0 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev
 pub fn stub_0x3c4a0() {
-    // IDA 0x3c4a0: intrusive refcount op. Arc/Weak — carrier no-op.
+    // IDA 0x3c4a0: ~error_info_injector<lock_error> (D2) — release info container, destroy base. See lock_error::drop_injector_lock_error.
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
 // was: non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 pub fn stub_0x3c4e0() {
-    // IDA 0x3c4e0: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c4e0: __ZThn20_ non-virtual thunk — this -= 20, then injector D1. See lock_error::INJECTOR_DTOR_THUNK_ADJ.
 }
 
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // was: virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 pub fn stub_0x3c528() {
-    // IDA 0x3c528: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c528: __ZTv0_n20_ virtual thunk to clone_impl dtor. See lock_error::CLONE_DTOR_VTHUNK_OFF.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // 0x3c570 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 pub fn stub_0x3c570() {
-    // IDA 0x3c570: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c570: ~clone_impl<injector<lock_error>> (D0) — drop + free. See lock_error::drop_clone_impl.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
 // 0x3c5b8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
 pub fn stub_0x3c5b8() {
-    // IDA 0x3c5b8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c5b8: clone_impl::clone() const — new clone_impl(*this). See lock_error::clone_lock_error.
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 // was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 pub fn stub_0x3c678() {
-    // IDA 0x3c678: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c678: __ZThn20_ non-virtual thunk — this -= 20, then clone_impl D0. See lock_error::INJECTOR_DTOR_THUNK_ADJ.
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // 0x3c680 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 pub fn stub_0x3c680() {
-    // IDA 0x3c680: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c680: ~error_info_injector<lock_error> (D0) = D2 + free. See lock_error::delete_injector_lock_error.
 }
 
 #[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")]
 // 0x3c698 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_
 pub fn stub_0x3c698() {
-    // IDA 0x3c698: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c698: refcount_ptr::adopt — release old, take p without addref. See lock_error::Injector::adopt.
 }
 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")]
 // 0x3c6c8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_
 pub fn stub_0x3c6c8() {
-    // IDA 0x3c6c8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c6c8: clone_impl C1 — copy injector, addref container (Arc clone). Clone covers it — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::safe_static_init_mutex(void)")]
 // 0x3c920 — __ZN3rbx7signals6signalIFvvEE22safe_static_init_mutexEv
 pub fn stub_0x3c920() {
-    // IDA 0x3c920: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c920: signal::safe_static_init_mutex — guarded once-init of the static mutex.
+    signal_slots::ensure_signal_mutex();
 }
 
 #[doc(alias = "boost::thread_resource_error::~thread_resource_error()")]
 // 0x3c928 — __ZN5boost21thread_resource_errorD1Ev
 pub fn stub_0x3c928() {
-    // IDA 0x3c928: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c928: thread_resource_error::~thread_resource_error (D1) — member teardown. Drop glue — no-op.
 }
 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 // 0x3c958 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev
 pub fn stub_0x3c958() {
-    // IDA 0x3c958: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3c958: ~error_info_injector<thread_resource_error> (D2). See lock_error::drop_injector_thread_resource_error.
 }
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
@@ -478,62 +846,63 @@ pub fn stub_0x3cb60() {
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
 // 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
 pub fn stub_0x3cdb8() {
-    // IDA 0x3cdb8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3cdb8: callable_slot D1 — destroy functor member, then slot base. Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
 // 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
 pub fn stub_0x3ce64() {
-    // IDA 0x3ce64: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3ce64: callable_slot D0 = D1 + free. Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
 // 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 pub fn stub_0x3cf18() {
-    // IDA 0x3cf18: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3cf18: callable::call — invoke the stored bind_t functor. See signal_slots::SlotState::call.
 }
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
 // was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)
 pub fn stub_0x3cf20() {
-    // IDA 0x3cf20: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3cf20: __ZThn4_ non-virtual thunk — this -= 4, then callable::call. See signal_slots::CALLABLE_CALL_THUNK_ADJ.
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
 // 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
 pub fn stub_0x3cf28() {
-    // IDA 0x3cf28: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3cf28: bind_t::operator() — mf0 on the stored RobloxView *. See signal_slots::view_callback.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::remove(rbx::signals::signal<void ()(void)>::slot *)")]
 // 0x3cf40 — __ZN3rbx7signals6signalIFvvEE6removeEPNS3_4slotE
 pub fn stub_0x3cf40() {
-    // IDA 0x3cf40: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3cf40: signal::remove(slot *) — lock, unlink slot, unlock. See signal_slots::SignalVoid::remove.
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::safe_static_init_mutex(void)")]
 // 0x3d030 — __ZN3rbx7signals6signalIFvvEE4slot22safe_static_init_mutexEv
 pub fn stub_0x3d030() {
-    // IDA 0x3d030: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3d030: slot::safe_static_init_mutex — guarded once-init of the static mutex.
+    signal_slots::ensure_slot_mutex();
 }
 
 #[doc(alias = "rbx::signals::signal<void ()(void)>::slot::~slot()")]
 // 0x3d038 — __ZN3rbx7signals6signalIFvvEE4slotD1Ev
 pub fn stub_0x3d038() {
-    // IDA 0x3d038: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3d038: slot::~slot (D1) — disconnect if connected, destroy members. See signal_slots::SlotState::destroy.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
 // 0x3d0e4 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED1Ev
 pub fn stub_0x3d0e4() {
-    // IDA 0x3d0e4: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3d0e4: callable D1 — destroy functor, then slot base. Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
 // 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
 pub fn stub_0x3d190() {
-    // IDA 0x3d190: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+    // IDA 0x3d190: callable D0 = D1 + free. Drop glue — no-op.
 }
 
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")]
