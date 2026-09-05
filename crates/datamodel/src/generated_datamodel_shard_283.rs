@@ -13,45 +13,33 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0xf1f348 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
-pub fn stub_f1f348() -> ! {
-    todo!("0xf1f348 __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f348 as stub_f1f348;
 
 // 0xf1f354 — __ZNSt9exceptionD2Ev$shim
 // type: void __cdecl(std::exception *__hidden this)
 #[doc(alias = "__ZNSt9exceptionD2Ev$shim")]
 #[doc(alias = "__ZNSt9exceptionD2Ev$shim")]
-pub fn stub_f1f354() -> ! {
-    todo!("0xf1f354 __ZNSt9exceptionD2Ev$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f354 as stub_f1f354;
 
 // 0xf1f360 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")]
-pub fn stub_f1f360() -> ! {
-    todo!("0xf1f360 __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")
-}
+pub use rbx_core::generated_core_shard_gs::stub_f1f360 as stub_f1f360;
 
 // 0xf1f36c — __ZN18iOSSettingsServiceD2Ev$shim
 #[doc(alias = "__ZN18iOSSettingsServiceD2Ev$shim")]
 #[doc(alias = "__ZN18iOSSettingsServiceD2Ev$shim")]
-pub fn stub_f1f36c() -> ! {
-    todo!("0xf1f36c __ZN18iOSSettingsServiceD2Ev$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f36c as stub_f1f36c;
 
 // 0xf1f378 — __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv$shim
 #[doc(alias = "__ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv$shim")]
-pub fn stub_f1f378() -> ! {
-    todo!("0xf1f378 __ZN3RBX18FunctionMarshaller29safe_static_do_get_staticDataEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f378 as stub_f1f378;
 
 // 0xf1f384 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv$shim
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f384() -> ! {
-    todo!("0xf1f384 __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f384 as stub_f1f384;
 
 // 0xf1f390 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim
 #[doc(alias = "__ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim")]
@@ -63,151 +51,113 @@ pub fn stub_f1f390() -> ! {
 // 0xf1f39c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE24safe_static_do_get_mutexEv$shim
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f39c() -> ! {
-    todo!("0xf1f39c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_gs::stub_f1f39c as stub_f1f39c;
 
 // 0xf1f3a8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_E4callES7_$shim
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_E4callES7_$shim")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_E4callES7_$shim")]
-pub fn stub_f1f3a8() -> ! {
-    todo!("0xf1f3a8 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_E4callES7_$shim")
-}
+pub use rbx_core::generated_core_shard_gs::stub_f1f3a8 as stub_f1f3a8;
 
 // 0xf1f3b4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot24safe_static_do_get_mutexEv$shim
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f3b4() -> ! {
-    todo!("0xf1f3b4 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slot24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_gs::stub_f1f3b4 as stub_f1f3b4;
 
 // 0xf1f3e4 — ___cxa_atexit$shim
 // type: int __fastcall(void (__fastcall *lpfunc)(void *), void *obj, void *lpdso_handle)
 #[doc(alias = "___cxa_atexit$shim")]
 #[doc(alias = "___cxa_atexit$shim")]
-pub fn stub_f1f3e4() -> ! {
-    todo!("0xf1f3e4 ___cxa_atexit$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f3e4 as stub_f1f3e4;
 
 // 0xf1f3f0 — __ZN3rbx7signals16signal_with_argsILi0EFvvEEclEv$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi0EFvvEEclEv$shim")]
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi0EFvvEEclEv$shim")]
-pub fn stub_f1f3f0() -> ! {
-    todo!("0xf1f3f0 __ZN3rbx7signals16signal_with_argsILi0EFvvEEclEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f3f0 as stub_f1f3f0;
 
 // 0xf1f3fc — __ZNSsC1ERKSs$shim
 // type: int __fastcall(std::string *, const std::string *)
 #[doc(alias = "__ZNSsC1ERKSs$shim")]
 #[doc(alias = "__ZNSsC1ERKSs$shim")]
-pub fn stub_f1f3fc() -> ! {
-    todo!("0xf1f3fc __ZNSsC1ERKSs$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f3fc as stub_f1f3fc;
 
 // 0xf1f408 — __ZNSsD2Ev$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNSsD2Ev$shim")]
 #[doc(alias = "__ZNSsD2Ev$shim")]
-pub fn stub_f1f408() -> ! {
-    todo!("0xf1f408 __ZNSsD2Ev$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f408 as stub_f1f408;
 
 // 0xf1f414 — __ZNSt6vectorIPvSaIS0_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS0_S2_EERKS0_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPvSaIS0_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS0_S2_EERKS0_$shim")]
 #[doc(alias = "__ZNSt6vectorIPvSaIS0_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS0_S2_EERKS0_$shim")]
-pub fn stub_f1f414() -> ! {
-    todo!("0xf1f414 __ZNSt6vectorIPvSaIS0_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS0_S2_EERKS0_$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f414 as stub_f1f414;
 
 // 0xf1f420 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f420() -> ! {
-    todo!("0xf1f420 __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f420 as stub_f1f420;
 
 // 0xf1f42c — __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_$shim")]
 #[doc(alias = "__ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_$shim")]
-pub fn stub_f1f42c() -> ! {
-    todo!("0xf1f42c __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f42c as stub_f1f42c;
 
 // 0xf1f438 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot24safe_static_do_get_mutexEv$shim
 // type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f438() -> ! {
-    todo!("0xf1f438 __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f438 as stub_f1f438;
 
 // 0xf1f45c — __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v$shim")]
-pub fn stub_f1f45c() -> ! {
-    todo!("0xf1f45c __ZN3RBX4Name9doDeclareILZNS_12sHttpServiceEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f45c as stub_f1f45c;
 
 // 0xf1f468 — __ZNSt6vectorIN3RBX11HttpService15HttpContentTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIN3RBX11HttpService15HttpContentTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 #[doc(alias = "__ZNSt6vectorIN3RBX11HttpService15HttpContentTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
-pub fn stub_f1f468() -> ! {
-    todo!("0xf1f468 __ZNSt6vectorIN3RBX11HttpService15HttpContentTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f468 as stub_f1f468;
 
 // 0xf1f474 — __ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v$shim")]
-pub fn stub_f1f474() -> ! {
-    todo!("0xf1f474 __ZN3RBX4Name9doDeclareILZNS_6sLightEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f474 as stub_f1f474;
 
 // 0xf1f4b0 — __ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v$shim")]
-pub fn stub_f1f4b0() -> ! {
-    todo!("0xf1f4b0 __ZN3RBX4Name9doDeclareILZNS_10sSpotLightEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f4b0 as stub_f1f4b0;
 
 // 0xf1f4bc — __ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v$shim")]
-pub fn stub_f1f4bc() -> ! {
-    todo!("0xf1f4bc __ZN3RBX4Name9doDeclareILZNS_11sPointLightEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f4bc as stub_f1f4bc;
 
 // 0xf1f4c8 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim")]
-pub fn stub_f1f4c8() -> ! {
-    todo!("0xf1f4c8 __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_$shim")
-}
+pub use rbx_reflection::generated_shard_ef::stub_f1f4c8 as stub_f1f4c8;
 
 // 0xf1f4d4 — __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev$shim")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev$shim")]
-pub fn stub_f1f4d4() -> ! {
-    todo!("0xf1f4d4 __ZN5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED2Ev$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f4d4 as stub_f1f4d4;
 
 // 0xf1f4e0 — __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv$shim")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv$shim")]
-pub fn stub_f1f4e0() -> ! {
-    todo!("0xf1f4e0 __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f4e0 as stub_f1f4e0;
 
 // 0xf1f4ec — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
 // type: int()
@@ -229,17 +179,13 @@ pub fn stub_f1f4f8() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv$shim")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv$shim")]
-pub fn stub_f1f504() -> ! {
-    todo!("0xf1f504 __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f504 as stub_f1f504;
 
 // 0xf1f510 — ___cxa_guard_release$shim
 // type: void __fastcall(__guard *)
 #[doc(alias = "___cxa_guard_release$shim")]
 #[doc(alias = "___cxa_guard_release$shim")]
-pub fn stub_f1f510() -> ! {
-    todo!("0xf1f510 ___cxa_guard_release$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f510 as stub_f1f510;
 
 // 0xf1f51c — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
 // type: int(void)
@@ -373,17 +319,13 @@ pub fn stub_f1f5d0() -> ! {
 // type: void __fastcall(boost::exception_detail::bad_exception_ *)
 #[doc(alias = "__ZN5boost16exception_detail14bad_exception_D2Ev$shim")]
 #[doc(alias = "__ZN5boost16exception_detail14bad_exception_D2Ev$shim")]
-pub fn stub_f1f5dc() -> ! {
-    todo!("0xf1f5dc __ZN5boost16exception_detail14bad_exception_D2Ev$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f5dc as stub_f1f5dc;
 
 // 0xf1f5e8 — __ZN5boost16exception_detail10bad_alloc_D2Ev$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost16exception_detail10bad_alloc_D2Ev$shim")]
 #[doc(alias = "__ZN5boost16exception_detail10bad_alloc_D2Ev$shim")]
-pub fn stub_f1f5e8() -> ! {
-    todo!("0xf1f5e8 __ZN5boost16exception_detail10bad_alloc_D2Ev$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f5e8 as stub_f1f5e8;
 
 // 0xf1f5f4 — __ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim
 // type: int(void)
@@ -397,9 +339,7 @@ pub fn stub_f1f5f4() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev$shim")]
 #[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev$shim")]
-pub fn stub_f1f600() -> ! {
-    todo!("0xf1f600 __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f600 as stub_f1f600;
 
 // 0xf1f60c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
 // type: int __fastcall(_DWORD)
@@ -445,17 +385,13 @@ pub fn stub_f1f63c() -> ! {
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim")]
-pub fn stub_f1f648() -> ! {
-    todo!("0xf1f648 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f648 as stub_f1f648;
 
 // 0xf1f654 — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim")]
-pub fn stub_f1f654() -> ! {
-    todo!("0xf1f654 __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f654 as stub_f1f654;
 
 // 0xf1f660 — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_$shim
 // type: int(void)
@@ -517,9 +453,7 @@ pub fn stub_f1f6a8() -> ! {
 // type: int(void)
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_f1f6b4() -> ! {
-    todo!("0xf1f6b4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f6b4 as stub_f1f6b4;
 
 // 0xf1f6c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 // type: int(void)
@@ -540,9 +474,7 @@ pub fn stub_f1f6cc() -> ! {
 // 0xf1f6d8 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim
 #[doc(alias = "__ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")]
-pub fn stub_f1f6d8() -> ! {
-    todo!("0xf1f6d8 __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f6d8 as stub_f1f6d8;
 
 // 0xf1f6f0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev$shim
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev$shim")]
@@ -554,58 +486,42 @@ pub fn stub_f1f6f0() -> ! {
 // 0xf1f708 — __ZNK3RBX15ServiceProvider6createINS_20RuntimeScriptServiceEEEPT_v$shim
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_20RuntimeScriptServiceEEEPT_v$shim")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_20RuntimeScriptServiceEEEPT_v$shim")]
-pub fn stub_f1f708() -> ! {
-    todo!("0xf1f708 __ZNK3RBX15ServiceProvider6createINS_20RuntimeScriptServiceEEEPT_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f708 as stub_f1f708;
 
 // 0xf1f714 — __ZNK3RBX15ServiceProvider6createINS_25ScriptInformationProviderEEEPT_v$shim
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_25ScriptInformationProviderEEEPT_v$shim")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_25ScriptInformationProviderEEEPT_v$shim")]
-pub fn stub_f1f714() -> ! {
-    todo!("0xf1f714 __ZNK3RBX15ServiceProvider6createINS_25ScriptInformationProviderEEEPT_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f714 as stub_f1f714;
 
 // 0xf1f72c — __ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v$shim")]
-pub fn stub_f1f72c() -> ! {
-    todo!("0xf1f72c __ZN3RBX4Name9doDeclareILZNS_11sBaseScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f72c as stub_f1f72c;
 
 // 0xf1f744 — __ZN3RBX11LocalScriptD0Ev$shim
 #[doc(alias = "__ZN3RBX11LocalScriptD0Ev$shim")]
 #[doc(alias = "__ZN3RBX11LocalScriptD0Ev$shim")]
-pub fn stub_f1f744() -> ! {
-    todo!("0xf1f744 __ZN3RBX11LocalScriptD0Ev$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f744 as stub_f1f744;
 
 // 0xf1f75c — __ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v$shim")]
-pub fn stub_f1f75c() -> ! {
-    todo!("0xf1f75c __ZN3RBX4Name9doDeclareILZNS_7sScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f75c as stub_f1f75c;
 
 // 0xf1f768 — __ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v$shim")]
-pub fn stub_f1f768() -> ! {
-    todo!("0xf1f768 __ZN3RBX4Name9doDeclareILZNS_21sRuntimeScriptServiceEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f768 as stub_f1f768;
 
 // 0xf1f774 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_20RuntimeScriptServiceEEEmv$shim
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_20RuntimeScriptServiceEEEmv$shim")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_20RuntimeScriptServiceEEEmv$shim")]
-pub fn stub_f1f774() -> ! {
-    todo!("0xf1f774 __ZN3RBX15ServiceProvider15doGetClassIndexINS_20RuntimeScriptServiceEEEmv$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f774 as stub_f1f774;
 
 // 0xf1f78c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_f1f78c() -> ! {
-    todo!("0xf1f78c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX6ScriptEEESsNS6_25ScriptInformationProvider13RequestResultEbbbENS3_5list6INS3_5valueIS8_EENSE_ISsEENSE_ISA_EENSE_IbEESI_SI_EEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f78c as stub_f1f78c;
 
 // 0xf1f798 — __ZN3RBX10Reflection11Call0HelperINS_6ScriptEMS2_FSsvESsE4callEPS2_S4_RNS0_7VariantE$shim
 #[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_6ScriptEMS2_FSsvESsE4callEPS2_S4_RNS0_7VariantE$shim")]
@@ -624,151 +540,109 @@ pub fn stub_f1f7a4() -> ! {
 // 0xf1f7b0 — __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE$shim")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE$shim")]
-pub fn stub_f1f7b0() -> ! {
-    todo!("0xf1f7b0 __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f7b0 as stub_f1f7b0;
 
 // 0xf1f7bc — __ZNK3RBX15ServiceProvider6createINS_5Stats12StatsServiceEEEPT_v$shim
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_5Stats12StatsServiceEEEPT_v$shim")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_5Stats12StatsServiceEEEPT_v$shim")]
-pub fn stub_f1f7bc() -> ! {
-    todo!("0xf1f7bc __ZNK3RBX15ServiceProvider6createINS_5Stats12StatsServiceEEEPT_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f7bc as stub_f1f7bc;
 
 // 0xf1f7c8 — __ZNK3RBX15ServiceProvider4findINS_5Stats12StatsServiceEEEPT_v$shim
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_5Stats12StatsServiceEEEPT_v$shim")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_5Stats12StatsServiceEEEPT_v$shim")]
-pub fn stub_f1f7c8() -> ! {
-    todo!("0xf1f7c8 __ZNK3RBX15ServiceProvider4findINS_5Stats12StatsServiceEEEPT_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f7c8 as stub_f1f7c8;
 
 // 0xf1f7d4 — __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 #[doc(alias = "__ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
 #[doc(alias = "__ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
-pub fn stub_f1f7d4() -> ! {
-    todo!("0xf1f7d4 __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f7d4 as stub_f1f7d4;
 
 // 0xf1f7e0 — __ZNK3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_v$shim
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_v$shim")]
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_v$shim")]
-pub fn stub_f1f7e0() -> ! {
-    todo!("0xf1f7e0 __ZNK3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f7e0 as stub_f1f7e0;
 
 // 0xf1f7ec — __ZN3RBX20RuntimeScriptServiceD2Ev$shim
 #[doc(alias = "__ZN3RBX20RuntimeScriptServiceD2Ev$shim")]
 #[doc(alias = "__ZN3RBX20RuntimeScriptServiceD2Ev$shim")]
-pub fn stub_f1f7ec() -> ! {
-    todo!("0xf1f7ec __ZN3RBX20RuntimeScriptServiceD2Ev$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f7ec as stub_f1f7ec;
 
 // 0xf1f828 — __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")]
-pub fn stub_f1f828() -> ! {
-    todo!("0xf1f828 __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f828 as stub_f1f828;
 
 // 0xf1f840 — __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")]
-pub fn stub_f1f840() -> ! {
-    todo!("0xf1f840 __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f840 as stub_f1f840;
 
 // 0xf1f84c — __ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")]
-pub fn stub_f1f84c() -> ! {
-    todo!("0xf1f84c __ZN3RBX4Name7declareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f84c as stub_f1f84c;
 
 // 0xf1f864 — __ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")]
-pub fn stub_f1f864() -> ! {
-    todo!("0xf1f864 __ZN3RBX4Name9doDeclareILZNS_9Scripting15sScriptDebuggerEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f864 as stub_f1f864;
 
 // 0xf1f870 — __ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v$shim")]
-pub fn stub_f1f870() -> ! {
-    todo!("0xf1f870 __ZN3RBX4Name7declareILZNS_12sLocalScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f870 as stub_f1f870;
 
 // 0xf1f87c — __ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v$shim")]
-pub fn stub_f1f87c() -> ! {
-    todo!("0xf1f87c __ZN3RBX4Name9doDeclareILZNS_12sLocalScriptEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f87c as stub_f1f87c;
 
 // 0xf1f888 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_13ScriptContextEEEmv$shim
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13ScriptContextEEEmv$shim")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_13ScriptContextEEEmv$shim")]
-pub fn stub_f1f888() -> ! {
-    todo!("0xf1f888 __ZN3RBX15ServiceProvider15doGetClassIndexINS_13ScriptContextEEEmv$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f888 as stub_f1f888;
 
 // 0xf1f894 — __ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_reallocate_mapEmb$shim
 #[doc(alias = "__ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_reallocate_mapEmb$shim")]
 #[doc(alias = "__ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_reallocate_mapEmb$shim")]
-pub fn stub_f1f894() -> ! {
-    todo!("0xf1f894 __ZNSt5dequeIN3RBX13ScriptContext13WaitingThreadESaIS2_EE17_M_reallocate_mapEmb$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f894 as stub_f1f894;
 
 // 0xf1f8ac — __ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v$shim
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v$shim")]
-pub fn stub_f1f8ac() -> ! {
-    todo!("0xf1f8ac __ZN3RBX4Name9doDeclareILZNS_5Stats6sStatsEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8ac as stub_f1f8ac;
 
 // 0xf1f8b8 — __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim")]
-pub fn stub_f1f8b8() -> ! {
-    todo!("0xf1f8b8 __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8b8 as stub_f1f8b8;
 
 // 0xf1f8c4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13ScriptContextERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13ScriptContextERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13ScriptContextERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")]
-pub fn stub_f1f8c4() -> ! {
-    todo!("0xf1f8c4 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13ScriptContextERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f8c4 as stub_f1f8c4;
 
 // 0xf1f8d0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slot24safe_static_do_get_mutexEv$shim
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slot24safe_static_do_get_mutexEv$shim")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_f1f8d0() -> ! {
-    todo!("0xf1f8d0 __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slot24safe_static_do_get_mutexEv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8d0 as stub_f1f8d0;
 
 // 0xf1f8dc — __ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v$shim")]
-pub fn stub_f1f8dc() -> ! {
-    todo!("0xf1f8dc __ZN3RBX4Name7declareILZNS_5Stats6sStatsEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8dc as stub_f1f8dc;
 
 // 0xf1f8e8 — __ZN3RBX4Name9doDeclareILZNS_16sContentProviderEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sContentProviderEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sContentProviderEEEERKS0_v$shim")]
-pub fn stub_f1f8e8() -> ! {
-    todo!("0xf1f8e8 __ZN3RBX4Name9doDeclareILZNS_16sContentProviderEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8e8 as stub_f1f8e8;
 
 // 0xf1f8f4 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_15ContentProviderEEEmv$shim
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_15ContentProviderEEEmv$shim")]
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_15ContentProviderEEEmv$shim")]
-pub fn stub_f1f8f4() -> ! {
-    todo!("0xf1f8f4 __ZN3RBX15ServiceProvider15doGetClassIndexINS_15ContentProviderEEEmv$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f8f4 as stub_f1f8f4;
 
 // 0xf1f900 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS7_3Lua13WeakThreadRefEP9lua_StateEENS3_5list3INS3_5valueIPS8_EENSF_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS7_3Lua13WeakThreadRefEP9lua_StateEENS3_5list3INS3_5valueIPS8_EENSF_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
@@ -796,31 +670,23 @@ pub fn stub_f1f918() -> ! {
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZNK5boost9function0IvEclEv$shim")]
 #[doc(alias = "__ZNK5boost9function0IvEclEv$shim")]
-pub fn stub_f1f924() -> ! {
-    todo!("0xf1f924 __ZNK5boost9function0IvEclEv$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f924 as stub_f1f924;
 
 // 0xf1f930 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_f1f930() -> ! {
-    todo!("0xf1f930 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f930 as stub_f1f930;
 
 // 0xf1f93c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv$shim
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv$shim")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv$shim")]
-pub fn stub_f1f93c() -> ! {
-    todo!("0xf1f93c __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1f93c as stub_f1f93c;
 
 // 0xf1f948 — __ZN5boost6detail15sp_counted_base7releaseEv$shim
 // type: int(void)
 #[doc(alias = "__ZN5boost6detail15sp_counted_base7releaseEv$shim")]
 #[doc(alias = "__ZN5boost6detail15sp_counted_base7releaseEv$shim")]
-pub fn stub_f1f948() -> ! {
-    todo!("0xf1f948 __ZN5boost6detail15sp_counted_base7releaseEv$shim")
-}
+pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f948 as stub_f1f948;
 
 // 0xf1f978 — __ZN3RBX4Name7declareILZNS_12sLuaSettingsEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sLuaSettingsEEEERKS0_v$shim")]
@@ -846,23 +712,17 @@ pub fn stub_f1f9c0() -> ! {
 // 0xf1f9f0 — __ZNSt6vectorIPKcSaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 #[doc(alias = "__ZNSt6vectorIPKcSaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
 #[doc(alias = "__ZNSt6vectorIPKcSaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
-pub fn stub_f1f9f0() -> ! {
-    todo!("0xf1f9f0 __ZNSt6vectorIPKcSaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f9f0 as stub_f1f9f0;
 
 // 0xf1f9fc — __ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")]
-pub fn stub_f1f9fc() -> ! {
-    todo!("0xf1f9fc __ZN3RBX4Name7declareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1f9fc as stub_f1f9fc;
 
 // 0xf1fa08 — __ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v$shim
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")]
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")]
-pub fn stub_f1fa08() -> ! {
-    todo!("0xf1fa08 __ZN3RBX4Name9doDeclareILZNS_5Stats10sStatsItemEEEERKS0_v$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1fa08 as stub_f1fa08;
 
 // 0xf1fa14 — __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim
 #[doc(alias = "__ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim")]
@@ -881,30 +741,22 @@ pub fn stub_f1fa20() -> ! {
 // 0xf1fa2c — __ZNSt5dequeISsSaISsEE9push_backERKSs$shim
 #[doc(alias = "__ZNSt5dequeISsSaISsEE9push_backERKSs$shim")]
 #[doc(alias = "__ZNSt5dequeISsSaISsEE9push_backERKSs$shim")]
-pub fn stub_f1fa2c() -> ! {
-    todo!("0xf1fa2c __ZNSt5dequeISsSaISsEE9push_backERKSs$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1fa2c as stub_f1fa2c;
 
 // 0xf1fa38 — __ZN5boost3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim
 #[doc(alias = "__ZN5boost3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim")]
 #[doc(alias = "__ZN5boost3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim")]
-pub fn stub_f1fa38() -> ! {
-    todo!("0xf1fa38 __ZN5boost3_bi6bind_tImNS_4_mfi4cmf0ImN3RBX13ScriptContextEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim")
-}
+pub use rbx_core::generated_core_shard_od::stub_0xf1fa38 as stub_f1fa38;
 
 // 0xf1fa44 — __ZNSt5dequeISsSaISsEE16_M_push_back_auxERKSs$shim
 #[doc(alias = "__ZNSt5dequeISsSaISsEE16_M_push_back_auxERKSs$shim")]
 #[doc(alias = "__ZNSt5dequeISsSaISsEE16_M_push_back_auxERKSs$shim")]
-pub fn stub_f1fa44() -> ! {
-    todo!("0xf1fa44 __ZNSt5dequeISsSaISsEE16_M_push_back_auxERKSs$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1fa44 as stub_f1fa44;
 
 // 0xf1fa50 — __ZNSt5dequeISsSaISsEE17_M_reallocate_mapEmb$shim
 #[doc(alias = "__ZNSt5dequeISsSaISsEE17_M_reallocate_mapEmb$shim")]
 #[doc(alias = "__ZNSt5dequeISsSaISsEE17_M_reallocate_mapEmb$shim")]
-pub fn stub_f1fa50() -> ! {
-    todo!("0xf1fa50 __ZNSt5dequeISsSaISsEE17_M_reallocate_mapEmb$shim")
-}
+pub use rbx_core::generated_core_shard_mo::stub_0xf1fa50 as stub_f1fa50;
 
 // 0xf1fa5c — __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim
 #[doc(alias = "__ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim")]
