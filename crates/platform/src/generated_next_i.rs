@@ -655,57 +655,101 @@ pub unsafe fn destroy_block_capture_5d1b4(block: *mut core::ffi::c_void) {
 // 0x5ed84 — ___copy_helper_block__20
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__20")]
-pub fn stub_5ed84() -> ! {
-    todo!("0x5ed84 ___copy_helper_block__20")
+pub unsafe fn copy_block_capture_5ed84(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5ed84: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x5ed90 — ___destroy_helper_block__20
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__20")]
-pub fn stub_5ed90() -> ! {
-    todo!("0x5ed90 ___destroy_helper_block__20")
+pub unsafe fn destroy_block_capture_5ed90(block: *mut core::ffi::c_void) {
+// IDA 0x5ed90: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __20 pair above.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5f024 — ___copy_helper_block_232_0
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_232_0")]
-pub fn stub_5f024() -> ! {
-    todo!("0x5f024 ___copy_helper_block_232_0")
+pub unsafe fn copy_block_capture_5f024(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5f024: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the __20 pair below.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x5f030 — ___destroy_helper_block_233_0
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_233_0")]
-pub fn stub_5f030() -> ! {
-    todo!("0x5f030 ___destroy_helper_block_233_0")
+pub unsafe fn destroy_block_capture_5f030(block: *mut core::ffi::c_void) {
+// IDA 0x5f030: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __20 pair below.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5f3e4 — ___copy_helper_block_252_0
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_252_0")]
-pub fn stub_5f3e4() -> ! {
-    todo!("0x5f3e4 ___copy_helper_block_252_0")
+pub unsafe fn copy_block_capture_5f3e4(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5f3e4: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the __20 pair below.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x5f3f0 — ___destroy_helper_block_253_0
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_253_0")]
-pub fn stub_5f3f0() -> ! {
-    todo!("0x5f3f0 ___destroy_helper_block_253_0")
+pub unsafe fn destroy_block_capture_5f3f0(block: *mut core::ffi::c_void) {
+// IDA 0x5f3f0: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __20 pair below.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5f5d8 — ___copy_helper_block_255
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_255")]
-pub fn stub_5f5d8() -> ! {
-    todo!("0x5f5d8 ___copy_helper_block_255")
+pub unsafe fn copy_block_capture_5f5d8(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5f5d8: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the __20 pair below.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x5f5e4 — ___destroy_helper_block_256
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_256")]
-pub fn stub_5f5e4() -> ! {
-    todo!("0x5f5e4 ___destroy_helper_block_256")
+pub unsafe fn destroy_block_capture_5f5e4(block: *mut core::ffi::c_void) {
+// IDA 0x5f5e4: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the __20 pair below.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5fd3c — ___copy_helper_block_324

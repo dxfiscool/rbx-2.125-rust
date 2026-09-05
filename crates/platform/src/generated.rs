@@ -3608,6 +3608,20 @@ pub struct SignupViewState {
     styled_buttons: AtomicU32,
     loads: AtomicU32,
     releases: AtomicU32,
+    gender_text: parking_lot::Mutex<String>,
+    gender_stored: AtomicI32,
+    birthday_text: parking_lot::Mutex<String>,
+    email_placeholder: parking_lot::Mutex<String>,
+    email_first_responder: AtomicBool,
+    gender_visible: AtomicBool,
+    birthday_visible: AtomicBool,
+    focus_released: AtomicBool,
+    bounds_synced: AtomicBool,
+    localized: AtomicBool,
+    localize_runs: AtomicU32,
+    anim_runs: AtomicU32,
+    warnings: AtomicU32,
+    wills: AtomicU32,
 }
 impl SignupViewState {
     fn bump(&self, c: &AtomicU32) {
@@ -3687,6 +3701,156 @@ impl SignupViewState {
     }
     pub fn load_count(&self) -> u32 {
         self.loads.load(Ordering::SeqCst)
+    }
+    /// `localizeStrings` (IDA 0x5e258): fills every bar/label/button
+    /// title from the bundle.
+    pub fn localize(&self) {
+        self.localized.store(true, Ordering::SeqCst);
+        self.bump(&self.localize_runs);
+    }
+    pub fn is_localized(&self) -> bool {
+        self.localized.load(Ordering::SeqCst)
+    }
+    /// `setGenderUI` (IDA 0x5e93c): gender 2 titles GenderGirl, 1 titles
+    /// GenderBoy, anything else SelectWord.
+    pub fn set_gender_ui(&self) {
+        let text = match self.gender.load(Ordering::SeqCst) {
+            2 => "GenderGirl",
+            1 => "GenderBoy",
+            _ => "SelectWord",
+        };
+        *self.gender_text.lock() = text.to_owned();
+    }
+    pub fn gender_text(&self) -> String {
+        self.gender_text.lock().clone()
+    }
+    /// `setGender:` helper behind `genderPickerDoneClicked:` (IDA
+    /// 0x5eab8): stores the picked row.
+    pub fn set_gender(&self, row: i32) {
+        self.gender.store(row, Ordering::SeqCst);
+        self.gender_stored.store(row, Ordering::SeqCst);
+    }
+    pub fn gender(&self) -> i32 {
+        self.gender.load(Ordering::SeqCst)
+    }
+    /// `genderPickerDoneClicked:` (IDA 0x5ea70): hides the picker, takes
+    /// the picked row, persists `signupgender`, refreshes the title and
+    /// advances to the birthday step.
+    pub fn gender_done(&self, row: i32) {
+        self.hide_gender_picker();
+        self.set_gender(row);
+        self.set_gender_ui();
+        self.birthday_touch_up();
+    }
+    /// `genderTouchUp:` (IDA 0x5eb30): releases field focus, then the
+    /// `__38…` block runs inline.
+    pub fn gender_touch_up(&self) {
+        self.release_focus();
+        self.apply_gender_frame();
+    }
+    /// `__38-genderTouchUp_block_invoke` (IDA 0x5ebb8, inline): the
+    /// gender picker frame slides up.
+    pub fn apply_gender_frame(&self) {
+        self.gender_visible.store(true, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    pub fn is_gender_visible(&self) -> bool {
+        self.gender_visible.load(Ordering::SeqCst)
+    }
+    /// `birthdayTouchUp:` (IDA 0x5ed98): releases field focus, then the
+    /// `__40…` block runs inline.
+    pub fn birthday_touch_up(&self) {
+        self.release_focus();
+        self.apply_birthday_frame();
+    }
+    /// `__40-birthdayTouchUp_block_invoke` (IDA 0x5ee20, inline): the
+    /// birthday picker frame slides up.
+    pub fn apply_birthday_frame(&self) {
+        self.birthday_visible.store(true, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    pub fn is_birthday_visible(&self) -> bool {
+        self.birthday_visible.load(Ordering::SeqCst)
+    }
+    /// `setBirthdayTextUI` (IDA 0x5f038): formats birthDate onto the
+    /// birthday button title (locale formatting out of slice).
+    pub fn set_birthday_ui(&self) {
+        *self.birthday_text.lock() = self.birth_date.lock().clone();
+    }
+    pub fn birthday_text(&self) -> String {
+        self.birthday_text.lock().clone()
+    }
+    /// `releaseTextFieldFocus` (IDA 0x5f1a8): all four fields resign.
+    pub fn release_focus(&self) {
+        self.focus_released.store(true, Ordering::SeqCst);
+    }
+    pub fn focus_released(&self) -> bool {
+        self.focus_released.load(Ordering::SeqCst)
+    }
+    /// `hideAllPickers` (IDA 0x5f210): hides birthday + gender.
+    pub fn hide_all_pickers(&self) {
+        self.hide_birthday_picker();
+        self.hide_gender_picker();
+        self.pickers_hidden.store(true, Ordering::SeqCst);
+    }
+    /// `hideGenderPicker` (IDA 0x5f240): the `__40…` block runs inline.
+    pub fn hide_gender_picker(&self) {
+        self.apply_hide_gender_frame();
+    }
+    /// `__40-hideGenderPicker_block_invoke` (IDA 0x5f2b8, inline): the
+    /// gender picker frame resets.
+    pub fn apply_hide_gender_frame(&self) {
+        self.gender_visible.store(false, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    /// `hideBirthdayPicker` (IDA 0x5f3f8): the `__42…` block runs inline.
+    pub fn hide_birthday_picker(&self) {
+        self.apply_hide_birthday_frame();
+    }
+    /// `__42-hideBirthdayPicker_block_invoke` (IDA 0x5f470, inline): the
+    /// birthday picker frame resets.
+    pub fn apply_hide_birthday_frame(&self) {
+        self.birthday_visible.store(false, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    pub fn anim_run_count(&self) -> u32 {
+        self.anim_runs.load(Ordering::SeqCst)
+    }
+    /// `birthdayDoneTouch:` (IDA 0x5f5ec): takes the picker date,
+    /// refreshes the title, hides the picker, then the email placeholder
+    /// follows the over/under-13 gate with the email field focused.
+    pub fn birthday_done(&self, birth: &str, age_years: u32) {
+        *self.birth_date.lock() = birth.to_owned();
+        self.set_birthday_ui();
+        self.hide_birthday_picker();
+        *self.email_placeholder.lock() = if age_years > 12 {
+            "EmailRequirements".to_owned()
+        } else {
+            "EmailRequirementsUnder13".to_owned()
+        };
+        self.email_first_responder.store(true, Ordering::SeqCst);
+    }
+    pub fn email_placeholder(&self) -> String {
+        self.email_placeholder.lock().clone()
+    }
+    /// `-didReceiveMemoryWarning` (IDA 0x5f7cc): super only.
+    pub fn memory_warning(&self) {
+        self.bump(&self.warnings);
+    }
+    pub fn warning_count(&self) -> u32 {
+        self.warnings.load(Ordering::SeqCst)
+    }
+    /// `-viewWillAppear:` (IDA 0x5f7f8): super, then the superview bounds
+    /// snap to the window.
+    pub fn will_appear_view(&self) {
+        self.bump(&self.wills);
+        self.bounds_synced.store(true, Ordering::SeqCst);
+    }
+    pub fn wills_count(&self) -> u32 {
+        self.wills.load(Ordering::SeqCst)
+    }
+    pub fn bounds_synced(&self) -> bool {
+        self.bounds_synced.load(Ordering::SeqCst)
     }
 }
 static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
@@ -9871,135 +10035,174 @@ pub fn stub_5dce0() {
 // 0x5e258 — -[SignupViewController localizeStrings]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController localizeStrings]")]
-pub fn stub_5e258() -> ! {
-    todo!("0x5e258 -[SignupViewController localizeStrings]")
+pub fn stub_5e258() {
+    // IDA 0x5e258 `localizeStrings`: fills every bar/label/button title
+    // from the bundle (0x5e27a..tail).
+    SIGNUPVC.localize();
 }
 
 // 0x5e93c — -[SignupViewController setGenderUI]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController setGenderUI]")]
-pub fn stub_5e93c() -> ! {
-    todo!("0x5e93c -[SignupViewController setGenderUI]")
+pub fn stub_5e93c() {
+    // IDA 0x5e93c `setGenderUI`: gender 2 titles GenderGirl (0x5e952..),
+    // 1 titles GenderBoy (0x5e956..), anything else SelectWord
+    // (0x5e9be..0x5ea6c).
+    SIGNUPVC.set_gender_ui();
 }
 
 
 // 0x5ea70 — -[SignupViewController genderPickerDoneClicked:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController genderPickerDoneClicked:]")]
-pub fn stub_5ea70() -> ! {
-    todo!("0x5ea70 -[SignupViewController genderPickerDoneClicked:]")
+pub fn stub_5ea70(row: i32) {
+    // IDA 0x5ea70 `genderPickerDoneClicked:`: hides the picker (0x5ea84),
+    // takes the picked row as gender (0x5eaa4..0x5eab8), persists
+    // `signupgender` (0x5ead4..0x5eafc), refreshes the title (0x5eb0e) and
+    // advances to the birthday step (0x5eb26).
+    SIGNUPVC.gender_done(row);
 }
 
 
 // 0x5eb30 — -[SignupViewController genderTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController genderTouchUp:]")]
-pub fn stub_5eb30() -> ! {
-    todo!("0x5eb30 -[SignupViewController genderTouchUp:]")
+pub fn stub_5eb30() {
+    // IDA 0x5eb30 `genderTouchUp:`: releases field focus, then the `__38…`
+    // block runs via `animateWithDuration:animations:` (0x5eb46..0x5eba6,
+    // inline).
+    SIGNUPVC.gender_touch_up();
 }
 
 
 // 0x5ebb8 — ___38-[SignupViewController genderTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___38-[SignupViewController genderTouchUp:]_block_invoke")]
-pub fn stub_5ebb8() -> ! {
-    todo!("0x5ebb8 ___38-[SignupViewController genderTouchUp:]_block_invoke")
+pub fn stub_5ebb8() {
+    // IDA 0x5ebb8 `__38-genderTouchUp_block_invoke` (via animation,
+    // inline): the gender picker frame slides up (0x5ebdc..tail).
+    SIGNUPVC.apply_gender_frame();
 }
 
 
 // 0x5ed98 — -[SignupViewController birthdayTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController birthdayTouchUp:]")]
-pub fn stub_5ed98() -> ! {
-    todo!("0x5ed98 -[SignupViewController birthdayTouchUp:]")
+pub fn stub_5ed98() {
+    // IDA 0x5ed98 `birthdayTouchUp:`: releases field focus, then the
+    // `__40…` block runs via `animateWithDuration:animations:`
+    // (0x5edae..0x5ee0e, inline).
+    SIGNUPVC.birthday_touch_up();
 }
 
 
 // 0x5ee20 — ___40-[SignupViewController birthdayTouchUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[SignupViewController birthdayTouchUp:]_block_invoke")]
-pub fn stub_5ee20() -> ! {
-    todo!("0x5ee20 ___40-[SignupViewController birthdayTouchUp:]_block_invoke")
+pub fn stub_5ee20() {
+    // IDA 0x5ee20 `__40-birthdayTouchUp_block_invoke` (via animation,
+    // inline): the birthday picker frame slides up (0x5ee44..tail).
+    SIGNUPVC.apply_birthday_frame();
 }
 
 
 // 0x5f038 — -[SignupViewController setBirthdayTextUI]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController setBirthdayTextUI]")]
-pub fn stub_5f038() -> ! {
-    todo!("0x5f038 -[SignupViewController setBirthdayTextUI]")
+pub fn stub_5f038() {
+    // IDA 0x5f038 `setBirthdayTextUI`: formats birthDate (medium, then
+    // en_US_POSIX short) onto the birthday button title (0x5f05e..0x5f15c).
+    SIGNUPVC.set_birthday_ui();
 }
 
 
 // 0x5f1a8 — -[SignupViewController releaseTextFieldFocus]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController releaseTextFieldFocus]")]
-pub fn stub_5f1a8() -> ! {
-    todo!("0x5f1a8 -[SignupViewController releaseTextFieldFocus]")
+pub fn stub_5f1a8() {
+    // IDA 0x5f1a8 `releaseTextFieldFocus`: all four fields resign first
+    // responder (0x5f1ca..0x5f20a).
+    SIGNUPVC.release_focus();
 }
 
 
 // 0x5f210 — -[SignupViewController hideAllPickers]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController hideAllPickers]")]
-pub fn stub_5f210() -> ! {
-    todo!("0x5f210 -[SignupViewController hideAllPickers]")
+pub fn stub_5f210() {
+    // IDA 0x5f210 `hideAllPickers`: hides birthday + gender (0x5f224..0x5f23a).
+    SIGNUPVC.hide_all_pickers();
 }
 
 
 // 0x5f240 — -[SignupViewController hideGenderPicker]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController hideGenderPicker]")]
-pub fn stub_5f240() -> ! {
-    todo!("0x5f240 -[SignupViewController hideGenderPicker]")
+pub fn stub_5f240() {
+    // IDA 0x5f240 `hideGenderPicker`: the `__40…` block runs via
+    // `animateWithDuration:animations:` (0x5f282..0x5f2a4, inline).
+    SIGNUPVC.hide_gender_picker();
 }
 
 
 // 0x5f2b8 — ___40-[SignupViewController hideGenderPicker]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[SignupViewController hideGenderPicker]_block_invoke")]
-pub fn stub_5f2b8() -> ! {
-    todo!("0x5f2b8 ___40-[SignupViewController hideGenderPicker]_block_invoke")
+pub fn stub_5f2b8() {
+    // IDA 0x5f2b8 `__40-hideGenderPicker_block_invoke` (via animation,
+    // inline): the gender picker frame resets (0x5f2dc..0x5f35a+).
+    SIGNUPVC.apply_hide_gender_frame();
 }
 
 
 // 0x5f3f8 — -[SignupViewController hideBirthdayPicker]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController hideBirthdayPicker]")]
-pub fn stub_5f3f8() -> ! {
-    todo!("0x5f3f8 -[SignupViewController hideBirthdayPicker]")
+pub fn stub_5f3f8() {
+    // IDA 0x5f3f8 `hideBirthdayPicker`: the `__42…` block runs via
+    // `animateWithDuration:animations:` (0x5f43a..0x5f45c, inline).
+    SIGNUPVC.hide_birthday_picker();
 }
 
 
 // 0x5f470 — ___42-[SignupViewController hideBirthdayPicker]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___42-[SignupViewController hideBirthdayPicker]_block_invoke")]
-pub fn stub_5f470() -> ! {
-    todo!("0x5f470 ___42-[SignupViewController hideBirthdayPicker]_block_invoke")
+pub fn stub_5f470() {
+    // IDA 0x5f470 `__42-hideBirthdayPicker_block_invoke` (via animation,
+    // inline): the birthday picker frame resets (0x5f49e..0x5f516+).
+    SIGNUPVC.apply_hide_birthday_frame();
 }
 
 
 // 0x5f5ec — -[SignupViewController birthdayDoneTouch:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController birthdayDoneTouch:]")]
-pub fn stub_5f5ec() -> ! {
-    todo!("0x5f5ec -[SignupViewController birthdayDoneTouch:]")
+pub fn stub_5f5ec(birth: &str, age_years: u32) {
+    // IDA 0x5f5ec `birthdayDoneTouch:`: takes the picker date (0x5f616),
+    // refreshes the birthday title (0x5f63c), hides the picker (0x5f64e),
+    // then the email placeholder follows the over/under-13 gate
+    // (0x5f66e..0x5f7aa) with the email field focused (0x5f7c8).
+    SIGNUPVC.birthday_done(birth, age_years);
 }
 
 
 // 0x5f7cc — -[SignupViewController didReceiveMemoryWarning]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController didReceiveMemoryWarning]")]
-pub fn stub_5f7cc() -> ! {
-    todo!("0x5f7cc -[SignupViewController didReceiveMemoryWarning]")
+pub fn stub_5f7cc() {
+    // IDA 0x5f7cc `-didReceiveMemoryWarning`: super only (0x5f7f0).
+    SIGNUPVC.memory_warning();
 }
 
 
 // 0x5f7f8 — -[SignupViewController viewWillAppear:]
 // type: void __cdecl(SignupViewController *self, SEL, char)
 #[doc(alias = "-[SignupViewController viewWillAppear:]")]
-pub fn stub_5f7f8() -> ! {
-    todo!("0x5f7f8 -[SignupViewController viewWillAppear:]")
+pub fn stub_5f7f8() {
+    // IDA 0x5f7f8 `-viewWillAppear:`: super (0x5f822), then the superview
+    // bounds snap to the window (0x5f834..0x5f870).
+    SIGNUPVC.will_appear_view();
 }
 
 
