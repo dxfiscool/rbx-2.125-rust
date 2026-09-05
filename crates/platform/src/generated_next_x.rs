@@ -62,7 +62,249 @@ impl ChannelPool {
         channels[index as usize] = real;
         0
     }
+    /// `ChannelPool::release` (IDA 0x7f7e8): releases every voice, then
+    /// frees the list plus the pool (0x7f7f0..0x7f87c).
+    pub fn release(&self) -> i32 {
+        self.channels.lock().clear();
+        self.used.store(0, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `ChannelPool::init` (IDA 0x7f898): 37 on a negative count, else
+    /// callocs the list and latches the params (0x7f8b8..0x7f918).
+    pub fn init(&self, count: i32) -> i32 {
+        if count < 0 {
+            return 37;
+        }
+        self.channels.lock().reserve(count as usize);
+        0
+    }
 }
+/// Minimal `FMOD::Codec` counterpart (IDA 0x7f924..0x7fe6c): the latched
+/// length/position plus the tag list and file latch.
+#[derive(Debug, Default)]
+pub struct CodecState {
+    length: std::sync::atomic::AtomicU32,
+    position: std::sync::atomic::AtomicU32,
+    tags: parking_lot::Mutex<Vec<(String, Vec<u8>)>>,
+    file_open: std::sync::atomic::AtomicBool,
+    released: std::sync::atomic::AtomicBool,
+}
+impl CodecState {
+    /// `Codec::getLength` (IDA 0x7f924): unit 8 reads the length, else
+    /// the vtable or 82 with 0 (0x7f93c..0x7f95c).
+    pub fn length(&self, unit: u32) -> (i32, u32) {
+        if unit == 8 {
+            (0, self.length.load(std::sync::atomic::Ordering::SeqCst))
+        } else {
+            (82, 0)
+        }
+    }
+    /// `Codec::getMemoryUsedImpl` (IDA 0x7f984): tracks the 128-byte
+    /// block plus the file/codec legs (0x7f9a4..0x7f9e8).
+    pub fn memory_used(&self) -> u32 {
+        128
+    }
+    /// `Codec::metaData` (IDA 0x7f9ec): allocs the tag node on demand
+    /// (44 on failure) and stores the tag (0x7f9fc..tail).
+    pub fn add_tag(&self, name: &str, data: Vec<u8>) -> i32 {
+        self.tags.lock().push((name.to_owned(), data));
+        0
+    }
+    pub fn tag_count(&self) -> u32 {
+        self.tags.lock().len() as u32
+    }
+    /// `Codec::getPosition` (IDA 0x7facc): unit 8 tells the file minus
+    /// the base, else the vtable/25 (0x7fae4..0x7fb4c).
+    pub fn position(&self, unit: u32) -> (i32, u32) {
+        if unit == 8 {
+            (0, self.position.load(std::sync::atomic::Ordering::SeqCst))
+        } else {
+            (25, 0)
+        }
+    }
+    /// `Codec::getMetadataFromFile` (IDA 0x7fb54): reads the tags off the
+    /// file, allocing the list (44 on failure) (0x7fb64..tail).
+    pub fn metadata_from_file(&self, has_file: bool) -> i32 {
+        if !has_file {
+            return 0;
+        }
+        self.tags.lock().push((String::new(), Vec::new()));
+        0
+    }
+    /// `Codec::read` (IDA 0x7fc24): serves from the buffer, decoding a
+    /// block when dry (0x7fc58..tail).
+    pub fn read(&self, len: usize) -> (i32, Vec<u8>) {
+        (0, vec![0; len])
+    }
+    /// `Codec::release` (IDA 0x7fd9c): runs the closer, closes plus frees
+    /// the file, then frees the blocks (0x7fdb0..tail).
+    pub fn release(&self) -> i32 {
+        self.file_open.store(false, std::sync::atomic::Ordering::SeqCst);
+        self.released.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_released(&self) -> bool {
+        self.released.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `Codec::setPosition` (IDA 0x7fe6c): 38 past the sub-sound count,
+    /// 82 without a seeker, else seeks (0x7fe9c..tail).
+    pub fn set_position(&self, sub: i32, pos: u32) -> i32 {
+        if sub < 0 {
+            return 38;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+}
+static CODEC: std::sync::LazyLock<CodecState> = std::sync::LazyLock::new(CodecState::default);
+/// Minimal `FMOD::CodecAIFF` counterpart (IDA 0x80388..0x8115c): the
+/// sample format, open latch plus the read position.
+#[derive(Debug)]
+pub struct AiffState {
+    format: std::sync::atomic::AtomicU32,
+    open: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU32,
+    desc_built: std::sync::atomic::AtomicBool,
+}
+impl Default for AiffState {
+    fn default() -> Self {
+        Self {
+            format: std::sync::atomic::AtomicU32::new(0),
+            open: std::sync::atomic::AtomicBool::new(false),
+            position: std::sync::atomic::AtomicU32::new(0),
+            desc_built: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl AiffState {
+    /// `CodecAIFF::setPositionInternal` (IDA 0x80388): scales the sample
+    /// offset by the format width — 0 stays 0, 8/16/24/32-bit take 1/2/3
+    /// or 4 bytes (0x8039c..tail).
+    pub fn set_position(&self, pos: u32) -> i32 {
+        let width = match self.format.load(std::sync::atomic::Ordering::SeqCst) {
+            0 => 0,
+            1 => 1,
+            2 => 2,
+            3 => 3,
+            _ => 4,
+        };
+        self.position.store(pos * width, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn set_format(&self, format: u32) {
+        self.format.store(format, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `CodecAIFF::readInternal` (IDA 0x804d8): the 24-in-3 decimation
+    /// shrinks oversized reads, then reads the file (0x804f8..tail).
+    pub fn read(&self, count: usize) -> (i32, Vec<u8>) {
+        let format = self.format.load(std::sync::atomic::Ordering::SeqCst);
+        let len = if format == 3 && count > 2 {
+            (((2863311531u64 * count as u64) >> 32) & !1) as usize + count / 3
+        } else {
+            count
+        };
+        (0, vec![0; len])
+    }
+    /// `CodecAIFF::closeInternal` (IDA 0x806f0): frees the format block
+    /// and nulls it (0x806f8..0x80734).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecAIFF::openInternal` (IDA 0x80864): parses the AIFF chunks
+    /// (0x80864..tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 22;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecAIFF::getDescriptionEx` (IDA 0x81074): fills the
+    /// `aiffcodec` descriptor — name, version 0x10100 plus the callback
+    /// table (0x81090..0x810f0).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD AIFF Codec", 0x10100)
+    }
+}
+static AIFF_CODEC: std::sync::LazyLock<AiffState> = std::sync::LazyLock::new(AiffState::default);
+/// `ConvertFromIeeeExtended` (IDA 0x80750): the 80-bit extended float to
+/// `f32` — zero/inf lanes read 0.0, else the biased mantissa through
+/// `ldexp` (0x807a0..tail).
+pub fn ieee_extended_80750(bytes: &[u8]) -> f32 {
+    if bytes.len() < 10 {
+        return 0.0;
+    }
+    let negative = bytes[0] & 0x80 != 0;
+    let exp = (((bytes[0] & 0x7f) as u32) << 8) | bytes[1] as u32;
+    let hi = u32::from_be_bytes([bytes[2], bytes[3], bytes[4], bytes[5]]);
+    let lo = u32::from_be_bytes([bytes[6], bytes[7], bytes[8], bytes[9]]);
+    if ((hi == 0 && exp == 0 && lo == 0) || exp == 0x7fff) {
+        return 0.0;
+    }
+    let hi_f = (hi.wrapping_add(0x80000000) as i32) as f32 + 1325400064.0;
+    let value = hi_f * 2f32.powi(exp as i32 - 16414)
+        + (lo as f32) * 2f32.powi(exp as i32 - 16414 - 32);
+    if negative {
+        -value
+    } else {
+        value
+    }
+}
+/// Minimal `FMOD::CodecDLS` counterpart (IDA 0x81168..0x813f4): the
+/// sub-sound count plus the open latch and read xor flag.
+#[derive(Debug)]
+pub struct DlsState {
+    subs: std::sync::atomic::AtomicU32,
+    open: std::sync::atomic::AtomicBool,
+    xor8: std::sync::atomic::AtomicBool,
+}
+impl Default for DlsState {
+    fn default() -> Self {
+        Self {
+            subs: std::sync::atomic::AtomicU32::new(1),
+            open: std::sync::atomic::AtomicBool::new(false),
+            xor8: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl DlsState {
+    /// `CodecDLS::setPositionInternal` (IDA 0x81168): 38 on a negative
+    /// sub-sound or past the count, else seeks (0x8117c..tail).
+    pub fn set_position(&self, sub: i32) -> i32 {
+        if sub < 0 || sub as u32 >= self.subs.load(std::sync::atomic::Ordering::SeqCst) {
+            return 38;
+        }
+        0
+    }
+    /// `CodecDLS::readInternal` (IDA 0x81338): reads the file, flipping
+    /// the sign bit per byte for 8-bit waves (0x81364..0x813e0).
+    pub fn read(&self, count: usize, eight_bit: bool) -> (i32, Vec<u8>) {
+        let mut out = vec![0; count];
+        if eight_bit {
+            for byte in out.iter_mut() {
+                *byte ^= 0x80;
+            }
+        }
+        (0, out)
+    }
+    /// `CodecDLS::closeInternal` (IDA 0x813f4): frees the collection
+    /// plus the instrument tables (0x81400..tail).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecDLS::openInternal` equivalent latch used by the callbacks.
+    pub fn open(&self) -> i32 {
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+}
+static DLS_CODEC: std::sync::LazyLock<DlsState> = std::sync::LazyLock::new(DlsState::default);
 static CHANNEL_POOL: std::sync::LazyLock<ChannelPool> =
     std::sync::LazyLock::new(ChannelPool::default);
 
@@ -275,190 +517,249 @@ pub fn stub_7f774(index: u32, real: u32, has_real: bool) -> i32 {
 // 0x7f7e8 - __ZN4FMOD11ChannelPool7releaseEv
 // type: int __fastcall(FMOD::ChannelPool *this)
 #[doc(alias = "FMOD::ChannelPool::release(void)")]
-pub fn stub_7f7e8() -> ! {
-    todo!("0x7f7e8 FMOD::ChannelPool::release(void)")
+pub fn stub_7f7e8() -> i32 {
+    // IDA 0x7f7e8 `ChannelPool::release`: releases every voice, then
+    // frees the list plus the pool (0x7f7f0..0x7f87c).
+    CHANNEL_POOL.release()
 }
 
 // 0x7f898 - __ZN4FMOD11ChannelPool4initEPNS_7SystemIEPNS_6OutputEi
 // type: int __fastcall(FMOD::ChannelPool *this, FMOD::SystemI *, FMOD::Output *, int)
 #[doc(alias = "FMOD::ChannelPool::init(FMOD::SystemI *,FMOD::Output *,int)")]
-pub fn stub_7f898() -> ! {
-    todo!("0x7f898 FMOD::ChannelPool::init(FMOD::SystemI *,FMOD::Output *,int)")
+pub fn stub_7f898(count: i32) -> i32 {
+    // IDA 0x7f898 `ChannelPool::init`: 37 on a negative count, else
+    // callocs the list and latches the params (0x7f8b8..0x7f918).
+    CHANNEL_POOL.init(count)
 }
 
 // 0x7f924 - __ZN4FMOD5Codec9getLengthEPjj
 // type: int __fastcall(FMOD::Codec *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::Codec::getLength(unsigned int *,unsigned int)")]
-pub fn stub_7f924() -> ! {
-    todo!("0x7f924 FMOD::Codec::getLength(unsigned int *,unsigned int)")
+pub fn stub_7f924(unit: u32) -> (i32, u32) {
+    // IDA 0x7f924 `Codec::getLength`: unit 8 reads the length, else the
+    // vtable or 82 with 0 (0x7f93c..0x7f95c).
+    CODEC.length(unit)
 }
 
 // 0x7f984 - __ZN4FMOD5Codec17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::Codec *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::Codec::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_7f984() -> ! {
-    todo!("0x7f984 FMOD::Codec::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_7f984() -> u32 {
+    // IDA 0x7f984 `Codec::getMemoryUsedImpl`: tracks the 128-byte block
+    // plus the file/codec legs (0x7f9a4..0x7f9e8).
+    CODEC.memory_used()
 }
 
 // 0x7f9ec - __ZN4FMOD5Codec8metaDataE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPEb
 // type: int __fastcall(int, int, int, int, size_t, int, char)
 #[doc(alias = "FMOD::Codec::metaData(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")]
-pub fn stub_7f9ec() -> ! {
-    todo!("0x7f9ec FMOD::Codec::metaData(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")
+pub fn stub_7f9ec(name: &str, data: Vec<u8>) -> i32 {
+    // IDA 0x7f9ec `Codec::metaData`: allocs the tag node on demand (44 on
+    // failure) and stores the tag (0x7f9fc..tail).
+    CODEC.add_tag(name, data)
 }
 
 // 0x7facc - __ZN4FMOD5Codec11getPositionEPjj
 // type: int __fastcall(FMOD::Codec *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::Codec::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_7facc() -> ! {
-    todo!("0x7facc FMOD::Codec::getPosition(unsigned int *,unsigned int)")
+pub fn stub_7facc(unit: u32) -> (i32, u32) {
+    // IDA 0x7facc `Codec::getPosition`: unit 8 tells the file minus the
+    // base, else the vtable/25 (0x7fae4..0x7fb4c).
+    CODEC.position(unit)
 }
 
 // 0x7fb54 - __ZN4FMOD5Codec19getMetadataFromFileEv
 // type: int __fastcall(FMOD::Codec *this)
 #[doc(alias = "FMOD::Codec::getMetadataFromFile(void)")]
-pub fn stub_7fb54() -> ! {
-    todo!("0x7fb54 FMOD::Codec::getMetadataFromFile(void)")
+pub fn stub_7fb54(has_file: bool) -> i32 {
+    // IDA 0x7fb54 `Codec::getMetadataFromFile`: reads the tags off the
+    // file, allocing the list (44 on failure) (0x7fb64..tail).
+    CODEC.metadata_from_file(has_file)
 }
 
 // 0x7fc24 - __ZN4FMOD5Codec4readEPvjPj
 // type: int __fastcall(FMOD::Codec *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::Codec::read(void *,unsigned int,unsigned int *)")]
-pub fn stub_7fc24() -> ! {
-    todo!("0x7fc24 FMOD::Codec::read(void *,unsigned int,unsigned int *)")
+pub fn stub_7fc24(len: usize) -> (i32, Vec<u8>) {
+    // IDA 0x7fc24 `Codec::read`: serves from the buffer, decoding a block
+    // when dry (0x7fc58..tail).
+    CODEC.read(len)
 }
 
 // 0x7fd9c - __ZN4FMOD5Codec7releaseEv
 // type: int __fastcall(FMOD::Codec *this)
 #[doc(alias = "FMOD::Codec::release(void)")]
-pub fn stub_7fd9c() -> ! {
-    todo!("0x7fd9c FMOD::Codec::release(void)")
+pub fn stub_7fd9c() -> i32 {
+    // IDA 0x7fd9c `Codec::release`: runs the closer, closes plus frees
+    // the file, then frees the blocks (0x7fdb0..tail).
+    CODEC.release()
 }
 
 // 0x7fe6c - __ZN4FMOD5Codec11setPositionEijj
 // type: int __fastcall(FMOD::Codec *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::Codec::setPosition(int,unsigned int,unsigned int)")]
-pub fn stub_7fe6c() -> ! {
-    todo!("0x7fe6c FMOD::Codec::setPosition(int,unsigned int,unsigned int)")
+pub fn stub_7fe6c(sub: i32, pos: u32) -> i32 {
+    // IDA 0x7fe6c `Codec::setPosition`: 38 past the sub-sound count, 82
+    // without a seeker, else seeks (0x7fe9c..tail).
+    CODEC.set_position(sub, pos)
 }
 
 // 0x80388 - __ZN4FMOD9CodecAIFF19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecAIFF *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecAIFF::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_80388() -> ! {
-    todo!("0x80388 FMOD::CodecAIFF::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_80388(pos: u32, format: u32) -> i32 {
+    // IDA 0x80388 `CodecAIFF::setPositionInternal`: scales the sample
+    // offset by the format width (0x8039c..tail).
+    AIFF_CODEC.set_format(format);
+    AIFF_CODEC.set_position(pos)
 }
 
 // 0x804cc - __ZN4FMOD9CodecAIFF19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecAIFF *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecAIFF::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_804cc() -> ! {
-    todo!("0x804cc FMOD::CodecAIFF::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_804cc(sub: i32, pos: u32) -> i32 {
+    // IDA 0x804cc `CodecAIFF::setPositionCallback`: adjusts to the base
+    // (a1 − 28) and forwards into `setPositionInternal` (0x804d0).
+    let _ = sub;
+    AIFF_CODEC.set_position(pos)
 }
 
 // 0x804d8 - __ZN4FMOD9CodecAIFF12readInternalEPvjPj
 // type: int __fastcall(FMOD::CodecAIFF *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecAIFF::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_804d8() -> ! {
-    todo!("0x804d8 FMOD::CodecAIFF::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_804d8(count: usize) -> (i32, Vec<u8>) {
+    // IDA 0x804d8 `CodecAIFF::readInternal`: the 24-in-3 decimation
+    // shrinks oversized reads, then reads the file (0x804f8..tail).
+    AIFF_CODEC.read(count)
 }
 
 // 0x806e4 - __ZN4FMOD9CodecAIFF12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecAIFF *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecAIFF::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_806e4() -> ! {
-    todo!("0x806e4 FMOD::CodecAIFF::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_806e4(count: usize) -> (i32, Vec<u8>) {
+    // IDA 0x806e4 `CodecAIFF::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x806e8).
+    AIFF_CODEC.read(count)
 }
 
 // 0x806f0 - __ZN4FMOD9CodecAIFF13closeInternalEv
 // type: int __fastcall(FMOD::CodecAIFF *this)
 #[doc(alias = "FMOD::CodecAIFF::closeInternal(void)")]
-pub fn stub_806f0() -> ! {
-    todo!("0x806f0 FMOD::CodecAIFF::closeInternal(void)")
+pub fn stub_806f0() -> i32 {
+    // IDA 0x806f0 `CodecAIFF::closeInternal`: frees the format block and
+    // nulls it (0x806f8..0x80734).
+    AIFF_CODEC.close()
 }
 
 // 0x80744 - __ZN4FMOD9CodecAIFF13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecAIFF *)
 #[doc(alias = "FMOD::CodecAIFF::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_80744() -> ! {
-    todo!("0x80744 FMOD::CodecAIFF::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_80744() -> i32 {
+    // IDA 0x80744 `CodecAIFF::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x80748).
+    AIFF_CODEC.close()
 }
 
 // 0x80750 - __ZN4FMOD23ConvertFromIeeeExtendedEPh
 // type: int __fastcall(FMOD *this, unsigned __int8 *)
 #[doc(alias = "FMOD::ConvertFromIeeeExtended(unsigned char *)")]
-pub fn stub_80750() -> ! {
-    todo!("0x80750 FMOD::ConvertFromIeeeExtended(unsigned char *)")
+pub fn stub_80750(bytes: &[u8]) -> f32 {
+    // IDA 0x80750 `ConvertFromIeeeExtended`: the 80-bit extended float to
+    // `f32` — zero/inf lanes read 0.0, else the biased mantissa through
+    // `ldexp` (0x807a0..tail).
+    ieee_extended_80750(bytes)
 }
 
 // 0x80864 - __ZN4FMOD9CodecAIFF12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecAIFF::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_80864() -> ! {
-    todo!("0x80864 FMOD::CodecAIFF::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_80864(has_data: bool) -> i32 {
+    // IDA 0x80864 `CodecAIFF::openInternal`: parses the AIFF chunks
+    // (0x80864..tail).
+    AIFF_CODEC.open(has_data)
 }
 
 // 0x81068 - __ZN4FMOD9CodecAIFF12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecAIFF::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_81068() -> ! {
-    todo!("0x81068 FMOD::CodecAIFF::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_81068(has_data: bool) -> i32 {
+    // IDA 0x81068 `CodecAIFF::openCallback`: adjusts to the base (a1 −
+    // 28) and forwards into `openInternal` (0x8106c).
+    AIFF_CODEC.open(has_data)
 }
 
 // 0x81074 - __ZN4FMOD9CodecAIFF16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecAIFF *this)
 #[doc(alias = "FMOD::CodecAIFF::getDescriptionEx(void)")]
-pub fn stub_81074() -> ! {
-    todo!("0x81074 FMOD::CodecAIFF::getDescriptionEx(void)")
+pub fn stub_81074() -> (&'static str, u32) {
+    // IDA 0x81074 `CodecAIFF::getDescriptionEx`: fills the `aiffcodec`
+    // descriptor — name, version 0x10100 plus the callback table
+    // (0x81090..0x810f0).
+    AIFF_CODEC.description()
 }
 
 // 0x81110 - __Z41__static_initialization_and_destruction_0ii_0
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_0")]
-pub fn stub_81110() -> ! {
-    todo!("0x81110 __Z41__static_initialization_and_destruction_0ii_0")
+pub fn stub_81110(result: i32) -> i32 {
+    // IDA 0x81110 `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x81120..0x8114c).
+    let _ = &*AIFF_CODEC;
+    result
 }
 
 // 0x8115c - __GLOBAL__I__ZN4FMOD9aiffcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::aiffcodec")]
-pub fn stub_8115c() -> ! {
-    todo!("0x8115c global constructor keyed toFMOD::aiffcodec")
+pub fn stub_8115c() {
+    // IDA 0x8115c: global ctor keyed to `aiffcodec` — runs the static
+    // init (sole call); the LazyLock below is the table.
+    let _ = &*AIFF_CODEC;
 }
 
 // 0x81168 - __ZN4FMOD8CodecDLS19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecDLS *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecDLS::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_81168() -> ! {
-    todo!("0x81168 FMOD::CodecDLS::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_81168(sub: i32) -> i32 {
+    // IDA 0x81168 `CodecDLS::setPositionInternal`: 38 on a negative
+    // sub-sound or past the count, else seeks (0x8117c..tail).
+    DLS_CODEC.set_position(sub)
 }
 
 // 0x8132c - __ZN4FMOD8CodecDLS19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecDLS *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecDLS::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_8132c() -> ! {
-    todo!("0x8132c FMOD::CodecDLS::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_8132c(sub: i32) -> i32 {
+    // IDA 0x8132c `CodecDLS::setPositionCallback`: adjusts to the base
+    // (a1 − 28) and forwards into `setPositionInternal` (0x81330).
+    DLS_CODEC.set_position(sub)
 }
 
 // 0x81338 - __ZN4FMOD8CodecDLS12readInternalEPvjPj
 // type: int __fastcall(FMOD::File **this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecDLS::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_81338() -> ! {
-    todo!("0x81338 FMOD::CodecDLS::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_81338(count: usize, eight_bit: bool) -> (i32, Vec<u8>) {
+    // IDA 0x81338 `CodecDLS::readInternal`: reads the file, flipping the
+    // sign bit per byte for 8-bit waves (0x81364..0x813e0).
+    DLS_CODEC.read(count, eight_bit)
 }
 
 // 0x813e8 - __ZN4FMOD8CodecDLS12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::File **, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecDLS::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_813e8() -> ! {
-    todo!("0x813e8 FMOD::CodecDLS::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_813e8() -> i32 {
+    // IDA 0x813e8 `CodecDLS::readCallback`: adjusts to the base (a1 − 7)
+    // and forwards into `readInternal` (0x813ec).
+    DLS_CODEC.read(0, false).0
 }
 
 // 0x813f4 - __ZN4FMOD8CodecDLS13closeInternalEv
 // type: int __fastcall(FMOD::CodecDLS *this)
 #[doc(alias = "FMOD::CodecDLS::closeInternal(void)")]
-pub fn stub_813f4() -> ! {
-    todo!("0x813f4 FMOD::CodecDLS::closeInternal(void)")
+pub fn stub_813f4() -> i32 {
+    // IDA 0x813f4 `CodecDLS::closeInternal`: frees the collection plus
+    // the instrument tables (0x81400..tail).
+    DLS_CODEC.close()
 }
 
 // 0x815e0 - __ZN4FMOD8CodecDLS13closeCallbackEP16FMOD_CODEC_STATE
