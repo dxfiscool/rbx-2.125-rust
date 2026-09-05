@@ -1956,11 +1956,15 @@ pub struct BodyGyro {
 /// `BoundPropGetSet<Handles>::getValue` (IDA `0x56b544`) / `setValue` (IDA
 /// `0x56b550`) accessors. `faces` is the `Faces` bitmask behind
 /// `PropDescriptor<Handles, Faces>` (IDA `0x56e2c0`) with its `GetSetImpl`
-/// accessors (IDA `0x56e408`/`0x56e428`).
+/// accessors (IDA `0x56e408`/`0x56e428`). `visual_style` is the raw
+/// `VisualStyle` word behind `PropDescriptor<Handles, VisualStyle>` (IDA
+/// `0x56ec80`/`0x56eca0`); enumerants live in the `HandlesStyle` desc table
+/// (IDA `0x49bdc0`: `(0, "Resize")`, `(1, "Movement")`).
 #[derive(Default)]
 pub struct Handles {
     pub int_value: i32,
     pub faces: u32,
+    pub visual_style: i32,
     _opaque: (),
 }
 

@@ -100,6 +100,30 @@ pub struct HandlesFacesProp {
     pub name: String,
     pub category: String,
 }
+/// Rust model of `RBX::Handles::VisualStyle` behind
+/// `EnumPropDescriptor<Handles, VisualStyle>` (IDA `0x56e44c`): enumerants
+/// from the `HandlesStyle` desc table (IDA `0x49bdc0` `EnumDesc::EnumDesc`
+/// runs `addPair(0, "Resize")` + `addPair(1, "Movement")`). Stored raw on
+/// `Handles::visual_style`; twin of the `VISUAL_TRUSS_STYLE_ITEMS` table in
+/// `instance.rs`.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub enum HandlesVisualStyle {
+    #[default]
+    Resize = 0,
+    Movement = 1,
+}
+
+/// `(value, name)` pairs of `EnumDesc<Handles::VisualStyle>` (IDA `0x49bdc0`).
+pub const HANDLES_STYLE_ITEMS: [(i32, &str); 2] = [(0, "Resize"), (1, "Movement")];
+
+/// Rust model of `RBX::Reflection::EnumPropDescriptor<RBX::Handles,
+/// RBX::Handles::VisualStyle>` (IDA `0x56e44c`): the name/category words; the
+/// bound getter/setter member pointers collapse into direct
+/// `Handles::visual_style` access.
+pub struct HandlesVisualStyleProp {
+    pub name: String,
+    pub category: String,
+}
 
 // 0x56cbd4 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::~EventDesc()")]
@@ -610,78 +634,130 @@ pub fn stub_0x56e428(_desc: &HandlesFacesProp, handles: &mut crate::instance::Ha
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::EnumPropDescriptor<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>(char const*,char const*,RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x56e44c() -> ! {
-    todo!("0x56e44c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::EnumPropDescriptor<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>(char const*,char const*,RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x56e44c(name: &str, category: &str) -> HandlesVisualStyleProp {
+    // IDA 0x56e44c `EnumPropDescriptor<Handles, VisualStyle>::C2`: binds the
+    // member get/set pair (`getVisualStyle` 0x5676b0 / `setVisualStyle`
+    // 0x566ee0) plus the name and attribute words; the binding lands with
+    // reflection, so the model starts at defaults. Same shape as 0x4a88f0.
+    HandlesVisualStyleProp { name: name.to_string(), category: category.to_string() }
 }
 
 // 0x56e600 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED0Ev
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::~EnumPropDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEED0Ev")]
-pub fn stub_0x56e600() -> ! {
-    todo!("0x56e600 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::~EnumPropDescriptor()")
+pub fn stub_0x56e600(desc: *mut HandlesVisualStyleProp) {
+    // IDA 0x56e600 `EnumPropDescriptor<Handles, VisualStyle>::D0`: vtable
+    // install plus memberwise teardown; dropping the box is the same
+    // release. Same shape as 0x4a8aa4.
+    // SAFETY: `desc` must be a live box pointer never used again.
+    unsafe {
+        drop(Box::from_raw(desc));
+    }
 }
 
 // 0x56e62c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10isReadOnlyEv")]
-pub fn stub_0x56e62c() -> ! {
-    todo!("0x56e62c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isReadOnly(void)const")
+pub fn stub_0x56e62c(_desc: &HandlesVisualStyleProp) -> bool {
+    // IDA 0x56e62c (decompiled): `isReadOnly` calls through the `+44`
+    // `GetSetImpl` slot, whose `isReadOnly` is `MOVS R0, #0` (cf. 0x56ec78);
+    // a get/set pair is never read-only.
+    false
 }
 
 // 0x56e63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11isWriteOnlyEv")]
-pub fn stub_0x56e63c() -> ! {
-    todo!("0x56e63c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::isWriteOnly(void)const")
+pub fn stub_0x56e63c(_desc: &HandlesVisualStyleProp) -> bool {
+    // IDA 0x56e63c: same `+44` delegation as `isReadOnly`, into
+    // `GetSetImpl::isWriteOnly` (`MOVS R0, #0`, cf. 0x56ec7c); ...nor
+    // write-only.
+    false
 }
 
 // 0x56e64c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_0x56e64c() -> ! {
-    todo!("0x56e64c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56e64c(first: &crate::instance::Handles, second: &crate::instance::Handles) -> bool {
+    // IDA 0x56e64c (decompiled): reads both values through the bound member
+    // getter (vtable `+8` off the `+44` slot, 0x56e65c/0x56e672 — the
+    // `getVisualStyle` binding) and compares. Same template shape as
+    // 0x4a8af0, over the member.
+    stub_0x56ec80(first) == stub_0x56ec80(second)
 }
 
 // 0x56e674 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0x56e674() -> ! {
-    todo!("0x56e674 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x56e674(handles: &crate::instance::Handles) -> crate::generated_05::Variant {
+    // IDA 0x56e674 (decompiled): `getEnumValue` through vtable `+68`
+    // (0x56e682), `Type::getSingleton<int>` tag (0x56e688),
+    // `placement_any<int>::operator=` (0x56e696). Tag + payload collapse
+    // into the int variant. Same shape as 0x100ac.
+    crate::generated_05::Variant::Int(stub_0x56eb20(handles))
 }
 
 // 0x56e698 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x56e698() -> ! {
-    todo!("0x56e698 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x56e698(handles: &mut crate::instance::Handles, variant: &crate::generated_05::Variant) {
+    // IDA 0x56e698 (decompiled): holder-identity int fast path via
+    // `any_cast<int>` (0x56e716), else generic `Variant::convert<int>` with
+    // placement-copy/destroy around it (0x56e718-0x56e754), then the `+72`
+    // setter (0x56e774). Only the int arm is modeled here, so other arms
+    // hold the current value. Same shape as 0x100d0.
+    if let crate::generated_05::Variant::Int(value) = variant {
+        stub_0x56ec38(handles, *value);
+    }
 }
 
 // 0x56e7e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_0x56e7e4() -> ! {
-    todo!("0x56e7e4 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x56e7e4(dst: &mut crate::instance::Handles, src: &crate::instance::Handles) {
+    // IDA 0x56e7e4: `copyValue(dst, src)` — reads the value through the
+    // member getter and writes it through the member setter. Same template
+    // shape as 0x4a8c88, over the `VisualStyle` member.
+    stub_0x56eca0(dst, stub_0x56ec80(src));
 }
 
 // 0x56e808 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14hasStringValueEv
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14hasStringValueEv")]
-pub fn stub_0x56e808() -> ! {
-    todo!("0x56e808 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::hasStringValue(void)const")
+pub fn stub_0x56e808() -> bool {
+    // IDA 0x56e808: enum properties always carry string values. Same shape
+    // as 0x4a8cac.
+    true
 }
 
 // 0x56e80c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56e80c() -> ! {
-    todo!("0x56e80c RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56e80c(handles: &crate::instance::Handles) -> Option<String> {
+    // IDA 0x56e80c: reads the value through the member getter, then converts
+    // to the enum name. Same shape as 0x4a8cb0, over the member.
+    HANDLES_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == stub_0x56ec80(handles))
+        .map(|(_, text)| text.to_string())
 }
 
 // 0x56e830 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0x56e830() -> ! {
-    todo!("0x56e830 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x56e830(handles: &mut crate::instance::Handles, name: &str) -> bool {
+    // IDA 0x56e830: converts via the desc table and sets on hit, false on
+    // miss. Same shape as 0x4a8cd4, over the member.
+    if let Some(value) = HANDLES_STYLE_ITEMS
+        .iter()
+        .find(|(_, text)| *text == name)
+        .map(|(v, _)| *v)
+    {
+        stub_0x56eca0(handles, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x56e870 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -702,87 +778,145 @@ pub fn stub_0x56e890() -> ! {
 // 0x56ead0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56ead0() -> ! {
-    todo!("0x56ead0 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56ead0(handles: &crate::instance::Handles) -> Option<usize> {
+    // IDA 0x56ead0: reads the value through the member getter, then the
+    // position search. Same shape as 0x4a8f74, over the member.
+    let current = stub_0x56ec80(handles);
+    HANDLES_STYLE_ITEMS
+        .iter()
+        .position(|(v, _)| *v == current)
 }
 
 // 0x56eaec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_0x56eaec() -> ! {
-    todo!("0x56eaec RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x56eaec(handles: &mut crate::instance::Handles, index: usize) -> bool {
+    // IDA 0x56eaec: bounds-checks the index, reads the value, and sets;
+    // out-of-range sets nothing. Same shape as 0x4a8f90, over the member.
+    if let Some((value, _)) = HANDLES_STYLE_ITEMS.get(index) {
+        stub_0x56eca0(handles, *value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x56eb20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56eb20() -> ! {
-    todo!("0x56eb20 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56eb20(handles: &crate::instance::Handles) -> i32 {
+    // IDA 0x56eb20: reads the value through the member getter. Same shape as
+    // 0x4a8fc4, over the member.
+    stub_0x56ec80(handles)
 }
 
 // 0x56eb28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x56eb28() -> ! {
-    todo!("0x56eb28 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x56eb28(handles: &mut crate::instance::Handles, value: i32) -> bool {
+    // IDA 0x56eb28: validates the value against the table, sets on hit and
+    // returns true, false on miss. Same shape as 0x4a8fcc, over the member.
+    if HANDLES_STYLE_ITEMS.iter().any(|(v, _)| *v == value) {
+        stub_0x56eca0(handles, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x56eb74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56eb74() -> ! {
-    todo!("0x56eb74 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56eb74(handles: &crate::instance::Handles) -> Option<(i32, &'static str)> {
+    // IDA 0x56eb74: reads the value through the member getter, then the item
+    // search. Same shape as 0x4a9018, over the member.
+    let current = stub_0x56ec80(handles);
+    HANDLES_STYLE_ITEMS
+        .iter()
+        .find(|(v, _)| *v == current)
+        .copied()
 }
 
 // 0x56eb94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_0x56eb94() -> ! {
-    todo!("0x56eb94 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x56eb94(handles: &mut crate::instance::Handles, name: &str) -> bool {
+    // IDA 0x56eb94: `setStringValue(Name)` — converts via the desc table and
+    // sets on hit, false on miss. `Name` collapses to the stored bytes.
+    // Same shape as 0x4a9038, over the member.
+    stub_0x56e830(handles, name)
 }
 
 // 0x56ebc8 — __ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::convertToIndex(RBX::Handles::VisualStyle)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE14convertToIndexES3_")]
-pub fn stub_0x56ebc8() -> ! {
-    todo!("0x56ebc8 RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::convertToIndex(RBX::Handles::VisualStyle)const")
+pub fn stub_0x56ebc8(value: i32) -> Option<usize> {
+    // IDA 0x56ebc8: `EnumDesc<VisualStyle>::convertToIndex` — asserts
+    // `value>=0`, then the position search. Same shape as 0x4a906c.
+    debug_assert!(value >= 0, "0x56ebc8: value>=0");
+    HANDLES_STYLE_ITEMS
+        .iter()
+        .position(|(v, _)| *v == value)
 }
 
 // 0x56ec38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int(void)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7HandlesENS2_11VisualStyleEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_0x56ec38() -> ! {
-    todo!("0x56ec38 RBX::Reflection::EnumPropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x56ec38(handles: &mut crate::instance::Handles, value: i32) -> bool {
+    // IDA 0x56ec38: negative values return false at once; values past the
+    // table size return false; table entries holding the `-1` sentinel
+    // return false; else the member setter runs and the result is true. The
+    // `HandlesStyle` table holds no sentinels, so the bounds check covers
+    // all three rejections. Same shape as 0x4a90dc.
+    if value < 0 || (value as usize) >= HANDLES_STYLE_ITEMS.len() {
+        return false;
+    }
+    stub_0x56eca0(handles, value);
+    true
 }
 
 // 0x56ec78 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_0x56ec78() -> ! {
-    todo!("0x56ec78 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isReadOnly(void)const")
+pub fn stub_0x56ec78(_desc: &HandlesVisualStyleProp) -> bool {
+    // IDA 0x56ec78: `GetSetImpl<getter, setter>::isReadOnly` — `MOVS R0,
+    // #0`; a get/set pair is never read-only. Same shape as 0x56e400.
+    false
 }
 
 // 0x56ec7c — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_0x56ec7c() -> ! {
-    todo!("0x56ec7c RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::isWriteOnly(void)const")
+pub fn stub_0x56ec7c(_desc: &HandlesVisualStyleProp) -> bool {
+    // IDA 0x56ec7c: `GetSetImpl<getter, setter>::isWriteOnly` — `MOVS R0,
+    // #0`; ...nor write-only. Same shape as 0x56e404.
+    false
 }
 
 // 0x56ec80 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56ec80() -> ! {
-    todo!("0x56ec80 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56ec80(handles: &crate::instance::Handles) -> i32 {
+    // IDA 0x56ec80: `GetSetImpl<getter, setter>::getValue` — invokes the
+    // member getter (`getVisualStyle`, 0x5676b0: `return *(this + 89)`)
+    // through the bound member-function pointer. Same template shape as
+    // 0x4a9124, over the member.
+    handles.visual_style
 }
 
 // 0x56eca0 — __ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::Handles::VisualStyle const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7HandlesENS2_11VisualStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_0x56eca0() -> ! {
-    todo!("0x56eca0 RBX::Reflection::PropDescriptor<RBX::Handles,RBX::Handles::VisualStyle>::GetSetImpl<RBX::Handles::VisualStyle (RBX::Handles::*)(void)const,void (RBX::Handles::*)(RBX::Handles::VisualStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::Handles::VisualStyle const&)const")
+pub fn stub_0x56eca0(handles: &mut crate::instance::Handles, value: i32) {
+    // IDA 0x56eca0: `GetSetImpl<getter, setter>::setValue` — invokes the
+    // member setter (`setVisualStyle`, 0x566ee0) through the bound
+    // member-function pointer. Same template shape as 0x4a9144.
+    // Out-of-range values have no enumerator; the store keeps the raw word.
+    if HANDLES_STYLE_ITEMS.iter().any(|(v, _)| *v == value) {
+        handles.visual_style = value;
+    }
 }
 
 // 0x56ecc4 — __ZN3RBX7HandlesD2Ev
@@ -1450,5 +1584,76 @@ mod handles_dtor_tests {
         stub_0x56f044(&desc1);
         assert_eq!(desc1.signal.len(), 0);
         assert_eq!(desc1.remote.len(), 0);
+    }
+}
+
+#[cfg(test)]
+mod handles_visual_style_tests {
+    use super::*;
+    use crate::instance::Handles;
+
+    #[test]
+    fn style_prop_ctor_and_access() {
+        let desc = stub_0x56e44c("Style", "Appearance");
+        assert_eq!(desc.name, "Style");
+        assert!(!stub_0x56e62c(&desc));
+        assert!(!stub_0x56e63c(&desc));
+        assert!(!stub_0x56ec78(&desc));
+        assert!(!stub_0x56ec7c(&desc));
+        assert!(stub_0x56e808());
+        stub_0x56e600(Box::into_raw(Box::new(desc)));
+    }
+
+    #[test]
+    fn style_table_names() {
+        assert_eq!(HANDLES_STYLE_ITEMS, [(0, "Resize"), (1, "Movement")]);
+        let mut handles = Handles::default();
+        assert_eq!(stub_0x56ec80(&handles), 0);
+        assert_eq!(stub_0x56eb20(&handles), 0);
+        assert_eq!(stub_0x56e80c(&handles), Some("Resize".to_string()));
+        assert_eq!(stub_0x56eb74(&handles), Some((0, "Resize")));
+        assert_eq!(stub_0x56ead0(&handles), Some(0));
+        assert_eq!(stub_0x56ebc8(1), Some(1));
+        assert!(stub_0x56e830(&mut handles, "Movement"));
+        assert_eq!(stub_0x56ec80(&handles), 1);
+        assert_eq!(stub_0x56e80c(&handles), Some("Movement".to_string()));
+        assert!(!stub_0x56e830(&mut handles, "NoSupports"));
+        assert_eq!(stub_0x56ec80(&handles), 1);
+    }
+
+    #[test]
+    fn style_index_enum_int_round_trip() {
+        let mut handles = Handles::default();
+        assert!(stub_0x56eaec(&mut handles, 1));
+        assert_eq!(stub_0x56ec80(&handles), 1);
+        assert!(!stub_0x56eaec(&mut handles, 2));
+        assert_eq!(stub_0x56ec80(&handles), 1);
+        assert!(stub_0x56eb28(&mut handles, 0));
+        assert!(stub_0x56eb94(&mut handles, "Movement"));
+        assert_eq!(stub_0x56ec80(&handles), 1);
+        assert!(!stub_0x56eb28(&mut handles, 7));
+        assert!(!stub_0x56ec38(&mut handles, -1));
+        assert!(!stub_0x56ec38(&mut handles, 2));
+        assert!(stub_0x56ec38(&mut handles, 0));
+        assert_eq!(stub_0x56ec80(&handles), 0);
+        stub_0x56eca0(&mut handles, 99);
+        assert_eq!(stub_0x56ec80(&handles), 0);
+    }
+
+    #[test]
+    fn style_equal_copy_variant() {
+        let mut a = Handles::default();
+        let mut b = Handles::default();
+        assert!(stub_0x56e64c(&a, &b));
+        stub_0x56e830(&mut b, "Movement");
+        assert!(!stub_0x56e64c(&a, &b));
+        stub_0x56e7e4(&mut a, &b);
+        assert!(stub_0x56e64c(&a, &b));
+        let variant = stub_0x56e674(&a);
+        assert!(matches!(variant, crate::generated_05::Variant::Int(1)));
+        stub_0x56e698(&mut a, &crate::generated_05::Variant::Int(0));
+        assert_eq!(stub_0x56ec80(&a), 0);
+        stub_0x56e698(&mut a, &crate::generated_05::Variant::Null);
+        assert_eq!(stub_0x56ec80(&a), 0);
     }
 }
