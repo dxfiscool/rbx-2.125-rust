@@ -53,6 +53,32 @@ pub struct GameMenu {
     pub leave_count: u32,
 }
 
+/// `__GLOBAL__I_a` one-shot latches (IDA 0x517f0/0x51bb0).
+static GLOBAL_A25_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A26_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `MenuButton` observable state (IDA 0x51a04..0x51b44): the frame, the
+/// owned menu visibility, and the enabled latch. Images fold into the
+/// host.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct MenuBtn {
+    pub frame: [f32; 4],
+    pub menu_open: bool,
+    pub enabled: bool,
+}
+
+/// `MainViewController` observable state (IDA 0x51e68..0x51f90): the
+/// current view, Ogre window/view handles, the Roblox view, the load
+/// latch, and the subview count. UIKit peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct MainVC {
+    pub view: Option<u32>,
+    pub ogre_window: Option<u32>,
+    pub ogre_view: Option<u32>,
+    pub rbx_view: Option<u32>,
+    pub loaded: bool,
+    pub subviews: u32,
+}
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
@@ -508,174 +534,212 @@ pub fn stub_0x515f0(menu: &mut GameMenu) {
 // 0x51738 — ___20-[GameMenu hideMenu]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke")]
-pub fn stub_0x51738() -> ! {
-    todo!("0x51738 ___20-[GameMenu hideMenu]_block_invoke")
+pub fn stub_0x51738() {
+    // IDA 0x51738: the hide animation block re-seats the menu frame
+    // (0x51748..0x51792); pure presentation folds into the host — no-op.
 }
 
 // 0x51794 — ___copy_helper_block_96
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_96")]
-pub fn stub_0x51794() -> ! {
-    todo!("0x51794 ___copy_helper_block_96")
+pub fn stub_0x51794() {
+    // IDA 0x51794: `__copy_helper_block_96` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x517a0 — ___destroy_helper_block_97
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_97")]
-pub fn stub_0x517a0() -> ! {
-    todo!("0x517a0 ___destroy_helper_block_97")
+pub fn stub_0x517a0() {
+    // IDA 0x517a0: `__destroy_helper_block_97` releases captures (pair
+    // of 0x51794); `Arc` glue covers it — no-op.
 }
 
 // 0x517a8 — ___20-[GameMenu hideMenu]_block_invoke99
 // type: id __fastcall(int)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke99")]
-pub fn stub_0x517a8() -> ! {
-    todo!("0x517a8 ___20-[GameMenu hideMenu]_block_invoke99")
+pub fn stub_0x517a8() {
+    // IDA 0x517a8: the hide completion block hides the view and removes
+    // it from its superview (0x517be); the shown latch in `stub_0x515f0`
+    // already records the hide — no-op.
 }
 
 // 0x517d8 — ___copy_helper_block_102
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_102")]
-pub fn stub_0x517d8() -> ! {
-    todo!("0x517d8 ___copy_helper_block_102")
+pub fn stub_0x517d8() {
+    // IDA 0x517d8: `__copy_helper_block_102` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x517e4 — ___destroy_helper_block_103
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_103")]
-pub fn stub_0x517e4() -> ! {
-    todo!("0x517e4 ___destroy_helper_block_103")
+pub fn stub_0x517e4() {
+    // IDA 0x517e4: `__destroy_helper_block_103` releases captures (pair
+    // of 0x517d8); `Arc` glue covers it — no-op.
 }
 
 // 0x517ec — -[GameMenu .cxx_construct]
 // type: id __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu .cxx_construct]")]
-pub fn stub_0x517ec() -> ! {
-    todo!("0x517ec -[GameMenu .cxx_construct]")
+pub fn stub_0x517ec() {
+    // IDA 0x517ec: `GameMenu .cxx_construct` runs no ivar inits and
+    // answers self (0x517ec); folds into `Default` — no-op.
 }
 
 // 0x517f0 — __GLOBAL__I_a_25
 #[doc(alias = "global constructor keyed to_a_25")]
-pub fn stub_0x517f0() -> ! {
-    todo!("0x517f0 global constructor keyed to_a_25")
+pub fn stub_0x517f0() -> u32 {
+    // IDA 0x517f0: `__GLOBAL__I_a_25` — see `GLOBAL_A25_INIT`.
+    *GLOBAL_A25_INIT
 }
 
 // 0x51a04 — -[MenuButton init:]
 // type: id __cdecl(MenuButton *self, SEL, CGRect)
 #[doc(alias = "-[MenuButton init:]")]
-pub fn stub_0x51a04() -> ! {
-    todo!("0x51a04 -[MenuButton init:]")
+pub fn stub_0x51a04(frame: [f32; 4]) -> MenuBtn {
+    // IDA 0x51a04: `MenuButton init:` chains to super (0x51a20..0x51a2c),
+    // seats the frame (0x51a50), installs the images (0x51a76..0x51a8c),
+    // and builds the owned menu; the UIKit glue folds into the host.
+    MenuBtn { frame, menu_open: false, enabled: true }
 }
 
 // 0x51af8 — -[MenuButton dealloc]
 // type: void __cdecl(MenuButton *self, SEL)
 #[doc(alias = "-[MenuButton dealloc]")]
-pub fn stub_0x51af8() -> ! {
-    todo!("0x51af8 -[MenuButton dealloc]")
+pub fn stub_0x51af8(btn: &mut MenuBtn) {
+    // IDA 0x51af8: `dealloc` releases the owned menu (0x51b1a) and chains
+    // to super (0x51b32..); drop glue covers it and the record resets.
+    *btn = MenuBtn::default();
 }
 
 // 0x51b44 — -[MenuButton doMenuSwitch:]
 // type: void __cdecl(MenuButton *self, SEL, id)
 #[doc(alias = "-[MenuButton doMenuSwitch:]")]
-pub fn stub_0x51b44() -> ! {
-    todo!("0x51b44 -[MenuButton doMenuSwitch:]")
+pub fn stub_0x51b44(btn: &mut MenuBtn, menu: &mut GameMenu) {
+    // IDA 0x51b44: `doMenuSwitch:` inverts the menu (0x51b64..0x51b7a)
+    // and enables the button exactly when the menu ends hidden
+    // (0x51ba2..0x51bac).
+    stub_0x513c4(menu);
+    btn.menu_open = menu.shown;
+    btn.enabled = !menu.shown;
 }
 
 // 0x51bb0 — __GLOBAL__I_a_26
 #[doc(alias = "global constructor keyed to_a_26")]
-pub fn stub_0x51bb0() -> ! {
-    todo!("0x51bb0 global constructor keyed to_a_26")
+pub fn stub_0x51bb0() -> u32 {
+    // IDA 0x51bb0: `__GLOBAL__I_a_26` — see `GLOBAL_A26_INIT`.
+    *GLOBAL_A26_INIT
 }
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__13")]
-pub fn stub_0x51e54() -> ! {
-    todo!("0x51e54 ___copy_helper_block__13")
+pub fn stub_0x51e54() {
+    // IDA 0x51e54: `__copy_helper_block__13` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x51e60 — ___destroy_helper_block__13
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__13")]
-pub fn stub_0x51e60() -> ! {
-    todo!("0x51e60 ___destroy_helper_block__13")
+pub fn stub_0x51e60() {
+    // IDA 0x51e60: `__destroy_helper_block__13` releases captures (pair
+    // of 0x51e54); `Arc` glue covers it — no-op.
 }
 
 // 0x51e68 — -[MainViewController switchView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController switchView:]")]
-pub fn stub_0x51e68() -> ! {
-    todo!("0x51e68 -[MainViewController switchView:]")
+pub fn stub_0x51e68(vc: &mut MainVC, view: u32) {
+    // IDA 0x51e68: `switchView:` seats the new view (0x51e74).
+    vc.view = Some(view);
 }
 
 // 0x51e78 — -[MainViewController addSubview:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController addSubview:]")]
-pub fn stub_0x51e78() -> ! {
-    todo!("0x51e78 -[MainViewController addSubview:]")
+pub fn stub_0x51e78(vc: &mut MainVC) {
+    // IDA 0x51e78: `addSubview:` appends to the current view when one is
+    // seated (0x51e90..0x51eb4); the hierarchy folds into the host.
+    if vc.view.is_some() {
+        vc.subviews += 1;
+    }
 }
 
 // 0x51eb8 — -[MainViewController initWithNibName:bundle:]
 // type: MainViewController *__cdecl(MainViewController *self, SEL, id, id)
 #[doc(alias = "-[MainViewController initWithNibName:bundle:]")]
-pub fn stub_0x51eb8() -> ! {
-    todo!("0x51eb8 -[MainViewController initWithNibName:bundle:]")
+pub fn stub_0x51eb8() -> MainVC {
+    // IDA 0x51eb8: `initWithNibName:bundle:` chains to super
+    // (0x51ed2..0x51ee4); the nib glue folds into the host.
+    MainVC::default()
 }
 
 // 0x51ee8 — -[MainViewController viewDidLoad]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidLoad]")]
-pub fn stub_0x51ee8() -> ! {
-    todo!("0x51ee8 -[MainViewController viewDidLoad]")
+pub fn stub_0x51ee8(vc: &mut MainVC) {
+    // IDA 0x51ee8: `viewDidLoad` chains to super (0x51f02..0x51f0c).
+    vc.loaded = true;
 }
 
 // 0x51f14 — -[MainViewController viewDidUnload]
 // type: void __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController viewDidUnload]")]
-pub fn stub_0x51f14() -> ! {
-    todo!("0x51f14 -[MainViewController viewDidUnload]")
+pub fn stub_0x51f14(vc: &mut MainVC) {
+    // IDA 0x51f14: `viewDidUnload` chains to super (0x51f2e..0x51f38)
+    // and drops the view; the hierarchy glue folds into the host.
+    vc.loaded = false;
 }
 
 // 0x51f40 — -[MainViewController getOgreWindow]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreWindow]")]
-pub fn stub_0x51f40() -> ! {
-    todo!("0x51f40 -[MainViewController getOgreWindow]")
+pub fn stub_0x51f40(vc: &MainVC) -> Option<u32> {
+    // IDA 0x51f40: `getOgreWindow` answers the window (0x51f4e).
+    vc.ogre_window
 }
 
 // 0x51f50 — -[MainViewController setOgreWindow:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreWindow:]")]
-pub fn stub_0x51f50() -> ! {
-    todo!("0x51f50 -[MainViewController setOgreWindow:]")
+pub fn stub_0x51f50(vc: &mut MainVC, window: u32) {
+    // IDA 0x51f50: `setOgreWindow:` stores the window (0x51f5c).
+    vc.ogre_window = Some(window);
 }
 
 // 0x51f60 — -[MainViewController getOgreView]
 // type: id __cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getOgreView]")]
-pub fn stub_0x51f60() -> ! {
-    todo!("0x51f60 -[MainViewController getOgreView]")
+pub fn stub_0x51f60(vc: &MainVC) -> Option<u32> {
+    // IDA 0x51f60: `getOgreView` answers the view (0x51f6e).
+    vc.ogre_view
 }
 
 // 0x51f70 — -[MainViewController setOgreView:]
 // type: void __cdecl(MainViewController *self, SEL, id)
 #[doc(alias = "-[MainViewController setOgreView:]")]
-pub fn stub_0x51f70() -> ! {
-    todo!("0x51f70 -[MainViewController setOgreView:]")
+pub fn stub_0x51f70(vc: &mut MainVC, view: u32) {
+    // IDA 0x51f70: `setOgreView:` stores the view (0x51f7c).
+    vc.ogre_view = Some(view);
 }
 
 // 0x51f80 — -[MainViewController setRobloxView:]
 // type: void __cdecl(MainViewController *self, SEL, RobloxView *)
 #[doc(alias = "-[MainViewController setRobloxView:]")]
-pub fn stub_0x51f80() -> ! {
-    todo!("0x51f80 -[MainViewController setRobloxView:]")
+pub fn stub_0x51f80(vc: &mut MainVC, view: u32) {
+    // IDA 0x51f80: `setRobloxView:` stores the Roblox view (0x51f8c).
+    vc.rbx_view = Some(view);
 }
 
 // 0x51f90 — -[MainViewController getRobloxView]
 // type: RobloxView *__cdecl(MainViewController *self, SEL)
 #[doc(alias = "-[MainViewController getRobloxView]")]
-pub fn stub_0x51f90() -> ! {
-    todo!("0x51f90 -[MainViewController getRobloxView]")
+pub fn stub_0x51f90(vc: &MainVC) -> Option<u32> {
+    // IDA 0x51f90: `getRobloxView` answers the Roblox view (0x51f9e).
+    vc.rbx_view
 }
 
 // 0x51fa0 — -[MainViewController getOgreViewController]
@@ -1319,5 +1383,64 @@ mod stick_menu_batch_tests {
         stub_0x515e8();
         stub_0x512f8(&mut menu);
         assert_eq!(menu, GameMenu::default());
+    }
+}
+
+#[cfg(test)]
+mod menu_mainvc_batch_tests {
+    use super::*;
+
+    #[test]
+    fn hide_blocks() {
+        stub_0x51738();
+        stub_0x517a8();
+        stub_0x517ec();
+        assert_eq!(stub_0x517f0(), 1);
+        assert_eq!(stub_0x51bb0(), 1);
+        stub_0x51794();
+        stub_0x517a0();
+        stub_0x517d8();
+        stub_0x517e4();
+        stub_0x51e54();
+        stub_0x51e60();
+    }
+
+    #[test]
+    fn menu_button() {
+        let mut btn = stub_0x51a04([0.0, 0.0, 44.0, 44.0]);
+        assert!(btn.enabled);
+        let mut menu = stub_0x50eb0();
+        stub_0x51b44(&mut btn, &mut menu);
+        assert!(menu.shown);
+        assert!(btn.menu_open);
+        assert!(!btn.enabled);
+        stub_0x51b44(&mut btn, &mut menu);
+        assert!(!menu.shown);
+        assert!(!btn.menu_open);
+        assert!(btn.enabled);
+        stub_0x51af8(&mut btn);
+        assert_eq!(btn, MenuBtn::default());
+    }
+
+    #[test]
+    fn main_vc() {
+        let mut vc = stub_0x51eb8();
+        stub_0x51ee8(&mut vc);
+        assert!(vc.loaded);
+        stub_0x51e68(&mut vc, 3);
+        assert_eq!(vc.view, Some(3));
+        stub_0x51e78(&mut vc);
+        assert_eq!(vc.subviews, 1);
+        stub_0x51f50(&mut vc, 11);
+        assert_eq!(stub_0x51f40(&vc), Some(11));
+        stub_0x51f70(&mut vc, 12);
+        assert_eq!(stub_0x51f60(&vc), Some(12));
+        stub_0x51f80(&mut vc, 13);
+        assert_eq!(stub_0x51f90(&vc), Some(13));
+        stub_0x51f14(&mut vc);
+        assert!(!vc.loaded);
+        let mut bare = MainVC::default();
+        stub_0x51e78(&mut bare);
+        assert_eq!(bare.subviews, 0);
     }
 }
