@@ -1379,104 +1379,164 @@ pub fn delete_stdout_callable_slot_652cc(slot: SharedPtr<StdoutSlot>) {
 // 0x653a4 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot10disconnectEv
 // type: void __fastcall(int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::disconnect(void)")]
-pub fn stub_653a4() -> ! {
-    todo!("0x653a4 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::disconnect(void)")
+pub fn disconnect_stdout_slot_653a4(slot: &SharedPtr<StdoutSlot>, signal: &SharedPtr<StdoutSignal>) {
+// IDA 0x653a4 `slot::disconnect` — with the signal link set, clears it
+// and removes the slot from the list under the slot mutex (decompile).
+    if slot.signal.lock().take().is_some() {
+        remove_stdout_slot_65594(signal, slot);
+    }
 }
 
 // 0x654b4 — __ZNK3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::connected(void)const")]
-pub fn stub_654b4() -> ! {
-    todo!("0x654b4 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::connected(void)const")
+pub fn connected_stdout_slot_654b4(slot: &SharedPtr<StdoutSlot>) -> bool {
+// IDA 0x654b4 `slot::connected` — the signal link reads nonzero
+// (decompile: `LDR R0,[R0,#0xC]; return R0 != 0`).
+    slot.signal.lock().is_some()
 }
 
 // 0x654c0 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEN5boost8functionIS7_EELi1ES7_E4callES6_
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")]
-pub fn stub_654c0() -> ! {
-    todo!("0x654c0 rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
+pub fn call_stdout_654c0(slot: &SharedPtr<StdoutSlot>, message: String) {
+// IDA 0x654c0 `callable::call` — forwards into `function1::operator()`
+// (sole call, decompile).
+    invoke_stdout_function_654d0(slot, message);
 }
 
 // 0x654c8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEN5boost8functionIS7_EELi1ES7_E4callES6_
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")]
-pub fn stub_654c8() -> ! {
-    todo!("0x654c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
+pub fn call_stdout_thunk_654c8(slot: &SharedPtr<StdoutSlot>, message: String) {
+// IDA 0x654c8: non-virtual thunk — the `this - 4` adjust is a no-op on the
+// host; same forward as 0x654c0.
+    call_stdout_654c0(slot, message);
 }
 
 // 0x654d0 — __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_
 // type: void __fastcall(_DWORD *, int)
 #[doc(alias = "boost::function1<void,RBX::StandardOutMessage const&>::operator()(RBX::StandardOutMessage const&)const")]
-pub fn stub_654d0() -> ! {
-    todo!("0x654d0 boost::function1<void,RBX::StandardOutMessage const&>::operator()(RBX::StandardOutMessage const&)const")
+pub fn invoke_stdout_function_654d0(slot: &SharedPtr<StdoutSlot>, message: String) {
+// IDA 0x654d0 `function1::operator()` — empty throws bad_function_call,
+// else dispatches through the functor vtable (decompile).
+    match slot.callback.lock().as_ref() {
+        Some(callback) => callback(message),
+        None => panic!("bad_function_call"),
+    }
 }
 
 // 0x65594 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE6removeEPNS7_4slotE
 // type: int __fastcall(char **, char *, int, const void *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::remove(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot *)")]
-pub fn stub_65594() -> ! {
-    todo!("0x65594 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::remove(rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot *)")
+pub fn remove_stdout_slot_65594(signal: &SharedPtr<StdoutSignal>, slot: &SharedPtr<StdoutSlot>) {
+// IDA 0x65594: ReleaseAssert(item), then the intrusive walk unlinks the
+// slot and re-links the chain (decompile). pointer-identity rebuild below.
+    debug_assert!(SharedPtr::strong_count(slot) > 0, "item");
+    let _guard = stdout_slot_mutex_65688().lock();
+    let mut chain: Vec<SharedPtr<StdoutSlot>> = Vec::new();
+    let mut cur = signal.head.lock().take();
+    while let Some(node) = cur {
+        let next = node.next.lock().take();
+        if !SharedPtr::ptr_eq(&node, slot) {
+            chain.push(node);
+        }
+        cur = next;
+    }
+    let mut head: Option<SharedPtr<StdoutSlot>> = None;
+    for node in chain.into_iter().rev() {
+        *node.next.lock() = head.take();
+        head = Some(node);
+    }
+    *signal.head.lock() = head;
 }
 
 // 0x65684 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::safe_static_init_mutex(void)")]
-pub fn stub_65684() -> ! {
-    todo!("0x65684 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::safe_static_init_mutex(void)")
+pub fn init_stdout_slot_mutex_65684() {
+// IDA 0x65684: slot safe_static_init_mutex thunk tail-branches into
+// safe_static_do_get_mutex (decompile).
+    let _ = stdout_slot_mutex_65688();
 }
 
 // 0x65688 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slot24safe_static_do_get_mutexEv
 // type: void *()
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::safe_static_do_get_mutex(void)")]
-pub fn stub_65688() -> ! {
-    todo!("0x65688 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::safe_static_do_get_mutex(void)")
+pub fn stdout_slot_mutex_65688() -> &'static parking_lot::Mutex<()> {
+// IDA 0x65688: slot safe_static_do_get_mutex — guard-checked init of the
+// class-wide slot mutex value plus the atexit destroy (decompile).
+// LazyLock folds the guard plus the atexit destroy.
+    static VALUE: std::sync::LazyLock<parking_lot::Mutex<()>> =
+        std::sync::LazyLock::new(|| parking_lot::Mutex::new(()));
+    &VALUE
 }
 
 // 0x65778 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEN5boost8functionIS7_EELi1ES7_ED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::~callable()")]
-pub fn stub_65778() -> ! {
-    todo!("0x65778 rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::~callable()")
+pub fn drop_stdout_callable_65778(slot: &SharedPtr<StdoutSlot>) {
+// IDA 0x65778 `callable D1` — vtable reset, function clear, then release
+// of the signal link (decompile).
+    slot.callback.lock().take();
+    slot.signal.lock().take();
 }
 
 // 0x6584c — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotEN5boost8functionIS7_EELi1ES7_ED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::~callable()")]
-pub fn stub_6584c() -> ! {
-    todo!("0x6584c rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::~callable()")
+pub fn delete_stdout_callable_6584c(slot: SharedPtr<StdoutSlot>) {
+// IDA 0x6584c `callable D0` — D1 above plus operator delete (decompile);
+// the Arc drop below is the delete.
+    slot.callback.lock().take();
+    slot.signal.lock().take();
+    drop(slot);
 }
 
 // 0x65924 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotD1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::~slot()")]
-pub fn stub_65924() -> ! {
-    todo!("0x65924 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::~slot()")
+pub fn drop_stdout_slot_65924(slot: &SharedPtr<StdoutSlot>) {
+// IDA 0x65924 `slot D1` — vtable reset plus release of the signal link
+// (decompile).
+    slot.signal.lock().take();
 }
 
 // 0x659d0 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::~slot()")]
-pub fn stub_659d0() -> ! {
-    todo!("0x659d0 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot::~slot()")
+pub fn delete_stdout_slot_659d0(slot: SharedPtr<StdoutSlot>) {
+// IDA 0x659d0 `slot D0` — D1 above plus operator delete (decompile); the
+// Arc drop below is the delete.
+    slot.signal.lock().take();
+    drop(slot);
 }
 
 // 0x65a80 — __ZN5boost9function1IvRKN3RBX18StandardOutMessageEE13assign_to_ownERKS5_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "boost::function1<void,RBX::StandardOutMessage const&>::assign_to_own(boost::function1<void,RBX::StandardOutMessage const&> const&)")]
-pub fn stub_65a80() -> ! {
-    todo!("0x65a80 boost::function1<void,RBX::StandardOutMessage const&>::assign_to_own(boost::function1<void,RBX::StandardOutMessage const&> const&)")
+pub fn assign_stdout_own_65a80(slot: &SharedPtr<StdoutSlot>, callback: StdoutCallback) {
+// IDA 0x65a80 `function1::assign_to_own` — small-object copy or vtable
+// clone into the owned slot (decompile); the move below is the copy.
+    slot.callback.lock().replace(callback);
 }
 
 // 0x65b20 — __ZN5boost9function1IvRKN3RBX18StandardOutMessageEE5clearEv
 // type: int __fastcall(int *)
 #[doc(alias = "boost::function1<void,RBX::StandardOutMessage const&>::clear(void)")]
-pub fn stub_65b20() -> ! {
-    todo!("0x65b20 boost::function1<void,RBX::StandardOutMessage const&>::clear(void)")
+pub fn clear_stdout_function_65b20(slot: &SharedPtr<StdoutSlot>) {
+// IDA 0x65b20 `function1::clear` — empties the functor, returns null
+// (decompile).
+    slot.callback.lock().take();
 }
 
 // 0x65b4c — __GLOBAL__I_a_35
 #[doc(alias = "global constructor keyed to_a_35")]
-pub fn stub_65b4c() -> ! {
-    todo!("0x65b4c global constructor keyed to_a_35")
+pub fn init_global_a35_65b4c() {
+// IDA 0x65b4c: global ctor keyed to _a_35 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x661b0 — ___copy_helper_block__24

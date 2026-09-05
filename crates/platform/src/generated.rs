@@ -509,6 +509,12 @@ pub struct TextBoxFocusCallback {
 pub struct DataModelChangedCallback {
     pub target: Option<ControlId>,
 }
+/// `bind_t<void(objc_object *, SEL, StandardOutMessage const *), ...>`
+/// bundle (IDA 0x65ab0): bound target for `tryLogMessage:`.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct StdoutPropCallback {
+    pub target: Option<ControlId>,
+}
 /// `rbx::signals::signal<void(PropertyDescriptor const *)>` slot holding the
 /// `bind_t<void(objc_object *, SEL, void const *)>` for `CharacterMove`
 /// (IDA 0x46c18..0x46eb4): `connect` allocates it (`operator new(28)`),
@@ -3462,6 +3468,85 @@ impl LoginState {
 }
 static LOGIN: std::sync::LazyLock<LoginState> =
     std::sync::LazyLock::new(LoginState::default);
+/// Host id standing in for the `ExternalLoginViewController` `self`.
+const EXTLOGIN_ID: ControlId = 29;
+/// Minimal `ExternalLoginViewController` counterpart (IDA 0x65ce4..0x65f64):
+/// the observer pair, lifecycle counters and the localized latch.
+#[derive(Debug, Default)]
+pub struct ExtLoginState {
+    initialized: AtomicBool,
+    observer_regs: AtomicU32,
+    loads: AtomicU32,
+    wills: AtomicU32,
+    warnings: AtomicU32,
+    localized: AtomicBool,
+    localize_runs: AtomicU32,
+    releases: AtomicU32,
+}
+impl ExtLoginState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-initWithCoder:` (IDA 0x65ce4): super init; on success registers
+    /// the login failed/successful notification observers.
+    pub fn init_coder(&self) -> Option<ControlId> {
+        self.observer_regs.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(EXTLOGIN_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn observer_count(&self) -> u32 {
+        self.observer_regs.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x65df4): removes the observer, releases the five
+    /// views, then super.
+    pub fn dealloc(&self) {
+        self.observer_regs.store(0, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `+getLoginFinishedNotification` (IDA 0x65ec0).
+    pub fn login_finished_notification(&self) -> String {
+        "RBXLoginFinishedNotification".to_owned()
+    }
+    /// `-viewDidLoad` (IDA 0x65ecc): super plus `localizeStrings`.
+    pub fn view_did_load(&self) {
+        self.bump(&self.loads);
+        self.localize();
+    }
+    pub fn load_count(&self) -> u32 {
+        self.loads.load(Ordering::SeqCst)
+    }
+    /// `-viewWillAppear:` (IDA 0x65f0c): super only.
+    pub fn will_appear(&self, _animated: bool) {
+        self.bump(&self.wills);
+    }
+    pub fn will_appear_count(&self) -> u32 {
+        self.wills.load(Ordering::SeqCst)
+    }
+    /// `-didReceiveMemoryWarning` (IDA 0x65f38): super only.
+    pub fn memory_warning(&self) {
+        self.bump(&self.warnings);
+    }
+    pub fn warning_count(&self) -> u32 {
+        self.warnings.load(Ordering::SeqCst)
+    }
+    /// `localizeStrings` (IDA 0x65f64): the username/password placeholders
+    /// plus the login label take their localized strings.
+    pub fn localize(&self) {
+        self.localized.store(true, Ordering::SeqCst);
+        self.bump(&self.localize_runs);
+    }
+    pub fn is_localized(&self) -> bool {
+        self.localized.load(Ordering::SeqCst)
+    }
+}
+static EXTLOGIN: std::sync::LazyLock<ExtLoginState> =
+    std::sync::LazyLock::new(ExtLoginState::default);
 /// `+sharedInstance` cell (IDA 0x58f94, `dword_130C640`): the
 /// `dispatch_once` initializer lives with the cell.
 static LOGIN_SHARED: std::sync::LazyLock<ControlId> =
@@ -12444,50 +12529,63 @@ pub fn stub_62694() -> ! {
 // 0x65ce4 — -[ExternalLoginViewController initWithCoder:]
 // type: ExternalLoginViewController *__cdecl(ExternalLoginViewController *self, SEL, id)
 #[doc(alias = "-[ExternalLoginViewController initWithCoder:]")]
-pub fn stub_65ce4() -> ! {
-    todo!("0x65ce4 -[ExternalLoginViewController initWithCoder:]")
+pub fn stub_65ce4() -> Option<ControlId> {
+    // IDA 0x65ce4 `-initWithCoder:`: super init (0x65d10); on success
+    // registers the login failed/successful notification observers
+    // (0x65d36..0x65de4).
+    EXTLOGIN.init_coder()
 }
 
 // 0x65df4 — -[ExternalLoginViewController dealloc]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController dealloc]")]
-pub fn stub_65df4() -> ! {
-    todo!("0x65df4 -[ExternalLoginViewController dealloc]")
+pub fn stub_65df4() {
+    // IDA 0x65df4 `-dealloc`: removes the observer (0x65e14..0x65e26),
+    // releases the five views (0x65e46..0x65e96), then super (0x65eb8).
+    EXTLOGIN.dealloc();
 }
 
 // 0x65ec0 — +[ExternalLoginViewController getLoginFinishedNotification]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[ExternalLoginViewController getLoginFinishedNotification]")]
-pub fn stub_65ec0() -> ! {
-    todo!("0x65ec0 +[ExternalLoginViewController getLoginFinishedNotification]")
+pub fn stub_65ec0() -> String {
+    // IDA 0x65ec0 `+getLoginFinishedNotification`
+    // ("RBXLoginFinishedNotification", 0x65eca).
+    EXTLOGIN.login_finished_notification()
 }
 
 // 0x65ecc — -[ExternalLoginViewController viewDidLoad]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController viewDidLoad]")]
-pub fn stub_65ecc() -> ! {
-    todo!("0x65ecc -[ExternalLoginViewController viewDidLoad]")
+pub fn stub_65ecc() {
+    // IDA 0x65ecc `-viewDidLoad`: super (0x65ef2) plus `localizeStrings`
+    // (0x65f04).
+    EXTLOGIN.view_did_load();
 }
 
 // 0x65f0c — -[ExternalLoginViewController viewWillAppear:]
 // type: void __cdecl(ExternalLoginViewController *self, SEL, char)
 #[doc(alias = "-[ExternalLoginViewController viewWillAppear:]")]
-pub fn stub_65f0c() -> ! {
-    todo!("0x65f0c -[ExternalLoginViewController viewWillAppear:]")
+pub fn stub_65f0c(animated: bool) {
+    // IDA 0x65f0c `-viewWillAppear:`: super only (0x65f30).
+    EXTLOGIN.will_appear(animated);
 }
 
 // 0x65f38 — -[ExternalLoginViewController didReceiveMemoryWarning]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController didReceiveMemoryWarning]")]
-pub fn stub_65f38() -> ! {
-    todo!("0x65f38 -[ExternalLoginViewController didReceiveMemoryWarning]")
+pub fn stub_65f38() {
+    // IDA 0x65f38 `-didReceiveMemoryWarning`: super only (0x65f5c).
+    EXTLOGIN.memory_warning();
 }
 
 // 0x65f64 — -[ExternalLoginViewController localizeStrings]
 // type: void __cdecl(ExternalLoginViewController *self, SEL)
 #[doc(alias = "-[ExternalLoginViewController localizeStrings]")]
-pub fn stub_65f64() -> ! {
-    todo!("0x65f64 -[ExternalLoginViewController localizeStrings]")
+pub fn stub_65f64() {
+    // IDA 0x65f64 `localizeStrings`: the username/password placeholders
+    // plus the login label take their localized strings (0x65f82..tail).
+    EXTLOGIN.localize();
 }
 
 // 0x66078 — -[ExternalLoginViewController usernameDidEndOnExit:]
@@ -29261,8 +29359,10 @@ pub fn stub_4f70c(slot: JumpButtonPropConnection) {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_65ab0() -> ! {
-    todo!("0x65ab0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_65ab0(op: crate::roblox_view::FunctorOp, slot: &mut Option<StdoutPropCallback>) -> bool {
+    // IDA 0x65ab0 `functor_manager<bind_t(objc, StandardOutMessage const
+    // *)>::manage`: same clone/no-op/strcmp/typeinfo dispatch as 0x463cc.
+    crate::roblox_view::manage_boxed_slot(op, slot)
 }
 
 // 0x65b10 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)
@@ -29270,8 +29370,13 @@ pub fn stub_65ab0() -> ! {
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)")]
-pub fn stub_65b10() -> ! {
-    todo!("0x65b10 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)")
+pub fn stub_65b10(slot: &Option<StdoutPropCallback>, message: &str) {
+    // IDA 0x65b10 `void_function_obj_invoker1<bind_t(objc,
+    // StandardOutMessage const *)>::invoke`: `f(target, sel, msg)` (sole
+    // call) — the `tryLogMessage:` target (cf. 0x649dc).
+    if matches!(slot, Some(cb) if cb.target.is_some()) {
+        CRASH.try_log_message(message);
+    }
 }
 
 // 0xd3144 — FMOD::OutputCoreAudio::setupAudioSession(unsigned int,unsigned int)
