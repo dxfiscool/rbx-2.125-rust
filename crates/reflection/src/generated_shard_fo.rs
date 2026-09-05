@@ -301,80 +301,113 @@ pub fn stub_44e58() {
 // 0x450a0 — -[CameraControl touchesBegan:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesBegan:withEvent:]")]
-pub fn stub_450a0() -> ! {
-    todo!("0x450a0 -[CameraControl touchesBegan:withEvent:]")
+pub fn stub_450a0(touch_count: u32) {
+    // IDA 0x450a0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x450a0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x450a0(touch_count)
 }
 
 // 0x45124 — -[CameraControl touchesEnded:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesEnded:withEvent:]")]
-pub fn stub_45124() -> ! {
-    todo!("0x45124 -[CameraControl touchesEnded:withEvent:]")
+pub fn stub_45124(matching: bool, ended: u32) {
+    // IDA 0x45124: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45124`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45124(matching, ended)
 }
 
 // 0x45234 — -[CameraControl touchesCancelled:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesCancelled:withEvent:]")]
-pub fn stub_45234() -> ! {
-    todo!("0x45234 -[CameraControl touchesCancelled:withEvent:]")
+pub fn stub_45234(matching: bool, cancelled: u32) {
+    // IDA 0x45234: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45234`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45234(matching, cancelled)
 }
 
 // 0x45344 — -[CameraControl touchesMoved:withEvent:]
 // type: void __cdecl(CameraControl *self, SEL, id, id)
 #[doc(alias = "-[CameraControl touchesMoved:withEvent:]")]
-pub fn stub_45344() -> ! {
-    todo!("0x45344 -[CameraControl touchesMoved:withEvent:]")
+pub fn stub_45344(camera_in_set: bool) {
+    // IDA 0x45344: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45344`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45344(camera_in_set)
 }
 
 // 0x45454 — -[CameraControl .cxx_construct]
 // type: id __cdecl(CameraControl *self, SEL)
 #[doc(alias = "-[CameraControl .cxx_construct]")]
-pub fn stub_45454() -> ! {
-    todo!("0x45454 -[CameraControl .cxx_construct]")
+pub fn stub_45454() {
+    // IDA 0x45454: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45454`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45454()
 }
 
 // 0x4546c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")]
-pub fn stub_4546c() -> ! {
-    todo!("0x4546c rbx::signals::connection rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::connect<boost::function<void ()(bool,void *,RBX::UIEvent)>>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&)")
+pub fn stub_4546c() {
+    // IDA 0x4546c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4546c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4546c()
 }
 
 // 0x45554 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6insertEPNS6_4slotE")]
-pub fn stub_45554() -> ! {
-    todo!("0x45554 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::insert(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_45554() {
+    // IDA 0x45554: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45554`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45554()
 }
 
 // 0x45764 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSEPS9_")]
-pub fn stub_45764() -> ! {
-    todo!("0x45764 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot*)")
+pub fn stub_45764() {
+    // IDA 0x45764: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45764`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45764()
 }
 
 // 0x45808 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slotEEaSERKSA_")]
-pub fn stub_45808() -> ! {
-    todo!("0x45808 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot> const&)")
+pub fn stub_45808() {
+    // IDA 0x45808: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45808`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45808()
 }
 
 // 0x458ac — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE24safe_static_do_get_mutexEv")]
-pub fn stub_458ac() -> ! {
-    todo!("0x458ac rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::safe_static_do_get_mutex(void)")
+pub fn stub_458ac() -> u32 {
+    // IDA 0x458ac: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x458ac`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x458ac()
 }
 
 // 0x459a4 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<void ()(bool,void *,RBX::UIEvent)> const&,rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_EC2IPS7_EERKSB_T_")]
-pub fn stub_459a4() -> ! {
-    todo!("0x459a4 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>*>(boost::function<vo")
+pub fn stub_459a4() {
+    // IDA 0x459a4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x459a4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x459a4()
 }
 
 // 0x45aa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE13callable_slotIN5boost8functionIS5_EEED1Ev
@@ -394,23 +427,32 @@ pub fn stub_45b74() {
 // 0x45c4c — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot10disconnectEv")]
-pub fn stub_45c4c() -> ! {
-    todo!("0x45c4c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::disconnect(void)")
+pub fn stub_45c4c() {
+    // IDA 0x45c4c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45c4c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45c4c()
 }
 
 // 0x45d5c — __ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv
 // type: bool __fastcall(int)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")]
 #[doc(alias = "__ZNK3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot9connectedEv")]
-pub fn stub_45d5c() -> ! {
-    todo!("0x45d5c rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::connected(void)const")
+pub fn stub_45d5c() -> bool {
+    // IDA 0x45d5c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45d5c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45d5c()
 }
 
 // 0x45d68 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_")]
-pub fn stub_45d68() -> ! {
-    todo!("0x45d68 rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+pub fn stub_45d68() {
+    // IDA 0x45d68: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45d68`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45d68()
 }
 
 // 0x45d98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
@@ -423,30 +465,42 @@ pub fn stub_45d98() {
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")]
 #[doc(alias = "__ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_")]
-pub fn stub_45dc8() -> ! {
-    todo!("0x45dc8 boost::function3<void,bool,void *,RBX::UIEvent>::operator()(bool,void *,RBX::UIEvent)const")
+pub fn stub_45dc8() {
+    // IDA 0x45dc8: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45dc8`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45dc8()
 }
 
 // 0x45eb0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE
 // type: int __fastcall(int, char *)
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE6removeEPNS6_4slotE")]
-pub fn stub_45eb0() -> ! {
-    todo!("0x45eb0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::remove(rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot *)")
+pub fn stub_45eb0() {
+    // IDA 0x45eb0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45eb0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45eb0()
 }
 
 // 0x45fa0 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot22safe_static_init_mutexEv")]
-pub fn stub_45fa0() -> ! {
-    todo!("0x45fa0 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_init_mutex(void)")
+pub fn stub_45fa0() {
+    // IDA 0x45fa0: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45fa0`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45fa0()
 }
 
 // 0x45fa4 — __ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvbPvN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv")]
-pub fn stub_45fa4() -> ! {
-    todo!("0x45fa4 rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot::safe_static_do_get_mutex(void)")
+pub fn stub_45fa4() -> u32 {
+    // IDA 0x45fa4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x45fa4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x45fa4()
 }
 
 // 0x46094 — __ZN3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_ED1Ev
@@ -481,53 +535,74 @@ pub fn stub_462ec() {
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")]
 #[doc(alias = "__ZN5boost9function3IvbPvN3RBX7UIEventEE13assign_to_ownERKS4_")]
-pub fn stub_4639c() -> ! {
-    todo!("0x4639c boost::function3<void,bool,void *,RBX::UIEvent>::assign_to_own(boost::function3<void,bool,void *,RBX::UIEvent> const&)")
+pub fn stub_4639c() {
+    // IDA 0x4639c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4639c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4639c()
 }
 
 // 0x463cc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
-pub fn stub_463cc() -> ! {
-    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc")
+pub fn stub_463cc(get_typeinfo: bool) -> &'static str {
+    // IDA 0x463cc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x463cc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x463cc(get_typeinfo)
 }
 
 // 0x4642c — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_")]
-pub fn stub_4642c() -> ! {
-    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi:")
+pub fn stub_4642c() {
+    // IDA 0x4642c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4642c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4642c()
 }
 
 // 0x46464 — __ZN5boost9function3IvbPvN3RBX7UIEventEE5clearEv
 // type: int(void)
 #[doc(alias = "boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")]
 #[doc(alias = "__ZN5boost9function3IvbPvN3RBX7UIEventEE5clearEv")]
-pub fn stub_46464() -> ! {
-    todo!("0x46464 boost::function3<void,bool,void *,RBX::UIEvent>::clear(void)")
+pub fn stub_46464() {
+    // IDA 0x46464: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x46464`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x46464()
 }
 
 // 0x46490 — __GLOBAL__I_a_15
 #[doc(alias = "global constructor keyed to_a_15")]
 #[doc(alias = "__GLOBAL__I_a_15")]
-pub fn stub_46490() -> ! {
-    todo!("0x46490 global constructor keyed to_a_15")
+pub fn stub_46490() {
+    // IDA 0x46490: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x46490`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x46490()
 }
 
 // 0x466cc — -[CharacterMove init:]
 // type: id __cdecl(CharacterMove *self, SEL, CGRect)
 #[doc(alias = "-[CharacterMove init:]")]
-pub fn stub_466cc() -> ! {
-    todo!("0x466cc -[CharacterMove init:]")
+pub fn stub_466cc(x: f32, y: f32, width: f32, height: f32) -> crate::generated_bg_11::CharacterMoveInit {
+    // IDA 0x466cc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x466cc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x466cc(x, y, width, height)
 }
 
 // 0x46704 — -[CharacterMove setupCharacterMoveConnection]
 // type: void __cdecl(CharacterMove *self, SEL)
 #[doc(alias = "-[CharacterMove setupCharacterMoveConnection]")]
-pub fn stub_46704() -> ! {
-    todo!("0x46704 -[CharacterMove setupCharacterMoveConnection]")
+pub fn stub_46704(service_present: bool) {
+    // IDA 0x46704: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x46704`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x46704(service_present)
 }
 
 // 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
