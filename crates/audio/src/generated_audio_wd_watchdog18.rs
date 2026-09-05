@@ -261,6 +261,48 @@ impl TextBoxFontProp {
         }
     }
 }
+/// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
+/// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
+/// values 0..=9).
+pub const FONTSIZE_ITEMS: [(&str, u32); 10] = [
+    ("Size8", 0),
+    ("Size9", 1),
+    ("Size10", 2),
+    ("Size11", 3),
+    ("Size12", 4),
+    ("Size14", 5),
+    ("Size18", 6),
+    ("Size24", 7),
+    ("Size36", 8),
+    ("Size48", 9),
+];
+/// Name of a `FontSize` value for `convertToString`. Values with no
+/// item yield "" — the writers only ever store table members.
+pub fn fontsize_name(value: u32) -> &'static str {
+    FONTSIZE_ITEMS
+        .iter()
+        .find(|(_, v)| *v == value)
+        .map(|(n, _)| *n)
+        .unwrap_or("")
+}
+/// Item index of a `FontSize` value, -1 when it has no item (the
+/// `enumToItem` read in `convertToIndex`).
+pub fn fontsize_index(value: u32) -> i32 {
+    FONTSIZE_ITEMS
+        .iter()
+        .position(|(_, v)| *v == value)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
+}
+/// `placement_any` payload read by the `FontSize` dialogue (IDA
+/// 0x6707cc/0x6709c4: int-tagged like the `Font` twin at
+/// 0x66f548): the value or something else (miss throws, host:
+/// panic).
+#[derive(Debug, Clone, Copy)]
+pub enum FontSizeVariant {
+    FontSize(u32),
+    Other,
+}
 // 0x66e380 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE15convertToStringERKS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToString(RBX::TextService::XAlignment const&)const
 // type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
@@ -1533,8 +1575,10 @@ pub fn stub_0670760() -> bool {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11isWriteOnlyEv")]
-pub fn stub_0670770() -> ! {
-    todo!("0x670770 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::isWriteOnly(void)const")
+pub fn stub_0670770() -> bool {
+    // IDA 0x670770 (`EnumPropDescriptor<FontSize>::isWriteOnly`):
+    // delegates to the inner `GetSet` at +44 — always writable.
+    false
 }
 
 // 0x670780 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -1542,8 +1586,11 @@ pub fn stub_0670770() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_0670780() -> ! {
-    todo!("0x670780 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0670780(first: &TextBoxState, second: &TextBoxState) -> bool {
+    // IDA 0x670780 (`EnumPropDescriptor<FontSize>::equalValues`):
+    // reads the inner value for both instances via the +44 `GetSet`
+    // and compares. Host: compare the sizes.
+    first.font_size == second.font_size
 }
 
 // 0x6707a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -1551,8 +1598,12 @@ pub fn stub_0670780() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_06707a8() -> ! {
-    todo!("0x6707a8 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_06707a8(state: &TextBoxState) -> FontSizeVariant {
+    // IDA 0x6707a8 (`EnumPropDescriptor<FontSize>::getVariant`):
+    // reads the inner value, tags it with the plain-`int`
+    // singleton and placement-moves it in (same int-tagged shape
+    // as the `Font` twin at 0x66f524). Host: the `FontSize` tag.
+    FontSizeVariant::FontSize(state.font_size)
 }
 
 // 0x6707cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -1560,8 +1611,16 @@ pub fn stub_06707a8() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_06707cc() -> ! {
-    todo!("0x6707cc RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_06707cc(state: &mut TextBoxState, variant: &FontSizeVariant) {
+    // IDA 0x6707cc (`EnumPropDescriptor<FontSize>::setVariant`): an
+    // int-typed variant runs `any_cast<int>`; anything else runs
+    // `Variant::convert<int>` (throws on failure); then the +72
+    // setter. Host: convert-or-throw, then store.
+    let value = match *variant {
+        FontSizeVariant::FontSize(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x6707cc)"),
+    };
+    state.font_size = value;
 }
 
 // 0x670918 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -1569,8 +1628,11 @@ pub fn stub_06707cc() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_0670918() -> ! {
-    todo!("0x670918 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0670918(first: &TextBoxState, second: &mut TextBoxState) {
+    // IDA 0x670918 (`EnumPropDescriptor<FontSize>::copyValue`):
+    // inner `getValue` on the source then inner `setValue` on the
+    // target. Host: copy the size.
+    second.font_size = first.font_size;
 }
 
 // 0x67093c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14hasStringValueEv
@@ -1578,8 +1640,10 @@ pub fn stub_0670918() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14hasStringValueEv")]
-pub fn stub_067093c() -> ! {
-    todo!("0x67093c RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::hasStringValue(void)const")
+pub fn stub_067093c() -> bool {
+    // IDA 0x67093c (`EnumPropDescriptor<FontSize>::hasStringValue`):
+    // returns 1 — always stringable.
+    true
 }
 
 // 0x670940 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -1587,8 +1651,12 @@ pub fn stub_067093c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0670940() -> ! {
-    todo!("0x670940 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0670940(state: &TextBoxState) -> String {
+    // IDA 0x670940 (`EnumPropDescriptor<FontSize>::getStringValue`):
+    // reads the enum-desc singleton slot, the inner value via the
+    // +44 `GetSet` and `EnumDesc::convertToString`. Host: the
+    // grounded item name.
+    fontsize_name(state.font_size).to_owned()
 }
 
 // 0x670964 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -1596,8 +1664,18 @@ pub fn stub_0670940() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_0670964() -> ! {
-    todo!("0x670964 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0670964(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x670964 (`EnumPropDescriptor<FontSize>::setStringValue`):
+    // `Name::lookup` + `EnumDesc::convertToValue`; on a hit the
+    // inner `setValue` runs and 1 returns, else 0. Host: table
+    // position decides.
+    match FONTSIZE_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font_size = FONTSIZE_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x6709a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -1605,8 +1683,14 @@ pub fn stub_0670964() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_06709a4() -> ! {
-    todo!("0x6709a4 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_06709a4(state: &TextBoxState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x6709a4 (`EnumPropDescriptor<FontSize>::writeValue`):
+    // inner `getValue`, `clearValue`, int tag `5` at +16, value at
+    // +20, returns 5. Same shape as the `Font` twin at 0x66f720.
+    out.value_type = 0;
+    out.value_type = 5;
+    out.int_value = state.font_size as i32;
+    5
 }
 
 // 0x6709c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -1614,8 +1698,44 @@ pub fn stub_06709a4() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_06709c4() -> ! {
-    todo!("0x6709c4 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_06709c4(state: &mut TextBoxState, xml: &XmlReadValue) {
+    // IDA 0x6709c4 (`EnumPropDescriptor<FontSize>::readValue`):
+    // xsi:nil early-out (0x6709e8); an int pair runs `setIntValue`
+    // (index→value with -1 rejection, 0x670a30-0x670a40) and
+    // returns on success; a string pair runs lookup + convert +
+    // inner set (0x670a4e-0x670aaa), a miss running the +64 reset
+    // hook before asserting (0x670b7c-0x670b7e, ungrounded target —
+    // folds away); anything else hits `ReleaseAssert(false)`
+    // (Reflection.h line 359, host seam). The `enumToItem` map is
+    // dense identity for `FontSize`, so the int path reads the
+    // table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, size)) = FONTSIZE_ITEMS.get(*value as usize) {
+                    state.font_size = *size;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6709c4)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_0670964(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6709c4)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x6709c4)");
+            }
+        }
+    }
 }
 
 // 0x670c04 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -1623,6 +1743,9 @@ pub fn stub_06709c4() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0670c04() -> ! {
-    todo!("0x670c04 RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0670c04(state: &TextBoxState) -> i32 {
+    // IDA 0x670c04 (`EnumPropDescriptor<FontSize>::getIndexValue`):
+    // inner `getValue` + `EnumDesc::convertToIndex`. Host: the
+    // item index of the live value.
+    fontsize_index(state.font_size)
 }
