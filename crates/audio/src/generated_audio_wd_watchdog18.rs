@@ -319,6 +319,59 @@ impl TextBoxFontProp {
         }
     }
 }
+/// `EnumDesc<TextService::YAlignment>` items in `addPair` order
+/// (IDA 0x7d8808-0x7d8834: `addPair(a1, 0, "Top")`,
+/// `addPair(a1, 1, "Center")`, `addPair(a1, 2, "Bottom")` —
+/// dense, index == value).
+pub const YALIGNMENT_ITEMS: [(&str, u32); 3] =
+    [("Top", 0), ("Center", 1), ("Bottom", 2)];
+/// Name of a `YAlignment` value for `convertToString` (IDA
+/// 0x66d0fc). Values with no item yield "" — the writers only
+/// ever store table members.
+pub fn yalignment_name(value: u32) -> &'static str {
+    YALIGNMENT_ITEMS
+        .iter()
+        .find(|(_, v)| *v == value)
+        .map(|(n, _)| *n)
+        .unwrap_or("")
+}
+/// Item index of a `YAlignment` value, -1 when it has no item (the
+/// `enumToItem` read in `convertToIndex`, IDA 0x66d04c).
+pub fn yalignment_index(value: u32) -> i32 {
+    YALIGNMENT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == value)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
+}
+/// `placement_any` payload read by the `YAlignment` dialogue (IDA
+/// 0x66c9d4: int-tagged like the `Font` twin at 0x66f548): the
+/// value or something else (miss throws, host: panic).
+#[derive(Debug, Clone, Copy)]
+pub enum YAlignmentVariant {
+    YAlignment(u32),
+    Other,
+}
+/// `RBX::Reflection::EnumPropDescriptor<TextBox, YAlignment>`
+/// cutover (IDA 0x66c788): name/category/attributes/permissions.
+/// The member pair folds into the `y_alignment` field.
+#[derive(Debug, Clone)]
+pub struct TextBoxYAlignProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxYAlignProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).

@@ -5,7 +5,12 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
-use crate::generated_audio_wd_watchdog18::{TextBoxBoolProp, TextBoxBoolSlot, TextBoxState};
+use crate::generated::flog_asserts;
+use crate::generated_134::{XmlIntSlot, XmlReadValue};
+use crate::generated_audio_wd_watchdog18::{
+    TextBoxBoolProp, TextBoxBoolSlot, TextBoxState, TextBoxYAlignProp, YAlignmentVariant,
+    YALIGNMENT_ITEMS, yalignment_index, yalignment_name,
+};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x66b478 — __ZN3rbx13remote_signalIFvN3RBX5UDim2EEED2Ev
@@ -250,32 +255,47 @@ pub fn stub_66c524() {
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10isReadOnlyEv")]
-pub fn stub_66c550() -> ! {
-    todo!("0x66c550 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10isReadOnlyEv")
+pub fn stub_66c550() -> bool {
+    // IDA 0x66c550 (`TypedPropertyDescriptor<Vector2>::isReadOnly`):
+    // forwards to the +40 impl slot 0 (0x66c55c) — the `TextBox`
+    // `GetImpl` at 0x66c638 answers 1. Host: the forwarded value.
+    true
 }
 
 // 0x66c560 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11isWriteOnlyEv
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11isWriteOnlyEv")]
-pub fn stub_66c560() -> ! {
-    todo!("0x66c560 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11isWriteOnlyEv")
+pub fn stub_66c560() -> bool {
+    // IDA 0x66c560 (`TypedPropertyDescriptor<Vector2>::isWriteOnly`):
+    // forwards to the +40 impl slot 1 (0x66c56c) — the `TextBox`
+    // `GetImpl` at 0x66c63c answers 0. Host: the forwarded value.
+    false
 }
 
 // 0x66c570 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11equalValuesEPKNS0_13DescribedBaseES7_
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_66c570() -> ! {
-    todo!("0x66c570 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE11equalValuesEPKNS0_13DescribedBaseES7_")
+pub fn stub_66c570(first: [f32; 2], second: [f32; 2]) -> bool {
+    // IDA 0x66c570 (`TypedPropertyDescriptor<Vector2>::equalValues`):
+    // reads both values through the +40 impl slot 2
+    // (0x66c584-0x66c590) and compares lane-wise (0x66c5a4-0x66c5bc).
+    // The reads fold into the params.
+    first == second
 }
 
 // 0x66c5c0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // demangled: RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_66c5c0() -> ! {
-    todo!("0x66c5c0 __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_66c5c0(value: [f32; 2]) -> [f32; 2] {
+    // IDA 0x66c5c0 (`TypedPropertyDescriptor<Vector2>::getVariant`):
+    // reads the value through the +40 impl slot 2, tags it with
+    // the `Vector2` singleton and placement-moves it into the
+    // `Variant` (0x66c5d4-0x66c5e8). The `Variant` machinery folds;
+    // host returns the read edge.
+    value
 }
 
 // 0x66c5ec — __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE9copyValueEPKNS0_13DescribedBaseEPS5_
@@ -283,7 +303,11 @@ pub fn stub_66c5c0() -> ! {
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<G3D::Vector2>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE9copyValueEPKNS0_13DescribedBaseEPS5_")]
 pub fn stub_66c5ec() -> ! {
-    todo!("0x66c5ec __ZNK3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EE9copyValueEPKNS0_13DescribedBaseEPS5_")
+    // IDA 0x66c5ec (`TypedPropertyDescriptor<Vector2>::copyValue`):
+    // reads the source through the +40 impl slot 2 then writes
+    // through slot 3 (0x66c602-0x66c612) — the `TextBox` `GetImpl`
+    // `setValue` at 0x66c668 unconditionally throws. Host: panic.
+    panic!("can't set value")
 }
 
 // 0x66c614 — __ZN3RBX10Reflection23TypedPropertyDescriptorIN3G3D7Vector2EED1Ev
@@ -298,24 +322,34 @@ pub fn stub_66c614() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")]
-pub fn stub_66c638() -> ! {
-    todo!("0x66c638 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE10isReadOnlyEv")
+pub fn stub_66c638() -> bool {
+    // IDA 0x66c638 (`PropDescriptor<TextBox, Vector2>::GetImpl::
+    // isReadOnly`): returns constant 1 (0x66c63a — the impl throws
+    // in `setValue`).
+    true
 }
 
 // 0x66c63c — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")]
-pub fn stub_66c63c() -> ! {
-    todo!("0x66c63c __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv")
+pub fn stub_66c63c() -> bool {
+    // IDA 0x66c63c (`PropDescriptor<TextBox, Vector2>::GetImpl::
+    // isWriteOnly`): returns constant 0 (0x66c63e).
+    false
 }
 
 // 0x66c640 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66c640() -> ! {
-    todo!("0x66c640 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_66c640(value: [f32; 2]) -> [f32; 2] {
+    // IDA 0x66c640 (`PropDescriptor<TextBox, Vector2>::GetImpl::
+    // getValue`): dispatches the stored getter member-pointer over
+    // the object (0x66c642-0x66c664). No `Vector2`-returning
+    // `TextBox` member is identified in this range (same gap as
+    // the 0x66c418 C2): host passes the read edge through.
+    value
 }
 
 // 0x66c668 — __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
@@ -323,15 +357,26 @@ pub fn stub_66c640() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,G3D::Vector2>::GetImpl<G3D::Vector2 (RBX::TextBox::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")]
 pub fn stub_66c668() -> ! {
-    todo!("0x66c668 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_")
+    // IDA 0x66c668 (`PropDescriptor<TextBox, Vector2>::GetImpl::
+    // setValue`): `__noreturn`, unconditionally throws
+    // `std::runtime_error("can't set value")` — the impl is
+    // getter-only. Host: panic.
+    panic!("can't set value")
 }
 
 // 0x66c788 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::EnumPropDescriptor<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>(char const*,char const*,RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::EnumPropDescriptor<RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment)>(char const*,char const*,RBX::TextService::YAlignment (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::YAlignment),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_66c788() -> ! {
-    todo!("0x66c788 __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_66c788(name: &str, category: &str, attributes: u32, permissions: u32) -> TextBoxYAlignProp {
+    // IDA 0x66c788 (`EnumPropDescriptor<TextBox, YAlignment>` ctor):
+    // the `TextBox` `classDescriptor` call, the
+    // `EnumDesc<YAlignment>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `y_alignment` field (see below).
+    TextBoxYAlignProp::new(name, category, attributes, permissions)
 }
 
 // 0x66c93c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEED0Ev
@@ -346,128 +391,238 @@ pub fn stub_66c93c() {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10isReadOnlyEv")]
-pub fn stub_66c968() -> ! {
-    todo!("0x66c968 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10isReadOnlyEv")
+pub fn stub_66c968() -> bool {
+    // IDA 0x66c968 (`EnumPropDescriptor<YAlignment>::isReadOnly`):
+    // delegates to the inner `GetSet` at +44 — always readable.
+    false
 }
 
 // 0x66c978 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11isWriteOnlyEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11isWriteOnlyEv")]
-pub fn stub_66c978() -> ! {
-    todo!("0x66c978 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11isWriteOnlyEv")
+pub fn stub_66c978() -> bool {
+    // IDA 0x66c978 (`EnumPropDescriptor<YAlignment>::isWriteOnly`):
+    // delegates to the inner `GetSet` at +44 — always writable.
+    false
 }
 
 // 0x66c988 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_66c988() -> ! {
-    todo!("0x66c988 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_66c988(first: &TextBoxState, second: &TextBoxState) -> bool {
+    // IDA 0x66c988 (`EnumPropDescriptor<YAlignment>::equalValues`):
+    // reads the inner value for both instances via the +44
+    // `GetSet` and compares (0x66c998-0x66c9ae). Host: compare
+    // the alignments.
+    first.y_alignment == second.y_alignment
 }
 
 // 0x66c9b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_66c9b0() -> ! {
-    todo!("0x66c9b0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_66c9b0(state: &TextBoxState) -> YAlignmentVariant {
+    // IDA 0x66c9b0 (`EnumPropDescriptor<YAlignment>::getVariant`):
+    // reads the inner index, tags it with the plain-`int`
+    // singleton and placement-moves it in (0x66c9be-0x66c9d2, same
+    // int-tagged shape as the `FontSize` twin at 0x6707a8). Host:
+    // the `YAlignment` tag.
+    YAlignmentVariant::YAlignment(state.y_alignment)
 }
 
 // 0x66c9d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_66c9d4() -> ! {
-    todo!("0x66c9d4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_66c9d4(state: &mut TextBoxState, variant: &YAlignmentVariant) {
+    // IDA 0x66c9d4 (`EnumPropDescriptor<YAlignment>::setVariant`):
+    // an int-typed variant runs `any_cast<int>` (0x66ca52-0x66caa0);
+    // anything else runs `Variant::convert<int>` (throws on
+    // failure, 0x66ca54-0x66ca90); then the +72 setter (0x66cab0).
+    // Host: convert-or-throw, then store.
+    let value = match *variant {
+        YAlignmentVariant::YAlignment(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x66c9d4)"),
+    };
+    state.y_alignment = value;
 }
 
 // 0x66cb20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_66cb20() -> ! {
-    todo!("0x66cb20 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_66cb20(first: &TextBoxState, second: &mut TextBoxState) {
+    // IDA 0x66cb20 (`EnumPropDescriptor<YAlignment>::copyValue`):
+    // inner `getValue` on the source then inner `setValue` on the
+    // target (0x66cb32-0x66cb42). Host: copy the alignment.
+    second.y_alignment = first.y_alignment;
 }
 
 // 0x66cb44 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14hasStringValueEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14hasStringValueEv")]
-pub fn stub_66cb44() -> ! {
-    todo!("0x66cb44 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14hasStringValueEv")
+pub fn stub_66cb44() -> bool {
+    // IDA 0x66cb44 (`EnumPropDescriptor<YAlignment>::hasStringValue`):
+    // returns 1 — always stringable.
+    true
 }
 
 // 0x66cb48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66cb48() -> ! {
-    todo!("0x66cb48 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_66cb48(state: &TextBoxState) -> String {
+    // IDA 0x66cb48 (`EnumPropDescriptor<YAlignment>::getStringValue`):
+    // reads the enum-desc singleton slot, the inner value via the
+    // +44 `GetSet` and `EnumDesc::convertToString`
+    // (0x66cb52-0x66cb6a). Host: the grounded item name (`Top` 0,
+    // `Center` 1, `Bottom` 2 — IDA 0x7d8808-0x7d8834).
+    yalignment_name(state.y_alignment).to_owned()
 }
 
 // 0x66cb6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_66cb6c() -> ! {
-    todo!("0x66cb6c __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_66cb6c(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66cb6c (`EnumPropDescriptor<YAlignment>::setStringValue`):
+    // `Name::lookup` + `EnumDesc::convertToValue`; on a hit the
+    // inner `setValue` runs and 1 returns, else 0
+    // (0x66cb76-0x66cba8). Host: table position decides.
+    match YALIGNMENT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.y_alignment = YALIGNMENT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66cbac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_66cbac() -> ! {
-    todo!("0x66cbac __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_66cbac(state: &TextBoxState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x66cbac (`EnumPropDescriptor<YAlignment>::writeValue`):
+    // inner `getValue`, `clearValue`, int tag `5` at +16, value at
+    // +20, returns 5 (0x66cbba-0x66cbca). Same shape as the
+    // `FontSize` twin at 0x6709a4.
+    out.value_type = 5;
+    out.int_value = state.y_alignment as i32;
+    5
 }
 
 // 0x66cbcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_66cbcc() -> ! {
-    todo!("0x66cbcc __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_66cbcc(state: &mut TextBoxState, xml: &XmlReadValue) {
+    // IDA 0x66cbcc (`EnumPropDescriptor<YAlignment>::readValue`):
+    // xsi:nil early-out (0x66cbf0); an int pair runs `setIntValue`
+    // (index→value with -1 rejection) and returns on success; a
+    // string pair runs lookup + convert + inner set, a miss running
+    // the +64 reset hook before asserting (folds away); anything
+    // else hits `ReleaseAssert(false)` (Reflection.h:359, host
+    // seam). The `enumToItem` map is dense identity, so the int
+    // path reads the table. Same shape as the `FontSize` twin at
+    // 0x6709c4.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, align)) = YALIGNMENT_ITEMS.get(*value as usize) {
+                    state.y_alignment = *align;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66cbcc)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_66cb6c(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66cbcc)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66cbcc)");
+            }
+        }
+    }
 }
 
 // 0x66ce0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66ce0c() -> ! {
-    todo!("0x66ce0c __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_66ce0c(state: &TextBoxState) -> i32 {
+    // IDA 0x66ce0c (`EnumPropDescriptor<YAlignment>::getIndexValue`):
+    // inner `getValue` + `EnumDesc::convertToIndex` (0x66ce1a).
+    // Host: the item index of the live value.
+    yalignment_index(state.y_alignment)
 }
 
 // 0x66ce28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_66ce28() -> ! {
-    todo!("0x66ce28 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_66ce28(state: &mut TextBoxState, index: u32) -> bool {
+    // IDA 0x66ce28 (`EnumPropDescriptor<YAlignment>::setIndexValue`):
+    // bounds-checks the index against the item count, stores
+    // `items[index]` through the inner `setValue` and returns 1,
+    // else 0 (0x66ce2e-0x66ce58).
+    match YALIGNMENT_ITEMS.get(index as usize) {
+        Some((_, align)) => {
+            state.y_alignment = *align;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66ce5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66ce5c() -> ! {
-    todo!("0x66ce5c __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_66ce5c(state: &TextBoxState) -> u32 {
+    // IDA 0x66ce5c (`EnumPropDescriptor<YAlignment>::getEnumValue`):
+    // the inner `getValue` straight through (0x66ce5c+).
+    state.y_alignment
 }
 
 // 0x66ce64 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_66ce64() -> ! {
-    todo!("0x66ce64 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_66ce64(state: &mut TextBoxState, value: u32) -> bool {
+    // IDA 0x66ce64 (`EnumPropDescriptor<YAlignment>::setEnumValue`):
+    // `find_if` with `equalValue` over the items; on a hit the
+    // inner `setValue` runs and 1 returns, else 0
+    // (0x66ce8e-0x66ceac). Host: membership decides.
+    if YALIGNMENT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.y_alignment = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x66ceb0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::YAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_66ceb0() -> ! {
-    todo!("0x66ceb0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_66ceb0(state: &TextBoxState) -> i32 {
+    // IDA 0x66ceb0 (`EnumPropDescriptor<YAlignment>::getEnumItem`):
+    // inner `getValue` + `EnumDesc::convertToItem` (0x66ceb6-0x66cece).
+    // Host: the item position of the live value (-1 when missing).
+    yalignment_index(state.y_alignment)
 }
 
 // 0x66ced0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10YAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
