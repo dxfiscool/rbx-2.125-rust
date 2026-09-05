@@ -20796,98 +20796,126 @@ pub fn stub_a85de8(current: &mut i32, value: i32, refresh: &mut dyn FnMut(), not
 // 0xa85e44 — __ZN3RBX7Network6Player10setNeutralEb
 // type: int __fastcall(RBX::Network::Player *this, int)
 #[doc(alias = "RBX::Network::Player::setNeutral(bool)")]
-pub fn stub_a85e44() -> ! {
-    todo!("0xa85e44 RBX::Network::Player::setNeutral(bool)")
+pub fn stub_a85e44(current: &mut u8, value: u8, refresh: &mut dyn FnMut(), notify: &mut dyn FnMut()) -> u8 {
+ // IDA 0xa85e44: stores at +104; spawn-location refresh; raisePropertyChanged (below truncation).
+ if value != *current {
+ *current = value;
+ refresh();
+ notify();
+ }
+ *current
 }
 
 // 0xa85ea4 — __ZN3RBX7Network6Player13setCameraModeENS_6Camera10CameraModeE
 #[doc(alias = "RBX::Network::Player::setCameraMode(RBX::Camera::CameraMode)")]
-pub fn stub_a85ea4() -> ! {
-    todo!("0xa85ea4 RBX::Network::Player::setCameraMode(RBX::Camera::CameraMode)")
+pub fn stub_a85ea4(current: &mut i32, value: i32, forward: &mut dyn FnMut(i32), notify: &mut dyn FnMut()) {
+ // IDA 0xa85ea4: stores at +0x158; forwards to the Humanoid subject; raisePropertyChanged (disasm only, no decomp).
+ if value != *current {
+ *current = value;
+ forward(value);
+ notify();
+ }
 }
 
 // 0xa85ee4 — __ZN3RBX7Network6PlayerC1Ev
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::Player(void)")]
-pub fn stub_a85ee4() -> ! {
-    todo!("0xa85ee4 RBX::Network::Player::Player(void)")
+pub fn stub_a85ee4(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa85ee4: C1 tail-calls the C2 overload.
+ init(slot);
+ slot
 }
 
 // 0xa85ef0 — __ZN3RBX7Network6PlayerC2Ev
 // type: RBX::Instance *__fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::Player(void)")]
-pub fn stub_a85ef0() -> ! {
-    todo!("0xa85ef0 RBX::Network::Player::Player(void)")
+pub fn stub_a85ef0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xa85ef0: Player ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xa86cf8 — __ZN3RBX7Network6PlayerD0Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "RBX::Network::Player::~Player()")]
-pub fn stub_a86cf8() -> ! {
-    todo!("0xa86cf8 RBX::Network::Player::~Player()")
+pub fn stub_a86cf8(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xa86cf8: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xa86d98 — __ZN3RBX7Network6PlayerD1Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "RBX::Network::Player::~Player()")]
-pub fn stub_a86d98() -> ! {
-    todo!("0xa86d98 RBX::Network::Player::~Player()")
+pub fn stub_a86d98(slot: usize, destroy: &mut dyn FnMut(usize)) {
+ // IDA 0xa86d98: D1: tail-calls the primary dtor.
+ destroy(slot);
 }
 
 // 0xa86da4 — __ZThn32_N3RBX7Network6PlayerD0Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
-pub fn stub_a86da4() -> ! {
-    todo!("0xa86da4 non-virtual thunk toRBX::Network::Player::~Player()")
+pub fn stub_a86da4(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0xa86da4: this-32 adjust then the D0 dtor + delete.
+ destroy_at(this - 32);
+ free_at(this - 32);
 }
 
 // 0xa86e48 — __ZThn36_N3RBX7Network6PlayerD0Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
-pub fn stub_a86e48() -> ! {
-    todo!("0xa86e48 non-virtual thunk toRBX::Network::Player::~Player()")
+pub fn stub_a86e48(this: usize, destroy_at: &mut dyn FnMut(usize), free_at: &mut dyn FnMut(usize)) {
+ // IDA 0xa86e48: this-36 adjust then the D0 dtor + delete.
+ destroy_at(this - 36);
+ free_at(this - 36);
 }
 
 // 0xa86eec — __ZN3RBX7Network6PlayerD2Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "RBX::Network::Player::~Player()")]
-pub fn stub_a86eec() -> ! {
-    todo!("0xa86eec RBX::Network::Player::~Player()")
+pub fn stub_a86eec(destroy: &mut dyn FnMut()) {
+ // IDA 0xa86eec: primary dtor (below truncation).
+ destroy();
 }
 
 // 0xa87d2c — __ZThn32_N3RBX7Network6PlayerD1Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
-pub fn stub_a87d2c() -> ! {
-    todo!("0xa87d2c non-virtual thunk toRBX::Network::Player::~Player()")
+pub fn stub_a87d2c(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0xa87d2c: this-32 adjust then tail-call the primary dtor.
+ destroy_at(this - 32);
 }
 
 // 0xa87d38 — __ZThn36_N3RBX7Network6PlayerD1Ev
 // type: void __fastcall(RBX::Network::Player *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
-pub fn stub_a87d38() -> ! {
-    todo!("0xa87d38 non-virtual thunk toRBX::Network::Player::~Player()")
+pub fn stub_a87d38(this: usize, destroy_at: &mut dyn FnMut(usize)) {
+ // IDA 0xa87d38: this-36 adjust then tail-call the primary dtor.
+ destroy_at(this - 36);
 }
 
 // 0xa87d44 — __ZN3RBX7Network6Player27physicsOutBandwidthExceededEPKNS_8InstanceE
 // type: int __fastcall(RBX::Network::Player *this, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Player::physicsOutBandwidthExceeded(RBX::Instance const*)")]
-pub fn stub_a87d44() -> ! {
-    todo!("0xa87d44 RBX::Network::Player::physicsOutBandwidthExceeded(RBX::Instance const*)")
+pub fn stub_a87d44(forward: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xa87d44: tail-calls Client::physicsOutBandwidthExceeded.
+ forward()
 }
 
 // 0xa87d50 — __ZN3RBX7Network6Player22getNetworkBufferHealthEPKNS_8InstanceE
 // type: int __fastcall(RBX::Network::Player *this, const RBX::Instance *, bool, const void *)
 #[doc(alias = "RBX::Network::Player::getNetworkBufferHealth(RBX::Instance const*)")]
-pub fn stub_a87d50() -> ! {
-    todo!("0xa87d50 RBX::Network::Player::getNetworkBufferHealth(RBX::Instance const*)")
+pub fn stub_a87d50(forward: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xa87d50: tail-calls Client::getNetworkBufferHealth.
+ forward()
 }
 
 // 0xa87d5c — __ZN3RBX7Network6Player10reportStatESs
 // type: void __fastcall(int, const std::string *)
 #[doc(alias = "RBX::Network::Player::reportStat(std::string)")]
-pub fn stub_a87d5c() -> ! {
-    todo!("0xa87d5c RBX::Network::Player::reportStat(std::string)")
+pub fn stub_a87d5c(report: &mut dyn FnMut()) {
+ // IDA 0xa87d5c: reportStat (below truncation).
+ report();
 }
 
 // 0xa87e84 — __ZN3RBX7Network6Player20LoadDataResultHelperEN5boost8weak_ptrIS1_EENS2_10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS8_EEEEE
@@ -20895,8 +20923,9 @@ pub fn stub_a87d5c() -> ! {
 #[doc(
     alias = "RBX::Network::Player::LoadDataResultHelper(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)"
 )]
-pub fn stub_a87e84() -> ! {
-    todo!("0xa87e84 RBX::Network::Player::LoadDataResultHelper(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_a87e84(handle: &mut dyn FnMut()) {
+ // IDA 0xa87e84: LoadDataResultHelper (below truncation).
+ handle();
 }
 
 // 0xa88274 — __ZN3RBX7Network6Player14loadDataResultEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
@@ -20904,8 +20933,9 @@ pub fn stub_a87e84() -> ! {
 #[doc(
     alias = "RBX::Network::Player::loadDataResult(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)"
 )]
-pub fn stub_a88274() -> ! {
-    todo!("0xa88274 RBX::Network::Player::loadDataResult(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+pub fn stub_a88274(handle: &mut dyn FnMut()) {
+ // IDA 0xa88274: loadDataResult (below truncation).
+ handle();
 }
 
 // 0xa88570 — __ZN3RBX7Network6Player24setWebPersonalServerRankEiN5boost8functionIFvbEEENS3_IFvSsEEE
@@ -20913,8 +20943,9 @@ pub fn stub_a88274() -> ! {
 #[doc(
     alias = "RBX::Network::Player::setWebPersonalServerRank(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)"
 )]
-pub fn stub_a88570() -> ! {
-    todo!("0xa88570 RBX::Network::Player::setWebPersonalServerRank(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_a88570(set: &mut dyn FnMut()) {
+ // IDA 0xa88570: setWebPersonalServerRank (below truncation).
+ set();
 }
 
 // 0xa8896c — __ZN3RBX7Network6Player16waitForDataReadyEN5boost8functionIFvbEEENS3_IFvSsEEE
@@ -20922,57 +20953,87 @@ pub fn stub_a88570() -> ! {
 #[doc(
     alias = "RBX::Network::Player::waitForDataReady(boost::function<void ()(bool)>,boost::function<void ()(std::string)>)"
 )]
-pub fn stub_a8896c() -> ! {
-    todo!("0xa8896c RBX::Network::Player::waitForDataReady(boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+pub fn stub_a8896c(ready: bool, fire: &mut dyn FnMut(bool) -> usize, queue: &mut Vec<usize>, token: usize) -> usize {
+ // IDA 0xa8896c: ready -> invoke with true else enqueue the callback (below truncation).
+ if ready {
+ fire(true)
+ } else {
+ queue.push(token);
+ 0
+ }
 }
 
 // 0xa8899c — __ZN3RBX7Network6Player20renderStreamedRegionEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Network::Player *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::Network::Player::renderStreamedRegion(RBX::Adorn *)")]
-pub fn stub_a8899c() -> ! {
-    todo!("0xa8899c RBX::Network::Player::renderStreamedRegion(RBX::Adorn *)")
+pub fn stub_a8899c(find: &mut dyn FnMut() -> bool, render: &mut dyn FnMut()) {
+ // IDA 0xa8899c: renders via the ClientReplicator when found (disasm only, no decomp).
+ if find() {
+ render();
+ }
 }
 
 // 0xa889c4 — __ZN3RBX7Network6Player20renderDPhysicsRegionEPNS_5AdornE
 // type: void __fastcall(RBX::Network::Player *this, RBX::Adorn *)
 #[doc(alias = "RBX::Network::Player::renderDPhysicsRegion(RBX::Adorn *)")]
-pub fn stub_a889c4() -> ! {
-    todo!("0xa889c4 RBX::Network::Player::renderDPhysicsRegion(RBX::Adorn *)")
+pub fn stub_a889c4(render: &mut dyn FnMut()) {
+ // IDA 0xa889c4: renderDPhysicsRegion (below truncation).
+ render();
 }
 
 // 0xa88bcc — __ZNK3RBX7Network6Player16hasCharacterHeadERN3G3D15CoordinateFrameE
 // type: RBX::PartInstance *__fastcall(RBX::Network::Player *this, G3D::CoordinateFrame *)
 #[doc(alias = "RBX::Network::Player::hasCharacterHead(G3D::CoordinateFrame &)const")]
-pub fn stub_a88bcc() -> ! {
-    todo!("0xa88bcc RBX::Network::Player::hasCharacterHead(G3D::CoordinateFrame &)const")
+pub fn stub_a88bcc(has_humanoid: bool, find: &mut dyn FnMut() -> usize) -> usize {
+ // IDA 0xa88bcc: null humanoid -> 0 else the head part (below truncation).
+ if has_humanoid { find() } else { 0 }
 }
 
 // 0xa88c1c — __ZNK3RBX7Network6Player21getConstCharacterRootEv
 // type: int __fastcall(RBX::Network::Player *this)
 #[doc(alias = "RBX::Network::Player::getConstCharacterRoot(void)const")]
-pub fn stub_a88c1c() -> ! {
-    todo!("0xa88c1c RBX::Network::Player::getConstCharacterRoot(void)const")
+pub fn stub_a88c1c(has_root: bool, find: &mut dyn FnMut() -> usize) -> usize {
+ // IDA 0xa88c1c: null humanoid/head/primitive -> 0 else the root (below truncation).
+ if has_root { find() } else { 0 }
 }
 
 // 0xa88c54 — __ZN3RBX7Network6Player19setSimulationRadiusEf
 // type: int __fastcall(int this, float)
 #[doc(alias = "RBX::Network::Player::setSimulationRadius(float)")]
-pub fn stub_a88c54() -> ! {
-    todo!("0xa88c54 RBX::Network::Player::setSimulationRadius(float)")
+pub fn stub_a88c54(slot: usize, current: &mut f32, max: f32, value: f32, set: &mut dyn FnMut(f32)) -> usize {
+ // IDA 0xa88c54: clamps above by 10/max, sets on change; returns this.
+ let mut v = 10.0;
+ if value > 10.0 {
+ v = max.min(value);
+ }
+ if v != *current {
+ *current = v;
+ set(v);
+ }
+ slot
 }
 
 // 0xa88cb0 — __ZN3RBX7Network6Player22setMaxSimulationRadiusEf
 // type: int __fastcall(int this, float32_t)
 #[doc(alias = "RBX::Network::Player::setMaxSimulationRadius(float)")]
-pub fn stub_a88cb0() -> ! {
-    todo!("0xa88cb0 RBX::Network::Player::setMaxSimulationRadius(float)")
+pub fn stub_a88cb0(current: &mut f32, value: f32, set: &mut dyn FnMut(f32)) {
+ // IDA 0xa88cb0: clamps to [10.0, 1000.0]; sets on change (below truncation).
+ let mut v = 10.0;
+ if value > 10.0 {
+ v = value.min(1000.0);
+ }
+ if v != *current {
+ *current = v;
+ set(v);
+ }
 }
 
 // 0xa88d60 — __ZN3RBX7Network6Player15rebuildBackpackEv
 // type: void __fastcall(RBX::Instance **this, int, bool)
 #[doc(alias = "RBX::Network::Player::rebuildBackpack(void)")]
-pub fn stub_a88d60() -> ! {
-    todo!("0xa88d60 RBX::Network::Player::rebuildBackpack(void)")
+pub fn stub_a88d60(rebuild: &mut dyn FnMut()) {
+ // IDA 0xa88d60: rebuildBackpack (below truncation).
+ rebuild();
 }
 
 // 0xa8942c — __ZN3RBX7Network6Player10rebuildGuiEv
