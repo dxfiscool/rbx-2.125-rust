@@ -392,6 +392,56 @@ impl TextBoxXAlignProp {
         }
     }
 }
+/// `RBX::Reflection::PropDescriptor<TextBox, std::string>` cutover
+/// (IDA 0x671804): name/category/attributes/permissions. The member
+/// pair folds into the `text` field (`getText`/`setText`).
+#[derive(Debug, Clone)]
+pub struct TextBoxStringProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxStringProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EventDesc<TextBox, void(bool)>` cutover (IDA
+/// 0x671ac8): the `Focused` event identity. The signal member and
+/// the signature/registry wiring fold away.
+#[derive(Debug, Clone)]
+pub struct TextBoxEventDesc {
+    pub name: String,
+}
+impl TextBoxEventDesc {
+    pub fn new(name: &str) -> Self {
+        Self { name: name.to_owned() }
+    }
+}
+/// `RBX::Reflection::BoundFuncDesc<TextBox, void(), 0>` cutover
+/// (IDA 0x671ef4): name/attributes/permissions. The member-pointer
+/// pair at +40 folds into the bound call.
+#[derive(Debug, Clone)]
+pub struct TextBoxVoidFunc {
+    pub name: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextBoxVoidFunc {
+    pub fn new(name: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).

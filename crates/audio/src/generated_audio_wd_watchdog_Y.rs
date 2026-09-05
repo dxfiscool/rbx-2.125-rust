@@ -7,8 +7,10 @@
 use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_audio_wd_watchdog18::{
-    stub_0670964, TextBoxState, FONTSIZE_ITEMS, fontsize_index,
+    stub_0670964, FontSizeVariant, TextBoxEventDesc, TextBoxState, TextBoxStringProp, TextBoxVoidFunc,
+    FONTSIZE_ITEMS, fontsize_index, fontsize_name,
 };
+use crate::generated_audio_wd_watchdog19::stub_665da0;
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 // 0x670c20 -- __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -149,56 +151,96 @@ pub fn stub_670eb4(state: &mut TextBoxState, index: i32) -> bool {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(RBX::TextService::FontSize const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringERKS3_")]
-pub fn stub_670ef4() -> ! {
-    todo!("0x670ef4 __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringERKS3_")
+pub fn stub_670ef4(value: i32) -> String {
+    // IDA 0x670ef4 (`EnumDesc<FontSize>::convertToString`):
+    // FLog::Asserts-gated `value >= 0` (enumconverter.h:262) and
+    // `value < enumToItem.size` (line 263) ReleaseAsserts — host
+    // seams; then a negative value yields "", else the
+    // value-indexed item name. Same shape as the `XAlignment` twin
+    // at 0x66e380. Host: asserts + table name with "" fallback.
+    if flog_asserts() {
+        assert!(
+            value >= 0,
+            "value>=0 file: include/reflection/enumconverter.h line: 262 (IDA 0x670ef4)"
+        );
+        assert!(
+            (value as usize) < FONTSIZE_ITEMS.len(),
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 263 (IDA 0x670ef4)"
+        );
+    }
+    if value >= 0 {
+        fontsize_name(value as u32).to_owned()
+    } else {
+        String::new()
+    }
 }
 
 // 0x671094 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_671094() -> ! {
-    todo!("0x671094 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_671094() -> bool {
+    // IDA 0x671094 (`GetSetImpl<FontSize>::isReadOnly`): returns
+    // constant 0.
+    false
 }
 
 // 0x671098 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_671098() -> ! {
-    todo!("0x671098 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_671098() -> bool {
+    // IDA 0x671098 (`GetSetImpl<FontSize>::isWriteOnly`): returns
+    // constant 0.
+    false
 }
 
 // 0x67109c -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67109c() -> ! {
-    todo!("0x67109c __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67109c(state: &TextBoxState) -> u32 {
+    // IDA 0x67109c (`GetSetImpl<FontSize>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +536 `Instance`-to-mixin adjust, 0x67109e-0x6710ac;
+    // virtual when the low bit is set) tail-calling the getter. The
+    // member is `getFontSize` (IDA 0x668620, the only `FontSize`
+    // getter); the pointer folds into the field.
+    state.font_size
 }
 
 // 0x6710c8 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::FontSize const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(RBX::TextService::FontSize)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::FontSize const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_6710c8() -> ! {
-    todo!("0x6710c8 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_6710c8(state: &mut TextBoxState, value: u32) {
+    // IDA 0x6710c8 (`GetSetImpl<FontSize>::setValue`): the
+    // member-pointer resolve over +12/+16 tail-calling the setter
+    // with the input word. The member is `setFontSize` (the only
+    // `FontSize` setter on `TextBox`); the pointer folds into the
+    // field (its raises fold into the store).
+    state.font_size = value;
 }
 
 // 0x6710ec -- __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE13initSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::initSingleton(void)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::initSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE13initSingletonEv")]
-pub fn stub_6710ec() -> ! {
-    todo!("0x6710ec __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE13initSingletonEv")
+pub fn stub_6710ec() {
+    // IDA 0x6710ec (`Singleton<EnumDesc<FontSize>>::initSingleton`):
+    // thunk tail-calling `doGetSingleton` (host: stub_06710f0).
+    // The singleton folds into the host table — carrier no-op.
 }
 
 // 0x6710f0 -- __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv
 // demangled: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingleton(void)
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingleton(void)")]
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv")]
-pub fn stub_6710f0() -> ! {
-    todo!("0x6710f0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv")
+pub fn stub_6710f0() {
+    // IDA 0x6710f0 (`Singleton<EnumDesc<FontSize>>::doGetSingleton`):
+    // `__cxa_guard` once-init constructing the `EnumDesc` and
+    // registering `__cxa_atexit` teardown. Host statics initialize
+    // on use — carrier no-op.
 }
 
 // 0x6711e0 -- __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED1Ev
@@ -229,72 +271,123 @@ pub fn stub_6713b8() {
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(char const*)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(char const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupEPKc")]
-pub fn stub_671458() -> ! {
-    todo!("0x671458 __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupEPKc")
+pub fn stub_671458(name: &str) -> Option<u32> {
+    // IDA 0x671458 (`EnumDesc<FontSize>::lookup(name)`):
+    // `Name::lookup` + `convertToValue`; on a hit `convertToItem`,
+    // else 0 (0x671464-0x671484). Host: the item index (`None` on a
+    // miss); the lookup folds into the compare.
+    FONTSIZE_ITEMS
+        .iter()
+        .position(|(n, _)| *n == name)
+        .map(|i| i as u32)
 }
 
 // 0x671488 -- __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupERKNS0_7VariantE
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::lookup(RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupERKNS0_7VariantE")]
-pub fn stub_671488() -> ! {
-    todo!("0x671488 __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE6lookupERKNS0_7VariantE")
+pub fn stub_671488(variant: &FontSizeVariant) -> Option<u32> {
+    // IDA 0x671488 (`EnumDesc<FontSize>::lookup(variant)`):
+    // `any_cast<FontSize>` then `convertToItem` (0x67149a-0x6714a4).
+    // No `any_cast<FontSize>` twin exists yet in the host; the cast
+    // folds into the tagged match (miss panics like the `Font` twin
+    // at 0x670468). Host: the item index of the cast value.
+    let value = match *variant {
+        FontSizeVariant::FontSize(value) => value,
+        _ => panic!("rbx::bad_placement_any_cast (IDA 0x671488)"),
+    };
+    FONTSIZE_ITEMS
+        .iter()
+        .position(|(_, v)| *v == value)
+        .map(|i| i as u32)
 }
 
 // 0x6714a8 -- __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueEmRNS0_7VariantE
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(unsigned long,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueEmRNS0_7VariantE")]
-pub fn stub_6714a8() -> ! {
-    todo!("0x6714a8 __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_6714a8(index: u32) -> Option<u32> {
+    // IDA 0x6714a8 (`EnumDesc<FontSize>::convertToValue(index)`):
+    // `count > index` gates reading the indexed item's value plus
+    // the `Type` tag and placement, returning 1 (else 0). Host: the
+    // value (`None` past the end); the tag/placement fold away.
+    FONTSIZE_ITEMS.get(index as usize).map(|(_, v)| *v)
 }
 
 // 0x6714dc -- __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringEmRSs
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(unsigned long,std::string &)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToString(unsigned long,std::string &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringEmRSs")]
-pub fn stub_6714dc() -> ! {
-    todo!("0x6714dc __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE15convertToStringEmRSs")
+pub fn stub_6714dc(index: u32, out: &mut String) -> bool {
+    // IDA 0x6714dc (`EnumDesc<FontSize>::convertToString(index)`):
+    // `count > index` gates reading the value and converting it to
+    // a name assigned into the out string, returning 1 (else 0 with
+    // `out` untouched). Host: assign on hit, report.
+    match FONTSIZE_ITEMS.get(index as usize) {
+        Some((_, value)) => {
+            *out = fontsize_name(*value).to_owned();
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x671620 -- __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService8FontSizeEEERS3_RKT_
 // demangled: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::FontSize>(RBX::TextService::FontSize const&)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextService::FontSize>(RBX::TextService::FontSize const&)")]
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService8FontSizeEEERS3_RKT_")]
-pub fn stub_671620() -> ! {
-    todo!("0x671620 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_11TextService8FontSizeEEERS3_RKT_")
+pub fn stub_671620(value: u32) -> u32 {
+    // IDA 0x671620 (`placement_any::operator=<FontSize>`): ensures
+    // the holder singleton, then stores the value and (re)tags the
+    // holder (destroying the old payload first). Host values are
+    // `Copy` with the tag in the type — the move is identity.
+    value
 }
 
 // 0x671670 -- __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE9singletonEv
 // demangled: rbx::implementation::typed_holder<RBX::TextService::FontSize>::singleton(void)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::FontSize>::singleton(void)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE9singletonEv")]
-pub fn stub_671670() -> ! {
-    todo!("0x671670 __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE9singletonEv")
+pub fn stub_671670() {
+    // IDA 0x671670 (`typed_holder<FontSize>::singleton`):
+    // `__cxa_guard` once-init publishing the typeinfo and the
+    // construct/destruct funcs. Host type tags need no init —
+    // carrier no-op.
 }
 
 // 0x6716dc -- __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE14construct_funcEPKcPc
 // demangled: rbx::implementation::typed_holder<RBX::TextService::FontSize>::construct_func(char const*,char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::FontSize>::construct_func(char const*,char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE14construct_funcEPKcPc")]
-pub fn stub_6716dc() -> ! {
-    todo!("0x6716dc __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE14construct_funcEPKcPc")
+pub fn stub_6716dc() {
+    // IDA 0x6716dc (`typed_holder<FontSize>::construct_func`):
+    // copies the held value pointer when non-null. Host values are
+    // `Copy` — carrier no-op.
 }
 
 // 0x6716e8 -- __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE13destruct_funcEPc
 // demangled: rbx::implementation::typed_holder<RBX::TextService::FontSize>::destruct_func(char *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextService::FontSize>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE13destruct_funcEPc")]
-pub fn stub_6716e8() -> ! {
-    todo!("0x6716e8 __ZN3rbx14implementation12typed_holderIN3RBX11TextService8FontSizeEE13destruct_funcEPc")
+pub fn stub_6716e8() {
+    // IDA 0x6716e8 (`typed_holder<FontSize>::destruct_func`):
+    // empty body — carrier no-op.
 }
 
 // 0x6716ec -- __ZN3rbx8any_castIRKN3RBX11TextService8FontSizeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // demangled: RBX::TextService::FontSize const& rbx::any_cast<RBX::TextService::FontSize const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
 #[doc(alias = "RBX::TextService::FontSize const& rbx::any_cast<RBX::TextService::FontSize const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX11TextService8FontSizeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_6716ec() -> ! {
-    todo!("0x6716ec __ZN3rbx8any_castIRKN3RBX11TextService8FontSizeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_6716ec(variant: &FontSizeVariant) -> u32 {
+    // IDA 0x6716ec (`any_cast<FontSize>`): null input misses; the
+    // typeinfo-pointer or mangled-name
+    // (`N3RBX11TextService8FontSizeE`) match returns the payload,
+    // else `bad_placement_any_cast` is thrown (host: panic). Host:
+    // tagged match. Same shape as the `Font` twin at 0x670468.
+    match *variant {
+        FontSizeVariant::FontSize(value) => value,
+        _ => panic!("rbx::bad_placement_any_cast (IDA 0x6716ec)"),
+    }
 }
 
 // 0x6717dc -- __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_11TextService8FontSizeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
@@ -309,8 +402,13 @@ pub fn stub_6717dc() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::PropDescriptor<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>(char const*,char const*,std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::PropDescriptor<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>(char const*,char const*,std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_671804() -> ! {
-    todo!("0x671804 __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_671804(name: &str, category: &str, attributes: u32, permissions: u32) -> TextBoxStringProp {
+    // IDA 0x671804 (`PropDescriptor<TextBox, string>::PropDescriptor`):
+    // builds the `GetSetImpl` member-pair cell plus the typed
+    // descriptor identity with name/category/attributes/permissions.
+    // The pair folds into the `text` field (`getText`/`setText`).
+    // Host: the identity half.
+    TextBoxStringProp::new(name, category, attributes, permissions)
 }
 
 // 0x671918 -- __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxESsED0Ev
@@ -325,40 +423,59 @@ pub fn stub_671918() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_671944() -> ! {
-    todo!("0x671944 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_671944() -> bool {
+    // IDA 0x671944 (`GetSetImpl<string>::isReadOnly`): returns
+    // constant 0 (0x671946).
+    false
 }
 
 // 0x671948 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_671948() -> ! {
-    todo!("0x671948 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_671948() -> bool {
+    // IDA 0x671948 (`GetSetImpl<string>::isWriteOnly`): returns
+    // constant 0 (0x67194a).
+    false
 }
 
 // 0x67194c -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67194c() -> ! {
-    todo!("0x67194c __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67194c(state: &TextBoxState) -> String {
+    // IDA 0x67194c (`GetSetImpl<string>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +536 `Instance`-to-mixin adjust, 0x671952-0x671962;
+    // virtual when the low bit is set) tail-calling the getter. The
+    // member is `getText` (IDA 0x6685f0, the only string getter);
+    // the pointer folds into the field.
+    state.text.clone()
 }
 
 // 0x671984 -- __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextBox,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextBox::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_671984() -> ! {
-    todo!("0x671984 __ZNK3RBX10Reflection14PropDescriptorINS_7TextBoxESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_671984(state: &mut TextBoxState, text: &str, filter_pass: bool) {
+    // IDA 0x671984 (`GetSetImpl<string>::setValue`): copies the
+    // input and tail-calls the setter member-pointer (0x6719fc-0x671a08).
+    // The member is `setText` (the only string setter on `TextBox`);
+    // the pointer folds into the 0x665da0 twin with its filter seam.
+    stub_665da0(state, text, filter_pass);
 }
 
 // 0x671ac8 -- __ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // demangled: RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::EventDesc(rbx::signal<void ()(bool)> RBX::TextBox::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::EventDesc(rbx::signal<void ()(bool)> RBX::TextBox::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_671ac8() -> ! {
-    todo!("0x671ac8 __ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_671ac8(name: &str) -> TextBoxEventDesc {
+    // IDA 0x671ac8 (`EventDesc<TextBox, void(bool)>` C2): builds the
+    // `EventDescriptor` with the `void(bool)` signature item
+    // (0x671afa-0x671bda, host: the `Focused` bool edge). The
+    // signal member and the registry wiring fold away; host keeps
+    // the event identity.
+    TextBoxEventDesc::new(name)
 }
 
 // 0x671c4c -- __ZN3RBX10Reflection9EventDescINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
@@ -373,32 +490,48 @@ pub fn stub_671c4c() {
 // demangled: RBX::Reflection::EventDescImpl<1,RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-pub fn stub_671d00() -> ! {
-    todo!("0x671d00 __ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+pub fn stub_671d00() {
+    // IDA 0x671d00 (`EventDescImpl::connectGeneric`): wraps the
+    // `GenericSlotWrapper` in a bool closure and connects it to the
+    // member signal (0x671d8c-0x671daa). Connection management folds
+    // into the host fire-closure seams. Carrier no-op.
 }
 
 // 0x671e54 -- __ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 // demangled: RBX::Reflection::EventDescImpl<1,RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")]
-pub fn stub_671e54() -> ! {
-    todo!("0x671e54 __ZNK3RBX10Reflection13EventDescImplILi1ENS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")
+pub fn stub_671e54(fire_focused: impl Fn(bool), submitted: bool) {
+    // IDA 0x671e54 (`EventDescImpl::fireEvent`): asserts a single
+    // arg (Event.h:320), `any_cast`s the bool out of the variant
+    // vector (0x671ece) and fires the member `signal_with_args`
+    // (0x671ed2). Host: the `Focused(bool)` edge — the arg count
+    // and cast fold into the params.
+    fire_focused(submitted);
 }
 
 // 0x671ee0 -- __ZNK3RBX10Reflection13EventDescBaseINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 // demangled: RBX::Reflection::EventDescBase<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::disconnectAll(RBX::Reflection::EventSource *)const
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::TextBox,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::TextBox::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_671ee0() -> ! {
-    todo!("0x671ee0 __ZNK3RBX10Reflection13EventDescBaseINS_7TextBoxEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")
+pub fn stub_671ee0() {
+    // IDA 0x671ee0 (`EventDescBase::disconnectAll`): forwards to the
+    // member signal's teardown. Connections fold into the host
+    // fire-closure seams. Carrier no-op.
 }
 
 // 0x671ef4 -- __ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::BoundFuncDesc(void (RBX::TextBox::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TextBox,void ()(void),0>::BoundFuncDesc(void (RBX::TextBox::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_671ef4() -> ! {
-    todo!("0x671ef4 __ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_671ef4(name: &str, attributes: u32, permissions: u32) -> TextBoxVoidFunc {
+    // IDA 0x671ef4 (`BoundFuncDesc<TextBox, void(), 0>` C2): the
+    // `TextBox` `classDescriptor` call plus the
+    // `FunctionDescriptor` init with the member-pointer pair at +40
+    // and a void return tag at +28 (0x671f1a-0x671faa). The pair
+    // folds into the bound call; host keeps name/attributes/
+    // permissions.
+    TextBoxVoidFunc::new(name, attributes, permissions)
 }
 
 // 0x671ff8 -- __ZN3RBX10Reflection13BoundFuncDescINS_7TextBoxEFvvELi0EED0Ev
