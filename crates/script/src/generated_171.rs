@@ -13,6 +13,28 @@ use crate::generated_112::{SlotConn, SlotFn, SlotList};
 /// `DataModel*`-flavor slot static mutex (IDA 0x4b4bc..0x4b4c0, same shape
 /// as 0x45fa0).
 static SLOT_DATAMODEL_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// `__GLOBAL__I_a` one-shot latches (IDA 0x4c034/0x4c498).
+static GLOBAL_A18_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+static GLOBAL_A19_INIT: LazyLock<u32> = LazyLock::new(|| 1);
+
+/// `GameInputViewController` observable state (IDA 0x4c3f4..0x4c46c):
+/// the load latch. The owned `ControlView` folds into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct GameInputVC {
+    pub loaded: bool,
+}
+
+/// `GameKeyboard` observable state (IDA 0x4c71c..0x4d07c): visibility,
+/// field text, placeholder, bound text box, and submitted edits. The
+/// `UITextField`/notification-center peers fold into the host.
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct GameKeys {
+    pub shown: bool,
+    pub text: String,
+    pub placeholder: String,
+    pub current_box: Option<u32>,
+    pub submitted: u32,
+}
 
 /// Bound ObjC-forwarding functor for the UIEvent signal (IDA 0x463cc,
 /// 0x4642c): the stored target/selector pair plus the armed latch and
@@ -794,174 +816,237 @@ pub fn stub_0x4bd08() {
 // 0x4bde0 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD1Ev
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")]
-pub fn stub_0x4bde0() -> ! {
-    todo!("0x4bde0 rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn stub_0x4bde0() {
+    // IDA 0x4bde0: `DataModel*` `slot` D1 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x4be8c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotD0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot() [0x4be8c]")]
-pub fn stub_0x4be8c() -> ! {
-    todo!("0x4be8c rbx::signals::signal<void ()(RBX::DataModel *)>::slot::~slot()")
+pub fn stub_0x4be8c() {
+    // IDA 0x4be8c: `DataModel*` `slot` D0 deleting dtor; drop glue covers
+    // it — no-op.
 }
 
 // 0x4bf3c — __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_
 // type: int __fastcall(int result, int *)
 #[doc(alias = "boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")]
-pub fn stub_0x4bf3c() -> ! {
-    todo!("0x4bf3c boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")
+pub fn stub_0x4bf3c(dst: &mut SlotFn, src: &SlotFn) {
+    // IDA 0x4bf3c: `DataModel*` `function1::assign_to_own` — same copy
+    // shape as 0x4639c.
+    *dst = src.clone();
 }
 
 // 0x4bf6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_0x4bf6c() -> ! {
-    todo!("0x4bf6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x4bf6c(slot: &mut BindSlot, op: u32) {
+    // IDA 0x4bf6c: `functor_manager<DataModel-bind>::manage` — identical
+    // clone/destroy/type op shape to 0x463cc.
+    stub_0x463cc(slot, op);
 }
 
 // 0x4bfcc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
 // type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
-pub fn stub_0x4bfcc() -> ! {
-    todo!("0x4bfcc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")
+pub fn stub_0x4bfcc(slot: &mut BindSlot) {
+    // IDA 0x4bfcc: `void_function_obj_invoker1::invoke` for the
+    // DataModel bind — same call-through shape as 0x4642c.
+    stub_0x4642c(slot);
 }
 
 // 0x4c034 — __GLOBAL__I_a_18
 #[doc(alias = "global constructor keyed to_a_18")]
-pub fn stub_0x4c034() -> ! {
-    todo!("0x4c034 global constructor keyed to_a_18")
+pub fn stub_0x4c034() -> u32 {
+    // IDA 0x4c034: `__GLOBAL__I_a_18` — see `GLOBAL_A18_INIT`.
+    *GLOBAL_A18_INIT
 }
 
 // 0x4c3f4 — -[GameInputViewController dealloc]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController dealloc]")]
-pub fn stub_0x4c3f4() -> ! {
-    todo!("0x4c3f4 -[GameInputViewController dealloc]")
+pub fn stub_0x4c3f4(vc: &mut GameInputVC) {
+    // IDA 0x4c3f4: `GameInputViewController dealloc` releases the control
+    // view (0x4c416) and chains to super (0x4c42e..); drop glue covers
+    // it and the record resets.
+    *vc = GameInputVC::default();
 }
 
 // 0x4c440 — -[GameInputViewController viewDidLoad]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidLoad]")]
-pub fn stub_0x4c440() -> ! {
-    todo!("0x4c440 -[GameInputViewController viewDidLoad]")
+pub fn stub_0x4c440(vc: &mut GameInputVC) {
+    // IDA 0x4c440: `viewDidLoad` chains to super (0x4c45a..0x4c464);
+    // the view-hierarchy glue folds into the host.
+    vc.loaded = true;
 }
 
 // 0x4c46c — -[GameInputViewController viewDidUnload]
 // type: void __cdecl(GameInputViewController *self, SEL)
 #[doc(alias = "-[GameInputViewController viewDidUnload]")]
-pub fn stub_0x4c46c() -> ! {
-    todo!("0x4c46c -[GameInputViewController viewDidUnload]")
+pub fn stub_0x4c46c(vc: &mut GameInputVC) {
+    // IDA 0x4c46c: `viewDidUnload` chains to super (0x4c486..0x4c490)
+    // and releases the view; the hierarchy glue folds into the host.
+    vc.loaded = false;
 }
 
 // 0x4c498 — __GLOBAL__I_a_19
 #[doc(alias = "global constructor keyed to_a_19")]
-pub fn stub_0x4c498() -> ! {
-    todo!("0x4c498 global constructor keyed to_a_19")
+pub fn stub_0x4c498() -> u32 {
+    // IDA 0x4c498: `__GLOBAL__I_a_19` — see `GLOBAL_A19_INIT`.
+    *GLOBAL_A19_INIT
 }
 
 // 0x4c71c — -[GameKeyboard init]
 // type: GameKeyboard *__cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard init]")]
-pub fn stub_0x4c71c() -> ! {
-    todo!("0x4c71c -[GameKeyboard init]")
+pub fn stub_0x4c71c() -> GameKeys {
+    // IDA 0x4c71c: `GameKeyboard init` chains to super, builds the text
+    // field, and registers keyboard notifications; the UIKit glue folds
+    // into the host.
+    GameKeys::default()
 }
 
 // 0x4ca18 — -[GameKeyboard dealloc]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard dealloc]")]
-pub fn stub_0x4ca18() -> ! {
-    todo!("0x4ca18 -[GameKeyboard dealloc]")
+pub fn stub_0x4ca18(keys: &mut GameKeys) {
+    // IDA 0x4ca18: `dealloc` releases the text field (0x4ca3a) and chains
+    // to super (0x4ca52..); drop glue covers it and the record resets.
+    *keys = GameKeys::default();
 }
 
 // 0x4ca64 — -[GameKeyboard hideKeyboard]
 // type: void __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard hideKeyboard]")]
-pub fn stub_0x4ca64() -> ! {
-    todo!("0x4ca64 -[GameKeyboard hideKeyboard]")
+pub fn stub_0x4ca64(keys: &mut GameKeys) {
+    // IDA 0x4ca64: `hideKeyboard` clears the current box (0x4ca9a..) and
+    // hides the field; the release glue folds into the host.
+    keys.current_box = None;
+    keys.shown = false;
 }
 
 // 0x4cb80 — -[GameKeyboard keyboardWillHide:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillHide:]")]
-pub fn stub_0x4cb80() -> ! {
-    todo!("0x4cb80 -[GameKeyboard keyboardWillHide:]")
+pub fn stub_0x4cb80(keys: &mut GameKeys) {
+    // IDA 0x4cb80: `keyboardWillHide:` releases the box focus through
+    // the text box (0x4cb92..0x4cba2), then hides (0x4cbb8); the service
+    // send folds into the host.
+    stub_0x4ca64(keys);
 }
 
 // 0x4cbbc — -[GameKeyboard keyboardWillChangeFrame:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard keyboardWillChangeFrame:]")]
-pub fn stub_0x4cbbc() -> ! {
-    todo!("0x4cbbc -[GameKeyboard keyboardWillChangeFrame:]")
+pub fn stub_0x4cbbc() {
+    // IDA 0x4cbbc: `keyboardWillChangeFrame:` — empty body; no-op.
 }
 
 // 0x4cbc0 — -[GameKeyboard setDefaultString:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setDefaultString:]")]
-pub fn stub_0x4cbc0() -> ! {
-    todo!("0x4cbc0 -[GameKeyboard setDefaultString:]")
+pub fn stub_0x4cbc0(keys: &mut GameKeys, placeholder: &str) {
+    // IDA 0x4cbc0: `setDefaultString:` forwards to the field placeholder
+    // (0x4cbda).
+    keys.placeholder = placeholder.to_string();
 }
 
 // 0x4cbe0 — -[GameKeyboard setParentView:]
 // type: void __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard setParentView:]")]
-pub fn stub_0x4cbe0() -> ! {
-    todo!("0x4cbe0 -[GameKeyboard setParentView:]")
+pub fn stub_0x4cbe0() {
+    // IDA 0x4cbe0: `setParentView:` adds self as a subview (0x4cbf2);
+    // the view-hierarchy glue folds into the host — no-op.
 }
 
 // 0x4cbf8 — -[GameKeyboard showKeyboard:]
 // type: bool __cdecl(GameKeyboard *self, SEL, const char *)
 #[doc(alias = "-[GameKeyboard showKeyboard:]")]
-pub fn stub_0x4cbf8() -> ! {
-    todo!("0x4cbf8 -[GameKeyboard showKeyboard:]")
+pub fn stub_0x4cbf8(keys: &mut GameKeys, text: &str) -> bool {
+    // IDA 0x4cbf8: `showKeyboard:` when the field is hidden (0x4cc20..)
+    // `dispatch_sync`s the show block to main (0x4cc5e..0x4cc6e) and
+    // answers true (0x4cc72), else answers false (0x4cc76); the queue
+    // hop folds into the caller — see `stub_0x4cc78`.
+    if keys.shown {
+        false
+    } else {
+        stub_0x4cc78(keys, text);
+        true
+    }
 }
 
 // 0x4cc78 — ___29-[GameKeyboard showKeyboard:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___29-[GameKeyboard showKeyboard:]_block_invoke")]
-pub fn stub_0x4cc78() -> ! {
-    todo!("0x4cc78 ___29-[GameKeyboard showKeyboard:]_block_invoke")
+pub fn stub_0x4cc78(keys: &mut GameKeys, text: &str) {
+    // IDA 0x4cc78: the show block sets the field text (0x4ccb4..0x4ccc8)
+    // and seats/shows the field (0x4cce8..).
+    keys.text = text.to_string();
+    keys.shown = true;
 }
 
 // 0x4ce30 — ___copy_helper_block__9
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__9")]
-pub fn stub_0x4ce30() -> ! {
-    todo!("0x4ce30 ___copy_helper_block__9")
+pub fn stub_0x4ce30() {
+    // IDA 0x4ce30: `__copy_helper_block__9` retains the captured self;
+    // `Arc` glue covers it — no-op.
 }
 
 // 0x4ce3c — ___destroy_helper_block__9
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__9")]
-pub fn stub_0x4ce3c() -> ! {
-    todo!("0x4ce3c ___destroy_helper_block__9")
+pub fn stub_0x4ce3c() {
+    // IDA 0x4ce3c: `__destroy_helper_block__9` releases the captured
+    // self (pair of 0x4ce30); `Arc` glue covers it — no-op.
 }
 
 // 0x4ce44 — -[GameKeyboard showKeyboardWithTextBox:]
 // type: bool __cdecl(GameKeyboard *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[GameKeyboard showKeyboardWithTextBox:]")]
-pub fn stub_0x4ce44() -> ! {
-    todo!("0x4ce44 -[GameKeyboard showKeyboardWithTextBox:]")
+pub fn stub_0x4ce44(keys: &mut GameKeys, textbox: Option<u32>, text: &str) -> bool {
+    // IDA 0x4ce44: `showKeyboardWithTextBox:` binds the box (0x4ce76..)
+    // and shows when it is live (0x4ce90..), else answers false; the box
+    // liveness check folds into the host.
+    match textbox {
+        Some(b) => {
+            keys.current_box = Some(b);
+            stub_0x4cbf8(keys, text)
+        }
+        None => false,
+    }
 }
 
 // 0x4cfbc — -[GameKeyboard getText]
 // type: id __cdecl(GameKeyboard *self, SEL)
 #[doc(alias = "-[GameKeyboard getText]")]
-pub fn stub_0x4cfbc() -> ! {
-    todo!("0x4cfbc -[GameKeyboard getText]")
+pub fn stub_0x4cfbc(keys: &GameKeys) -> String {
+    // IDA 0x4cfbc: `getText` answers the field text (0x4cfc8..).
+    keys.text.clone()
 }
 
 // 0x4cfdc — -[GameKeyboard textFieldShouldReturn:]
 // type: char __cdecl(GameKeyboard *self, SEL, id)
 #[doc(alias = "-[GameKeyboard textFieldShouldReturn:]")]
-pub fn stub_0x4cfdc() -> ! {
-    todo!("0x4cfdc -[GameKeyboard textFieldShouldReturn:]")
+pub fn stub_0x4cfdc(keys: &mut GameKeys) -> bool {
+    // IDA 0x4cfdc: `textFieldShouldReturn:` finishes editing with the
+    // field text through the input service (0x4cff6..0x4d02e), then
+    // `dispatch_async`s the hide block (0x4d060..0x4d072) and answers
+    // true (0x4d07a); the service send and queue hop fold into the
+    // caller — see `stub_0x4d07c`.
+    keys.submitted += 1;
+    stub_0x4d07c(keys);
+    true
 }
 
 // 0x4d07c — ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")]
-pub fn stub_0x4d07c() -> ! {
-    todo!("0x4d07c ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")
+pub fn stub_0x4d07c(keys: &mut GameKeys) {
+    // IDA 0x4d07c: the return block hides via `hideKeyboard`.
+    stub_0x4ca64(keys);
 }
 
 // 0x4d090 — ___copy_helper_block_82
@@ -1571,5 +1656,70 @@ mod datamodel_signal_batch_tests {
     #[should_panic(expected = "bad_function_call")]
     fn datamodel_empty_throws() {
         stub_0x4b98c(&mut SlotFn::default());
+    }
+}
+
+#[cfg(test)]
+mod keyboard_batch_tests {
+    use super::*;
+    use crate::generated_112::SlotFn;
+
+    #[test]
+    fn datamodel_tail() {
+        let mut dst = SlotFn::default();
+        stub_0x4bf3c(&mut dst, &SlotFn { armed: true, calls: 3 });
+        assert_eq!(dst.calls, 3);
+        let mut slot = BindSlot::default();
+        stub_0x4bf6c(&mut slot, 0);
+        stub_0x4bfcc(&mut slot);
+        assert_eq!(slot.calls, 1);
+        stub_0x4bde0();
+        stub_0x4be8c();
+        assert_eq!(stub_0x4c034(), 1);
+        assert_eq!(stub_0x4c498(), 1);
+    }
+
+    #[test]
+    fn input_vc() {
+        let mut vc = GameInputVC::default();
+        stub_0x4c440(&mut vc);
+        assert!(vc.loaded);
+        stub_0x4c46c(&mut vc);
+        assert!(!vc.loaded);
+        stub_0x4c440(&mut vc);
+        stub_0x4c3f4(&mut vc);
+        assert_eq!(vc, GameInputVC::default());
+    }
+
+    #[test]
+    fn keyboard_flow() {
+        let mut keys = stub_0x4c71c();
+        assert!(!keys.shown);
+        stub_0x4cbc0(&mut keys, "Search");
+        assert_eq!(keys.placeholder, "Search");
+        stub_0x4cbe0();
+        stub_0x4cbbc();
+        assert_eq!(stub_0x4cfbc(&keys), "");
+        assert!(stub_0x4cbf8(&mut keys, "hi"));
+        assert!(keys.shown);
+        assert_eq!(stub_0x4cfbc(&keys), "hi");
+        assert!(!stub_0x4cbf8(&mut keys, "again"));
+        assert_eq!(stub_0x4cfbc(&keys), "hi");
+        assert!(stub_0x4cfdc(&mut keys));
+        assert_eq!(keys.submitted, 1);
+        assert!(!keys.shown);
+        assert!(!stub_0x4ce44(&mut keys, None, "x"));
+        assert!(stub_0x4ce44(&mut keys, Some(4), "yo"));
+        assert_eq!(keys.current_box, Some(4));
+        assert_eq!(stub_0x4cfbc(&keys), "yo");
+        stub_0x4cb80(&mut keys);
+        assert!(!keys.shown);
+        assert_eq!(keys.current_box, None);
+        stub_0x4cc78(&mut keys, "back");
+        assert!(keys.shown);
+        stub_0x4ce30();
+        stub_0x4ce3c();
+        stub_0x4ca18(&mut keys);
+        assert_eq!(keys, GameKeys::default());
     }
 }
