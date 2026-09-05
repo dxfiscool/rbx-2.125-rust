@@ -8,9 +8,10 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    FontVariant, TextLabelBoolProp, TextLabelBoolSlot, TextLabelBrickProp, TextLabelColorProp,
-    TextLabelColorSlot, TextLabelFloatProp, TextLabelFloatSlot, TextLabelFontProp, TextLabelState,
-    XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, FONT_ITEMS, font_name, xalignment_index, xalignment_name,
+    FontSizeVariant, FontVariant, TextLabelBoolProp, TextLabelBoolSlot, TextLabelBrickProp,
+    TextLabelColorProp, TextLabelColorSlot, TextLabelFloatProp, TextLabelFloatSlot, TextLabelFontProp,
+    TextLabelFontSizeProp, TextLabelState, FONTSIZE_ITEMS, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS,
+    FONT_ITEMS, font_name, fontsize_index, fontsize_name, xalignment_index, xalignment_name,
     yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
@@ -776,8 +777,20 @@ pub fn stub_67be00(state: &mut TextLabelState, name: &str) -> bool {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67be34() -> ! {
-    todo!("0x67be34 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_67be34(state: &mut TextLabelState, index: i32) -> bool {
+    // IDA 0x67be34 (`EnumPropDescriptor<TextLabel,
+    // Font>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, font)) = FONT_ITEMS.get(index as usize) {
+            state.font = *font;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x67be74 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -785,8 +798,10 @@ pub fn stub_67be34() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_67be74() -> ! {
-    todo!("0x67be74 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_67be74() -> bool {
+    // IDA 0x67be74 (`GetSetImpl<TextLabel Font>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67be78 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -794,8 +809,10 @@ pub fn stub_67be74() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_67be78() -> ! {
-    todo!("0x67be78 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_67be78() -> bool {
+    // IDA 0x67be78 (`GetSetImpl<TextLabel Font>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67be7c — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -803,8 +820,13 @@ pub fn stub_67be78() -> ! {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67be7c() -> ! {
-    todo!("0x67be7c __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67be7c(state: &TextLabelState) -> u32 {
+    // IDA 0x67be7c (`GetSetImpl<TextLabel Font>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +536 `Instance`-to-mixin adjust; virtual when the low bit
+    // is set) tail-calling the getter. The member is `getFont`; the
+    // pointer folds into the field.
+    state.font
 }
 
 // 0x67bea8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -812,8 +834,12 @@ pub fn stub_67be7c() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::Font>::GetSetImpl<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::Font const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_67bea8() -> ! {
-    todo!("0x67bea8 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService4FontEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_67bea8(state: &mut TextLabelState, value: u32) {
+    // IDA 0x67bea8 (`GetSetImpl<TextLabel Font>::setValue`): the
+    // member-pointer resolve over +12/+16 tail-calling the setter
+    // with the input word. The member is `setFont`; the pointer
+    // folds into the field (its raises fold into the store).
+    state.font = value;
 }
 
 // 0x67becc — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -821,8 +847,16 @@ pub fn stub_67bea8() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::EnumPropDescriptor<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize)>(char const*,char const*,RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_67becc() -> ! {
-    todo!("0x67becc __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_67becc(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelFontSizeProp {
+    // IDA 0x67becc (`EnumPropDescriptor<TextLabel, FontSize>` ctor):
+    // the `TextLabel` `classDescriptor` call, the
+    // `EnumDesc<FontSize>` singleton once-init and the
+    // `PropertyDescriptor` base init with name/category/
+    // attributes/permissions plus the impl holding the
+    // getter/setter member-pointer pair. The pair folds into the
+    // `font_size` field. Same shape as the `TextBox` twin at
+    // 0x670580.
+    TextLabelFontSizeProp::new(name, category, attributes, permissions)
 }
 
 // 0x67c080 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEED0Ev
@@ -839,8 +873,11 @@ pub fn stub_67c080() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10isReadOnlyEv")]
-pub fn stub_67c0ac() -> ! {
-    todo!("0x67c0ac __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10isReadOnlyEv")
+pub fn stub_67c0ac() -> bool {
+    // IDA 0x67c0ac (`EnumPropDescriptor<TextLabel,
+    // FontSize>::isReadOnly`): delegates to the inner `GetSet` at
+    // +44 — always readable.
+    false
 }
 
 // 0x67c0bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11isWriteOnlyEv
@@ -848,8 +885,11 @@ pub fn stub_67c0ac() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11isWriteOnlyEv")]
-pub fn stub_67c0bc() -> ! {
-    todo!("0x67c0bc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11isWriteOnlyEv")
+pub fn stub_67c0bc() -> bool {
+    // IDA 0x67c0bc (`EnumPropDescriptor<TextLabel,
+    // FontSize>::isWriteOnly`): delegates to the inner `GetSet` at
+    // +44 — always writable.
+    false
 }
 
 // 0x67c0cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -857,8 +897,12 @@ pub fn stub_67c0bc() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_67c0cc() -> ! {
-    todo!("0x67c0cc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_67c0cc(first: &TextLabelState, second: &TextLabelState) -> bool {
+    // IDA 0x67c0cc (`EnumPropDescriptor<TextLabel,
+    // FontSize>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the sizes.
+    first.font_size == second.font_size
 }
 
 // 0x67c0f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -866,8 +910,12 @@ pub fn stub_67c0cc() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_67c0f4() -> ! {
-    todo!("0x67c0f4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_67c0f4(state: &TextLabelState) -> FontSizeVariant {
+    // IDA 0x67c0f4 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::getVariant`): reads the inner value, tags it with
+    // the plain-`int` singleton and placement-moves it in. Host:
+    // the `FontSize` tag.
+    FontSizeVariant::FontSize(state.font_size)
 }
 
 // 0x67c118 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -875,8 +923,17 @@ pub fn stub_67c0f4() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_67c118() -> ! {
-    todo!("0x67c118 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_67c118(state: &mut TextLabelState, variant: &FontSizeVariant) {
+    // IDA 0x67c118 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setVariant`): an int-typed variant runs
+    // `any_cast<int>`; anything else runs `Variant::convert<int>`
+    // (throws on failure); then the +72 setter. Host:
+    // convert-or-throw, then store.
+    let value = match *variant {
+        FontSizeVariant::FontSize(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x67c118)"),
+    };
+    state.font_size = value;
 }
 
 // 0x67c264 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -884,8 +941,11 @@ pub fn stub_67c118() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_67c264() -> ! {
-    todo!("0x67c264 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_67c264(first: &TextLabelState, second: &mut TextLabelState) {
+    // IDA 0x67c264 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::copyValue`): inner `getValue` on the source then
+    // inner `setValue` on the target. Host: copy the size.
+    second.font_size = first.font_size;
 }
 
 // 0x67c288 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14hasStringValueEv
@@ -893,8 +953,10 @@ pub fn stub_67c264() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14hasStringValueEv")]
-pub fn stub_67c288() -> ! {
-    todo!("0x67c288 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14hasStringValueEv")
+pub fn stub_67c288() -> bool {
+    // IDA 0x67c288 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x67c28c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -902,8 +964,12 @@ pub fn stub_67c288() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67c28c() -> ! {
-    todo!("0x67c28c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_67c28c(state: &TextLabelState) -> String {
+    // IDA 0x67c28c (`EnumPropDescriptor<TextLabel,
+    // FontSize>::getStringValue`): inner value via the +44 `GetSet`
+    // plus `EnumDesc::convertToString`. Host: the grounded item
+    // name.
+    fontsize_name(state.font_size).to_owned()
 }
 
 // 0x67c2b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -911,8 +977,18 @@ pub fn stub_67c28c() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_67c2b0() -> ! {
-    todo!("0x67c2b0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_67c2b0(state: &mut TextLabelState, name: &str) -> bool {
+    // IDA 0x67c2b0 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setStringValue`): `Name::lookup` +
+    // `EnumDesc::convertToValue`; on a hit the inner `setValue`
+    // runs and 1 returns, else 0. Host: table position decides.
+    match FONTSIZE_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font_size = FONTSIZE_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67c2f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -920,8 +996,13 @@ pub fn stub_67c2b0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_67c2f0() -> ! {
-    todo!("0x67c2f0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_67c2f0(state: &TextLabelState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x67c2f0 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::writeValue`): inner `getValue`, `clearValue`, int
+    // tag `5` at +16, value at +20, returns 5.
+    out.value_type = 5;
+    out.int_value = state.font_size as i32;
+    5
 }
 
 // 0x67c310 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -929,8 +1010,42 @@ pub fn stub_67c2f0() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_67c310() -> ! {
-    todo!("0x67c310 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_67c310(state: &mut TextLabelState, xml: &XmlReadValue) {
+    // IDA 0x67c310 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, size)) = FONTSIZE_ITEMS.get(*value as usize) {
+                    state.font_size = *size;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67c310)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_67c2b0(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67c310)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67c310)");
+            }
+        }
+    }
 }
 
 // 0x67c550 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -938,8 +1053,12 @@ pub fn stub_67c310() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67c550() -> ! {
-    todo!("0x67c550 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_67c550(state: &TextLabelState) -> i32 {
+    // IDA 0x67c550 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    fontsize_index(state.font_size)
 }
 
 // 0x67c56c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -947,8 +1066,18 @@ pub fn stub_67c550() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_67c56c() -> ! {
-    todo!("0x67c56c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_67c56c(state: &mut TextLabelState, index: u32) -> bool {
+    // IDA 0x67c56c (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setIndexValue`): bounds-checks the index against
+    // the item count, stores `items[index]` through the inner
+    // `setValue` and returns 1, else 0.
+    match FONTSIZE_ITEMS.get(index as usize) {
+        Some((_, size)) => {
+            state.font_size = *size;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67c5a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -956,8 +1085,11 @@ pub fn stub_67c56c() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67c5a0() -> ! {
-    todo!("0x67c5a0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_67c5a0(state: &TextLabelState) -> u32 {
+    // IDA 0x67c5a0 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::getEnumValue`): the inner `getValue` straight
+    // through.
+    state.font_size
 }
 
 // 0x67c5a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -965,8 +1097,17 @@ pub fn stub_67c5a0() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67c5a8() -> ! {
-    todo!("0x67c5a8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_67c5a8(state: &mut TextLabelState, value: u32) -> bool {
+    // IDA 0x67c5a8 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setEnumValue`): `find_if` with `equalValue` over
+    // the items; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Host: membership decides.
+    if FONTSIZE_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.font_size = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x67c5f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -974,8 +1115,12 @@ pub fn stub_67c5a8() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_67c5f4() -> ! {
-    todo!("0x67c5f4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_67c5f4(state: &TextLabelState) -> i32 {
+    // IDA 0x67c5f4 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    fontsize_index(state.font_size)
 }
 
 // 0x67c614 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -983,8 +1128,13 @@ pub fn stub_67c5f4() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_67c614() -> ! {
-    todo!("0x67c614 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_67c614(state: &mut TextLabelState, name: &str) -> bool {
+    // IDA 0x67c614 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setStringValue` over `Name`): `convertToValue` on
+    // the name; on a hit the inner `setValue` runs and 1 returns,
+    // else 0. Same string edge as 0x67c2b0 — host forwards into
+    // that twin (`Name` folds into `&str`).
+    stub_67c2b0(state, name)
 }
 
 // 0x67c648 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi
@@ -992,8 +1142,20 @@ pub fn stub_67c614() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67c648() -> ! {
-    todo!("0x67c648 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_67c648(state: &mut TextLabelState, index: i32) -> bool {
+    // IDA 0x67c648 (`EnumPropDescriptor<TextLabel,
+    // FontSize>::setIntValue`): rejects negative indices,
+    // bounds-checks against the item count and rejects `-1`-valued
+    // items, then stores through the inner `setValue` and returns 1,
+    // else 0. Table values are non-negative by type, so the `-1`
+    // check folds away.
+    if index >= 0 {
+        if let Some((_, size)) = FONTSIZE_ITEMS.get(index as usize) {
+            state.font_size = *size;
+            return true;
+        }
+    }
+    false
 }
 
 // 0x67c688 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -1001,8 +1163,10 @@ pub fn stub_67c648() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")]
-pub fn stub_67c688() -> ! {
-    todo!("0x67c688 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+pub fn stub_67c688() -> bool {
+    // IDA 0x67c688 (`GetSetImpl<TextLabel FontSize>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67c68c — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv
@@ -1010,8 +1174,10 @@ pub fn stub_67c688() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_67c68c() -> ! {
-    todo!("0x67c68c __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_67c68c() -> bool {
+    // IDA 0x67c68c (`GetSetImpl<TextLabel FontSize>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67c690 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE

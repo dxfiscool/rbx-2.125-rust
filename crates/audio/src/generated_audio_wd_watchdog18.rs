@@ -879,6 +879,26 @@ impl TextLabelFontProp {
         }
     }
 }
+/// `RBX::Reflection::EnumPropDescriptor<TextLabel, FontSize>`
+/// cutover (IDA 0x67becc): name/category/attributes/permissions.
+/// The member pair folds into the `font_size` field.
+#[derive(Debug, Clone)]
+pub struct TextLabelFontSizeProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelFontSizeProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
