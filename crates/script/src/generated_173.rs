@@ -19,16 +19,30 @@ static JUMP_PROGRESS: AtomicU32 = AtomicU32::new(0);
 /// `__GLOBAL__I_a_28` one-shot latch (IDA 0x554cc).
 static GLOBAL_A28_INIT: LazyLock<u32> = LazyLock::new(|| 1);
 
-/// `StoreManager` purchase-throttle courts (IDA 0x55664..0x55754): the
-/// minute gaps between robux/BC/catalog purchases and the billing retry
-/// limit. The payment-queue glue folds into the host.
+/// `StoreManager` purchase courts (IDA 0x55664..0x57450): the minute gaps
+/// between robux/BC/catalog purchases, the billing retry limit and count,
+/// the last purchase timestamps, the pending username, and the
+/// queued/completed/failed tallies. The payment-queue/alert glue folds
+/// into the host.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
 pub struct StoreMgr {
     pub robux_min: u32,
     pub bc_min: u32,
     pub catalog_min: u32,
     pub retry_limit: u32,
+    pub retries: u32,
+    pub last_robux: u64,
+    pub last_bc: u64,
+    pub last_catalog: u64,
+    pub pending_user: String,
+    pub queued: u32,
+    pub completed: u32,
+    pub failed: u32,
 }
+
+/// `StoreManager` singleton handle (IDA 0x557dc: `dispatch_once`
+/// 0x55808..0x55832).
+static STOREMAN_SINGLETON: LazyLock<u32> = LazyLock::new(|| 1);
 
 // 0x5479c — -[RobloxNavBarViewController doPlaceLaunch:request:]
 // type: char __cdecl(RobloxNavBarViewController *self, SEL, int, int)
@@ -459,7 +473,7 @@ pub fn stub_0x55664() -> StoreMgr {
     // and seeds the throttle gaps 5/5/5 with retry limit 20
     // (0x556ac..0x556ce); the queue/block glue folds into the host —
     // see `stub_0x55754`.
-    StoreMgr { robux_min: 5, bc_min: 5, catalog_min: 5, retry_limit: 20 }
+    StoreMgr { robux_min: 5, bc_min: 5, catalog_min: 5, retry_limit: 20, ..StoreMgr::default() }
 }
 
 // 0x55754 — ___20-[StoreManager init]_block_invoke
@@ -493,176 +507,251 @@ pub fn stub_0x557d4() {
 // 0x557dc — +[StoreManager getStoreMgr]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[StoreManager getStoreMgr]")]
-pub fn stub_0x557dc() -> ! {
-    todo!("0x557dc +[StoreManager getStoreMgr]")
+pub fn stub_0x557dc() -> u32 {
+    // IDA 0x557dc: `getStoreMgr` answers the `dispatch_once` instance
+    // (0x55808..0x55832). See `STOREMAN_SINGLETON`.
+    *STOREMAN_SINGLETON
 }
 
 // 0x55838 — ___27+[StoreManager getStoreMgr]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___27+[StoreManager getStoreMgr]_block_invoke")]
-pub fn stub_0x55838() -> ! {
-    todo!("0x55838 ___27+[StoreManager getStoreMgr]_block_invoke")
+pub fn stub_0x55838() {
+    // IDA 0x55838: the `getStoreMgr` block allocs/inits the manager
+    // (0x5584a..0x55868); folds into `STOREMAN_SINGLETON` — no-op.
 }
 
 // 0x5586c — ___copy_helper_block_23
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_23")]
-pub fn stub_0x5586c() -> ! {
-    todo!("0x5586c ___copy_helper_block_23")
+pub fn stub_0x5586c() {
+    // IDA 0x5586c: `__copy_helper_block_23` retains captures; `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x55878 — ___destroy_helper_block_24
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_24")]
-pub fn stub_0x55878() -> ! {
-    todo!("0x55878 ___destroy_helper_block_24")
+pub fn stub_0x55878() {
+    // IDA 0x55878: `__destroy_helper_block_24` releases captures (pair
+    // of 0x5586c); `Arc` glue covers it — no-op.
 }
 
 // 0x55880 — -[StoreManager canMakePurchase]
 // type: char __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager canMakePurchase]")]
-pub fn stub_0x55880() -> ! {
-    todo!("0x55880 -[StoreManager canMakePurchase]")
+pub fn stub_0x55880(can_pay: bool) -> bool {
+    // IDA 0x55880: `canMakePurchase` refreshes the player info
+    // (0x5589c..0x558ac) and answers the payment-queue capability
+    // (0x558cc); the store glue folds into the host.
+    can_pay
 }
 
 // 0x558d0 — -[StoreManager request:didFailWithError:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager request:didFailWithError:]")]
-pub fn stub_0x558d0() -> ! {
-    todo!("0x558d0 -[StoreManager request:didFailWithError:]")
+pub fn stub_0x558d0(mgr: &mut StoreMgr) {
+    // IDA 0x558d0: `request:didFailWithError:` records the failed
+    // request; the alert/retry glue folds into the host.
+    mgr.failed += 1;
+    mgr.retries += 1;
 }
 
 // 0x559d0 — -[StoreManager requestDidFinish:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestDidFinish:]")]
-pub fn stub_0x559d0() -> ! {
-    todo!("0x559d0 -[StoreManager requestDidFinish:]")
+pub fn stub_0x559d0() {
+    // IDA 0x559d0: `requestDidFinish:` tears down a finished request;
+    // it touches no manager state — no-op.
 }
 
 // 0x55a9c — -[StoreManager restrictTimeBoundPurchase:]
 // type: char __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager restrictTimeBoundPurchase:]")]
-pub fn stub_0x55a9c() -> ! {
-    todo!("0x55a9c -[StoreManager restrictTimeBoundPurchase:]")
+pub fn stub_0x55a9c(mgr: &StoreMgr, now: u64, product: &str) -> bool {
+    // IDA 0x55a9c: `restrictTimeBoundPurchase:` compares now against the
+    // last purchase of the matching kind (Robux/BC/catalog by suffix,
+    // 0x55afe..) plus its minute gap; the defaults glue folds into the
+    // host.
+    let (last, gap) = if product.ends_with("Robux") {
+        (mgr.last_robux, mgr.robux_min as u64)
+    } else if product.ends_with("BC") {
+        (mgr.last_bc, mgr.bc_min as u64)
+    } else {
+        (mgr.last_catalog, mgr.catalog_min as u64)
+    };
+    now.saturating_sub(last) >= gap * 60
 }
 
 // 0x55c68 — -[StoreManager reset]
 // type: void __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager reset]")]
-pub fn stub_0x55c68() -> ! {
-    todo!("0x55c68 -[StoreManager reset]")
+pub fn stub_0x55c68(mgr: &mut StoreMgr) {
+    // IDA 0x55c68: `reset` zeroes the retries (0x55c8e) and clears the
+    // pending-user, retry, and timestamp defaults (0x55c96..).
+    mgr.retries = 0;
+    mgr.pending_user.clear();
+    mgr.last_robux = 0;
+    mgr.last_bc = 0;
+    mgr.last_catalog = 0;
 }
 
 // 0x55d04 — -[StoreManager recordPurchaseTime:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager recordPurchaseTime:]")]
-pub fn stub_0x55d04() -> ! {
-    todo!("0x55d04 -[StoreManager recordPurchaseTime:]")
+pub fn stub_0x55d04(mgr: &mut StoreMgr, now: u64, product: &str) {
+    // IDA 0x55d04: `recordPurchaseTime:` stores now under the
+    // last-purchase key of the matching kind (0x55d66..0x55d9e).
+    if product.ends_with("Robux") {
+        mgr.last_robux = now;
+    } else if product.ends_with("BC") {
+        mgr.last_bc = now;
+    } else {
+        mgr.last_catalog = now;
+    }
 }
 
 // 0x55e94 — -[StoreManager productsRequest:didReceiveResponse:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager productsRequest:didReceiveResponse:]")]
-pub fn stub_0x55e94() -> ! {
-    todo!("0x55e94 -[StoreManager productsRequest:didReceiveResponse:]")
+pub fn stub_0x55e94(mgr: &mut StoreMgr) {
+    // IDA 0x55e94: `productsRequest:didReceiveResponse:` builds the
+    // payment and queues it (0x56894-shape flow); the StoreKit glue
+    // folds into the host.
+    mgr.queued += 1;
 }
 
 // 0x56894 — -[StoreManager requestProductData:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestProductData:]")]
-pub fn stub_0x56894() -> ! {
-    todo!("0x56894 -[StoreManager requestProductData:]")
+pub fn stub_0x56894(mgr: &mut StoreMgr) {
+    // IDA 0x56894: `requestProductData:` wraps the id in a set
+    // (0x568b6), builds the products request (0x568d0..0x568e6), and
+    // starts it (0x568f8..0x5690e); the StoreKit glue folds into the
+    // host.
+    mgr.queued += 1;
 }
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager purchaseProduct:]")]
-pub fn stub_0x56914() -> ! {
-    todo!("0x56914 -[StoreManager purchaseProduct:]")
+pub fn stub_0x56914(mgr: &mut StoreMgr, can_pay: bool) {
+    // IDA 0x56914: `purchaseProduct:` requests data when payments are
+    // allowed (0x5692c..0x56944), else shows the parental-control alert
+    // (0x5696c..0x569a4); the alert folds into the host.
+    if can_pay {
+        stub_0x56894(mgr);
+    }
 }
 
 // 0x569b4 — -[StoreManager verifyIfCorrectUser]
 // type: int __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager verifyIfCorrectUser]")]
-pub fn stub_0x569b4() -> ! {
-    todo!("0x569b4 -[StoreManager verifyIfCorrectUser]")
+pub fn stub_0x569b4(mgr: &StoreMgr, current: &str) -> u32 {
+    // IDA 0x569b4: `verifyIfCorrectUser` answers 2 with no pending user
+    // (0x569f8..0x569fc), else compares the pending name against the
+    // current player (0x56a04..).
+    if mgr.pending_user.is_empty() {
+        2
+    } else if mgr.pending_user == current {
+        1
+    } else {
+        0
+    }
 }
 
 // 0x56ad0 — -[StoreManager completeTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager completeTransaction:]")]
-pub fn stub_0x56ad0() -> ! {
-    todo!("0x56ad0 -[StoreManager completeTransaction:]")
+pub fn stub_0x56ad0(mgr: &mut StoreMgr) {
+    // IDA 0x56ad0: `completeTransaction:` verifies the receipt online
+    // (0x56afe..0x56b2a) and books the purchase; the receipt glue folds
+    // into the host.
+    mgr.completed += 1;
 }
 
 // 0x56d80 — -[StoreManager endTransaction:paymentTransaction:paymentQueue:]
 // type: void __cdecl(StoreManager *self, SEL, char, id, id)
 #[doc(alias = "-[StoreManager endTransaction:paymentTransaction:paymentQueue:]")]
-pub fn stub_0x56d80() -> ! {
-    todo!("0x56d80 -[StoreManager endTransaction:paymentTransaction:paymentQueue:]")
+pub fn stub_0x56d80(mgr: &mut StoreMgr) {
+    // IDA 0x56d80: `endTransaction:...` books the finished transaction
+    // and finishes it on the queue (blocks 0x572e4/0x573c4/0x57450
+    // handle the delayed/failed paths); the queue glue folds into the
+    // host.
+    mgr.completed += 1;
 }
 
 // 0x572e4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_0x572e4() -> ! {
-    todo!("0x572e4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_0x572e4() {
+    // IDA 0x572e4: the delayed-transaction block shows the pending alert
+    // and tracks it (0x57310..0x573ae); folds into the host — no-op.
 }
 
 // 0x573b0 — ___copy_helper_block_212
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_212")]
-pub fn stub_0x573b0() -> ! {
-    todo!("0x573b0 ___copy_helper_block_212")
+pub fn stub_0x573b0() {
+    // IDA 0x573b0: `__copy_helper_block_212` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x573bc — ___destroy_helper_block_213
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_213")]
-pub fn stub_0x573bc() -> ! {
-    todo!("0x573bc ___destroy_helper_block_213")
+pub fn stub_0x573bc() {
+    // IDA 0x573bc: `__destroy_helper_block_213` releases captures (pair
+    // of 0x573b0); `Arc` glue covers it — no-op.
 }
 
 // 0x573c4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")]
-pub fn stub_0x573c4() -> ! {
-    todo!("0x573c4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")
+pub fn stub_0x573c4() {
+    // IDA 0x573c4: the retry block re-runs `completeTransaction:` after
+    // the backoff delay (0x5740c); the delayed re-entry folds into the
+    // host — no-op.
 }
 
 // 0x57410 — ___copy_helper_block_216
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_216")]
-pub fn stub_0x57410() -> ! {
-    todo!("0x57410 ___copy_helper_block_216")
+pub fn stub_0x57410() {
+    // IDA 0x57410: `__copy_helper_block_216` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x57434 — ___destroy_helper_block_217
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_217")]
-pub fn stub_0x57434() -> ! {
-    todo!("0x57434 ___destroy_helper_block_217")
+pub fn stub_0x57434() {
+    // IDA 0x57434: `__destroy_helper_block_217` releases captures (pair
+    // of 0x57410); `Arc` glue covers it — no-op.
 }
 
 // 0x57450 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")]
-pub fn stub_0x57450() -> ! {
-    todo!("0x57450 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")
+pub fn stub_0x57450() {
+    // IDA 0x57450: the failed-transaction block shows the failure alert
+    // and tracks it (0x5747c..0x5751a); folds into the host — no-op.
 }
 
 // 0x5751c — ___copy_helper_block_222
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_222")]
-pub fn stub_0x5751c() -> ! {
-    todo!("0x5751c ___copy_helper_block_222")
+pub fn stub_0x5751c() {
+    // IDA 0x5751c: `__copy_helper_block_222` retains captures; `Arc`
+    // glue covers it — no-op.
 }
 
 // 0x57528 — ___destroy_helper_block_223
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_223")]
-pub fn stub_0x57528() -> ! {
-    todo!("0x57528 ___destroy_helper_block_223")
+pub fn stub_0x57528() {
+    // IDA 0x57528: `__destroy_helper_block_223` releases captures (pair
+    // of 0x5751c); `Arc` glue covers it — no-op.
 }
 
 // 0x57530 — -[StoreManager failedTransaction:]
@@ -1308,8 +1397,73 @@ mod outlet_store_batch_tests {
     #[test]
     fn store_mgr() {
         let mut mgr = stub_0x55664();
-        assert_eq!(mgr, StoreMgr { robux_min: 5, bc_min: 5, catalog_min: 5, retry_limit: 20 });
+        assert_eq!(mgr, StoreMgr { robux_min: 5, bc_min: 5, catalog_min: 5, retry_limit: 20, ..StoreMgr::default() });
         stub_0x55754(&mut mgr, 10, 15, 30, 60);
-        assert_eq!(mgr, StoreMgr { robux_min: 10, bc_min: 15, catalog_min: 30, retry_limit: 60 });
+        assert_eq!(mgr, StoreMgr { robux_min: 10, bc_min: 15, catalog_min: 30, retry_limit: 60, ..StoreMgr::default() });
+    }
+}
+
+#[cfg(test)]
+mod store_purchase_batch_tests {
+    use super::*;
+
+    #[test]
+    fn singleton_and_pay() {
+        assert_eq!(stub_0x557dc(), 1);
+        stub_0x55838();
+        stub_0x5586c();
+        stub_0x55878();
+        assert!(stub_0x55880(true));
+        assert!(!stub_0x55880(false));
+        stub_0x559d0();
+    }
+
+    #[test]
+    fn throttle_windows() {
+        let mut mgr = stub_0x55664();
+        assert!(stub_0x55a9c(&mgr, 1000, "BigRobux"));
+        stub_0x55d04(&mut mgr, 1000, "BigRobux");
+        assert!(!stub_0x55a9c(&mgr, 1000 + 4 * 60, "BigRobux"));
+        assert!(stub_0x55a9c(&mgr, 1000 + 5 * 60, "BigRobux"));
+        stub_0x55d04(&mut mgr, 2000, "ClubBC");
+        assert!(!stub_0x55a9c(&mgr, 2000 + 60, "ClubBC"));
+        stub_0x55d04(&mut mgr, 3000, "Shirt");
+        assert!(stub_0x55a9c(&mgr, 3000 + 5 * 60, "Shirt"));
+        stub_0x55c68(&mut mgr);
+        assert_eq!(mgr.retries, 0);
+        assert!(stub_0x55a9c(&mgr, 5 * 60, "BigRobux"));
+    }
+
+    #[test]
+    fn purchase_flow() {
+        let mut mgr = stub_0x55664();
+        stub_0x56914(&mut mgr, false);
+        assert_eq!(mgr.queued, 0);
+        stub_0x56914(&mut mgr, true);
+        assert_eq!(mgr.queued, 1);
+        stub_0x56894(&mut mgr);
+        assert_eq!(mgr.queued, 2);
+        stub_0x55e94(&mut mgr);
+        assert_eq!(mgr.queued, 3);
+        assert_eq!(stub_0x569b4(&mgr, "alice"), 2);
+        mgr.pending_user = "alice".to_string();
+        assert_eq!(stub_0x569b4(&mgr, "alice"), 1);
+        assert_eq!(stub_0x569b4(&mgr, "bob"), 0);
+        stub_0x56ad0(&mut mgr);
+        assert_eq!(mgr.completed, 1);
+        stub_0x56d80(&mut mgr);
+        assert_eq!(mgr.completed, 2);
+        stub_0x558d0(&mut mgr);
+        assert_eq!(mgr.failed, 1);
+        assert_eq!(mgr.retries, 1);
+        stub_0x572e4();
+        stub_0x573c4();
+        stub_0x57450();
+        stub_0x573b0();
+        stub_0x573bc();
+        stub_0x57410();
+        stub_0x57434();
+        stub_0x5751c();
+        stub_0x57528();
     }
 }
