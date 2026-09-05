@@ -7,6 +7,12 @@
 
 use rbx_core::SharedPtr;
 
+/// `boost::singleton_pool` lazy state (IDA 0x3e198 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct SingletonPool {
+ pub ready: bool,
+}
+
 /// `rbx::signals` slot connection (IDA 0x3be00 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct VoidSlot {
@@ -840,80 +846,99 @@ pub fn stub_3de44() -> usize {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(rbx_core::SharedPtr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
-pub fn stub_3de48() -> ! {
-    todo!("0x3de48 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")
+pub fn stub_3de48(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x3de48: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x3df1c — __ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_
 // demangled: boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_3df1c() -> ! {
-    todo!("0x3df1c boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_3df1c(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3df1c: operator new(0x10); use=weak=1; store px.
+    let block = alloc(0x10);
+    init(block, px);
+    block
 }
 
 // 0x3e010 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED1Ev
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_3e010() -> ! {
-    todo!("0x3e010 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_3e010() {
+    // IDA 0x3e010: empty sp_counted_impl_p<ViewUpdateJob> D2 body.
 }
 
 // 0x3e014 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED0Ev
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_3e014() -> ! {
-    todo!("0x3e014 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_3e014(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3e014: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3e018 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")]
-pub fn stub_3e018() -> ! {
-    todo!("0x3e018 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")
+pub fn stub_3e018(px: usize, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3e018: null px -> 0 else virtual destroy (+4).
+    if px != 0 {
+        destroy(px)
+    } else {
+        0
+    }
 }
 
 // 0x3e028 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")]
-pub fn stub_3e028() -> ! {
-    todo!("0x3e028 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")
+pub fn stub_3e028() -> usize {
+    // IDA 0x3e028: plain impl_p has no deleter -> 0.
+    0
 }
 
 // 0x3e02c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")]
-pub fn stub_3e02c() -> ! {
-    todo!("0x3e02c boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")
+pub fn stub_3e02c() -> usize {
+    // IDA 0x3e02c: plain impl_p has no untyped deleter -> 0.
+    0
 }
 
 // 0x3e030 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // type: 
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_3e030() -> ! {
-    todo!("0x3e030 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_3e030(op: u32, has_dst: bool, manage: &mut dyn FnMut(u32, bool)) {
+    // IDA 0x3e030: functor_manager::manage — clone/move/destroy by op (below truncation).
+    manage(op, has_dst);
 }
 
 // 0x3e090 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEvE6invokeERNS1_15function_bufferE
 // demangled: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)
 // type: 
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_3e090() -> ! {
-    todo!("0x3e090 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_3e090(invoke: &mut dyn FnMut()) {
+    // IDA 0x3e090: invoker thunk tail-calls bind_t::operator().
+    invoke();
 }
 
 // 0x3e094 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)")]
-pub fn stub_3e094() -> ! {
-    todo!("0x3e094 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)")
+pub fn stub_3e094(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x3e094: mf0 dispatch (virtual adjust); obj->method().
+    call(obj, is_virtual);
 }
 
 // 0x3e0b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -921,80 +946,110 @@ pub fn stub_3e094() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
-pub fn stub_3e0b0() -> ! {
-    todo!("0x3e0b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")
+pub fn stub_3e0b0(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x3e0b0: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x3e190 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
 // demangled: boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3e190() -> ! {
-    todo!("0x3e190 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3e190(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x3e190: D0 thunk tail-calls operator delete.
+    free(block);
 }
 
 // 0x3e198 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // demangled: boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_3e198() -> ! {
-    todo!("0x3e198 boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_3e198(pool: &mut SingletonPool, init: &mut dyn FnMut()) {
+    // IDA 0x3e198: guarded one-time pool mutex init + zero counters.
+    if !pool.ready {
+        init();
+        pool.ready = true;
+    }
 }
 
 // 0x3e1e8 — __ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // demangled: boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_3e1e8() -> ! {
-    todo!("0x3e1e8 boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_3e1e8(pool: &mut SingletonPool, init: &mut dyn FnMut()) {
+    // IDA 0x3e1e8: guarded one-time pool mutex init + zero counters.
+    if !pool.ready {
+        init();
+        pool.ready = true;
+    }
 }
 
 // 0x3e238 — __ZN5boost14singleton_poolI10XmlElementLj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // demangled: boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_3e238() -> ! {
-    todo!("0x3e238 boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_3e238(pool: &mut SingletonPool, init: &mut dyn FnMut()) {
+    // IDA 0x3e238: guarded one-time pool mutex init + zero counters.
+    if !pool.ready {
+        init();
+        pool.ready = true;
+    }
 }
 
 // 0x3e288 — __ZN5boost9function0IvE13assign_to_ownERKS1_
 // demangled: boost::function0<void>::assign_to_own(boost::function0<void> const&)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::function0<void>::assign_to_own(boost::function0<void> const&)")]
-pub fn stub_3e288() -> ! {
-    todo!("0x3e288 boost::function0<void>::assign_to_own(boost::function0<void> const&)")
+pub fn stub_3e288(dst: usize, has_src: bool, is_small: bool, copy: &mut dyn FnMut(usize, bool)) -> usize {
+    // IDA 0x3e288: assign_to_own — inline small copy else heap clone; return dst.
+    if has_src {
+        copy(dst, is_small);
+    }
+    dst
 }
 
 // 0x3e2b8 — __ZN5boost16exception_detail14bad_exception_D1Ev
 // demangled: boost::exception_detail::bad_exception_::~bad_exception_()
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_exception_::~bad_exception_()")]
-pub fn stub_3e2b8() -> ! {
-    todo!("0x3e2b8 boost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_3e2b8(destroy: &mut dyn FnMut()) {
+    // IDA 0x3e2b8: bad_exception_ dtor — member/base dtors.
+    destroy();
 }
 
 // 0x3e2e8 — __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const
 // type: 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
-pub fn stub_3e2e8() -> ! {
-    todo!("0x3e2e8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
+pub fn stub_3e2e8(alloc: &mut dyn FnMut(usize) -> usize, construct: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3e2e8: clone — new(0x1C) + copy construct (below truncation).
+    let p = alloc(0x1C);
+    construct(p);
+    p
 }
 
 // 0x3e3a8 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")]
-pub fn stub_3e3a8() -> ! {
-    todo!("0x3e3a8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")
+pub fn stub_3e3a8(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3e3a8: clone_impl copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
 // demangled: non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 #[doc(alias = "non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()")]
-pub fn stub_3e528() -> ! {
-    todo!("0x3e528 non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()")
+pub fn stub_3e528(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3e528: bad_exception_ thunk dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
@@ -1002,38 +1057,45 @@ pub fn stub_3e528() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
-pub fn stub_3e558() -> ! {
-    todo!("0x3e558 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")
+pub fn stub_3e558(make: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3e558: shared_ptr<clone_base> construct from clone_impl (below truncation).
+    make()
 }
 
 // 0x3e640 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev
 // demangled: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")]
-pub fn stub_3e640() -> ! {
-    todo!("0x3e640 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")
+pub fn stub_3e640() {
+    // IDA 0x3e640: empty sp_counted_impl_p<clone bad_exception_> D2 body.
 }
 
 // 0x3e648 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS2_
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)")]
-pub fn stub_3e648() -> ! {
-    todo!("0x3e648 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)")
+pub fn stub_3e648(dst: usize, src: usize, copy: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3e648: clone_impl<bad_alloc_> copy construct (below truncation).
+    copy(dst, src);
+    dst
 }
 
 // 0x3e7c8 — __ZN5boost16exception_detail10bad_alloc_D1Ev
 // demangled: boost::exception_detail::bad_alloc_::~bad_alloc_()
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 #[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
-pub fn stub_3e7c8() -> ! {
-    todo!("0x3e7c8 boost::exception_detail::bad_alloc_::~bad_alloc_()")
+pub fn stub_3e7c8(destroy: &mut dyn FnMut()) {
+    // IDA 0x3e7c8: bad_alloc_ dtor — member/base dtors.
+    destroy();
 }
 
 // 0x3e7f8 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const
 // type: 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")]
-pub fn stub_3e7f8() -> ! {
-    todo!("0x3e7f8 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")
+pub fn stub_3e7f8(alloc: &mut dyn FnMut(usize) -> usize, construct: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3e7f8: clone — new(0x1C) + copy construct (below truncation).
+    let p = alloc(0x1C);
+    construct(p);
+    p
 }
