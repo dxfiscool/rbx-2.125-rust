@@ -1139,13 +1139,64 @@ pub fn stub_065740c() {
     watchdog13_static_init();
 }
 
+/// `RBX::StudioTool` cutover (IDA 0x65793c): the `Enabled` flag at
+/// +92. The `Instance`/`Described` bases fold away.
+#[derive(Debug, Clone, Copy)]
+pub struct StudioToolState {
+    pub enabled: bool,
+}
+/// `RBX::Reflection::PropDescriptor<StudioTool, bool>` cutover
+/// (IDA 0x6579d0): name/category/attributes/permissions plus the live
+/// value. The getter/setter member-pointer pair folds into direct
+/// field access (same shape as `SparklesBoolProp` at 0x63cc8c).
+#[derive(Debug, Clone)]
+pub struct StudioToolBoolProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+    pub value: bool,
+}
+impl StudioToolBoolProp {
+    pub fn new(
+        name: &str,
+        category: &str,
+        initial: bool,
+        attributes: u32,
+        permissions: u32,
+    ) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+            value: initial,
+        }
+    }
+}
+/// `RBX::Surface` cutover (IDA 0x6589e8): the owning `PartInstance`
+/// plus the `NormalId`, stored as one 8-byte pair. The part handle
+/// folds into a presence flag.
+#[derive(Debug, Clone, Copy)]
+pub struct SurfaceState {
+    pub part_present: bool,
+    pub normal: u32,
+}
 // 0x065793c — __ZN3RBX10StudioTool10setEnabledEb
 // demangled: RBX::StudioTool::setEnabled(bool)
 // type: _DWORD __fastcall(RBX::StudioTool *__hidden this, bool)
 #[doc(alias = "RBX::StudioTool::setEnabled(bool)")]
 #[doc(alias = "__ZN3RBX10StudioTool10setEnabledEb")]
-pub fn stub_065793c() -> ! {
-    todo!("0x065793c RBX::StudioTool::setEnabled(bool)")
+pub fn stub_065793c(state: &mut StudioToolState, enabled: bool) -> bool {
+    // IDA 0x65793c (`RBX::StudioTool::setEnabled`): compares +92
+    // (0x657942); on change stores it (0x65794e) and raises
+    // `raisePropertyChanged` (0x657958), else returns unchanged
+    // (0x657944). The raise folds into the changed flag.
+    if state.enabled == enabled {
+        return false;
+    }
+    state.enabled = enabled;
+    true
 }
 
 // 0x065795c — __ZN3RBX10Reflection9EventDescINS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
@@ -1169,8 +1220,10 @@ pub fn stub_0657980() {
 // type: _DWORD __fastcall(RBX::StudioTool *__hidden this)
 #[doc(alias = "RBX::StudioTool::getEnabled(void)const")]
 #[doc(alias = "__ZNK3RBX10StudioTool10getEnabledEv")]
-pub fn stub_06579a4() -> ! {
-    todo!("0x06579a4 RBX::StudioTool::getEnabled(void)const")
+pub fn stub_06579a4(state: &StudioToolState) -> bool {
+    // IDA 0x6579a4 (`RBX::StudioTool::getEnabled`): loads +92
+    // (0x6579a8). Host: direct field read.
+    state.enabled
 }
 
 // 0x06579ac — __ZN3RBX10Reflection14PropDescriptorINS_10StudioToolEbED1Ev
@@ -1186,8 +1239,20 @@ pub fn stub_06579ac() {
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::PropDescriptor<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>(char const*,char const*,bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_10StudioToolEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_06579d0() -> ! {
-    todo!("0x06579d0 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::PropDescriptor<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>(char const*,char const*,bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_06579d0(
+    name: &str,
+    category: &str,
+    initial: bool,
+    attributes: u32,
+    permissions: u32,
+) -> StudioToolBoolProp {
+    // IDA 0x6579d0 (`PropDescriptor<StudioTool,bool>` ctor): the
+    // `classDescriptor` call (0x6579f8) + `operator new(0x14)` impl
+    // with the vtable and the getter/setter member-pointer pair
+    // (0x6579fe-0x657a38), then the name/category/attributes/
+    // permissions base init. The member pointers fold into direct
+    // field access (same shape as `SparklesBoolProp` at 0x63cc8c).
+    StudioToolBoolProp::new(name, category, initial, attributes, permissions)
 }
 
 // 0x0657ae4 — __ZN3RBX10Reflection14PropDescriptorINS_10StudioToolEbED0Ev
@@ -1202,32 +1267,47 @@ pub fn stub_0657ae4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
-pub fn stub_0657b10() -> ! {
-    todo!("0x0657b10 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isReadOnly(void)const")
+pub fn stub_0657b10() -> bool {
+    // IDA 0x657b10 (`GetSetImpl::isReadOnly`): `MOVS R0, #0; BX LR`
+    // — always readable (same shape as `Sparkles` at 0x63ce1c).
+    false
 }
 
 // 0x0657b14 — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
 // demangled: RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
-pub fn stub_0657b14() -> ! {
-    todo!("0x0657b14 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::isWriteOnly(void)const")
+pub fn stub_0657b14() -> bool {
+    // IDA 0x657b14 (`GetSetImpl::isWriteOnly`): `MOVS R0, #0; BX LR`
+    // — always writable (same shape as `Sparkles` at 0x63ce20).
+    false
 }
 
 // 0x0657b18 — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0657b18() -> ! {
-    todo!("0x0657b18 RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0657b18(state: &StudioToolState) -> bool {
+    // IDA 0x657b18 (`GetSetImpl::getValue`): the member-pointer
+    // resolve (null described reads at offset 0, else `a2 - 36`;
+    // virtual when the low bit is set, 0x657b1a-0x657b36)
+    // tail-calling the getter (0x657b3a). The member is
+    // `getEnabled` (0x6579a4); the pointer folds into the field
+    // (same shape as `Sparkles` at 0x63cc28).
+    state.enabled
 }
 
 // 0x0657b3c — __ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
 // demangled: RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10StudioToolEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
-pub fn stub_0657b3c() -> ! {
-    todo!("0x0657b3c RBX::Reflection::PropDescriptor<RBX::StudioTool,bool>::GetSetImpl<bool (RBX::StudioTool::*)(void)const,void (RBX::StudioTool::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+pub fn stub_0657b3c(state: &mut StudioToolState, value: bool) -> bool {
+    // IDA 0x657b3c (`GetSetImpl::setValue`): the member-pointer
+    // resolve over +12/+16 (0x657b3c-0x657b58) tail-calling the
+    // setter with the input byte. The member is `setEnabled`
+    // (0x65793c, which compares, stores and raises); the pointer
+    // folds into it (same shape as `Sparkles` at 0x63cc50).
+    stub_065793c(state, value)
 }
 
 // 0x0657b60 — __ZN3RBX10Reflection9EventDescINS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_ED0Ev
@@ -1243,24 +1323,50 @@ pub fn stub_0657b60() {
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, boost::detail::sp_counted_base *, char, int, int, boost::detail::sp_counted_base *, int, int, int, char, int, int, int, char, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-pub fn stub_0657c14() -> ! {
-    todo!("0x0657c14 RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_0657c14(connected: &mut bool, has_source: bool) -> bool {
+    // IDA 0x657c14 (`EventDescImpl<0, StudioTool, void()>::connectGeneric`):
+    // binds the `GenericSlotWrapper` + args (0x657ca6), wraps it in a
+    // `function<void()>` (0x657cb2) and connects it to the `void()`
+    // signal (0x657cce); a null source stores an empty connection
+    // (0x657cd8). Temps are cleared (0x657ce0-0x657d1a). The slot
+    // folds into the link flag (same shape as the spawner touched
+    // connect at 0x63e4ec).
+    if has_source {
+        *connected = true;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x0657e18 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 // demangled: RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")]
-pub fn stub_0657e18() -> ! {
-    todo!("0x0657e18 RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0657e18(arg_count: usize, debug_asserts: bool, fire: impl Fn()) {
+    // IDA 0x657e18 (`EventDescImpl<0, StudioTool, void()>::fireEvent`):
+    // `ReleaseAssert(args.size() == 0)` gated on `FLog::Asserts` with
+    // the debug hook (Event.h line 295, 0x657e2c-0x657e74 — a host
+    // seam), then invokes the `void()` signal (0x657e76-0x657e84).
+    // Host: assert + closure call.
+    if debug_asserts {
+        assert!(
+            arg_count == 0,
+            "args.size() == 0 file: include/Reflection/Event.h line: 295 (IDA 0x657e18)"
+        );
+    }
+    fire();
 }
 
 // 0x0657e8c — __ZNK3RBX10Reflection13EventDescBaseINS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
 // demangled: RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0657e8c() -> ! {
-    todo!("0x0657e8c RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0657e8c(connected: &mut bool) {
+    // IDA 0x657e8c (`EventDescBase<0, StudioTool, void()>::disconnectAll`):
+    // resolves the source (`a2 - 36`, 0x657e90-0x657e92) and clears
+    // the `void()` signal (0x657e94). Host: drop the link flag.
+    *connected = false;
 }
 
 // 0x0657ea0 — __ZN3RBX10Reflection9EventDescINS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -1284,46 +1390,99 @@ pub fn stub_0658024() {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE")]
-pub fn stub_06580d8() -> ! {
-    todo!("0x06580d8 RBX::Reflection::EventDescImpl<1,RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_06580d8(connected: &mut bool, has_source: bool) -> bool {
+    // IDA 0x6580d8 (`EventDescImpl<1, StudioTool, void(Instance)>::
+    // connectGeneric`): binds the wrapper with the `arg<1>` instance
+    // forwarder (0x658150), wraps it (0x65815c) and connects it to
+    // the `void(Instance)` signal (0x658178); a null source stores an
+    // empty connection (0x658182). Host: flag + connected report.
+    if has_source {
+        *connected = true;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x065822c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // demangled: RBX::Reflection::EventDescImpl<1,RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE")]
-pub fn stub_065822c() -> ! {
-    todo!("0x065822c RBX::Reflection::EventDescImpl<1,RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_065822c(
+    arg_count: usize,
+    debug_asserts: bool,
+    instance_present: bool,
+    fire: impl Fn(bool),
+) {
+    // IDA 0x65822c (`EventDescImpl<1, StudioTool, void(Instance)>::
+    // fireEvent`): `ReleaseAssert(args.size() == 1)` gated on
+    // `FLog::Asserts` with the debug hook (Event.h line 320,
+    // 0x658268-0x6582da — a host seam), `any_cast`s the
+    // `shared_ptr<Instance>` out of the args (0x6582fc-0x658316) and
+    // invokes the signal with it (0x658322-0x658330). Host: assert +
+    // closure call over the presence flag.
+    if debug_asserts {
+        assert!(
+            arg_count == 1,
+            "args.size() == 1 file: include/Reflection/Event.h line: 320 (IDA 0x65822c)"
+        );
+    }
+    fire(instance_present);
 }
 
 // 0x065838c — __ZNK3RBX10Reflection13EventDescBaseINS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
 // demangled: RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_10StudioToolEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_065838c() -> ! {
-    todo!("0x065838c RBX::Reflection::EventDescBase<RBX::StudioTool,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::StudioTool::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_065838c(connected: &mut bool) {
+    // IDA 0x65838c (`EventDescBase<1, StudioTool, void(Instance)>::
+    // disconnectAll`): resolves the source (`a2 - 36`,
+    // 0x658390-0x658392) and clears the `void(Instance)` signal
+    // (0x658394). Host: drop the link flag.
+    *connected = false;
 }
 
 // 0x06583a0 — __GLOBAL__I_a_264
 // demangled: global constructor keyed to_a_264
 #[doc(alias = "global constructor keyed to_a_264")]
 #[doc(alias = "__GLOBAL__I_a_264")]
-pub fn stub_06583a0() -> ! {
-    todo!("0x06583a0 global constructor keyed to_a_264")
+pub fn stub_06583a0() {
+    // IDA 0x6583a0 (`__GLOBAL__I_a_264`): `generic_category` x2 +
+    // `system_category` stores (0x6583aa-0x6583c4), `ios_base::Init`
+    // + `__cxa_atexit` (0x6583c6-0x6583e8), the `StudioTool`
+    // `Equipped(mouse)` `EventDesc` + `classDescriptor` registrations
+    // (0x6583ec-0x6584d6), the `StudioTool` bool `PropDescriptor`
+    // (0x65850e-0x65857a), the `boost::exception` statics, the
+    // `singleton_pool` guards and the `Camera` `creatorPrivate`
+    // (0x65857c-0x658736). Host statics initialize on use; only the
+    // run is recorded.
+    watchdog13_static_init();
 }
 
 // 0x0658744 — __GLOBAL__I_a_265
 // demangled: global constructor keyed to_a_265
 #[doc(alias = "global constructor keyed to_a_265")]
 #[doc(alias = "__GLOBAL__I_a_265")]
-pub fn stub_0658744() -> ! {
-    todo!("0x0658744 global constructor keyed to_a_265")
+pub fn stub_0658744() {
+    // IDA 0x658744 (`__GLOBAL__I_a_265`): `generic_category` x2 +
+    // `system_category` stores (0x658748-0x658762), `ios_base::Init`
+    // + `__cxa_atexit` (0x658764-0x658786), the `boost::exception`
+    // statics, the `singleton_pool` guards (through
+    // `NormalBreakConnector`) and the `Camera` creator
+    // (0x65878a-0x6589e2). Host statics initialize on use; only the
+    // run is recorded.
+    watchdog13_static_init();
 }
 
 // 0x06589e8 — __ZN3RBX7SurfaceC1EPNS_12PartInstanceENS_8NormalIdE
 // demangled: RBX::Surface::Surface(RBX::PartInstance *,RBX::NormalId)
 #[doc(alias = "RBX::Surface::Surface(RBX::PartInstance *,RBX::NormalId)")]
 #[doc(alias = "__ZN3RBX7SurfaceC1EPNS_12PartInstanceENS_8NormalIdE")]
-pub fn stub_06589e8() -> ! {
-    todo!("0x06589e8 RBX::Surface::Surface(RBX::PartInstance *,RBX::NormalId)")
+pub fn stub_06589e8(part_present: bool, normal: u32) -> SurfaceState {
+    // IDA 0x6589e8 (`RBX::Surface::Surface`): stores the part/normal
+    // pair as one 8-byte word (0x6589ec). Host: the cutover struct.
+    SurfaceState {
+        part_present,
+        normal,
+    }
 }
