@@ -132,6 +132,73 @@ impl Default for RawWebCache {
         Self::new()
     }
 }
+/// Rust model of `RBX::LuaWebService::CachedLuaWebServiceInfo` (IDA
+/// `0x345cf4`): the two retained `SharedPtr<String>` words (body plus content
+/// type) built by `registerContent` (IDA `0x354eba`). Twin of
+/// `CachedRawLuaWebServiceInfo`.
+#[derive(Clone)]
+pub struct CachedLuaWebServiceInfo {
+    pub body: SharedPtr<String>,
+    pub content_type: SharedPtr<String>,
+}
+
+impl CachedLuaWebServiceInfo {
+    pub fn new(body: SharedPtr<String>, content_type: SharedPtr<String>) -> Self {
+        Self { body, content_type }
+    }
+}
+
+/// Rust model of `RBX::AsyncHttpCache<CachedLuaWebServiceInfo, true>`
+/// storage: the `unordered_map<string, lru-node>` (IDA `0x354f02` family)
+/// over `(stamp, info)` LRU entries (`pair<string, pair<ulong, Info>>`). The
+/// C++ shell (mutex at `+0x120` per disasm `0x354e64`, LRU list, size
+/// counters) is folded: callers hold the Mutex, recency order is unmodeled.
+/// Twin of `RawWebCache`.
+pub struct WebCache {
+    pub entries: HashMap<String, (u64, CachedLuaWebServiceInfo)>,
+}
+
+impl WebCache {
+    pub fn new() -> Self {
+        Self { entries: HashMap::new() }
+    }
+}
+
+impl Default for WebCache {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+/// Smallest prime >= `need`: the boost 38-entry prime-list lower bound
+/// (decompile walks at `0x3540ee`, `0x355b76`, `0x354744`, `0x3562e8`;
+/// disasm loops at `0x354108`, `0x355b90`, `0x354744`, `0x3562e8` with the
+/// end clamp at `0x354122`/`0x355baa`/`0x35476e`/`0x356312`). Trial division
+/// is exact for the small sizes used here; the max_load divisor (float at
+/// table `+12`) is folded to 1.0 — `HashMap` manages density itself.
+fn table_prime_at_least(need: usize) -> usize {
+    fn is_prime(n: usize) -> bool {
+        if n < 2 {
+            return false;
+        }
+        if n % 2 == 0 {
+            return n == 2;
+        }
+        let mut d = 3;
+        while d <= n / d {
+            if n % d == 0 {
+                return false;
+            }
+            d += 2;
+        }
+        true
+    }
+    let mut n = need.max(2);
+    while !is_prime(n) {
+        n += 1;
+    }
+    n
+}
 
 // Keeps the `AsyncHttpQueue`/`Instance` contract imports referenced: the
 // result word belongs to the queue, and cached payloads surface as Variants
@@ -551,26 +618,40 @@ pub fn stub_0x353f80(cache: &mut RawWebCache, buckets: usize) {
 
 // 0x3540a8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
-pub fn stub_0x3540a8() -> ! {
-    todo!("0x3540a8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_0x3540a8(size: usize) -> usize {
+    // IDA 0x3540a8 (decompile: floor(size / max_load) + 1 at 0x3540cc/0x3540e6, prime-list binary search at 0x3540ee/0x354108, end clamp at 0x354122/0x354128; disasm: 0x3540c4 BLX floor, 0x3540e6 ADD #1, 0x3540f6 prime-list load, 0x354108 search loop, 0x354124 clamp).
+    // Minimum bucket count fitting `size` entries; the float max_load word is folded, mirroring the non-raw twin 0x355b30.
+    table_prime_at_least(size.saturating_add(1))
 }
 
 // 0x354138 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
-pub fn stub_0x354138() -> ! {
-    todo!("0x354138 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")
+pub fn stub_0x354138(cache: &mut RawWebCache, buckets: usize) {
+    // IDA 0x354138 (decompile: create_buckets at 0x35413e, place_in_bucket per overflow node at 0x35415a until the chain end at 0x35415c; disasm: 0x35413e BLX create_buckets, 0x354156 BLX place_in_bucket, 0x35415c chain walk).
+    // Rebuilds the bucket array and re-links every node; reserve keeps contents while the automatic rehash is the relink, mirroring the non-raw twin 0x355bc0.
+    cache.entries.reserve(buckets.saturating_sub(cache.entries.len()));
 }
 
 // 0x354164 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISJ_EEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0x354164() -> ! {
-    todo!("0x354164 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_0x354164(cache: &mut RawWebCache, url: &str) -> bool {
+    // IDA 0x354164 (decompile: stored-hash % size at 0x35417c, occupied-bucket splice at 0x35418e/0x3541a4, empty-bucket install at 0x3541a8/0x3541b2; disasm: 0x35417c umod, 0x354180 bucket test, 0x3541a8 STR install, 0x3541b2 node return).
+    // Links the node into its bucket; remove + reinsert forces the same re-placement under HashMap hashing. Reports whether the key was present, mirroring the non-raw twin 0x355bec.
+    match cache.entries.remove(url) {
+        None => false,
+        Some(value) => {
+            cache.entries.insert(url.to_string(), value);
+            true
+        }
+    }
 }
 
 // 0x3541bc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEEEEE9constructEv
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>>::construct(void)")]
-pub fn stub_0x3541bc() -> ! {
-    todo!("0x3541bc boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>>>::construct(void)")
+pub fn stub_0x3541bc(url: &str) -> String {
+    // IDA 0x3541bc (decompile: live-node reuse path destroys the string and clears the value flag at 0x3541d0/0x3541d6, fresh path news the 0x10 node at 0x3541e0 with zeroing at 0x3541ee and flag install at 0x3541f4; disasm: 0x3541d0 BLX string dtor, 0x3541e0 new 0x10, 0x3541f4 flag store).
+    // Allocates the node shell: the copied key; hash/value words are filled by construct_with_value (0x353eec). Mirrors the non-raw twin 0x355c44.
+    url.to_string()
 }
 
 // 0x3541f8 — __ZNSt4pairISsS_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEC2ERKSsRKS3_
@@ -595,14 +676,19 @@ pub use rbx_core::generated_core_shard_hy::stub_354520 as stub_0x354520;
 
 // 0x354548 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
-pub fn stub_0x354548() -> ! {
-    todo!("0x354548 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")
+pub fn stub_0x354548(cache: &mut RawWebCache) {
+    // IDA 0x354548 (decompile: bucket-array null early-out at 0x354552, size check at 0x354556, delete_node per node at 0x354564 until the end at 0x354568, operator delete of the array at 0x354570, zero words at +16 at 0x354578; disasm: 0x354556 LDR size, 0x354564 BLX delete_node, 0x354570 delete, 0x354578 zero).
+    // Frees every node and the bucket array itself (unlike clear, 0x354580, which keeps the array): drop entries and release the backing store. Mirrors the non-raw twin 0x3560f8.
+    cache.entries.clear();
+    cache.entries.shrink_to_fit();
 }
 
 // 0x354580 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE5clearEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")]
-pub fn stub_0x354580() -> ! {
-    todo!("0x354580 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")
+pub fn stub_0x354580(cache: &mut RawWebCache) {
+    // IDA 0x354580 (decompile: size-zero early-out at 0x354588, delete_node per node at 0x354596 until the end at 0x35459a, memset of the retained bucket array at 0x3545ae; disasm: 0x354588 CBZ, 0x354596 BLX delete_node, 0x3545ae memset).
+    // Drops every node but keeps the bucket array for reuse; clear retains capacity. Mirrors the non-raw twin 0x356130.
+    cache.entries.clear();
 }
 
 // 0x3545b4 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEEC2Ev
@@ -615,16 +701,21 @@ pub use rbx_core::generated_core_shard_hy::stub_354694 as stub_0x354694;
 
 // 0x354718 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>> const&)")]
-pub fn stub_0x354718() -> ! {
-    todo!("0x354718 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedRawLuaWebServiceInfo>>>>>> const&)")
+pub fn stub_0x354718(buckets: usize) -> RawWebCache {
+    // IDA 0x354718 (decompile: prime-list walk against the requested count at 0x354744/0x354754, end clamp at 0x35476e/0x354774, size/max_load installs at 0x354778/0x35477c; disasm: 0x35472e prime-list load, 0x354774 prime pick, 0x354778/0x35477c installs).
+    // Fresh table over the prime bucket count; with_capacity is the bucket-array layout, mirroring the non-raw twin 0x3562bc.
+    RawWebCache { entries: HashMap::with_capacity(table_prime_at_least(buckets)) }
 }
 
 // 0x354784 — __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEEEC2IS5_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")]
 // was: boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)
-pub fn stub_0x354784() -> ! {
-    todo!("0x354784 rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")
+pub fn stub_0x354784(ptr: *mut WebCache) -> SharedPtr<WebCache> {
+    // IDA 0x354784 (decompile: px store at 0x3547b4, shared_count new at 0x3547e2, _internal_accept_owner at 0x35480a; disasm: 0x3547b4 STR px, 0x3547e2 BLX shared_count, 0x35480a BLX accept_owner).
+    // SAFETY: `ptr` must be a live heap allocation owned by the caller; adoption takes ownership (Box -> Arc is the same single-owner adoption).
+    // The enable_shared_from_this owner link (accept_owner) is unmodeled: WebCache folds only the cache storage. Mirrors the raw twin 0x352bfc.
+    shared_ptr_from_raw(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x35486c — __ZNK5boost23enable_shared_from_thisIN3RBX14AsyncHttpQueueEE22_internal_accept_ownerINS1_14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEES8_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -635,8 +726,10 @@ pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x35486c as stub_0x35
 // 0x354950 — __ZN5boost6detail12shared_countC2IN3RBX14AsyncHttpCacheINS3_13LuaWebService23CachedLuaWebServiceInfoELb1EEEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")]
-pub fn stub_0x354950() -> ! {
-    todo!("0x354950 boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")
+pub fn stub_0x354950(ptr: *mut WebCache) -> ControlBlockP<WebCache> {
+    // IDA 0x354950 (decompile: operator new(0x10) at 0x3549a4, use/weak counts at 1 at 0x3549b2/0x3549b6, vtable at 0x3549bc, px at 0x3549c2; disasm: 0x3549a4 new, 0x3549b2/0x3549b6 counts, 0x3549b8 vtable load, 0x3549c2 px store).
+    // SAFETY: `ptr` must be a live heap allocation owned by the caller. Mirrors the raw twin 0x352e1c.
+    ControlBlockP::new(unsafe { Box::from_raw(ptr) })
 }
 
 // 0x354a48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEED1Ev
@@ -649,21 +742,25 @@ pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354a4c as stub_0x35
 
 // 0x354a50 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::dispose(void)")]
-pub fn stub_0x354a50() -> ! {
-    todo!("0x354a50 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::dispose(void)")
+pub fn stub_0x354a50(block: &mut ControlBlockP<WebCache>) {
+    // IDA 0x354a50 (decompile: load px at 0x354a50, null early-out at 0x354a54, virtual delete through D0 at 0x354a5c; disasm: 0x354a50 LDR, 0x354a54 CMP/IT EQ, 0x354a58/0x354a5c BX delete).
+    // take + drop is exactly dtor-then-free, skipped when null. Mirrors the raw twin 0x352f1c.
+    block.dispose();
 }
 
 // 0x354a60 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::get_deleter(std::type_info const&)")]
-pub fn stub_0x354a60() -> ! {
-    todo!("0x354a60 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::get_deleter(std::type_info const&)")
+pub fn stub_0x354a60(block: &ControlBlockP<WebCache>) -> Option<rbx_core::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x354a60 (decompile: return 0 at 0x354a62; disasm: 0x354a60 MOVS R0, #0 then BX LR). A _p block never carries a deleter. Mirrors the raw twin 0x352f30.
+    block.get_deleter()
 }
 
 // 0x354a64 — __ZN5boost6detail17sp_counted_impl_pIN3RBX14AsyncHttpCacheINS2_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE19get_untyped_deleterEv
 // type: int()
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::get_untyped_deleter(void)")]
-pub fn stub_0x354a64() -> ! {
-    todo!("0x354a64 boost::detail::sp_counted_impl_p<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::get_untyped_deleter(void)")
+pub fn stub_0x354a64(block: &ControlBlockP<WebCache>) -> Option<rbx_core::shared_ptr::CreatableInstanceDeleter> {
+    // IDA 0x354a64 (decompile: return 0 at 0x354a66; disasm: 0x354a64 MOVS R0, #0, 0x354a66 BX LR). Unconditionally null like 0x354a60. Mirrors the raw twin 0x352f34.
+    block.get_untyped_deleter()
 }
 
 // 0x354bb8 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EED1Ev
@@ -677,8 +774,27 @@ pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x354cc0 as stub_0x35
 // 0x354dd8 — __ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EE15registerContentERKSsN5boost10shared_ptrIS4_EES8_
 #[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")]
 // was: RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::registerContent(std::string const&,boost::shared_ptr<std::string const>,boost::shared_ptr<std::string const>)
-pub fn stub_0x354dd8() -> ! {
-    todo!("0x354dd8 RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::registerContent(std::string const&,rbx_core::SharedPtr<std::string const>,rbx_core::SharedPtr<std::string const>)")
+pub fn stub_0x354dd8(
+    cache: &Mutex<WebCache>,
+    url: &str,
+    body: SharedPtr<String>,
+    content_type: SharedPtr<String>,
+    max_entries: usize,
+) {
+    // IDA 0x354dd8 (decompile: FastLog URL at 0x354e5c, mutex lock at 0x354e78, shared_count retains at 0x354e8e/0x354ea8, CachedLua ctor at 0x354eba, LRU insert with stamp 0 at 0x354ece, size walk + over-capacity check at 0x354ee4/0x354ef2, find_node on the LRU front key at 0x354f02, unhook/destroy/delete + erase_nodes at 0x354f22/0x354f28/0x354f30/0x354f3a, releases at 0x354f56/0x354f62, unlock at 0x354f74; disasm mirrors).
+    // Insert/overwrite with stamp 0; while over capacity evict the least-recently-used entry. Recency order is folded (HashMap keeps no LRU list), so eviction removes an arbitrary entry; the temp retains/releases are automatic drops. Mirrors the raw twin 0x3532a8.
+    let info = CachedLuaWebServiceInfo::new(body, content_type);
+    let mut guard = cache.lock();
+    guard.entries.insert(url.to_string(), (0, info));
+    while guard.entries.len() > max_entries {
+        let victim: Option<String> = guard.entries.keys().next().cloned();
+        match victim {
+            Some(key) => {
+                guard.entries.remove(&key);
+            }
+            None => break,
+        }
+    }
 }
 
 // 0x355034 — __ZN3RBX20SizeEnforcedLRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6insertERKSsRKS2_m
@@ -691,20 +807,32 @@ pub use rbx_core::generated_core_shard_hy::stub_3550a8 as stub_0x3550a8;
 
 // 0x35561c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *)")]
-pub fn stub_0x35561c() -> ! {
-    todo!("0x35561c boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *,boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> *)")
+pub fn stub_0x35561c(cache: &mut WebCache, url: &str) -> bool {
+    // IDA 0x35561c (decompile: bucket locate via hash % size at 0x355638, node scan to the range end at 0x35563e/0x35564c, delete_node + fix_bucket per node at 0x355652/0x355660 until the end at 0x355670; disasm: 0x355634 umod, 0x355652 BLX delete_node, 0x35565c BLX fix_bucket).
+    // Erases the node range for the key — a single-key range here; reports whether anything was erased. Mirrors the raw twin 0x353bbc.
+    cache.entries.remove(url).is_some()
 }
 
 // 0x355678 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0x355678() -> ! {
-    todo!("0x355678 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")
+pub fn stub_0x355678(cache: &mut WebCache, url: &str) -> bool {
+    // IDA 0x355678 (decompile: unlink at 0x35568c, string dtor at 0x355690, operator delete at 0x355696, --size at 0x35569c; disasm: 0x35568c STR unlink, 0x355690 dtor, 0x355696 delete, 0x35569c/0x35569e decrement).
+    // Frees the single node; remove drops the key + value (dtor + free) and the size in one step. Mirrors the raw twin 0x353c18.
+    cache.entries.remove(url).is_some()
 }
 
 // 0x3556a4 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE10fix_bucketEmPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0x3556a4() -> ! {
-    todo!("0x3556a4 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::fix_bucket(unsigned long,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_0x3556a4(cache: &mut WebCache, url: &str) -> bool {
+    // IDA 0x3556a4 (decompile: recompute hash % size at 0x3556b8, same-bucket return at 0x3556be, relink the bucket head at 0x3556c8 or clear it at 0x3556de; disasm: 0x3556b8 umod, 0x3556c8 STR relink, 0x3556de clear).
+    // Rust rehashes automatically; remove + reinsert forces the same bucket re-placement. Reports whether the key was present. Mirrors the raw twin 0x353c44.
+    match cache.entries.remove(url) {
+        None => false,
+        Some(value) => {
+            cache.entries.insert(url.to_string(), value);
+            true
+        }
+    }
 }
 
 // 0x3556e4 — __ZNSt4listISt4pairISsS0_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEESaIS5_EE8_M_eraseESt14_List_iteratorIS5_E
@@ -715,20 +843,44 @@ pub use rbx_core::generated_core_shard_hy::stub_3556e4 as stub_0x3556e4;
 // 0x3557bc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS5_RKT_
 // type: void __fastcall(int, int, char **, int)
 #[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> const&)")]
-pub fn stub_0x3557bc() -> ! {
-    todo!("0x3557bc std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>(std::string const&,boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> const&)")
+pub fn stub_0x3557bc(
+    cache: &mut WebCache,
+    url: &str,
+    stamp: u64,
+    info: CachedLuaWebServiceInfo,
+) -> bool {
+    // IDA 0x3557bc (decompile: string hash at 0x355822/0x355830, find_node_impl at 0x355846, hit returns existing + false at 0x35584e/0x355852, miss constructs the node at 0x355876, reserve_for_insert at 0x355884, bucket link at 0x3558b0/0x3558e6 plus ++size at 0x355904, returns new + true at 0x355908/0x35590c; disasm: 0x355822 hash loop with 0x9E3779B9, 0x355846 BLX find_node_impl, 0x355876 construct_with_value, 0x355884 reserve, 0x355904 increment).
+    // Find-or-place with the same newness report. Mirrors the raw twin 0x353d3c.
+    use std::collections::hash_map::Entry;
+    match cache.entries.entry(url.to_string()) {
+        Entry::Occupied(_) => false,
+        Entry::Vacant(slot) => {
+            slot.insert((stamp, info));
+            true
+        }
+    }
 }
 
 // 0x355974 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
 #[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> const&)")]
-pub fn stub_0x355974() -> ! {
-    todo!("0x355974 void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>(boost::unordered::detail::emplace_args1<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>> const&)")
+pub fn stub_0x355974(
+    url: &str,
+    stamp: u64,
+    info: CachedLuaWebServiceInfo,
+) -> (String, (u64, CachedLuaWebServiceInfo)) {
+    // IDA 0x355974 (decompile: construct() at 0x35597c, string copy at 0x35598a, hash store at 0x355990, value flag at 0x355994; disasm: 0x35597c BLX construct, 0x35598a string copy, 0x355990 STR hash).
+    // Builds the owned node payload: the copied key plus (stamp, value). Mirrors the raw twin 0x353eec.
+    (url.to_string(), (stamp, info))
 }
 
 // 0x355998 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE18reserve_for_insertEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)")]
-pub fn stub_0x355998() -> ! {
-    todo!("0x355998 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::reserve_for_insert(unsigned long)")
+pub fn stub_0x355998(cache: &mut WebCache, additional: usize) {
+    // IDA 0x355998 (decompile: buckets exist and size fits -> return at 0x35599e/0x3559a8, else min_buckets -> rehash at 0x3559bc/0x3559e4 or create_buckets at 0x3559c8/0x3559da; disasm: 0x35599e CBZ no-buckets, 0x3559a4 CMP fit, 0x3559da create_buckets shim, 0x3559e4 rehash shim).
+    // Same growth. Mirrors the raw twin 0x353f10.
+    if cache.entries.capacity() < cache.entries.len().saturating_add(additional) {
+        cache.entries.reserve(additional);
+    }
 }
 
 // 0x3559e8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEEEEED2Ev
@@ -737,32 +889,48 @@ pub use rbx_reflection::generated_refl_wd_watchdog14::stub_0x3559e8 as stub_0x35
 
 // 0x355a08 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")]
-pub fn stub_0x355a08() -> ! {
-    todo!("0x355a08 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)")
+pub fn stub_0x355a08(cache: &mut WebCache, buckets: usize) {
+    // IDA 0x355a08 (decompile: array_constructor at 0x355a6c, old-table adoption at 0x355a84/0x355a8a, size + max_load install at 0x355a96/0x355ada with ceil(size * load) at 0x355ac0; disasm: 0x355a6c construct, 0x355a8a delete old, 0x355ab8 ceil).
+    // Lays out the bucket array; over a live table reserve keeps contents. Mirrors the raw twin 0x353f80.
+    cache.entries.reserve(buckets.saturating_sub(cache.entries.len()));
 }
 
 // 0x355b30 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE20min_buckets_for_sizeEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")]
-pub fn stub_0x355b30() -> ! {
-    todo!("0x355b30 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::min_buckets_for_size(unsigned long)const")
+pub fn stub_0x355b30(size: usize) -> usize {
+    // IDA 0x355b30 (decompile: floor(size / max_load) + 1 at 0x355b54/0x355b6e, prime-list binary search at 0x355b76/0x355b90, end clamp at 0x355baa/0x355bb0; disasm: 0x355b4c BLX floor, 0x355b6e ADD #1, 0x355b7e prime-list load, 0x355b90 search loop, 0x355bac clamp).
+    // Minimum bucket count fitting `size` entries; the float max_load word is folded. Mirrors the raw twin 0x3540a8.
+    table_prime_at_least(size.saturating_add(1))
 }
 
 // 0x355bc0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")]
-pub fn stub_0x355bc0() -> ! {
-    todo!("0x355bc0 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::rehash_impl(unsigned long)")
+pub fn stub_0x355bc0(cache: &mut WebCache, buckets: usize) {
+    // IDA 0x355bc0 (decompile: create_buckets at 0x355bc6, place_in_bucket per overflow node at 0x355be2 until the chain end at 0x355be4; disasm: 0x355bc6 BLX create_buckets, 0x355bde BLX place_in_bucket, 0x355be4 chain walk).
+    // Rebuilds the bucket array and re-links every node; reserve keeps contents while the automatic rehash is the relink. Mirrors the raw twin 0x354138.
+    cache.entries.reserve(buckets.saturating_sub(cache.entries.len()));
 }
 
 // 0x355bec — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE15place_in_bucketERNS1_5tableISJ_EEPNS1_10ptr_bucketE
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")]
-pub fn stub_0x355bec() -> ! {
-    todo!("0x355bec boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>> &,boost::unordered::detail::ptr_bucket *)")
+pub fn stub_0x355bec(cache: &mut WebCache, url: &str) -> bool {
+    // IDA 0x355bec (decompile: stored-hash % size at 0x355c04, occupied-bucket splice at 0x355c16/0x355c2c, empty-bucket install at 0x355c30/0x355c3a; disasm: 0x355c04 umod, 0x355c08 bucket test, 0x355c30 STR install, 0x355c3a node return).
+    // Links the node into its bucket; remove + reinsert forces the same re-placement under HashMap hashing. Reports whether the key was present. Mirrors the raw twin 0x354164.
+    match cache.entries.remove(url) {
+        None => false,
+        Some(value) => {
+            cache.entries.insert(url.to_string(), value);
+            true
+        }
+    }
 }
 
 // 0x355c44 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEEEEE9constructEv
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::construct(void)")]
-pub fn stub_0x355c44() -> ! {
-    todo!("0x355c44 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>>>::construct(void)")
+pub fn stub_0x355c44(url: &str) -> String {
+    // IDA 0x355c44 (decompile: live-node reuse path destroys the string and clears the value flag at 0x355c58/0x355c5e, fresh path news the 0x10 node at 0x355c68 with zeroing at 0x355c76 and flag install at 0x355c7c; disasm: 0x355c58 BLX string dtor, 0x355c68 new 0x10, 0x355c7c flag store).
+    // Allocates the node shell: the copied key; hash/value words are filled by construct_with_value (0x355974). Mirrors the raw twin 0x3541bc.
+    url.to_string()
 }
 
 // 0x355c80 — __ZNSt4pairISsS_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEC2ERKSsRKS3_
@@ -790,14 +958,19 @@ pub use rbx_core::generated_core_shard_hy::stub_356010 as stub_0x356010;
 
 // 0x3560f8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
-pub fn stub_0x3560f8() -> ! {
-    todo!("0x3560f8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")
+pub fn stub_0x3560f8(cache: &mut WebCache) {
+    // IDA 0x3560f8 (decompile: bucket-array null early-out at 0x356102, size check at 0x356106, delete_node per node at 0x356114 until the end at 0x356118, operator delete of the array at 0x356120, zero words at +16 at 0x356128; disasm: 0x356106 LDR size, 0x356114 BLX delete_node, 0x356120 delete, 0x356128 zero).
+    // Frees every node and the bucket array itself (unlike clear, 0x356130, which keeps the array): drop entries and release the backing store. Mirrors the raw twin 0x354548.
+    cache.entries.clear();
+    cache.entries.shrink_to_fit();
 }
 
 // 0x356130 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE5clearEv
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")]
-pub fn stub_0x356130() -> ! {
-    todo!("0x356130 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::clear(void)")
+pub fn stub_0x356130(cache: &mut WebCache) {
+    // IDA 0x356130 (decompile: size-zero early-out at 0x356138, delete_node per node at 0x356146 until the end at 0x35614a, memset of the retained bucket array at 0x35615e; disasm: 0x356138 CBZ, 0x356146 BLX delete_node, 0x35615e memset).
+    // Drops every node but keeps the bucket array for reuse; clear retains capacity. Mirrors the raw twin 0x354580.
+    cache.entries.clear();
 }
 
 // 0x356164 — __ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEEC2Ev
@@ -810,8 +983,10 @@ pub use rbx_core::generated_core_shard_hy::stub_356244 as stub_0x356244;
 
 // 0x3562bc — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEEC2EmRKSG_RKSI_RKSaINS1_8ptr_nodeISD_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>> const&)")]
-pub fn stub_0x3562bc() -> ! {
-    todo!("0x3562bc boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>,std::string,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>,boost::hash<std::string>,std::equal_to<std::string>>>::table(unsigned long,boost::hash<std::string> const&,std::equal_to<std::string> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::string const,std::_List_iterator<std::pair<std::string,std::pair<unsigned long,RBX::LuaWebService::CachedLuaWebServiceInfo>>>>>> const&)")
+pub fn stub_0x3562bc(buckets: usize) -> WebCache {
+    // IDA 0x3562bc (decompile: prime-list walk against the requested count at 0x3562e8/0x3562f8, end clamp at 0x356312/0x356318, size/max_load installs at 0x35631c/0x356320; disasm: 0x3562d2 prime-list load, 0x356318 prime pick, 0x35631c/0x356320 installs).
+    // Fresh table over the prime bucket count; with_capacity is the bucket-array layout. Mirrors the raw twin 0x354718.
+    WebCache { entries: HashMap::with_capacity(table_prime_at_least(buckets)) }
 }
 
 // 0x3565e4 — __GLOBAL__I_a_126
@@ -1315,5 +1490,301 @@ mod shard_277_batch_a_tests {
         stub_0x353f80(&mut cache, 64);
         assert!(cache.entries.capacity() >= 64);
         assert!(cache.entries.contains_key("u"));
+    }
+}
+
+#[cfg(test)]
+mod shard_277_batch_b_tests {
+    use super::*;
+
+    fn test_info(body: &str) -> CachedLuaWebServiceInfo {
+        CachedLuaWebServiceInfo::new(
+            SharedPtr::new(body.to_string()),
+            SharedPtr::new("text/plain".to_string()),
+        )
+    }
+
+    fn test_raw_info(body: &str) -> CachedRawLuaWebServiceInfo {
+        CachedRawLuaWebServiceInfo::new(
+            SharedPtr::new(body.to_string()),
+            SharedPtr::new("text/plain".to_string()),
+        )
+    }
+
+    #[test]
+    fn shared_types_hold_both_words() {
+        let info = test_info("b");
+        assert_eq!(info.body.as_ref().as_str(), "b");
+        assert_eq!(info.content_type.as_ref().as_str(), "text/plain");
+        assert!(WebCache::new().entries.is_empty());
+        assert!(WebCache::default().entries.is_empty());
+    }
+
+    #[test]
+    fn min_buckets_0x3540a8_rounds_to_prime() {
+        assert_eq!(stub_0x3540a8(0), 2);
+        assert_eq!(stub_0x3540a8(10), 11);
+        assert_eq!(stub_0x3540a8(12), 13);
+        assert!(stub_0x3540a8(100) >= 101);
+        assert_eq!(stub_0x3540a8(100), stub_0x3540a8(100));
+    }
+
+    #[test]
+    fn rehash_0x354138_rebuilds_keeping_contents() {
+        let mut cache = RawWebCache::new();
+        cache.entries.insert("u".to_string(), (1, test_raw_info("b")));
+        cache.entries.insert("v".to_string(), (2, test_raw_info("c")));
+        stub_0x354138(&mut cache, 64);
+        assert!(cache.entries.capacity() >= 64);
+        assert_eq!(cache.entries["u"].0, 1);
+        assert_eq!(cache.entries["v"].1.body.as_ref().as_str(), "c");
+    }
+
+    #[test]
+    fn place_in_bucket_0x354164_relinks_present_key() {
+        let mut cache = RawWebCache::new();
+        cache.entries.insert("u".to_string(), (5, test_raw_info("b")));
+        assert!(stub_0x354164(&mut cache, "u"));
+        assert_eq!(cache.entries["u"].0, 5);
+        assert_eq!(cache.entries["u"].1.body.as_ref().as_str(), "b");
+        assert!(!stub_0x354164(&mut cache, "missing"));
+    }
+
+    #[test]
+    fn construct_0x3541bc_allocates_key_shell() {
+        assert_eq!(stub_0x3541bc("u"), "u");
+    }
+
+    #[test]
+    fn delete_buckets_0x354548_frees_nodes_and_array() {
+        let mut cache = RawWebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_raw_info("b")));
+        cache.entries.insert("v".to_string(), (0, test_raw_info("c")));
+        stub_0x354548(&mut cache);
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.entries.capacity(), 0);
+    }
+
+    #[test]
+    fn clear_0x354580_drops_nodes_keeps_array() {
+        let mut cache = RawWebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_raw_info("b")));
+        stub_0x353f80(&mut cache, 64);
+        let before = cache.entries.capacity();
+        assert!(before >= 64);
+        stub_0x354580(&mut cache);
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.entries.capacity(), before);
+    }
+
+    #[test]
+    fn table_ctor_0x354718_sizes_fresh_table() {
+        let cache = stub_0x354718(8);
+        assert!(cache.entries.is_empty());
+        assert!(cache.entries.capacity() >= 8);
+    }
+
+    #[test]
+    fn shared_ptr_ctor_0x354784_adopts_raw() {
+        let ptr = Box::into_raw(Box::new(WebCache::new()));
+        let shared = stub_0x354784(ptr);
+        assert_eq!(Arc::strong_count(&shared), 1);
+        assert!(shared.entries.is_empty());
+    }
+
+    #[test]
+    fn shared_count_ctor_0x354950_fresh_counts() {
+        let ptr = Box::into_raw(Box::new(WebCache::new()));
+        let block = stub_0x354950(ptr);
+        assert_eq!(block.use_count(), 1);
+        assert_eq!(block.weak_count(), 1);
+        assert!(block.get().is_some());
+        let mut block = block;
+        stub_0x354a50(&mut block);
+        assert!(block.get().is_none());
+    }
+
+    #[test]
+    fn dispose_0x354a50_drops_payload() {
+        let ptr = Box::into_raw(Box::new(WebCache::new()));
+        let mut block = ControlBlockP::new(unsafe { Box::from_raw(ptr) });
+        stub_0x354a50(&mut block);
+        assert!(block.get().is_none());
+    }
+
+    #[test]
+    fn get_deleter_0x354a60_returns_none() {
+        let ptr = Box::into_raw(Box::new(WebCache::new()));
+        let block = ControlBlockP::new(unsafe { Box::from_raw(ptr) });
+        assert!(stub_0x354a60(&block).is_none());
+        let mut block = block;
+        stub_0x354a50(&mut block);
+    }
+
+    #[test]
+    fn get_untyped_deleter_0x354a64_returns_none() {
+        let ptr = Box::into_raw(Box::new(WebCache::new()));
+        let block = ControlBlockP::new(unsafe { Box::from_raw(ptr) });
+        assert!(stub_0x354a64(&block).is_none());
+        let mut block = block;
+        stub_0x354a50(&mut block);
+    }
+
+    #[test]
+    fn register_content_0x354dd8_inserts_with_stamp_and_evicts() {
+        let cache = Mutex::new(WebCache::new());
+        stub_0x354dd8(
+            &cache,
+            "a",
+            SharedPtr::new("body-a".to_string()),
+            SharedPtr::new("text/plain".to_string()),
+            8,
+        );
+        stub_0x354dd8(
+            &cache,
+            "b",
+            SharedPtr::new("body-b".to_string()),
+            SharedPtr::new("text/plain".to_string()),
+            8,
+        );
+        {
+            let guard = cache.lock();
+            assert_eq!(guard.entries.len(), 2);
+            assert_eq!(guard.entries["a"].0, 0);
+            assert_eq!(guard.entries["b"].1.body.as_ref().as_str(), "body-b");
+        }
+        stub_0x354dd8(
+            &cache,
+            "c",
+            SharedPtr::new("body-c".to_string()),
+            SharedPtr::new("text/plain".to_string()),
+            0,
+        );
+        assert!(cache.lock().entries.is_empty());
+    }
+
+    #[test]
+    fn erase_nodes_0x35561c_removes_key() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_info("b")));
+        assert!(stub_0x35561c(&mut cache, "u"));
+        assert!(!stub_0x35561c(&mut cache, "u"));
+    }
+
+    #[test]
+    fn delete_node_0x355678_frees_single_node() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_info("b")));
+        cache.entries.insert("v".to_string(), (0, test_info("c")));
+        assert!(stub_0x355678(&mut cache, "u"));
+        assert!(cache.entries.contains_key("v"));
+        assert!(!stub_0x355678(&mut cache, "u"));
+    }
+
+    #[test]
+    fn fix_bucket_0x3556a4_relinks_present_key() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (5, test_info("b")));
+        assert!(stub_0x3556a4(&mut cache, "u"));
+        assert_eq!(cache.entries["u"].0, 5);
+        assert!(!stub_0x3556a4(&mut cache, "missing"));
+    }
+
+    #[test]
+    fn emplace_impl_0x3557bc_inserts_new_only() {
+        let mut cache = WebCache::new();
+        assert!(stub_0x3557bc(&mut cache, "u", 3, test_info("b")));
+        assert!(!stub_0x3557bc(&mut cache, "u", 9, test_info("other")));
+        assert_eq!(cache.entries["u"].0, 3);
+        assert_eq!(cache.entries["u"].1.body.as_ref().as_str(), "b");
+    }
+
+    #[test]
+    fn construct_with_value_0x355974_builds_node() {
+        let (key, (stamp, info)) = stub_0x355974("u", 11, test_info("b"));
+        assert_eq!(key, "u");
+        assert_eq!(stamp, 11);
+        assert_eq!(info.content_type.as_ref().as_str(), "text/plain");
+    }
+
+    #[test]
+    fn reserve_for_insert_0x355998_grows_when_needed() {
+        let mut cache = WebCache::new();
+        stub_0x355998(&mut cache, 64);
+        assert!(cache.entries.capacity() >= 64);
+        let before = cache.entries.capacity();
+        stub_0x355998(&mut cache, 1);
+        assert_eq!(cache.entries.capacity(), before);
+    }
+
+    #[test]
+    fn create_buckets_0x355a08_lays_out_buckets() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_info("b")));
+        stub_0x355a08(&mut cache, 64);
+        assert!(cache.entries.capacity() >= 64);
+        assert!(cache.entries.contains_key("u"));
+    }
+
+    #[test]
+    fn min_buckets_0x355b30_rounds_to_prime() {
+        assert_eq!(stub_0x355b30(0), 2);
+        assert_eq!(stub_0x355b30(20), 23);
+        assert!(stub_0x355b30(100) >= 101);
+        assert_eq!(stub_0x355b30(20), stub_0x355b30(20));
+    }
+
+    #[test]
+    fn rehash_0x355bc0_rebuilds_keeping_contents() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (1, test_info("b")));
+        cache.entries.insert("v".to_string(), (2, test_info("c")));
+        stub_0x355bc0(&mut cache, 64);
+        assert!(cache.entries.capacity() >= 64);
+        assert_eq!(cache.entries["u"].0, 1);
+        assert_eq!(cache.entries["v"].1.body.as_ref().as_str(), "c");
+    }
+
+    #[test]
+    fn place_in_bucket_0x355bec_relinks_present_key() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (5, test_info("b")));
+        assert!(stub_0x355bec(&mut cache, "u"));
+        assert_eq!(cache.entries["u"].0, 5);
+        assert!(!stub_0x355bec(&mut cache, "missing"));
+    }
+
+    #[test]
+    fn construct_0x355c44_allocates_key_shell() {
+        assert_eq!(stub_0x355c44("u"), "u");
+    }
+
+    #[test]
+    fn delete_buckets_0x3560f8_frees_nodes_and_array() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_info("b")));
+        cache.entries.insert("v".to_string(), (0, test_info("c")));
+        stub_0x3560f8(&mut cache);
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.entries.capacity(), 0);
+    }
+
+    #[test]
+    fn clear_0x356130_drops_nodes_keeps_array() {
+        let mut cache = WebCache::new();
+        cache.entries.insert("u".to_string(), (0, test_info("b")));
+        stub_0x355a08(&mut cache, 64);
+        let before = cache.entries.capacity();
+        assert!(before >= 64);
+        stub_0x356130(&mut cache);
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.entries.capacity(), before);
+    }
+
+    #[test]
+    fn table_ctor_0x3562bc_sizes_fresh_table() {
+        let cache = stub_0x3562bc(8);
+        assert!(cache.entries.is_empty());
+        assert!(cache.entries.capacity() >= 8);
     }
 }
