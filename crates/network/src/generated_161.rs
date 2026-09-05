@@ -6,6 +6,26 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `iOSSettingsService` settings + handler map (IDA 0x43180 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct SettingsService {
+ pub values: HashMap<String, String>,
+ pub search_url: String,
+ pub api_url: String,
+}
+
+/// `FunctionMarshaller` window registry (IDA 0x43c78 et al.: map<uint, marshaller*>).
+#[derive(Clone, Debug, Default)]
+pub struct MarshallerRegistry {
+ pub entries: HashMap<u32, usize>,
+}
+
+/// Static-init state for `__GLOBAL__I_a_13` (IDA 0x43394).
+#[derive(Clone, Debug, Default)]
+pub struct GlobalInitA13 {
+ pub done: bool,
+}
 use std::collections::HashMap;
 
 /// Google Analytics tracker state (IDA 0x41f74 et al.).
@@ -264,195 +284,242 @@ pub fn stub_42bc8(assemble: &mut dyn FnMut() -> usize) -> usize {
 
 // 0x42dd8 — ___copy_helper_block_65
 #[doc(alias = "___copy_helper_block_65")]
-pub fn stub_42dd8() -> ! {
-    todo!("0x42dd8 ___copy_helper_block_65")
+pub fn stub_42dd8(dst20: &mut usize, src20: usize, retain: &mut dyn FnMut(usize) -> usize) {
+    // IDA 0x42dd8: _Block_object_assign(dst+20, src+20, 8).
+    *dst20 = retain(src20);
 }
 
 // 0x42de4 — ___destroy_helper_block_66
 #[doc(alias = "___destroy_helper_block_66")]
-pub fn stub_42de4() -> ! {
-    todo!("0x42de4 ___destroy_helper_block_66")
+pub fn stub_42de4(slot20: &mut usize, release: &mut dyn FnMut(usize)) {
+    // IDA 0x42de4: _Block_object_dispose(slot+20, 8).
+    release(*slot20);
 }
 
 // 0x42dec — +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]
 // type: id __cdecl(id, SEL, int, char, id)
 #[doc(alias = "+[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")]
-pub fn stub_42dec() -> ! {
-    todo!("0x42dec +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")
+pub fn stub_42dec(tag: i32, record: bool, query: &str, build: &mut dyn FnMut(i32, bool, &str) -> String) -> String {
+    // IDA 0x42dec: button-tag URL builder (below truncation).
+    build(tag, record, query)
 }
 
 // 0x43180 — __ZN18iOSSettingsServiceC2Ev
 // demangled: iOSSettingsService::iOSSettingsService(void)
 // type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
-pub fn stub_43180() -> ! {
-    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+pub fn stub_43180(svc: &mut SettingsService) {
+    // IDA 0x43180: iOSSettingsService ctor — empty map + empty strings.
+    svc.values.clear();
+    svc.search_url.clear();
+    svc.api_url.clear();
 }
 
 // 0x432b0 — __ZN18iOSSettingsServiceD1Ev
 // demangled: iOSSettingsService::~iOSSettingsService()
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432b0() -> ! {
-    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b0(destroy: &mut dyn FnMut()) {
+    // IDA 0x432b0: D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x432b4 — __ZN18iOSSettingsServiceD0Ev
 // demangled: iOSSettingsService::~iOSSettingsService()
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432b4() -> ! {
-    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432b4(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x432b4: D0: body + operator delete.
+    destroy();
+    free();
 }
 
 // 0x432c8 — __ZN18iOSSettingsServiceD2Ev
 // demangled: iOSSettingsService::~iOSSettingsService()
 // type: void __fastcall(iOSSettingsService *__hidden this)
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
-pub fn stub_432c8() -> ! {
-    todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
+pub fn stub_432c8(destroy: &mut dyn FnMut()) {
+    // IDA 0x432c8: D2 — vtable + string/map destroys (below truncation).
+    destroy();
 }
 
 // 0x43314 — __ZN10SimpleJSOND1Ev
 // demangled: SimpleJSON::~SimpleJSON()
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON()")]
-pub fn stub_43314() -> ! {
-    todo!("0x43314 SimpleJSON::~SimpleJSON()")
+pub fn stub_43314(map: &mut HashMap<String, usize>) {
+    // IDA 0x43314: SimpleJSON D2 — erase handler map.
+    map.clear();
 }
 
 // 0x43338 — __ZN10SimpleJSOND0Ev
 // demangled: SimpleJSON::~SimpleJSON()
 // type: void __fastcall(SimpleJSON *__hidden this)
 #[doc(alias = "SimpleJSON::~SimpleJSON()")]
-pub fn stub_43338() -> ! {
-    todo!("0x43338 SimpleJSON::~SimpleJSON()")
+pub fn stub_43338(map: &mut HashMap<String, usize>, free: &mut dyn FnMut()) {
+    // IDA 0x43338: SimpleJSON D0 — erase map + delete.
+    map.clear();
+    free();
 }
 
 // 0x43360 — __ZN10SimpleJSON14DefaultHandlerERKSsS1_
 // demangled: SimpleJSON::DefaultHandler(std::string const&,std::string const&)
 #[doc(alias = "SimpleJSON::DefaultHandler(std::string const&,std::string const&)")]
-pub fn stub_43360() -> ! {
-    todo!("0x43360 SimpleJSON::DefaultHandler(std::string const&,std::string const&)")
+pub fn stub_43360() -> i32 {
+    // IDA 0x43360: DefaultHandler returns 0.
+    0
 }
 
 // 0x43364 — __ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
 // demangled: std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")]
-pub fn stub_43364() -> ! {
-    todo!("0x43364 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")
+pub fn stub_43364(map: &mut HashMap<String, usize>, keys: &[String]) {
+    // IDA 0x43364: _Rb_tree range erase.
+    for k in keys {
+        map.remove(k);
+    }
 }
 
 // 0x43394 — __GLOBAL__I_a_13
 // demangled: global constructor keyed to_a_13
 #[doc(alias = "global constructor keyed to_a_13")]
-pub fn stub_43394() -> ! {
-    todo!("0x43394 global constructor keyed to_a_13")
+pub fn stub_43394(state: &mut GlobalInitA13, init: &mut dyn FnMut()) {
+    // IDA 0x43394: boost error categories + ios_base::Init + bad_alloc static exception object.
+    if !state.done {
+        init();
+        state.done = true;
+    }
 }
 
 // 0x4352c — __ZN3RBX18FunctionMarshallerC2Ej
 // demangled: RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")]
-pub fn stub_4352c() -> ! {
-    todo!("0x4352c RBX::FunctionMarshaller::FunctionMarshaller(unsigned int)")
+pub fn stub_4352c(job: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x4352c: FunctionMarshaller::FunctionMarshaller (below truncation).
+    init(job);
+    job
 }
 
 // 0x43624 — __ZN3RBX18FunctionMarshaller9GetWindowEv
 // demangled: RBX::FunctionMarshaller::GetWindow(void)
 // type: int __fastcall(RBX::FunctionMarshaller *this, int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::GetWindow(void)")]
-pub fn stub_43624() -> ! {
-    todo!("0x43624 RBX::FunctionMarshaller::GetWindow(void)")
+pub fn stub_43624(reg: &MarshallerRegistry, key: u32) -> Option<usize> {
+    // IDA 0x43624: FunctionMarshaller::GetWindow — registry lookup (below truncation).
+    reg.entries.get(&key).copied()
 }
 
 // 0x43804 — __ZN3RBX18FunctionMarshaller13ReleaseWindowEPS0_
 // demangled: RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)
 // type: void __fastcall(RBX::FunctionMarshaller *this, RBX::FunctionMarshaller *, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")]
-pub fn stub_43804() -> ! {
-    todo!("0x43804 RBX::FunctionMarshaller::ReleaseWindow(RBX::FunctionMarshaller*)")
+pub fn stub_43804(reg: &mut MarshallerRegistry, key: u32, release: &mut dyn FnMut(usize)) {
+    // IDA 0x43804: FunctionMarshaller::ReleaseWindow — erase + release (below truncation).
+    if let Some(m) = reg.entries.remove(&key) {
+        release(m);
+    }
 }
 
 // 0x43930 — __ZN3RBX18FunctionMarshaller14handleAppEventEPv
 // demangled: RBX::FunctionMarshaller::handleAppEvent(void *)
 // type: void __fastcall(RBX::FunctionMarshaller *this, void *)
 #[doc(alias = "RBX::FunctionMarshaller::handleAppEvent(void *)")]
-pub fn stub_43930() -> ! {
-    todo!("0x43930 RBX::FunctionMarshaller::handleAppEvent(void *)")
+pub fn stub_43930(run: &mut dyn FnMut(), clear: &mut dyn FnMut(), free: &mut dyn FnMut(), signal: &mut dyn FnMut()) {
+    // IDA 0x43930: run functor; clear + delete it; delete this; signal event.
+    run();
+    clear();
+    free();
+    signal();
 }
 
 // 0x43a98 — __ZN3RBX18FunctionMarshaller7ExecuteEN5boost8functionIFvvEEEPNS_6CEventE
 // demangled: RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")]
-pub fn stub_43a98() -> ! {
-    todo!("0x43a98 RBX::FunctionMarshaller::Execute(boost::function<void ()(void)>,RBX::CEvent *)")
+pub fn stub_43a98(same_thread: bool, run: &mut dyn FnMut(), post: &mut dyn FnMut()) {
+    // IDA 0x43a98: same thread ? run directly : post app event.
+    if same_thread {
+        run();
+    } else {
+        post();
+    }
 }
 
 // 0x43b98 — __ZN3RBX18FunctionMarshaller6SubmitEN5boost8functionIFvvEEE
 // demangled: RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)
 // type: void __fastcall(int, int)
 #[doc(alias = "RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")]
-pub fn stub_43b98() -> ! {
-    todo!("0x43b98 RBX::FunctionMarshaller::Submit(boost::function<void ()(void)>)")
+pub fn stub_43b98(post: &mut dyn FnMut()) {
+    // IDA 0x43b98: Submit — wrap functor + postAppEvent (below truncation).
+    post();
 }
 
 // 0x43c70 — __ZN3RBX18FunctionMarshaller15ProcessMessagesEv
 // demangled: RBX::FunctionMarshaller::ProcessMessages(void)
 // type: CFRunLoopRunResult __fastcall(Roblox *this)
 #[doc(alias = "RBX::FunctionMarshaller::ProcessMessages(void)")]
-pub fn stub_43c70() -> ! {
-    todo!("0x43c70 RBX::FunctionMarshaller::ProcessMessages(void)")
+pub fn stub_43c70(process: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x43c70: thunk tail-calls processAppEvents.
+    process()
 }
 
 // 0x43c74 — __ZN3RBX18FunctionMarshaller10StaticDataD1Ev
 // demangled: RBX::FunctionMarshaller::StaticData::~StaticData()
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData()")]
-pub fn stub_43c74() -> ! {
-    todo!("0x43c74 RBX::FunctionMarshaller::StaticData::~StaticData()")
+pub fn stub_43c74(destroy: &mut dyn FnMut()) {
+    // IDA 0x43c74: StaticData D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x43c78 — __ZN3RBX18FunctionMarshaller10StaticDataD2Ev
 // demangled: RBX::FunctionMarshaller::StaticData::~StaticData()
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
 #[doc(alias = "RBX::FunctionMarshaller::StaticData::~StaticData()")]
-pub fn stub_43c78() -> ! {
-    todo!("0x43c78 RBX::FunctionMarshaller::StaticData::~StaticData()")
+pub fn stub_43c78(reg: &mut MarshallerRegistry, teardown: &mut dyn FnMut()) {
+    // IDA 0x43c78: StaticData D2 — mutex destroy + registry erase.
+    reg.entries.clear();
+    teardown();
 }
 
 // 0x43d14 — __ZNSt3mapIjPN3RBX18FunctionMarshallerESt4lessIjESaISt4pairIKjS2_EEEixERS6_
 // demangled: std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)
 // type: _Rb_tree_node_base **__fastcall(int, int *)
 #[doc(alias = "std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")]
-pub fn stub_43d14() -> ! {
-    todo!("0x43d14 std::map<unsigned int,RBX::FunctionMarshaller *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::operator[](unsigned int const&)")
+pub fn stub_43d14(reg: &mut MarshallerRegistry, key: u32) -> usize {
+    // IDA 0x43d14: map operator[] — find or default-insert.
+    *reg.entries.entry(key).or_insert(0)
 }
 
 // 0x43d6c — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseERS1_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")]
-pub fn stub_43d6c() -> ! {
-    todo!("0x43d6c std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(unsigned int const&)")
+pub fn stub_43d6c(reg: &mut MarshallerRegistry, key: u32) -> bool {
+    // IDA 0x43d6c: erase by key.
+    reg.entries.remove(&key).is_some()
 }
 
 // 0x43d94 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE11equal_rangeERS1_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)
 // type: int(void)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")]
-pub fn stub_43d94() -> ! {
-    todo!("0x43d94 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::equal_range(unsigned int const&)")
+pub fn stub_43d94(reg: &MarshallerRegistry, key: u32) -> bool {
+    // IDA 0x43d94: equal_range — key present.
+    reg.entries.contains_key(&key)
 }
 
 // 0x43de0 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_
 // demangled: std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)
 // type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")]
-pub fn stub_43de0() -> ! {
-    todo!("0x43de0 std::_Rb_tree<unsigned int,std::pair<unsigned int const,RBX::FunctionMarshaller *>,std::_Select1st<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>>::erase(std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>,std::_Rb_tree_iterator<std::pair<unsigned int const,RBX::FunctionMarshaller *>>)")
+pub fn stub_43de0(reg: &mut MarshallerRegistry, keys: &[u32]) {
+    // IDA 0x43de0: _Rb_tree range erase.
+    for k in keys {
+        reg.entries.remove(k);
+    }
 }
 
 // 0x43e40 — __ZNSt8_Rb_treeIjSt4pairIKjPN3RBX18FunctionMarshallerEESt10_Select1stIS5_ESt4lessIjESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
