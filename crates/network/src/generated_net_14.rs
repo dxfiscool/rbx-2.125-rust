@@ -13,6 +13,8 @@ use rbx_core::SharedPtr;
 pub struct PngRead {
     pub mode: u32,
     pub transform: u32,
+    pub file_gamma: f32,
+    pub screen_gamma: f32,
     pub have_info: bool,
 }
 
@@ -1339,8 +1341,14 @@ pub fn stub_15fde4(rd: &mut PngRead) {
 // 0x15fdf8 — _png_set_gamma
 // type: int __fastcall(int result, unsigned int, unsigned int)
 #[doc(alias = "_png_set_gamma")]
-pub fn stub_15fdf8() -> ! {
-    todo!("0x15fdf8 _png_set_gamma")
+pub fn stub_15fdf8(rd: &mut PngRead, file_gamma: f64, screen_gamma: f64, gamma_flags: u8) {
+    // IDA 0x15fdf8: null → passthrough; |file*screen - 1| > 0.05 or gamma flags → transform |=
+    // 0x2000; store both gammas.
+    if (file_gamma * screen_gamma - 1.0).abs() > 0.05 || gamma_flags & 4 != 0 || gamma_flags == 3 {
+        rd.transform |= 0x2000;
+    }
+    rd.file_gamma = file_gamma as f32;
+    rd.screen_gamma = screen_gamma as f32;
 }
 
 // 0x15fe6c — _png_set_expand_gray_1_2_4_to_8
@@ -1420,130 +1428,292 @@ pub fn stub_1608a4(dst: &mut [u8], src: &[u8], color_type: u8, shift: u8) {
 // 0x1611e8 — _png_do_chop
 // type: int *__fastcall(int *result, _BYTE *)
 #[doc(alias = "_png_do_chop")]
-pub fn stub_1611e8() -> ! {
-    todo!("0x1611e8 _png_do_chop")
+pub fn stub_1611e8(dst: &mut [u8], src: &[u16], bit_depth: u8) {
+    // IDA 0x1611e8: 16-bit rows chopped to their high bytes; other depths copied low.
+    if bit_depth == 16 {
+        for (i, d) in dst.iter_mut().enumerate() {
+            *d = (src.get(i).copied().unwrap_or(0) >> 8) as u8;
+        }
+    } else {
+        for (i, d) in dst.iter_mut().enumerate() {
+            *d = src.get(i).copied().unwrap_or(0) as u8;
+        }
+    }
 }
 
 // 0x161328 — _png_do_read_swap_alpha
 // type: int *__fastcall(int *result, int)
 #[doc(alias = "_png_do_read_swap_alpha")]
-pub fn stub_161328() -> ! {
-    todo!("0x161328 _png_do_read_swap_alpha")
+pub fn stub_161328(row: &mut [u8], channels: usize, bit_depth: u8) {
+    // IDA 0x161328: swap the alpha sample to the front of each pixel (RGBA → ARGB).
+    let bpp = channels.max(1) * if bit_depth == 16 { 2 } else { 1 };
+    if bpp == 0 {
+        return;
+    }
+    for px in row.chunks_exact_mut(bpp) {
+        px.rotate_right(1);
+    }
 }
 
 // 0x16193c — _png_do_read_invert_alpha
 // type: int *__fastcall(int *result, int)
 #[doc(alias = "_png_do_read_invert_alpha")]
-pub fn stub_16193c() -> ! {
-    todo!("0x16193c _png_do_read_invert_alpha")
+pub fn stub_16193c(row: &mut [u8], channels: usize, bit_depth: u8) {
+    // IDA 0x16193c: invert the alpha samples in place.
+    let bpp = channels.max(1) * if bit_depth == 16 { 2 } else { 1 };
+    if bpp == 0 {
+        return;
+    }
+    for px in row.chunks_exact_mut(bpp) {
+        let n = px.len();
+        if bit_depth == 16 && n >= 2 {
+            let a = u16::from_be_bytes([px[n - 2], px[n - 1]]);
+            let inv = (0xFFFF - a).to_be_bytes();
+            px[n - 2] = inv[0];
+            px[n - 1] = inv[1];
+        } else if n >= 1 {
+            px[n - 1] = 255 - px[n - 1];
+        }
+    }
 }
 
 // 0x161ffc — _png_do_read_filler
 // type: int __fastcall(int, int, unsigned int, char)
 #[doc(alias = "_png_do_read_filler")]
-pub fn stub_161ffc() -> ! {
-    todo!("0x161ffc _png_do_read_filler")
+pub fn stub_161ffc(row: &mut Vec<u8>, pixels: usize, channels: usize, filler: u8, before: bool) {
+    // IDA 0x161ffc: expand rows with a filler sample (before/after per flags).
+    let bpp = channels.max(1);
+    let mut out = Vec::with_capacity(pixels * (bpp + 1));
+    for i in 0..pixels {
+        if before {
+            out.push(filler);
+        }
+        out.extend_from_slice(&row[i * bpp..(i * bpp + bpp).min(row.len())]);
+        if !before {
+            out.push(filler);
+        }
+    }
+    *row = out;
 }
 
 // 0x162d80 — _png_do_gray_to_rgb
 // type: int *__fastcall(int *result, int)
 #[doc(alias = "_png_do_gray_to_rgb")]
-pub fn stub_162d80() -> ! {
-    todo!("0x162d80 _png_do_gray_to_rgb")
+pub fn stub_162d80(dst: &mut [u8], src: &[u8], pixels: usize) {
+    // IDA 0x162d80: replicate gray samples to RGB triplets.
+    for i in 0..pixels {
+        let g = src.get(i).copied().unwrap_or(0);
+        let o = i * 3;
+        if dst.len() >= o + 3 {
+            dst[o..o + 3].copy_from_slice(&[g, g, g]);
+        }
+    }
 }
 
 // 0x16357c — _png_do_rgb_to_gray
 // type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "_png_do_rgb_to_gray")]
-pub fn stub_16357c() -> ! {
-    todo!("0x16357c _png_do_rgb_to_gray")
+pub fn stub_16357c(dst: &mut [u8], src: &[u8], pixels: usize) {
+    // IDA 0x16357c: RGB triplets to gray via (6968 R + 23434 G + 2366 B) >> 15.
+    for i in 0..pixels {
+        let o = i * 3;
+        if dst.len() > i && src.len() >= o + 3 {
+            let (r, g, b) = (src[o] as u32, src[o + 1] as u32, src[o + 2] as u32);
+            dst[i] = ((6968 * r + 23434 * g + 2366 * b) >> 15) as u8;
+        }
+    }
 }
 
 // 0x164230 — _png_do_gamma
 // type: int __fastcall(int result, unsigned __int8 *, int, int, char)
 #[doc(alias = "_png_do_gamma")]
-pub fn stub_164230() -> ! {
-    todo!("0x164230 _png_do_gamma")
+pub fn stub_164230(row: &mut [u8], table8: &[u8; 256], table16: &[u16; 256], bit_depth: u8) {
+    // IDA 0x164230: per-sample gamma table lookup (8/16-bit paths, high byte for 16-bit).
+    if bit_depth == 16 {
+        for px in row.chunks_exact_mut(2) {
+            let v = table16[px[0] as usize % 256];
+            let be = v.to_be_bytes();
+            px[0] = be[0];
+            px[1] = be[1];
+        }
+    } else {
+        for b in row.iter_mut() {
+            *b = table8[*b as usize];
+        }
+    }
 }
 
 // 0x164fec — _png_do_expand_palette
 // type: int __fastcall(int result, int, int, int, int)
 #[doc(alias = "_png_do_expand_palette")]
-pub fn stub_164fec() -> ! {
-    todo!("0x164fec _png_do_expand_palette")
+pub fn stub_164fec(dst: &mut [u8], src: &[u8], pixels: usize, palette: &[[u8; 3]], trans: Option<&[u8]>) {
+    // IDA 0x164fec: palette indices to RGB triplets (+ alpha from tRNS when present).
+    for i in 0..pixels {
+        let idx = src.get(i).copied().unwrap_or(0);
+        let rgb = palette.get(idx as usize).copied().unwrap_or([0; 3]);
+        match trans {
+            Some(t) => {
+                let o = i * 4;
+                if dst.len() >= o + 4 {
+                    dst[o..o + 3].copy_from_slice(&rgb);
+                    dst[o + 3] = t.get(idx as usize).copied().unwrap_or(255);
+                }
+            }
+            None => {
+                let o = i * 3;
+                if dst.len() >= o + 3 {
+                    dst[o..o + 3].copy_from_slice(&rgb);
+                }
+            }
+        }
+    }
 }
 
 // 0x165ab0 — _png_do_expand
 // type: unsigned int __fastcall(unsigned int result, int, int)
 #[doc(alias = "_png_do_expand")]
-pub fn stub_165ab0() -> ! {
-    todo!("0x165ab0 _png_do_expand")
+pub fn stub_165ab0(dst: &mut [u8], src: &[u8], pixels: usize, scale: &[u8]) -> u8 {
+    // IDA 0x165ab0: sub-8-bit gray scaled to full bytes; result depth 8.
+    for i in 0..pixels {
+        if i < dst.len() {
+            dst[i] = scale.get(src.get(i).copied().unwrap_or(0) as usize).copied().unwrap_or(0);
+        }
+    }
+    8
 }
 
 // 0x1668c4 — _png_do_dither
 // type: int __fastcall(int result, unsigned __int8 *, int, int)
 #[doc(alias = "_png_do_dither")]
-pub fn stub_1668c4() -> ! {
-    todo!("0x1668c4 _png_do_dither")
+pub fn stub_1668c4(row: &[u8], palette: &[[u8; 3]], out: &mut [u8], dither: &[u8], row_phase: usize) {
+    // IDA 0x1668c4: ordered-dither RGB rows to palette indices (matrix by position).
+    for (i, px) in row.chunks(3).enumerate() {
+        if i >= out.len() {
+            break;
+        }
+        let d = dither.get((row_phase + i) % dither.len().max(1)).copied().unwrap_or(0) as i32;
+        let mut best = 0u8;
+        let mut best_d = i32::MAX;
+        for (k, c) in palette.iter().enumerate() {
+            let dd = (px.get(0).copied().unwrap_or(0) as i32 + d - c[0] as i32).abs()
+                + (px.get(1).copied().unwrap_or(0) as i32 + d - c[1] as i32).abs()
+                + (px.get(2).copied().unwrap_or(0) as i32 + d - c[2] as i32).abs();
+            if dd < best_d {
+                best_d = dd;
+                best = k as u8;
+            }
+        }
+        out[i] = best;
+    }
 }
 
 // 0x166ddc — _png_do_read_intrapixel
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_do_read_intrapixel")]
-pub fn stub_166ddc() -> ! {
-    todo!("0x166ddc _png_do_read_intrapixel")
+pub fn stub_166ddc(row: &mut [u8], bpp: usize) {
+    // IDA 0x166ddc: undo intrapixel differencing (add-left reconstruction).
+    for i in bpp..row.len() {
+        let p = row[i - bpp];
+        row[i] = row[i].wrapping_add(p);
+    }
 }
 
 // 0x1671bc — _png_build_gamma_table
 // type: int __fastcall(int)
 #[doc(alias = "_png_build_gamma_table")]
-pub fn stub_1671bc() -> ! {
-    todo!("0x1671bc _png_build_gamma_table")
+pub fn stub_1671bc(file_gamma: f64, screen_gamma: f64, table8: &mut [u8; 256], table16: &mut [u16; 256]) {
+    // IDA 0x1671bc: build the 8/16-bit gamma correction tables.
+    let gamma = file_gamma * screen_gamma;
+    for (i, t) in table8.iter_mut().enumerate() {
+        *t = (255.0 * (i as f64 / 255.0).powf(gamma)).round().clamp(0.0, 255.0) as u8;
+    }
+    for (i, t) in table16.iter_mut().enumerate() {
+        *t = (65535.0 * (i as f64 / 255.0).powf(gamma)).round().clamp(0.0, 65535.0) as u16;
+    }
 }
 
 // 0x1684c8 — _png_init_read_transformations
 // type: int __fastcall(int)
 #[doc(alias = "_png_init_read_transformations")]
-pub fn stub_1684c8() -> ! {
-    todo!("0x1684c8 _png_init_read_transformations")
+pub fn stub_1684c8(transform: u32, install: &mut dyn FnMut(u32) -> bool) -> bool {
+    // IDA 0x1684c8: install the row-transform chain for the transform bits; result.
+    install(transform)
 }
 
 // 0x169938 — _png_do_background
 // type: int __fastcall(int, unsigned __int8 *__dst, unsigned __int16 *, _WORD *, _WORD *, int, int, int, int, int, int, char)
 #[doc(alias = "_png_do_background")]
-pub fn stub_169938() -> ! {
-    todo!("0x169938 _png_do_background")
+pub fn stub_169938(row: &mut [u8], alpha: &[u8], bg: &[u16; 3], channels: usize, bit_depth: u8) {
+    // IDA 0x169938: alpha-composite each row against the background color.
+    let ch = channels.max(1);
+    for (i, px) in row.chunks_mut(ch).enumerate() {
+        let a = alpha.get(i).copied().unwrap_or(255) as u32;
+        for (k, b) in px.iter_mut().enumerate() {
+            let bg_c = if bit_depth == 16 { (bg[k % 3] >> 8) as u32 } else { bg[k % 3] as u32 };
+            *b = ((a * *b as u32 + (255 - a) * bg_c) / 255) as u8;
+        }
+    }
 }
 
 // 0x16d374 — _png_do_read_transformations
 // type: int __fastcall(int result)
 #[doc(alias = "_png_do_read_transformations")]
-pub fn stub_16d374() -> ! {
-    todo!("0x16d374 _png_do_read_transformations")
+pub fn stub_16d374(has_row: bool, transforms_ready: bool, run: &mut dyn FnMut() -> bool, error: &mut dyn FnMut(&str) -> bool) -> bool {
+    // IDA 0x16d374: null row buffer → error; transforms not ready → error; run chain.
+    if !has_row {
+        return error("NULL row buffer");
+    }
+    if !transforms_ready {
+        return error("Uninitialized transforms");
+    }
+    run()
 }
 
 // 0x16d814 — _png_get_uint_32
 #[doc(alias = "_png_get_uint_32")]
-pub fn stub_16d814() -> ! {
-    todo!("0x16d814 _png_get_uint_32")
+pub fn stub_16d814(bytes: &[u8]) -> u32 {
+    // IDA 0x16d814: big-endian u32 load.
+    u32::from_be_bytes([
+        bytes.get(0).copied().unwrap_or(0),
+        bytes.get(1).copied().unwrap_or(0),
+        bytes.get(2).copied().unwrap_or(0),
+        bytes.get(3).copied().unwrap_or(0),
+    ])
 }
 
 // 0x16d840 — _png_get_int_32
 // type: int __fastcall(unsigned __int8 *)
 #[doc(alias = "_png_get_int_32")]
-pub fn stub_16d840() -> ! {
-    todo!("0x16d840 _png_get_int_32")
+pub fn stub_16d840(bytes: &[u8]) -> i32 {
+    // IDA 0x16d840: big-endian i32 load.
+    i32::from_be_bytes([
+        bytes.get(0).copied().unwrap_or(0),
+        bytes.get(1).copied().unwrap_or(0),
+        bytes.get(2).copied().unwrap_or(0),
+        bytes.get(3).copied().unwrap_or(0),
+    ])
 }
 
 // 0x16d86c — _png_get_uint_31
 #[doc(alias = "_png_get_uint_31")]
-pub fn stub_16d86c() -> ! {
-    todo!("0x16d86c _png_get_uint_31")
+pub fn stub_16d86c(bytes: &[u8]) -> i32 {
+    // IDA 0x16d86c: big-endian load; negative → "PNG unsigned integer out of range." error.
+    let v = i32::from_be_bytes([
+        bytes.get(0).copied().unwrap_or(0),
+        bytes.get(1).copied().unwrap_or(0),
+        bytes.get(2).copied().unwrap_or(0),
+        bytes.get(3).copied().unwrap_or(0),
+    ]);
+    if v < 0 {
+        panic!("PNG unsigned integer out of range.");
+    }
+    v
 }
 
 // 0x16d8b4 — _png_read_start_row
 // type: int(void)
 #[doc(alias = "_png_read_start_row")]
-pub fn stub_16d8b4() -> ! {
-    todo!("0x16d8b4 _png_read_start_row")
+pub fn stub_16d8b4(init: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x16d8b4: zero row counters; init_read_transformations; interlace row setup.
+    init()
 }
