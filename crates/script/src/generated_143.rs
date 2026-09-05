@@ -28,6 +28,49 @@ pub struct PropChangeSignal {
     pub next_id: u32,
     pub fired: u32,
 }
+/// `RBX::HttpService::HttpContentType` items for `try_enum` (IDA 0x25aaec:
+/// singleton `EnumDesc` lookup at 0x25ab12..0x25ab2e, `convertToValue` cf.
+/// 0x2570c6..0x257104). Item names are the public `Enum.HttpContentType`
+/// names.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum HttpContentType {
+    ApplicationJson,
+    ApplicationXml,
+    ApplicationUrlEncoded,
+    TextPlain,
+    TextXml,
+}
+
+impl HttpContentType {
+    pub fn from_name(name: &str) -> Option<Self> {
+        match name {
+            "ApplicationJson" => Some(HttpContentType::ApplicationJson),
+            "ApplicationXml" => Some(HttpContentType::ApplicationXml),
+            "ApplicationUrlEncoded" => Some(HttpContentType::ApplicationUrlEncoded),
+            "TextPlain" => Some(HttpContentType::TextPlain),
+            "TextXml" => Some(HttpContentType::TextXml),
+            _ => None,
+        }
+    }
+}
+
+/// `BoundProp<bool>` registration for HttpService (IDA 0x2594ac): the
+/// class-descriptor insert (0x2594d2) folds into the host registry; the
+/// binding is observed.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct PropBinding {
+    pub class: &'static str,
+    pub name: String,
+}
+
+/// `BoundFuncDesc` registration for HttpService (IDA 0x2596a0/0x259dbc, arity
+/// 1 from `Li1`).
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct FuncDesc {
+    pub class: &'static str,
+    pub name: String,
+    pub arity: u32,
+}
 
 /// FMOD codec/DSP description record (IDA 0x81074..0x107170): each getter
 /// zeroes its static desc, stamps the name plus version 65792 and the
@@ -486,176 +529,221 @@ pub fn stub_0x1cc694() -> &'static str {
 
 // 0x1f0b54 — _cid_get_postscript_name
 #[doc(alias = "_cid_get_postscript_name")]
-pub fn stub_0x1f0b54() -> ! {
-    todo!("0x1f0b54 _cid_get_postscript_name")
+pub fn stub_0x1f0b54(name: Option<&str>) -> Option<String> {
+    // IDA 0x1f0b54: `cid_get_postscript_name` reads the name word
+    // (0x1f0b54); null passes through (0x1f0b5c) and a leading `/`
+    // (char 47) is skipped (0x1f0b68).
+    name.map(|n| n.strip_prefix('/').unwrap_or(n).to_owned())
 }
 
 // 0x258c78 — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x258c78() -> ! {
-    todo!("0x258c78 __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258c78() {
+    // IDA 0x258c78: `Described<HttpService>` D1 dtor; member teardown folds
+    // into drop glue — no-op.
 }
 
 // 0x258c7c — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Instance *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x258c7c() -> ! {
-    todo!("0x258c7c __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258c7c() {
+    // IDA 0x258c7c: `Described<HttpService>` D0 dtor (teardown plus
+    // delete); drop glue covers it — no-op.
 }
 
 // 0x258d1c — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x258d1c() -> ! {
-    todo!("0x258d1c __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258d1c() {
+    // IDA 0x258d1c: thn32 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x258d24 — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x258d24() -> ! {
-    todo!("0x258d24 __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258d24() {
+    // IDA 0x258d24: thn32 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x258dc8 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x258dc8() -> ! {
-    todo!("0x258dc8 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x258dc8() {
+    // IDA 0x258dc8: thn36 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x258dd0 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x258dd0() -> ! {
-    todo!("0x258dd0 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x258dd0() {
+    // IDA 0x258dd0: thn36 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x2594ac — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_11HttpServiceEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x2594ac() -> ! {
-    todo!("0x2594ac RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::HttpService>(char const*,char const*,bool RBX::HttpService::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x2594ac(name: &str) -> PropBinding {
+    // IDA 0x2594ac: `BoundProp<bool>` ctor registers into the class
+    // descriptor (0x2594d2, folds into the host registry).
+    PropBinding { class: "HttpService", name: name.to_owned() }
 }
 
 // 0x2596a0 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EEC2EMS2_FSsSI_EPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x2596a0() -> ! {
-    todo!("0x2596a0 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::BoundFuncDesc(std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x2596a0(name: &str) -> FuncDesc {
+    // IDA 0x2596a0: `BoundFuncDesc` ctor registers the 1-arg string
+    // descriptor (member-pointer mechanics fold into the host).
+    FuncDesc { class: "HttpService", name: name.to_owned(), arity: 1 }
 }
 
 // 0x259984 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x259984() -> ! {
-    todo!("0x259984 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x259984(target: &dyn Fn(String) -> String, arg: &str) -> String {
+    // IDA 0x259984: `execute` adjusts the member pointer (0x2599d4..
+    // 0x2599d6), extracts the dict arg via `getArg` (0x2599e4), and calls
+    // (cf. the `BoundFuncDesc::execute` precedent). Adjust and extraction
+    // fold into typed inputs.
+    target(arg.to_owned())
 }
 
 // 0x259bfc — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(sp_counted_base **, int, const shared_count **)
 #[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_0x259bfc() -> ! {
-    todo!("0x259bfc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_0x259bfc(args: &[String]) -> Option<String> {
+    // IDA 0x259bfc: `getArg<dict, 1>` bails on empty args (0x259c36,
+    // LABEL_7) and otherwise type-checks index 1 (0x259c82..0x259c88);
+    // extraction folds into the caller passing the value.
+    args.first().cloned()
 }
 
 // 0x259dbc — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EEC2EMS2_FSI_SsEPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, unsigned int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x259dbc() -> ! {
-    todo!("0x259dbc RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x259dbc(name: &str) -> FuncDesc {
+    // IDA 0x259dbc: `BoundFuncDesc` ctor for the dict-returning flavor —
+    // same 1-arg registration shape as 0x2596a0.
+    FuncDesc { class: "HttpService", name: name.to_owned(), arity: 1 }
 }
 
 // 0x25a030 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x25a030() -> ! {
-    todo!("0x25a030 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x25a030(target: &dyn Fn(String) -> String, arg: &str) -> String {
+    // IDA 0x25a030: `execute` for the dict-returning flavor — same
+    // adjust/extract/call shape as 0x259984 (the map payload folds into
+    // the string).
+    target(arg.to_owned())
 }
 
 // 0x25a958 — __ZN3RBX10Reflection9ArgHelper6getArgINS_11HttpService15HttpContentTypeELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int (__fastcall ***__fastcall(int (__fastcall ***)(_DWORD), int))(_DWORD)
 #[doc(alias = "RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
-pub fn stub_0x25a958() -> ! {
-    todo!("0x25a958 RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+pub fn stub_0x25a958(args: &[&str], default: HttpContentType) -> HttpContentType {
+    // IDA 0x25a958: `getArg<HttpContentType, 3>` gates on arg count
+    // (0x25a9c0), tries the enum (0x25a9cc), falls back to conversion,
+    // else the scoped default. Tuple mechanics fold into the slice.
+    if let Some(name) = args.get(2) {
+        if let Some(v) = HttpContentType::from_name(name) {
+            return v;
+        }
+    }
+    default
 }
 
 // 0x25aaec — __ZN3RBX10Reflection9ArgHelper8try_enumILi3ENS_11HttpService15HttpContentTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE
 // type: int __fastcall(int, _DWORD *, int, int)
 #[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")]
-pub fn stub_0x25aaec() -> ! {
-    todo!("0x25aaec bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")
+pub fn stub_0x25aaec(name: &str) -> Option<HttpContentType> {
+    // IDA 0x25aaec: `try_enum` — see `HttpContentType::from_name` (the
+    // singleton `EnumDesc` at 0x25ab12..0x25ab2e folds into the host).
+    HttpContentType::from_name(name)
 }
 
 // 0x25c0cc — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
-pub fn stub_0x25c0cc() -> ! {
-    todo!("0x25c0cc RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")
+pub fn stub_0x25c0cc() {
+    // IDA 0x25c0cc: `PropDescriptor<Light, bool>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25c100 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
-pub fn stub_0x25c100() -> ! {
-    todo!("0x25c100 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")
+pub fn stub_0x25c100() {
+    // IDA 0x25c100: `PropDescriptor<Light, Color3>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25c128 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
-pub fn stub_0x25c128() -> ! {
-    todo!("0x25c128 RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")
+pub fn stub_0x25c128() {
+    // IDA 0x25c128: `PropDescriptor<Light, float>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25c150 — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
-pub fn stub_0x25c150() -> ! {
-    todo!("0x25c150 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")
+pub fn stub_0x25c150() {
+    // IDA 0x25c150: `PropDescriptor<PointLight, float>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25c178 — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
-pub fn stub_0x25c178() -> ! {
-    todo!("0x25c178 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")
+pub fn stub_0x25c178() {
+    // IDA 0x25c178: `PropDescriptor<SpotLight, float>` D1 dtor; drop glue
+    // covers it — no-op.
 }
 
 // 0x25c1ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")]
-pub fn stub_0x25c1ac() -> ! {
-    todo!("0x25c1ac RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")
+pub fn stub_0x25c1ac() {
+    // IDA 0x25c1ac: `EnumPropDescriptor<SpotLight, NormalId>` D1 dtor; drop
+    // glue covers it — no-op.
 }
 
 // 0x25d6ac — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d6ac() -> ! {
-    todo!("0x25d6ac __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d6ac() {
+    // IDA 0x25d6ac: `Described<SpotLight>` D1 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25d6b0 — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(RBX::Light *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d6b0() -> ! {
-    todo!("0x25d6b0 __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d6b0() {
+    // IDA 0x25d6b0: `Described<SpotLight>` D0 dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x25d750 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x25d750() -> ! {
-    todo!("0x25d750 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x25d750() {
+    // IDA 0x25d750: thn32 D1 (adjust plus base dtor); drop glue covers it
+    // — no-op.
 }
 
 // 0x25d758 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x25d758() -> ! {
-    todo!("0x25d758 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x25d758() {
+    // IDA 0x25d758: thn32 D0 (adjust, teardown, delete); drop glue covers
+    // it — no-op.
 }
 
 // 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -960,5 +1048,83 @@ mod functor_codec_batch_tests {
         assert_eq!(tag.description, "genre");
         assert_eq!(stub_0x1c7470(&mut tag, Some("title")), 1);
         assert_eq!(tag.description, "title");
+    }
+}
+
+#[cfg(test)]
+mod descriptor_batch_tests {
+    use super::*;
+
+    #[test]
+    fn postscript_name_strips_slash() {
+        assert_eq!(stub_0x1f0b54(Some("/MyFont")), Some("MyFont".to_owned()));
+        assert_eq!(stub_0x1f0b54(Some("MyFont")), Some("MyFont".to_owned()));
+        assert_eq!(stub_0x1f0b54(None), None);
+    }
+
+    #[test]
+    fn descriptors_register() {
+        assert_eq!(
+            stub_0x2594ac("HttpEnabled"),
+            PropBinding { class: "HttpService", name: "HttpEnabled".to_owned() }
+        );
+        assert_eq!(
+            stub_0x2596a0("GetAsync"),
+            FuncDesc { class: "HttpService", name: "GetAsync".to_owned(), arity: 1 }
+        );
+        assert_eq!(
+            stub_0x259dbc("PostAsync"),
+            FuncDesc { class: "HttpService", name: "PostAsync".to_owned(), arity: 1 }
+        );
+    }
+
+    #[test]
+    fn execute_invokes_target() {
+        assert_eq!(stub_0x259984(&|s: String| format!("got:{s}"), "x"), "got:x");
+        assert_eq!(stub_0x25a030(&|s: String| format!("map:{s}"), "y"), "map:y");
+    }
+
+    #[test]
+    fn arg_extractors() {
+        assert_eq!(stub_0x259bfc(&["a".to_owned()]), Some("a".to_owned()));
+        assert_eq!(stub_0x259bfc(&[]), None);
+        assert_eq!(
+            stub_0x25a958(&["a", "b", "TextPlain"], HttpContentType::ApplicationJson),
+            HttpContentType::TextPlain
+        );
+        assert_eq!(
+            stub_0x25a958(&["a"], HttpContentType::ApplicationJson),
+            HttpContentType::ApplicationJson
+        );
+        assert_eq!(
+            stub_0x25a958(&["a", "b", "Bogus"], HttpContentType::TextXml),
+            HttpContentType::TextXml
+        );
+        assert_eq!(stub_0x25aaec("ApplicationXml"), Some(HttpContentType::ApplicationXml));
+        assert_eq!(
+            stub_0x25aaec("ApplicationUrlEncoded"),
+            Some(HttpContentType::ApplicationUrlEncoded)
+        );
+        assert_eq!(stub_0x25aaec("Nope"), None);
+    }
+
+    #[test]
+    fn descriptor_dtors() {
+        stub_0x258c78();
+        stub_0x258c7c();
+        stub_0x258d1c();
+        stub_0x258d24();
+        stub_0x258dc8();
+        stub_0x258dd0();
+        stub_0x25c0cc();
+        stub_0x25c100();
+        stub_0x25c128();
+        stub_0x25c150();
+        stub_0x25c178();
+        stub_0x25c1ac();
+        stub_0x25d6ac();
+        stub_0x25d6b0();
+        stub_0x25d750();
+        stub_0x25d758();
     }
 }
