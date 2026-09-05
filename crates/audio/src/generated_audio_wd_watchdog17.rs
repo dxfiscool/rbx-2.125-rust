@@ -5,6 +5,8 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
+use std::sync::atomic::AtomicBool;
 use core::sync::atomic::{AtomicU32, Ordering};
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
@@ -17,6 +19,87 @@ use crate::generated_audio_wd_watchdog14::{
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
 
+/// `EnumDesc<NormalId>` items in `addPair` order (IDA 0x6f2970: the
+/// `MOVS R1, #N` ahead of each call grounds dense values 0..=5).
+pub const NORMAL_ID_ITEMS: [(&str, u32); 6] = [
+    ("Right", 0),
+    ("Top", 1),
+    ("Back", 2),
+    ("Left", 3),
+    ("Bottom", 4),
+    ("Front", 5),
+];
+/// Name of a `NormalId` value for `convertToString` (IDA 0x662800).
+/// Values with no item yield "" — the writers only ever store table
+/// members.
+pub fn normal_id_name(value: u32) -> &'static str {
+    NORMAL_ID_ITEMS
+        .iter()
+        .find(|(_, v)| *v == value)
+        .map(|(n, _)| *n)
+        .unwrap_or("")
+}
+/// `RBX::SurfaceSelection` cutover (IDA 0x6608b0): the `Surface`
+/// face at +140 (word 35, init 0), the visibility flag at +128, the
+/// adorned-part link at +132 and the `BrickColor` at +120..+128.
+/// The `PartAdornment`/`Instance`/`Described` bases fold away; only
+/// the +140 init is grounded by the ctor, the rest rides the base
+/// init (host: cleared).
+#[derive(Debug, Clone)]
+pub struct SurfaceSelectionState {
+    pub surface: u32,
+    pub visible: bool,
+    pub part_present: bool,
+    pub color: [f32; 3],
+}
+/// `DrawAdorn::partSurface` call `render3dAdorn` emits (IDA 0x660ac0):
+/// the part face, its color, full alpha (1.0 = 1065353216) and the
+/// 0.2 overlay factor (1045220557 = 0.2f).
+#[derive(Debug, Clone, Copy)]
+pub struct SurfaceAdornDraw {
+    pub surface: u32,
+    pub color: [f32; 3],
+    pub alpha: f32,
+    pub overlay: f32,
+}
+/// Factory creator for `SurfaceSelection` (IDA
+/// `FactoryProduct<SurfaceSelection, PartAdornment>::Creator`) —
+/// stateless on the host.
+pub struct SurfaceSelectionCreator;
+/// Declared `RBX::Name` for `sSurfaceSelection` (IDA 0x661978:
+/// `Name::declare(&sSurfaceSelection)` under a guard-once static;
+/// host: `&str`).
+static SURFACE_SELECTION_NAME: LazyLock<String> =
+    LazyLock::new(|| "SurfaceSelection".to_owned());
+/// `FactoryProduct<SurfaceSelection, PartAdornment>::creatorPrivate`
+/// (IDA 0x661c9c). The image keeps one static `Creator`; `LazyLock`
+/// never drops (atexit equivalent).
+static SURFACE_SELECTION_CREATOR: LazyLock<SurfaceSelectionCreator> =
+    LazyLock::new(|| SurfaceSelectionCreator);
+/// `Creator::isConstructedE` sentinel (IDA 0x661a58/0x661c9c: 666
+/// once C2 ran).
+static SURFACE_SELECTION_CONSTRUCTED: AtomicBool = AtomicBool::new(false);
+/// `RBX::Reflection::EnumPropDescriptor<SurfaceSelection, NormalId>`
+/// cutover (IDA 0x662440): name/category/attributes/permissions.
+/// The getter/setter member-pointer pair folds into direct field
+/// access (same shape as `StudioToolBoolProp` at 0x6579d0).
+#[derive(Debug, Clone)]
+pub struct NormalIdProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl NormalIdProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `RBX::Reflection::Type<RBX::Surface>` cutover (IDA 0x65fee4): the
 /// registered tag. The `Descriptor` base, vtable, typeinfo and the
 /// all-types registry fold in.
@@ -755,8 +838,17 @@ pub fn stub_065ff94() {
 // demangled: RBX::SurfaceSelection::setSurface(RBX::NormalId)
 #[doc(alias = "RBX::SurfaceSelection::setSurface(RBX::NormalId)")]
 #[doc(alias = "__ZN3RBX16SurfaceSelection10setSurfaceENS_8NormalIdE")]
-pub fn stub_0660890() -> ! {
-    todo!("0x660890 RBX::SurfaceSelection::setSurface(RBX::NormalId)")
+pub fn stub_0660890(state: &mut SurfaceSelectionState, surface: u32) -> bool {
+    // IDA 0x660890 (`RBX::SurfaceSelection::setSurface`): compares
+    // word 35 (+140, 0x660896); on change stores it (0x6608a2) and
+    // raises `raisePropertyChanged` (0x6608ac), else returns
+    // unchanged (0x660898). The raise folds into the changed flag
+    // (same shape as `StudioTool::setEnabled` at 0x65793c).
+    if state.surface == surface {
+        return false;
+    }
+    state.surface = surface;
+    true
 }
 
 // 0x6608b0 — __ZN3RBX16SurfaceSelectionC2Ev
@@ -764,8 +856,18 @@ pub fn stub_0660890() -> ! {
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "RBX::SurfaceSelection::SurfaceSelection(void)")]
 #[doc(alias = "__ZN3RBX16SurfaceSelectionC2Ev")]
-pub fn stub_06608b0() -> ! {
-    todo!("0x6608b0 RBX::SurfaceSelection::SurfaceSelection(void)")
+pub fn stub_06608b0() -> SurfaceSelectionState {
+    // IDA 0x6608b0 (`RBX::SurfaceSelection::SurfaceSelection`):
+    // `PartAdornment` base with `setName("SurfaceSelection")`
+    // (0x6608da), vtable installs + class registration
+    // (0x66090c-0x660982) and word 35 (+140, the face) = 0
+    // (0x6609b4-0x6609d6). Host: the cleared cutover.
+    SurfaceSelectionState {
+        surface: 0,
+        visible: false,
+        part_present: false,
+        color: [0.0; 3],
+    }
 }
 
 // 0x660ac0 — __ZN3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE
@@ -773,8 +875,24 @@ pub fn stub_06608b0() -> ! {
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZN3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE")]
-pub fn stub_0660ac0() -> ! {
-    todo!("0x660ac0 RBX::SurfaceSelection::render3dAdorn(RBX::Adorn *)")
+pub fn stub_0660ac0(state: &SurfaceSelectionState) -> Option<SurfaceAdornDraw> {
+    // IDA 0x660ac0 (`RBX::SurfaceSelection::render3dAdorn`): the
+    // +128 visibility gate (0x660aec); a null +132 part link skips
+    // the draw (0x660b1e-0x660b24); `getPart` (0x660b2e), the word-35
+    // face (0x660b36), `BrickColor::color3` from +120
+    // (0x660b40-0x660b4e), alpha 1.0 (0x660b54 = 1065353216) and
+    // `DrawAdorn::partSurface(part, face, adorn, color, 0.2)`
+    // (0x660b6c; 1045220557 = 0.2f). The adorn/world handles fold
+    // into the request.
+    if !state.visible || !state.part_present {
+        return None;
+    }
+    Some(SurfaceAdornDraw {
+        surface: state.surface,
+        color: state.color,
+        alpha: 1.0,
+        overlay: 0.2,
+    })
 }
 
 // 0x660bd8 — __ZThn96_N3RBX16SurfaceSelection13render3dAdornEPNS_5AdornE
@@ -791,8 +909,10 @@ pub fn stub_0660bd8() {
 // type: _DWORD __fastcall(RBX::SurfaceSelection *__hidden this)
 #[doc(alias = "RBX::SurfaceSelection::getSurface(void)const")]
 #[doc(alias = "__ZNK3RBX16SurfaceSelection10getSurfaceEv")]
-pub fn stub_0660be0() -> ! {
-    todo!("0x660be0 RBX::SurfaceSelection::getSurface(void)const")
+pub fn stub_0660be0(state: &SurfaceSelectionState) -> u32 {
+    // IDA 0x660be0 (`RBX::SurfaceSelection::getSurface`): loads word
+    // 35 (+140, 0x660be4). Host: direct field read.
+    state.surface
 }
 
 // 0x660be8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED1Ev
@@ -823,8 +943,13 @@ pub fn stub_0660d54() {
 
 // 0x660df4 — __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0660df4() -> ! {
-    todo!("0x660df4 __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0660df4() -> &'static str {
+    // IDA 0x660df4 (`FactoryProduct<SurfaceSelection>::getClassName`):
+    // `static_getCreator` (0x660df8, host: stub_0661c9c) then the
+    // `Creator::getClassName` shim (host: stub_06613fc). Same shape
+    // as the `SoundChannel` twin at 0x37750c.
+    stub_0661c9c();
+    stub_06613fc()
 }
 
 // 0x660e04 — __ZThn32_N3RBX16SurfaceSelectionD1Ev
@@ -885,30 +1010,70 @@ pub fn stub_0661360() {
 // 0x6613fc — __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator12getClassNameEv
 // type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_06613fc() -> ! {
-    todo!("0x6613fc __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_06613fc() -> &'static str {
+    // IDA 0x6613fc (`Creator::getClassName`): FLog::Asserts-gated
+    // `wasConstructed()` (isConstructed == 666) ReleaseAssert
+    // (include/Util/Object.h line 236, 0x66140e-0x66145c — a host
+    // seam), `Name::declare` call_once (0x661460-0x661478), then
+    // tail-calls `doDeclare` (0x661480, host: stub_0661978)
+    // returning the `sSurfaceSelection` name. Same shape as the
+    // `SoundChannel` twin at 0x377efc.
+    if flog_asserts() {
+        assert!(
+            SURFACE_SELECTION_CONSTRUCTED.load(Ordering::Relaxed),
+            "wasConstructed() file: include/Util/Object.h line: 236 (IDA 0x6613fc)"
+        );
+    }
+    stub_0661978()
 }
 
 // 0x661484 — __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0661484() -> ! {
-    todo!("0x661484 __ZNK3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0661484() -> SharedPtr<SurfaceSelectionState> {
+    // IDA 0x661484 (`Creator::create`): FLog::Asserts-gated
+    // `wasConstructed()` ReleaseAssert (Object.h line 231,
+    // 0x6614cc-0x66152a — a host seam), then
+    // `Creatable::create<SurfaceSelection>` into a local
+    // `shared_ptr` (0x66153c, host: stub_06615c8), null check with
+    // the +0x20 `Instance`-base adjust (0x66154e-0x661552, host: no
+    // base-subobject offset) and the `shared_count` copy
+    // (0x66155e-0x66156c). Same shape as the `SoundChannel` twin
+    // at 0x377f84.
+    if flog_asserts() {
+        assert!(
+            SURFACE_SELECTION_CONSTRUCTED.load(Ordering::Relaxed),
+            "wasConstructed() file: include/Util/Object.h line: 231 (IDA 0x661484)"
+        );
+    }
+    stub_06615c8()
 }
 
 // 0x6615c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16SurfaceSelectionEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_16SurfaceSelectionEEEN5boost10shared_ptrIT_EEv")]
-pub fn stub_06615c8() -> ! {
-    todo!("0x6615c8 boost::shared_ptr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)")
+pub fn stub_06615c8() -> SharedPtr<SurfaceSelectionState> {
+    // IDA 0x6615c8 (`Creatable<Instance>::create<SurfaceSelection>`):
+    // `operator new(0x90)` (0x6615fc) + the `SurfaceSelection` ctor
+    // (0x661620, host: stub_06608b0) + the adopting `shared_ptr`
+    // with `Creatable::Deleter` (0x66162e, host: stub_0661678).
+    // Arc construction adopts owners. Same shape as the
+    // `SpawnLocation` twin at 0x63edbc.
+    SharedPtr::new(stub_06608b0())
 }
 
 // 0x661678 — __ZN5boost10shared_ptrIN3RBX16SurfaceSelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX16SurfaceSelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-pub fn stub_0661678() -> ! {
-    todo!("0x661678 boost::shared_ptr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0661678(state: SurfaceSelectionState) -> SharedPtr<SurfaceSelectionState> {
+    // IDA 0x661678 (`shared_ptr<SurfaceSelection>` from raw +
+    // Deleter): stores the pointer (0x661698), builds the
+    // `shared_count` with the deleter (0x6616a0) and wires the weak
+    // owner for non-null (0x6616ce-0x6616de). Arc move covers it;
+    // the control block folds into the `Arc`. Same shape as the
+    // `SpawnLocation` twin at 0x63ee70.
+    SharedPtr::new(state)
 }
 
 // 0x661740 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -970,28 +1135,69 @@ pub fn stub_0661970() {
 
 // 0x661974 — __ZN3RBX4Name13callDoDeclareILZNS_17sSurfaceSelectionEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_17sSurfaceSelectionEEEEvv")]
-pub fn stub_0661974() -> ! {
-    todo!("0x661974 __ZN3RBX4Name13callDoDeclareILZNS_17sSurfaceSelectionEEEEvv")
+pub fn stub_0661974() -> &'static str {
+    // IDA 0x661974 (`Name::callDoDeclare<sSurfaceSelection>`):
+    // single branch into `doDeclare` (the call_once target, host:
+    // stub_0661978). Same shape as the `SoundChannel` twin at
+    // 0x378478.
+    stub_0661978()
 }
 
 // 0x661978 — __ZN3RBX4Name9doDeclareILZNS_17sSurfaceSelectionEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_17sSurfaceSelectionEEEERKS0_v")]
-pub fn stub_0661978() -> ! {
-    todo!("0x661978 __ZN3RBX4Name9doDeclareILZNS_17sSurfaceSelectionEEEERKS0_v")
+pub fn stub_0661978() -> &'static str {
+    // IDA 0x661978 (`Name::doDeclare<sSurfaceSelection>`):
+    // guard-once static `n` (0x6619d4-0x6619fe),
+    // `Name::declare(&sSurfaceSelection)` (0x6619fa) stored into
+    // `n` and returned (0x661a2c). Host: `LazyLock` init. Same
+    // shape as the `SoundChannel` twin at 0x37847c.
+    LazyLock::force(&SURFACE_SELECTION_NAME);
+    SURFACE_SELECTION_NAME.as_str()
 }
 
 // 0x661a58 — __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorC2Ev
 // type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0661a58() -> ! {
-    todo!("0x661a58 __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0661a58() -> &'static SurfaceSelectionCreator {
+    // IDA 0x661a58 (`Creator` C2): vtable install (0x661a8e),
+    // `Name::declare` call_once + `doDeclare` (0x661a90-0x661aa6,
+    // host: stub_0661978), then the lower_bound walk and unique
+    // insert into `getCreators()` keyed by name (0x661aac-0x661bbe)
+    // under the duplicate-name (Object.h line 244) and
+    // `!wasConstructed` (line 245) ReleaseAsserts, the re-walk
+    // verifying the insert (line 250, 0x661bd0-0x661c44) and the
+    // final `wasConstructed` assert (line 251, 0x661c4c-0x661c8e)
+    // before marking constructed (0x661bbe). Host: the creator is
+    // stateless; force the name and mark constructed (same shape
+    // as the `RenderSettings` twin at 0xf2bc — no cross-module
+    // registry in this crate).
+    stub_0661978();
+    if flog_asserts() {
+        assert!(
+            !SURFACE_SELECTION_CONSTRUCTED.load(Ordering::Relaxed),
+            "!wasConstructed() file: ../App/include/Util/Object.h line: 245"
+        );
+    }
+    SURFACE_SELECTION_CONSTRUCTED.store(true, Ordering::Relaxed);
+    &*SURFACE_SELECTION_CREATOR
 }
 
 // 0x661c9c — __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE17static_getCreatorEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0661c9c() -> ! {
-    todo!("0x661c9c __ZN3RBX14FactoryProductINS_16SurfaceSelectionENS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0661c9c() -> &'static SurfaceSelectionCreator {
+    // IDA 0x661c9c (`static_getCreator`): FLog::Asserts-gated
+    // `Creator::wasConstructed()` ReleaseAssert (Object.h line 282,
+    // 0x661cac-0x661cfe — a host seam), return `creatorPrivate`
+    // (0x661d0e, host: the `LazyLock` singleton). Same shape as the
+    // `SoundChannel` twin at 0x3787a0.
+    if flog_asserts() {
+        assert!(
+            SURFACE_SELECTION_CONSTRUCTED.load(Ordering::Relaxed),
+            "Creator::wasConstructed() file: ../App/include/Util/Object.h line: 282"
+        );
+    }
+    &*SURFACE_SELECTION_CREATOR
 }
 
 // 0x661d10 — __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -1035,8 +1241,21 @@ pub fn stub_06622e4() {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0662440() -> ! {
-    todo!("0x662440 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SurfaceSelection::*)(void)const,void (RBX::SurfaceSelection::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0662440(
+    name: &str,
+    category: &str,
+    attributes: u32,
+    permissions: u32,
+) -> NormalIdProp {
+    // IDA 0x662440 (`EnumPropDescriptor<SurfaceSelection, NormalId>`
+    // ctor): the `SurfaceSelection` `classDescriptor` call
+    // (0x662464), the `EnumDesc<NormalId>` singleton once-init
+    // (0x662484-0x662488) and the `PropertyDescriptor` base init
+    // with name/category/attributes/permissions plus the impl
+    // holding the getter/setter member-pointer pair. The pair folds
+    // into direct field access (same shape as `StudioToolBoolProp`
+    // at 0x6579d0).
+    NormalIdProp::new(name, category, attributes, permissions)
 }
 
 // 0x6625f4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEED0Ev
@@ -1051,62 +1270,94 @@ pub fn stub_06625f4() {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10isReadOnlyEv")]
-pub fn stub_0662620() -> ! {
-    todo!("0x662620 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isReadOnly(void)const")
+pub fn stub_0662620() -> bool {
+    // IDA 0x662620 (`EnumPropDescriptor<.., NormalId>::isReadOnly`):
+    // delegates to the inner `GetSet` at +44 (0x66262c) — always
+    // readable.
+    false
 }
 
 // 0x662630 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11isWriteOnlyEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isWriteOnly(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11isWriteOnlyEv")]
-pub fn stub_0662630() -> ! {
-    todo!("0x662630 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::isWriteOnly(void)const")
+pub fn stub_0662630() -> bool {
+    // IDA 0x662630 (`EnumPropDescriptor<.., NormalId>::isWriteOnly`):
+    // delegates to the inner `GetSet` at +44 (0x66263c) — always
+    // writable.
+    false
 }
 
 // 0x662640 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_")]
-pub fn stub_0662640() -> ! {
-    todo!("0x662640 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0662640(first: &SurfaceSelectionState, second: &SurfaceSelectionState) -> bool {
+    // IDA 0x662640 (`EnumPropDescriptor<.., NormalId>::equalValues`):
+    // reads the inner value for both instances via the +44 `GetSet`
+    // (0x662650-0x662666) and compares. Host: compare the faces.
+    first.surface == second.surface
 }
 
 // 0x662668 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_0662668() -> ! {
-    todo!("0x662668 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0662668(state: &SurfaceSelectionState) -> SurfaceVariant {
+    // IDA 0x662668 (`EnumPropDescriptor<.., NormalId>::getVariant`):
+    // calls the getter member (0x662676), tags the value with the
+    // plain-`int` singleton (0x66267c) and placement-moves it into
+    // the variant (0x66268a). Host: the int-backed `NormalId` tag.
+    SurfaceVariant::NormalId(state.surface)
 }
 
 // 0x66268c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_066268c() -> ! {
-    todo!("0x66268c RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_066268c(state: &mut SurfaceSelectionState, variant: &SurfaceVariant) {
+    // IDA 0x66268c (`EnumPropDescriptor<.., NormalId>::setVariant`):
+    // an int-typed variant runs `any_cast<int>` (0x662758); anything
+    // else runs `Variant::convert<int>` (0x662738, throws on
+    // failure); then the +72 setter = `setSurface` (0x662768, host:
+    // stub_0660890). Host: convert-or-throw, then set.
+    let value = match *variant {
+        SurfaceVariant::NormalId(value) => value as i32,
+        _ => panic!("Unable to convert variant to int (IDA 0x66268c)"),
+    };
+    stub_0660890(state, value as u32);
 }
 
 // 0x6627d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_")]
-pub fn stub_06627d8() -> ! {
-    todo!("0x6627d8 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_06627d8(first: &SurfaceSelectionState, second: &mut SurfaceSelectionState) {
+    // IDA 0x6627d8 (`EnumPropDescriptor<.., NormalId>::copyValue`):
+    // inner `getValue` on the source (0x6627ea) then inner
+    // `setValue` on the target (0x6627fa). Host: copy the face.
+    second.surface = first.surface;
 }
 
 // 0x6627fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14hasStringValueEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14hasStringValueEv")]
-pub fn stub_06627fc() -> ! {
-    todo!("0x6627fc RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::hasStringValue(void)const")
+pub fn stub_06627fc() -> bool {
+    // IDA 0x6627fc (`EnumPropDescriptor<.., NormalId>::hasStringValue`):
+    // returns 1 — always stringable.
+    true
 }
 
 // 0x662800 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_16SurfaceSelectionENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0662800() -> ! {
-    todo!("0x662800 RBX::Reflection::EnumPropDescriptor<RBX::SurfaceSelection,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0662800(state: &SurfaceSelectionState) -> String {
+    // IDA 0x662800 (`EnumPropDescriptor<.., NormalId>::getStringValue`):
+    // reads the enum-desc singleton slot at +48 (0x66280a), the
+    // inner value via the +44 `GetSet` (0x662812) and
+    // `EnumDesc::convertToString` (0x662822). Host: the grounded
+    // item name.
+    normal_id_name(state.surface).to_owned()
 }

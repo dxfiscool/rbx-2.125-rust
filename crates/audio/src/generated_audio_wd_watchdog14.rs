@@ -54,13 +54,15 @@ pub struct PartSurfaceData {
     pub faces: [FaceSurface; SURFACE_FACE_COUNT as usize],
 }
 /// `RBX::Reflection::Variant` payload read by the surface
-/// `genericConvert` cutovers (IDA 0x658e24/0x658f8c): either the enum
-/// value or something else (the string cleanup at 0x658ebc-0x659002
-/// still throws).
+/// `genericConvert` cutovers (IDA 0x658e24/0x658f8c) and the
+/// `SurfaceSelection` int-backed `NormalId` dialogue (IDA
+/// 0x662668/0x66268c): either an enum value or something else (the
+/// string cleanup at 0x658ebc-0x659002 still throws).
 #[derive(Debug, Clone, Copy)]
 pub enum SurfaceVariant {
     SurfaceType(u32),
     SurfaceInput(u32),
+    NormalId(u32),
     Other,
 }
 /// Descriptor family behind the four `*Static` selector groups (IDA
