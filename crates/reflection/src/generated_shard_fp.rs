@@ -64,6 +64,45 @@ pub(crate) static TEXTBOX_FINISHES: std::sync::LazyLock<
 pub(crate) static GAMEVIEW_SIZE: std::sync::LazyLock<
     parking_lot::Mutex<(u32, u32)>,
 > = std::sync::LazyLock::new(|| parking_lot::Mutex::new((0, 0)));
+/// Login attempts + results (IDA 0x4e9a0/0x4ea30): submitted
+/// (username, password) pairs and reported success flags. `LoginManager`
+/// lives out of slice.
+pub(crate) static LOGIN_ATTEMPTS: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<(String, String)>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+pub(crate) static LOGIN_RESULTS: std::sync::LazyLock<
+    parking_lot::Mutex<Vec<bool>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(Vec::new()));
+pub(crate) static LOGIN_COMPLETIONS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// Jump press/release counts (IDA 0x4f408/0x4f43c drive
+/// `jumpLocalCharacter` 1/0 through the input service).
+pub(crate) static JUMP_DOWNS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static JUMP_UPS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `JumpButton::initWithFrame:` args (IDA 0x4f188): frame plus the
+/// jump/cloud images and touch targets, which are view glue.
+#[derive(Debug, Clone, Default)]
+pub struct JumpButtonInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+}
+pub(crate) static JUMP_HAS_SUPERVIEW: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `ThumbStickControl::init:` args (IDA 0x4f9d0): frame, style (0 for
+/// new camera controls, else 1) and size (70 phone, else 120).
+#[derive(Debug, Clone, Default)]
+pub struct ThumbStickInit {
+    pub x: f32,
+    pub y: f32,
+    pub width: f32,
+    pub height: f32,
+    pub style: u32,
+    pub size: u32,
+}
 /// External URL-window state (IDA 0x4dc08-0x4e2ac): open flag, last
 /// URL, open/dismiss counts and close-signal count. Web views and
 /// main-queue blocks live out of slice.
@@ -831,177 +870,238 @@ pub fn stub_4e6f0() {
 // 0x4e714 — ___destroy_helper_block_154
 // type: int __fastcall(int)
 #[doc(alias = "___destroy_helper_block_154")]
-pub fn stub_4e714() -> ! {
-    todo!("0x4e714 ___destroy_helper_block_154")
+pub fn stub_4e714() {
+    // IDA 0x4e714: `__destroy_helper_block_154` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e730 — -[GameViewController handlePromptLoginSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
-pub fn stub_4e730() -> ! {
-    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
+pub fn stub_4e730() {
+    // IDA 0x4e730: `handlePromptLoginSignal` dispatches the login
+    // block to main (0x4e766-0x4e778, same shape as 0x4e868). The
+    // dispatch records here.
+    LOGIN_PROMPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
-pub fn stub_4e780() -> ! {
-    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+pub fn stub_4e780() {
+    // IDA 0x4e780: the login block presents the prompt on main. It
+    // records here.
+    LOGIN_PROMPT_RUNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4e854 — ___copy_helper_block_174
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_174")]
-pub fn stub_4e854() -> ! {
-    todo!("0x4e854 ___copy_helper_block_174")
+pub fn stub_4e854() {
+    // IDA 0x4e854: `__copy_helper_block_174` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e860 — ___destroy_helper_block_175
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_175")]
-pub fn stub_4e860() -> ! {
-    todo!("0x4e860 ___destroy_helper_block_175")
+pub fn stub_4e860() {
+    // IDA 0x4e860: `__destroy_helper_block_175` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e868 — -[GameViewController handlePromptSignupSignal]
 // type: void __cdecl(GameViewController *self, SEL)
 #[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
-pub fn stub_4e868() -> ! {
-    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+pub fn stub_4e868() {
+    // IDA 0x4e868: `handlePromptSignupSignal` dispatches the signup
+    // block to main (0x4e89e-0x4e8b0, same shape as 0x4e730). The
+    // dispatch records here.
+    LOGIN_PROMPTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
-pub fn stub_4e8b8() -> ! {
-    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
+pub fn stub_4e8b8() {
+    // IDA 0x4e8b8: the signup block presents the prompt on main (same
+    // shape as 0x4e780). It records here.
+    LOGIN_PROMPT_RUNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4e98c — ___copy_helper_block_179
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_179")]
-pub fn stub_4e98c() -> ! {
-    todo!("0x4e98c ___copy_helper_block_179")
+pub fn stub_4e98c() {
+    // IDA 0x4e98c: `__copy_helper_block_179` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4e998 — ___destroy_helper_block_180
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_180")]
-pub fn stub_4e998() -> ! {
-    todo!("0x4e998 ___destroy_helper_block_180")
+pub fn stub_4e998() {
+    // IDA 0x4e998: `__destroy_helper_block_180` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4e9a0 — -[GameViewController handleSignupNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleSignupNotification:]")]
-pub fn stub_4e9a0() -> ! {
-    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
+pub fn stub_4e9a0(username: &str, password: &str) {
+    // IDA 0x4e9a0: `handleSignupNotification:` logs in with the
+    // notification username/password (0x4e9c6-0x4ea2c). The attempt
+    // records here.
+    LOGIN_ATTEMPTS.lock().push((username.to_owned(), password.to_owned()));
 }
 
 // 0x4ea30 — -[GameViewController handleLoginNotification:]
 // type: void __cdecl(GameViewController *self, SEL, id)
 #[doc(alias = "-[GameViewController handleLoginNotification:]")]
-pub fn stub_4ea30() -> ! {
-    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
+pub fn stub_4ea30(success: bool) {
+    // IDA 0x4ea30: `handleLoginNotification:` dispatches the result
+    // block with the "success" flag (0x4ea48-0x4eabe). It records
+    // here.
+    LOGIN_RESULTS.lock().push(success);
+    stub_4eac8(success);
 }
 
 // 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
 // type: void __fastcall(id *)
 #[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
-pub fn stub_4eac8() -> ! {
-    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
+pub fn stub_4eac8(success: bool) {
+    // IDA 0x4eac8: the login-result block finalizes the login UI on
+    // main. Completion records here.
+    let _ = success;
+    LOGIN_COMPLETIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4edcc — ___copy_helper_block_203
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_203")]
-pub fn stub_4edcc() -> ! {
-    todo!("0x4edcc ___copy_helper_block_203")
+pub fn stub_4edcc() {
+    // IDA 0x4edcc: `__copy_helper_block_203` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x4edf0 — ___destroy_helper_block_204
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_204")]
-pub fn stub_4edf0() -> ! {
-    todo!("0x4edf0 ___destroy_helper_block_204")
+pub fn stub_4edf0() {
+    // IDA 0x4edf0: `__destroy_helper_block_204` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x4ee0c — __ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
-pub fn stub_4ee0c() -> ! {
-    todo!("0x4ee0c rbx::signals::signal<void ()(std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> &)")
+pub fn stub_4ee0c(next_present: bool) -> bool {
+    // IDA 0x4ee0c: `signal<string>::next` advances to the matching slot
+    // when present. Presence reports here.
+    next_present
 }
 
 // 0x4ef74 — __GLOBAL__I_a_22
 #[doc(alias = "global constructor keyed to_a_22")]
 #[doc(alias = "__GLOBAL__I_a_22")]
-pub fn stub_4ef74() -> ! {
-    todo!("0x4ef74 global constructor keyed to_a_22")
+pub fn stub_4ef74() {
+    // IDA 0x4ef74: `__GLOBAL__I_a_22` runs the `a_22`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x4f188 — -[JumpButton initWithFrame:]
 // type: JumpButton *__cdecl(JumpButton *self, SEL, CGRect)
 #[doc(alias = "-[JumpButton initWithFrame:]")]
-pub fn stub_4f188() -> ! {
-    todo!("0x4f188 -[JumpButton initWithFrame:]")
+pub fn stub_4f188(x: f32, y: f32, width: f32, height: f32) -> JumpButtonInit {
+    // IDA 0x4f188: `JumpButton::initWithFrame:` supers, installs the
+    // jump images and the touchDown/touchUp targets (0x4f1aa-0x4f2a0).
+    // The frame records here; images are view glue.
+    JumpButtonInit { x, y, width, height }
 }
 
 // 0x4f2b0 — -[JumpButton dealloc]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton dealloc]")]
-pub fn stub_4f2b0() -> ! {
-    todo!("0x4f2b0 -[JumpButton dealloc]")
+pub fn stub_4f2b0() {
+    // IDA 0x4f2b0: `dealloc` drops the component. Release is drop
+    // glue; no explicit body.
 }
 
 // 0x4f2fc — -[JumpButton setControlComponentSuperview:]
 // type: void __cdecl(JumpButton *self, SEL, id)
 #[doc(alias = "-[JumpButton setControlComponentSuperview:]")]
-pub fn stub_4f2fc() -> ! {
-    todo!("0x4f2fc -[JumpButton setControlComponentSuperview:]")
+pub fn stub_4f2fc(superview_present: bool) {
+    // IDA 0x4f2fc: `setControlComponentSuperview:` stores the
+    // superview. Presence records here.
+    JUMP_HAS_SUPERVIEW.store(superview_present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4f404 — -[JumpButton jumpEnabledChanged:]
 // type: void __cdecl(JumpButton *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[JumpButton jumpEnabledChanged:]")]
-pub fn stub_4f404() -> ! {
-    todo!("0x4f404 -[JumpButton jumpEnabledChanged:]")
+pub fn stub_4f404() {
+    // IDA 0x4f404: `jumpEnabledChanged:` compiles to an empty body
+    // (decompiled 0x4f404). No explicit body.
 }
 
 // 0x4f408 — -[JumpButton touchDown]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchDown]")]
-pub fn stub_4f408() -> ! {
-    todo!("0x4f408 -[JumpButton touchDown]")
+pub fn stub_4f408(service_present: bool) {
+    // IDA 0x4f408: `touchDown` jumps the local character through the
+    // input service (0x4f426-0x4f436). The press records here.
+    if service_present {
+        JUMP_DOWNS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4f43c — -[JumpButton touchUp]
 // type: void __cdecl(JumpButton *self, SEL)
 #[doc(alias = "-[JumpButton touchUp]")]
-pub fn stub_4f43c() -> ! {
-    todo!("0x4f43c -[JumpButton touchUp]")
+pub fn stub_4f43c(service_present: bool) {
+    // IDA 0x4f43c: `touchUp` stops the jump through the input service
+    // (0x4f45a-0x4f46a). The release records here.
+    if service_present {
+        JUMP_UPS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4f7bc — __GLOBAL__I_a_23
 #[doc(alias = "global constructor keyed to_a_23")]
 #[doc(alias = "__GLOBAL__I_a_23")]
-pub fn stub_4f7bc() -> ! {
-    todo!("0x4f7bc global constructor keyed to_a_23")
+pub fn stub_4f7bc() {
+    // IDA 0x4f7bc: `__GLOBAL__I_a_23` runs the `a_23`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x4f9d0 — -[ThumbStickControl init:]
 // type: id __cdecl(ThumbStickControl *self, SEL, CGRect)
 #[doc(alias = "-[ThumbStickControl init:]")]
-pub fn stub_4f9d0() -> ! {
-    todo!("0x4f9d0 -[ThumbStickControl init:]")
+pub fn stub_4f9d0(x: f32, y: f32, width: f32, height: f32, new_controls: bool, tablet: bool) -> ThumbStickInit {
+    // IDA 0x4f9d0: `ThumbStickControl::init:` sizes the frame, picks
+    // style 0 for new camera controls else 1 (0x4fa4e-0x4fa5a) and size
+    // 70 for phones else 120 (0x4faf4-0x4fb30), then builds the stick
+    // views (0x4fb4e-0x4fcda). The picks record here.
+    ThumbStickInit {
+        x,
+        y,
+        width,
+        height,
+        style: u32::from(!new_controls),
+        size: if tablet { 120 } else { 70 },
+    }
 }
 
 // 0x4fcf4 — ___26-[ThumbStickControl init:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___26-[ThumbStickControl init:]_block_invoke")]
-pub fn stub_4fcf4() -> ! {
-    todo!("0x4fcf4 ___26-[ThumbStickControl init:]_block_invoke")
+pub fn stub_4fcf4() {
+    // IDA 0x4fcf4: the init async block finishes the legacy setup on
+    // a queue (0x4fa62-0x4fa98). It records nothing new; no explicit
+    // body.
 }
 
 // 0x4fd40 — ___copy_helper_block__11
