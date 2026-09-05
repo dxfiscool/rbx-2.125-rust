@@ -7,216 +7,419 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_189::{CRenderSettingsItem, RenderEnumDesc, stub_0x86d0};
+use crate::generated_190::{IntVariant, RenderXmlInput, RenderXmlIntValue};
+use crate::generated_191::{RenderFrameRateEnumPropDesc, frame_rate_manager_mode_enum_desc};
+use std::sync::LazyLock;
+
+// 0x13a30/0x13be4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2/D0Ev
+/// Rust model of `EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>`
+/// (IDA `0x13a30` C2 / `0x13be4` D0): the shared `EnumDesc<GraphicsMode>`
+/// table (via `graphics_mode_enum_desc()`, built by 0x86d0), the bound
+/// getter/setter pair in the heap impl, and the read/write-only flags (both
+/// queries return 0 per `0x13c10`/`0x13c20`, so the bits stay set). Same
+/// shape as `RenderAAEnumPropDesc` (0x10a08).
+pub struct RenderGraphicsEnumPropDesc {
+    pub name: &'static str,
+    pub category: &'static str,
+    pub getter: fn(&CRenderSettingsItem) -> i32,
+    pub setter: fn(&mut CRenderSettingsItem, i32),
+    pub read_only: bool,
+    pub write_only: bool,
+}
+
+/// The `EnumDesc<GraphicsMode>` singleton behind the graphics descriptor
+/// suite; built once by the 0x86d0 constructor.
+static GRAPHICS_MODE_ENUM_DESC: LazyLock<RenderEnumDesc> = LazyLock::new(stub_0x86d0);
+/// Singleton accessor for the graphics enum table.
+pub fn graphics_mode_enum_desc() -> &'static RenderEnumDesc {
+    LazyLock::force(&GRAPHICS_MODE_ENUM_DESC)
+}
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x1335c — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")]
-pub fn stub_1335c() -> ! {
-    todo!("0x1335c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")
+pub fn stub_1335c(_desc: *mut RenderFrameRateEnumPropDesc) {
+    // IDA 0x1335c..0x1337a (decompiled): `EnumPropDescriptor<...>::D0` —
+    // vtable install (0x13370), impl `delete` on the `+44` slot
+    // (0x13372..0x13378), `operator delete`. Same drop-glue shape as
+    // 0x10038.
 }
 
 // 0x13388 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isReadOnly(void)const")]
-pub fn stub_13388() -> ! {
-    todo!("0x13388 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isReadOnly(void)const")
+pub fn stub_13388(desc: &RenderFrameRateEnumPropDesc) -> bool {
+    // IDA 0x13388..0x13394 (decompiled): `isReadOnly` delegates to the
+    // `+44` impl slot `+0` query, which returns `0` (cf. 0x10064).
+    desc.read_only
 }
 
 // 0x13398 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isWriteOnly(void)const")]
-pub fn stub_13398() -> ! {
-    todo!("0x13398 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::isWriteOnly(void)const")
+pub fn stub_13398(desc: &RenderFrameRateEnumPropDesc) -> bool {
+    // IDA 0x13398..0x133a4 (decompiled): `isWriteOnly` delegates to the
+    // `+44` impl slot `+4` query, which returns `0` (cf. 0x10074).
+    desc.write_only
 }
 
 // 0x133a8 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_133a8() -> ! {
-    todo!("0x133a8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_133a8(
+    desc: &RenderFrameRateEnumPropDesc,
+    first: &CRenderSettingsItem,
+    second: &CRenderSettingsItem,
+) -> bool {
+    // IDA 0x133a8..0x133ce (decompiled): `equalValues` — `getValue` through
+    // the `+44` slot `+8` on both sides (0x133b8/0x133ce) and compare. Same
+    // shape as 0x10084.
+    (desc.getter)(first) == (desc.getter)(second)
 }
 
 // 0x133d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_133d0() -> ! {
-    todo!("0x133d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_133d0(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> IntVariant {
+    // IDA 0x133d0..0x133f2 (decompiled): `getVariant` — `getEnumValue`
+    // through vtable `+68` (0x133de), `Type::getSingleton<int>` tag
+    // (0x133e4), `placement_any<int>::operator=` (0x133f2). Same shape as
+    // 0x100ac.
+    IntVariant { value: (desc.getter)(item) }
 }
 
 // 0x133f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_133f4() -> ! {
-    todo!("0x133f4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_133f4(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, variant: &IntVariant) {
+    // IDA 0x133f4 (decompiled): `setVariant` — same holder-identity int fast
+    // path plus generic `Variant::convert<int>` fallback as 0x100d0, then
+    // the `+72` setter. Our variant only holds ints, so both paths collapse
+    // into the stored setter fn.
+    (desc.setter)(item, variant.value)
 }
 
 // 0x13544 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_13544() -> ! {
-    todo!("0x13544 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_13544(desc: &RenderFrameRateEnumPropDesc, dst: &mut CRenderSettingsItem, src: &CRenderSettingsItem) {
+    // IDA 0x13544..0x13566 (decompiled): `copyValue` — `getValue` through
+    // the `+44` slot `+8` into a spill (0x13556), then the `+12` setter
+    // (0x13566). Same shape as 0x10220.
+    let value = (desc.getter)(src);
+    (desc.setter)(dst, value)
 }
 
 // 0x13568 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14hasStringValueEv
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::hasStringValue(void)const")]
-pub fn stub_13568() -> ! {
-    todo!("0x13568 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::hasStringValue(void)const")
+pub fn stub_13568() -> bool {
+    // IDA 0x13568..0x1356a (decompiled): `hasStringValue` returns `1`. Same
+    // shape as 0x10244.
+    true
 }
 
 // 0x1356c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14getStringValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_1356c() -> ! {
-    todo!("0x1356c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_1356c(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem, out: &mut String) {
+    // IDA 0x1356c..0x1358e (decompiled): `getStringValue` — `getValue`
+    // through the `+44` slot `+8` (0x13576), then
+    // `EnumDesc<FrameRateManagerMode>::convertToString`: empty when out of
+    // range. Same shape as 0x10248.
+    let value = (desc.getter)(item);
+    match (value >= 0).then(|| frame_rate_manager_mode_enum_desc().lookup_name(value)).flatten() {
+        Some(name) => *out = name.to_owned(),
+        None => out.clear(),
+    }
 }
 
 // 0x13590 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_13590() -> ! {
-    todo!("0x13590 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_13590(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x13590..0x135c8 (decompiled): `setStringValue` — `Name::lookup`
+    // (0x1359e), `EnumDesc<FrameRateManagerMode>::convertToValue`, miss
+    // returns 0, hit sets through the `+44` slot `+12` and returns 1. Same
+    // shape as 0x1026c.
+    if let Some(value) = frame_rate_manager_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x135d0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_135d0() -> ! {
-    todo!("0x135d0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_135d0(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> RenderXmlIntValue {
+    // IDA 0x135d0..0x135ee (decompiled): `writeValue` — `getValue` through
+    // the `+44` slot `+8` (0x135de), `clearValue` (0x135e4), type word `5`
+    // (0x135ea), int word (0x135ec), return `5` (0x135ee). Same shape as
+    // 0x102ac.
+    RenderXmlIntValue { kind: 5, int_value: (desc.getter)(item) }
 }
 
 // 0x135f0 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_135f0() -> ! {
-    todo!("0x135f0 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_135f0(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, input: &RenderXmlInput) {
+    // IDA 0x135f0 (decompiled): `readValue` — same `isXsiNil` bail / int
+    // (`setIntValue`) / string (`Name::lookup` + `convertToValue` + set with
+    // `setStringValue`-mismatch fallback) / `ReleaseAssert(false)` shape as
+    // 0x102cc. `setIntValue` for this desc is the direct member set (cf.
+    // 0x13998 shape).
+    match input {
+        RenderXmlInput::Nil => {}
+        RenderXmlInput::Int(value) => (desc.setter)(item, *value),
+        RenderXmlInput::Text(name) => {
+            if !stub_13590(desc, item, name) {
+                debug_assert!(false, "0x135f0: false (Reflection.h:359)");
+            }
+        }
+    }
 }
 
 // 0x13830 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13getIndexValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_13830() -> ! {
-    todo!("0x13830 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_13830(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> Option<usize> {
+    // IDA 0x13830..0x1384a (decompiled): `getIndexValue` — `getValue`
+    // through the `+44` slot `+8` (0x13840), then
+    // `EnumDesc<FrameRateManagerMode>::convertToIndex` (0x13842): assert
+    // plus position search. Same shape as 0x1050c.
+    let value = (desc.getter)(item);
+    debug_assert!(value >= 0, "0x13830: value>=0");
+    frame_rate_manager_mode_enum_desc().pairs.iter().position(|(v, _)| *v == value)
 }
 
 // 0x1384c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE13setIndexValueEPNS0_13DescribedBaseEm
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_1384c() -> ! {
-    todo!("0x1384c RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_1384c(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, index: usize) -> bool {
+    // IDA 0x1384c..0x13874 (decompiled): `setIndexValue` — `count > index`
+    // check against the enum count at `+40` (0x1385e), indexed value load
+    // from the value table at `+144` (0x13868), `+44` slot `+12` set,
+    // return 1; miss returns 0. The `+144` table holds the values in
+    // registration order, so `pairs` stands in. Same shape as 0x110ac.
+    match frame_rate_manager_mode_enum_desc().pairs.get(index) {
+        Some((value, _)) => {
+            (desc.setter)(item, *value);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x13880 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12getEnumValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_13880() -> ! {
-    todo!("0x13880 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_13880(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x13880..0x13886 (decompiled): `getEnumValue` — `getValue`
+    // through the `+44` slot `+8`. Same delegation as 0x1055c without the
+    // variant wrap.
+    (desc.getter)(item)
 }
 
 // 0x13888 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE12setEnumValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_13888() -> ! {
-    todo!("0x13888 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_13888(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) -> bool {
+    // IDA 0x13888..0x138d0 (decompiled): `setEnumValue` — `find_if` with
+    // `equalValue` over the enum items (0x13896), miss returns 0, hit sets
+    // through the `+44` slot `+12` and returns 1. Same shape as 0x10564.
+    if frame_rate_manager_mode_enum_desc().pairs.iter().any(|(v, _)| *v == value) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x138d4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11getEnumItemEPKNS0_13DescribedBaseE
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_138d4() -> ! {
-    todo!("0x138d4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_138d4(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x138d4..0x138f2 (decompiled): `getEnumItem` — `getValue` through
+    // the `+44` slot `+8` (0x138e6), then
+    // `EnumDesc<FrameRateManagerMode>::convertToItem` (0x138f2), which is
+    // the identity-table body (cf. 0xd4f8). Same shape as 0x105b0.
+    let value = (desc.getter)(item);
+    let table = frame_rate_manager_mode_enum_desc();
+    if value >= 0 && (value as usize) < table.pairs.len() {
+        value
+    } else {
+        0
+    }
 }
 
 // 0x138f4 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_138f4() -> ! {
-    todo!("0x138f4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_138f4(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, name: &str) -> bool {
+    // IDA 0x138f4..0x13922 (decompiled): `setStringValue` on the `Name` —
+    // `EnumDesc<FrameRateManagerMode>::convertToValue` (0x1390a), miss
+    // returns 0 (0x1390c), hit sets through the `+44` slot `+12` and returns
+    // 1. `Name::c_str` collapses into the `&str` itself; same shape as
+    // 0x105d0.
+    if let Some(value) = frame_rate_manager_mode_enum_desc().lookup_value(name) {
+        (desc.setter)(item, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x13928 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToIndexES3_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToIndex(RBX::CRenderSettings::FrameRateManagerMode)const")]
-pub fn stub_13928() -> ! {
-    todo!("0x13928 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToIndex(RBX::CRenderSettings::FrameRateManagerMode)const")
+pub fn stub_13928(desc: &RenderEnumDesc, value: i32) -> i32 {
+    // IDA 0x13928 (decompiled):
+    // `EnumDesc<FrameRateManagerMode>::convertToIndex` — same
+    // `ReleaseAssert(value >= 0)` + `value < table ? table[value] : -1`
+    // shape as 0x10604 over the value→index remap. The remap is identity
+    // over the registered pairs here, so the position search stands in.
+    debug_assert!(value >= 0, "0x13928: value>=0");
+    desc.pairs.iter().position(|(v, _)| *v == value).map(|i| i as i32).unwrap_or(-1)
 }
 
 // 0x13998 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE11setIntValueEPNS0_13DescribedBaseEi
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_13998() -> ! {
-    todo!("0x13998 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_13998(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, index: i32) -> bool {
+    // IDA 0x13998..0x139d4 (decompiled): `setIntValue` — `index >= 0` gate
+    // (0x139a2), bounds check against the value table at `+132`
+    // (0x139a6..0x139b4), `-1`-hole check, `+44` slot `+12` set, return 1;
+    // miss returns 0. Same shape as 0x10674.
+    if index >= 0 {
+        if let Some((value, _)) = frame_rate_manager_mode_enum_desc().pairs.get(index as usize) {
+            if *value != -1 {
+                (desc.setter)(item, *value);
+                return true;
+            }
+        }
+    }
+    false
 }
 
 // 0x139d8 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isReadOnly(void)const")]
-pub fn stub_139d8() -> ! {
-    todo!("0x139d8 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isReadOnly(void)const")
+pub fn stub_139d8() -> bool {
+    // IDA 0x139d8..0x139da (decompiled):
+    // `GetSetImpl<FrameRateManagerMode (CRenderSettings::*)() const, void
+    // (CRenderSettingsItem::*)(FrameRateManagerMode)>::isReadOnly` returns
+    // `0`. Same shape as 0x106b4.
+    false
 }
 
 // 0x139dc — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isWriteOnly(void)const")]
-pub fn stub_139dc() -> ! {
-    todo!("0x139dc RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::isWriteOnly(void)const")
+pub fn stub_139dc() -> bool {
+    // IDA 0x139dc..0x139de (decompiled): the FrameRateManagerMode-member
+    // `GetSetImpl` `isWriteOnly` twin — returns `0`. Same shape as 0x106b8.
+    false
 }
 
 // 0x139e0 — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_139e0() -> ! {
-    todo!("0x139e0 RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_139e0(desc: &RenderFrameRateEnumPropDesc, item: &CRenderSettingsItem) -> i32 {
+    // IDA 0x139e0..0x13a0a (decompiled): `GetSetImpl<...>::getValue` —
+    // resolves the bound `FrameRateManagerMode (CRenderSettings::*)() const`
+    // member through the `+4` slot (0x139e2..0x13a08) and invokes it. The
+    // member-pointer dance collapses into the stored getter fn; same shape
+    // as 0x106bc.
+    (desc.getter)(item)
 }
 
 // 0x13a0c — __ZNK3RBX10Reflection14PropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEE10GetSetImplIMS3_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::FrameRateManagerMode const&)const")]
-pub fn stub_13a0c() -> ! {
-    todo!("0x13a0c RBX::Reflection::PropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::GetSetImpl<RBX::CRenderSettings::FrameRateManagerMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::FrameRateManagerMode)>::setValue(RBX::Reflection::DescribedBase *,RBX::CRenderSettings::FrameRateManagerMode const&)const")
+pub fn stub_13a0c(desc: &RenderFrameRateEnumPropDesc, item: &mut CRenderSettingsItem, value: i32) {
+    // IDA 0x13a0c..0x13a2c (decompiled): `GetSetImpl<...>::setValue` —
+    // resolves the bound `void
+    // (CRenderSettingsItem::*)(FrameRateManagerMode)` member through the
+    // `+12` slot and invokes it with `*a3`. Collapses into the stored
+    // setter fn; same shape as 0x106e8.
+    (desc.setter)(item, value)
 }
 
 // 0x13a30 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEEC2IMS3_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::EnumPropDescriptor<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>(char const*,char const*,RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_13a30() -> ! {
-    todo!("0x13a30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::EnumPropDescriptor<RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode)>(char const*,char const*,RBX::CRenderSettings::GraphicsMode (RBX::CRenderSettings::*)(void)const,void (CRenderSettingsItem::*)(RBX::CRenderSettings::GraphicsMode),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_13a30(
+    name: &'static str,
+    category: &'static str,
+    getter: fn(&CRenderSettingsItem) -> i32,
+    setter: fn(&mut CRenderSettingsItem, i32),
+) -> RenderGraphicsEnumPropDesc {
+    // IDA 0x13a30 (decompiled prologue through the `classDescriptor()` touch,
+    // same call shape as 0xfe84..0xfea8):
+    // `EnumPropDescriptor<CRenderSettingsItem, GraphicsMode>::C2` — same
+    // construction shape as the ResolutionPreset twin (0xfe84):
+    // `EnumDesc<GraphicsMode>` singleton touch, `PropertyDescriptor` C2,
+    // enum-table stores, GetSetImpl alloc with the member pair, vtable
+    // install. The member pointers collapse into the getter/setter fns.
+    let _ = graphics_mode_enum_desc();
+    RenderGraphicsEnumPropDesc { name, category, getter, setter, read_only: false, write_only: false }
 }
 
 // 0x13be4 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")]
-pub fn stub_13be4() -> ! {
-    todo!("0x13be4 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")
+pub fn stub_13be4(_desc: *mut RenderGraphicsEnumPropDesc) {
+    // IDA 0x13be4..0x13c06 (decompiled): `EnumPropDescriptor<...>::D0` —
+    // vtable install (0x13bf8), impl `delete` on the `+44` slot
+    // (0x13bfa..0x13c00), `operator delete`. Same drop-glue shape as
+    // 0x10038.
 }
 
 // 0x13c10 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10isReadOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isReadOnly(void)const")]
-pub fn stub_13c10() -> ! {
-    todo!("0x13c10 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isReadOnly(void)const")
+pub fn stub_13c10(desc: &RenderGraphicsEnumPropDesc) -> bool {
+    // IDA 0x13c10..0x13c1c (decompiled): `isReadOnly` delegates to the
+    // `+44` impl slot `+0` query, which returns `0` (cf. 0x10064).
+    desc.read_only
 }
 
 // 0x13c20 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11isWriteOnlyEv
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isWriteOnly(void)const")]
-pub fn stub_13c20() -> ! {
-    todo!("0x13c20 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::isWriteOnly(void)const")
+pub fn stub_13c20(desc: &RenderGraphicsEnumPropDesc) -> bool {
+    // IDA 0x13c20..0x13c2c (decompiled): `isWriteOnly` delegates to the
+    // `+44` impl slot `+4` query, which returns `0` (cf. 0x10074).
+    desc.write_only
 }
 
 // 0x13c30 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE11equalValuesEPKNS0_13DescribedBaseES8_
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_13c30() -> ! {
-    todo!("0x13c30 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_13c30(
+    desc: &RenderGraphicsEnumPropDesc,
+    first: &CRenderSettingsItem,
+    second: &CRenderSettingsItem,
+) -> bool {
+    // IDA 0x13c30..0x13c56 (decompiled): `equalValues` — `getValue` through
+    // the `+44` slot `+8` on both sides (0x13c40/0x13c56) and compare. Same
+    // shape as 0x10084.
+    (desc.getter)(first) == (desc.getter)(second)
 }
 
 // 0x13c58 — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_13c58() -> ! {
-    todo!("0x13c58 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_13c58(desc: &RenderGraphicsEnumPropDesc, item: &CRenderSettingsItem) -> IntVariant {
+    // IDA 0x13c58..0x13c7a (decompiled): `getVariant` — `getEnumValue`
+    // through vtable `+68` (0x13c66), `Type::getSingleton<int>` tag
+    // (0x13c6c), `placement_any<int>::operator=` (0x13c7a). Same shape as
+    // 0x100ac.
+    IntVariant { value: (desc.getter)(item) }
 }
 
 // 0x13c7c — __ZNK3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -848,3 +1051,59 @@ pub fn stub_16548() -> ! {
     todo!("0x16548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode> const>::initSingleton(void)")
 }
 
+#[cfg(test)]
+mod fr_enum_desc_tests {
+    use super::*;
+
+    fn get_fr(item: &CRenderSettingsItem) -> i32 {
+        item.frame_rate_manager_mode
+    }
+
+    fn set_fr(item: &mut CRenderSettingsItem, value: i32) {
+        item.frame_rate_manager_mode = value;
+    }
+
+    #[test]
+    fn dense_framerate_round_trip() {
+        let table = frame_rate_manager_mode_enum_desc();
+        assert_eq!(stub_13928(table, 1), 1);
+        assert_eq!(stub_13928(table, 0), 0);
+        assert_eq!(stub_13928(table, 2), 2);
+        let mut d = crate::generated_191::stub_0x131a8("FrameRateManager", "Rendering", get_fr, set_fr);
+        let mut item = CRenderSettingsItem::default();
+        assert!(stub_13888(&d, &mut item, 1));
+        assert_eq!(stub_13880(&d, &item), 1);
+        assert_eq!(stub_13830(&d, &item), Some(1));
+        assert!(stub_1384c(&d, &mut item, 0));
+        assert_eq!(item.frame_rate_manager_mode, 0);
+        assert!(!stub_13888(&d, &mut item, 5));
+        assert_eq!(stub_138d4(&d, &item), 0);
+        assert!(stub_13998(&d, &mut item, 1));
+        assert_eq!(item.frame_rate_manager_mode, 1);
+        assert!(!stub_139d8() && !stub_139dc());
+        assert_eq!(stub_139e0(&d, &item), 1);
+        stub_13a0c(&d, &mut item, 0);
+        assert_eq!(item.frame_rate_manager_mode, 0);
+        assert!(stub_13388(&d) == false && stub_13398(&d) == false);
+        stub_1335c(&mut d as *mut crate::generated_191::RenderFrameRateEnumPropDesc);
+    }
+
+    #[test]
+    fn sparse_graphics_remap() {
+        fn get_gm(item: &CRenderSettingsItem) -> i32 {
+            item.graphics_mode
+        }
+        fn set_gm(item: &mut CRenderSettingsItem, value: i32) {
+            item.graphics_mode = value;
+        }
+        let table = graphics_mode_enum_desc();
+        assert_eq!(table.pairs.len(), 4);
+        let d = stub_13a30("GraphicsMode", "Rendering", get_gm, set_gm);
+        let mut item = CRenderSettingsItem::default();
+        stub_13c58(&d, &item);
+        assert!(stub_13c30(&d, &item, &item));
+        assert!(stub_13c10(&d) == false && stub_13c20(&d) == false);
+        let mut desc = d;
+        stub_13be4(&mut desc as *mut RenderGraphicsEnumPropDesc);
+    }
+}
