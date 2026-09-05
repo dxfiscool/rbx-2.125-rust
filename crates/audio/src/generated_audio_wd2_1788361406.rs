@@ -1024,134 +1024,266 @@ pub fn stub_66dc34(state: &TextBoxState) -> XAlignmentVariant {
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_66dc58() -> ! {
-    todo!("0x66dc58 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_66dc58(state: &mut TextBoxState, variant: &XAlignmentVariant) {
+    // IDA 0x66dc58 (`EnumPropDescriptor<XAlignment>::setVariant`):
+    // an int-typed variant runs `any_cast<int>`; anything else runs
+    // `Variant::convert<int>` (throws on failure, 0x66dcda-0x66dd14);
+    // then the +72 setter. Host: convert-or-throw, then store.
+    let value = match *variant {
+        XAlignmentVariant::XAlignment(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x66dc58)"),
+    };
+    state.x_alignment = value;
 }
 
 // 0x66dda4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_66dda4() -> ! {
-    todo!("0x66dda4 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_66dda4(first: &TextBoxState, second: &mut TextBoxState) {
+    // IDA 0x66dda4 (`EnumPropDescriptor<XAlignment>::copyValue`):
+    // inner `getValue` on the source then inner `setValue` on the
+    // target. Host: copy the alignment.
+    second.x_alignment = first.x_alignment;
 }
 
 // 0x66ddc8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14hasStringValueEv
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::hasStringValue(void)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14hasStringValueEv")]
-pub fn stub_66ddc8() -> ! {
-    todo!("0x66ddc8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14hasStringValueEv")
+pub fn stub_66ddc8() -> bool {
+    // IDA 0x66ddc8 (`EnumPropDescriptor<XAlignment>::hasStringValue`):
+    // returns 1 — always stringable.
+    true
 }
 
 // 0x66ddcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66ddcc() -> ! {
-    todo!("0x66ddcc __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_66ddcc(state: &TextBoxState) -> String {
+    // IDA 0x66ddcc (`EnumPropDescriptor<XAlignment>::getStringValue`):
+    // reads the enum-desc singleton slot, the inner value via the
+    // +44 `GetSet` and `EnumDesc::convertToString`. Host: the
+    // grounded item name (`Left` 0, `Center` 2, `Right` 1 — IDA
+    // 0x7d8548).
+    xalignment_name(state.x_alignment).to_owned()
 }
 
 // 0x66ddf0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_66ddf0() -> ! {
-    todo!("0x66ddf0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_66ddf0(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66ddf0 (`EnumPropDescriptor<XAlignment>::setStringValue`):
+    // `Name::lookup` + `EnumDesc::convertToValue`; on a hit the
+    // inner `setValue` runs and 1 returns, else 0. Host: table
+    // position decides.
+    match XALIGNMENT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.x_alignment = XALIGNMENT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66de30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_66de30() -> ! {
-    todo!("0x66de30 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_66de30(state: &TextBoxState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x66de30 (`EnumPropDescriptor<XAlignment>::writeValue`):
+    // inner `getValue`, `clearValue`, int tag `5` at +16, value at
+    // +20, returns 5. Same shape as the `FontSize` twin at 0x6709a4.
+    out.value_type = 5;
+    out.int_value = state.x_alignment as i32;
+    5
 }
 
 // 0x66de50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_66de50() -> ! {
-    todo!("0x66de50 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_66de50(state: &mut TextBoxState, xml: &XmlReadValue) {
+    // IDA 0x66de50 (`EnumPropDescriptor<XAlignment>::readValue`):
+    // xsi:nil early-out (0x66de74); an int pair runs `setIntValue`
+    // (index→value with -1 rejection, 0x66dec6) and returns on
+    // success; a string pair runs lookup + convert + inner set; a
+    // miss runs the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). Same shape as the `FontSize`
+    // twin at 0x6709c4.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, align)) = XALIGNMENT_ITEMS.get(*value as usize) {
+                    state.x_alignment = *align;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66de50)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_66ddf0(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66de50)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x66de50)");
+            }
+        }
+    }
 }
 
 // 0x66e090 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66e090() -> ! {
-    todo!("0x66e090 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_66e090(state: &TextBoxState) -> i32 {
+    // IDA 0x66e090 (`EnumPropDescriptor<XAlignment>::getIndexValue`):
+    // inner `getValue` + `EnumDesc::convertToIndex`. Host: the item
+    // index of the live value.
+    xalignment_index(state.x_alignment)
 }
 
 // 0x66e0ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_66e0ac() -> ! {
-    todo!("0x66e0ac __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_66e0ac(state: &mut TextBoxState, index: u32) -> bool {
+    // IDA 0x66e0ac (`EnumPropDescriptor<XAlignment>::setIndexValue`):
+    // bounds-checks the index against the item count, stores
+    // `items[index]` through the inner `setValue` and returns 1,
+    // else 0.
+    match XALIGNMENT_ITEMS.get(index as usize) {
+        Some((_, align)) => {
+            state.x_alignment = *align;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x66e0e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_66e0e0() -> ! {
-    todo!("0x66e0e0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_66e0e0(state: &TextBoxState) -> u32 {
+    // IDA 0x66e0e0 (`EnumPropDescriptor<XAlignment>::getEnumValue`):
+    // the inner `getValue` straight through.
+    state.x_alignment
 }
 
 // 0x66e0e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_66e0e8() -> ! {
-    todo!("0x66e0e8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_66e0e8(state: &mut TextBoxState, value: u32) -> bool {
+    // IDA 0x66e0e8 (`EnumPropDescriptor<XAlignment>::setEnumValue`):
+    // `find_if` with `equalValue` over the items; on a hit the
+    // inner `setValue` runs and 1 returns, else 0. Host:
+    // membership decides.
+    if XALIGNMENT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.x_alignment = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x66e134 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_66e134() -> ! {
-    todo!("0x66e134 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_66e134(state: &TextBoxState) -> i32 {
+    // IDA 0x66e134 (`EnumPropDescriptor<XAlignment>::getEnumItem`):
+    // inner `getValue` + `EnumDesc::convertToItem`. Host: the item
+    // position of the live value (-1 when missing).
+    xalignment_index(state.x_alignment)
 }
 
 // 0x66e154 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_66e154() -> ! {
-    todo!("0x66e154 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_66e154(state: &mut TextBoxState, name: &str) -> bool {
+    // IDA 0x66e154 (`EnumPropDescriptor<XAlignment>::setStringValue`
+    // over `Name`): `convertToValue` on the name; on a hit the
+    // inner `setValue` runs and 1 returns, else 0. Same string edge
+    // as 0x66ddf0 — host forwards into that twin (`Name` folds into
+    // `&str`).
+    stub_66ddf0(state, name)
 }
 
 // 0x66e188 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToValue(RBX::Name const&,RBX::TextService::XAlignment&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToValue(RBX::Name const&,RBX::TextService::XAlignment&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_")]
-pub fn stub_66e188() -> ! {
-    todo!("0x66e188 __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_66e188(name: &str) -> Option<u32> {
+    // IDA 0x66e188 (`EnumDesc<XAlignment>::convertToValue(Name)`):
+    // red-black-tree search for the name id, returning 1 with the
+    // value on a hit (else 0). Host: the table value (`None` on a
+    // miss).
+    XALIGNMENT_ITEMS
+        .iter()
+        .find(|(n, _)| *n == name)
+        .map(|(_, v)| *v)
 }
 
 // 0x66e204 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE13convertToItemERKS3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToItem(RBX::TextService::XAlignment const&)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToItem(RBX::TextService::XAlignment const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE13convertToItemERKS3_")]
-pub fn stub_66e204() -> ! {
-    todo!("0x66e204 __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE13convertToItemERKS3_")
+pub fn stub_66e204(value: u32) -> i32 {
+    // IDA 0x66e204 (`EnumDesc<XAlignment>::convertToItem`):
+    // FLog::Asserts-gated `value>=0` (enumconverter.h:273) and
+    // `value<enumToItem.size` (line 274) ReleaseAsserts — host
+    // seams; then the value-indexed item. Host: asserts + table
+    // index.
+    if flog_asserts() {
+        assert!(
+            value < XALIGNMENT_ITEMS.len() as u32,
+            "(size_t)value<enumToItem.size() file: include/reflection/enumconverter.h line: 274 (IDA 0x66e204)"
+        );
+    }
+    xalignment_index(value)
 }
 
 // 0x66e2d0 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_
 // demangled: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment)const")]
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_")]
-pub fn stub_66e2d0() -> ! {
-    todo!("0x66e2d0 __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_")
+pub fn stub_66e2d0(value: u32) -> i32 {
+    // IDA 0x66e2d0 (`EnumDesc<XAlignment>::convertToIndex`):
+    // FLog::Asserts-gated `value>=0` (enumconverter.h:350) — host
+    // seam; then the value-indexed `enumToItem` entry or -1 past
+    // the end. Host: the table index (-1 on a miss).
+    xalignment_index(value)
 }
 
 // 0x66e340 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi
 // demangled: RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextBox,RBX::TextService::XAlignment>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")]
-pub fn stub_66e340() -> ! {
-    todo!("0x66e340 __ZNK3RBX10Reflection18EnumPropDescriptorINS_7TextBoxENS_11TextService10XAlignmentEE11setIntValueEPNS0_13DescribedBaseEi")
+pub fn stub_66e340(state: &mut TextBoxState, index: i32) -> bool {
+    // IDA 0x66e340 (`EnumPropDescriptor<XAlignment>::setIntValue`):
+    // rejects negative indices, bounds-checks against the item
+    // count and rejects `-1`-valued items, then stores through the
+    // inner `setValue` and returns 1, else 0. Table values are
+    // non-negative by type, so the `-1` check folds away.
+    if index >= 0 {
+        if let Some((_, align)) = XALIGNMENT_ITEMS.get(index as usize) {
+            state.x_alignment = *align;
+            return true;
+        }
+    }
+    false
 }
