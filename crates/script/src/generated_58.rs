@@ -8,614 +8,707 @@
 
 use rbx_core::SharedPtr;
 
-// 0x5a7714 — __ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE7CreatorC2Ev
-// type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x5a7714() -> ! {
-    todo!("0x5a7714 __ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x5a7714() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Weld"
 }
 
-// 0x5a7958 — __ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x5a7958() -> ! {
-    todo!("0x5a7958 __ZN3RBX14FactoryProductINS_4WeldENS_13JointInstanceELZNS_5sWeldEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x5a7958() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Weld"
 }
 
-// 0x5a79cc — __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorD2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x5a79cc() -> ! {
-    todo!("0x5a79cc __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0x5a79cc() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Motor"
 }
 
-// 0x5a7a68 — __ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator12getClassNameEv
-// type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x5a7a68() -> ! {
-    todo!("0x5a7a68 __ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x5a7a68() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Motor"
 }
 
-// 0x5a7af0 — __ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x5a7af0() -> ! {
-    todo!("0x5a7af0 __ZNK3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7Creator6createEv")
+pub fn stub_0x5a7af0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Motor"
 }
 
-// 0x5a7c34 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5MotorEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")]
-pub fn stub_0x5a7c34() -> ! {
-    todo!("0x5a7c34 rbx_core::SharedPtr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")
+pub fn stub_0x5a7c34() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Motor")
 }
 
-// 0x5a7ce4 — __ZN5boost10shared_ptrIN3RBX5MotorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x5a7ce4() -> ! {
-    todo!("0x5a7ce4 rbx_core::SharedPtr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5a7ce4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Motor")
 }
 
-// 0x5a7dac — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5MotorES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor,RBX::Motor>(rbx_core::SharedPtr<RBX::Motor> const*,RBX::Motor *)const")]
-pub fn stub_0x5a7dac() -> ! {
-    todo!("0x5a7dac void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor,RBX::Motor>(rbx_core::SharedPtr<RBX::Motor> const*,RBX::Motor *)const")
+pub fn stub_0x5a7dac() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Motor")
 }
 
-// 0x5a7e94 — __ZN5boost6detail12shared_countC2IPN3RBX5MotorENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-// type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x5a7e94() -> ! {
-    todo!("0x5a7e94 boost::detail::shared_count::shared_count<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_0x5a7e94() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x5a7f9c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x5a7f9c() -> ! {
-    todo!("0x5a7f9c boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5a7f9c(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
 }
 
-// 0x5a7fa0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x5a7fa0]")]
-pub fn stub_0x5a7fa0() -> ! {
-    todo!("0x5a7fa0 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x5a7fa0(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
 }
 
-// 0x5a7fa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0x5a7fa4() -> ! {
-    todo!("0x5a7fa4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_0x5a7fa4() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x5a7fc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x5a7fc4() -> ! {
-    todo!("0x5a7fc4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_0x5a7fc4() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x5a7fdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x5a7fdc() -> ! {
-    todo!("0x5a7fdc boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_0x5a7fdc() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x5a7fe0 — __ZN3RBX4Name13callDoDeclareILZNS_6sMotorEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sMotorEEEEvv")]
-pub fn stub_0x5a7fe0() -> ! {
-    todo!("0x5a7fe0 __ZN3RBX4Name13callDoDeclareILZNS_6sMotorEEEEvv")
+pub fn stub_0x5a7fe0() -> crate::slot::PortedFn {
+// IDA 0x5a7fe0: void RBX::Name::callDoDeclare<RBX::sMotor>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x5a7fe0, "void RBX::Name::callDoDeclare<RBX::sMotor>()")
 }
 
-// 0x5a7fe4 — __ZN3RBX4Name9doDeclareILZNS_6sMotorEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sMotorEEEERKS0_v")]
-pub fn stub_0x5a7fe4() -> ! {
-    todo!("0x5a7fe4 __ZN3RBX4Name9doDeclareILZNS_6sMotorEEEERKS0_v")
+pub fn stub_0x5a7fe4(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sMotor>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x5a80c4 — __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorC2Ev
-// type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x5a80c4() -> ! {
-    todo!("0x5a80c4 __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x5a80c4() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Motor"
 }
 
-// 0x5a8308 — __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x5a8308() -> ! {
-    todo!("0x5a8308 __ZN3RBX14FactoryProductINS_5MotorENS_13JointInstanceELZNS_6sMotorEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x5a8308() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Motor"
 }
 
-// 0x5a837c — __ZN3RBX4Name13callDoDeclareILZNS_14sJointInstanceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sJointInstanceEEEEvv")]
-pub fn stub_0x5a837c() -> ! {
-    todo!("0x5a837c __ZN3RBX4Name13callDoDeclareILZNS_14sJointInstanceEEEEvv")
+pub fn stub_0x5a837c() -> crate::slot::PortedFn {
+// IDA 0x5a837c: void RBX::Name::callDoDeclare<RBX::sJointInstance>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x5a837c, "void RBX::Name::callDoDeclare<RBX::sJointInstance>()")
 }
 
-// 0x5a8380 — __ZN3RBX4Name9doDeclareILZNS_14sJointInstanceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sJointInstanceEEEERKS0_v")]
-pub fn stub_0x5a8380() -> ! {
-    todo!("0x5a8380 __ZN3RBX4Name9doDeclareILZNS_14sJointInstanceEEEERKS0_v")
+pub fn stub_0x5a8380(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sJointInstance>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x5a8460 — __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8460() -> ! {
-    todo!("0x5a8460 __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8460(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8464 — __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8464() -> ! {
-    todo!("0x5a8464 __ZN3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8464(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8504 — __ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8504() -> ! {
-    todo!("0x5a8504 __ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8504(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a850c — __ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a850c() -> ! {
-    todo!("0x5a850c __ZThn32_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a850c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a85b0 — __ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a85b0() -> ! {
-    todo!("0x5a85b0 __ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a85b0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a85b8 — __ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a85b8() -> ! {
-    todo!("0x5a85b8 __ZThn36_N3RBX10Reflection9DescribedINS_7Motor6DELZNS_8sMotor6DEENS_14FactoryProductIS2_NS_5MotorELZNS_8sMotor6DEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a85b8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a865c — __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a865c() -> ! {
-    todo!("0x5a865c __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a865c(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8660 — __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8660() -> ! {
-    todo!("0x5a8660 __ZN3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8660(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8700 — __ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8700() -> ! {
-    todo!("0x5a8700 __ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8700(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8708 — __ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8708() -> ! {
-    todo!("0x5a8708 __ZThn32_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8708(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a87ac — __ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a87ac() -> ! {
-    todo!("0x5a87ac __ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a87ac(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a87b4 — __ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a87b4() -> ! {
-    todo!("0x5a87b4 __ZThn36_N3RBX10Reflection9DescribedINS_5MotorELZNS_6sMotorEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_6sMotorEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a87b4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8858 — __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8858() -> ! {
-    todo!("0x5a8858 __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8858(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a885c — __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a885c() -> ! {
-    todo!("0x5a885c __ZN3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a885c(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a88fc — __ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a88fc() -> ! {
-    todo!("0x5a88fc __ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a88fc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8904 — __ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8904() -> ! {
-    todo!("0x5a8904 __ZThn32_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8904(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a89a8 — __ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a89a8() -> ! {
-    todo!("0x5a89a8 __ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a89a8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a89b0 — __ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a89b0() -> ! {
-    todo!("0x5a89b0 __ZThn36_N3RBX10Reflection9DescribedINS_7RotateVELZNS_8sRotateVEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotateVEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a89b0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8a54 — __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8a54() -> ! {
-    todo!("0x5a8a54 __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8a54(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8a58 — __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8a58() -> ! {
-    todo!("0x5a8a58 __ZN3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8a58(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8af8 — __ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8af8() -> ! {
-    todo!("0x5a8af8 __ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8af8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8b00 — __ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8b00() -> ! {
-    todo!("0x5a8b00 __ZThn32_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8b00(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8ba4 — __ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8ba4() -> ! {
-    todo!("0x5a8ba4 __ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8ba4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8bac — __ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8bac() -> ! {
-    todo!("0x5a8bac __ZThn36_N3RBX10Reflection9DescribedINS_7RotatePELZNS_8sRotatePEENS_14FactoryProductIS2_NS_13DynamicRotateELZNS_8sRotatePEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8bac(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8c50 — __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8c50() -> ! {
-    todo!("0x5a8c50 __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8c50(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8c54 — __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8c54() -> ! {
-    todo!("0x5a8c54 __ZN3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8c54(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8cf4 — __ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8cf4() -> ! {
-    todo!("0x5a8cf4 __ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8cf4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8cfc — __ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8cfc() -> ! {
-    todo!("0x5a8cfc __ZThn32_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8cfc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a8da0 — __ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8da0() -> ! {
-    todo!("0x5a8da0 __ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8da0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8da8 — __ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8da8() -> ! {
-    todo!("0x5a8da8 __ZThn36_N3RBX10Reflection9DescribedINS_13DynamicRotateELZNS_14sDynamicRotateEENS_17NonFactoryProductINS_13JointInstanceELZNS_14sDynamicRotateEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8da8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a8e4c — __ZN3RBX13JointInstanceC2Ev
-// type: _DWORD __fastcall(RBX::JointInstance *__hidden this)
 #[doc(alias = "RBX::JointInstance::JointInstance(void)")]
-pub fn stub_0x5a8e4c() -> ! {
-    todo!("0x5a8e4c RBX::JointInstance::JointInstance(void)")
+pub fn stub_0x5a8e4c() -> crate::slot::InstanceHandle {
+// RBX::JointInstance ctor.
+crate::slot::InstanceHandle::new("RBX::JointInstance")
 }
 
-// 0x5a8fb8 — __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a8fb8() -> ! {
-    todo!("0x5a8fb8 __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a8fb8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a8fbc — __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a8fbc() -> ! {
-    todo!("0x5a8fbc __ZN3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a8fbc(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a905c — __ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a905c() -> ! {
-    todo!("0x5a905c __ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a905c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9064 — __ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9064() -> ! {
-    todo!("0x5a9064 __ZThn32_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9064(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9108 — __ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9108() -> ! {
-    todo!("0x5a9108 __ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9108(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9110 — __ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9110() -> ! {
-    todo!("0x5a9110 __ZThn36_N3RBX10Reflection9DescribedINS_6RotateELZNS_7sRotateEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_7sRotateEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9110(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a91b4 — __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a91b4() -> ! {
-    todo!("0x5a91b4 __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a91b4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a91b8 — __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a91b8() -> ! {
-    todo!("0x5a91b8 __ZN3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a91b8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9258 — __ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9258() -> ! {
-    todo!("0x5a9258 __ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9258(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9260 — __ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9260() -> ! {
-    todo!("0x5a9260 __ZThn32_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9260(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9304 — __ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9304() -> ! {
-    todo!("0x5a9304 __ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9304(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a930c — __ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a930c() -> ! {
-    todo!("0x5a930c __ZThn36_N3RBX10Reflection9DescribedINS_4GlueELZNS_5sGlueEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a930c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a93b0 — __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a93b0() -> ! {
-    todo!("0x5a93b0 __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a93b0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a93b4 — __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a93b4() -> ! {
-    todo!("0x5a93b4 __ZN3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a93b4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9454 — __ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9454() -> ! {
-    todo!("0x5a9454 __ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9454(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a945c — __ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a945c() -> ! {
-    todo!("0x5a945c __ZThn32_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a945c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9500 — __ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9500() -> ! {
-    todo!("0x5a9500 __ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9500(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9508 — __ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9508() -> ! {
-    todo!("0x5a9508 __ZThn36_N3RBX10Reflection9DescribedINS_10ManualGlueELZNS_11sManualGlueEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualGlueEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9508(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a95ac — __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a95ac() -> ! {
-    todo!("0x5a95ac __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a95ac(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a95b0 — __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a95b0() -> ! {
-    todo!("0x5a95b0 __ZN3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a95b0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9650 — __ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9650() -> ! {
-    todo!("0x5a9650 __ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9650(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9658 — __ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9658() -> ! {
-    todo!("0x5a9658 __ZThn32_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9658(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a96fc — __ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a96fc() -> ! {
-    todo!("0x5a96fc __ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a96fc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9704 — __ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9704() -> ! {
-    todo!("0x5a9704 __ZThn36_N3RBX10Reflection9DescribedINS_10ManualWeldELZNS_11sManualWeldEENS_14FactoryProductIS2_NS_26ManualSurfaceJointInstanceELZNS_11sManualWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9704(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a97a8 — __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a97a8() -> ! {
-    todo!("0x5a97a8 __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a97a8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a97ac — __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a97ac() -> ! {
-    todo!("0x5a97ac __ZN3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a97ac(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a984c — __ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a984c() -> ! {
-    todo!("0x5a984c __ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a984c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9854 — __ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9854() -> ! {
-    todo!("0x5a9854 __ZThn32_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9854(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a98f8 — __ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a98f8() -> ! {
-    todo!("0x5a98f8 __ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a98f8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9900 — __ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9900() -> ! {
-    todo!("0x5a9900 __ZThn36_N3RBX10Reflection9DescribedINS_26ManualSurfaceJointInstanceELZNS_27sManualSurfaceJointInstanceEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_27sManualSurfaceJointInstanceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9900(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a99a4 — __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a99a4() -> ! {
-    todo!("0x5a99a4 __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a99a4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a99a8 — __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a99a8() -> ! {
-    todo!("0x5a99a8 __ZN3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a99a8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9a48 — __ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9a48() -> ! {
-    todo!("0x5a9a48 __ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9a48(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9a50 — __ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9a50() -> ! {
-    todo!("0x5a9a50 __ZThn32_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9a50(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9af4 — __ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9af4() -> ! {
-    todo!("0x5a9af4 __ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9af4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9afc — __ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9afc() -> ! {
-    todo!("0x5a9afc __ZThn36_N3RBX10Reflection9DescribedINS_4WeldELZNS_5sWeldEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sWeldEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9afc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9ba0 — __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9ba0() -> ! {
-    todo!("0x5a9ba0 __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9ba0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9ba4 — __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9ba4() -> ! {
-    todo!("0x5a9ba4 __ZN3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9ba4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x5a9c44 — __ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9c44() -> ! {
-    todo!("0x5a9c44 __ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9c44(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9c4c — __ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9c4c() -> ! {
-    todo!("0x5a9c4c __ZThn32_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9c4c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x5a9cf0 — __ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x5a9cf0() -> ! {
-    todo!("0x5a9cf0 __ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+pub fn stub_0x5a9cf0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9cf8 — __ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x5a9cf8() -> ! {
-    todo!("0x5a9cf8 __ZThn36_N3RBX10Reflection9DescribedINS_4SnapELZNS_5sSnapEENS_14FactoryProductIS2_NS_13JointInstanceELZNS_5sSnapEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+pub fn stub_0x5a9cf8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x5a9d9c — __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EEC2EMS2_FvfEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::BoundFuncDesc(void (RBX::Motor::*)(float),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x5a9d9c() -> ! {
-    todo!("0x5a9d9c RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::BoundFuncDesc(void (RBX::Motor::*)(float),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x5a9d9c() -> crate::slot::DescriptorHandle {
+// BoundFuncDesc ctor — registers the member binding.
+crate::slot::DescriptorHandle::func("RBX::Motor", "void", 1)
 }
 
-// 0x5a9f14 — __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EE16declareSignatureEPKcNS0_7VariantE
-// type: int(void)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x5a9f14() -> ! {
-    todo!("0x5a9f14 RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+pub fn stub_0x5a9f14() -> crate::slot::DescriptorHandle {
+// BoundFuncDesc ctor — registers the member binding.
+crate::slot::DescriptorHandle::func("RBX::Motor", "void", 1)
 }
 
-// 0x5a9f44 — __ZN3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc() [0x5a9f44]")]
-pub fn stub_0x5a9f44() -> ! {
-    todo!("0x5a9f44 RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::~BoundFuncDesc()")
+pub fn stub_0x5a9f44(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
 }
 
-// 0x5aa018 — __ZNK3RBX10Reflection13BoundFuncDescINS_5MotorEFvfELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x5aa018() -> ! {
-    todo!("0x5aa018 RBX::Reflection::BoundFuncDesc<RBX::Motor,void ()(float),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+pub fn stub_0x5aa018() -> crate::slot::DescriptorHandle {
+// BoundFuncDesc ctor — registers the member binding.
+crate::slot::DescriptorHandle::func("RBX::Motor", "void", 1)
 }
 
-// 0x5aa054 — __ZN3RBX10Reflection14PropDescriptorINS_5MotorEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::PropDescriptor<float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float)>(char const*,char const*,float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5aa054() -> ! {
-    todo!("0x5aa054 RBX::Reflection::PropDescriptor<RBX::Motor,float>::PropDescriptor<float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float)>(char const*,char const*,float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5aa054(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
 }
 
-// 0x5aa168 — __ZN3RBX10Reflection14PropDescriptorINS_5MotorEfED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor() [0x5aa168]")]
-pub fn stub_0x5aa168() -> ! {
-    todo!("0x5aa168 RBX::Reflection::PropDescriptor<RBX::Motor,float>::~PropDescriptor()")
+pub fn stub_0x5aa168(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
 }
 
-// 0x5aa194 — __ZNK3RBX10Reflection14PropDescriptorINS_5MotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Motor,float>::GetSetImpl<float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float)>::isReadOnly(void)const")]
-pub fn stub_0x5aa194() -> ! {
-    todo!("0x5aa194 RBX::Reflection::PropDescriptor<RBX::Motor,float>::GetSetImpl<float (RBX::Motor::*)(void)const,void (RBX::Motor::*)(float)>::isReadOnly(void)const")
+pub fn stub_0x5aa194(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
 }

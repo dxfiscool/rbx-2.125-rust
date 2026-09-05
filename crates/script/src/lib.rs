@@ -313,3 +313,4 @@ pub mod generated_watchdog_script_wdC;
 pub mod generated_watchdog_script_wdB;
 pub mod lua;
 pub mod brick_color_palette;
+pub mod slot;

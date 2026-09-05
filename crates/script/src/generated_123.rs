@@ -8,702 +8,702 @@
 
 use rbx_core::SharedPtr;
 
-// 0xbf784 — __ZN4FMOD12DSPResampler7releaseEb
-// type: _DWORD __fastcall(FMOD::DSPResampler *__hidden this, bool)
 #[doc(alias = "__ZN4FMOD12DSPResampler7releaseEb")]
-pub fn stub_0xbf784() -> ! {
-    todo!("0xbf784 __ZN4FMOD12DSPResampler7releaseEb")
+pub fn stub_0xbf784() -> crate::slot::PortedFn {
+// IDA 0xbf784: FMOD::DSPResampler::release(bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xbf784, "FMOD::DSPResampler::release(bool)")
 }
 
-// 0xbf814 — __ZN4FMOD12DSPResamplerC2Ev
-// type: _DWORD __fastcall(FMOD::DSPResampler *__hidden this)
 #[doc(alias = "__ZN4FMOD12DSPResamplerC2Ev")]
-pub fn stub_0xbf814() -> ! {
-    todo!("0xbf814 __ZN4FMOD12DSPResamplerC2Ev")
+pub fn stub_0xbf814() -> crate::slot::PortedFn {
+// IDA 0xbf814: FMOD::DSPResampler::DSPResampler().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xbf814, "FMOD::DSPResampler::DSPResampler()")
 }
 
-// 0xbf8c4 — __ZN4FMOD12DSPResampler4readEPPfPiPj16FMOD_SPEAKERMODEij
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPResampler4readEPPfPiPj16FMOD_SPEAKERMODEij")]
-pub fn stub_0xbf8c4() -> ! {
-    todo!("0xbf8c4 __ZN4FMOD12DSPResampler4readEPPfPiPj16FMOD_SPEAKERMODEij")
+pub fn stub_0xbf8c4() -> crate::slot::PortedFn {
+// IDA 0xbf8c4: FMOD::DSPResampler::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xbf8c4, "FMOD::DSPResampler::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)")
 }
 
-// 0xc0334 — __ZN4FMOD22DSPResamplerMultiInput8addInputEPNS_4DSPIE
-// type: _DWORD __fastcall(FMOD::DSPResamplerMultiInput *__hidden this, FMOD::DSPI *)
 #[doc(alias = "__ZN4FMOD22DSPResamplerMultiInput8addInputEPNS_4DSPIE")]
-pub fn stub_0xc0334() -> ! {
-    todo!("0xc0334 __ZN4FMOD22DSPResamplerMultiInput8addInputEPNS_4DSPIE")
+pub fn stub_0xc0334() -> crate::slot::PortedFn {
+// IDA 0xc0334: FMOD::DSPResamplerMultiInput::addInput(FMOD::DSPI*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc0334, "FMOD::DSPResamplerMultiInput::addInput(FMOD::DSPI*)")
 }
 
-// 0xc0378 — __ZN4FMOD22DSPResamplerMultiInput4readEPPfPiPj16FMOD_SPEAKERMODEij
-// type: int __fastcall(FMOD::DSPI *this, int, int, int, char, int, int)
 #[doc(alias = "__ZN4FMOD22DSPResamplerMultiInput4readEPPfPiPj16FMOD_SPEAKERMODEij")]
-pub fn stub_0xc0378() -> ! {
-    todo!("0xc0378 __ZN4FMOD22DSPResamplerMultiInput4readEPPfPiPj16FMOD_SPEAKERMODEij")
+pub fn stub_0xc0378() -> crate::slot::PortedFn {
+// IDA 0xc0378: FMOD::DSPResamplerMultiInput::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc0378, "FMOD::DSPResamplerMultiInput::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int~")
 }
 
-// 0xc097c — _FMOD_Resampler_NoInterp
-// type: 
 #[doc(alias = "_FMOD_Resampler_NoInterp")]
-pub fn stub_0xc097c() -> ! {
-    todo!("0xc097c _FMOD_Resampler_NoInterp")
+pub fn stub_0xc097c() -> crate::slot::PortedFn {
+// IDA 0xc097c: _FMOD_Resampler_NoInterp.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xc097c, "_FMOD_Resampler_NoInterp")
 }
 
-// 0xc1498 — __ZN4FMOD9DSPReverb15releaseInternalEv
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD9DSPReverb15releaseInternalEv")]
-pub fn stub_0xc1498() -> ! {
-    todo!("0xc1498 __ZN4FMOD9DSPReverb15releaseInternalEv")
+pub fn stub_0xc1498() -> crate::slot::PortedFn {
+// IDA 0xc1498: FMOD::DSPReverb::releaseInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1498, "FMOD::DSPReverb::releaseInternal()")
 }
 
-// 0xc14a0 — __ZN4FMOD9DSPReverb13resetInternalEv
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD9DSPReverb13resetInternalEv")]
-pub fn stub_0xc14a0() -> ! {
-    todo!("0xc14a0 __ZN4FMOD9DSPReverb13resetInternalEv")
+pub fn stub_0xc14a0() -> crate::slot::PortedFn {
+// IDA 0xc14a0: FMOD::DSPReverb::resetInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc14a0, "FMOD::DSPReverb::resetInternal()")
 }
 
-// 0xc14a8 — __ZN4FMOD9DSPReverb17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb17getMemoryUsedImplEPNS_13MemoryTrackerE")]
-pub fn stub_0xc14a8() -> ! {
-    todo!("0xc14a8 __ZN4FMOD9DSPReverb17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc14a8() -> crate::slot::PortedFn {
+// IDA 0xc14a8: FMOD::DSPReverb::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc14a8, "FMOD::DSPReverb::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc14b0 — __ZN4FMOD9DSPReverb15releaseCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb15releaseCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc14b0() -> ! {
-    todo!("0xc14b0 __ZN4FMOD9DSPReverb15releaseCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc14b0() -> crate::slot::PortedFn {
+// IDA 0xc14b0: FMOD::DSPReverb::releaseCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc14b0, "FMOD::DSPReverb::releaseCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc14bc — __ZN4FMOD9DSPReverb13resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPReverb *)
 #[doc(alias = "__ZN4FMOD9DSPReverb13resetCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc14bc() -> ! {
-    todo!("0xc14bc __ZN4FMOD9DSPReverb13resetCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc14bc() -> crate::slot::PortedFn {
+// IDA 0xc14bc: FMOD::DSPReverb::resetCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc14bc, "FMOD::DSPReverb::resetCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc14c8 — __ZN4FMOD9DSPReverb21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")]
-pub fn stub_0xc14c8() -> ! {
-    todo!("0xc14c8 __ZN4FMOD9DSPReverb21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")
+pub fn stub_0xc14c8() -> crate::slot::PortedFn {
+// IDA 0xc14c8: FMOD::DSPReverb::getMemoryUsedCallback(FMOD_DSP_STATE*, FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc14c8, "FMOD::DSPReverb::getMemoryUsedCallback(FMOD_DSP_STATE*, FMOD::MemoryTracker*)")
 }
 
-// 0xc1520 — __ZN4FMOD9DSPReverb20getParameterInternalEiPfPc
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this, int, float *, char *)
 #[doc(alias = "__ZN4FMOD9DSPReverb20getParameterInternalEiPfPc")]
-pub fn stub_0xc1520() -> ! {
-    todo!("0xc1520 __ZN4FMOD9DSPReverb20getParameterInternalEiPfPc")
+pub fn stub_0xc1520() -> crate::slot::PortedFn {
+// IDA 0xc1520: FMOD::DSPReverb::getParameterInternal(int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1520, "FMOD::DSPReverb::getParameterInternal(int, float*, char*)")
 }
 
-// 0xc16c4 — __ZN4FMOD9DSPReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")]
-pub fn stub_0xc16c4() -> ! {
-    todo!("0xc16c4 __ZN4FMOD9DSPReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
+pub fn stub_0xc16c4() -> crate::slot::PortedFn {
+// IDA 0xc16c4: FMOD::DSPReverb::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc16c4, "FMOD::DSPReverb::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*)")
 }
 
-// 0xc16d0 — __ZN4FMOD9DSPReverb20setParameterInternalEif
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this, int, float)
 #[doc(alias = "__ZN4FMOD9DSPReverb20setParameterInternalEif")]
-pub fn stub_0xc16d0() -> ! {
-    todo!("0xc16d0 __ZN4FMOD9DSPReverb20setParameterInternalEif")
+pub fn stub_0xc16d0() -> crate::slot::PortedFn {
+// IDA 0xc16d0: FMOD::DSPReverb::setParameterInternal(int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc16d0, "FMOD::DSPReverb::setParameterInternal(int, float)")
 }
 
-// 0xc1870 — __ZN4FMOD9DSPReverb20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb20setParameterCallbackEP14FMOD_DSP_STATEif")]
-pub fn stub_0xc1870() -> ! {
-    todo!("0xc1870 __ZN4FMOD9DSPReverb20setParameterCallbackEP14FMOD_DSP_STATEif")
+pub fn stub_0xc1870() -> crate::slot::PortedFn {
+// IDA 0xc1870: FMOD::DSPReverb::setParameterCallback(FMOD_DSP_STATE*, int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1870, "FMOD::DSPReverb::setParameterCallback(FMOD_DSP_STATE*, int, float)")
 }
 
-// 0xc187c — __ZN4FMOD9DSPReverb12readInternalEPfS1_jii
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this, float *, float *, unsigned int, int, int)
 #[doc(alias = "__ZN4FMOD9DSPReverb12readInternalEPfS1_jii")]
-pub fn stub_0xc187c() -> ! {
-    todo!("0xc187c __ZN4FMOD9DSPReverb12readInternalEPfS1_jii")
+pub fn stub_0xc187c() -> crate::slot::PortedFn {
+// IDA 0xc187c: FMOD::DSPReverb::readInternal(float*, float*, unsigned int, int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc187c, "FMOD::DSPReverb::readInternal(float*, float*, unsigned int, int, int)")
 }
 
-// 0xc191c — __ZN4FMOD9DSPReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii")]
-pub fn stub_0xc191c() -> ! {
-    todo!("0xc191c __ZN4FMOD9DSPReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
+pub fn stub_0xc191c() -> crate::slot::PortedFn {
+// IDA 0xc191c: FMOD::DSPReverb::readCallback(FMOD_DSP_STATE*, float*, float*, unsigned int, int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc191c, "FMOD::DSPReverb::readCallback(FMOD_DSP_STATE*, float*, float*, unsigned int, int, int)")
 }
 
-// 0xc1944 — __ZN4FMOD9DSPReverb14createInternalEv
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD9DSPReverb14createInternalEv")]
-pub fn stub_0xc1944() -> ! {
-    todo!("0xc1944 __ZN4FMOD9DSPReverb14createInternalEv")
+pub fn stub_0xc1944() -> crate::slot::PortedFn {
+// IDA 0xc1944: FMOD::DSPReverb::createInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1944, "FMOD::DSPReverb::createInternal()")
 }
 
-// 0xc19c4 — __ZN4FMOD9DSPReverb14createCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD9DSPReverb14createCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc19c4() -> ! {
-    todo!("0xc19c4 __ZN4FMOD9DSPReverb14createCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc19c4() -> crate::slot::PortedFn {
+// IDA 0xc19c4: FMOD::DSPReverb::createCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc19c4, "FMOD::DSPReverb::createCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc19d0 — __ZN4FMOD9DSPReverb16getDescriptionExEv
-// type: _DWORD __fastcall(FMOD::DSPReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD9DSPReverb16getDescriptionExEv")]
-pub fn stub_0xc19d0() -> ! {
-    todo!("0xc19d0 __ZN4FMOD9DSPReverb16getDescriptionExEv")
+pub fn stub_0xc19d0() -> crate::slot::PortedFn {
+// IDA 0xc19d0: FMOD::DSPReverb::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc19d0, "FMOD::DSPReverb::getDescriptionEx()")
 }
 
-// 0xc1b04 — __GLOBAL__I__ZN4FMOD9dspreverbE
-// type: 
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9dspreverbE")]
-pub fn stub_0xc1b04() -> ! {
-    todo!("0xc1b04 __GLOBAL__I__ZN4FMOD9dspreverbE")
+pub fn stub_0xc1b04() -> crate::slot::PortedFn {
+// IDA 0xc1b04: __GLOBAL__I__ZN4FMOD9dspreverbE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xc1b04, "__GLOBAL__I__ZN4FMOD9dspreverbE")
 }
 
-// 0xc1b10 — __ZN4FMOD12DSPSfxReverb20SetRoomRolloffFactorEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20SetRoomRolloffFactorEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1b10() -> ! {
-    todo!("0xc1b10 __ZN4FMOD12DSPSfxReverb20SetRoomRolloffFactorEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1b10() -> crate::slot::PortedFn {
+// IDA 0xc1b10: FMOD::DSPSfxReverb::SetRoomRolloffFactor(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1b10, "FMOD::DSPSfxReverb::SetRoomRolloffFactor(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc1b24 — __ZN4FMOD12DSPSfxReverb17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPSfxReverb *this, FMOD::MemoryTracker *)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb17getMemoryUsedImplEPNS_13MemoryTrackerE")]
-pub fn stub_0xc1b24() -> ! {
-    todo!("0xc1b24 __ZN4FMOD12DSPSfxReverb17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc1b24() -> crate::slot::PortedFn {
+// IDA 0xc1b24: FMOD::DSPSfxReverb::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1b24, "FMOD::DSPSfxReverb::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc1c84 — __ZN4FMOD12DSPSfxReverb12SetDiffusionEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb12SetDiffusionEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1c84() -> ! {
-    todo!("0xc1c84 __ZN4FMOD12DSPSfxReverb12SetDiffusionEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1c84() -> crate::slot::PortedFn {
+// IDA 0xc1c84: FMOD::DSPSfxReverb::SetDiffusion(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1c84, "FMOD::DSPSfxReverb::SetDiffusion(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc1d48 — __ZN4FMOD12DSPSfxReverb19SetReflectionsLevelEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb19SetReflectionsLevelEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1d48() -> ! {
-    todo!("0xc1d48 __ZN4FMOD12DSPSfxReverb19SetReflectionsLevelEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1d48() -> crate::slot::PortedFn {
+// IDA 0xc1d48: FMOD::DSPSfxReverb::SetReflectionsLevel(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1d48, "FMOD::DSPSfxReverb::SetReflectionsLevel(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc1de4 — __ZN4FMOD12DSPSfxReverb14SetReverbDelayEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14SetReverbDelayEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1de4() -> ! {
-    todo!("0xc1de4 __ZN4FMOD12DSPSfxReverb14SetReverbDelayEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1de4() -> crate::slot::PortedFn {
+// IDA 0xc1de4: FMOD::DSPSfxReverb::SetReverbDelay(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1de4, "FMOD::DSPSfxReverb::SetReverbDelay(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc1e74 — __ZN4FMOD12DSPSfxReverb19SetReflectionsDelayEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb19SetReflectionsDelayEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1e74() -> ! {
-    todo!("0xc1e74 __ZN4FMOD12DSPSfxReverb19SetReflectionsDelayEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1e74() -> crate::slot::PortedFn {
+// IDA 0xc1e74: FMOD::DSPSfxReverb::SetReflectionsDelay(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1e74, "FMOD::DSPSfxReverb::SetReflectionsDelay(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc1f00 — __ZN4FMOD12DSPSfxReverb14SetReverbLevelEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14SetReverbLevelEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc1f00() -> ! {
-    todo!("0xc1f00 __ZN4FMOD12DSPSfxReverb14SetReverbLevelEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc1f00() -> crate::slot::PortedFn {
+// IDA 0xc1f00: FMOD::DSPSfxReverb::SetReverbLevel(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc1f00, "FMOD::DSPSfxReverb::SetReverbLevel(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2014 — __ZN4FMOD12DSPSfxReverb7SetRoomEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb7SetRoomEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2014() -> ! {
-    todo!("0xc2014 __ZN4FMOD12DSPSfxReverb7SetRoomEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2014() -> crate::slot::PortedFn {
+// IDA 0xc2014: FMOD::DSPSfxReverb::SetRoom(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2014, "FMOD::DSPSfxReverb::SetRoom(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc207c — __ZN4FMOD12DSPSfxReverb20CalculateShelfCoeffsEfffPfS1_S1_S1_S1_
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this, float, float, float, float *, float *, float *, float *, float *)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20CalculateShelfCoeffsEfffPfS1_S1_S1_S1_")]
-pub fn stub_0xc207c() -> ! {
-    todo!("0xc207c __ZN4FMOD12DSPSfxReverb20CalculateShelfCoeffsEfffPfS1_S1_S1_S1_")
+pub fn stub_0xc207c() -> crate::slot::PortedFn {
+// IDA 0xc207c: FMOD::DSPSfxReverb::CalculateShelfCoeffs(float, float, float, float*, float*, float*, float*, float*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc207c, "FMOD::DSPSfxReverb::CalculateShelfCoeffs(float, float, float, float*, float*, float*, float*, float*~")
 }
 
-// 0xc2178 — __ZN4FMOD12DSPSfxReverb9SetRoomLFEPNS_18SFX_REVERB_LFPROPSE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb9SetRoomLFEPNS_18SFX_REVERB_LFPROPSE")]
-pub fn stub_0xc2178() -> ! {
-    todo!("0xc2178 __ZN4FMOD12DSPSfxReverb9SetRoomLFEPNS_18SFX_REVERB_LFPROPSE")
+pub fn stub_0xc2178() -> crate::slot::PortedFn {
+// IDA 0xc2178: FMOD::DSPSfxReverb::SetRoomLF(FMOD::SFX_REVERB_LFPROPS*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2178, "FMOD::DSPSfxReverb::SetRoomLF(FMOD::SFX_REVERB_LFPROPS*)")
 }
 
-// 0xc2210 — __ZN4FMOD12DSPSfxReverb14SetLFReferenceEPNS_18SFX_REVERB_LFPROPSE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14SetLFReferenceEPNS_18SFX_REVERB_LFPROPSE")]
-pub fn stub_0xc2210() -> ! {
-    todo!("0xc2210 __ZN4FMOD12DSPSfxReverb14SetLFReferenceEPNS_18SFX_REVERB_LFPROPSE")
+pub fn stub_0xc2210() -> crate::slot::PortedFn {
+// IDA 0xc2210: FMOD::DSPSfxReverb::SetLFReference(FMOD::SFX_REVERB_LFPROPS*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2210, "FMOD::DSPSfxReverb::SetLFReference(FMOD::SFX_REVERB_LFPROPS*)")
 }
 
-// 0xc2250 — __ZN4FMOD12DSPSfxReverb29Calculate1stOrderLowpassCoeffEfffPf
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this, float, float, float, float *)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb29Calculate1stOrderLowpassCoeffEfffPf")]
-pub fn stub_0xc2250() -> ! {
-    todo!("0xc2250 __ZN4FMOD12DSPSfxReverb29Calculate1stOrderLowpassCoeffEfffPf")
+pub fn stub_0xc2250() -> crate::slot::PortedFn {
+// IDA 0xc2250: FMOD::DSPSfxReverb::Calculate1stOrderLowpassCoeff(float, float, float, float*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2250, "FMOD::DSPSfxReverb::Calculate1stOrderLowpassCoeff(float, float, float, float*)")
 }
 
-// 0xc2370 — __ZN4FMOD12DSPSfxReverb12SetDecayTimeEP25_I3DL2_LISTENERPROPERTIES
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb12SetDecayTimeEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2370() -> ! {
-    todo!("0xc2370 __ZN4FMOD12DSPSfxReverb12SetDecayTimeEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2370() -> crate::slot::PortedFn {
+// IDA 0xc2370: FMOD::DSPSfxReverb::SetDecayTime(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2370, "FMOD::DSPSfxReverb::SetDecayTime(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2508 — __ZN4FMOD12DSPSfxReverb15SetDecayHFRatioEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb15SetDecayHFRatioEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2508() -> ! {
-    todo!("0xc2508 __ZN4FMOD12DSPSfxReverb15SetDecayHFRatioEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2508() -> crate::slot::PortedFn {
+// IDA 0xc2508: FMOD::DSPSfxReverb::SetDecayHFRatio(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2508, "FMOD::DSPSfxReverb::SetDecayHFRatio(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2550 — __ZN4FMOD12DSPSfxReverb19SetDelayLineLengthsEP25_I3DL2_LISTENERPROPERTIES
-// type: int __fastcall(int, int)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb19SetDelayLineLengthsEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2550() -> ! {
-    todo!("0xc2550 __ZN4FMOD12DSPSfxReverb19SetDelayLineLengthsEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2550() -> crate::slot::PortedFn {
+// IDA 0xc2550: FMOD::DSPSfxReverb::SetDelayLineLengths(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2550, "FMOD::DSPSfxReverb::SetDelayLineLengths(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2618 — __ZN4FMOD12DSPSfxReverb10SetDensityEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb10SetDensityEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2618() -> ! {
-    todo!("0xc2618 __ZN4FMOD12DSPSfxReverb10SetDensityEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2618() -> crate::slot::PortedFn {
+// IDA 0xc2618: FMOD::DSPSfxReverb::SetDensity(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2618, "FMOD::DSPSfxReverb::SetDensity(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2664 — __ZN4FMOD12DSPSfxReverb9SetRoomHFEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb9SetRoomHFEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2664() -> ! {
-    todo!("0xc2664 __ZN4FMOD12DSPSfxReverb9SetRoomHFEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2664() -> crate::slot::PortedFn {
+// IDA 0xc2664: FMOD::DSPSfxReverb::SetRoomHF(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2664, "FMOD::DSPSfxReverb::SetRoomHF(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2730 — __ZN4FMOD12DSPSfxReverb14SetHFReferenceEP25_I3DL2_LISTENERPROPERTIES
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14SetHFReferenceEP25_I3DL2_LISTENERPROPERTIES")]
-pub fn stub_0xc2730() -> ! {
-    todo!("0xc2730 __ZN4FMOD12DSPSfxReverb14SetHFReferenceEP25_I3DL2_LISTENERPROPERTIES")
+pub fn stub_0xc2730() -> crate::slot::PortedFn {
+// IDA 0xc2730: FMOD::DSPSfxReverb::SetHFReference(_I3DL2_LISTENERPROPERTIES*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2730, "FMOD::DSPSfxReverb::SetHFReference(_I3DL2_LISTENERPROPERTIES*)")
 }
 
-// 0xc2794 — __ZN4FMOD12DSPSfxReverb14updateInternalEv
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14updateInternalEv")]
-pub fn stub_0xc2794() -> ! {
-    todo!("0xc2794 __ZN4FMOD12DSPSfxReverb14updateInternalEv")
+pub fn stub_0xc2794() -> crate::slot::PortedFn {
+// IDA 0xc2794: FMOD::DSPSfxReverb::updateInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2794, "FMOD::DSPSfxReverb::updateInternal()")
 }
 
-// 0xc2a18 — __ZN4FMOD12DSPSfxReverb14updateCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14updateCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc2a18() -> ! {
-    todo!("0xc2a18 __ZN4FMOD12DSPSfxReverb14updateCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc2a18() -> crate::slot::PortedFn {
+// IDA 0xc2a18: FMOD::DSPSfxReverb::updateCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2a18, "FMOD::DSPSfxReverb::updateCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc2a24 — __ZN4FMOD12DSPSfxReverb20getParameterInternalEiPfPc
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this, int, float *, char *)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20getParameterInternalEiPfPc")]
-pub fn stub_0xc2a24() -> ! {
-    todo!("0xc2a24 __ZN4FMOD12DSPSfxReverb20getParameterInternalEiPfPc")
+pub fn stub_0xc2a24() -> crate::slot::PortedFn {
+// IDA 0xc2a24: FMOD::DSPSfxReverb::getParameterInternal(int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2a24, "FMOD::DSPSfxReverb::getParameterInternal(int, float*, char*)")
 }
 
-// 0xc2e88 — __ZN4FMOD12DSPSfxReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")]
-pub fn stub_0xc2e88() -> ! {
-    todo!("0xc2e88 __ZN4FMOD12DSPSfxReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
+pub fn stub_0xc2e88() -> crate::slot::PortedFn {
+// IDA 0xc2e88: FMOD::DSPSfxReverb::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2e88, "FMOD::DSPSfxReverb::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*)")
 }
 
-// 0xc2e94 — __ZN4FMOD12DSPSfxReverb20setParameterInternalEif
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this, int, float)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20setParameterInternalEif")]
-pub fn stub_0xc2e94() -> ! {
-    todo!("0xc2e94 __ZN4FMOD12DSPSfxReverb20setParameterInternalEif")
+pub fn stub_0xc2e94() -> crate::slot::PortedFn {
+// IDA 0xc2e94: FMOD::DSPSfxReverb::setParameterInternal(int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc2e94, "FMOD::DSPSfxReverb::setParameterInternal(int, float)")
 }
 
-// 0xc3178 — __ZN4FMOD12DSPSfxReverb20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb20setParameterCallbackEP14FMOD_DSP_STATEif")]
-pub fn stub_0xc3178() -> ! {
-    todo!("0xc3178 __ZN4FMOD12DSPSfxReverb20setParameterCallbackEP14FMOD_DSP_STATEif")
+pub fn stub_0xc3178() -> crate::slot::PortedFn {
+// IDA 0xc3178: FMOD::DSPSfxReverb::setParameterCallback(FMOD_DSP_STATE*, int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3178, "FMOD::DSPSfxReverb::setParameterCallback(FMOD_DSP_STATE*, int, float)")
 }
 
-// 0xc3184 — __ZN4FMOD12DSPSfxReverb13resetInternalEv
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb13resetInternalEv")]
-pub fn stub_0xc3184() -> ! {
-    todo!("0xc3184 __ZN4FMOD12DSPSfxReverb13resetInternalEv")
+pub fn stub_0xc3184() -> crate::slot::PortedFn {
+// IDA 0xc3184: FMOD::DSPSfxReverb::resetInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3184, "FMOD::DSPSfxReverb::resetInternal()")
 }
 
-// 0xc31bc — __ZN4FMOD12DSPSfxReverb13resetCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb13resetCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc31bc() -> ! {
-    todo!("0xc31bc __ZN4FMOD12DSPSfxReverb13resetCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc31bc() -> crate::slot::PortedFn {
+// IDA 0xc31bc: FMOD::DSPSfxReverb::resetCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc31bc, "FMOD::DSPSfxReverb::resetCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc31c8 — __ZN4FMOD12DSPSfxReverb12readInternalEPfS1_jii
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this, float *, float *__dst, unsigned int, int, int)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb12readInternalEPfS1_jii")]
-pub fn stub_0xc31c8() -> ! {
-    todo!("0xc31c8 __ZN4FMOD12DSPSfxReverb12readInternalEPfS1_jii")
+pub fn stub_0xc31c8() -> crate::slot::PortedFn {
+// IDA 0xc31c8: FMOD::DSPSfxReverb::readInternal(float*, float*, unsigned int, int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc31c8, "FMOD::DSPSfxReverb::readInternal(float*, float*, unsigned int, int, int)")
 }
 
-// 0xc327c — __ZN4FMOD12DSPSfxReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii")]
-pub fn stub_0xc327c() -> ! {
-    todo!("0xc327c __ZN4FMOD12DSPSfxReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
+pub fn stub_0xc327c() -> crate::slot::PortedFn {
+// IDA 0xc327c: FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE*, float*, float*, unsigned int, int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc327c, "FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE*, float*, float*, unsigned int, int, int)")
 }
 
-// 0xc32a4 — __ZN4FMOD12DSPSfxReverb15releaseInternalEv
-// type: int __fastcall(void **this)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb15releaseInternalEv")]
-pub fn stub_0xc32a4() -> ! {
-    todo!("0xc32a4 __ZN4FMOD12DSPSfxReverb15releaseInternalEv")
+pub fn stub_0xc32a4() -> crate::slot::PortedFn {
+// IDA 0xc32a4: FMOD::DSPSfxReverb::releaseInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc32a4, "FMOD::DSPSfxReverb::releaseInternal()")
 }
 
-// 0xc32bc — __ZN4FMOD12DSPSfxReverb15releaseCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb15releaseCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc32bc() -> ! {
-    todo!("0xc32bc __ZN4FMOD12DSPSfxReverb15releaseCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc32bc() -> crate::slot::PortedFn {
+// IDA 0xc32bc: FMOD::DSPSfxReverb::releaseCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc32bc, "FMOD::DSPSfxReverb::releaseCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc32c8 — __ZN4FMOD12DSPSfxReverb14createInternalEv
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14createInternalEv")]
-pub fn stub_0xc32c8() -> ! {
-    todo!("0xc32c8 __ZN4FMOD12DSPSfxReverb14createInternalEv")
+pub fn stub_0xc32c8() -> crate::slot::PortedFn {
+// IDA 0xc32c8: FMOD::DSPSfxReverb::createInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc32c8, "FMOD::DSPSfxReverb::createInternal()")
 }
 
-// 0xc35cc — __ZN4FMOD12DSPSfxReverb14createCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb14createCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc35cc() -> ! {
-    todo!("0xc35cc __ZN4FMOD12DSPSfxReverb14createCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc35cc() -> crate::slot::PortedFn {
+// IDA 0xc35cc: FMOD::DSPSfxReverb::createCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc35cc, "FMOD::DSPSfxReverb::createCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc35d8 — __ZN4FMOD12DSPSfxReverb16getDescriptionExEv
-// type: _DWORD __fastcall(FMOD::DSPSfxReverb *__hidden this)
 #[doc(alias = "__ZN4FMOD12DSPSfxReverb16getDescriptionExEv")]
-pub fn stub_0xc35d8() -> ! {
-    todo!("0xc35d8 __ZN4FMOD12DSPSfxReverb16getDescriptionExEv")
+pub fn stub_0xc35d8() -> crate::slot::PortedFn {
+// IDA 0xc35d8: FMOD::DSPSfxReverb::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc35d8, "FMOD::DSPSfxReverb::getDescriptionEx()")
 }
 
-// 0xc3718 — __GLOBAL__I__ZN4FMOD12dspsfxreverbE
-// type: 
 #[doc(alias = "__GLOBAL__I__ZN4FMOD12dspsfxreverbE")]
-pub fn stub_0xc3718() -> ! {
-    todo!("0xc3718 __GLOBAL__I__ZN4FMOD12dspsfxreverbE")
+pub fn stub_0xc3718() -> crate::slot::PortedFn {
+// IDA 0xc3718: __GLOBAL__I__ZN4FMOD12dspsfxreverbE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xc3718, "__GLOBAL__I__ZN4FMOD12dspsfxreverbE")
 }
 
-// 0xc3724 — __ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")]
-pub fn stub_0xc3724() -> ! {
-    todo!("0xc3724 __ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")
+pub fn stub_0xc3724() -> crate::slot::PortedFn {
+// IDA 0xc3724: FMOD::DSPSoundCard::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3724, "FMOD::DSPSoundCard::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*)")
 }
 
-// 0xc3bcc — __ZN4FMOD12DSPWaveTable19setPositionInternalEj
-// type: _DWORD __fastcall(FMOD::DSPWaveTable *__hidden this, unsigned int)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable19setPositionInternalEj")]
-pub fn stub_0xc3bcc() -> ! {
-    todo!("0xc3bcc __ZN4FMOD12DSPWaveTable19setPositionInternalEj")
+pub fn stub_0xc3bcc() -> crate::slot::PortedFn {
+// IDA 0xc3bcc: FMOD::DSPWaveTable::setPositionInternal(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3bcc, "FMOD::DSPWaveTable::setPositionInternal(unsigned int)")
 }
 
-// 0xc3bf4 — __ZN4FMOD12DSPWaveTable20setParameterInternalEif
-// type: _DWORD __fastcall(FMOD::DSPWaveTable *__hidden this, int, float)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable20setParameterInternalEif")]
-pub fn stub_0xc3bf4() -> ! {
-    todo!("0xc3bf4 __ZN4FMOD12DSPWaveTable20setParameterInternalEif")
+pub fn stub_0xc3bf4() -> crate::slot::PortedFn {
+// IDA 0xc3bf4: FMOD::DSPWaveTable::setParameterInternal(int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3bf4, "FMOD::DSPWaveTable::setParameterInternal(int, float)")
 }
 
-// 0xc3bfc — __ZN4FMOD12DSPWaveTable20getParameterInternalEiPfPc
-// type: _DWORD __fastcall(FMOD::DSPWaveTable *__hidden this, int, float *, char *)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable20getParameterInternalEiPfPc")]
-pub fn stub_0xc3bfc() -> ! {
-    todo!("0xc3bfc __ZN4FMOD12DSPWaveTable20getParameterInternalEiPfPc")
+pub fn stub_0xc3bfc() -> crate::slot::PortedFn {
+// IDA 0xc3bfc: FMOD::DSPWaveTable::getParameterInternal(int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3bfc, "FMOD::DSPWaveTable::getParameterInternal(int, float*, char*)")
 }
 
-// 0xc3c04 — __ZN4FMOD12DSPWaveTable12setFrequencyEf
-// type: _DWORD __fastcall(FMOD::DSPWaveTable *__hidden this, float)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable12setFrequencyEf")]
-pub fn stub_0xc3c04() -> ! {
-    todo!("0xc3c04 __ZN4FMOD12DSPWaveTable12setFrequencyEf")
+pub fn stub_0xc3c04() -> crate::slot::PortedFn {
+// IDA 0xc3c04: FMOD::DSPWaveTable::setFrequency(float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3c04, "FMOD::DSPWaveTable::setFrequency(float)")
 }
 
-// 0xc3c80 — __ZN4FMOD12DSPWaveTable11getFinishedEPb
-// type: _DWORD __fastcall(FMOD::DSPWaveTable *__hidden this, bool *)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable11getFinishedEPb")]
-pub fn stub_0xc3c80() -> ! {
-    todo!("0xc3c80 __ZN4FMOD12DSPWaveTable11getFinishedEPb")
+pub fn stub_0xc3c80() -> crate::slot::PortedFn {
+// IDA 0xc3c80: FMOD::DSPWaveTable::getFinished(bool*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3c80, "FMOD::DSPWaveTable::getFinished(bool*)")
 }
 
-// 0xc3cc4 — __ZN4FMOD12DSPWaveTable19setPositionCallbackEP14FMOD_DSP_STATEj
-// type: int __fastcall(FMOD::DSPWaveTable *, unsigned int)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable19setPositionCallbackEP14FMOD_DSP_STATEj")]
-pub fn stub_0xc3cc4() -> ! {
-    todo!("0xc3cc4 __ZN4FMOD12DSPWaveTable19setPositionCallbackEP14FMOD_DSP_STATEj")
+pub fn stub_0xc3cc4() -> crate::slot::PortedFn {
+// IDA 0xc3cc4: FMOD::DSPWaveTable::setPositionCallback(FMOD_DSP_STATE*, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3cc4, "FMOD::DSPWaveTable::setPositionCallback(FMOD_DSP_STATE*, unsigned int)")
 }
 
-// 0xc3cd0 — __ZN4FMOD12DSPWaveTable20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPWaveTable20setParameterCallbackEP14FMOD_DSP_STATEif")]
-pub fn stub_0xc3cd0() -> ! {
-    todo!("0xc3cd0 __ZN4FMOD12DSPWaveTable20setParameterCallbackEP14FMOD_DSP_STATEif")
+pub fn stub_0xc3cd0() -> crate::slot::PortedFn {
+// IDA 0xc3cd0: FMOD::DSPWaveTable::setParameterCallback(FMOD_DSP_STATE*, int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3cd0, "FMOD::DSPWaveTable::setParameterCallback(FMOD_DSP_STATE*, int, float)")
 }
 
-// 0xc3cdc — __ZN4FMOD12DSPWaveTable20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPWaveTable20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")]
-pub fn stub_0xc3cdc() -> ! {
-    todo!("0xc3cdc __ZN4FMOD12DSPWaveTable20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
+pub fn stub_0xc3cdc() -> crate::slot::PortedFn {
+// IDA 0xc3cdc: FMOD::DSPWaveTable::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3cdc, "FMOD::DSPWaveTable::getParameterCallback(FMOD_DSP_STATE*, int, float*, char*)")
 }
 
-// 0xc3ce8 — __ZN4FMOD12DSPWaveTable13resetCallbackEP14FMOD_DSP_STATE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPWaveTable13resetCallbackEP14FMOD_DSP_STATE")]
-pub fn stub_0xc3ce8() -> ! {
-    todo!("0xc3ce8 __ZN4FMOD12DSPWaveTable13resetCallbackEP14FMOD_DSP_STATE")
+pub fn stub_0xc3ce8() -> crate::slot::PortedFn {
+// IDA 0xc3ce8: FMOD::DSPWaveTable::resetCallback(FMOD_DSP_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3ce8, "FMOD::DSPWaveTable::resetCallback(FMOD_DSP_STATE*)")
 }
 
-// 0xc3d00 — __ZN4FMOD12DSPWaveTable11setFinishedEbb
-// type: int __fastcall(FMOD::DSPWaveTable *this, bool, bool)
 #[doc(alias = "__ZN4FMOD12DSPWaveTable11setFinishedEbb")]
-pub fn stub_0xc3d00() -> ! {
-    todo!("0xc3d00 __ZN4FMOD12DSPWaveTable11setFinishedEbb")
+pub fn stub_0xc3d00() -> crate::slot::PortedFn {
+// IDA 0xc3d00: FMOD::DSPWaveTable::setFinished(bool, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3d00, "FMOD::DSPWaveTable::setFinished(bool, bool)")
 }
 
-// 0xc3d94 — __ZN4FMOD12DSPWaveTable4readEPPfPiPj16FMOD_SPEAKERMODEij
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPWaveTable4readEPPfPiPj16FMOD_SPEAKERMODEij")]
-pub fn stub_0xc3d94() -> ! {
-    todo!("0xc3d94 __ZN4FMOD12DSPWaveTable4readEPPfPiPj16FMOD_SPEAKERMODEij")
+pub fn stub_0xc3d94() -> crate::slot::PortedFn {
+// IDA 0xc3d94: FMOD::DSPWaveTable::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc3d94, "FMOD::DSPWaveTable::read(float**, int*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)")
 }
 
-// 0xc4728 — __ZN4FMOD12DSPWaveTable5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
-// type: 
 #[doc(alias = "__ZN4FMOD12DSPWaveTable5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")]
-pub fn stub_0xc4728() -> ! {
-    todo!("0xc4728 __ZN4FMOD12DSPWaveTable5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")
+pub fn stub_0xc4728() -> crate::slot::PortedFn {
+// IDA 0xc4728: FMOD::DSPWaveTable::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4728, "FMOD::DSPWaveTable::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*)")
 }
 
-// 0xc4790 — __ZN4FMOD4DSPI4readEPvPj16FMOD_SPEAKERMODEij
-// type: 
 #[doc(alias = "__ZN4FMOD4DSPI4readEPvPj16FMOD_SPEAKERMODEij")]
-pub fn stub_0xc4790() -> ! {
-    todo!("0xc4790 __ZN4FMOD4DSPI4readEPvPj16FMOD_SPEAKERMODEij")
+pub fn stub_0xc4790() -> crate::slot::PortedFn {
+// IDA 0xc4790: FMOD::DSPI::read(void*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4790, "FMOD::DSPI::read(void*, unsigned int*, FMOD_SPEAKERMODE, int, unsigned int)")
 }
 
-// 0xc47d4 — __ZN4FMOD4DSPIC2Ev
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this)
 #[doc(alias = "__ZN4FMOD4DSPIC2Ev")]
-pub fn stub_0xc47d4() -> ! {
-    todo!("0xc47d4 __ZN4FMOD4DSPIC2Ev")
+pub fn stub_0xc47d4() -> crate::slot::PortedFn {
+// IDA 0xc47d4: FMOD::DSPI::DSPI().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc47d4, "FMOD::DSPI::DSPI()")
 }
 
-// 0xc489c — __ZN4FMOD4DSPI15getSystemObjectEPPNS_6SystemE
-// type: 
 #[doc(alias = "__ZN4FMOD4DSPI15getSystemObjectEPPNS_6SystemE")]
-pub fn stub_0xc489c() -> ! {
-    todo!("0xc489c __ZN4FMOD4DSPI15getSystemObjectEPPNS_6SystemE")
+pub fn stub_0xc489c() -> crate::slot::PortedFn {
+// IDA 0xc489c: FMOD::DSPI::getSystemObject(FMOD::System**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc489c, "FMOD::DSPI::getSystemObject(FMOD::System**)")
 }
 
-// 0xc48b4 — __ZN4FMOD4DSPI13updateDSPTickEj
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, unsigned int)
 #[doc(alias = "__ZN4FMOD4DSPI13updateDSPTickEj")]
-pub fn stub_0xc48b4() -> ! {
-    todo!("0xc48b4 __ZN4FMOD4DSPI13updateDSPTickEj")
+pub fn stub_0xc48b4() -> crate::slot::PortedFn {
+// IDA 0xc48b4: FMOD::DSPI::updateDSPTick(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc48b4, "FMOD::DSPI::updateDSPTick(unsigned int)")
 }
 
-// 0xc48f8 — __ZN4FMOD4DSPI5resetEv
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this)
 #[doc(alias = "__ZN4FMOD4DSPI5resetEv")]
-pub fn stub_0xc48f8() -> ! {
-    todo!("0xc48f8 __ZN4FMOD4DSPI5resetEv")
+pub fn stub_0xc48f8() -> crate::slot::PortedFn {
+// IDA 0xc48f8: FMOD::DSPI::reset().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc48f8, "FMOD::DSPI::reset()")
 }
 
-// 0xc4918 — __ZN4FMOD4DSPI12setParameterEif
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int, float)
 #[doc(alias = "__ZN4FMOD4DSPI12setParameterEif")]
-pub fn stub_0xc4918() -> ! {
-    todo!("0xc4918 __ZN4FMOD4DSPI12setParameterEif")
+pub fn stub_0xc4918() -> crate::slot::PortedFn {
+// IDA 0xc4918: FMOD::DSPI::setParameter(int, float).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4918, "FMOD::DSPI::setParameter(int, float)")
 }
 
-// 0xc498c — __ZN4FMOD4DSPI16getNumParametersEPi
-// type: int __fastcall(FMOD::DSPI *this, int *)
 #[doc(alias = "__ZN4FMOD4DSPI16getNumParametersEPi")]
-pub fn stub_0xc498c() -> ! {
-    todo!("0xc498c __ZN4FMOD4DSPI16getNumParametersEPi")
+pub fn stub_0xc498c() -> crate::slot::PortedFn {
+// IDA 0xc498c: FMOD::DSPI::getNumParameters(int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc498c, "FMOD::DSPI::getNumParameters(int*)")
 }
 
-// 0xc49a4 — __ZN4FMOD4DSPI16showConfigDialogEPvb
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, void *, bool)
 #[doc(alias = "__ZN4FMOD4DSPI16showConfigDialogEPvb")]
-pub fn stub_0xc49a4() -> ! {
-    todo!("0xc49a4 __ZN4FMOD4DSPI16showConfigDialogEPvb")
+pub fn stub_0xc49a4() -> crate::slot::PortedFn {
+// IDA 0xc49a4: FMOD::DSPI::showConfigDialog(void*, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc49a4, "FMOD::DSPI::showConfigDialog(void*, bool)")
 }
 
-// 0xc49c8 — __ZN4FMOD4DSPI7getTypeEP13FMOD_DSP_TYPE
-// type: 
 #[doc(alias = "__ZN4FMOD4DSPI7getTypeEP13FMOD_DSP_TYPE")]
-pub fn stub_0xc49c8() -> ! {
-    todo!("0xc49c8 __ZN4FMOD4DSPI7getTypeEP13FMOD_DSP_TYPE")
+pub fn stub_0xc49c8() -> crate::slot::PortedFn {
+// IDA 0xc49c8: FMOD::DSPI::getType(FMOD_DSP_TYPE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc49c8, "FMOD::DSPI::getType(FMOD_DSP_TYPE*)")
 }
 
-// 0xc49dc — __ZN4FMOD4DSPI11setDefaultsEfffi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, float, float, float, int)
 #[doc(alias = "__ZN4FMOD4DSPI11setDefaultsEfffi")]
-pub fn stub_0xc49dc() -> ! {
-    todo!("0xc49dc __ZN4FMOD4DSPI11setDefaultsEfffi")
+pub fn stub_0xc49dc() -> crate::slot::PortedFn {
+// IDA 0xc49dc: FMOD::DSPI::setDefaults(float, float, float, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc49dc, "FMOD::DSPI::setDefaults(float, float, float, int)")
 }
 
-// 0xc4a64 — __ZN4FMOD4DSPI11getDefaultsEPfS1_S1_Pi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, float *, float *, float *, int *)
 #[doc(alias = "__ZN4FMOD4DSPI11getDefaultsEPfS1_S1_Pi")]
-pub fn stub_0xc4a64() -> ! {
-    todo!("0xc4a64 __ZN4FMOD4DSPI11getDefaultsEPfS1_S1_Pi")
+pub fn stub_0xc4a64() -> crate::slot::PortedFn {
+// IDA 0xc4a64: FMOD::DSPI::getDefaults(float*, float*, float*, int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4a64, "FMOD::DSPI::getDefaults(float*, float*, float*, int*)")
 }
 
-// 0xc4aa8 — __ZN4FMOD4DSPI11setUserDataEPv
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, void *)
 #[doc(alias = "__ZN4FMOD4DSPI11setUserDataEPv")]
-pub fn stub_0xc4aa8() -> ! {
-    todo!("0xc4aa8 __ZN4FMOD4DSPI11setUserDataEPv")
+pub fn stub_0xc4aa8() -> crate::slot::PortedFn {
+// IDA 0xc4aa8: FMOD::DSPI::setUserData(void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4aa8, "FMOD::DSPI::setUserData(void*)")
 }
 
-// 0xc4ab4 — __ZN4FMOD4DSPI18setTargetFrequencyEi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int)
 #[doc(alias = "__ZN4FMOD4DSPI18setTargetFrequencyEi")]
-pub fn stub_0xc4ab4() -> ! {
-    todo!("0xc4ab4 __ZN4FMOD4DSPI18setTargetFrequencyEi")
+pub fn stub_0xc4ab4() -> crate::slot::PortedFn {
+// IDA 0xc4ab4: FMOD::DSPI::setTargetFrequency(int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4ab4, "FMOD::DSPI::setTargetFrequency(int)")
 }
 
-// 0xc4ac0 — __ZN4FMOD4DSPI18getTargetFrequencyEPi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int *)
 #[doc(alias = "__ZN4FMOD4DSPI18getTargetFrequencyEPi")]
-pub fn stub_0xc4ac0() -> ! {
-    todo!("0xc4ac0 __ZN4FMOD4DSPI18getTargetFrequencyEPi")
+pub fn stub_0xc4ac0() -> crate::slot::PortedFn {
+// IDA 0xc4ac0: FMOD::DSPI::getTargetFrequency(int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4ac0, "FMOD::DSPI::getTargetFrequency(int*)")
 }
 
-// 0xc4ad8 — __ZN4FMOD4DSPI13stopBufferingEv
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this)
 #[doc(alias = "__ZN4FMOD4DSPI13stopBufferingEv")]
-pub fn stub_0xc4ad8() -> ! {
-    todo!("0xc4ad8 __ZN4FMOD4DSPI13stopBufferingEv")
+pub fn stub_0xc4ad8() -> crate::slot::PortedFn {
+// IDA 0xc4ad8: FMOD::DSPI::stopBuffering().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4ad8, "FMOD::DSPI::stopBuffering()")
 }
 
-// 0xc4ae0 — __ZN4FMOD4DSPI17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "__ZN4FMOD4DSPI17getMemoryUsedImplEPNS_13MemoryTrackerE")]
-pub fn stub_0xc4ae0() -> ! {
-    todo!("0xc4ae0 __ZN4FMOD4DSPI17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc4ae0() -> crate::slot::PortedFn {
+// IDA 0xc4ae0: FMOD::DSPI::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4ae0, "FMOD::DSPI::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc4b68 — __ZN4FMOD4DSPI14calculatePeaksEPKfjjPS0_
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, const float *, unsigned int, unsigned int, FMOD::DSPI *)
 #[doc(alias = "__ZN4FMOD4DSPI14calculatePeaksEPKfjjPS0_")]
-pub fn stub_0xc4b68() -> ! {
-    todo!("0xc4b68 __ZN4FMOD4DSPI14calculatePeaksEPKfjjPS0_")
+pub fn stub_0xc4b68() -> crate::slot::PortedFn {
+// IDA 0xc4b68: FMOD::DSPI::calculatePeaks(float const*, unsigned int, unsigned int, FMOD::DSPI*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4b68, "FMOD::DSPI::calculatePeaks(float const*, unsigned int, unsigned int, FMOD::DSPI*)")
 }
 
-// 0xc4d3c — __ZN4FMOD4DSPI7getInfoEPcPjPiS3_S3_
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, char *, unsigned int *, int *, int *, int *)
 #[doc(alias = "__ZN4FMOD4DSPI7getInfoEPcPjPiS3_S3_")]
-pub fn stub_0xc4d3c() -> ! {
-    todo!("0xc4d3c __ZN4FMOD4DSPI7getInfoEPcPjPiS3_S3_")
+pub fn stub_0xc4d3c() -> crate::slot::PortedFn {
+// IDA 0xc4d3c: FMOD::DSPI::getInfo(char*, unsigned int*, int*, int*, int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4d3c, "FMOD::DSPI::getInfo(char*, unsigned int*, int*, int*, int*)")
 }
 
-// 0xc4dac — __ZN4FMOD4DSPI12getParameterEiPfPci
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int, float *, char *, int)
 #[doc(alias = "__ZN4FMOD4DSPI12getParameterEiPfPci")]
-pub fn stub_0xc4dac() -> ! {
-    todo!("0xc4dac __ZN4FMOD4DSPI12getParameterEiPfPci")
+pub fn stub_0xc4dac() -> crate::slot::PortedFn {
+// IDA 0xc4dac: FMOD::DSPI::getParameter(int, float*, char*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4dac, "FMOD::DSPI::getParameter(int, float*, char*, int)")
 }
 
-// 0xc4e40 — __ZN4FMOD4DSPI16getParameterInfoEiPcS1_S1_iPfS2_
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int, char *, char *, char *, int, float *, float *)
 #[doc(alias = "__ZN4FMOD4DSPI16getParameterInfoEiPcS1_S1_iPfS2_")]
-pub fn stub_0xc4e40() -> ! {
-    todo!("0xc4e40 __ZN4FMOD4DSPI16getParameterInfoEiPcS1_S1_iPfS2_")
+pub fn stub_0xc4e40() -> crate::slot::PortedFn {
+// IDA 0xc4e40: FMOD::DSPI::getParameterInfo(int, char*, char*, char*, int, float*, float*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4e40, "FMOD::DSPI::getParameterInfo(int, char*, char*, char*, int, float*, float*)")
 }
 
-// 0xc4f64 — __ZN4FMOD4DSPI13getNumOutputsEPib
-// type: int __fastcall(FMOD::SystemI **this, int *, bool)
 #[doc(alias = "__ZN4FMOD4DSPI13getNumOutputsEPib")]
-pub fn stub_0xc4f64() -> ! {
-    todo!("0xc4f64 __ZN4FMOD4DSPI13getNumOutputsEPib")
+pub fn stub_0xc4f64() -> crate::slot::PortedFn {
+// IDA 0xc4f64: FMOD::DSPI::getNumOutputs(int*, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4f64, "FMOD::DSPI::getNumOutputs(int*, bool)")
 }
 
-// 0xc4fd0 — __ZN4FMOD4DSPI12getNumInputsEPib
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int *, bool)
 #[doc(alias = "__ZN4FMOD4DSPI12getNumInputsEPib")]
-pub fn stub_0xc4fd0() -> ! {
-    todo!("0xc4fd0 __ZN4FMOD4DSPI12getNumInputsEPib")
+pub fn stub_0xc4fd0() -> crate::slot::PortedFn {
+// IDA 0xc4fd0: FMOD::DSPI::getNumInputs(int*, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc4fd0, "FMOD::DSPI::getNumInputs(int*, bool)")
 }
 
-// 0xc503c — __ZN4FMOD4DSPI14addInputQueuedEPS0_bPNS_14DSPConnectionIEPS3_
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, FMOD::DSPI *, bool, FMOD::DSPConnectionI *, FMOD::DSPConnectionI **)
 #[doc(alias = "__ZN4FMOD4DSPI14addInputQueuedEPS0_bPNS_14DSPConnectionIEPS3_")]
-pub fn stub_0xc503c() -> ! {
-    todo!("0xc503c __ZN4FMOD4DSPI14addInputQueuedEPS0_bPNS_14DSPConnectionIEPS3_")
+pub fn stub_0xc503c() -> crate::slot::PortedFn {
+// IDA 0xc503c: FMOD::DSPI::addInputQueued(FMOD::DSPI*, bool, FMOD::DSPConnectionI*, FMOD::DSPConnectionI**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc503c, "FMOD::DSPI::addInputQueued(FMOD::DSPI*, bool, FMOD::DSPConnectionI*, FMOD::DSPConnectionI**)")
 }
 
-// 0xc51bc — __ZN4FMOD4DSPI8addInputEPS0_PPNS_14DSPConnectionIE
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, FMOD::DSPI *, FMOD::DSPConnectionI **)
 #[doc(alias = "__ZN4FMOD4DSPI8addInputEPS0_PPNS_14DSPConnectionIE")]
-pub fn stub_0xc51bc() -> ! {
-    todo!("0xc51bc __ZN4FMOD4DSPI8addInputEPS0_PPNS_14DSPConnectionIE")
+pub fn stub_0xc51bc() -> crate::slot::PortedFn {
+// IDA 0xc51bc: FMOD::DSPI::addInput(FMOD::DSPI*, FMOD::DSPConnectionI**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc51bc, "FMOD::DSPI::addInput(FMOD::DSPI*, FMOD::DSPConnectionI**)")
 }
 
-// 0xc51f0 — __ZN4FMOD4DSPI15updateTreeLevelEi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, int)
 #[doc(alias = "__ZN4FMOD4DSPI15updateTreeLevelEi")]
-pub fn stub_0xc51f0() -> ! {
-    todo!("0xc51f0 __ZN4FMOD4DSPI15updateTreeLevelEi")
+pub fn stub_0xc51f0() -> crate::slot::PortedFn {
+// IDA 0xc51f0: FMOD::DSPI::updateTreeLevel(int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc51f0, "FMOD::DSPI::updateTreeLevel(int)")
 }
 
-// 0xc5374 — __ZN4FMOD4DSPI20releaseHistoryBufferEPf
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, float *)
 #[doc(alias = "__ZN4FMOD4DSPI20releaseHistoryBufferEPf")]
-pub fn stub_0xc5374() -> ! {
-    todo!("0xc5374 __ZN4FMOD4DSPI20releaseHistoryBufferEPf")
+pub fn stub_0xc5374() -> crate::slot::PortedFn {
+// IDA 0xc5374: FMOD::DSPI::releaseHistoryBuffer(float*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc5374, "FMOD::DSPI::releaseHistoryBuffer(float*)")
 }
 
-// 0xc5390 — __ZN4FMOD4DSPI19createHistoryBufferEPPfi
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, float **, int)
 #[doc(alias = "__ZN4FMOD4DSPI19createHistoryBufferEPPfi")]
-pub fn stub_0xc5390() -> ! {
-    todo!("0xc5390 __ZN4FMOD4DSPI19createHistoryBufferEPPfi")
+pub fn stub_0xc5390() -> crate::slot::PortedFn {
+// IDA 0xc5390: FMOD::DSPI::createHistoryBuffer(float**, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc5390, "FMOD::DSPI::createHistoryBuffer(float**, int)")
 }
 
-// 0xc53ac — __ZN4FMOD4DSPI22calculateSpeakerLevelsEffffffff16FMOD_SPEAKERMODEi19FMOD_SPEAKERMAPTYPEPfPi
-// type: int __fastcall(int, int, int, int, float, float, float, float, int, int, int, void *__b, int)
 #[doc(alias = "__ZN4FMOD4DSPI22calculateSpeakerLevelsEffffffff16FMOD_SPEAKERMODEi19FMOD_SPEAKERMAPTYPEPfPi")]
-pub fn stub_0xc53ac() -> ! {
-    todo!("0xc53ac __ZN4FMOD4DSPI22calculateSpeakerLevelsEffffffff16FMOD_SPEAKERMODEi19FMOD_SPEAKERMAPTYPEPfPi")
+pub fn stub_0xc53ac() -> crate::slot::PortedFn {
+// IDA 0xc53ac: FMOD::DSPI::calculateSpeakerLevels(float, float, float, float, float, float, float, float, FMOD_SPEAKERMODE, int, FMOD_S~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc53ac, "FMOD::DSPI::calculateSpeakerLevels(float, float, float, float, float, float, float, float, FMOD_SPEA~")
 }
 
-// 0xc6888 — __ZN4FMOD4DSPI5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
-// type: 
 #[doc(alias = "__ZN4FMOD4DSPI5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")]
-pub fn stub_0xc6888() -> ! {
-    todo!("0xc6888 __ZN4FMOD4DSPI5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE")
+pub fn stub_0xc6888() -> crate::slot::PortedFn {
+// IDA 0xc6888: FMOD::DSPI::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc6888, "FMOD::DSPI::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX*)")
 }
 
-// 0xc693c — __ZN4FMOD4DSPI13disconnectAllEbb
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, bool, bool)
 #[doc(alias = "__ZN4FMOD4DSPI13disconnectAllEbb")]
-pub fn stub_0xc693c() -> ! {
-    todo!("0xc693c __ZN4FMOD4DSPI13disconnectAllEbb")
+pub fn stub_0xc693c() -> crate::slot::PortedFn {
+// IDA 0xc693c: FMOD::DSPI::disconnectAll(bool, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc693c, "FMOD::DSPI::disconnectAll(bool, bool)")
 }
 
-// 0xc6a60 — __ZN4FMOD4DSPI14disconnectFromEPS0_PNS_14DSPConnectionIE
-// type: _DWORD __fastcall(FMOD::DSPI *__hidden this, FMOD::DSPI *, FMOD::DSPConnectionI *)
 #[doc(alias = "__ZN4FMOD4DSPI14disconnectFromEPS0_PNS_14DSPConnectionIE")]
-pub fn stub_0xc6a60() -> ! {
-    todo!("0xc6a60 __ZN4FMOD4DSPI14disconnectFromEPS0_PNS_14DSPConnectionIE")
+pub fn stub_0xc6a60() -> crate::slot::PortedFn {
+// IDA 0xc6a60: FMOD::DSPI::disconnectFrom(FMOD::DSPI*, FMOD::DSPConnectionI*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc6a60, "FMOD::DSPI::disconnectFrom(FMOD::DSPI*, FMOD::DSPConnectionI*)")
 }

@@ -9,617 +9,702 @@
 use rbx_core::SharedPtr;
 
 
-// 0x198c38 — _gtStripContig
 #[doc(alias = "_gtStripContig")]
-pub fn stub_0x198c38() -> ! {
-    todo!("0x198c38 _gtStripContig")
+pub fn stub_0x198c38() -> crate::slot::PortedFn {
+// IDA 0x198c38: _gtStripContig.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x198c38, "_gtStripContig")
 }
 
-// 0x198f20 — _gtTileSeparate
 #[doc(alias = "_gtTileSeparate")]
-pub fn stub_0x198f20() -> ! {
-    todo!("0x198f20 _gtTileSeparate")
+pub fn stub_0x198f20() -> crate::slot::PortedFn {
+// IDA 0x198f20: _gtTileSeparate.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x198f20, "_gtTileSeparate")
 }
 
-// 0x1993d8 — _gtTileContig
 #[doc(alias = "_gtTileContig")]
-pub fn stub_0x1993d8() -> ! {
-    todo!("0x1993d8 _gtTileContig")
+pub fn stub_0x1993d8() -> crate::slot::PortedFn {
+// IDA 0x1993d8: _gtTileContig.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1993d8, "_gtTileContig")
 }
 
-// 0x1996fc — _gtStripSeparate
 #[doc(alias = "_gtStripSeparate")]
-pub fn stub_0x1996fc() -> ! {
-    todo!("0x1996fc _gtStripSeparate")
+pub fn stub_0x1996fc() -> crate::slot::PortedFn {
+// IDA 0x1996fc: _gtStripSeparate.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1996fc, "_gtStripSeparate")
 }
 
-// 0x199ba4 — _std_init_destination
 #[doc(alias = "_std_init_destination")]
-pub fn stub_0x199ba4() -> ! {
-    todo!("0x199ba4 _std_init_destination")
+pub fn stub_0x199ba4() -> crate::slot::PortedFn {
+// IDA 0x199ba4: _std_init_destination.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199ba4, "_std_init_destination")
 }
 
-// 0x199bbc — _std_term_destination
 #[doc(alias = "_std_term_destination")]
-pub fn stub_0x199bbc() -> ! {
-    todo!("0x199bbc _std_term_destination")
+pub fn stub_0x199bbc() -> crate::slot::PortedFn {
+// IDA 0x199bbc: _std_term_destination.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199bbc, "_std_term_destination")
 }
 
-// 0x199bdc — _tables_init_destination
 #[doc(alias = "_tables_init_destination")]
-pub fn stub_0x199bdc() -> ! {
-    todo!("0x199bdc _tables_init_destination")
+pub fn stub_0x199bdc() -> crate::slot::PortedFn {
+// IDA 0x199bdc: _tables_init_destination.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199bdc, "_tables_init_destination")
 }
 
-// 0x199bf0 — _tables_term_destination
-// type: int __fastcall(int result)
 #[doc(alias = "_tables_term_destination")]
-pub fn stub_0x199bf0() -> ! {
-    todo!("0x199bf0 _tables_term_destination")
+pub fn stub_0x199bf0() -> crate::slot::PortedFn {
+// IDA 0x199bf0: _tables_term_destination.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199bf0, "_tables_term_destination")
 }
 
-// 0x199c04 — _std_init_source
 #[doc(alias = "_std_init_source")]
-pub fn stub_0x199c04() -> ! {
-    todo!("0x199c04 _std_init_source")
+pub fn stub_0x199c04() -> crate::slot::PortedFn {
+// IDA 0x199c04: _std_init_source.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199c04, "_std_init_source")
 }
 
-// 0x199c1c — _std_fill_input_buffer
 #[doc(alias = "_std_fill_input_buffer")]
-pub fn stub_0x199c1c() -> ! {
-    todo!("0x199c1c _std_fill_input_buffer")
+pub fn stub_0x199c1c() -> crate::slot::PortedFn {
+// IDA 0x199c1c: _std_fill_input_buffer.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199c1c, "_std_fill_input_buffer")
 }
 
-// 0x199c64 — _std_skip_input_data
 #[doc(alias = "_std_skip_input_data")]
-pub fn stub_0x199c64() -> ! {
-    todo!("0x199c64 _std_skip_input_data")
+pub fn stub_0x199c64() -> crate::slot::PortedFn {
+// IDA 0x199c64: _std_skip_input_data.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199c64, "_std_skip_input_data")
 }
 
-// 0x199c98 — _std_term_source
 #[doc(alias = "_std_term_source")]
-pub fn stub_0x199c98() -> ! {
-    todo!("0x199c98 _std_term_source")
+pub fn stub_0x199c98() -> crate::slot::PortedFn {
+// IDA 0x199c98: _std_term_source.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199c98, "_std_term_source")
 }
 
-// 0x199c9c — _TIFFjpeg_data_src
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_TIFFjpeg_data_src")]
-pub fn stub_0x199c9c() -> ! {
-    todo!("0x199c9c _TIFFjpeg_data_src")
+pub fn stub_0x199c9c() -> crate::slot::PortedFn {
+// IDA 0x199c9c: _TIFFjpeg_data_src.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199c9c, "_TIFFjpeg_data_src")
 }
 
-// 0x199d04 — _tables_init_source
 #[doc(alias = "_tables_init_source")]
-pub fn stub_0x199d04() -> ! {
-    todo!("0x199d04 _tables_init_source")
+pub fn stub_0x199d04() -> crate::slot::PortedFn {
+// IDA 0x199d04: _tables_init_source.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199d04, "_tables_init_source")
 }
 
-// 0x199d18 — _unsuppress_huff_table
 #[doc(alias = "_unsuppress_huff_table")]
-pub fn stub_0x199d18() -> ! {
-    todo!("0x199d18 _unsuppress_huff_table")
+pub fn stub_0x199d18() -> crate::slot::PortedFn {
+// IDA 0x199d18: _unsuppress_huff_table.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199d18, "_unsuppress_huff_table")
 }
 
-// 0x199d44 — _JPEGDefaultStripSize
 #[doc(alias = "_JPEGDefaultStripSize")]
-pub fn stub_0x199d44() -> ! {
-    todo!("0x199d44 _JPEGDefaultStripSize")
+pub fn stub_0x199d44() -> crate::slot::PortedFn {
+// IDA 0x199d44: _JPEGDefaultStripSize.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199d44, "_JPEGDefaultStripSize")
 }
 
-// 0x199d90 — _JPEGDefaultTileSize
 #[doc(alias = "_JPEGDefaultTileSize")]
-pub fn stub_0x199d90() -> ! {
-    todo!("0x199d90 _JPEGDefaultTileSize")
+pub fn stub_0x199d90() -> crate::slot::PortedFn {
+// IDA 0x199d90: _JPEGDefaultTileSize.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199d90, "_JPEGDefaultTileSize")
 }
 
-// 0x199e04 — _TIFFInitJPEG
 #[doc(alias = "_TIFFInitJPEG")]
-pub fn stub_0x199e04() -> ! {
-    todo!("0x199e04 _TIFFInitJPEG")
+pub fn stub_0x199e04() -> crate::slot::PortedFn {
+// IDA 0x199e04: _TIFFInitJPEG.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x199e04, "_TIFFInitJPEG")
 }
 
-// 0x19a06c — _TIFFjpeg_alloc_sarray
 #[doc(alias = "_TIFFjpeg_alloc_sarray")]
-pub fn stub_0x19a06c() -> ! {
-    todo!("0x19a06c _TIFFjpeg_alloc_sarray")
+pub fn stub_0x19a06c() -> crate::slot::PortedFn {
+// IDA 0x19a06c: _TIFFjpeg_alloc_sarray.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a06c, "_TIFFjpeg_alloc_sarray")
 }
 
-// 0x19a0c0 — _alloc_downsampled_buffers
 #[doc(alias = "_alloc_downsampled_buffers")]
-pub fn stub_0x19a0c0() -> ! {
-    todo!("0x19a0c0 _alloc_downsampled_buffers")
+pub fn stub_0x19a0c0() -> crate::slot::PortedFn {
+// IDA 0x19a0c0: _alloc_downsampled_buffers.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a0c0, "_alloc_downsampled_buffers")
 }
 
-// 0x19a328 — _TIFFjpeg_destroy
 #[doc(alias = "_TIFFjpeg_destroy")]
-pub fn stub_0x19a328() -> ! {
-    todo!("0x19a328 _TIFFjpeg_destroy")
+pub fn stub_0x19a328() -> crate::slot::PortedFn {
+// IDA 0x19a328: _TIFFjpeg_destroy.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a328, "_TIFFjpeg_destroy")
 }
 
-// 0x19a360 — _JPEGCleanup
 #[doc(alias = "_JPEGCleanup")]
-pub fn stub_0x19a360() -> ! {
-    todo!("0x19a360 _JPEGCleanup")
+pub fn stub_0x19a360() -> crate::slot::PortedFn {
+// IDA 0x19a360: _JPEGCleanup.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a360, "_JPEGCleanup")
 }
 
-// 0x19a3fc — _TIFFjpeg_output_message
 #[doc(alias = "_TIFFjpeg_output_message")]
-pub fn stub_0x19a3fc() -> ! {
-    todo!("0x19a3fc _TIFFjpeg_output_message")
+pub fn stub_0x19a3fc() -> crate::slot::PortedFn {
+// IDA 0x19a3fc: _TIFFjpeg_output_message.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a3fc, "_TIFFjpeg_output_message")
 }
 
-// 0x19a44c — _TIFFjpeg_write_scanlines
 #[doc(alias = "_TIFFjpeg_write_scanlines")]
-pub fn stub_0x19a44c() -> ! {
-    todo!("0x19a44c _TIFFjpeg_write_scanlines")
+pub fn stub_0x19a44c() -> crate::slot::PortedFn {
+// IDA 0x19a44c: _TIFFjpeg_write_scanlines.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a44c, "_TIFFjpeg_write_scanlines")
 }
 
-// 0x19a490 — _JPEGEncode
 #[doc(alias = "_JPEGEncode")]
-pub fn stub_0x19a490() -> ! {
-    todo!("0x19a490 _JPEGEncode")
+pub fn stub_0x19a490() -> crate::slot::PortedFn {
+// IDA 0x19a490: _JPEGEncode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a490, "_JPEGEncode")
 }
 
-// 0x19a6fc — _TIFFjpeg_write_raw_data
 #[doc(alias = "_TIFFjpeg_write_raw_data")]
-pub fn stub_0x19a6fc() -> ! {
-    todo!("0x19a6fc _TIFFjpeg_write_raw_data")
+pub fn stub_0x19a6fc() -> crate::slot::PortedFn {
+// IDA 0x19a6fc: _TIFFjpeg_write_raw_data.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a6fc, "_TIFFjpeg_write_raw_data")
 }
 
-// 0x19a740 — _JPEGEncodeRaw
 #[doc(alias = "_JPEGEncodeRaw")]
-pub fn stub_0x19a740() -> ! {
-    todo!("0x19a740 _JPEGEncodeRaw")
+pub fn stub_0x19a740() -> crate::slot::PortedFn {
+// IDA 0x19a740: _JPEGEncodeRaw.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19a740, "_JPEGEncodeRaw")
 }
 
-// 0x19accc — _TIFFjpeg_finish_compress
-// type: int __fastcall(int)
 #[doc(alias = "_TIFFjpeg_finish_compress")]
-pub fn stub_0x19accc() -> ! {
-    todo!("0x19accc _TIFFjpeg_finish_compress")
+pub fn stub_0x19accc() -> crate::slot::PortedFn {
+// IDA 0x19accc: _TIFFjpeg_finish_compress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19accc, "_TIFFjpeg_finish_compress")
 }
 
-// 0x19ad04 — _JPEGPostEncode
 #[doc(alias = "_JPEGPostEncode")]
-pub fn stub_0x19ad04() -> ! {
-    todo!("0x19ad04 _JPEGPostEncode")
+pub fn stub_0x19ad04() -> crate::slot::PortedFn {
+// IDA 0x19ad04: _JPEGPostEncode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19ad04, "_JPEGPostEncode")
 }
 
-// 0x19aef4 — _TIFFjpeg_set_colorspace
 #[doc(alias = "_TIFFjpeg_set_colorspace")]
-pub fn stub_0x19aef4() -> ! {
-    todo!("0x19aef4 _TIFFjpeg_set_colorspace")
+pub fn stub_0x19aef4() -> crate::slot::PortedFn {
+// IDA 0x19aef4: _TIFFjpeg_set_colorspace.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19aef4, "_TIFFjpeg_set_colorspace")
 }
 
-// 0x19af34 — _TIFFjpeg_set_quality
 #[doc(alias = "_TIFFjpeg_set_quality")]
-pub fn stub_0x19af34() -> ! {
-    todo!("0x19af34 _TIFFjpeg_set_quality")
+pub fn stub_0x19af34() -> crate::slot::PortedFn {
+// IDA 0x19af34: _TIFFjpeg_set_quality.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19af34, "_TIFFjpeg_set_quality")
 }
 
-// 0x19af80 — _TIFFjpeg_start_compress
 #[doc(alias = "_TIFFjpeg_start_compress")]
-pub fn stub_0x19af80() -> ! {
-    todo!("0x19af80 _TIFFjpeg_start_compress")
+pub fn stub_0x19af80() -> crate::slot::PortedFn {
+// IDA 0x19af80: _TIFFjpeg_start_compress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19af80, "_TIFFjpeg_start_compress")
 }
 
-// 0x19afc4 — _TIFFjpeg_create_decompress
 #[doc(alias = "_TIFFjpeg_create_decompress")]
-pub fn stub_0x19afc4() -> ! {
-    todo!("0x19afc4 _TIFFjpeg_create_decompress")
+pub fn stub_0x19afc4() -> crate::slot::PortedFn {
+// IDA 0x19afc4: _TIFFjpeg_create_decompress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19afc4, "_TIFFjpeg_create_decompress")
 }
 
-// 0x19b034 — _TIFFjpeg_abort
 #[doc(alias = "_TIFFjpeg_abort")]
-pub fn stub_0x19b034() -> ! {
-    todo!("0x19b034 _TIFFjpeg_abort")
+pub fn stub_0x19b034() -> crate::slot::PortedFn {
+// IDA 0x19b034: _TIFFjpeg_abort.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b034, "_TIFFjpeg_abort")
 }
 
-// 0x19b06c — _TIFFjpeg_error_exit
 #[doc(alias = "_TIFFjpeg_error_exit")]
-pub fn stub_0x19b06c() -> ! {
-    todo!("0x19b06c _TIFFjpeg_error_exit")
+pub fn stub_0x19b06c() -> crate::slot::PortedFn {
+// IDA 0x19b06c: _TIFFjpeg_error_exit.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b06c, "_TIFFjpeg_error_exit")
 }
 
-// 0x19b0c8 — _TIFFjpeg_create_compress
 #[doc(alias = "_TIFFjpeg_create_compress")]
-pub fn stub_0x19b0c8() -> ! {
-    todo!("0x19b0c8 _TIFFjpeg_create_compress")
+pub fn stub_0x19b0c8() -> crate::slot::PortedFn {
+// IDA 0x19b0c8: _TIFFjpeg_create_compress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b0c8, "_TIFFjpeg_create_compress")
 }
 
-// 0x19b138 — _JPEGInitializeLibJPEG
-// type: int(void)
 #[doc(alias = "_JPEGInitializeLibJPEG")]
-pub fn stub_0x19b138() -> ! {
-    todo!("0x19b138 _JPEGInitializeLibJPEG")
+pub fn stub_0x19b138() -> crate::slot::PortedFn {
+// IDA 0x19b138: _JPEGInitializeLibJPEG.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b138, "_JPEGInitializeLibJPEG")
 }
 
-// 0x19b294 — _TIFFjpeg_set_defaults
 #[doc(alias = "_TIFFjpeg_set_defaults")]
-pub fn stub_0x19b294() -> ! {
-    todo!("0x19b294 _TIFFjpeg_set_defaults")
+pub fn stub_0x19b294() -> crate::slot::PortedFn {
+// IDA 0x19b294: _TIFFjpeg_set_defaults.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b294, "_TIFFjpeg_set_defaults")
 }
 
-// 0x19b2cc — _TIFFjpeg_suppress_tables
 #[doc(alias = "_TIFFjpeg_suppress_tables")]
-pub fn stub_0x19b2cc() -> ! {
-    todo!("0x19b2cc _TIFFjpeg_suppress_tables")
+pub fn stub_0x19b2cc() -> crate::slot::PortedFn {
+// IDA 0x19b2cc: _TIFFjpeg_suppress_tables.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b2cc, "_TIFFjpeg_suppress_tables")
 }
 
-// 0x19b310 — _tables_empty_output_buffer
 #[doc(alias = "_tables_empty_output_buffer")]
-pub fn stub_0x19b310() -> ! {
-    todo!("0x19b310 _tables_empty_output_buffer")
+pub fn stub_0x19b310(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x19b384 — _TIFFjpeg_write_tables
 #[doc(alias = "_TIFFjpeg_write_tables")]
-pub fn stub_0x19b384() -> ! {
-    todo!("0x19b384 _TIFFjpeg_write_tables")
+pub fn stub_0x19b384() -> crate::slot::PortedFn {
+// IDA 0x19b384: _TIFFjpeg_write_tables.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b384, "_TIFFjpeg_write_tables")
 }
 
-// 0x19b3bc — _JPEGSetupEncode
 #[doc(alias = "_JPEGSetupEncode")]
-pub fn stub_0x19b3bc() -> ! {
-    todo!("0x19b3bc _JPEGSetupEncode")
+pub fn stub_0x19b3bc() -> crate::slot::PortedFn {
+// IDA 0x19b3bc: _JPEGSetupEncode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b3bc, "_JPEGSetupEncode")
 }
 
-// 0x19b840 — _std_empty_output_buffer
 #[doc(alias = "_std_empty_output_buffer")]
-pub fn stub_0x19b840() -> ! {
-    todo!("0x19b840 _std_empty_output_buffer")
+pub fn stub_0x19b840() -> crate::slot::PortedFn {
+// IDA 0x19b840: _std_empty_output_buffer.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b840, "_std_empty_output_buffer")
 }
 
-// 0x19b878 — _TIFFjpeg_read_scanlines
 #[doc(alias = "_TIFFjpeg_read_scanlines")]
-pub fn stub_0x19b878() -> ! {
-    todo!("0x19b878 _TIFFjpeg_read_scanlines")
+pub fn stub_0x19b878() -> crate::slot::PortedFn {
+// IDA 0x19b878: _TIFFjpeg_read_scanlines.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b878, "_TIFFjpeg_read_scanlines")
 }
 
-// 0x19b8bc — _TIFFjpeg_finish_decompress
 #[doc(alias = "_TIFFjpeg_finish_decompress")]
-pub fn stub_0x19b8bc() -> ! {
-    todo!("0x19b8bc _TIFFjpeg_finish_decompress")
+pub fn stub_0x19b8bc() -> crate::slot::PortedFn {
+// IDA 0x19b8bc: _TIFFjpeg_finish_decompress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b8bc, "_TIFFjpeg_finish_decompress")
 }
 
-// 0x19b8f0 — _JPEGDecode
 #[doc(alias = "_JPEGDecode")]
-pub fn stub_0x19b8f0() -> ! {
-    todo!("0x19b8f0 _JPEGDecode")
+pub fn stub_0x19b8f0() -> crate::slot::PortedFn {
+// IDA 0x19b8f0: _JPEGDecode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19b8f0, "_JPEGDecode")
 }
 
-// 0x19bcfc — _TIFFjpeg_read_header
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "_TIFFjpeg_read_header")]
-pub fn stub_0x19bcfc() -> ! {
-    todo!("0x19bcfc _TIFFjpeg_read_header")
+pub fn stub_0x19bcfc() -> crate::slot::PortedFn {
+// IDA 0x19bcfc: _TIFFjpeg_read_header.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19bcfc, "_TIFFjpeg_read_header")
 }
 
-// 0x19bd3c — _JPEGSetupDecode
-// type: int __fastcall(int)
 #[doc(alias = "_JPEGSetupDecode")]
-pub fn stub_0x19bd3c() -> ! {
-    todo!("0x19bd3c _JPEGSetupDecode")
+pub fn stub_0x19bd3c() -> crate::slot::PortedFn {
+// IDA 0x19bd3c: _JPEGSetupDecode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19bd3c, "_JPEGSetupDecode")
 }
 
-// 0x19be84 — _TIFFjpeg_start_decompress
 #[doc(alias = "_TIFFjpeg_start_decompress")]
-pub fn stub_0x19be84() -> ! {
-    todo!("0x19be84 _TIFFjpeg_start_decompress")
+pub fn stub_0x19be84() -> crate::slot::PortedFn {
+// IDA 0x19be84: _TIFFjpeg_start_decompress.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19be84, "_TIFFjpeg_start_decompress")
 }
 
-// 0x19bebc — _JPEGPreDecode
 #[doc(alias = "_JPEGPreDecode")]
-pub fn stub_0x19bebc() -> ! {
-    todo!("0x19bebc _JPEGPreDecode")
+pub fn stub_0x19bebc() -> crate::slot::PortedFn {
+// IDA 0x19bebc: _JPEGPreDecode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19bebc, "_JPEGPreDecode")
 }
 
-// 0x19c4a0 — _TIFFjpeg_read_raw_data
 #[doc(alias = "_TIFFjpeg_read_raw_data")]
-pub fn stub_0x19c4a0() -> ! {
-    todo!("0x19c4a0 _TIFFjpeg_read_raw_data")
+pub fn stub_0x19c4a0() -> crate::slot::PortedFn {
+// IDA 0x19c4a0: _TIFFjpeg_read_raw_data.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19c4a0, "_TIFFjpeg_read_raw_data")
 }
 
-// 0x19c4e4 — _JPEGDecodeRaw
 #[doc(alias = "_JPEGDecodeRaw")]
-pub fn stub_0x19c4e4() -> ! {
-    todo!("0x19c4e4 _JPEGDecodeRaw")
+pub fn stub_0x19c4e4() -> crate::slot::PortedFn {
+// IDA 0x19c4e4: _JPEGDecodeRaw.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19c4e4, "_JPEGDecodeRaw")
 }
 
-// 0x19c8a0 — _JPEGPrintDir
-// type: int __fastcall(int, FILE *)
 #[doc(alias = "_JPEGPrintDir")]
-pub fn stub_0x19c8a0() -> ! {
-    todo!("0x19c8a0 _JPEGPrintDir")
+pub fn stub_0x19c8a0() -> crate::slot::PortedFn {
+// IDA 0x19c8a0: _JPEGPrintDir.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19c8a0, "_JPEGPrintDir")
 }
 
-// 0x19c9a0 — _JPEGResetUpsampled
 #[doc(alias = "_JPEGResetUpsampled")]
-pub fn stub_0x19c9a0() -> ! {
-    todo!("0x19c9a0 _JPEGResetUpsampled")
+pub fn stub_0x19c9a0() -> crate::slot::PortedFn {
+// IDA 0x19c9a0: _JPEGResetUpsampled.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19c9a0, "_JPEGResetUpsampled")
 }
 
-// 0x19c9fc — _JPEGVSetField
 #[doc(alias = "_JPEGVSetField")]
-pub fn stub_0x19c9fc() -> ! {
-    todo!("0x19c9fc _JPEGVSetField")
+pub fn stub_0x19c9fc() -> crate::slot::PortedFn {
+// IDA 0x19c9fc: _JPEGVSetField.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19c9fc, "_JPEGVSetField")
 }
 
-// 0x19cc14 — _JPEGVGetField
 #[doc(alias = "_JPEGVGetField")]
-pub fn stub_0x19cc14() -> ! {
-    todo!("0x19cc14 _JPEGVGetField")
+pub fn stub_0x19cc14() -> crate::slot::PortedFn {
+// IDA 0x19cc14: _JPEGVGetField.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19cc14, "_JPEGVGetField")
 }
 
-// 0x19ce10 — _JPEGPreEncode
 #[doc(alias = "_JPEGPreEncode")]
-pub fn stub_0x19ce10() -> ! {
-    todo!("0x19ce10 _JPEGPreEncode")
+pub fn stub_0x19ce10() -> crate::slot::PortedFn {
+// IDA 0x19ce10: _JPEGPreEncode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19ce10, "_JPEGPreEncode")
 }
 
-// 0x19d180 — _uv_decode
 #[doc(alias = "_uv_decode")]
-pub fn stub_0x19d180() -> ! {
-    todo!("0x19d180 _uv_decode")
+pub fn stub_0x19d180() -> crate::slot::PortedFn {
+// IDA 0x19d180: _uv_decode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d180, "_uv_decode")
 }
 
-// 0x19d260 — _Luv24toLuv48
 #[doc(alias = "_Luv24toLuv48")]
-pub fn stub_0x19d260() -> ! {
-    todo!("0x19d260 _Luv24toLuv48")
+pub fn stub_0x19d260() -> crate::slot::PortedFn {
+// IDA 0x19d260: _Luv24toLuv48.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d260, "_Luv24toLuv48")
 }
 
-// 0x19d478 — _Luv32toLuv48
 #[doc(alias = "_Luv32toLuv48")]
-pub fn stub_0x19d478() -> ! {
-    todo!("0x19d478 _Luv32toLuv48")
+pub fn stub_0x19d478() -> crate::slot::PortedFn {
+// IDA 0x19d478: _Luv32toLuv48.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d478, "_Luv32toLuv48")
 }
 
-// 0x19d5f8 — __logLuvNop
-// type: void()
 #[doc(alias = "__logLuvNop")]
-pub fn stub_0x19d5f8() -> ! {
-    todo!("0x19d5f8 __logLuvNop")
+pub fn stub_0x19d5f8() -> crate::slot::PortedFn {
+// IDA 0x19d5f8: __logLuvNop.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d5f8, "__logLuvNop")
 }
 
-// 0x19d5fc — _multiply
 #[doc(alias = "_multiply")]
-pub fn stub_0x19d5fc() -> ! {
-    todo!("0x19d5fc _multiply")
+pub fn stub_0x19d5fc() -> crate::slot::PortedFn {
+// IDA 0x19d5fc: _multiply.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d5fc, "_multiply")
 }
 
-// 0x19d62c — _LogLuvClose
 #[doc(alias = "_LogLuvClose")]
-pub fn stub_0x19d62c() -> ! {
-    todo!("0x19d62c _LogLuvClose")
+pub fn stub_0x19d62c() -> crate::slot::PortedFn {
+// IDA 0x19d62c: _LogLuvClose.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d62c, "_LogLuvClose")
 }
 
-// 0x19d658 — _LogLuvVGetField
 #[doc(alias = "_LogLuvVGetField")]
-pub fn stub_0x19d658() -> ! {
-    todo!("0x19d658 _LogLuvVGetField")
+pub fn stub_0x19d658() -> crate::slot::PortedFn {
+// IDA 0x19d658: _LogLuvVGetField.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d658, "_LogLuvVGetField")
 }
 
-// 0x19d698 — _LogLuvDecode24
 #[doc(alias = "_LogLuvDecode24")]
-pub fn stub_0x19d698() -> ! {
-    todo!("0x19d698 _LogLuvDecode24")
+pub fn stub_0x19d698() -> crate::slot::PortedFn {
+// IDA 0x19d698: _LogLuvDecode24.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d698, "_LogLuvDecode24")
 }
 
-// 0x19d830 — _LogLuvInitState
-// type: int(void)
 #[doc(alias = "_LogLuvInitState")]
-pub fn stub_0x19d830() -> ! {
-    todo!("0x19d830 _LogLuvInitState")
+pub fn stub_0x19d830() -> crate::slot::PortedFn {
+// IDA 0x19d830: _LogLuvInitState.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19d830, "_LogLuvInitState")
 }
 
-// 0x19da80 — _LogL16InitState
-// type: int(void)
 #[doc(alias = "_LogL16InitState")]
-pub fn stub_0x19da80() -> ! {
-    todo!("0x19da80 _LogL16InitState")
+pub fn stub_0x19da80() -> crate::slot::PortedFn {
+// IDA 0x19da80: _LogL16InitState.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19da80, "_LogL16InitState")
 }
 
-// 0x19dc60 — _LogLuvSetupEncode
-// type: int __fastcall(int)
 #[doc(alias = "_LogLuvSetupEncode")]
-pub fn stub_0x19dc60() -> ! {
-    todo!("0x19dc60 _LogLuvSetupEncode")
+pub fn stub_0x19dc60() -> crate::slot::PortedFn {
+// IDA 0x19dc60: _LogLuvSetupEncode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19dc60, "_LogLuvSetupEncode")
 }
 
-// 0x19de20 — _LogLuvSetupDecode
-// type: int __fastcall(int)
 #[doc(alias = "_LogLuvSetupDecode")]
-pub fn stub_0x19de20() -> ! {
-    todo!("0x19de20 _LogLuvSetupDecode")
+pub fn stub_0x19de20() -> crate::slot::PortedFn {
+// IDA 0x19de20: _LogLuvSetupDecode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19de20, "_LogLuvSetupDecode")
 }
 
-// 0x19dfd8 — _TIFFInitSGILog
 #[doc(alias = "_TIFFInitSGILog")]
-pub fn stub_0x19dfd8() -> ! {
-    todo!("0x19dfd8 _TIFFInitSGILog")
+pub fn stub_0x19dfd8() -> crate::slot::PortedFn {
+// IDA 0x19dfd8: _TIFFInitSGILog.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19dfd8, "_TIFFInitSGILog")
 }
 
-// 0x19e198 — _LogLuvDecode32
 #[doc(alias = "_LogLuvDecode32")]
-pub fn stub_0x19e198() -> ! {
-    todo!("0x19e198 _LogLuvDecode32")
+pub fn stub_0x19e198() -> crate::slot::PortedFn {
+// IDA 0x19e198: _LogLuvDecode32.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19e198, "_LogLuvDecode32")
 }
 
-// 0x19e7a0 — _LogL16Decode
 #[doc(alias = "_LogL16Decode")]
-pub fn stub_0x19e7a0() -> ! {
-    todo!("0x19e7a0 _LogL16Decode")
+pub fn stub_0x19e7a0() -> crate::slot::PortedFn {
+// IDA 0x19e7a0: _LogL16Decode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19e7a0, "_LogL16Decode")
 }
 
-// 0x19edbc — _LogLuvVSetField
 #[doc(alias = "_LogLuvVSetField")]
-pub fn stub_0x19edbc() -> ! {
-    todo!("0x19edbc _LogLuvVSetField")
+pub fn stub_0x19edbc() -> crate::slot::PortedFn {
+// IDA 0x19edbc: _LogLuvVSetField.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19edbc, "_LogLuvVSetField")
 }
 
-// 0x19eee8 — _LogLuvEncodeStrip
 #[doc(alias = "_LogLuvEncodeStrip")]
-pub fn stub_0x19eee8() -> ! {
-    todo!("0x19eee8 _LogLuvEncodeStrip")
+pub fn stub_0x19eee8() -> crate::slot::PortedFn {
+// IDA 0x19eee8: _LogLuvEncodeStrip.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19eee8, "_LogLuvEncodeStrip")
 }
 
-// 0x19ef8c — _LogLuvDecodeStrip
 #[doc(alias = "_LogLuvDecodeStrip")]
-pub fn stub_0x19ef8c() -> ! {
-    todo!("0x19ef8c _LogLuvDecodeStrip")
+pub fn stub_0x19ef8c() -> crate::slot::PortedFn {
+// IDA 0x19ef8c: _LogLuvDecodeStrip.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19ef8c, "_LogLuvDecodeStrip")
 }
 
-// 0x19f030 — _LogLuvCleanup
 #[doc(alias = "_LogLuvCleanup")]
-pub fn stub_0x19f030() -> ! {
-    todo!("0x19f030 _LogLuvCleanup")
+pub fn stub_0x19f030() -> crate::slot::PortedFn {
+// IDA 0x19f030: _LogLuvCleanup.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19f030, "_LogLuvCleanup")
 }
 
-// 0x19f0b0 — _LogLuvEncodeTile
 #[doc(alias = "_LogLuvEncodeTile")]
-pub fn stub_0x19f0b0() -> ! {
-    todo!("0x19f0b0 _LogLuvEncodeTile")
+pub fn stub_0x19f0b0() -> crate::slot::PortedFn {
+// IDA 0x19f0b0: _LogLuvEncodeTile.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19f0b0, "_LogLuvEncodeTile")
 }
 
-// 0x19f154 — _LogLuvDecodeTile
 #[doc(alias = "_LogLuvDecodeTile")]
-pub fn stub_0x19f154() -> ! {
-    todo!("0x19f154 _LogLuvDecodeTile")
+pub fn stub_0x19f154() -> crate::slot::PortedFn {
+// IDA 0x19f154: _LogLuvDecodeTile.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19f154, "_LogLuvDecodeTile")
 }
 
-// 0x19f1f8 — _LogLuvEncode32
 #[doc(alias = "_LogLuvEncode32")]
-pub fn stub_0x19f1f8() -> ! {
-    todo!("0x19f1f8 _LogLuvEncode32")
+pub fn stub_0x19f1f8() -> crate::slot::PortedFn {
+// IDA 0x19f1f8: _LogLuvEncode32.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19f1f8, "_LogLuvEncode32")
 }
 
-// 0x19f958 — _LogLuvEncode24
 #[doc(alias = "_LogLuvEncode24")]
-pub fn stub_0x19f958() -> ! {
-    todo!("0x19f958 _LogLuvEncode24")
+pub fn stub_0x19f958() -> crate::slot::PortedFn {
+// IDA 0x19f958: _LogLuvEncode24.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19f958, "_LogLuvEncode24")
 }
 
-// 0x19fd88 — _LogL16Encode
 #[doc(alias = "_LogL16Encode")]
-pub fn stub_0x19fd88() -> ! {
-    todo!("0x19fd88 _LogL16Encode")
+pub fn stub_0x19fd88() -> crate::slot::PortedFn {
+// IDA 0x19fd88: _LogL16Encode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x19fd88, "_LogL16Encode")
 }
 
-// 0x1a0514 — _Luv32fromLuv48
 #[doc(alias = "_Luv32fromLuv48")]
-pub fn stub_0x1a0514() -> ! {
-    todo!("0x1a0514 _Luv32fromLuv48")
+pub fn stub_0x1a0514() -> crate::slot::PortedFn {
+// IDA 0x1a0514: _Luv32fromLuv48.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a0514, "_Luv32fromLuv48")
 }
 
-// 0x1a0a28 — _XYZtoRGB24
 #[doc(alias = "_XYZtoRGB24")]
-pub fn stub_0x1a0a28() -> ! {
-    todo!("0x1a0a28 _XYZtoRGB24")
+pub fn stub_0x1a0a28() -> crate::slot::PortedFn {
+// IDA 0x1a0a28: _XYZtoRGB24.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a0a28, "_XYZtoRGB24")
 }
 
-// 0x1a0b9c — _oog_encode
 #[doc(alias = "_oog_encode")]
-pub fn stub_0x1a0b9c() -> ! {
-    todo!("0x1a0b9c _oog_encode")
+pub fn stub_0x1a0b9c() -> crate::slot::PortedFn {
+// IDA 0x1a0b9c: _oog_encode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a0b9c, "_oog_encode")
 }
 
-// 0x1a1168 — _uv_encode
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "_uv_encode")]
-pub fn stub_0x1a1168() -> ! {
-    todo!("0x1a1168 _uv_encode")
+pub fn stub_0x1a1168() -> crate::slot::PortedFn {
+// IDA 0x1a1168: _uv_encode.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1168, "_uv_encode")
 }
 
-// 0x1a12b8 — _Luv24fromLuv48
 #[doc(alias = "_Luv24fromLuv48")]
-pub fn stub_0x1a12b8() -> ! {
-    todo!("0x1a12b8 _Luv24fromLuv48")
+pub fn stub_0x1a12b8() -> crate::slot::PortedFn {
+// IDA 0x1a12b8: _Luv24fromLuv48.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a12b8, "_Luv24fromLuv48")
 }
 
-// 0x1a1638 — _LogL10fromY
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "_LogL10fromY")]
-pub fn stub_0x1a1638() -> ! {
-    todo!("0x1a1638 _LogL10fromY")
+pub fn stub_0x1a1638() -> crate::slot::PortedFn {
+// IDA 0x1a1638: _LogL10fromY.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1638, "_LogL10fromY")
 }
 
-// 0x1a1718 — _LogLuv24fromXYZ
-// type: int __fastcall(float *, int)
 #[doc(alias = "_LogLuv24fromXYZ")]
-pub fn stub_0x1a1718() -> ! {
-    todo!("0x1a1718 _LogLuv24fromXYZ")
+pub fn stub_0x1a1718() -> crate::slot::PortedFn {
+// IDA 0x1a1718: _LogLuv24fromXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1718, "_LogLuv24fromXYZ")
 }
 
-// 0x1a1804 — _Luv24fromXYZ
 #[doc(alias = "_Luv24fromXYZ")]
-pub fn stub_0x1a1804() -> ! {
-    todo!("0x1a1804 _Luv24fromXYZ")
+pub fn stub_0x1a1804() -> crate::slot::PortedFn {
+// IDA 0x1a1804: _Luv24fromXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1804, "_Luv24fromXYZ")
 }
 
-// 0x1a19cc — _LogL16fromY
 #[doc(alias = "_LogL16fromY")]
-pub fn stub_0x1a19cc() -> ! {
-    todo!("0x1a19cc _LogL16fromY")
+pub fn stub_0x1a19cc() -> crate::slot::PortedFn {
+// IDA 0x1a19cc: _LogL16fromY.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a19cc, "_LogL16fromY")
 }
 
-// 0x1a1b74 — _LogLuv32fromXYZ
 #[doc(alias = "_LogLuv32fromXYZ")]
-pub fn stub_0x1a1b74() -> ! {
-    todo!("0x1a1b74 _LogLuv32fromXYZ")
+pub fn stub_0x1a1b74() -> crate::slot::PortedFn {
+// IDA 0x1a1b74: _LogLuv32fromXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1b74, "_LogLuv32fromXYZ")
 }
 
-// 0x1a1cf4 — _Luv32fromXYZ
 #[doc(alias = "_Luv32fromXYZ")]
-pub fn stub_0x1a1cf4() -> ! {
-    todo!("0x1a1cf4 _Luv32fromXYZ")
+pub fn stub_0x1a1cf4() -> crate::slot::PortedFn {
+// IDA 0x1a1cf4: _Luv32fromXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1cf4, "_Luv32fromXYZ")
 }
 
-// 0x1a1ebc — _L16fromY
 #[doc(alias = "_L16fromY")]
-pub fn stub_0x1a1ebc() -> ! {
-    todo!("0x1a1ebc _L16fromY")
+pub fn stub_0x1a1ebc() -> crate::slot::PortedFn {
+// IDA 0x1a1ebc: _L16fromY.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1ebc, "_L16fromY")
 }
 
-// 0x1a1fe8 — _LogL10toY
 #[doc(alias = "_LogL10toY")]
-pub fn stub_0x1a1fe8() -> ! {
-    todo!("0x1a1fe8 _LogL10toY")
+pub fn stub_0x1a1fe8() -> crate::slot::PortedFn {
+// IDA 0x1a1fe8: _LogL10toY.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a1fe8, "_LogL10toY")
 }
 
-// 0x1a2038 — _LogLuv24toXYZ
 #[doc(alias = "_LogLuv24toXYZ")]
-pub fn stub_0x1a2038() -> ! {
-    todo!("0x1a2038 _LogLuv24toXYZ")
+pub fn stub_0x1a2038() -> crate::slot::PortedFn {
+// IDA 0x1a2038: _LogLuv24toXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a2038, "_LogLuv24toXYZ")
 }
 
-// 0x1a2144 — _Luv24toRGB
 #[doc(alias = "_Luv24toRGB")]
-pub fn stub_0x1a2144() -> ! {
-    todo!("0x1a2144 _Luv24toRGB")
+pub fn stub_0x1a2144() -> crate::slot::PortedFn {
+// IDA 0x1a2144: _Luv24toRGB.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a2144, "_Luv24toRGB")
 }
 
-// 0x1a227c — _Luv24toXYZ
 #[doc(alias = "_Luv24toXYZ")]
-pub fn stub_0x1a227c() -> ! {
-    todo!("0x1a227c _Luv24toXYZ")
+pub fn stub_0x1a227c() -> crate::slot::PortedFn {
+// IDA 0x1a227c: _Luv24toXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a227c, "_Luv24toXYZ")
 }
 
-// 0x1a23e8 — _LogL16toY
 #[doc(alias = "_LogL16toY")]
-pub fn stub_0x1a23e8() -> ! {
-    todo!("0x1a23e8 _LogL16toY")
+pub fn stub_0x1a23e8() -> crate::slot::PortedFn {
+// IDA 0x1a23e8: _LogL16toY.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a23e8, "_LogL16toY")
 }
 
-// 0x1a2448 — _LogLuv32toXYZ
 #[doc(alias = "_LogLuv32toXYZ")]
-pub fn stub_0x1a2448() -> ! {
-    todo!("0x1a2448 _LogLuv32toXYZ")
+pub fn stub_0x1a2448() -> crate::slot::PortedFn {
+// IDA 0x1a2448: _LogLuv32toXYZ.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a2448, "_LogLuv32toXYZ")
 }
 
-// 0x1a2528 — _Luv32toRGB
 #[doc(alias = "_Luv32toRGB")]
-pub fn stub_0x1a2528() -> ! {
-    todo!("0x1a2528 _Luv32toRGB")
+pub fn stub_0x1a2528() -> crate::slot::PortedFn {
+// IDA 0x1a2528: _Luv32toRGB.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x1a2528, "_Luv32toRGB")
 }

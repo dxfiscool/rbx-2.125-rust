@@ -8,674 +8,684 @@
 
 use rbx_core::SharedPtr;
 
-// 0xf28b64 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant) [0xf28b64]")]
-pub fn stub_0xf28b64() -> ! {
-    todo!("0xf28b64 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE")
+pub fn stub_0xf28b64() -> crate::slot::DescriptorHandle {
+// BoundYieldFuncDesc ctor — registers the yielding member binding.
+crate::slot::DescriptorHandle::yield_func("RBX::HttpService", "std::string", 1)
 }
 
-// 0xf28b74 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes) [0xf28b74]")]
-pub fn stub_0xf28b74() -> ! {
-    todo!("0xf28b74 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_0xf28b74() -> crate::slot::DescriptorHandle {
+// BoundYieldFuncDesc ctor — registers the yielding member binding.
+crate::slot::DescriptorHandle::yield_func("RBX::HttpService", "std::string", 1)
 }
 
-// 0xf28b84 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant) [0xf28b84]")]
-pub fn stub_0xf28b84() -> ! {
-    todo!("0xf28b84 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_")
+pub fn stub_0xf28b84() -> crate::slot::DescriptorHandle {
+// BoundYieldFuncDesc ctor — registers the yielding member binding.
+crate::slot::DescriptorHandle::yield_func("RBX::HttpService", "std::string", 3)
 }
 
-// 0xf28b94 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes) [0xf28b94]")]
-pub fn stub_0xf28b94() -> ! {
-    todo!("0xf28b94 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+pub fn stub_0xf28b94() -> crate::slot::DescriptorHandle {
+// BoundYieldFuncDesc ctor — registers the yielding member binding.
+crate::slot::DescriptorHandle::yield_func("RBX::HttpService", "std::string", 3)
 }
 
-// 0xf28fc4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*) [0xf28fc4]")]
-pub fn stub_0xf28fc4() -> ! {
-    todo!("0xf28fc4 j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_")
+pub fn stub_0xf28fc4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::decl~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0xf28fd4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
-// type: int __fastcall(_DWORD)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void) [0xf28fd4]")]
-pub fn stub_0xf28fd4() -> ! {
-    todo!("0xf28fd4 j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv")
+pub fn stub_0xf28fd4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::stat~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0xf28fe4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*) [0xf28fe4]")]
-pub fn stub_0xf28fe4() -> ! {
-    todo!("0xf28fe4 j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_")
+pub fn stub_0xf28fe4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::decl~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0xf29024 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
-// type: int __fastcall(int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&) [0xf29024]")]
-pub fn stub_0xf29024() -> ! {
-    todo!("0xf29024 j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")
+pub fn stub_0xf29024(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0xf29044 — j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
-// type: int __fastcall(int)
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&) [0xf29044]")]
-pub fn stub_0xf29044() -> ! {
-    todo!("0xf29044 j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+pub fn stub_0xf29044() -> crate::slot::PortedFn {
+// IDA 0xf29044: std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::inse~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf29044, "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunction~")
 }
 
-// 0xf29174 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*) [0xf29174]")]
-pub fn stub_0xf29174() -> ! {
-    todo!("0xf29174 j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_")
+pub fn stub_0xf29174(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::merg~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0xf29184 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*) [0xf29184]")]
-pub fn stub_0xf29184() -> ! {
-    todo!("0xf29184 j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_")
+pub fn stub_0xf29184() -> crate::slot::InstanceHandle {
+// RBX::Reflection::MemberDescriptorContainer ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::MemberDescriptorContainer")
 }
 
-// 0xf29294 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long) [0xf29294]")]
-pub fn stub_0xf29294() -> ! {
-    todo!("0xf29294 j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm")
+pub fn stub_0xf29294(map: &mut crate::slot::TreeMapModel) {
+// map rehash_impl — reallocates and re-links every node
+// (cf. 0x2634b8); capacity is host-managed.
+let _ = map;
 }
 
-// 0xf292a4 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *) [0xf292a4]")]
-pub fn stub_0xf292a4() -> ! {
-    todo!("0xf292a4 j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE")
+pub fn stub_0xf292a4(map: &mut crate::slot::TreeMapModel) {
+// map rehash_impl — reallocates and re-links every node
+// (cf. 0x2634b8); capacity is host-managed.
+let _ = map;
 }
 
-// 0xf292f4 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv
-// type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void) [0xf292f4]")]
-pub fn stub_0xf292f4() -> ! {
-    todo!("0xf292f4 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv")
+pub fn stub_0xf292f4() -> crate::slot::PortedFn {
+// IDA 0xf292f4: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf292f4, "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pa~")
 }
 
-// 0xf293d4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long) [0xf293d4]")]
-pub fn stub_0xf293d4() -> ! {
-    todo!("0xf293d4 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm")
+pub fn stub_0xf293d4(map: &mut crate::slot::TreeMapModel) {
+// map rehash_impl — reallocates and re-links every node
+// (cf. 0x2634b8); capacity is host-managed.
+let _ = map;
 }
 
-// 0xf293e4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
-// type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void) [0xf293e4]")]
-pub fn stub_0xf293e4() -> ! {
-    todo!("0xf293e4 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv")
+pub fn stub_0xf293e4(map: &mut crate::slot::TreeMapModel) {
+// map rehash_impl — reallocates and re-links every node
+// (cf. 0x2634b8); capacity is host-managed.
+let _ = map;
 }
 
-// 0xf293f4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
-// type: int(void)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long) [0xf293f4]")]
-pub fn stub_0xf293f4() -> ! {
-    todo!("0xf293f4 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")
+pub fn stub_0xf293f4(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0xf29404 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&) [0xf29404]")]
-pub fn stub_0xf29404() -> ! {
-    todo!("0xf29404 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE")
+pub fn stub_0xf29404() -> (String, String) {
+// std::pair ctor — empty pair.
+(String::new(), String::new())
 }
 
-// 0xf29474 — j___ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
-// type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const [0xf29474]")]
-pub fn stub_0xf29474() -> ! {
-    todo!("0xf29474 j___ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_")
+pub fn stub_0xf29474(map: &crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map find_node_impl — hashes the key and probes the
+// bucket run (cf. 0x263574).
+map.find(key)
 }
 
-// 0xf294c4 — j___ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
-// type: int __fastcall(_DWORD)
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const [0xf294c4]")]
-pub fn stub_0xf294c4() -> ! {
-    todo!("0xf294c4 j___ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm")
+pub fn stub_0xf294c4(map: &mut crate::slot::TreeMapModel) {
+// map rehash_impl — reallocates and re-links every node
+// (cf. 0x2634b8); capacity is host-managed.
+let _ = map;
 }
 
-// 0xf29524 — j___ZNSt12_Vector_baseIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE11_M_allocateEm
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Vector_base<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_allocate(unsigned long) [0xf29524]")]
-pub fn stub_0xf29524() -> ! {
-    todo!("0xf29524 j___ZNSt12_Vector_baseIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE11_M_allocateEm")
+pub fn stub_0xf29524() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0xf29574 — j___ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE11_M_allocateEm
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_allocate(unsigned long) [0xf29574]")]
-pub fn stub_0xf29574() -> ! {
-    todo!("0xf29574 j___ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE11_M_allocateEm")
+pub fn stub_0xf29574() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0xf29614 — j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
-// type: int __fastcall(int, void *__src)
 #[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&) [0xf29614]")]
-pub fn stub_0xf29614() -> ! {
-    todo!("0xf29614 j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+pub fn stub_0xf29614(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0xf296a4 — j___ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
-// type: int __fastcall(int, void *__src)
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&) [0xf296a4]")]
-pub fn stub_0xf296a4() -> ! {
-    todo!("0xf296a4 j___ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_")
+pub fn stub_0xf296a4(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0xf296b4 — j___ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE9push_backERKS5_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&) [0xf296b4]")]
-pub fn stub_0xf296b4() -> ! {
-    todo!("0xf296b4 j___ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE9push_backERKS5_")
+pub fn stub_0xf296b4(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0xf29a04 — j___ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_
 #[doc(alias = "int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher) [0xf29a04]")]
-pub fn stub_0xf29a04() -> ! {
-    todo!("0xf29a04 j___ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_")
+pub fn stub_0xf29a04() -> crate::slot::PortedFn {
+// IDA 0xf29a04: int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::ArgumentPusher) [0xf29~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf29a04, "int RBX::withVariantValue<int,RBX::Lua::ArgumentPusher>(RBX::Reflection::Variant const&,RBX::Lua::Ar~")
 }
 
-// 0xf29a14 — j___ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,lua_State *) [0xf29a14]")]
-pub fn stub_0xf29a14() -> ! {
-    todo!("0xf29a14 j___ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State")
+pub fn stub_0xf29a14() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29a24 — j___ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKNS_10Reflection7VariantESt6vectorIS6_SaIS6_EEEEEEiT_SD_P9lua_State
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>(__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,lua_State *) [0xf29a24]")]
-pub fn stub_0xf29a24() -> ! {
-    todo!("0xf29a24 j___ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKNS_10Reflection7VariantESt6vectorIS6_SaIS6_EEEEEEiT_SD_P9lua_State")
+pub fn stub_0xf29a24() -> crate::slot::PortedFn {
+// IDA 0xf29a24: int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,std::vector<RBX::Refl~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf29a24, "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<RBX::Reflection::Variant const*,s~")
 }
 
-// 0xf29a34 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>) [0xf29a34]")]
-pub fn stub_0xf29a34() -> ! {
-    todo!("0xf29a34 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE")
+pub fn stub_0xf29a34() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash~")
 }
 
-// 0xf29a44 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>) [0xf29a44]")]
-pub fn stub_0xf29a44() -> ! {
-    todo!("0xf29a44 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE")
+pub fn stub_0xf29a44() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Reflection::Tuple const")
 }
 
-// 0xf29a54 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>) [0xf29a54]")]
-pub fn stub_0xf29a54() -> ! {
-    todo!("0xf29a54 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE")
+pub fn stub_0xf29a54() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::alloca~")
 }
 
-// 0xf29a64 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>) [0xf29a64]")]
-pub fn stub_0xf29a64() -> ! {
-    todo!("0xf29a64 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE")
+pub fn stub_0xf29a64() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPt~")
 }
 
-// 0xf29a74 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>) [0xf29a74]")]
-pub fn stub_0xf29a74() -> ! {
-    todo!("0xf29a74 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE")
+pub fn stub_0xf29a74() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> c~")
 }
 
-// 0xf29a84 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>) [0xf29a84]")]
-pub fn stub_0xf29a84() -> ! {
-    todo!("0xf29a84 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE")
+pub fn stub_0xf29a84() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::S~")
 }
 
-// 0xf29a94 — j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>) [0xf29a94]")]
-pub fn stub_0xf29a94() -> ! {
-    todo!("0xf29a94 j___ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE")
+pub fn stub_0xf29a94() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost:~")
 }
 
-// 0xf29aa4 — j___ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::ArgumentPusher::operator()(rbx_core::SharedPtr<RBX::Instance> const&) [0xf29aa4]")]
-pub fn stub_0xf29aa4() -> ! {
-    todo!("0xf29aa4 j___ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE")
+pub fn stub_0xf29aa4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29ac4 — j___ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &) [0xf29ac4]")]
-pub fn stub_0xf29ac4() -> ! {
-    todo!("0xf29ac4 j___ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_")
+pub fn stub_0xf29ac4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29ad4 — j___ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29ad4]")]
-pub fn stub_0xf29ad4() -> ! {
-    todo!("0xf29ad4 j___ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29ad4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29ae4 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<G3D::Vector2int16>(lua_State *,G3D::Vector2int16) [0xf29ae4]")]
-pub fn stub_0xf29ae4() -> ! {
-    todo!("0xf29ae4 j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29ae4(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector2i16) -> crate::lua::LuaVector2i16 {
+// Overload of the primary stub_0x26e9c0.
+crate::lua::stub_0x26e9c0(thread, value)
 }
 
-// 0xf29af4 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29af4]")]
-pub fn stub_0xf29af4() -> ! {
-    todo!("0xf29af4 j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29af4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cb1c.
+crate::lua::stub_0x26cb1c(_thread, _index, out, slot)
 }
 
-// 0xf29b04 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<G3D::Vector3int16>(lua_State *,G3D::Vector3int16) [0xf29b04]")]
-pub fn stub_0xf29b04() -> ! {
-    todo!("0xf29b04 j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29b04(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector3i16) -> crate::lua::LuaVector3i16 {
+// Overload of the primary stub_0x26eaf0.
+crate::lua::stub_0x26eaf0(thread, value)
 }
 
-// 0xf29b14 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b14]")]
-pub fn stub_0xf29b14() -> ! {
-    todo!("0xf29b14 j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b14(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Vector3int16>::getValue<Variant> — class-tag check, then wrap.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::VECTOR3INT16) {
+    Some(crate::lua::LuaUserdataPayload::Vector3i16(v)) => { *out = crate::lua::ScriptVariant::Vector3i16(*v); true }
+    _ => false,
+}
 }
 
-// 0xf29b24 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &) [0xf29b24]")]
-pub fn stub_0xf29b24() -> ! {
-    todo!("0xf29b24 j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0xf29b24(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaVector3i16, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26c140.
+crate::lua::stub_0x26c140(_thread, _index, out, slot)
 }
 
-// 0xf29b34 — j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b34]")]
-pub fn stub_0xf29b34() -> ! {
-    todo!("0xf29b34 j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b34(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26c92c.
+crate::lua::stub_0x26c92c(_thread, _index, out, slot)
 }
 
-// 0xf29b44 — j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Color3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b44]")]
-pub fn stub_0xf29b44() -> ! {
-    todo!("0xf29b44 j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b44(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cd0c.
+crate::lua::stub_0x26cd0c(_thread, _index, out, slot)
 }
 
-// 0xf29b54 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b54]")]
-pub fn stub_0xf29b54() -> ! {
-    todo!("0xf29b54 j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b54(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cc14.
+crate::lua::stub_0x26cc14(_thread, _index, out, slot)
 }
 
-// 0xf29b64 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b64]")]
-pub fn stub_0xf29b64() -> ! {
-    todo!("0xf29b64 j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b64(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Vector3>::getValue<Variant> — class-tag check, then wrap.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::VECTOR3) {
+    Some(crate::lua::LuaUserdataPayload::Vector3(v)) => { *out = crate::lua::ScriptVariant::Vector3(*v); true }
+    _ => false,
+}
 }
 
-// 0xf29b74 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &) [0xf29b74]")]
-pub fn stub_0xf29b74() -> ! {
-    todo!("0xf29b74 j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0xf29b74(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaVector3, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26c230.
+crate::lua::stub_0x26c230(_thread, _index, out, slot)
 }
 
-// 0xf29b84 — j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Reflection::DescribedBase> &) [0xf29b84]")]
-pub fn stub_0xf29b84() -> ! {
-    todo!("0xf29b84 j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b84() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29b94 — j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29b94]")]
-pub fn stub_0xf29b94() -> ! {
-    todo!("0xf29b94 j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29b94() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf29ba4 — j___ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::BrickColor,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29ba4]")]
-pub fn stub_0xf29ba4() -> ! {
-    todo!("0xf29ba4 j___ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29ba4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cd88.
+crate::lua::stub_0x26cd88(_thread, _index, out, slot)
 }
 
-// 0xf29bc4 — j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::InputObject,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29bc4]")]
-pub fn stub_0xf29bc4() -> ! {
-    todo!("0xf29bc4 j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29bc4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26d070.
+crate::lua::stub_0x26d070(_thread, _index, out, slot)
 }
 
-// 0xf29be4 — j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29be4]")]
-pub fn stub_0xf29be4() -> ! {
-    todo!("0xf29be4 j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29be4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Region3int16>::getValue<Variant> — class-tag check, then wrap.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::REGION3INT16) {
+    Some(crate::lua::LuaUserdataPayload::Region3i16(v)) => { *out = crate::lua::ScriptVariant::Region3i16(*v); true }
+    _ => false,
+}
 }
 
-// 0xf29c04 — j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Axes,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c04]")]
-pub fn stub_0xf29c04() -> ! {
-    todo!("0xf29c04 j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c04(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cf78.
+crate::lua::stub_0x26cf78(_thread, _index, out, slot)
 }
 
-// 0xf29c14 — j___ZN3RBX3Lua6BridgeINS_4UDimELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c14]")]
-pub fn stub_0xf29c14() -> ! {
-    todo!("0xf29c14 j___ZN3RBX3Lua6BridgeINS_4UDimELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c14(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26ce04.
+crate::lua::stub_0x26ce04(_thread, _index, out, slot)
 }
 
-// 0xf29c24 — j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Faces,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c24]")]
-pub fn stub_0xf29c24() -> ! {
-    todo!("0xf29c24 j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c24(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cefc.
+crate::lua::stub_0x26cefc(_thread, _index, out, slot)
 }
 
-// 0xf29c34 — j___ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::UDim2,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c34]")]
-pub fn stub_0xf29c34() -> ! {
-    todo!("0xf29c34 j___ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c34(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26ce80.
+crate::lua::stub_0x26ce80(_thread, _index, out, slot)
 }
 
-// 0xf29c54 — j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::CellID,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c54]")]
-pub fn stub_0xf29c54() -> ! {
-    todo!("0xf29c54 j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c54(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cff4.
+crate::lua::stub_0x26cff4(_thread, _index, out, slot)
 }
 
-// 0xf29c64 — j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::RbxRay,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c64]")]
-pub fn stub_0xf29c64() -> ! {
-    todo!("0xf29c64 j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c64(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Overload of the primary stub_0x26cc90.
+crate::lua::stub_0x26cc90(_thread, _index, out, slot)
 }
 
-// 0xf29c84 — j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &) [0xf29c84]")]
-pub fn stub_0xf29c84() -> ! {
-    todo!("0xf29c84 j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+pub fn stub_0xf29c84(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::ScriptVariant, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Region3>::getValue<Variant> — class-tag check, then wrap.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::REGION3) {
+    Some(crate::lua::LuaUserdataPayload::Region3(v)) => { *out = crate::lua::ScriptVariant::Region3(*v); true }
+    _ => false,
+}
 }
 
-// 0xf29ca4 — j___ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::getValue<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,unsigned int,RBX::Reflection::EnumDescriptor::Item const* &) [0xf29ca4]")]
-pub fn stub_0xf29ca4() -> ! {
-    todo!("0xf29ca4 j___ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE8getValueIS6_EEbP9lua_StatejRT_")
+pub fn stub_0xf29ca4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaEnumItem, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge getValue — class-tag check for EnumItem userdata.
+match slot {
+    crate::lua::LuaStackValue::Userdata(ud) if ud.class == "EnumItem" => true,
+    _ => { let _ = out; false },
+}
 }
 
-// 0xf29e84 — j___ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int __fastcall(_DWORD)
 #[doc(alias = "rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) [0xf29e84]")]
-pub fn stub_0xf29e84() -> ! {
-    todo!("0xf29e84 j___ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0xf29e84() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost:~")
 }
 
-// 0xf29f24 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<int *>(lua_State *,int *) [0xf29f24]")]
-pub fn stub_0xf29f24() -> ! {
-    todo!("0xf29f24 j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_")
+pub fn stub_0xf29f24(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector2i16) -> crate::lua::LuaVector2i16 {
+// Overload of the primary stub_0x26e9c0.
+crate::lua::stub_0x26e9c0(thread, value)
 }
 
-// 0xf29f34 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<G3D::Vector2int16>(lua_State *,unsigned int,G3D::Vector2int16 &) [0xf29f34]")]
-pub fn stub_0xf29f34() -> ! {
-    todo!("0xf29f34 j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0xf29f34(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaVector2i16, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Vector2int16>::getValue — class-tag + payload check.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::VECTOR2INT16) {
+    Some(crate::lua::LuaUserdataPayload::Vector2i16(v)) => { *out = *v; true }
+    _ => false,
+}
 }
 
-// 0xf29f44 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<int *>(lua_State *,int *) [0xf29f44]")]
-pub fn stub_0xf29f44() -> ! {
-    todo!("0xf29f44 j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_")
+pub fn stub_0xf29f44(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector3i16) -> crate::lua::LuaVector3i16 {
+// Overload of the primary stub_0x26eaf0.
+crate::lua::stub_0x26eaf0(thread, value)
 }
 
-// 0xf29f54 — j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::CoordinateFrame* RBX::Lua::Bridge<G3D::CoordinateFrame,true>::pushNewObject<G3D::CoordinateFrame>(lua_State *,G3D::CoordinateFrame) [0xf29f54]")]
-pub fn stub_0xf29f54() -> ! {
-    todo!("0xf29f54 j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29f54(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaCoordinateFrame) -> crate::lua::LuaCoordinateFrame {
+// Bridge<CoordinateFrame>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::CFRAME, crate::lua::LuaUserdataPayload::CoordinateFrame(*value));
+*value
 }
 
-// 0xf29f64 — j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueIS3_EEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<G3D::CoordinateFrame>(lua_State *,unsigned int,G3D::CoordinateFrame &) [0xf29f64]")]
-pub fn stub_0xf29f64() -> ! {
-    todo!("0xf29f64 j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0xf29f64(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaCoordinateFrame, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<CoordinateFrame>::getValue — class-tag + payload check.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::CFRAME) {
+    Some(crate::lua::LuaUserdataPayload::CoordinateFrame(v)) => { *out = *v; true }
+    _ => false,
+}
 }
 
-// 0xf29f74 — j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<float *>(lua_State *,float *) [0xf29f74]")]
-pub fn stub_0xf29f74() -> ! {
-    todo!("0xf29f74 j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_")
+pub fn stub_0xf29f74(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaColor3) -> crate::lua::LuaColor3 {
+// Bridge<Color3>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::COLOR3, crate::lua::LuaUserdataPayload::Color3(*value));
+*value
 }
 
-// 0xf29f84 — j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<G3D::Color3>(lua_State *,G3D::Color3) [0xf29f84]")]
-pub fn stub_0xf29f84() -> ! {
-    todo!("0xf29f84 j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29f84(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaColor3) -> crate::lua::LuaColor3 {
+// Bridge<Color3>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::COLOR3, crate::lua::LuaUserdataPayload::Color3(*value));
+*value
 }
 
-// 0xf29f94 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<float *>(lua_State *,float *) [0xf29f94]")]
-pub fn stub_0xf29f94() -> ! {
-    todo!("0xf29f94 j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_")
+pub fn stub_0xf29f94(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector2) -> crate::lua::LuaVector2 {
+// Bridge<Vector2>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::VECTOR2, crate::lua::LuaUserdataPayload::Vector2(*value));
+*value
 }
 
-// 0xf29fa4 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<G3D::Vector2>(lua_State *,G3D::Vector2) [0xf29fa4]")]
-pub fn stub_0xf29fa4() -> ! {
-    todo!("0xf29fa4 j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29fa4(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector2) -> crate::lua::LuaVector2 {
+// Bridge<Vector2>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::VECTOR2, crate::lua::LuaUserdataPayload::Vector2(*value));
+*value
 }
 
-// 0xf29fb4 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueIS3_EEbP9lua_StatejRT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<G3D::Vector2>(lua_State *,unsigned int,G3D::Vector2 &) [0xf29fb4]")]
-pub fn stub_0xf29fb4() -> ! {
-    todo!("0xf29fb4 j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0xf29fb4(_thread: &crate::lua::LuaThreadState, _index: usize, out: &mut crate::lua::LuaVector2, slot: &crate::lua::LuaStackValue) -> bool {
+// Bridge<Vector2>::getValue — class-tag + payload check.
+match crate::lua::bridge_payload(slot, crate::lua::lua_bridge_class::VECTOR2) {
+    Some(crate::lua::LuaUserdataPayload::Vector2(v)) => { *out = *v; true }
+    _ => false,
+}
 }
 
-// 0xf29fc4 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<float *>(lua_State *,float *) [0xf29fc4]")]
-pub fn stub_0xf29fc4() -> ! {
-    todo!("0xf29fc4 j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_")
+pub fn stub_0xf29fc4(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector3) -> crate::lua::LuaVector3 {
+// Bridge<Vector3>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::VECTOR3, crate::lua::LuaUserdataPayload::Vector3(*value));
+*value
 }
 
-// 0xf29fd4 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<G3D::Vector3>(lua_State *,G3D::Vector3) [0xf29fd4]")]
-pub fn stub_0xf29fd4() -> ! {
-    todo!("0xf29fd4 j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_")
+pub fn stub_0xf29fd4(thread: &mut crate::lua::LuaThreadState, value: &crate::lua::LuaVector3) -> crate::lua::LuaVector3 {
+// Bridge<Vector3>::pushNewObject — metatable + payload copy
+// (cf. 0x2705d0).
+crate::lua::push_new_object(thread, crate::lua::lua_bridge_class::VECTOR3, crate::lua::LuaUserdataPayload::Vector3(*value));
+*value
 }
 
-// 0xf2a0b4 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(G3D::Vector2int16 const&,lua_State *) [0xf2a0b4]")]
-pub fn stub_0xf2a0b4() -> ! {
-    todo!("0xf2a0b4 j___ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a0b4(value: &crate::lua::LuaVector2i16, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Vector2int16>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}", value.x, value.y)));
+1
 }
 
-// 0xf2a0c4 — j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(G3D::Vector3int16 const&,lua_State *) [0xf2a0c4]")]
-pub fn stub_0xf2a0c4() -> ! {
-    todo!("0xf2a0c4 j___ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a0c4(value: &crate::lua::LuaVector3i16, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Vector3int16>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {}", value.x, value.y, value.z)));
+1
 }
 
-// 0xf2a0d4 — j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(G3D::CoordinateFrame const&,lua_State *) [0xf2a0d4]")]
-pub fn stub_0xf2a0d4() -> ! {
-    todo!("0xf2a0d4 j___ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a0d4(value: &crate::lua::LuaCoordinateFrame, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<CoordinateFrame>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}", value.position.x, value.position.y, value.position.z, value.rotation[0][0], value.rotation[0][1], value.rotation[0][2], value.rotation[1][0], value.rotation[1][1], value.rotation[1][2], value.rotation[2][0], value.rotation[2][1], value.rotation[2][2])));
+1
 }
 
-// 0xf2a0e4 — j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_tostringERKS3_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_tostring(G3D::Color3 const&,lua_State *) [0xf2a0e4]")]
-pub fn stub_0xf2a0e4() -> ! {
-    todo!("0xf2a0e4 j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a0e4(value: &crate::lua::LuaColor3, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Color3>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {}", value.r, value.g, value.b)));
+1
 }
 
-// 0xf2a0f4 — j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
 #[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a0f4]")]
-pub fn stub_0xf2a0f4() -> ! {
-    todo!("0xf2a0f4 j___ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13registerClassEP9lua_StatePFiS6_ES8_")
+pub fn stub_0xf2a0f4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a0f4: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a104 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(G3D::Vector2 const&,lua_State *) [0xf2a104]")]
-pub fn stub_0xf2a104() -> ! {
-    todo!("0xf2a104 j___ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a104(value: &crate::lua::LuaVector2, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Vector2>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}", value.x, value.y)));
+1
 }
 
-// 0xf2a114 — j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(G3D::Vector3 const&,lua_State *) [0xf2a114]")]
-pub fn stub_0xf2a114() -> ! {
-    todo!("0xf2a114 j___ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State")
+pub fn stub_0xf2a114(value: &crate::lua::LuaVector3, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Vector3>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {}", value.x, value.y, value.z)));
+1
 }
 
-// 0xf2a134 — j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE13registerClassEP9lua_StatePFiSE_ESG_
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a134]")]
-pub fn stub_0xf2a134() -> ! {
-    todo!("0xf2a134 j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE13registerClassEP9lua_StatePFiSE_ESG_")
+pub fn stub_0xf2a134() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::S~")
 }
 
-// 0xf2a144 — j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE13registerClassEP9lua_StatePFiSI_ESK_
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a144]")]
-pub fn stub_0xf2a144() -> ! {
-    todo!("0xf2a144 j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE13registerClassEP9lua_StatePFiSI_ESK_")
+pub fn stub_0xf2a144() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost:~")
 }
 
-// 0xf2a154 — j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_
 #[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a154]")]
-pub fn stub_0xf2a154() -> ! {
-    todo!("0xf2a154 j___ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_")
+pub fn stub_0xf2a154() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0xf2a174 — j___ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::EventInstance,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a174]")]
-pub fn stub_0xf2a174() -> ! {
-    todo!("0xf2a174 j___ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a174(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a174: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a1c4 — j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE11on_tostringERKS2_P9lua_State
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::InputObject,true>::on_tostring(RBX::InputObject const&,lua_State *) [0xf2a1c4]")]
-pub fn stub_0xf2a1c4() -> ! {
-    todo!("0xf2a1c4 j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a1c4(value: &crate::lua::LuaInputObject, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<InputObject>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("InputObject({})", value.kind)));
+1
 }
 
-// 0xf2a1d4 — j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::InputObject,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a1d4]")]
-pub fn stub_0xf2a1d4() -> ! {
-    todo!("0xf2a1d4 j___ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a1d4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a1d4: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a1e4 — j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_tostringERKS2_P9lua_State
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_tostring(RBX::Region3int16 const&,lua_State *) [0xf2a1e4]")]
-pub fn stub_0xf2a1e4() -> ! {
-    todo!("0xf2a1e4 j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a1e4(value: &crate::lua::LuaRegion3i16, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Region3int16>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {} - {}, {}, {}", value.min.x, value.min.y, value.min.z, value.max.x, value.max.y, value.max.z)));
+1
 }
 
-// 0xf2a1f4 — j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a1f4]")]
-pub fn stub_0xf2a1f4() -> ! {
-    todo!("0xf2a1f4 j___ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a1f4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a1f4: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a204 — j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE11on_tostringERKS2_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Axes,true>::on_tostring(RBX::Axes const&,lua_State *) [0xf2a204]")]
-pub fn stub_0xf2a204() -> ! {
-    todo!("0xf2a204 j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a204(value: &crate::lua::LuaAxes, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Axes>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("Axes({})", value.bits)));
+1
 }
 
-// 0xf2a214 — j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Axes,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a214]")]
-pub fn stub_0xf2a214() -> ! {
-    todo!("0xf2a214 j___ZN3RBX3Lua6BridgeINS_4AxesELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a214(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a214: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a224 — j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE11on_tostringERKS2_P9lua_State
 #[doc(alias = "RBX::Lua::Bridge<RBX::Faces,true>::on_tostring(RBX::Faces const&,lua_State *) [0xf2a224]")]
-pub fn stub_0xf2a224() -> ! {
-    todo!("0xf2a224 j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a224(value: &crate::lua::LuaFaces, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Faces>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("Faces({})", value.bits)));
+1
 }
 
-// 0xf2a234 — j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Faces,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a234]")]
-pub fn stub_0xf2a234() -> ! {
-    todo!("0xf2a234 j___ZN3RBX3Lua6BridgeINS_5FacesELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a234(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a234: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a244 — j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE11on_tostringERKS2_P9lua_State
-// type: int __fastcall(struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RBX::Lua::Bridge<RBX::CellID,true>::on_tostring(RBX::CellID const&,lua_State *) [0xf2a244]")]
-pub fn stub_0xf2a244() -> ! {
-    todo!("0xf2a244 j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a244(value: &crate::lua::LuaCellId, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<CellID>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {}", value.x, value.y, value.z)));
+1
 }
 
-// 0xf2a254 — j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::CellID,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a254]")]
-pub fn stub_0xf2a254() -> ! {
-    todo!("0xf2a254 j___ZN3RBX3Lua6BridgeINS_6CellIDELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a254(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a254: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a264 — j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_tostringERKS2_P9lua_State
-// type: int __fastcall(struct _Unwind_Exception *lpuexcpt)
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_tostring(RBX::RbxRay const&,lua_State *) [0xf2a264]")]
-pub fn stub_0xf2a264() -> ! {
-    todo!("0xf2a264 j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a264(value: &crate::lua::LuaRbxRay, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<RbxRay>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {} | {}, {}, {}", value.origin.x, value.origin.y, value.origin.z, value.direction.x, value.direction.y, value.direction.z)));
+1
 }
 
-// 0xf2a274 — j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a274]")]
-pub fn stub_0xf2a274() -> ! {
-    todo!("0xf2a274 j___ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a274(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a274: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a284 — j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_tostringERKS2_P9lua_State
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_tostring(RBX::Region3 const&,lua_State *) [0xf2a284]")]
-pub fn stub_0xf2a284() -> ! {
-    todo!("0xf2a284 j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE11on_tostringERKS2_P9lua_State")
+pub fn stub_0xf2a284(value: &crate::lua::LuaRegion3, thread: &mut crate::lua::LuaThreadState) -> i32 {
+// Bridge<Region3>::on_tostring — pushes the display string.
+thread.push(crate::lua::LuaStackValue::String(format!("{}, {}, {} - {}, {}, {}", value.min.x, value.min.y, value.min.z, value.max.x, value.max.y, value.max.z)));
+1
 }
 
-// 0xf2a294 — j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13registerClassEP9lua_StatePFiS5_ES7_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a294]")]
-pub fn stub_0xf2a294() -> ! {
-    todo!("0xf2a294 j___ZN3RBX3Lua6BridgeINS_7Region3ELb1EE13registerClassEP9lua_StatePFiS5_ES7_")
+pub fn stub_0xf2a294(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a294: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0xf2a2a4 — j___ZN3RBX3Lua6BridgeIPKNS0_18AllEnumDescriptorsELb1EE13registerClassEP9lua_StatePFiS7_ES9_
 #[doc(alias = "RBX::Lua::Bridge<RBX::Lua::AllEnumDescriptors const*,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *)) [0xf2a2a4]")]
-pub fn stub_0xf2a2a4() -> ! {
-    todo!("0xf2a2a4 j___ZN3RBX3Lua6BridgeIPKNS0_18AllEnumDescriptorsELb1EE13registerClassEP9lua_StatePFiS7_ES9_")
+pub fn stub_0xf2a2a4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0xf2a2a4: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }

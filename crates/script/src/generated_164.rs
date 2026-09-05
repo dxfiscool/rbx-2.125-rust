@@ -8,825 +8,840 @@
 
 use rbx_core::SharedPtr;
 
-// 0xc8ba4 — __ZN4FMOD4File7getWordEPt
-// type: _DWORD __fastcall(FMOD::File *__hidden this, unsigned __int16 *)
 #[doc(alias = "FMOD::File::getWord(unsigned short *)")]
-pub fn stub_0xc8ba4() -> ! {
-    todo!("0xc8ba4 __ZN4FMOD4File7getWordEPt")
+pub fn stub_0xc8ba4() -> crate::slot::PortedFn {
+// IDA 0xc8ba4: FMOD::File::getWord(unsigned short*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8ba4, "FMOD::File::getWord(unsigned short*)")
 }
 
-// 0xc8be0 — __ZN4FMOD4File7getByteEPi
-// type: int __fastcall(FMOD::File *this, int *)
 #[doc(alias = "FMOD::File::getByte(int *)")]
-pub fn stub_0xc8be0() -> ! {
-    todo!("0xc8be0 __ZN4FMOD4File7getByteEPi")
+pub fn stub_0xc8be0() -> crate::slot::PortedFn {
+// IDA 0xc8be0: FMOD::File::getByte(int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8be0, "FMOD::File::getByte(int*)")
 }
 
-// 0xc8c1c — __ZN4FMOD4File7getByteEPa
-// type: _DWORD __fastcall(FMOD::File *__hidden this, signed __int8 *)
 #[doc(alias = "FMOD::File::getByte(signed char *)")]
-pub fn stub_0xc8c1c() -> ! {
-    todo!("0xc8c1c __ZN4FMOD4File7getByteEPa")
+pub fn stub_0xc8c1c() -> crate::slot::PortedFn {
+// IDA 0xc8c1c: FMOD::File::getByte(signed char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8c1c, "FMOD::File::getByte(signed char*)")
 }
 
-// 0xc8c58 — __ZN4FMOD4File7getByteEPj
-// type: _DWORD __fastcall(FMOD::File *__hidden this, unsigned int *)
 #[doc(alias = "FMOD::File::getByte(unsigned int *)")]
-pub fn stub_0xc8c58() -> ! {
-    todo!("0xc8c58 __ZN4FMOD4File7getByteEPj")
+pub fn stub_0xc8c58() -> crate::slot::PortedFn {
+// IDA 0xc8c58: FMOD::File::getByte(unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8c58, "FMOD::File::getByte(unsigned int*)")
 }
 
-// 0xc8c94 — __ZN4FMOD4File7getByteEPt
-// type: _DWORD __fastcall(FMOD::File *__hidden this, unsigned __int16 *)
 #[doc(alias = "FMOD::File::getByte(unsigned short *)")]
-pub fn stub_0xc8c94() -> ! {
-    todo!("0xc8c94 __ZN4FMOD4File7getByteEPt")
+pub fn stub_0xc8c94() -> crate::slot::PortedFn {
+// IDA 0xc8c94: FMOD::File::getByte(unsigned short*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8c94, "FMOD::File::getByte(unsigned short*)")
 }
 
-// 0xc8cd0 — __ZN4FMOD4File7getByteEPh
-// type: _DWORD __fastcall(FMOD::File *__hidden this, unsigned __int8 *)
 #[doc(alias = "FMOD::File::getByte(unsigned char *)")]
-pub fn stub_0xc8cd0() -> ! {
-    todo!("0xc8cd0 __ZN4FMOD4File7getByteEPh")
+pub fn stub_0xc8cd0() -> crate::slot::PortedFn {
+// IDA 0xc8cd0: FMOD::File::getByte(unsigned char*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8cd0, "FMOD::File::getByte(unsigned char*)")
 }
 
-// 0xc8d0c — __ZN4FMOD10FileThread10threadFuncEv
-// type: _DWORD __fastcall(FMOD::FileThread *__hidden this)
 #[doc(alias = "FMOD::FileThread::threadFunc(void)")]
-pub fn stub_0xc8d0c() -> ! {
-    todo!("0xc8d0c __ZN4FMOD10FileThread10threadFuncEv")
+pub fn stub_0xc8d0c() -> crate::slot::PortedFn {
+// IDA 0xc8d0c: FMOD::FileThread::threadFunc().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8d0c, "FMOD::FileThread::threadFunc()")
 }
 
-// 0xc8dbc — __ZN4FMOD14fileThreadFuncEPv
-// type: _DWORD __fastcall(FMOD *__hidden this, void *)
 #[doc(alias = "FMOD::fileThreadFunc(void *)")]
-pub fn stub_0xc8dbc() -> ! {
-    todo!("0xc8dbc __ZN4FMOD14fileThreadFuncEPv")
+pub fn stub_0xc8dbc() -> crate::slot::PortedFn {
+// IDA 0xc8dbc: FMOD::fileThreadFunc(void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8dbc, "FMOD::fileThreadFunc(void*)")
 }
 
-// 0xc8dc0 — __ZN4FMOD4File4initEPNS_7SystemIEji
-// type: _DWORD __fastcall(FMOD::File *__hidden this, FMOD::SystemI *, unsigned int, int)
 #[doc(alias = "FMOD::File::init(FMOD::SystemI *,unsigned int,int)")]
-pub fn stub_0xc8dc0() -> ! {
-    todo!("0xc8dc0 __ZN4FMOD4File4initEPNS_7SystemIEji")
+pub fn stub_0xc8dc0() -> crate::slot::PortedFn {
+// IDA 0xc8dc0: FMOD::File::init(FMOD::SystemI*, unsigned int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8dc0, "FMOD::File::init(FMOD::SystemI*, unsigned int, int)")
 }
 
-// 0xc8e88 — __ZN4FMOD4File4openEPKcjbS2_
-// type: _DWORD __fastcall(FMOD::File *__hidden this, const char *, unsigned int, bool, const char *)
 #[doc(alias = "FMOD::File::open(char const*,unsigned int,bool,char const*)")]
-pub fn stub_0xc8e88() -> ! {
-    todo!("0xc8e88 __ZN4FMOD4File4openEPKcjbS2_")
+pub fn stub_0xc8e88() -> crate::slot::PortedFn {
+// IDA 0xc8e88: FMOD::File::open(char const*, unsigned int, bool, char const*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc8e88, "FMOD::File::open(char const*, unsigned int, bool, char const*)")
 }
 
-// 0xc90e0 — __ZN4FMOD10FileThread7releaseEv
-// type: _DWORD __fastcall(FMOD::FileThread *__hidden this)
 #[doc(alias = "FMOD::FileThread::release(void)")]
-pub fn stub_0xc90e0() -> ! {
-    todo!("0xc90e0 __ZN4FMOD10FileThread7releaseEv")
+pub fn stub_0xc90e0() -> crate::slot::PortedFn {
+// IDA 0xc90e0: FMOD::FileThread::release().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc90e0, "FMOD::FileThread::release()")
 }
 
-// 0xc9164 — __ZN4FMOD10FileThread4initEibPNS_7SystemIE
-// type: _DWORD __fastcall(FMOD::FileThread *__hidden this, int, bool, FMOD::SystemI *)
 #[doc(alias = "FMOD::FileThread::init(int,bool,FMOD::SystemI *)")]
-pub fn stub_0xc9164() -> ! {
-    todo!("0xc9164 __ZN4FMOD10FileThread4initEibPNS_7SystemIE")
+pub fn stub_0xc9164() -> crate::slot::PortedFn {
+// IDA 0xc9164: FMOD::FileThread::init(int, bool, FMOD::SystemI*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9164, "FMOD::FileThread::init(int, bool, FMOD::SystemI*)")
 }
 
-// 0xc9238 — __ZN4FMOD10FileThreadC2Ev
-// type: _DWORD __fastcall(FMOD::FileThread *__hidden this)
 #[doc(alias = "FMOD::FileThread::FileThread(void)")]
-pub fn stub_0xc9238() -> ! {
-    todo!("0xc9238 __ZN4FMOD10FileThreadC2Ev")
+pub fn stub_0xc9238() -> crate::slot::PortedFn {
+// IDA 0xc9238: FMOD::FileThread::FileThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9238, "FMOD::FileThread::FileThread()")
 }
 
-// 0xc9280 — __ZN4FMOD10FileThreadC1Ev
-// type: _DWORD __fastcall(FMOD::FileThread *__hidden this)
 #[doc(alias = "FMOD::FileThread::FileThread(void) [0xc9280]")]
-pub fn stub_0xc9280() -> ! {
-    todo!("0xc9280 __ZN4FMOD10FileThreadC1Ev")
+pub fn stub_0xc9280() -> crate::slot::PortedFn {
+// IDA 0xc9280: FMOD::FileThread::FileThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9280, "FMOD::FileThread::FileThread()")
 }
 
-// 0xc9284 — __ZN4FMOD4File13getFileThreadEv
-// type: _DWORD __fastcall(FMOD::File *__hidden this)
 #[doc(alias = "FMOD::File::getFileThread(void)")]
-pub fn stub_0xc9284() -> ! {
-    todo!("0xc9284 __ZN4FMOD4File13getFileThreadEv")
+pub fn stub_0xc9284() -> crate::slot::PortedFn {
+// IDA 0xc9284: FMOD::File::getFileThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9284, "FMOD::File::getFileThread()")
 }
 
-// 0xc93ac — __ZN4FMOD4File18enableDoubleBufferEjPv
-// type: int __fastcall(FMOD::File *this, unsigned int, void *)
 #[doc(alias = "FMOD::File::enableDoubleBuffer(unsigned int,void *)")]
-pub fn stub_0xc93ac() -> ! {
-    todo!("0xc93ac __ZN4FMOD4File18enableDoubleBufferEjPv")
+pub fn stub_0xc93ac() -> crate::slot::PortedFn {
+// IDA 0xc93ac: FMOD::File::enableDoubleBuffer(unsigned int, void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc93ac, "FMOD::File::enableDoubleBuffer(unsigned int, void*)")
 }
 
-// 0xc952c — __ZN4FMOD4File8shutDownEv
-// type: _DWORD __fastcall(FMOD::File *__hidden this)
 #[doc(alias = "FMOD::File::shutDown(void)")]
-pub fn stub_0xc952c() -> ! {
-    todo!("0xc952c __ZN4FMOD4File8shutDownEv")
+pub fn stub_0xc952c() -> crate::slot::PortedFn {
+// IDA 0xc952c: FMOD::File::shutDown().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc952c, "FMOD::File::shutDown()")
 }
 
-// 0xc95b8 — __ZN4FMOD4File5closeEv
-// type: _DWORD __fastcall(FMOD::File *__hidden this)
 #[doc(alias = "FMOD::File::close(void)")]
-pub fn stub_0xc95b8() -> ! {
-    todo!("0xc95b8 __ZN4FMOD4File5closeEv")
+pub fn stub_0xc95b8() -> crate::slot::PortedFn {
+// IDA 0xc95b8: FMOD::File::close().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc95b8, "FMOD::File::close()")
 }
 
-// 0xc96e4 — __ZN4FMOD4File13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::File::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xc96e4() -> ! {
-    todo!("0xc96e4 __ZN4FMOD4File13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xc96e4() -> crate::slot::PortedFn {
+// IDA 0xc96e4: FMOD::File::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc96e4, "FMOD::File::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xc973c — __ZN4FMOD4File11getMetadataEPPNS_8MetadataE
 #[doc(alias = "FMOD::File::getMetadata(FMOD::Metadata **)")]
-pub fn stub_0xc973c() -> ! {
-    todo!("0xc973c __ZN4FMOD4File11getMetadataEPPNS_8MetadataE")
+pub fn stub_0xc973c() -> crate::slot::PortedFn {
+// IDA 0xc973c: FMOD::File::getMetadata(FMOD::Metadata**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc973c, "FMOD::File::getMetadata(FMOD::Metadata**)")
 }
 
-// 0xc9744 — __ZN4FMOD4File7getSizeEPj
-// type: _DWORD __fastcall(FMOD::File *__hidden this, unsigned int *)
 #[doc(alias = "FMOD::File::getSize(unsigned int *)")]
-pub fn stub_0xc9744() -> ! {
-    todo!("0xc9744 __ZN4FMOD4File7getSizeEPj")
+pub fn stub_0xc9744() -> crate::slot::PortedFn {
+// IDA 0xc9744: FMOD::File::getSize(unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9744, "FMOD::File::getSize(unsigned int*)")
 }
 
-// 0xc9754 — __ZN4FMOD4File12reallyCancelEv
-// type: _DWORD __fastcall(FMOD::File *__hidden this)
 #[doc(alias = "FMOD::File::reallyCancel(void)")]
-pub fn stub_0xc9754() -> ! {
-    todo!("0xc9754 __ZN4FMOD4File12reallyCancelEv")
+pub fn stub_0xc9754() -> crate::slot::PortedFn {
+// IDA 0xc9754: FMOD::File::reallyCancel().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9754, "FMOD::File::reallyCancel()")
 }
 
-// 0xc975c — __ZN4FMOD4File15reallyAsyncReadEP18FMOD_ASYNCREADINFO
 #[doc(alias = "FMOD::File::reallyAsyncRead(FMOD_ASYNCREADINFO *)")]
-pub fn stub_0xc975c() -> ! {
-    todo!("0xc975c __ZN4FMOD4File15reallyAsyncReadEP18FMOD_ASYNCREADINFO")
+pub fn stub_0xc975c() -> crate::slot::PortedFn {
+// IDA 0xc975c: FMOD::File::reallyAsyncRead(FMOD_ASYNCREADINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc975c, "FMOD::File::reallyAsyncRead(FMOD_ASYNCREADINFO*)")
 }
 
-// 0xc9788 — __ZN4FMOD8DiskFile17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::DiskFile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xc9788() -> ! {
-    todo!("0xc9788 __ZN4FMOD8DiskFile17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc9788() -> crate::slot::PortedFn {
+// IDA 0xc9788: FMOD::DiskFile::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9788, "FMOD::DiskFile::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc97bc — __ZN4FMOD8DiskFile12reallyCancelEv
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this)
 #[doc(alias = "FMOD::DiskFile::reallyCancel(void)")]
-pub fn stub_0xc97bc() -> ! {
-    todo!("0xc97bc __ZN4FMOD8DiskFile12reallyCancelEv")
+pub fn stub_0xc97bc() -> crate::slot::PortedFn {
+// IDA 0xc97bc: FMOD::DiskFile::reallyCancel().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc97bc, "FMOD::DiskFile::reallyCancel()")
 }
 
-// 0xc97d0 — __ZN4FMOD8DiskFile10reallySeekEj
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this, unsigned int)
 #[doc(alias = "FMOD::DiskFile::reallySeek(unsigned int)")]
-pub fn stub_0xc97d0() -> ! {
-    todo!("0xc97d0 __ZN4FMOD8DiskFile10reallySeekEj")
+pub fn stub_0xc97d0() -> crate::slot::PortedFn {
+// IDA 0xc97d0: FMOD::DiskFile::reallySeek(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc97d0, "FMOD::DiskFile::reallySeek(unsigned int)")
 }
 
-// 0xc97e4 — __ZN4FMOD8DiskFile10reallyReadEPvjPj
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::DiskFile::reallyRead(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xc97e4() -> ! {
-    todo!("0xc97e4 __ZN4FMOD8DiskFile10reallyReadEPvjPj")
+pub fn stub_0xc97e4() -> crate::slot::PortedFn {
+// IDA 0xc97e4: FMOD::DiskFile::reallyRead(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc97e4, "FMOD::DiskFile::reallyRead(void*, unsigned int, unsigned int*)")
 }
 
-// 0xc98a8 — __ZN4FMOD8DiskFile11reallyCloseEv
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this)
 #[doc(alias = "FMOD::DiskFile::reallyClose(void)")]
-pub fn stub_0xc98a8() -> ! {
-    todo!("0xc98a8 __ZN4FMOD8DiskFile11reallyCloseEv")
+pub fn stub_0xc98a8() -> crate::slot::PortedFn {
+// IDA 0xc98a8: FMOD::DiskFile::reallyClose().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc98a8, "FMOD::DiskFile::reallyClose()")
 }
 
-// 0xc98d0 — __ZN4FMOD8DiskFile10reallyOpenEPKcPj
-// type: _DWORD __fastcall(FMOD::DiskFile *__hidden this, const char *, unsigned int *)
 #[doc(alias = "FMOD::DiskFile::reallyOpen(char const*,unsigned int *)")]
-pub fn stub_0xc98d0() -> ! {
-    todo!("0xc98d0 __ZN4FMOD8DiskFile10reallyOpenEPKcPj")
+pub fn stub_0xc98d0() -> crate::slot::PortedFn {
+// IDA 0xc98d0: FMOD::DiskFile::reallyOpen(char const*, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc98d0, "FMOD::DiskFile::reallyOpen(char const*, unsigned int*)")
 }
 
-// 0xc9978 — __ZN4FMOD8DiskFile13getMemoryUsedEPNS_13MemoryTrackerE
-// type: int __fastcall(int, int)
 #[doc(alias = "FMOD::DiskFile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xc9978() -> ! {
-    todo!("0xc9978 __ZN4FMOD8DiskFile13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xc9978() -> crate::slot::PortedFn {
+// IDA 0xc9978: FMOD::DiskFile::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9978, "FMOD::DiskFile::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xc99d0 — __ZN4FMOD10MemoryFile10reallyOpenEPKcPj
-// type: _DWORD __fastcall(FMOD::MemoryFile *__hidden this, const char *, unsigned int *)
 #[doc(alias = "FMOD::MemoryFile::reallyOpen(char const*,unsigned int *)")]
-pub fn stub_0xc99d0() -> ! {
-    todo!("0xc99d0 __ZN4FMOD10MemoryFile10reallyOpenEPKcPj")
+pub fn stub_0xc99d0() -> crate::slot::PortedFn {
+// IDA 0xc99d0: FMOD::MemoryFile::reallyOpen(char const*, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc99d0, "FMOD::MemoryFile::reallyOpen(char const*, unsigned int*)")
 }
 
-// 0xc99f0 — __ZN4FMOD10MemoryFile11reallyCloseEv
-// type: _DWORD __fastcall(FMOD::MemoryFile *__hidden this)
 #[doc(alias = "FMOD::MemoryFile::reallyClose(void)")]
-pub fn stub_0xc99f0() -> ! {
-    todo!("0xc99f0 __ZN4FMOD10MemoryFile11reallyCloseEv")
+pub fn stub_0xc99f0() -> crate::slot::PortedFn {
+// IDA 0xc99f0: FMOD::MemoryFile::reallyClose().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc99f0, "FMOD::MemoryFile::reallyClose()")
 }
 
-// 0xc99f8 — __ZN4FMOD10MemoryFile10reallySeekEj
-// type: _DWORD __fastcall(FMOD::MemoryFile *__hidden this, unsigned int)
 #[doc(alias = "FMOD::MemoryFile::reallySeek(unsigned int)")]
-pub fn stub_0xc99f8() -> ! {
-    todo!("0xc99f8 __ZN4FMOD10MemoryFile10reallySeekEj")
+pub fn stub_0xc99f8() -> crate::slot::PortedFn {
+// IDA 0xc99f8: FMOD::MemoryFile::reallySeek(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc99f8, "FMOD::MemoryFile::reallySeek(unsigned int)")
 }
 
-// 0xc9a10 — __ZN4FMOD10MemoryFile17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::MemoryFile *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::MemoryFile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xc9a10() -> ! {
-    todo!("0xc9a10 __ZN4FMOD10MemoryFile17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc9a10() -> crate::slot::PortedFn {
+// IDA 0xc9a10: FMOD::MemoryFile::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9a10, "FMOD::MemoryFile::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc9a44 — __ZN4FMOD10MemoryFile10reallyReadEPvjPj
-// type: _DWORD __fastcall(FMOD::MemoryFile *__hidden this, void *__dst, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::MemoryFile::reallyRead(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xc9a44() -> ! {
-    todo!("0xc9a44 __ZN4FMOD10MemoryFile10reallyReadEPvjPj")
+pub fn stub_0xc9a44() -> crate::slot::PortedFn {
+// IDA 0xc9a44: FMOD::MemoryFile::reallyRead(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9a44, "FMOD::MemoryFile::reallyRead(void*, unsigned int, unsigned int*)")
 }
 
-// 0xc9aa8 — __ZN4FMOD10MemoryFile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::MemoryFile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xc9aa8() -> ! {
-    todo!("0xc9aa8 __ZN4FMOD10MemoryFile13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xc9aa8() -> crate::slot::PortedFn {
+// IDA 0xc9aa8: FMOD::MemoryFile::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9aa8, "FMOD::MemoryFile::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xc9b00 — __ZN4FMOD7NetFile9openAsMMSEPKcPcS3_S3_tPj
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, const char *, char *, char *, char *, unsigned __int16, unsigned int *)
 #[doc(alias = "FMOD::NetFile::openAsMMS(char const*,char *,char *,char *,unsigned short,unsigned int *)")]
-pub fn stub_0xc9b00() -> ! {
-    todo!("0xc9b00 __ZN4FMOD7NetFile9openAsMMSEPKcPcS3_S3_tPj")
+pub fn stub_0xc9b00() -> crate::slot::PortedFn {
+// IDA 0xc9b00: FMOD::NetFile::openAsMMS(char const*, char*, char*, char*, unsigned short, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9b00, "FMOD::NetFile::openAsMMS(char const*, char*, char*, char*, unsigned short, unsigned int*)")
 }
 
-// 0xc9b08 — __ZN4FMOD7NetFile11getMetadataEPPNS_8MetadataE
 #[doc(alias = "FMOD::NetFile::getMetadata(FMOD::Metadata **)")]
-pub fn stub_0xc9b08() -> ! {
-    todo!("0xc9b08 __ZN4FMOD7NetFile11getMetadataEPPNS_8MetadataE")
+pub fn stub_0xc9b08() -> crate::slot::PortedFn {
+// IDA 0xc9b08: FMOD::NetFile::getMetadata(FMOD::Metadata**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9b08, "FMOD::NetFile::getMetadata(FMOD::Metadata**)")
 }
 
-// 0xc9b20 — __ZN4FMOD7NetFile17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::NetFile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xc9b20() -> ! {
-    todo!("0xc9b20 __ZN4FMOD7NetFile17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xc9b20() -> crate::slot::PortedFn {
+// IDA 0xc9b20: FMOD::NetFile::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9b20, "FMOD::NetFile::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xc9b54 — __ZN4FMOD7NetFile12reallyCancelEv
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::reallyCancel(void)")]
-pub fn stub_0xc9b54() -> ! {
-    todo!("0xc9b54 __ZN4FMOD7NetFile12reallyCancelEv")
+pub fn stub_0xc9b54() -> crate::slot::PortedFn {
+// IDA 0xc9b54: FMOD::NetFile::reallyCancel().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9b54, "FMOD::NetFile::reallyCancel()")
 }
 
-// 0xc9b6c — __ZN4FMOD7NetFile10reallySeekEj
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, unsigned int)
 #[doc(alias = "FMOD::NetFile::reallySeek(unsigned int)")]
-pub fn stub_0xc9b6c() -> ! {
-    todo!("0xc9b6c __ZN4FMOD7NetFile10reallySeekEj")
+pub fn stub_0xc9b6c() -> crate::slot::PortedFn {
+// IDA 0xc9b6c: FMOD::NetFile::reallySeek(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9b6c, "FMOD::NetFile::reallySeek(unsigned int)")
 }
 
-// 0xc9d64 — __ZN4FMOD7NetFile11reallyCloseEv
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::reallyClose(void)")]
-pub fn stub_0xc9d64() -> ! {
-    todo!("0xc9d64 __ZN4FMOD7NetFile11reallyCloseEv")
+pub fn stub_0xc9d64() -> crate::slot::PortedFn {
+// IDA 0xc9d64: FMOD::NetFile::reallyClose().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9d64, "FMOD::NetFile::reallyClose()")
 }
 
-// 0xc9dd4 — __ZN4FMOD7NetFile10reallyReadEPvjPj
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::NetFile::reallyRead(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xc9dd4() -> ! {
-    todo!("0xc9dd4 __ZN4FMOD7NetFile10reallyReadEPvjPj")
+pub fn stub_0xc9dd4() -> crate::slot::PortedFn {
+// IDA 0xc9dd4: FMOD::NetFile::reallyRead(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xc9dd4, "FMOD::NetFile::reallyRead(void*, unsigned int, unsigned int*)")
 }
 
-// 0xca20c — __ZN4FMOD7NetFile8parseUrlEPcS1_iS1_iPtS1_iPb
-// type: int __fastcall(FMOD::NetFile *this, char *, char *, int, char *, int, unsigned __int16 *, char *, int, bool *)
 #[doc(alias = "FMOD::NetFile::parseUrl(char *,char *,int,char *,int,unsigned short *,char *,int,bool *)")]
-pub fn stub_0xca20c() -> ! {
-    todo!("0xca20c __ZN4FMOD7NetFile8parseUrlEPcS1_iS1_iPtS1_iPb")
+pub fn stub_0xca20c() -> crate::slot::PortedFn {
+// IDA 0xca20c: FMOD::NetFile::parseUrl(char*, char*, int, char*, int, unsigned short*, char*, int, bool*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xca20c, "FMOD::NetFile::parseUrl(char*, char*, int, char*, int, unsigned short*, char*, int, bool*)")
 }
 
-// 0xca58c — __ZN4FMOD7NetFile10openAsHTTPEPKcPcS3_S3_tPj
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, const char *, char *, char *, char *, unsigned __int16, unsigned int *)
 #[doc(alias = "FMOD::NetFile::openAsHTTP(char const*,char *,char *,char *,unsigned short,unsigned int *)")]
-pub fn stub_0xca58c() -> ! {
-    todo!("0xca58c __ZN4FMOD7NetFile10openAsHTTPEPKcPcS3_S3_tPj")
+pub fn stub_0xca58c() -> crate::slot::PortedFn {
+// IDA 0xca58c: FMOD::NetFile::openAsHTTP(char const*, char*, char*, char*, unsigned short, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xca58c, "FMOD::NetFile::openAsHTTP(char const*, char*, char*, char*, unsigned short, unsigned int*)")
 }
 
-// 0xcb4cc — __ZN4FMOD7NetFile8shutDownEv
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::shutDown(void)")]
-pub fn stub_0xcb4cc() -> ! {
-    todo!("0xcb4cc __ZN4FMOD7NetFile8shutDownEv")
+pub fn stub_0xcb4cc() -> crate::slot::PortedFn {
+// IDA 0xcb4cc: FMOD::NetFile::shutDown().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb4cc, "FMOD::NetFile::shutDown()")
 }
 
-// 0xcb4dc — __ZN4FMOD7NetFile4initEv
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::init(void)")]
-pub fn stub_0xcb4dc() -> ! {
-    todo!("0xcb4dc __ZN4FMOD7NetFile4initEv")
+pub fn stub_0xcb4dc() -> crate::slot::PortedFn {
+// IDA 0xcb4dc: FMOD::NetFile::init().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb4dc, "FMOD::NetFile::init()")
 }
 
-// 0xcb4ec — __ZN4FMOD7NetFile10reallyOpenEPKcPj
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this, const char *, unsigned int *)
 #[doc(alias = "FMOD::NetFile::reallyOpen(char const*,unsigned int *)")]
-pub fn stub_0xcb4ec() -> ! {
-    todo!("0xcb4ec __ZN4FMOD7NetFile10reallyOpenEPKcPj")
+pub fn stub_0xcb4ec() -> crate::slot::PortedFn {
+// IDA 0xcb4ec: FMOD::NetFile::reallyOpen(char const*, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb4ec, "FMOD::NetFile::reallyOpen(char const*, unsigned int*)")
 }
 
-// 0xcb658 — __ZN4FMOD7NetFileC2Ev
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::NetFile(void)")]
-pub fn stub_0xcb658() -> ! {
-    todo!("0xcb658 __ZN4FMOD7NetFileC2Ev")
+pub fn stub_0xcb658() -> crate::slot::PortedFn {
+// IDA 0xcb658: FMOD::NetFile::NetFile().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb658, "FMOD::NetFile::NetFile()")
 }
 
-// 0xcb6fc — __ZN4FMOD7NetFileC1Ev
-// type: _DWORD __fastcall(FMOD::NetFile *__hidden this)
 #[doc(alias = "FMOD::NetFile::NetFile(void) [0xcb6fc]")]
-pub fn stub_0xcb6fc() -> ! {
-    todo!("0xcb6fc __ZN4FMOD7NetFileC1Ev")
+pub fn stub_0xcb6fc() -> crate::slot::PortedFn {
+// IDA 0xcb6fc: FMOD::NetFile::NetFile().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb6fc, "FMOD::NetFile::NetFile()")
 }
 
-// 0xcb700 — __ZN4FMOD7NetFile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::NetFile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xcb700() -> ! {
-    todo!("0xcb700 __ZN4FMOD7NetFile13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xcb700() -> crate::slot::PortedFn {
+// IDA 0xcb700: FMOD::NetFile::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb700, "FMOD::NetFile::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xcb758 — __ZN4FMOD8NullFile10reallyOpenEPKcPj
-// type: _DWORD __fastcall(FMOD::NullFile *__hidden this, const char *, unsigned int *)
 #[doc(alias = "FMOD::NullFile::reallyOpen(char const*,unsigned int *)")]
-pub fn stub_0xcb758() -> ! {
-    todo!("0xcb758 __ZN4FMOD8NullFile10reallyOpenEPKcPj")
+pub fn stub_0xcb758() -> crate::slot::PortedFn {
+// IDA 0xcb758: FMOD::NullFile::reallyOpen(char const*, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb758, "FMOD::NullFile::reallyOpen(char const*, unsigned int*)")
 }
 
-// 0xcb76c — __ZN4FMOD8NullFile11reallyCloseEv
-// type: _DWORD __fastcall(FMOD::NullFile *__hidden this)
 #[doc(alias = "FMOD::NullFile::reallyClose(void)")]
-pub fn stub_0xcb76c() -> ! {
-    todo!("0xcb76c __ZN4FMOD8NullFile11reallyCloseEv")
+pub fn stub_0xcb76c() -> crate::slot::PortedFn {
+// IDA 0xcb76c: FMOD::NullFile::reallyClose().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb76c, "FMOD::NullFile::reallyClose()")
 }
 
-// 0xcb774 — __ZN4FMOD8NullFile10reallyReadEPvjPj
-// type: _DWORD __fastcall(FMOD::NullFile *__hidden this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::NullFile::reallyRead(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xcb774() -> ! {
-    todo!("0xcb774 __ZN4FMOD8NullFile10reallyReadEPvjPj")
+pub fn stub_0xcb774() -> crate::slot::PortedFn {
+// IDA 0xcb774: FMOD::NullFile::reallyRead(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb774, "FMOD::NullFile::reallyRead(void*, unsigned int, unsigned int*)")
 }
 
-// 0xcb7b0 — __ZN4FMOD8NullFile10reallySeekEj
-// type: _DWORD __fastcall(FMOD::NullFile *__hidden this, unsigned int)
 #[doc(alias = "FMOD::NullFile::reallySeek(unsigned int)")]
-pub fn stub_0xcb7b0() -> ! {
-    todo!("0xcb7b0 __ZN4FMOD8NullFile10reallySeekEj")
+pub fn stub_0xcb7b0() -> crate::slot::PortedFn {
+// IDA 0xcb7b0: FMOD::NullFile::reallySeek(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb7b0, "FMOD::NullFile::reallySeek(unsigned int)")
 }
 
-// 0xcb7c8 — __ZN4FMOD8NullFile17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::NullFile *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::NullFile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xcb7c8() -> ! {
-    todo!("0xcb7c8 __ZN4FMOD8NullFile17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xcb7c8() -> crate::slot::PortedFn {
+// IDA 0xcb7c8: FMOD::NullFile::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb7c8, "FMOD::NullFile::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xcb7fc — __ZN4FMOD8NullFile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::NullFile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xcb7fc() -> ! {
-    todo!("0xcb7fc __ZN4FMOD8NullFile13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xcb7fc() -> crate::slot::PortedFn {
+// IDA 0xcb7fc: FMOD::NullFile::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb7fc, "FMOD::NullFile::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xcb854 — __ZN4FMOD8UserFile10reallyOpenEPKcPj
-// type: int __fastcall(FMOD::UserFile *this, const char *, unsigned int *)
 #[doc(alias = "FMOD::UserFile::reallyOpen(char const*,unsigned int *)")]
-pub fn stub_0xcb854() -> ! {
-    todo!("0xcb854 __ZN4FMOD8UserFile10reallyOpenEPKcPj")
+pub fn stub_0xcb854() -> crate::slot::PortedFn {
+// IDA 0xcb854: FMOD::UserFile::reallyOpen(char const*, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb854, "FMOD::UserFile::reallyOpen(char const*, unsigned int*)")
 }
 
-// 0xcb8e0 — __ZN4FMOD8UserFile11reallyCloseEv
-// type: _DWORD __fastcall(FMOD::UserFile *__hidden this)
 #[doc(alias = "FMOD::UserFile::reallyClose(void)")]
-pub fn stub_0xcb8e0() -> ! {
-    todo!("0xcb8e0 __ZN4FMOD8UserFile11reallyCloseEv")
+pub fn stub_0xcb8e0() -> crate::slot::PortedFn {
+// IDA 0xcb8e0: FMOD::UserFile::reallyClose().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb8e0, "FMOD::UserFile::reallyClose()")
 }
 
-// 0xcb924 — __ZN4FMOD8UserFile10reallyReadEPvjPj
-// type: _DWORD __fastcall(FMOD::UserFile *__hidden this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::UserFile::reallyRead(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xcb924() -> ! {
-    todo!("0xcb924 __ZN4FMOD8UserFile10reallyReadEPvjPj")
+pub fn stub_0xcb924() -> crate::slot::PortedFn {
+// IDA 0xcb924: FMOD::UserFile::reallyRead(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb924, "FMOD::UserFile::reallyRead(void*, unsigned int, unsigned int*)")
 }
 
-// 0xcb974 — __ZN4FMOD8UserFile10reallySeekEj
-// type: _DWORD __fastcall(FMOD::UserFile *__hidden this, unsigned int)
 #[doc(alias = "FMOD::UserFile::reallySeek(unsigned int)")]
-pub fn stub_0xcb974() -> ! {
-    todo!("0xcb974 __ZN4FMOD8UserFile10reallySeekEj")
+pub fn stub_0xcb974() -> crate::slot::PortedFn {
+// IDA 0xcb974: FMOD::UserFile::reallySeek(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb974, "FMOD::UserFile::reallySeek(unsigned int)")
 }
 
-// 0xcb9c8 — __ZN4FMOD8UserFile15reallyAsyncReadEP18FMOD_ASYNCREADINFO
 #[doc(alias = "FMOD::UserFile::reallyAsyncRead(FMOD_ASYNCREADINFO *)")]
-pub fn stub_0xcb9c8() -> ! {
-    todo!("0xcb9c8 __ZN4FMOD8UserFile15reallyAsyncReadEP18FMOD_ASYNCREADINFO")
+pub fn stub_0xcb9c8() -> crate::slot::PortedFn {
+// IDA 0xcb9c8: FMOD::UserFile::reallyAsyncRead(FMOD_ASYNCREADINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcb9c8, "FMOD::UserFile::reallyAsyncRead(FMOD_ASYNCREADINFO*)")
 }
 
-// 0xcba44 — __ZN4FMOD8UserFile12reallyCancelEv
-// type: _DWORD __fastcall(FMOD::UserFile *__hidden this)
 #[doc(alias = "FMOD::UserFile::reallyCancel(void)")]
-pub fn stub_0xcba44() -> ! {
-    todo!("0xcba44 __ZN4FMOD8UserFile12reallyCancelEv")
+pub fn stub_0xcba44() -> crate::slot::PortedFn {
+// IDA 0xcba44: FMOD::UserFile::reallyCancel().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcba44, "FMOD::UserFile::reallyCancel()")
 }
 
-// 0xcba94 — __ZN4FMOD8UserFile17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::UserFile *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::UserFile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xcba94() -> ! {
-    todo!("0xcba94 __ZN4FMOD8UserFile17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xcba94() -> crate::slot::PortedFn {
+// IDA 0xcba94: FMOD::UserFile::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcba94, "FMOD::UserFile::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xcbac8 — __ZN4FMOD8UserFile13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::UserFile::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xcbac8() -> ! {
-    todo!("0xcbac8 __ZN4FMOD8UserFile13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xcbac8() -> crate::slot::PortedFn {
+// IDA 0xcbac8: FMOD::UserFile::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbac8, "FMOD::UserFile::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xcbb20 — __ZN4FMOD15OcclusionThread17retrieveOcclusionEj
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this, unsigned int)
 #[doc(alias = "FMOD::OcclusionThread::retrieveOcclusion(unsigned int)")]
-pub fn stub_0xcbb20() -> ! {
-    todo!("0xcbb20 __ZN4FMOD15OcclusionThread17retrieveOcclusionEj")
+pub fn stub_0xcbb20() -> crate::slot::PortedFn {
+// IDA 0xcbb20: FMOD::OcclusionThread::retrieveOcclusion(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbb20, "FMOD::OcclusionThread::retrieveOcclusion(unsigned int)")
 }
 
-// 0xcbb68 — __ZN4FMOD11GeometryMgr17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: _DWORD __fastcall(FMOD::GeometryMgr *__hidden this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::GeometryMgr::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xcbb68() -> ! {
-    todo!("0xcbb68 __ZN4FMOD11GeometryMgr17getMemoryUsedImplEPNS_13MemoryTrackerE")
+pub fn stub_0xcbb68() -> crate::slot::PortedFn {
+// IDA 0xcbb68: FMOD::GeometryMgr::getMemoryUsedImpl(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbb68, "FMOD::GeometryMgr::getMemoryUsedImpl(FMOD::MemoryTracker*)")
 }
 
-// 0xcbb8c — __ZN4FMOD11GeometryMgr17initCritalSectionEv
-// type: _DWORD __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::initCritalSection(void)")]
-pub fn stub_0xcbb8c() -> ! {
-    todo!("0xcbb8c __ZN4FMOD11GeometryMgr17initCritalSectionEv")
+pub fn stub_0xcbb8c() -> crate::slot::PortedFn {
+// IDA 0xcbb8c: FMOD::GeometryMgr::initCritalSection().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbb8c, "FMOD::GeometryMgr::initCritalSection()")
 }
 
-// 0xcbba4 — __ZN4FMOD11GeometryMgr8flushAllEv
-// type: _DWORD __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::flushAll(void)")]
-pub fn stub_0xcbba4() -> ! {
-    todo!("0xcbba4 __ZN4FMOD11GeometryMgr8flushAllEv")
+pub fn stub_0xcbba4() -> crate::slot::PortedFn {
+// IDA 0xcbba4: FMOD::GeometryMgr::flushAll().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbba4, "FMOD::GeometryMgr::flushAll()")
 }
 
-// 0xcbbec — __ZN4FMOD11GeometryMgr26mainOctreeLineTestCallbackEPNS_10OctreeNodeEPv
 #[doc(alias = "FMOD::GeometryMgr::mainOctreeLineTestCallback(FMOD::OctreeNode *,void *)")]
-pub fn stub_0xcbbec() -> ! {
-    todo!("0xcbbec __ZN4FMOD11GeometryMgr26mainOctreeLineTestCallbackEPNS_10OctreeNodeEPv")
+pub fn stub_0xcbbec() -> crate::slot::PortedFn {
+// IDA 0xcbbec: FMOD::GeometryMgr::mainOctreeLineTestCallback(FMOD::OctreeNode*, void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbbec, "FMOD::GeometryMgr::mainOctreeLineTestCallback(FMOD::OctreeNode*, void*)")
 }
 
-// 0xcbc08 — __ZN4FMOD15OcclusionThread7releaseEv
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::release(void)")]
-pub fn stub_0xcbc08() -> ! {
-    todo!("0xcbc08 __ZN4FMOD15OcclusionThread7releaseEv")
+pub fn stub_0xcbc08() -> crate::slot::PortedFn {
+// IDA 0xcbc08: FMOD::OcclusionThread::release().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbc08, "FMOD::OcclusionThread::release()")
 }
 
-// 0xcbc8c — __ZN4FMOD11GeometryMgr22releaseOcclusionThreadEv
-// type: int __fastcall(FMOD::GeometryMgr *this)
 #[doc(alias = "FMOD::GeometryMgr::releaseOcclusionThread(void)")]
-pub fn stub_0xcbc8c() -> ! {
-    todo!("0xcbc8c __ZN4FMOD11GeometryMgr22releaseOcclusionThreadEv")
+pub fn stub_0xcbc8c() -> crate::slot::PortedFn {
+// IDA 0xcbc8c: FMOD::GeometryMgr::releaseOcclusionThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbc8c, "FMOD::GeometryMgr::releaseOcclusionThread()")
 }
 
-// 0xcbcb8 — __ZN4FMOD15OcclusionThreadC2Ev
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::OcclusionThread(void)")]
-pub fn stub_0xcbcb8() -> ! {
-    todo!("0xcbcb8 __ZN4FMOD15OcclusionThreadC2Ev")
+pub fn stub_0xcbcb8() -> crate::slot::PortedFn {
+// IDA 0xcbcb8: FMOD::OcclusionThread::OcclusionThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbcb8, "FMOD::OcclusionThread::OcclusionThread()")
 }
 
-// 0xcbd04 — __ZN4FMOD15OcclusionThreadC1Ev
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::OcclusionThread(void) [0xcbd04]")]
-pub fn stub_0xcbd04() -> ! {
-    todo!("0xcbd04 __ZN4FMOD15OcclusionThreadC1Ev")
+pub fn stub_0xcbd04() -> crate::slot::PortedFn {
+// IDA 0xcbd04: FMOD::OcclusionThread::OcclusionThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbd04, "FMOD::OcclusionThread::OcclusionThread()")
 }
 
-// 0xcbd08 — __ZN4FMOD11GeometryMgrC2Ev
-// type: _DWORD __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::GeometryMgr(void)")]
-pub fn stub_0xcbd08() -> ! {
-    todo!("0xcbd08 __ZN4FMOD11GeometryMgrC2Ev")
+pub fn stub_0xcbd08() -> crate::slot::PortedFn {
+// IDA 0xcbd08: FMOD::GeometryMgr::GeometryMgr().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbd08, "FMOD::GeometryMgr::GeometryMgr()")
 }
 
-// 0xcbd60 — __ZN4FMOD11GeometryMgrC1Ev
-// type: _DWORD __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::GeometryMgr(void) [0xcbd60]")]
-pub fn stub_0xcbd60() -> ! {
-    todo!("0xcbd60 __ZN4FMOD11GeometryMgrC1Ev")
+pub fn stub_0xcbd60() -> crate::slot::PortedFn {
+// IDA 0xcbd60: FMOD::GeometryMgr::GeometryMgr().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbd60, "FMOD::GeometryMgr::GeometryMgr()")
 }
 
-// 0xcbd64 — __ZN4FMOD15OcclusionThread4initEv
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::init(void)")]
-pub fn stub_0xcbd64() -> ! {
-    todo!("0xcbd64 __ZN4FMOD15OcclusionThread4initEv")
+pub fn stub_0xcbd64() -> crate::slot::PortedFn {
+// IDA 0xcbd64: FMOD::OcclusionThread::init().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbd64, "FMOD::OcclusionThread::init()")
 }
 
-// 0xcbe8c — __ZN4FMOD11GeometryMgrD2Ev
-// type: void __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::~GeometryMgr()")]
-pub fn stub_0xcbe8c() -> ! {
-    todo!("0xcbe8c __ZN4FMOD11GeometryMgrD2Ev")
+pub fn stub_0xcbe8c() -> crate::slot::PortedFn {
+// IDA 0xcbe8c: FMOD::GeometryMgr::~GeometryMgr().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbe8c, "FMOD::GeometryMgr::~GeometryMgr()")
 }
 
-// 0xcbeb8 — __ZN4FMOD11GeometryMgrD1Ev
-// type: void __fastcall(FMOD::GeometryMgr *__hidden this)
 #[doc(alias = "FMOD::GeometryMgr::~GeometryMgr() [0xcbeb8]")]
-pub fn stub_0xcbeb8() -> ! {
-    todo!("0xcbeb8 __ZN4FMOD11GeometryMgrD1Ev")
+pub fn stub_0xcbeb8() -> crate::slot::PortedFn {
+// IDA 0xcbeb8: FMOD::GeometryMgr::~GeometryMgr().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbeb8, "FMOD::GeometryMgr::~GeometryMgr()")
 }
 
-// 0xcbebc — __ZN4FMOD11GeometryMgr11lineTestAllEPK11FMOD_VECTORS3_PfS4_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*,FMOD_VECTOR const*,float *,float *)")]
-pub fn stub_0xcbebc() -> ! {
-    todo!("0xcbebc __ZN4FMOD11GeometryMgr11lineTestAllEPK11FMOD_VECTORS3_PfS4_")
+pub fn stub_0xcbebc() -> crate::slot::PortedFn {
+// IDA 0xcbebc: FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*, FMOD_VECTOR const*, float*, float*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbebc, "FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*, FMOD_VECTOR const*, float*, float*)")
 }
 
-// 0xcbf84 — __ZN4FMOD15OcclusionThread7enqueueEjjP11FMOD_VECTOR
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "FMOD::OcclusionThread::enqueue(unsigned int,unsigned int,FMOD_VECTOR *)")]
-pub fn stub_0xcbf84() -> ! {
-    todo!("0xcbf84 __ZN4FMOD15OcclusionThread7enqueueEjjP11FMOD_VECTOR")
+pub fn stub_0xcbf84() -> crate::slot::PortedFn {
+// IDA 0xcbf84: FMOD::OcclusionThread::enqueue(unsigned int, unsigned int, FMOD_VECTOR*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcbf84, "FMOD::OcclusionThread::enqueue(unsigned int, unsigned int, FMOD_VECTOR*)")
 }
 
-// 0xcc054 — __ZN4FMOD15OcclusionThread7dequeueEv
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::dequeue(void)")]
-pub fn stub_0xcc054() -> ! {
-    todo!("0xcc054 __ZN4FMOD15OcclusionThread7dequeueEv")
+pub fn stub_0xcc054() -> crate::slot::PortedFn {
+// IDA 0xcc054: FMOD::OcclusionThread::dequeue().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc054, "FMOD::OcclusionThread::dequeue()")
 }
 
-// 0xcc0c8 — __ZN4FMOD15OcclusionThread10threadFuncEv
-// type: _DWORD __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::threadFunc(void)")]
-pub fn stub_0xcc0c8() -> ! {
-    todo!("0xcc0c8 __ZN4FMOD15OcclusionThread10threadFuncEv")
+pub fn stub_0xcc0c8() -> crate::slot::PortedFn {
+// IDA 0xcc0c8: FMOD::OcclusionThread::threadFunc().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc0c8, "FMOD::OcclusionThread::threadFunc()")
 }
 
-// 0xcc1d4 — __ZN4FMOD11GeometryMgr13getMemoryUsedEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::GeometryMgr::getMemoryUsed(FMOD::MemoryTracker *)")]
-pub fn stub_0xcc1d4() -> ! {
-    todo!("0xcc1d4 __ZN4FMOD11GeometryMgr13getMemoryUsedEPNS_13MemoryTrackerE")
+pub fn stub_0xcc1d4() -> crate::slot::PortedFn {
+// IDA 0xcc1d4: FMOD::GeometryMgr::getMemoryUsed(FMOD::MemoryTracker*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc1d4, "FMOD::GeometryMgr::getMemoryUsed(FMOD::MemoryTracker*)")
 }
 
-// 0xcc22c — __ZN4FMOD15OcclusionThreadD0Ev
-// type: void __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::~OcclusionThread()")]
-pub fn stub_0xcc22c() -> ! {
-    todo!("0xcc22c __ZN4FMOD15OcclusionThreadD0Ev")
+pub fn stub_0xcc22c() -> crate::slot::PortedFn {
+// IDA 0xcc22c: FMOD::OcclusionThread::~OcclusionThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc22c, "FMOD::OcclusionThread::~OcclusionThread()")
 }
 
-// 0xcc250 — __ZN4FMOD15OcclusionThreadD1Ev
-// type: void __fastcall(FMOD::OcclusionThread *__hidden this)
 #[doc(alias = "FMOD::OcclusionThread::~OcclusionThread() [0xcc250]")]
-pub fn stub_0xcc250() -> ! {
-    todo!("0xcc250 __ZN4FMOD15OcclusionThreadD1Ev")
+pub fn stub_0xcc250() -> crate::slot::PortedFn {
+// IDA 0xcc250: FMOD::OcclusionThread::~OcclusionThread().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc250, "FMOD::OcclusionThread::~OcclusionThread()")
 }
 
-// 0xcc268 — __ZN4FMODL10matrixMultEPA4_KfPK11FMOD_VECTORPS3_
 #[doc(alias = "FMOD::matrixMult(float const(*)[4],FMOD_VECTOR const*,FMOD_VECTOR*)")]
-pub fn stub_0xcc268() -> ! {
-    todo!("0xcc268 __ZN4FMODL10matrixMultEPA4_KfPK11FMOD_VECTORPS3_")
+pub fn stub_0xcc268() -> crate::slot::PortedFn {
+// IDA 0xcc268: FMOD::matrixMult(float const (*) [4], FMOD_VECTOR const*, FMOD_VECTOR*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc268, "FMOD::matrixMult(float const (*) [4], FMOD_VECTOR const*, FMOD_VECTOR*)")
 }
 
-// 0xcc2ec — __ZN4FMOD9GeometryI22octreeLineTestCallbackEPNS_10OctreeNodeEPv
 #[doc(alias = "FMOD::GeometryI::octreeLineTestCallback(FMOD::OctreeNode *,void *)")]
-pub fn stub_0xcc2ec() -> ! {
-    todo!("0xcc2ec __ZN4FMOD9GeometryI22octreeLineTestCallbackEPNS_10OctreeNodeEPv")
+pub fn stub_0xcc2ec() -> crate::slot::PortedFn {
+// IDA 0xcc2ec: FMOD::GeometryI::octreeLineTestCallback(FMOD::OctreeNode*, void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc2ec, "FMOD::GeometryI::octreeLineTestCallback(FMOD::OctreeNode*, void*)")
 }
 
-// 0xcc558 — __ZN4FMOD9GeometryI8lineTestEPNS0_12LineTestDataE
 #[doc(alias = "FMOD::GeometryI::lineTest(FMOD::GeometryI::LineTestData *)")]
-pub fn stub_0xcc558() -> ! {
-    todo!("0xcc558 __ZN4FMOD9GeometryI8lineTestEPNS0_12LineTestDataE")
+pub fn stub_0xcc558() -> crate::slot::PortedFn {
+// IDA 0xcc558: FMOD::GeometryI::lineTest(FMOD::GeometryI::LineTestData*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc558, "FMOD::GeometryI::lineTest(FMOD::GeometryI::LineTestData*)")
 }
 
-// 0xcc668 — __ZN4FMOD9GeometryI17updateSpatialDataEv
-// type: _DWORD __fastcall(FMOD::GeometryI *__hidden this)
 #[doc(alias = "FMOD::GeometryI::updateSpatialData(void)")]
-pub fn stub_0xcc668() -> ! {
-    todo!("0xcc668 __ZN4FMOD9GeometryI17updateSpatialDataEv")
+pub fn stub_0xcc668() -> crate::slot::PortedFn {
+// IDA 0xcc668: FMOD::GeometryI::updateSpatialData().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc668, "FMOD::GeometryI::updateSpatialData()")
 }
 
-// 0xcc84c — __ZN4FMOD9GeometryI5flushEv
-// type: _DWORD __fastcall(FMOD::GeometryI *__hidden this)
 #[doc(alias = "FMOD::GeometryI::flush(void)")]
-pub fn stub_0xcc84c() -> ! {
-    todo!("0xcc84c __ZN4FMOD9GeometryI5flushEv")
+pub fn stub_0xcc84c() -> crate::slot::PortedFn {
+// IDA 0xcc84c: FMOD::GeometryI::flush().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcc84c, "FMOD::GeometryI::flush()")
 }
 
-// 0xccb54 — __ZN4FMOD6Global4initEv
-// type: _DWORD __fastcall(FMOD::Global *__hidden this)
 #[doc(alias = "FMOD::Global::init(void)")]
-pub fn stub_0xccb54() -> ! {
-    todo!("0xccb54 __ZN4FMOD6Global4initEv")
+pub fn stub_0xccb54() -> crate::slot::PortedFn {
+// IDA 0xccb54: FMOD::Global::init().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccb54, "FMOD::Global::init()")
 }
 
-// 0xccbdc — __ZN4FMOD6Global6incRefEv
-// type: _DWORD __fastcall(FMOD::Global *__hidden this)
 #[doc(alias = "FMOD::Global::incRef(void)")]
-pub fn stub_0xccbdc() -> ! {
-    todo!("0xccbdc __ZN4FMOD6Global6incRefEv")
+pub fn stub_0xccbdc() -> crate::slot::PortedFn {
+// IDA 0xccbdc: FMOD::Global::incRef().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccbdc, "FMOD::Global::incRef()")
 }
 
-// 0xccc18 — __ZN4FMOD6Global6decRefEv
-// type: _DWORD __fastcall(FMOD::Global *__hidden this)
 #[doc(alias = "FMOD::Global::decRef(void)")]
-pub fn stub_0xccc18() -> ! {
-    todo!("0xccc18 __ZN4FMOD6Global6decRefEv")
+pub fn stub_0xccc18() -> crate::slot::PortedFn {
+// IDA 0xccc18: FMOD::Global::decRef().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccc18, "FMOD::Global::decRef()")
 }
 
-// 0xccd00 — __ZN4FMOD6Global9getDSPFFTEPPNS_6DSPFFTE
-// type: _DWORD __fastcall(FMOD::Global *__hidden this, FMOD::DSPFFT **)
 #[doc(alias = "FMOD::Global::getDSPFFT(FMOD::DSPFFT **)")]
-pub fn stub_0xccd00() -> ! {
-    todo!("0xccd00 __ZN4FMOD6Global9getDSPFFTEPPNS_6DSPFFTE")
+pub fn stub_0xccd00() -> crate::slot::PortedFn {
+// IDA 0xccd00: FMOD::Global::getDSPFFT(FMOD::DSPFFT**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccd00, "FMOD::Global::getDSPFFT(FMOD::DSPFFT**)")
 }
 
-// 0xcceb8 — __GLOBAL__I__ZN4FMOD7gGlobalE
 #[doc(alias = "global constructor keyed toFMOD::gGlobal")]
-pub fn stub_0xcceb8() -> ! {
-    todo!("0xcceb8 __GLOBAL__I__ZN4FMOD7gGlobalE")
+pub fn stub_0xcceb8() -> crate::slot::PortedFn {
+// IDA 0xcceb8: __GLOBAL__I__ZN4FMOD7gGlobalE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xcceb8, "__GLOBAL__I__ZN4FMOD7gGlobalE")
 }
 
-// 0xccec4 — __ZN4FMOD8ListenerC2Ev
-// type: _DWORD *__fastcall(_DWORD *this)
 #[doc(alias = "FMOD::Listener::Listener(void)")]
-pub fn stub_0xccec4() -> ! {
-    todo!("0xccec4 __ZN4FMOD8ListenerC2Ev")
+pub fn stub_0xccec4() -> crate::slot::VecModel {
+// sequence ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0xccf18 — __ZN4FMOD8ListenerC1Ev
-// type: _DWORD __fastcall(FMOD::Listener *__hidden this)
 #[doc(alias = "FMOD::Listener::Listener(void) [0xccf18]")]
-pub fn stub_0xccf18() -> ! {
-    todo!("0xccf18 __ZN4FMOD8ListenerC1Ev")
+pub fn stub_0xccf18() -> crate::slot::VecModel {
+// sequence ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0xccf1c — __ZN4FMOD7MemPoolC2Ev
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::MemPool(void)")]
-pub fn stub_0xccf1c() -> ! {
-    todo!("0xccf1c __ZN4FMOD7MemPoolC2Ev")
+pub fn stub_0xccf1c() -> crate::slot::PortedFn {
+// IDA 0xccf1c: FMOD::MemPool::MemPool().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf1c, "FMOD::MemPool::MemPool()")
 }
 
-// 0xccf68 — __ZN4FMOD7MemPoolC1Ev
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::MemPool(void) [0xccf68]")]
-pub fn stub_0xccf68() -> ! {
-    todo!("0xccf68 __ZN4FMOD7MemPoolC1Ev")
+pub fn stub_0xccf68() -> crate::slot::PortedFn {
+// IDA 0xccf68: FMOD::MemPool::MemPool().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf68, "FMOD::MemPool::MemPool()")
 }
 
-// 0xccf6c — __ZN4FMOD18Memory_DefaultFreeEPvj
-// type: _DWORD __fastcall(FMOD *__hidden this, void *, unsigned int)
 #[doc(alias = "FMOD::Memory_DefaultFree(void *,unsigned int)")]
-pub fn stub_0xccf6c() -> ! {
-    todo!("0xccf6c __ZN4FMOD18Memory_DefaultFreeEPvj")
+pub fn stub_0xccf6c() -> crate::slot::PortedFn {
+// IDA 0xccf6c: FMOD::Memory_DefaultFree(void*, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf6c, "FMOD::Memory_DefaultFree(void*, unsigned int)")
 }
 
-// 0xccf7c — __ZN4FMOD21Memory_DefaultReallocEPvjj
-// type: _DWORD __fastcall(FMOD *__hidden this, void *, unsigned int, unsigned int)
 #[doc(alias = "FMOD::Memory_DefaultRealloc(void *,unsigned int,unsigned int)")]
-pub fn stub_0xccf7c() -> ! {
-    todo!("0xccf7c __ZN4FMOD21Memory_DefaultReallocEPvjj")
+pub fn stub_0xccf7c() -> crate::slot::PortedFn {
+// IDA 0xccf7c: FMOD::Memory_DefaultRealloc(void*, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf7c, "FMOD::Memory_DefaultRealloc(void*, unsigned int, unsigned int)")
 }
 
-// 0xccf8c — __ZN4FMOD20Memory_DefaultMallocEjj
-// type: _DWORD __fastcall(FMOD *__hidden this, unsigned int, unsigned int)
 #[doc(alias = "FMOD::Memory_DefaultMalloc(unsigned int,unsigned int)")]
-pub fn stub_0xccf8c() -> ! {
-    todo!("0xccf8c __ZN4FMOD20Memory_DefaultMallocEjj")
+pub fn stub_0xccf8c() -> crate::slot::PortedFn {
+// IDA 0xccf8c: FMOD::Memory_DefaultMalloc(unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf8c, "FMOD::Memory_DefaultMalloc(unsigned int, unsigned int)")
 }
 
-// 0xccf9c — __ZN4FMOD7MemPool3setEiii
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this, int, int, int)
 #[doc(alias = "FMOD::MemPool::set(int,int,int)")]
-pub fn stub_0xccf9c() -> ! {
-    todo!("0xccf9c __ZN4FMOD7MemPool3setEiii")
+pub fn stub_0xccf9c() -> crate::slot::PortedFn {
+// IDA 0xccf9c: FMOD::MemPool::set(int, int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xccf9c, "FMOD::MemPool::set(int, int, int)")
 }
 
-// 0xcd240 — __ZN4FMOD7MemPool4freeEPvPKci
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this, void *, const char *, int)
 #[doc(alias = "FMOD::MemPool::free(void *,char const*,int)")]
-pub fn stub_0xcd240() -> ! {
-    todo!("0xcd240 __ZN4FMOD7MemPool4freeEPvPKci")
+pub fn stub_0xcd240() -> crate::slot::PortedFn {
+// IDA 0xcd240: FMOD::MemPool::free(void*, char const*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd240, "FMOD::MemPool::free(void*, char const*, int)")
 }
 
-// 0xcd394 — __ZN4FMOD7MemPool5closeEv
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::close(void)")]
-pub fn stub_0xcd394() -> ! {
-    todo!("0xcd394 __ZN4FMOD7MemPool5closeEv")
+pub fn stub_0xcd394() -> crate::slot::PortedFn {
+// IDA 0xcd394: FMOD::MemPool::close().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd394, "FMOD::MemPool::close()")
 }
 
-// 0xcd454 — __ZN4FMOD7MemPoolD2Ev
-// type: void __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::~MemPool()")]
-pub fn stub_0xcd454() -> ! {
-    todo!("0xcd454 __ZN4FMOD7MemPoolD2Ev")
+pub fn stub_0xcd454() -> crate::slot::PortedFn {
+// IDA 0xcd454: FMOD::MemPool::~MemPool().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd454, "FMOD::MemPool::~MemPool()")
 }
 
-// 0xcd458 — __ZN4FMOD7MemPoolD1Ev
-// type: void __fastcall(FMOD::MemPool *__hidden this)
 #[doc(alias = "FMOD::MemPool::~MemPool() [0xcd458]")]
-pub fn stub_0xcd458() -> ! {
-    todo!("0xcd458 __ZN4FMOD7MemPoolD1Ev")
+pub fn stub_0xcd458() -> crate::slot::PortedFn {
+// IDA 0xcd458: FMOD::MemPool::~MemPool().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd458, "FMOD::MemPool::~MemPool()")
 }
 
-// 0xcd45c — __ZN4FMOD12MemSingleton4freeEPKci
-// type: _DWORD __fastcall(FMOD::MemSingleton *__hidden this, const char *, int)
 #[doc(alias = "FMOD::MemSingleton::free(char const*,int)")]
-pub fn stub_0xcd45c() -> ! {
-    todo!("0xcd45c __ZN4FMOD12MemSingleton4freeEPKci")
+pub fn stub_0xcd45c() -> crate::slot::PortedFn {
+// IDA 0xcd45c: FMOD::MemSingleton::free(char const*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd45c, "FMOD::MemSingleton::free(char const*, int)")
 }
 
-// 0xcd4c0 — __ZN4FMOD7MemPool5allocEiPKcijb
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this, int, const char *, int, unsigned int, bool)
 #[doc(alias = "FMOD::MemPool::alloc(int,char const*,int,unsigned int,bool)")]
-pub fn stub_0xcd4c0() -> ! {
-    todo!("0xcd4c0 __ZN4FMOD7MemPool5allocEiPKcijb")
+pub fn stub_0xcd4c0() -> crate::slot::PortedFn {
+// IDA 0xcd4c0: FMOD::MemPool::alloc(int, char const*, int, unsigned int, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd4c0, "FMOD::MemPool::alloc(int, char const*, int, unsigned int, bool)")
 }
 
-// 0xcd800 — __ZN4FMOD7MemPool6callocEiPKcij
-// type: int __fastcall(FMOD::MemPool *this, int, const char *, int, unsigned int)
 #[doc(alias = "FMOD::MemPool::calloc(int,char const*,int,unsigned int)")]
-pub fn stub_0xcd800() -> ! {
-    todo!("0xcd800 __ZN4FMOD7MemPool6callocEiPKcij")
+pub fn stub_0xcd800() -> crate::slot::PortedFn {
+// IDA 0xcd800: FMOD::MemPool::calloc(int, char const*, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd800, "FMOD::MemPool::calloc(int, char const*, int, unsigned int)")
 }
 
-// 0xcd828 — __ZN4FMOD12MemSingleton5allocEiPKci
-// type: _DWORD __fastcall(FMOD::MemSingleton *__hidden this, int, const char *, int)
 #[doc(alias = "FMOD::MemSingleton::alloc(int,char const*,int)")]
-pub fn stub_0xcd828() -> ! {
-    todo!("0xcd828 __ZN4FMOD12MemSingleton5allocEiPKci")
+pub fn stub_0xcd828() -> crate::slot::PortedFn {
+// IDA 0xcd828: FMOD::MemSingleton::alloc(int, char const*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd828, "FMOD::MemSingleton::alloc(int, char const*, int)")
 }
 
-// 0xcd880 — __ZN4FMOD7MemPool7reallocEPviPKcij
-// type: _DWORD __fastcall(FMOD::MemPool *__hidden this, void *, int, const char *, int, unsigned int)
 #[doc(alias = "FMOD::MemPool::realloc(void *,int,char const*,int,unsigned int)")]
-pub fn stub_0xcd880() -> ! {
-    todo!("0xcd880 __ZN4FMOD7MemPool7reallocEPviPKcij")
+pub fn stub_0xcd880() -> crate::slot::PortedFn {
+// IDA 0xcd880: FMOD::MemPool::realloc(void*, int, char const*, int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcd880, "FMOD::MemPool::realloc(void*, int, char const*, int, unsigned int)")
 }
 
-// 0xcdcc4 — __ZN4FMOD8Metadata6addTagEPNS_7TagNodeE
 #[doc(alias = "FMOD::Metadata::addTag(FMOD::TagNode *)")]
-pub fn stub_0xcdcc4() -> ! {
-    todo!("0xcdcc4 __ZN4FMOD8Metadata6addTagEPNS_7TagNodeE")
+pub fn stub_0xcdcc4() -> crate::slot::PortedFn {
+// IDA 0xcdcc4: FMOD::Metadata::addTag(FMOD::TagNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcdcc4, "FMOD::Metadata::addTag(FMOD::TagNode*)")
 }
 
-// 0xcdce4 — __ZN4FMOD7TagNode7releaseEv
-// type: _DWORD __fastcall(FMOD::TagNode *__hidden this)
 #[doc(alias = "FMOD::TagNode::release(void)")]
-pub fn stub_0xcdce4() -> ! {
-    todo!("0xcdce4 __ZN4FMOD7TagNode7releaseEv")
+pub fn stub_0xcdce4() -> crate::slot::PortedFn {
+// IDA 0xcdce4: FMOD::TagNode::release().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcdce4, "FMOD::TagNode::release()")
 }
 
-// 0xcdd9c — __ZN4FMOD7TagNode6updateEPvj
-// type: _DWORD __fastcall(FMOD::TagNode *__hidden this, void *, unsigned int)
 #[doc(alias = "FMOD::TagNode::update(void *,unsigned int)")]
-pub fn stub_0xcdd9c() -> ! {
-    todo!("0xcdd9c __ZN4FMOD7TagNode6updateEPvj")
+pub fn stub_0xcdd9c() -> crate::slot::PortedFn {
+// IDA 0xcdd9c: FMOD::TagNode::update(void*, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcdd9c, "FMOD::TagNode::update(void*, unsigned int)")
 }
 
-// 0xcde94 — __ZN4FMOD7TagNode4initE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPE
-// type: int __fastcall(int, int, int, int, size_t __n, int)
 #[doc(alias = "FMOD::TagNode::init(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE)")]
-pub fn stub_0xcde94() -> ! {
-    todo!("0xcde94 __ZN4FMOD7TagNode4initE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPE")
+pub fn stub_0xcde94() -> crate::slot::PortedFn {
+// IDA 0xcde94: FMOD::TagNode::init(FMOD_TAGTYPE, char const*, void*, unsigned int, FMOD_TAGDATATYPE).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcde94, "FMOD::TagNode::init(FMOD_TAGTYPE, char const*, void*, unsigned int, FMOD_TAGDATATYPE)")
 }
 
-// 0xcdf64 — __ZN4FMOD8Metadata7releaseEv
-// type: _DWORD __fastcall(FMOD::Metadata *__hidden this)
 #[doc(alias = "FMOD::Metadata::release(void)")]
-pub fn stub_0xcdf64() -> ! {
-    todo!("0xcdf64 __ZN4FMOD8Metadata7releaseEv")
+pub fn stub_0xcdf64() -> crate::slot::PortedFn {
+// IDA 0xcdf64: FMOD::Metadata::release().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcdf64, "FMOD::Metadata::release()")
 }
 
-// 0xcdfe0 — __ZN4FMOD8Metadata6addTagE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPEb
-// type: int __fastcall(int, int, int, int, size_t, int, char)
 #[doc(alias = "FMOD::Metadata::addTag(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")]
-pub fn stub_0xcdfe0() -> ! {
-    todo!("0xcdfe0 __ZN4FMOD8Metadata6addTagE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPEb")
+pub fn stub_0xcdfe0() -> crate::slot::PortedFn {
+// IDA 0xcdfe0: FMOD::Metadata::addTag(FMOD_TAGTYPE, char const*, void*, unsigned int, FMOD_TAGDATATYPE, bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xcdfe0, "FMOD::Metadata::addTag(FMOD_TAGTYPE, char const*, void*, unsigned int, FMOD_TAGDATATYPE, bool)")
 }
 
-// 0xce128 — __ZN4FMOD8Metadata6getTagEPKciP8FMOD_TAG
 #[doc(alias = "FMOD::Metadata::getTag(char const*,int,FMOD_TAG *)")]
-pub fn stub_0xce128() -> ! {
-    todo!("0xce128 __ZN4FMOD8Metadata6getTagEPKciP8FMOD_TAG")
+pub fn stub_0xce128() -> crate::slot::PortedFn {
+// IDA 0xce128: FMOD::Metadata::getTag(char const*, int, FMOD_TAG*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xce128, "FMOD::Metadata::getTag(char const*, int, FMOD_TAG*)")
 }

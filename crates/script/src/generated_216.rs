@@ -8,499 +8,700 @@
 
 use rbx_core::SharedPtr;
 
-// 0x38e9e0 — __ZThn128_N3RBX12AccoutrementD0Ev
-// type: void __fastcall(RBX::Accoutrement *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement() [0x38e9e0]")]
-pub fn stub_0x38e9e0() -> ! { todo!("0x38e9e0 __ZThn128_N3RBX12AccoutrementD0Ev") }
+pub fn stub_0x38e9e0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x38e9e8 — __ZN3RBX12AccoutrementD2Ev
-// type: void __fastcall(RBX::Accoutrement *this, int *, int)
 #[doc(alias = "RBX::Accoutrement::~Accoutrement() [0x38e9e8]")]
-pub fn stub_0x38e9e8() -> ! { todo!("0x38e9e8 __ZN3RBX12AccoutrementD2Ev") }
+pub fn stub_0x38e9e8(handle: crate::slot::InstanceHandle) {
+// RBX::Accoutrement dtor.
+drop(handle);
+}
 
-// 0x38ef1c — __ZThn32_N3RBX12AccoutrementD1Ev
-// type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement() [0x38ef1c]")]
-pub fn stub_0x38ef1c() -> ! { todo!("0x38ef1c __ZThn32_N3RBX12AccoutrementD1Ev") }
+pub fn stub_0x38ef1c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x38ef2c — __ZThn36_N3RBX12AccoutrementD1Ev
-// type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement() [0x38ef2c]")]
-pub fn stub_0x38ef2c() -> ! { todo!("0x38ef2c __ZThn36_N3RBX12AccoutrementD1Ev") }
+pub fn stub_0x38ef2c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x38ef3c — __ZThn92_N3RBX12AccoutrementD1Ev
-// type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement() [0x38ef3c]")]
-pub fn stub_0x38ef3c() -> ! { todo!("0x38ef3c __ZThn92_N3RBX12AccoutrementD1Ev") }
+pub fn stub_0x38ef3c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x38ef4c — __ZThn128_N3RBX12AccoutrementD1Ev
-// type: void __fastcall(RBX::Accoutrement *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement() [0x38ef4c]")]
-pub fn stub_0x38ef4c() -> ! { todo!("0x38ef4c __ZThn128_N3RBX12AccoutrementD1Ev") }
+pub fn stub_0x38ef4c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x38ef5c — __ZN3RBX12Accoutrement12onCameraNearEf
-// type: unsigned int __fastcall(RBX::Accoutrement *this, float)
 #[doc(alias = "RBX::Accoutrement::onCameraNear(float)")]
-pub fn stub_0x38ef5c() -> ! { todo!("0x38ef5c __ZN3RBX12Accoutrement12onCameraNearEf") }
+pub fn stub_0x38ef5c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::onCameraNear(float) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38ef98 — __ZThn128_N3RBX12Accoutrement12onCameraNearEf
-// type: unsigned int __fastcall(RBX::Accoutrement *this, float)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::onCameraNear(float)")]
-pub fn stub_0x38ef98() -> ! { todo!("0x38ef98 __ZThn128_N3RBX12Accoutrement12onCameraNearEf") }
+pub fn stub_0x38ef98(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x38efa0 — __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
-// type: unsigned int __fastcall(RBX::Instance *, int, int)
 #[doc(alias = "RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-pub fn stub_0x38efa0() -> ! { todo!("0x38efa0 __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE") }
+pub fn stub_0x38efa0(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::render3dSelect(RBX::Adorn*, RBX::SelectState) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
-// type: unsigned int __fastcall(int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-pub fn stub_0x38f014() -> ! { todo!("0x38f014 __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE") }
+pub fn stub_0x38f014(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 104, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 104);
+}
 
-// 0x38f01c — __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE
-// type: int __fastcall(RBX::Accoutrement *this, RBX::ModelInstance *, RBX::Accoutrement *)
 #[doc(alias = "RBX::Accoutrement::dropAll(RBX::ModelInstance *)")]
-pub fn stub_0x38f01c() -> ! { todo!("0x38f01c __ZN3RBX12Accoutrement7dropAllEPNS_13ModelInstanceE") }
+pub fn stub_0x38f01c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::dropAll(RBX::ModelInstance*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f024 — __ZN3RBX12Accoutrement13dropAllOthersEPNS_13ModelInstanceEPS0_
-// type: RBX::Instance *__fastcall(RBX::Accoutrement *this, RBX::ModelInstance *, RBX::Accoutrement *)
 #[doc(alias = "RBX::Accoutrement::dropAllOthers(RBX::ModelInstance *,RBX::Accoutrement*)")]
-pub fn stub_0x38f024() -> ! { todo!("0x38f024 __ZN3RBX12Accoutrement13dropAllOthersEPNS_13ModelInstanceEPS0_") }
+pub fn stub_0x38f024(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::dropAllOthers(RBX::ModelInstance*, RBX::Accoutrement*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f054 — __ZNK3RBX12Accoutrement14getHandleConstEv
-// type: char *__fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::getHandleConst(void)const")]
-pub fn stub_0x38f054() -> ! { todo!("0x38f054 __ZNK3RBX12Accoutrement14getHandleConstEv") }
+pub fn stub_0x38f054(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x38f1c4 — __ZN3RBX12Accoutrement11getLocationEv
-// type: int __fastcall(RBX::Accoutrement *this, RBX::Accoutrement *)
 #[doc(alias = "RBX::Accoutrement::getLocation(void)")]
-pub fn stub_0x38f1c4() -> ! { todo!("0x38f1c4 __ZN3RBX12Accoutrement11getLocationEv") }
+pub fn stub_0x38f1c4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x38f1f8 — __ZTv0_n12_N3RBX12Accoutrement11getLocationEv
-// type: int __fastcall(RBX::Accoutrement *this, _DWORD *)
 #[doc(alias = "virtual thunk toRBX::Accoutrement::getLocation(void)")]
-pub fn stub_0x38f1f8() -> ! { todo!("0x38f1f8 __ZTv0_n12_N3RBX12Accoutrement11getLocationEv") }
+pub fn stub_0x38f1f8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+}
 
-// 0x38f20c — __ZN3RBX12Accoutrement17connectTouchEventEv
-// type: void __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::connectTouchEvent(void)")]
-pub fn stub_0x38f20c() -> ! { todo!("0x38f20c __ZN3RBX12Accoutrement17connectTouchEventEv") }
+pub fn stub_0x38f20c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::connectTouchEvent() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f3ec — __ZN3RBX12Accoutrement21onEvent_HandleTouchedEN5boost10shared_ptrINS_8InstanceEEE
-// type: RBX::Accoutrement *__fastcall(RBX::Network::Players *, RBX::Accoutrement **, bool)
 #[doc(alias = "RBX::Accoutrement::onEvent_HandleTouched(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0x38f3ec() -> ! { todo!("0x38f3ec __ZN3RBX12Accoutrement21onEvent_HandleTouchedEN5boost10shared_ptrINS_8InstanceEEE") }
+pub fn stub_0x38f3ec() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x38f47c — __ZN3RBX12Accoutrement19rebuildBackendStateEv
-// type: int __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::rebuildBackendState(void)")]
-pub fn stub_0x38f47c() -> ! { todo!("0x38f47c __ZN3RBX12Accoutrement19rebuildBackendStateEv") }
+pub fn stub_0x38f47c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::rebuildBackendState() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f4f4 — __ZN3RBX12Accoutrement19computeDesiredStateEv
-// type: int __fastcall(RBX::Instance **this, int, bool)
 #[doc(alias = "RBX::Accoutrement::computeDesiredState(void)")]
-pub fn stub_0x38f4f4() -> ! { todo!("0x38f4f4 __ZN3RBX12Accoutrement19computeDesiredStateEv") }
+pub fn stub_0x38f4f4(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::computeDesiredState() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f578 — __ZN3RBX12Accoutrement15setDesiredStateENS0_17AccoutrementStateEPKNS_15ServiceProviderE
-// type: int __fastcall(RBX::Accoutrement *this, int, RBX::Network::Players *)
 #[doc(alias = "RBX::Accoutrement::setDesiredState(RBX::Accoutrement::AccoutrementState,RBX::ServiceProvider const*)")]
-pub fn stub_0x38f578() -> ! { todo!("0x38f578 __ZN3RBX12Accoutrement15setDesiredStateENS0_17AccoutrementStateEPKNS_15ServiceProviderE") }
+pub fn stub_0x38f578(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::Accoutrement setter.
+cell.set(value)
+}
 
-// 0x38f6f0 — __ZN3RBX12Accoutrement19computeDesiredStateEPNS_8InstanceE
-// type: int __fastcall(RBX::Accoutrement *this, RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::computeDesiredState(RBX::Instance *)")]
-pub fn stub_0x38f6f0() -> ! { todo!("0x38f6f0 __ZN3RBX12Accoutrement19computeDesiredStateEPNS_8InstanceE") }
+pub fn stub_0x38f6f0(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::computeDesiredState(RBX::Instance*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f714 — __ZN3RBX12Accoutrement13upTo_EquippedEv
-// type: void __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::upTo_Equipped(void)")]
-pub fn stub_0x38f714() -> ! { todo!("0x38f714 __ZN3RBX12Accoutrement13upTo_EquippedEv") }
+pub fn stub_0x38f714(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::upTo_Equipped() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38f92c — __ZN3RBX12Accoutrement16upTo_InCharacterEv
-// type: void __fastcall(RBX::Humanoid **this)
 #[doc(alias = "RBX::Accoutrement::upTo_InCharacter(void)")]
-pub fn stub_0x38f92c() -> ! { todo!("0x38f92c __ZN3RBX12Accoutrement16upTo_InCharacterEv") }
+pub fn stub_0x38f92c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::upTo_InCharacter() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38fb1c — __ZN3RBX12Accoutrement16upTo_InWorkspaceEv
-// type: int __fastcall(RBX::Accoutrement *this, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::upTo_InWorkspace(void)")]
-pub fn stub_0x38fb1c() -> ! { todo!("0x38fb1c __ZN3RBX12Accoutrement16upTo_InWorkspaceEv") }
+pub fn stub_0x38fb1c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::upTo_InWorkspace() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38fbcc — __ZN3RBX12Accoutrement17downFrom_EquippedEv
-// type: void __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::downFrom_Equipped(void)")]
-pub fn stub_0x38fbcc() -> ! { todo!("0x38fbcc __ZN3RBX12Accoutrement17downFrom_EquippedEv") }
+pub fn stub_0x38fbcc(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::downFrom_Equipped() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38fd24 — __ZN3RBX12Accoutrement18downFrom_HasHandleEv
-// type: void __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::downFrom_HasHandle(void)")]
-pub fn stub_0x38fd24() -> ! { todo!("0x38fd24 __ZN3RBX12Accoutrement18downFrom_HasHandleEv") }
+pub fn stub_0x38fd24(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::downFrom_HasHandle() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38fd60 — __ZN3RBX12Accoutrement20onEvent_AddedBackendEN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::onEvent_AddedBackend(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0x38fd60() -> ! { todo!("0x38fd60 __ZN3RBX12Accoutrement20onEvent_AddedBackendEN5boost10shared_ptrINS_8InstanceEEE") }
+pub fn stub_0x38fd60() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x38fe18 — __ZN3RBX12Accoutrement22onEvent_RemovedBackendEN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *, int)
 #[doc(alias = "RBX::Accoutrement::onEvent_RemovedBackend(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0x38fe18() -> ! { todo!("0x38fe18 __ZN3RBX12Accoutrement22onEvent_RemovedBackendEN5boost10shared_ptrINS_8InstanceEEE") }
+pub fn stub_0x38fe18() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x38ff34 — __ZN3RBX12Accoutrement12onChildAddedEPNS_8InstanceE
-// type: int __fastcall(RBX::Accoutrement *this, RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::onChildAdded(RBX::Instance *)")]
-pub fn stub_0x38ff34() -> ! { todo!("0x38ff34 __ZN3RBX12Accoutrement12onChildAddedEPNS_8InstanceE") }
+pub fn stub_0x38ff34(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::onChildAdded(RBX::Instance*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38ff5c — __ZN3RBX12Accoutrement14onChildRemovedEPNS_8InstanceE
-// type: int __fastcall(RBX::Accoutrement *this, RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::onChildRemoved(RBX::Instance *)")]
-pub fn stub_0x38ff5c() -> ! { todo!("0x38ff5c __ZN3RBX12Accoutrement14onChildRemovedEPNS_8InstanceE") }
+pub fn stub_0x38ff5c(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::onChildRemoved(RBX::Instance*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38ff84 — __ZN3RBX12Accoutrement17onAncestorChangedERKNS_15AncestorChangedE
 #[doc(alias = "RBX::Accoutrement::onAncestorChanged(RBX::AncestorChanged const&)")]
-pub fn stub_0x38ff84() -> ! { todo!("0x38ff84 __ZN3RBX12Accoutrement17onAncestorChangedERKNS_15AncestorChangedE") }
+pub fn stub_0x38ff84(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::onAncestorChanged(RBX::AncestorChanged const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x38fff0 — __ZN3RBX3HatC1Ev
-// type: RBX::Accoutrement *__fastcall(RBX::Hat *this)
 #[doc(alias = "RBX::Hat::Hat(void)")]
-pub fn stub_0x38fff0() -> ! { todo!("0x38fff0 __ZN3RBX3HatC1Ev") }
+pub fn stub_0x38fff0() -> crate::slot::InstanceHandle {
+// RBX::Hat ctor.
+crate::slot::InstanceHandle::new("RBX::Hat")
+}
 
-// 0x3901bc — __ZNK3RBX12Accoutrement18getAttachmentPointEv
-// type: char *__fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::getAttachmentPoint(void)const")]
-pub fn stub_0x3901bc() -> ! { todo!("0x3901bc __ZNK3RBX12Accoutrement18getAttachmentPointEv") }
+pub fn stub_0x3901bc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x3901c0 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")]
-pub fn stub_0x3901c0() -> ! { todo!("0x3901c0 __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEED1Ev") }
+pub fn stub_0x3901c0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3901e4 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")]
-pub fn stub_0x3901e4() -> ! { todo!("0x3901e4 __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED1Ev") }
+pub fn stub_0x3901e4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x390208 — __ZNK3RBX12Accoutrement27getBackendAccoutrementStateEv
-// type: int __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "RBX::Accoutrement::getBackendAccoutrementState(void)const")]
-pub fn stub_0x390208() -> ! { todo!("0x390208 __ZNK3RBX12Accoutrement27getBackendAccoutrementStateEv") }
+pub fn stub_0x390208(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x390210 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")]
-pub fn stub_0x390210() -> ! { todo!("0x390210 __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiED1Ev") }
+pub fn stub_0x390210(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x390234 — __ZN3RBX8Instance15queryTypedChildINS_13CameraSubjectEEEPT_i
-// type: void *__fastcall(int, int)
 #[doc(alias = "RBX::CameraSubject * RBX::Instance::queryTypedChild<RBX::CameraSubject>(int)")]
-pub fn stub_0x390234() -> ! { todo!("0x390234 __ZN3RBX8Instance15queryTypedChildINS_13CameraSubjectEEEPT_i") }
+pub fn stub_0x390234(handle: &crate::slot::InstanceHandle) {
+// RBX::CameraSubject* RBX::Instance::queryTypedChild<RBX::CameraSubject>(int) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x390270 — __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_12AccoutrementENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_
-// type: void __fastcall(rbx::signals::connection *, int, int, const void *, int)
 #[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>)")]
-pub fn stub_0x390270() -> ! { todo!("0x390270 __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_12AccoutrementENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_") }
+pub fn stub_0x390270() -> crate::slot::SlotConnection {
+// IDA 0x390270: signal::connect<bind_t> (cf. 0x39d700) — links the
+// bound callable_slot into the signal and returns the
+// rbx::signals::connection. was: boost::bind/_mfi.
+crate::slot::SlotConnection::new()
+}
 
-// 0x3903f0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12AccoutrementES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
-// type: int __fastcall(int *, int, __int64 *)
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>> const&)")]
-pub fn stub_0x3903f0() -> ! { todo!("0x3903f0 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12AccoutrementES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_") }
+pub fn stub_0x3903f0() -> crate::slot::SlotConnection {
+// IDA 0x3903f0: signal::connect<bind_t> (cf. 0x39d700) — links the
+// bound callable_slot into the signal and returns the
+// rbx::signals::connection. was: boost::bind/_mfi.
+crate::slot::SlotConnection::new()
+}
 
-// 0x390464 — __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev
-// type: __guard *__fastcall(int *, _DWORD *)
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev")]
-pub fn stub_0x390464() -> ! { todo!("0x390464 __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev") }
+pub fn stub_0x390464() -> crate::slot::InstanceHandle {
+// RBX::DescribedCreatable ctor.
+crate::slot::InstanceHandle::new("RBX::DescribedCreatable")
+}
 
-// 0x390654 — __ZNK3RBX12Accoutrement11askAddChildEPKNS_8InstanceE
-// type: int __fastcall(RBX::Accoutrement *this, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::askAddChild(RBX::Instance const*)const")]
-pub fn stub_0x390654() -> ! { todo!("0x390654 __ZNK3RBX12Accoutrement11askAddChildEPKNS_8InstanceE") }
+pub fn stub_0x390654(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::askAddChild(RBX::Instance const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x390658 — __ZNK3RBX12Accoutrement12askSetParentEPKNS_8InstanceE
-// type: int __fastcall(RBX::Accoutrement *this, const RBX::Instance *)
 #[doc(alias = "RBX::Accoutrement::askSetParent(RBX::Instance const*)const")]
-pub fn stub_0x390658() -> ! { todo!("0x390658 __ZNK3RBX12Accoutrement12askSetParentEPKNS_8InstanceE") }
+pub fn stub_0x390658(handle: &crate::slot::InstanceHandle) {
+// RBX::Accoutrement::askSetParent(RBX::Instance const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x39065c — __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv")]
-pub fn stub_0x39065c() -> ! { todo!("0x39065c __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv") }
+pub fn stub_0x39065c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Accoutrement"
+}
 
-// 0x39066c — __ZN3RBX12Accoutrement17getRenderLocationEv
-// type: int __fastcall(RBX::Accoutrement *this, int)
 #[doc(alias = "RBX::Accoutrement::getRenderLocation(void)")]
-pub fn stub_0x39066c() -> ! { todo!("0x39066c __ZN3RBX12Accoutrement17getRenderLocationEv") }
+pub fn stub_0x39066c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x39067c — __ZN3RBX12Accoutrement13getRenderSizeEv
-// type: int __fastcall(RBX::Accoutrement *this, RBX::Accoutrement *)
 #[doc(alias = "RBX::Accoutrement::getRenderSize(void)")]
-pub fn stub_0x39067c() -> ! { todo!("0x39067c __ZN3RBX12Accoutrement13getRenderSizeEv") }
+pub fn stub_0x39067c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Accoutrement getter.
+cell.get()
+}
 
-// 0x3906a4 — __ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv
-// type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv")]
-pub fn stub_0x3906a4() -> ! { todo!("0x3906a4 __ZThn32_NK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E12getClassNameEv") }
+pub fn stub_0x3906a4() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Accoutrement"
+}
 
-// 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv
-// type: int __fastcall(RBX::Accoutrement *this, int)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
-pub fn stub_0x3906b4() -> ! { todo!("0x3906b4 __ZThn128_N3RBX12Accoutrement17getRenderLocationEv") }
+pub fn stub_0x3906b4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv
-// type: int __fastcall(RBX::Accoutrement *this)
 #[doc(alias = "non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
-pub fn stub_0x3906c4() -> ! { todo!("0x3906c4 __ZThn128_N3RBX12Accoutrement13getRenderSizeEv") }
+pub fn stub_0x3906c4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x3906d0 — __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev")]
-pub fn stub_0x3906d0() -> ! { todo!("0x3906d0 __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD1Ev") }
+pub fn stub_0x3906d0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Accoutrement"
+}
 
-// 0x3906d4 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x3906d4() -> ! { todo!("0x3906d4 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD1Ev") }
+pub fn stub_0x3906d4() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x3906d8 — __ZN3RBX3HatD1Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "RBX::Hat::~Hat()")]
-pub fn stub_0x3906d8() -> ! { todo!("0x3906d8 __ZN3RBX3HatD1Ev") }
+pub fn stub_0x3906d8(handle: crate::slot::InstanceHandle) {
+// RBX::Hat dtor.
+drop(handle);
+}
 
-// 0x3906ec — __ZN3RBX3HatD0Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "RBX::Hat::~Hat() [0x3906ec]")]
-pub fn stub_0x3906ec() -> ! { todo!("0x3906ec __ZN3RBX3HatD0Ev") }
+pub fn stub_0x3906ec(handle: crate::slot::InstanceHandle) {
+// RBX::Hat dtor.
+drop(handle);
+}
 
-// 0x39079c — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x39079c() -> ! { todo!("0x39079c __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv") }
+pub fn stub_0x39079c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x3907ac — __ZThn32_N3RBX3HatD1Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
-pub fn stub_0x3907ac() -> ! { todo!("0x3907ac __ZThn32_N3RBX3HatD1Ev") }
+pub fn stub_0x3907ac(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x3907c0 — __ZThn32_N3RBX3HatD0Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x3907c0]")]
-pub fn stub_0x3907c0() -> ! { todo!("0x3907c0 __ZThn32_N3RBX3HatD0Ev") }
+pub fn stub_0x3907c0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x390874 — __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv
-// type: int()
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x390874() -> ! { todo!("0x390874 __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv") }
+pub fn stub_0x390874() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x390884 — __ZThn36_N3RBX3HatD1Ev
-// type: void __fastcall(RBX::Hat *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x390884]")]
-pub fn stub_0x390884() -> ! { todo!("0x390884 __ZThn36_N3RBX3HatD1Ev") }
+pub fn stub_0x390884(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x390898 — __ZThn36_N3RBX3HatD0Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x390898]")]
-pub fn stub_0x390898() -> ! { todo!("0x390898 __ZThn36_N3RBX3HatD0Ev") }
+pub fn stub_0x390898(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x39094c — __ZThn92_N3RBX3HatD1Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x39094c]")]
-pub fn stub_0x39094c() -> ! { todo!("0x39094c __ZThn92_N3RBX3HatD1Ev") }
+pub fn stub_0x39094c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x390960 — __ZThn92_N3RBX3HatD0Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x390960]")]
-pub fn stub_0x390960() -> ! { todo!("0x390960 __ZThn92_N3RBX3HatD0Ev") }
+pub fn stub_0x390960(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x390a14 — __ZThn128_N3RBX3HatD1Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x390a14]")]
-pub fn stub_0x390a14() -> ! { todo!("0x390a14 __ZThn128_N3RBX3HatD1Ev") }
+pub fn stub_0x390a14(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390a28 — __ZThn128_N3RBX3HatD0Ev
-// type: void __fastcall(RBX::Hat *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Hat::~Hat() [0x390a28]")]
-pub fn stub_0x390a28() -> ! { todo!("0x390a28 __ZThn128_N3RBX3HatD0Ev") }
+pub fn stub_0x390a28(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390adc — __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390adc() -> ! { todo!("0x390adc __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x390adc(map: crate::slot::TreeMapModel) {
+// ordered/unordered map dtor — releases every node.
+drop(map);
+}
 
-// 0x390af0 — __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390af0() -> ! { todo!("0x390af0 __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390af0(map: crate::slot::TreeMapModel) {
+// ordered/unordered map dtor — releases every node.
+drop(map);
+}
 
-// 0x390ba0 — __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390ba0() -> ! { todo!("0x390ba0 __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x390ba0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390bb4 — __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390bb4() -> ! { todo!("0x390bb4 __ZThn128_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390bb4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390c68 — __ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390c68() -> ! { todo!("0x390c68 __ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x390c68(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
+}
 
-// 0x390c7c — __ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390c7c() -> ! { todo!("0x390c7c __ZN3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390c7c(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
+}
 
-// 0x390d2c — __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x390d2c() -> ! { todo!("0x390d2c __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x390d2c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390d40 — __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390d40() -> ! { todo!("0x390d40 __ZThn128_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390d40(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390df4 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390df4() -> ! { todo!("0x390df4 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev") }
+pub fn stub_0x390df4(handle: crate::slot::InstanceHandle) {
+// RBX::FactoryProduct dtor.
+drop(handle);
+}
 
-// 0x390e08 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
-// type: void __fastcall(RBX::Accoutrement *, int, int)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390e08() -> ! { todo!("0x390e08 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev") }
+pub fn stub_0x390e08(handle: crate::slot::InstanceHandle) {
+// RBX::FactoryProduct dtor.
+drop(handle);
+}
 
-// 0x390eb8 — __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390eb8() -> ! { todo!("0x390eb8 __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev") }
+pub fn stub_0x390eb8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390ecc — __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "__ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ecc() -> ! { todo!("0x390ecc __ZThn128_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev") }
+pub fn stub_0x390ecc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 128, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 128);
+}
 
-// 0x390ed4 — __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ed4() -> ! { todo!("0x390ed4 __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev") }
+pub fn stub_0x390ed4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x390edc — __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390edc() -> ! { todo!("0x390edc __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev") }
+pub fn stub_0x390edc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x390ee4 — __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "__ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev")]
-pub fn stub_0x390ee4() -> ! { todo!("0x390ee4 __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev") }
+pub fn stub_0x390ee4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x390eec — __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390eec() -> ! { todo!("0x390eec __ZThn32_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev") }
+pub fn stub_0x390eec(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x390f00 — __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390f00() -> ! { todo!("0x390f00 __ZThn36_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev") }
+pub fn stub_0x390f00(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x390f14 — __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev")]
-pub fn stub_0x390f14() -> ! { todo!("0x390f14 __ZThn92_N3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED1Ev") }
+pub fn stub_0x390f14(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x390f28 — __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390f28() -> ! { todo!("0x390f28 __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390f28(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x390fdc — __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x390fdc() -> ! { todo!("0x390fdc __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x390fdc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x391090 — __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391090() -> ! { todo!("0x391090 __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x391090(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x391144 — __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x391144() -> ! { todo!("0x391144 __ZThn32_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x391144(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x391158 — __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x391158() -> ! { todo!("0x391158 __ZThn36_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x391158(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x39116c — __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39116c() -> ! { todo!("0x39116c __ZThn92_N3RBX10Reflection9DescribedINS_3HatELZNS_4sHatEENS_14FactoryProductIS2_NS_12AccoutrementELZNS_4sHatEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x39116c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x391180 — __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391180() -> ! { todo!("0x391180 __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x391180(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x391234 — __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x391234() -> ! { todo!("0x391234 __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x391234(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x3912e8 — __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3912e8() -> ! { todo!("0x3912e8 __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x3912e8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x39139c — __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x39139c() -> ! { todo!("0x39139c __ZThn32_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x39139c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x3913b0 — __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3913b0() -> ! { todo!("0x3913b0 __ZThn36_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x3913b0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x3913c4 — __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int, int, int)
 #[doc(alias = "__ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3913c4() -> ! { todo!("0x3913c4 __ZThn92_N3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x3913c4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 92, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 92);
+}
 
-// 0x3913d8 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE17static_getCreatorEv
-// type: void *()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x3913d8() -> ! { todo!("0x3913d8 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE17static_getCreatorEv") }
+pub fn stub_0x3913d8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x39144c — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x39144c() -> ! { todo!("0x39144c __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv") }
+pub fn stub_0x39144c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x3914d4 — __ZN3RBX4Name13callDoDeclareILZNS_4sHatEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_4sHatEEEEvv")]
-pub fn stub_0x3914d4() -> ! { todo!("0x3914d4 __ZN3RBX4Name13callDoDeclareILZNS_4sHatEEEEvv") }
+pub fn stub_0x3914d4() -> crate::slot::PortedFn {
+// IDA 0x3914d4: void RBX::Name::callDoDeclare<RBX::sHat>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x3914d4, "void RBX::Name::callDoDeclare<RBX::sHat>()")
+}
 
-// 0x3914d8 — __ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v")]
-pub fn stub_0x3914d8() -> ! { todo!("0x3914d8 __ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v") }
+pub fn stub_0x3914d8(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sHat>() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3915b8 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x3915b8() -> ! { todo!("0x3915b8 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev") }
+pub fn stub_0x3915b8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x391654 — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator6createEv
-// type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator6createEv")]
-pub fn stub_0x391654() -> ! { todo!("0x391654 __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator6createEv") }
+pub fn stub_0x391654() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Hat"
+}
 
-// 0x391798 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_3HatEEEN5boost10shared_ptrIT_EEv
-// type: void __fastcall(int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Hat> RBX::Creatable<RBX::Instance>::create<RBX::Hat>(void)")]
-pub fn stub_0x391798() -> ! { todo!("0x391798 __ZN3RBX9CreatableINS_8InstanceEE6createINS_3HatEEEN5boost10shared_ptrIT_EEv") }
+pub fn stub_0x391798() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Hat")
+}

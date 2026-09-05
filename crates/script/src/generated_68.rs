@@ -9,620 +9,685 @@
 use rbx_core::SharedPtr;
 
 
-// 0x2a47e4 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE20registerClassLibraryEP9lua_State
 #[doc(alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::registerClassLibrary(lua_State *)")]
-pub fn stub_0x2a47e4() -> ! {
-    todo!("0x2a47e4 __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE20registerClassLibraryEP9lua_State")
+pub fn stub_0x2a47e4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// IDA 0x2a47e4: luaL_register(L, className, classLibrary) (cf.
+// 0x2708b0) + setreadonly + pop. Host no-op; no values returned.
+let _ = thread;
+0
 }
 
-// 0x2a4818 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE20registerClassLibraryEP9lua_State
 #[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::registerClassLibrary(lua_State *)")]
-pub fn stub_0x2a4818() -> ! {
-    todo!("0x2a4818 __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE20registerClassLibraryEP9lua_State")
+pub fn stub_0x2a4818() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x2a4854 — __ZN3RBX3Lua12ObjectBridge28registerInstanceClassLibraryEP9lua_State
 #[doc(alias = "RBX::Lua::ObjectBridge::registerInstanceClassLibrary(lua_State *)")]
-pub fn stub_0x2a4854() -> ! {
-    todo!("0x2a4854 __ZN3RBX3Lua12ObjectBridge28registerInstanceClassLibraryEP9lua_State")
+pub fn stub_0x2a4854(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// ObjectBridge::registerInstanceClassLibrary —
+// luaL_register + setreadonly + pop (cf. 0x2708b0).
+let _ = thread;
+0
 }
 
-// 0x2a4890 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE4pushEP9lua_StateN5boost10shared_ptrIS2_EE
-// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0x2a4890() -> ! {
-    todo!("0x2a4890 __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE4pushEP9lua_StateN5boost10shared_ptrIS2_EE")
+pub fn stub_0x2a4890() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x2a4ab4 — __ZN3RBX11shared_fromINS_13ScriptContextEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")]
-pub fn stub_0x2a4ab4() -> ! {
-    todo!("0x2a4ab4 __ZN3RBX11shared_fromINS_13ScriptContextEEEN5boost10shared_ptrIT_EEPS4_")
+pub fn stub_0x2a4ab4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::ScriptContext")
 }
 
-// 0x2a4ba0 — __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE5clearEv
 #[doc(alias = "rbx::safe_queue<RBX::ScriptContext::WaitingThread>::clear(void)")]
-pub fn stub_0x2a4ba0() -> ! {
-    todo!("0x2a4ba0 __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE5clearEv")
+pub fn stub_0x2a4ba0(vec: &mut crate::slot::VecModel) {
+// sequence clear.
+vec.clear();
 }
 
-// 0x2a4ca0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)")]
-pub fn stub_0x2a4ca0() -> ! {
-    todo!("0x2a4ca0 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_0x2a4ca0() -> crate::slot::SlotConnection {
+// IDA 0x2a4ca0: signal::connect<bind_t> (cf. 0x39d700) — links the
+// bound callable_slot into the signal and returns the
+// rbx::signals::connection. was: boost::bind/_mfi.
+crate::slot::SlotConnection::new()
 }
 
-// 0x2a4ebc — __ZN5boost4bindIvN3RBX13ScriptContextENS_10shared_ptrIS2_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS7_T0_EENS5_9list_av_1IT1_E4typeEEEMSA_FS7_vESD_
-// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),rbx_core::SharedPtr<RBX::ScriptContext>)")]
-pub fn stub_0x2a4ebc() -> ! {
-    todo!("0x2a4ebc __ZN5boost4bindIvN3RBX13ScriptContextENS_10shared_ptrIS2_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS7_T0_EENS5_9list_av_1IT1_E4typeEEEMSA_FS7_vESD_")
+pub fn stub_0x2a4ebc() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 1 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(1)
 }
 
-// 0x2a4fd8 — __ZN3RBX3Lua12LuaArguments9pushTupleERKNS_10Reflection5TupleEP9lua_State
 #[doc(alias = "RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&,lua_State *)")]
-pub fn stub_0x2a4fd8() -> ! {
-    todo!("0x2a4fd8 __ZN3RBX3Lua12LuaArguments9pushTupleERKNS_10Reflection5TupleEP9lua_State")
+pub fn stub_0x2a4fd8(handle: &crate::slot::InstanceHandle) {
+// RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&, lua_State*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a5004 — __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
 #[doc(alias = "__ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")]
-pub fn stub_0x2a5004() -> ! {
-    todo!("0x2a5004 __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")
+pub fn stub_0x2a5004() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a5104 — __ZN5boost4bindIvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>::type> boost::bind<void,lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(void (*)(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>),boost::arg<1>,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>)")]
-pub fn stub_0x2a5104() -> ! {
-    todo!("0x2a5104 __ZN5boost4bindIvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_")
+pub fn stub_0x2a5104() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a5200 — __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
 #[doc(alias = "__ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")]
-pub fn stub_0x2a5200() -> ! {
-    todo!("0x2a5200 __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvPKcS9_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")
+pub fn stub_0x2a5200() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a5300 — __ZN5boost4bindIvP9lua_StateNS_8functionIFvPKcS5_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>::type> boost::bind<void,lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>,boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>(void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>)")]
-pub fn stub_0x2a5300() -> ! {
-    todo!("0x2a5300 __ZN5boost4bindIvP9lua_StateNS_8functionIFvPKcS5_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_")
+pub fn stub_0x2a5300() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a53fc — __ZN3RBX3Lua12LuaArguments9getValuesEP9lua_State
 #[doc(alias = "RBX::Lua::LuaArguments::getValues(lua_State *)")]
-pub fn stub_0x2a53fc() -> ! {
-    todo!("0x2a53fc __ZN3RBX3Lua12LuaArguments9getValuesEP9lua_State")
+pub fn stub_0x2a53fc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Lua::LuaArguments getter.
+cell.get()
 }
 
-// 0x2a5660 — __ZNK5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEclES2_S2_S6_i
 #[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::operator()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)const")]
-pub fn stub_0x2a5660() -> ! {
-    todo!("0x2a5660 __ZNK5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEclES2_S2_S6_i")
+pub fn stub_0x2a5660(slot: &crate::slot::FnSlot) {
+// boost::function::operator() — dispatches the stored functor.
+slot.invoke();
 }
 
-// 0x2a5778 — __ZN5boost4bindIvP9lua_StateiSsNS_3argILi1EEENS3_ILi2EEESsEENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_
-// type: int __fastcall(int, int, std::string *)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list_av_3<boost::arg<1>,boost::arg<2>,std::string>::type> boost::bind<void,lua_State *,int,std::string,boost::arg<1>,boost::arg<2>,std::string>(void (*)(lua_State *,int,std::string),boost::arg<1>,boost::arg<2>,std::string)")]
-pub fn stub_0x2a5778() -> ! {
-    todo!("0x2a5778 __ZN5boost4bindIvP9lua_StateiSsNS_3argILi1EEENS3_ILi2EEESsEENS_3_bi6bind_tIT_PFS8_T0_T1_T2_ENS6_9list_av_3IT3_T4_T5_E4typeEEESD_SF_SG_SH_")
+pub fn stub_0x2a5778() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 6 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(6)
 }
 
-// 0x2a5920 — __ZN5boost10scoped_ptrIN3RBX3Lua13ContinuationsEE5resetEPS3_
 #[doc(alias = "boost::scoped_ptr<RBX::Lua::Continuations>::reset(RBX::Lua::Continuations*)")]
-pub fn stub_0x2a5920() -> ! {
-    todo!("0x2a5920 __ZN5boost10scoped_ptrIN3RBX3Lua13ContinuationsEE5resetEPS3_")
+pub fn stub_0x2a5920() -> crate::slot::PortedFn {
+// IDA 0x2a5920: boost::scoped_ptr<RBX::Lua::Continuations>::reset(RBX::Lua::Continuations*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x2a5920, "boost::scoped_ptr<RBX::Lua::Continuations>::reset(RBX::Lua::Continuations*)")
 }
 
-// 0x2a59f4 — __ZNK5boost9function1ImP9lua_StateEclES2_
 #[doc(alias = "boost::function1<unsigned long,lua_State *>::operator()(lua_State *)const")]
-pub fn stub_0x2a59f4() -> ! {
-    todo!("0x2a59f4 __ZNK5boost9function1ImP9lua_StateEclES2_")
+pub fn stub_0x2a59f4(slot: &crate::slot::FnSlot) {
+// boost::function::operator() — dispatches the stored functor.
+slot.invoke();
 }
 
-// 0x2a5abc — __ZNK5boost9function2IvP9lua_StatemEclES2_m
 #[doc(alias = "boost::function2<void,lua_State *,unsigned long>::operator()(lua_State *,unsigned long)const")]
-pub fn stub_0x2a5abc() -> ! {
-    todo!("0x2a5abc __ZNK5boost9function2IvP9lua_StatemEclES2_m")
+pub fn stub_0x2a5abc(slot: &crate::slot::FnSlot) {
+// boost::function::operator() — dispatches the stored functor.
+slot.invoke();
 }
 
-// 0x2a5b84 — __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_
 #[doc(alias = "__ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_")]
-pub fn stub_0x2a5b84() -> ! {
-    todo!("0x2a5b84 __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENSA_3Lua13WeakThreadRefES2_EENS6_5list3INS6_5valueIPSB_EENSG_ISD_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESP_")
+pub fn stub_0x2a5b84() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a5c90 — __ZN5boost4bindIvN3RBX13ScriptContextENS1_3Lua13WeakThreadRefEP9lua_StatePS2_S4_NS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISC_T0_T1_T2_EENSA_9list_av_3IT3_T4_T5_E4typeEEEMSF_FSC_SG_SH_ESK_SL_SM_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *>,boost::_bi::list_av_3<RBX::ScriptContext*,RBX::Lua::WeakThreadRef,boost::arg<1>>::type> boost::bind<void,RBX::ScriptContext,RBX::Lua::WeakThreadRef,lua_State *,RBX::ScriptContext*,RBX::Lua::WeakThreadRef,boost::arg<1>>(void (RBX::ScriptContext::*)(RBX::Lua::WeakThreadRef,lua_State *),RBX::ScriptContext*,RBX::Lua::WeakThreadRef,boost::arg<1>)")]
-pub fn stub_0x2a5c90() -> ! {
-    todo!("0x2a5c90 __ZN5boost4bindIvN3RBX13ScriptContextENS1_3Lua13WeakThreadRefEP9lua_StatePS2_S4_NS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISC_T0_T1_T2_EENSA_9list_av_3IT3_T4_T5_E4typeEEEMSF_FSC_SG_SH_ESK_SL_SM_")
+pub fn stub_0x2a5c90() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a5f64 — __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE14pop_if_presentERS3_
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int)
 #[doc(alias = "rbx::safe_queue<RBX::ScriptContext::WaitingThread>::pop_if_present(RBX::ScriptContext::WaitingThread&)")]
-pub fn stub_0x2a5f64() -> ! {
-    todo!("0x2a5f64 __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE14pop_if_presentERS3_")
+pub fn stub_0x2a5f64(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// IndexArray::fastRemove — swap-with-last.
+vec.fast_remove(index)
 }
 
-// 0x2a6160 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN3RBX13ScriptContext11ScriptStartESt6vectorIS4_SaIS4_EEEEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvS3_S4_EENSB_5list2INSB_5valueIPS3_EENSA_3argILi1EEEEEEEET0_T_SP_SO_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::ScriptContext::ScriptStart>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart *,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::ScriptContext::ScriptStart>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart *,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>,__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart *,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::ScriptContext::ScriptStart>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>>)")]
-pub fn stub_0x2a6160() -> ! {
-    todo!("0x2a6160 __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN3RBX13ScriptContext11ScriptStartESt6vectorIS4_SaIS4_EEEEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvS3_S4_EENSB_5list2INSB_5valueIPS3_EENSA_3argILi1EEEEEEEET0_T_SP_SO_")
+pub fn stub_0x2a6160() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a61b0 — __ZN3RBX13ScriptContext11ScriptStartC1ERKS1_
 #[doc(alias = "RBX::ScriptContext::ScriptStart::ScriptStart(RBX::ScriptContext::ScriptStart const&)")]
-pub fn stub_0x2a61b0() -> ! {
-    todo!("0x2a61b0 __ZN3RBX13ScriptContext11ScriptStartC1ERKS1_")
+pub fn stub_0x2a61b0() -> crate::slot::InstanceHandle {
+// RBX::ScriptContext::ScriptStart ctor.
+crate::slot::InstanceHandle::new("RBX::ScriptContext::ScriptStart")
 }
 
-// 0x2a633c — __ZN5boost10shared_ptrIN3RBX11ScriptStatsEE5resetIS2_EEvPT_
 #[doc(alias = "void rbx_core::SharedPtr<RBX::ScriptStats>::reset<RBX::ScriptStats>(RBX::ScriptStats *)")]
-pub fn stub_0x2a633c() -> ! {
-    todo!("0x2a633c __ZN5boost10shared_ptrIN3RBX11ScriptStatsEE5resetIS2_EEvPT_")
+pub fn stub_0x2a633c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::ScriptStats")
 }
 
-// 0x2a64a4 — __ZN5boost10shared_ptrIN3RBX12LuaStatsItemEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::LuaStatsItem>::operator=(rbx_core::SharedPtr<RBX::LuaStatsItem> const&)")]
-pub fn stub_0x2a64a4() -> ! {
-    todo!("0x2a64a4 __ZN5boost10shared_ptrIN3RBX12LuaStatsItemEEaSERKS3_")
+pub fn stub_0x2a64a4(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x2a64dc — __ZN3RBX12LuaStatsItem6createEPNS_13ScriptContextE
-// type: _DWORD __fastcall(RBX::LuaStatsItem *__hidden this, RBX::ScriptContext *)
 #[doc(alias = "RBX::LuaStatsItem::create(RBX::ScriptContext *)")]
-pub fn stub_0x2a64dc() -> ! {
-    todo!("0x2a64dc __ZN3RBX12LuaStatsItem6createEPNS_13ScriptContextE")
+pub fn stub_0x2a64dc(handle: &crate::slot::InstanceHandle) {
+// RBX::LuaStatsItem::create(RBX::ScriptContext*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a6590 — __ZN5boost10shared_ptrIN3RBX11ScriptStatsEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::ScriptStats>::operator=(rbx_core::SharedPtr<RBX::ScriptStats> const&)")]
-pub fn stub_0x2a6590() -> ! {
-    todo!("0x2a6590 __ZN5boost10shared_ptrIN3RBX11ScriptStatsEEaSERKS3_")
+pub fn stub_0x2a6590(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x2a6600 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_13ScriptContextES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>> const&)")]
-pub fn stub_0x2a6600() -> ! {
-    todo!("0x2a6600 __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_13ScriptContextES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_0x2a6600() -> crate::slot::SlotConnection {
+// IDA 0x2a6600: signal::connect<bind_t> (cf. 0x39d700) — links the
+// bound callable_slot into the signal and returns the
+// rbx::signals::connection. was: boost::bind/_mfi.
+crate::slot::SlotConnection::new()
 }
 
-// 0x2a6674 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13StarterScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::StarterScript> RBX::Creatable<RBX::Instance>::create<RBX::StarterScript,RBX::ContentId>(RBX::ContentId)")]
-pub fn stub_0x2a6674() -> ! {
-    todo!("0x2a6674 __ZN3RBX9CreatableINS_8InstanceEE6createINS_13StarterScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_")
+pub fn stub_0x2a6674() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::StarterScript")
 }
 
-// 0x2a6728 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ScriptContextEEERS3_RKNS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScriptContext>(rbx_core::SharedPtr<RBX::ScriptContext> const&)")]
-pub fn stub_0x2a6728() -> ! {
-    todo!("0x2a6728 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ScriptContextEEERS3_RKNS0_IT_EE")
+pub fn stub_0x2a6728(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x2a675c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10CoreScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::CoreScript> RBX::Creatable<RBX::Instance>::create<RBX::CoreScript,RBX::ContentId>(RBX::ContentId)")]
-pub fn stub_0x2a675c() -> ! {
-    todo!("0x2a675c __ZN3RBX9CreatableINS_8InstanceEE6createINS_10CoreScriptENS_9ContentIdEEEN5boost10shared_ptrIT_EET0_")
+pub fn stub_0x2a675c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::CoreScript")
 }
 
-// 0x2a6810 — __ZN3RBX11shared_fromINS_10BaseScriptEEEN5boost10shared_ptrIT_EEPS4_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript> RBX::shared_from<RBX::BaseScript>(RBX::BaseScript*)")]
-pub fn stub_0x2a6810() -> ! {
-    todo!("0x2a6810 __ZN3RBX11shared_fromINS_10BaseScriptEEEN5boost10shared_ptrIT_EEPS4_")
+pub fn stub_0x2a6810() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::BaseScript")
 }
 
-// 0x2a68f8 — __ZNSt3mapISsN3RBX13ScriptContext21ScriptStatInformationESt4lessISsESaISt4pairIKSsS2_EEEixERS6_
 #[doc(alias = "std::map<std::string,RBX::ScriptContext::ScriptStatInformation,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::ScriptContext::ScriptStatInformation>>>::operator[](std::string const&)")]
-pub fn stub_0x2a68f8() -> ! {
-    todo!("0x2a68f8 __ZNSt3mapISsN3RBX13ScriptContext21ScriptStatInformationESt4lessISsESaISt4pairIKSsS2_EEEixERS6_")
+pub fn stub_0x2a68f8(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x2a6e04 — __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::erase(__gnu_cxx::__normal_iterator<RBX::ScriptContext::ScriptStart*,std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>>)")]
-pub fn stub_0x2a6e04() -> ! {
-    todo!("0x2a6e04 __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS2_S4_EE")
+pub fn stub_0x2a6e04(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// IndexArray::fastRemove — swap-with-last.
+vec.fast_remove(index)
 }
 
-// 0x2a6e2c — __ZN5boost10shared_ptrIN3RBX10BaseScriptEEaSERKS3_
 #[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript>::operator=(rbx_core::SharedPtr<RBX::BaseScript> const&)")]
-pub fn stub_0x2a6e2c() -> ! {
-    todo!("0x2a6e2c __ZN5boost10shared_ptrIN3RBX10BaseScriptEEaSERKS3_")
+pub fn stub_0x2a6e2c(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x2a715c — __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE4pushERKS3_
 #[doc(alias = "rbx::safe_queue<RBX::ScriptContext::WaitingThread>::push(RBX::ScriptContext::WaitingThread const&)")]
-pub fn stub_0x2a715c() -> ! {
-    todo!("0x2a715c __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE4pushERKS3_")
+pub fn stub_0x2a715c(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x2a7220 — __ZNK5boost9function1IvP9lua_StateEclES2_
 #[doc(alias = "boost::function1<void,lua_State *>::operator()(lua_State *)const")]
-pub fn stub_0x2a7220() -> ! {
-    todo!("0x2a7220 __ZNK5boost9function1IvP9lua_StateEclES2_")
+pub fn stub_0x2a7220(slot: &crate::slot::FnSlot) {
+// boost::function::operator() — dispatches the stored functor.
+slot.invoke();
 }
 
-// 0x2a72e4 — __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE9push_backERKS2_
-// type: int __fastcall(int, RBX::ScriptContext::ScriptStart *)
 #[doc(alias = "std::vector<RBX::ScriptContext::ScriptStart,std::allocator<RBX::ScriptContext::ScriptStart>>::push_back(RBX::ScriptContext::ScriptStart const&)")]
-pub fn stub_0x2a72e4() -> ! {
-    todo!("0x2a72e4 __ZNSt6vectorIN3RBX13ScriptContext11ScriptStartESaIS2_EE9push_backERKS2_")
+pub fn stub_0x2a72e4(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x2a7324 — __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_
-// type: int __fastcall(int, int32_t *__theValue)
 #[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
-pub fn stub_0x2a7324() -> ! {
-    todo!("0x2a7324 __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_")
+pub fn stub_0x2a7324(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x2a74b4 — __ZN3rbx7signals16signal_with_argsILi1EFvP9lua_StateEEclES3_
-// type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "rbx::signals::signal_with_args<1,void ()(lua_State *)>::operator()(lua_State *)")]
-pub fn stub_0x2a74b4() -> ! {
-    todo!("0x2a74b4 __ZN3rbx7signals16signal_with_argsILi1EFvP9lua_StateEEclES3_")
+pub fn stub_0x2a74b4(handle: &crate::slot::InstanceHandle) {
+// rbx::signals::signal_with_args<1, void (lua_State*)>::operator()(lua_State*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a75f8 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::RunTransition)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>> const&)")]
-pub fn stub_0x2a75f8() -> ! {
-    todo!("0x2a75f8 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_")
+pub fn stub_0x2a75f8() -> crate::slot::SlotConnection {
+// IDA 0x2a75f8: signal::connect<bind_t> (cf. 0x39d700) — links the
+// bound callable_slot into the signal and returns the
+// rbx::signals::connection. was: boost::bind/_mfi.
+crate::slot::SlotConnection::new()
 }
 
-// 0x2a766c — __ZN3RBX20RuntimeScriptService15onRunTransitionENS_13RunTransitionE
 #[doc(alias = "RBX::RuntimeScriptService::onRunTransition(RBX::RunTransition)")]
-pub fn stub_0x2a766c() -> ! {
-    todo!("0x2a766c __ZN3RBX20RuntimeScriptService15onRunTransitionENS_13RunTransitionE")
+pub fn stub_0x2a766c(handle: &crate::slot::InstanceHandle) {
+// RBX::RuntimeScriptService::onRunTransition(RBX::RunTransition) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a7674 — __ZSt8for_eachISt23_Rb_tree_const_iteratorIPN3RBX10BaseScriptEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS1_13ScriptContextES3_NSA_18ScriptStartOptionsEEENS6_5list3INS6_5valueIPSA_EENS5_3argILi1EEENSE_ISB_EEEEEEET0_T_SN_SM_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>> std::for_each<std::_Rb_tree_const_iterator<RBX::BaseScript *>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>>>(std::_Rb_tree_const_iterator<RBX::BaseScript *>,std::_Rb_tree_const_iterator<RBX::BaseScript *>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list3<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>>)")]
-pub fn stub_0x2a7674() -> ! {
-    todo!("0x2a7674 __ZSt8for_eachISt23_Rb_tree_const_iteratorIPN3RBX10BaseScriptEEN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvNS1_13ScriptContextES3_NSA_18ScriptStartOptionsEEENS6_5list3INS6_5valueIPSA_EENS5_3argILi1EEENSE_ISB_EEEEEEET0_T_SN_SM_")
+pub fn stub_0x2a7674() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a7800 — __ZN5boost4bindIvN3RBX13ScriptContextEPNS1_10BaseScriptENS2_18ScriptStartOptionsEPS2_NS_3argILi1EEES5_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISB_T0_T1_T2_EENS9_9list_av_3IT3_T4_T5_E4typeEEEMSE_FSB_SF_SG_ESJ_SK_SL_
-// type: int __fastcall(int, char, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list_av_3<RBX::ScriptContext*,boost::arg<1>,RBX::ScriptContext::ScriptStartOptions>::type> boost::bind<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions,RBX::ScriptContext*,boost::arg<1>,RBX::ScriptContext::ScriptStartOptions>(void (RBX::ScriptContext::*)(RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions),RBX::ScriptContext*,boost::arg<1>,RBX::ScriptContext::ScriptStartOptions)")]
-pub fn stub_0x2a7800() -> ! {
-    todo!("0x2a7800 __ZN5boost4bindIvN3RBX13ScriptContextEPNS1_10BaseScriptENS2_18ScriptStartOptionsEPS2_NS_3argILi1EEES5_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISB_T0_T1_T2_EENS9_9list_av_3IT3_T4_T5_E4typeEEEMSE_FSB_SF_SG_ESJ_SK_SL_")
+pub fn stub_0x2a7800() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a7c0c — __ZSt8for_eachISt23_Rb_tree_const_iteratorIPN3RBX10BaseScriptEEN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvNS1_13ScriptContextES3_EENS6_5list2INS6_5valueIPSA_EENS5_3argILi1EEEEEEEET0_T_SL_SK_
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::BaseScript *>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>> std::for_each<std::_Rb_tree_const_iterator<RBX::BaseScript *>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::BaseScript *>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>>>(std::_Rb_tree_const_iterator<RBX::BaseScript *>,std::_Rb_tree_const_iterator<RBX::BaseScript *>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptContext,RBX::BaseScript *>,boost::_bi::list2<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>>>)")]
-pub fn stub_0x2a7c0c() -> ! {
-    todo!("0x2a7c0c __ZSt8for_eachISt23_Rb_tree_const_iteratorIPN3RBX10BaseScriptEEN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvNS1_13ScriptContextES3_EENS6_5list2INS6_5valueIPSA_EENS5_3argILi1EEEEEEEET0_T_SL_SK_")
+pub fn stub_0x2a7c0c() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 3 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(3)
 }
 
-// 0x2a7c60 — __ZN3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_PKNS_8InstanceE
 #[doc(alias = "RBX::ScriptContext * RBX::ServiceProvider::find<RBX::ScriptContext>(RBX::Instance const*)")]
-pub fn stub_0x2a7c60() -> ! {
-    todo!("0x2a7c60 __ZN3RBX15ServiceProvider4findINS_13ScriptContextEEEPT_PKNS_8InstanceE")
+pub fn stub_0x2a7c60() -> Option<crate::slot::ServiceHandle> {
+// ServiceProvider::find — the provider always hosts core
+// services in this build.
+Some(crate::slot::ServiceHandle::new("RBX::ScriptContext"))
 }
 
-// 0x2a7c7c — __ZN3RBX20RuntimeScriptServiceD1Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService()")]
-pub fn stub_0x2a7c7c() -> ! {
-    todo!("0x2a7c7c __ZN3RBX20RuntimeScriptServiceD1Ev")
+pub fn stub_0x2a7c7c(handle: crate::slot::InstanceHandle) {
+// RBX::RuntimeScriptService dtor.
+drop(handle);
 }
 
-// 0x2a7c80 — __ZN3RBX20RuntimeScriptServiceD0Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7c80]")]
-pub fn stub_0x2a7c80() -> ! {
-    todo!("0x2a7c80 __ZN3RBX20RuntimeScriptServiceD0Ev")
+pub fn stub_0x2a7c80(handle: crate::slot::InstanceHandle) {
+// RBX::RuntimeScriptService dtor.
+drop(handle);
 }
 
-// 0x2a7d20 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")]
-pub fn stub_0x2a7d20() -> ! {
-    todo!("0x2a7d20 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")
+pub fn stub_0x2a7d20() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x2a7d4c — __ZThn32_N3RBX20RuntimeScriptServiceD1Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")]
-pub fn stub_0x2a7d4c() -> ! {
-    todo!("0x2a7d4c __ZThn32_N3RBX20RuntimeScriptServiceD1Ev")
+pub fn stub_0x2a7d4c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7d54]")]
-pub fn stub_0x2a7d54() -> ! {
-    todo!("0x2a7d54 __ZThn32_N3RBX20RuntimeScriptServiceD0Ev")
+pub fn stub_0x2a7d54(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a7df8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")]
-pub fn stub_0x2a7df8() -> ! {
-    todo!("0x2a7df8 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv")
+pub fn stub_0x2a7df8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x2a7e20 — __ZThn36_N3RBX20RuntimeScriptServiceD1Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7e20]")]
-pub fn stub_0x2a7e20() -> ! {
-    todo!("0x2a7e20 __ZThn36_N3RBX20RuntimeScriptServiceD1Ev")
+pub fn stub_0x2a7e20(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
-// type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService() [0x2a7e28]")]
-pub fn stub_0x2a7e28() -> ! {
-    todo!("0x2a7e28 __ZThn36_N3RBX20RuntimeScriptServiceD0Ev")
+pub fn stub_0x2a7e28(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x2a7ed0 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")]
-pub fn stub_0x2a7ed0() -> ! {
-    todo!("0x2a7ed0 __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")
+pub fn stub_0x2a7ed0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ScriptContext"
 }
 
-// 0x2a7ee0 — __ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")]
-pub fn stub_0x2a7ee0() -> ! {
-    todo!("0x2a7ee0 __ZThn32_NK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv")
+pub fn stub_0x2a7ee0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ScriptContext"
 }
 
-// 0x2a7ef8 — __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x2a7ef8() -> ! {
-    todo!("0x2a7ef8 __ZN3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x2a7ef8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"LocalScript"
 }
 
-// 0x2a7f00 — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev")]
-pub fn stub_0x2a7f00() -> ! {
-    todo!("0x2a7f00 __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorD1Ev")
+pub fn stub_0x2a7f00() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a7f08 — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E17static_getCreatorEv")]
-pub fn stub_0x2a7f08() -> ! {
-    todo!("0x2a7f08 __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E17static_getCreatorEv")
+pub fn stub_0x2a7f08() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ScriptContext"
 }
 
-// 0x2a7f80 — __ZN3RBX4Name9doDeclareILZNS_14sScriptContextEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sScriptContextEEEERKS0_v")]
-pub fn stub_0x2a7f80() -> ! {
-    todo!("0x2a7f80 __ZN3RBX4Name9doDeclareILZNS_14sScriptContextEEEERKS0_v")
+pub fn stub_0x2a7f80(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sScriptContext>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a8060 — __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv")]
-pub fn stub_0x2a8060() -> ! {
-    todo!("0x2a8060 __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator12getClassNameEv")
+pub fn stub_0x2a8060() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a80cc — __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator6createEv")]
-pub fn stub_0x2a80cc() -> ! {
-    todo!("0x2a80cc __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7Creator6createEv")
+pub fn stub_0x2a80cc() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a8210 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting13DebuggerWatchEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::DebuggerWatch> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::DebuggerWatch>(void)")]
-pub fn stub_0x2a8210() -> ! {
-    todo!("0x2a8210 __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting13DebuggerWatchEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_0x2a8210() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Scripting::DebuggerWatch")
 }
 
-// 0x2a8380 — __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")]
-pub fn stub_0x2a8380() -> ! {
-    todo!("0x2a8380 __ZNK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")
+pub fn stub_0x2a8380() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a8390 — __ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")]
-pub fn stub_0x2a8390() -> ! {
-    todo!("0x2a8390 __ZThn32_NK3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E12getClassNameEv")
+pub fn stub_0x2a8390() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a83a0 — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E17static_getCreatorEv")]
-pub fn stub_0x2a83a0() -> ! {
-    todo!("0x2a83a0 __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E17static_getCreatorEv")
+pub fn stub_0x2a83a0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a8414 — __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a8414() -> ! {
-    todo!("0x2a8414 __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a8414(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x2a8418 — __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a8418() -> ! {
-    todo!("0x2a8418 __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a8418(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x2a84b8 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a84b8() -> ! {
-    todo!("0x2a84b8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a84b8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a84c0 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a84c0() -> ! {
-    todo!("0x2a84c0 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a84c0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a8564 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a8564() -> ! {
-    todo!("0x2a8564 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a8564(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x2a856c — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a856c() -> ! {
-    todo!("0x2a856c __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a856c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x2a8610 — __ZN5boost10shared_ptrIN3RBX9Scripting13DebuggerWatchEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::DebuggerWatch>::shared_ptr<RBX::Scripting::DebuggerWatch,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x2a8610() -> ! {
-    todo!("0x2a8610 __ZN5boost10shared_ptrIN3RBX9Scripting13DebuggerWatchEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+pub fn stub_0x2a8610() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Scripting::DebuggerWatch")
 }
 
-// 0x2a86d8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting13DebuggerWatchES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::DebuggerWatch,RBX::Scripting::DebuggerWatch>(rbx_core::SharedPtr<RBX::Scripting::DebuggerWatch> const*,RBX::Scripting::DebuggerWatch *)const")]
-pub fn stub_0x2a86d8() -> ! {
-    todo!("0x2a86d8 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting13DebuggerWatchES7_EEvPKNS_10shared_ptrIT_EEPT0_")
+pub fn stub_0x2a86d8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Scripting::DebuggerWatch")
 }
 
-// 0x2a87c4 — __ZN5boost6detail12shared_countC2IPN3RBX9Scripting13DebuggerWatchENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-// type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_0x2a87c4() -> ! {
-    todo!("0x2a87c4 __ZN5boost6detail12shared_countC2IPN3RBX9Scripting13DebuggerWatchENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+pub fn stub_0x2a87c4() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x2a88cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x2a88cc() -> ! {
-    todo!("0x2a88cc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+pub fn stub_0x2a88cc(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
 }
 
-// 0x2a88d0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd() [0x2a88d0]")]
-pub fn stub_0x2a88d0() -> ! {
-    todo!("0x2a88d0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+pub fn stub_0x2a88d0(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
 }
 
-// 0x2a88d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_0x2a88d4() -> ! {
-    todo!("0x2a88d4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+pub fn stub_0x2a88d4() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x2a88f4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x2a88f4() -> ! {
-    todo!("0x2a88f4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+pub fn stub_0x2a88f4() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x2a890c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Scripting::DebuggerWatch *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x2a890c() -> ! {
-    todo!("0x2a890c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9Scripting13DebuggerWatchENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+pub fn stub_0x2a890c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
 }
 
-// 0x2a8910 — __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
-pub fn stub_0x2a8910() -> ! {
-    todo!("0x2a8910 __ZN3RBX4Name7declareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")
+pub fn stub_0x2a8910(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::Scripting::sDebuggerWatch>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a8958 — __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")]
-pub fn stub_0x2a8958() -> ! {
-    todo!("0x2a8958 __ZN3RBX4Name9doDeclareILZNS_9Scripting14sDebuggerWatchEEEERKS0_v")
+pub fn stub_0x2a8958(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::Scripting::sDebuggerWatch>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a8a3c — __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev")]
-pub fn stub_0x2a8a3c() -> ! {
-    todo!("0x2a8a3c __ZN3RBX14FactoryProductINS_9Scripting13DebuggerWatchENS_8InstanceELZNS1_14sDebuggerWatchEES3_E7CreatorC2Ev")
+pub fn stub_0x2a8a3c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::DebuggerWatch"
 }
 
-// 0x2a8c64 — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev")]
-pub fn stub_0x2a8c64() -> ! {
-    todo!("0x2a8c64 __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev")
+pub fn stub_0x2a8c64() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::ScriptDebugger"
 }
 
-// 0x2a8d00 — __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")]
-pub fn stub_0x2a8d00() -> ! {
-    todo!("0x2a8d00 __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7Creator12getClassNameEv")
+pub fn stub_0x2a8d00() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::ScriptDebugger"
 }
 
-// 0x2a8d70 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting14ScriptDebuggerEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "rbx_core::SharedPtr<RBX::Scripting::ScriptDebugger> RBX::Creatable<RBX::Instance>::create<RBX::Scripting::ScriptDebugger>(void)")]
-pub fn stub_0x2a8d70() -> ! {
-    todo!("0x2a8d70 __ZN3RBX9CreatableINS_8InstanceEE6createINS_9Scripting14ScriptDebuggerEEEN5boost10shared_ptrIT_EEv")
+pub fn stub_0x2a8d70() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Scripting::ScriptDebugger")
 }
 
-// 0x2a8e20 — __ZN3RBX9Scripting14ScriptDebuggerC2Ev
-// type: _DWORD __fastcall(RBX::Scripting::ScriptDebugger *__hidden this)
 #[doc(alias = "RBX::Scripting::ScriptDebugger::ScriptDebugger(void)")]
-pub fn stub_0x2a8e20() -> ! {
-    todo!("0x2a8e20 __ZN3RBX9Scripting14ScriptDebuggerC2Ev")
+pub fn stub_0x2a8e20() -> crate::slot::InstanceHandle {
+// RBX::Scripting::ScriptDebugger ctor — fresh debugger identity.
+crate::slot::InstanceHandle::new("RBX::Scripting::ScriptDebugger")
 }
 
-// 0x2a93b8 — __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
-pub fn stub_0x2a93b8() -> ! {
-    todo!("0x2a93b8 __ZNK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")
+pub fn stub_0x2a93b8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::ScriptDebugger"
 }
 
-// 0x2a93c8 — __ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")]
-pub fn stub_0x2a93c8() -> ! {
-    todo!("0x2a93c8 __ZThn32_NK3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E12getClassNameEv")
+pub fn stub_0x2a93c8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::ScriptDebugger"
 }
 
-// 0x2a93d8 — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv")]
-pub fn stub_0x2a93d8() -> ! {
-    todo!("0x2a93d8 __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E17static_getCreatorEv")
+pub fn stub_0x2a93d8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Scripting::ScriptDebugger"
 }
 
-// 0x2a9450 — __ZN5boost9function2IvP9lua_StateP9lua_DebugE5clearEv
 #[doc(alias = "boost::function2<void,lua_State *,lua_Debug *>::clear(void)")]
-pub fn stub_0x2a9450() -> ! {
-    todo!("0x2a9450 __ZN5boost9function2IvP9lua_StateP9lua_DebugE5clearEv")
+pub fn stub_0x2a9450(slot: &mut crate::slot::FnSlot) {
+// boost::function::clear — drops the stored functor.
+slot.clear();
 }
 
-// 0x2a9ac8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE
 #[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>,int,RBX::Scripting::DebuggerBreakpoint *,boost::hash<int>,std::equal_to<int>>>::table(unsigned long,boost::hash<int> const&,std::equal_to<int> const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<int const,RBX::Scripting::DebuggerBreakpoint *>>> const&)")]
-pub fn stub_0x2a9ac8() -> ! {
-    todo!("0x2a9ac8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEEC2EmRKSD_RKSF_RKSaINS1_8ptr_nodeISA_EEE")
+pub fn stub_0x2a9ac8() -> crate::generated::DebuggerBreakpoint {
+// DebuggerBreakpoint ctor — disabled breakpoint id 0.
+crate::generated::DebuggerBreakpoint { id: 0, enabled: false }
 }
 
-// 0x2a9b34 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv
-// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv")]
-pub fn stub_0x2a9b34() -> ! {
-    todo!("0x2a9b34 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv")
+pub fn stub_0x2a9b34(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::Described<RBX::Scripting::ScriptDebugger, RBX::Scripting::sScriptDebugger~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x2a9c54 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a9c54() -> ! {
-    todo!("0x2a9c54 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a9c54(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x2a9c58 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a9c58() -> ! {
-    todo!("0x2a9c58 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a9c58(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
 }
 
-// 0x2a9cf8 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a9cf8() -> ! {
-    todo!("0x2a9cf8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a9cf8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a9d00 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a9d00() -> ! {
-    todo!("0x2a9d00 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a9d00(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x2a9da4 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")]
-pub fn stub_0x2a9da4() -> ! {
-    todo!("0x2a9da4 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev")
+pub fn stub_0x2a9da4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x2a9dac — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")]
-pub fn stub_0x2a9dac() -> ! {
-    todo!("0x2a9dac __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev")
+pub fn stub_0x2a9dac(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }

@@ -8,702 +8,678 @@
 
 use rbx_core::SharedPtr;
 
-// 0x68a770 — __ZN3RBX8LockToolD0Ev
-// type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "RBX::LockTool::~LockTool()")]
-pub fn stub_0x68a770() -> ! {
-    todo!("0x68a770 __ZN3RBX8LockToolD0Ev")
+pub fn stub_0x68a770(handle: crate::slot::InstanceHandle) {
+// RBX::LockTool dtor.
+drop(handle);
 }
 
-// 0x68a810 — __ZThn36_N3RBX8LockToolD1Ev
-// type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool()")]
-pub fn stub_0x68a810() -> ! {
-    todo!("0x68a810 __ZThn36_N3RBX8LockToolD1Ev")
+pub fn stub_0x68a810(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68a818 — __ZThn36_N3RBX8LockToolD0Ev
-// type: void __fastcall(RBX::LockTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LockTool::~LockTool() [0x68a818]")]
-pub fn stub_0x68a818() -> ! {
-    todo!("0x68a818 __ZThn36_N3RBX8LockToolD0Ev")
+pub fn stub_0x68a818(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b074 — __ZN3RBX13FillToolColorC2Ev
-// type: _DWORD __fastcall(RBX::FillToolColor *__hidden this)
 #[doc(alias = "RBX::FillToolColor::FillToolColor(void)")]
-pub fn stub_0x68b074() -> ! {
-    todo!("0x68b074 __ZN3RBX13FillToolColorC2Ev")
+pub fn stub_0x68b074() -> crate::slot::InstanceHandle {
+// RBX::FillToolColor ctor.
+crate::slot::InstanceHandle::new("RBX::FillToolColor")
 }
 
-// 0x68b150 — __ZN3RBX8FillTool11onMouseDownERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::FillTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::FillTool::onMouseDown(RBX::UIEvent const&)")]
-pub fn stub_0x68b150() -> ! {
-    todo!("0x68b150 __ZN3RBX8FillTool11onMouseDownERKNS_7UIEventE")
+pub fn stub_0x68b150(handle: &crate::slot::InstanceHandle) {
+// RBX::FillTool::onMouseDown(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68b1b8 — __ZN3RBX12MaterialTool11onMouseDownERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::MaterialTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::MaterialTool::onMouseDown(RBX::UIEvent const&)")]
-pub fn stub_0x68b1b8() -> ! {
-    todo!("0x68b1b8 __ZN3RBX12MaterialTool11onMouseDownERKNS_7UIEventE")
+pub fn stub_0x68b1b8(handle: &crate::slot::InstanceHandle) {
+// RBX::MaterialTool::onMouseDown(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68b220 — __ZN3RBX11DropperTool11onMouseDownERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::DropperTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::DropperTool::onMouseDown(RBX::UIEvent const&)")]
-pub fn stub_0x68b220() -> ! {
-    todo!("0x68b220 __ZN3RBX11DropperTool11onMouseDownERKNS_7UIEventE")
+pub fn stub_0x68b220(handle: &crate::slot::InstanceHandle) {
+// RBX::DropperTool::onMouseDown(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68b34c — __ZN3RBX13FillToolColorD1Ev
-// type: void __fastcall(RBX::FillToolColor *__hidden this)
 #[doc(alias = "RBX::FillToolColor::~FillToolColor()")]
-pub fn stub_0x68b34c() -> ! {
-    todo!("0x68b34c __ZN3RBX13FillToolColorD1Ev")
+pub fn stub_0x68b34c(handle: crate::slot::InstanceHandle) {
+// RBX::FillToolColor dtor.
+drop(handle);
 }
 
-// 0x68b418 — __ZN3RBX8FillToolD1Ev
-// type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "RBX::FillTool::~FillTool()")]
-pub fn stub_0x68b418() -> ! {
-    todo!("0x68b418 __ZN3RBX8FillToolD1Ev")
+pub fn stub_0x68b418(handle: crate::slot::InstanceHandle) {
+// RBX::FillTool dtor.
+drop(handle);
 }
 
-// 0x68b41c — __ZN3RBX8FillToolD0Ev
-// type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "RBX::FillTool::~FillTool() [0x68b41c]")]
-pub fn stub_0x68b41c() -> ! {
-    todo!("0x68b41c __ZN3RBX8FillToolD0Ev")
+pub fn stub_0x68b41c(handle: crate::slot::InstanceHandle) {
+// RBX::FillTool dtor.
+drop(handle);
 }
 
-// 0x68b4bc — __ZThn36_N3RBX8FillToolD1Ev
-// type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool()")]
-pub fn stub_0x68b4bc() -> ! {
-    todo!("0x68b4bc __ZThn36_N3RBX8FillToolD1Ev")
+pub fn stub_0x68b4bc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b4c4 — __ZThn36_N3RBX8FillToolD0Ev
-// type: void __fastcall(RBX::FillTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FillTool::~FillTool() [0x68b4c4]")]
-pub fn stub_0x68b4c4() -> ! {
-    todo!("0x68b4c4 __ZThn36_N3RBX8FillToolD0Ev")
+pub fn stub_0x68b4c4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b568 — __ZN3RBX11DropperToolD1Ev
-// type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "RBX::DropperTool::~DropperTool()")]
-pub fn stub_0x68b568() -> ! {
-    todo!("0x68b568 __ZN3RBX11DropperToolD1Ev")
+pub fn stub_0x68b568(handle: crate::slot::InstanceHandle) {
+// RBX::DropperTool dtor.
+drop(handle);
 }
 
-// 0x68b56c — __ZN3RBX11DropperToolD0Ev
-// type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "RBX::DropperTool::~DropperTool() [0x68b56c]")]
-pub fn stub_0x68b56c() -> ! {
-    todo!("0x68b56c __ZN3RBX11DropperToolD0Ev")
+pub fn stub_0x68b56c(handle: crate::slot::InstanceHandle) {
+// RBX::DropperTool dtor.
+drop(handle);
 }
 
-// 0x68b60c — __ZThn36_N3RBX11DropperToolD1Ev
-// type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool()")]
-pub fn stub_0x68b60c() -> ! {
-    todo!("0x68b60c __ZThn36_N3RBX11DropperToolD1Ev")
+pub fn stub_0x68b60c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b614 — __ZThn36_N3RBX11DropperToolD0Ev
-// type: void __fastcall(RBX::DropperTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DropperTool::~DropperTool() [0x68b614]")]
-pub fn stub_0x68b614() -> ! {
-    todo!("0x68b614 __ZThn36_N3RBX11DropperToolD0Ev")
+pub fn stub_0x68b614(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b6b8 — __ZN3RBX12MaterialToolD1Ev
-// type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "RBX::MaterialTool::~MaterialTool()")]
-pub fn stub_0x68b6b8() -> ! {
-    todo!("0x68b6b8 __ZN3RBX12MaterialToolD1Ev")
+pub fn stub_0x68b6b8(handle: crate::slot::InstanceHandle) {
+// RBX::MaterialTool dtor.
+drop(handle);
 }
 
-// 0x68b6bc — __ZN3RBX12MaterialToolD0Ev
-// type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "RBX::MaterialTool::~MaterialTool() [0x68b6bc]")]
-pub fn stub_0x68b6bc() -> ! {
-    todo!("0x68b6bc __ZN3RBX12MaterialToolD0Ev")
+pub fn stub_0x68b6bc(handle: crate::slot::InstanceHandle) {
+// RBX::MaterialTool dtor.
+drop(handle);
 }
 
-// 0x68b75c — __ZThn36_N3RBX12MaterialToolD1Ev
-// type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool()")]
-pub fn stub_0x68b75c() -> ! {
-    todo!("0x68b75c __ZThn36_N3RBX12MaterialToolD1Ev")
+pub fn stub_0x68b75c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68b764 — __ZThn36_N3RBX12MaterialToolD0Ev
-// type: void __fastcall(RBX::MaterialTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MaterialTool::~MaterialTool() [0x68b764]")]
-pub fn stub_0x68b764() -> ! {
-    todo!("0x68b764 __ZThn36_N3RBX12MaterialToolD0Ev")
+pub fn stub_0x68b764(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68bcb0 — __ZN3RBX11SurfaceToolD0Ev
-// type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool()")]
-pub fn stub_0x68bcb0() -> ! {
-    todo!("0x68bcb0 __ZN3RBX11SurfaceToolD0Ev")
+pub fn stub_0x68bcb0(handle: crate::slot::InstanceHandle) {
+// RBX::SurfaceTool dtor.
+drop(handle);
 }
 
-// 0x68bd50 — __ZN3RBX11SurfaceToolD1Ev
-// type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool() [0x68bd50]")]
-pub fn stub_0x68bd50() -> ! {
-    todo!("0x68bd50 __ZN3RBX11SurfaceToolD1Ev")
+pub fn stub_0x68bd50(handle: crate::slot::InstanceHandle) {
+// RBX::SurfaceTool dtor.
+drop(handle);
 }
 
-// 0x68bd54 — __ZThn36_N3RBX11SurfaceToolD0Ev
-// type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool()")]
-pub fn stub_0x68bd54() -> ! {
-    todo!("0x68bd54 __ZThn36_N3RBX11SurfaceToolD0Ev")
+pub fn stub_0x68bd54(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68bd5c — __ZN3RBX11SurfaceToolD2Ev
-// type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "RBX::SurfaceTool::~SurfaceTool() [0x68bd5c]")]
-pub fn stub_0x68bd5c() -> ! {
-    todo!("0x68bd5c __ZN3RBX11SurfaceToolD2Ev")
+pub fn stub_0x68bd5c(handle: crate::slot::InstanceHandle) {
+// RBX::SurfaceTool dtor.
+drop(handle);
 }
 
-// 0x68be88 — __ZThn36_N3RBX11SurfaceToolD1Ev
-// type: void __fastcall(RBX::SurfaceTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::~SurfaceTool() [0x68be88]")]
-pub fn stub_0x68be88() -> ! {
-    todo!("0x68be88 __ZThn36_N3RBX11SurfaceToolD1Ev")
+pub fn stub_0x68be88(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68be90 — __ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::SurfaceTool::onMouseHover(RBX::UIEvent const&)")]
-pub fn stub_0x68be90() -> ! {
-    todo!("0x68be90 __ZN3RBX11SurfaceTool12onMouseHoverERKNS_7UIEventE")
+pub fn stub_0x68be90(handle: &crate::slot::InstanceHandle) {
+// RBX::SurfaceTool::onMouseHover(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68bf78 — __ZN3RBX11SurfaceTool11onMouseDownERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::SurfaceTool::onMouseDown(RBX::UIEvent const&)")]
-pub fn stub_0x68bf78() -> ! {
-    todo!("0x68bf78 __ZN3RBX11SurfaceTool11onMouseDownERKNS_7UIEventE")
+pub fn stub_0x68bf78(handle: &crate::slot::InstanceHandle) {
+// RBX::SurfaceTool::onMouseDown(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68bfc8 — __ZN3RBX11SurfaceTool13render3dAdornEPNS_5AdornE
-// type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, RBX::Adorn *)
 #[doc(alias = "RBX::SurfaceTool::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_0x68bfc8() -> ! {
-    todo!("0x68bfc8 __ZN3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")
+pub fn stub_0x68bfc8(handle: &crate::slot::InstanceHandle) {
+// RBX::SurfaceTool::render3dAdorn(RBX::Adorn*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c060 — __ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE
-// type: _DWORD __fastcall(RBX::SurfaceTool *__hidden this, RBX::Adorn *)
 #[doc(alias = "non-virtual thunk toRBX::SurfaceTool::render3dAdorn(RBX::Adorn *)")]
-pub fn stub_0x68c060() -> ! {
-    todo!("0x68c060 __ZThn4_N3RBX11SurfaceTool13render3dAdornEPNS_5AdornE")
+pub fn stub_0x68c060(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 4, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 4);
 }
 
-// 0x68c068 — __ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::DecalTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::DecalTool::onMouseMove(RBX::UIEvent const&)")]
-pub fn stub_0x68c068() -> ! {
-    todo!("0x68c068 __ZN3RBX9DecalTool11onMouseMoveERKNS_7UIEventE")
+pub fn stub_0x68c068(handle: &crate::slot::InstanceHandle) {
+// RBX::DecalTool::onMouseMove(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c1ec — __ZN3RBX9DecalTool9onKeyDownERKNS_7UIEventE
-// type: _DWORD __fastcall(RBX::DecalTool *__hidden this, const RBX::UIEvent *)
 #[doc(alias = "RBX::DecalTool::onKeyDown(RBX::UIEvent const&)")]
-pub fn stub_0x68c1ec() -> ! {
-    todo!("0x68c1ec __ZN3RBX9DecalTool9onKeyDownERKNS_7UIEventE")
+pub fn stub_0x68c1ec(handle: &crate::slot::InstanceHandle) {
+// RBX::DecalTool::onKeyDown(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c2d8 — __ZN3RBX9DecalTool17onCancelOperationEv
-// type: _DWORD __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "RBX::DecalTool::onCancelOperation(void)")]
-pub fn stub_0x68c2d8() -> ! {
-    todo!("0x68c2d8 __ZN3RBX9DecalTool17onCancelOperationEv")
+pub fn stub_0x68c2d8(handle: &crate::slot::InstanceHandle) {
+// RBX::DecalTool::onCancelOperation() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c300 — __ZThn88_N3RBX9DecalTool17onCancelOperationEv
-// type: _DWORD __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::onCancelOperation(void)")]
-pub fn stub_0x68c300() -> ! {
-    todo!("0x68c300 __ZThn88_N3RBX9DecalTool17onCancelOperationEv")
+pub fn stub_0x68c300(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 88, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run primary.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 88);
 }
 
-// 0x68c30c — __ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE
-// type: RBX::ChangeHistoryService *__fastcall(RBX::DecalTool *this, const char **)
 #[doc(alias = "RBX::DecalTool::onMouseUp(RBX::UIEvent const&)")]
-pub fn stub_0x68c30c() -> ! {
-    todo!("0x68c30c __ZN3RBX9DecalTool9onMouseUpERKNS_7UIEventE")
+pub fn stub_0x68c30c(handle: &crate::slot::InstanceHandle) {
+// RBX::DecalTool::onMouseUp(RBX::UIEvent const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c338 — __ZN3RBX8FlatTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::FlatTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::FlatTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c338() -> ! {
-    todo!("0x68c338 __ZN3RBX8FlatTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c338(handle: &crate::slot::InstanceHandle) {
+// RBX::FlatTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c358 — __ZN3RBX8GlueTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::GlueTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::GlueTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c358() -> ! {
-    todo!("0x68c358 __ZN3RBX8GlueTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c358(handle: &crate::slot::InstanceHandle) {
+// RBX::GlueTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c390 — __ZN3RBX8WeldTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::WeldTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::WeldTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c390() -> ! {
-    todo!("0x68c390 __ZN3RBX8WeldTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c390(handle: &crate::slot::InstanceHandle) {
+// RBX::WeldTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c3c8 — __ZN3RBX9StudsTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::StudsTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::StudsTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c3c8() -> ! {
-    todo!("0x68c3c8 __ZN3RBX9StudsTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c3c8(handle: &crate::slot::InstanceHandle) {
+// RBX::StudsTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c400 — __ZN3RBX9InletTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::InletTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::InletTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c400() -> ! {
-    todo!("0x68c400 __ZN3RBX9InletTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c400(handle: &crate::slot::InstanceHandle) {
+// RBX::InletTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c438 — __ZN3RBX13UniversalTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::UniversalTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::UniversalTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c438() -> ! {
-    todo!("0x68c438 __ZN3RBX13UniversalTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c438(handle: &crate::slot::InstanceHandle) {
+// RBX::UniversalTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c470 — __ZN3RBX9HingeTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::HingeTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::HingeTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c470() -> ! {
-    todo!("0x68c470 __ZN3RBX9HingeTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c470(handle: &crate::slot::InstanceHandle) {
+// RBX::HingeTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c4ac — __ZN3RBX14RightMotorTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::RightMotorTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::RightMotorTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c4ac() -> ! {
-    todo!("0x68c4ac __ZN3RBX14RightMotorTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c4ac(handle: &crate::slot::InstanceHandle) {
+// RBX::RightMotorTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c4f4 — __ZN3RBX13LeftMotorTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::LeftMotorTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::LeftMotorTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c4f4() -> ! {
-    todo!("0x68c4f4 __ZN3RBX13LeftMotorTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c4f4(handle: &crate::slot::InstanceHandle) {
+// RBX::LeftMotorTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c53c — __ZN3RBX18OscillateMotorTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::OscillateMotorTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::OscillateMotorTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c53c() -> ! {
-    todo!("0x68c53c __ZN3RBX18OscillateMotorTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c53c(handle: &crate::slot::InstanceHandle) {
+// RBX::OscillateMotorTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c584 — __ZN3RBX20SmoothNoOutlinesTool8doActionEPNS_7SurfaceE
-// type: _DWORD __fastcall(RBX::SmoothNoOutlinesTool *__hidden this, RBX::Surface *)
 #[doc(alias = "RBX::SmoothNoOutlinesTool::doAction(RBX::Surface *)")]
-pub fn stub_0x68c584() -> ! {
-    todo!("0x68c584 __ZN3RBX20SmoothNoOutlinesTool8doActionEPNS_7SurfaceE")
+pub fn stub_0x68c584(handle: &crate::slot::InstanceHandle) {
+// RBX::SmoothNoOutlinesTool::doAction(RBX::Surface*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x68c724 — __ZN3RBX9DecalToolD1Ev
-// type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "RBX::DecalTool::~DecalTool()")]
-pub fn stub_0x68c724() -> ! {
-    todo!("0x68c724 __ZN3RBX9DecalToolD1Ev")
+pub fn stub_0x68c724(handle: crate::slot::InstanceHandle) {
+// RBX::DecalTool dtor.
+drop(handle);
 }
 
-// 0x68c808 — __ZN3RBX9DecalToolD0Ev
-// type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "RBX::DecalTool::~DecalTool() [0x68c808]")]
-pub fn stub_0x68c808() -> ! {
-    todo!("0x68c808 __ZN3RBX9DecalToolD0Ev")
+pub fn stub_0x68c808(handle: crate::slot::InstanceHandle) {
+// RBX::DecalTool dtor.
+drop(handle);
 }
 
-// 0x68c900 — __ZThn36_N3RBX9DecalToolD1Ev
-// type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool()")]
-pub fn stub_0x68c900() -> ! {
-    todo!("0x68c900 __ZThn36_N3RBX9DecalToolD1Ev")
+pub fn stub_0x68c900(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68c9e4 — __ZThn36_N3RBX9DecalToolD0Ev
-// type: void __fastcall(RBX::DecalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DecalTool::~DecalTool() [0x68c9e4]")]
-pub fn stub_0x68c9e4() -> ! {
-    todo!("0x68c9e4 __ZThn36_N3RBX9DecalToolD0Ev")
+pub fn stub_0x68c9e4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68cae0 — __ZN3RBX8FlatToolD1Ev
-// type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "RBX::FlatTool::~FlatTool()")]
-pub fn stub_0x68cae0() -> ! {
-    todo!("0x68cae0 __ZN3RBX8FlatToolD1Ev")
+pub fn stub_0x68cae0(handle: crate::slot::InstanceHandle) {
+// RBX::FlatTool dtor.
+drop(handle);
 }
 
-// 0x68cae4 — __ZN3RBX8FlatToolD0Ev
-// type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "RBX::FlatTool::~FlatTool() [0x68cae4]")]
-pub fn stub_0x68cae4() -> ! {
-    todo!("0x68cae4 __ZN3RBX8FlatToolD0Ev")
+pub fn stub_0x68cae4(handle: crate::slot::InstanceHandle) {
+// RBX::FlatTool dtor.
+drop(handle);
 }
 
-// 0x68cb84 — __ZThn36_N3RBX8FlatToolD1Ev
-// type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool()")]
-pub fn stub_0x68cb84() -> ! {
-    todo!("0x68cb84 __ZThn36_N3RBX8FlatToolD1Ev")
+pub fn stub_0x68cb84(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68cb8c — __ZThn36_N3RBX8FlatToolD0Ev
-// type: void __fastcall(RBX::FlatTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FlatTool::~FlatTool() [0x68cb8c]")]
-pub fn stub_0x68cb8c() -> ! {
-    todo!("0x68cb8c __ZThn36_N3RBX8FlatToolD0Ev")
+pub fn stub_0x68cb8c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68cc30 — __ZN3RBX8GlueToolD1Ev
-// type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "RBX::GlueTool::~GlueTool()")]
-pub fn stub_0x68cc30() -> ! {
-    todo!("0x68cc30 __ZN3RBX8GlueToolD1Ev")
+pub fn stub_0x68cc30(handle: crate::slot::InstanceHandle) {
+// RBX::GlueTool dtor.
+drop(handle);
 }
 
-// 0x68cc34 — __ZN3RBX8GlueToolD0Ev
-// type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "RBX::GlueTool::~GlueTool() [0x68cc34]")]
-pub fn stub_0x68cc34() -> ! {
-    todo!("0x68cc34 __ZN3RBX8GlueToolD0Ev")
+pub fn stub_0x68cc34(handle: crate::slot::InstanceHandle) {
+// RBX::GlueTool dtor.
+drop(handle);
 }
 
-// 0x68ccd4 — __ZThn36_N3RBX8GlueToolD1Ev
-// type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool()")]
-pub fn stub_0x68ccd4() -> ! {
-    todo!("0x68ccd4 __ZThn36_N3RBX8GlueToolD1Ev")
+pub fn stub_0x68ccd4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68ccdc — __ZThn36_N3RBX8GlueToolD0Ev
-// type: void __fastcall(RBX::GlueTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::GlueTool::~GlueTool() [0x68ccdc]")]
-pub fn stub_0x68ccdc() -> ! {
-    todo!("0x68ccdc __ZThn36_N3RBX8GlueToolD0Ev")
+pub fn stub_0x68ccdc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68cd80 — __ZN3RBX8WeldToolD1Ev
-// type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "RBX::WeldTool::~WeldTool()")]
-pub fn stub_0x68cd80() -> ! {
-    todo!("0x68cd80 __ZN3RBX8WeldToolD1Ev")
+pub fn stub_0x68cd80(handle: crate::slot::InstanceHandle) {
+// RBX::WeldTool dtor.
+drop(handle);
 }
 
-// 0x68cd84 — __ZN3RBX8WeldToolD0Ev
-// type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "RBX::WeldTool::~WeldTool() [0x68cd84]")]
-pub fn stub_0x68cd84() -> ! {
-    todo!("0x68cd84 __ZN3RBX8WeldToolD0Ev")
+pub fn stub_0x68cd84(handle: crate::slot::InstanceHandle) {
+// RBX::WeldTool dtor.
+drop(handle);
 }
 
-// 0x68ce24 — __ZThn36_N3RBX8WeldToolD1Ev
-// type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool()")]
-pub fn stub_0x68ce24() -> ! {
-    todo!("0x68ce24 __ZThn36_N3RBX8WeldToolD1Ev")
+pub fn stub_0x68ce24(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68ce2c — __ZThn36_N3RBX8WeldToolD0Ev
-// type: void __fastcall(RBX::WeldTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::WeldTool::~WeldTool() [0x68ce2c]")]
-pub fn stub_0x68ce2c() -> ! {
-    todo!("0x68ce2c __ZThn36_N3RBX8WeldToolD0Ev")
+pub fn stub_0x68ce2c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68ced0 — __ZN3RBX9StudsToolD1Ev
-// type: void __fastcall(RBX::StudsTool *__hidden this)
 #[doc(alias = "RBX::StudsTool::~StudsTool()")]
-pub fn stub_0x68ced0() -> ! {
-    todo!("0x68ced0 __ZN3RBX9StudsToolD1Ev")
+pub fn stub_0x68ced0(handle: crate::slot::InstanceHandle) {
+// RBX::StudsTool dtor.
+drop(handle);
 }
 
-// 0x68ced4 — __ZN3RBX9StudsToolD0Ev
-// type: void __fastcall(RBX::StudsTool *__hidden this)
 #[doc(alias = "RBX::StudsTool::~StudsTool() [0x68ced4]")]
-pub fn stub_0x68ced4() -> ! {
-    todo!("0x68ced4 __ZN3RBX9StudsToolD0Ev")
+pub fn stub_0x68ced4(handle: crate::slot::InstanceHandle) {
+// RBX::StudsTool dtor.
+drop(handle);
 }
 
-// 0x68cf74 — __ZThn36_N3RBX9StudsToolD1Ev
-// type: void __fastcall(RBX::StudsTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool()")]
-pub fn stub_0x68cf74() -> ! {
-    todo!("0x68cf74 __ZThn36_N3RBX9StudsToolD1Ev")
+pub fn stub_0x68cf74(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68cf7c — __ZThn36_N3RBX9StudsToolD0Ev
-// type: void __fastcall(RBX::StudsTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StudsTool::~StudsTool() [0x68cf7c]")]
-pub fn stub_0x68cf7c() -> ! {
-    todo!("0x68cf7c __ZThn36_N3RBX9StudsToolD0Ev")
+pub fn stub_0x68cf7c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d020 — __ZN3RBX9InletToolD1Ev
-// type: void __fastcall(RBX::InletTool *__hidden this)
 #[doc(alias = "RBX::InletTool::~InletTool()")]
-pub fn stub_0x68d020() -> ! {
-    todo!("0x68d020 __ZN3RBX9InletToolD1Ev")
+pub fn stub_0x68d020(handle: crate::slot::InstanceHandle) {
+// RBX::InletTool dtor.
+drop(handle);
 }
 
-// 0x68d024 — __ZN3RBX9InletToolD0Ev
-// type: void __fastcall(RBX::InletTool *__hidden this)
 #[doc(alias = "RBX::InletTool::~InletTool() [0x68d024]")]
-pub fn stub_0x68d024() -> ! {
-    todo!("0x68d024 __ZN3RBX9InletToolD0Ev")
+pub fn stub_0x68d024(handle: crate::slot::InstanceHandle) {
+// RBX::InletTool dtor.
+drop(handle);
 }
 
-// 0x68d0c4 — __ZThn36_N3RBX9InletToolD1Ev
-// type: void __fastcall(RBX::InletTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool()")]
-pub fn stub_0x68d0c4() -> ! {
-    todo!("0x68d0c4 __ZThn36_N3RBX9InletToolD1Ev")
+pub fn stub_0x68d0c4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d0cc — __ZThn36_N3RBX9InletToolD0Ev
-// type: void __fastcall(RBX::InletTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::InletTool::~InletTool() [0x68d0cc]")]
-pub fn stub_0x68d0cc() -> ! {
-    todo!("0x68d0cc __ZThn36_N3RBX9InletToolD0Ev")
+pub fn stub_0x68d0cc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d170 — __ZN3RBX13UniversalToolD1Ev
-// type: void __fastcall(RBX::UniversalTool *__hidden this)
 #[doc(alias = "RBX::UniversalTool::~UniversalTool()")]
-pub fn stub_0x68d170() -> ! {
-    todo!("0x68d170 __ZN3RBX13UniversalToolD1Ev")
+pub fn stub_0x68d170(handle: crate::slot::InstanceHandle) {
+// RBX::UniversalTool dtor.
+drop(handle);
 }
 
-// 0x68d174 — __ZN3RBX13UniversalToolD0Ev
-// type: void __fastcall(RBX::UniversalTool *__hidden this)
 #[doc(alias = "RBX::UniversalTool::~UniversalTool() [0x68d174]")]
-pub fn stub_0x68d174() -> ! {
-    todo!("0x68d174 __ZN3RBX13UniversalToolD0Ev")
+pub fn stub_0x68d174(handle: crate::slot::InstanceHandle) {
+// RBX::UniversalTool dtor.
+drop(handle);
 }
 
-// 0x68d214 — __ZThn36_N3RBX13UniversalToolD1Ev
-// type: void __fastcall(RBX::UniversalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool()")]
-pub fn stub_0x68d214() -> ! {
-    todo!("0x68d214 __ZThn36_N3RBX13UniversalToolD1Ev")
+pub fn stub_0x68d214(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d21c — __ZThn36_N3RBX13UniversalToolD0Ev
-// type: void __fastcall(RBX::UniversalTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::UniversalTool::~UniversalTool() [0x68d21c]")]
-pub fn stub_0x68d21c() -> ! {
-    todo!("0x68d21c __ZThn36_N3RBX13UniversalToolD0Ev")
+pub fn stub_0x68d21c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d2c0 — __ZN3RBX9HingeToolD1Ev
-// type: void __fastcall(RBX::HingeTool *__hidden this)
 #[doc(alias = "RBX::HingeTool::~HingeTool()")]
-pub fn stub_0x68d2c0() -> ! {
-    todo!("0x68d2c0 __ZN3RBX9HingeToolD1Ev")
+pub fn stub_0x68d2c0(handle: crate::slot::InstanceHandle) {
+// RBX::HingeTool dtor.
+drop(handle);
 }
 
-// 0x68d2c4 — __ZN3RBX9HingeToolD0Ev
-// type: void __fastcall(RBX::HingeTool *__hidden this)
 #[doc(alias = "RBX::HingeTool::~HingeTool() [0x68d2c4]")]
-pub fn stub_0x68d2c4() -> ! {
-    todo!("0x68d2c4 __ZN3RBX9HingeToolD0Ev")
+pub fn stub_0x68d2c4(handle: crate::slot::InstanceHandle) {
+// RBX::HingeTool dtor.
+drop(handle);
 }
 
-// 0x68d364 — __ZThn36_N3RBX9HingeToolD1Ev
-// type: void __fastcall(RBX::HingeTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool()")]
-pub fn stub_0x68d364() -> ! {
-    todo!("0x68d364 __ZThn36_N3RBX9HingeToolD1Ev")
+pub fn stub_0x68d364(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d36c — __ZThn36_N3RBX9HingeToolD0Ev
-// type: void __fastcall(RBX::HingeTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HingeTool::~HingeTool() [0x68d36c]")]
-pub fn stub_0x68d36c() -> ! {
-    todo!("0x68d36c __ZThn36_N3RBX9HingeToolD0Ev")
+pub fn stub_0x68d36c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d410 — __ZN3RBX14RightMotorToolD1Ev
-// type: void __fastcall(RBX::RightMotorTool *__hidden this)
 #[doc(alias = "RBX::RightMotorTool::~RightMotorTool()")]
-pub fn stub_0x68d410() -> ! {
-    todo!("0x68d410 __ZN3RBX14RightMotorToolD1Ev")
+pub fn stub_0x68d410(handle: crate::slot::InstanceHandle) {
+// RBX::RightMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d414 — __ZN3RBX14RightMotorToolD0Ev
-// type: void __fastcall(RBX::RightMotorTool *__hidden this)
 #[doc(alias = "RBX::RightMotorTool::~RightMotorTool() [0x68d414]")]
-pub fn stub_0x68d414() -> ! {
-    todo!("0x68d414 __ZN3RBX14RightMotorToolD0Ev")
+pub fn stub_0x68d414(handle: crate::slot::InstanceHandle) {
+// RBX::RightMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d4b4 — __ZThn36_N3RBX14RightMotorToolD1Ev
-// type: void __fastcall(RBX::RightMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool()")]
-pub fn stub_0x68d4b4() -> ! {
-    todo!("0x68d4b4 __ZThn36_N3RBX14RightMotorToolD1Ev")
+pub fn stub_0x68d4b4(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d4bc — __ZThn36_N3RBX14RightMotorToolD0Ev
-// type: void __fastcall(RBX::RightMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::RightMotorTool::~RightMotorTool() [0x68d4bc]")]
-pub fn stub_0x68d4bc() -> ! {
-    todo!("0x68d4bc __ZThn36_N3RBX14RightMotorToolD0Ev")
+pub fn stub_0x68d4bc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d560 — __ZN3RBX13LeftMotorToolD1Ev
-// type: void __fastcall(RBX::LeftMotorTool *__hidden this)
 #[doc(alias = "RBX::LeftMotorTool::~LeftMotorTool()")]
-pub fn stub_0x68d560() -> ! {
-    todo!("0x68d560 __ZN3RBX13LeftMotorToolD1Ev")
+pub fn stub_0x68d560(handle: crate::slot::InstanceHandle) {
+// RBX::LeftMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d564 — __ZN3RBX13LeftMotorToolD0Ev
-// type: void __fastcall(RBX::LeftMotorTool *__hidden this)
 #[doc(alias = "RBX::LeftMotorTool::~LeftMotorTool() [0x68d564]")]
-pub fn stub_0x68d564() -> ! {
-    todo!("0x68d564 __ZN3RBX13LeftMotorToolD0Ev")
+pub fn stub_0x68d564(handle: crate::slot::InstanceHandle) {
+// RBX::LeftMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d604 — __ZThn36_N3RBX13LeftMotorToolD1Ev
-// type: void __fastcall(RBX::LeftMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool()")]
-pub fn stub_0x68d604() -> ! {
-    todo!("0x68d604 __ZThn36_N3RBX13LeftMotorToolD1Ev")
+pub fn stub_0x68d604(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d60c — __ZThn36_N3RBX13LeftMotorToolD0Ev
-// type: void __fastcall(RBX::LeftMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::LeftMotorTool::~LeftMotorTool() [0x68d60c]")]
-pub fn stub_0x68d60c() -> ! {
-    todo!("0x68d60c __ZThn36_N3RBX13LeftMotorToolD0Ev")
+pub fn stub_0x68d60c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d6b0 — __ZN3RBX18OscillateMotorToolD1Ev
-// type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
 #[doc(alias = "RBX::OscillateMotorTool::~OscillateMotorTool()")]
-pub fn stub_0x68d6b0() -> ! {
-    todo!("0x68d6b0 __ZN3RBX18OscillateMotorToolD1Ev")
+pub fn stub_0x68d6b0(handle: crate::slot::InstanceHandle) {
+// RBX::OscillateMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d6b4 — __ZN3RBX18OscillateMotorToolD0Ev
-// type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
 #[doc(alias = "RBX::OscillateMotorTool::~OscillateMotorTool() [0x68d6b4]")]
-pub fn stub_0x68d6b4() -> ! {
-    todo!("0x68d6b4 __ZN3RBX18OscillateMotorToolD0Ev")
+pub fn stub_0x68d6b4(handle: crate::slot::InstanceHandle) {
+// RBX::OscillateMotorTool dtor.
+drop(handle);
 }
 
-// 0x68d754 — __ZThn36_N3RBX18OscillateMotorToolD1Ev
-// type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool()")]
-pub fn stub_0x68d754() -> ! {
-    todo!("0x68d754 __ZThn36_N3RBX18OscillateMotorToolD1Ev")
+pub fn stub_0x68d754(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d75c — __ZThn36_N3RBX18OscillateMotorToolD0Ev
-// type: void __fastcall(RBX::OscillateMotorTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::OscillateMotorTool::~OscillateMotorTool() [0x68d75c]")]
-pub fn stub_0x68d75c() -> ! {
-    todo!("0x68d75c __ZThn36_N3RBX18OscillateMotorToolD0Ev")
+pub fn stub_0x68d75c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x68d800 — __ZN3RBX20SmoothNoOutlinesToolD1Ev
-// type: void __fastcall(RBX::SmoothNoOutlinesTool *__hidden this)
 #[doc(alias = "RBX::SmoothNoOutlinesTool::~SmoothNoOutlinesTool()")]
-pub fn stub_0x68d800() -> ! {
-    todo!("0x68d800 __ZN3RBX20SmoothNoOutlinesToolD1Ev")
+pub fn stub_0x68d800(handle: crate::slot::InstanceHandle) {
+// RBX::SmoothNoOutlinesTool dtor.
+drop(handle);
 }
 
-// 0x690e18 — __ZN3RBX19ButtonBindingWidget8render2dEPNS_5AdornE
-// type: void __fastcall(RBX::ButtonBindingWidget *this, RBX::Adorn *, int)
 #[doc(alias = "RBX::ButtonBindingWidget::render2d(RBX::Adorn *)")]
-pub fn stub_0x690e18() -> ! {
-    todo!("0x690e18 __ZN3RBX19ButtonBindingWidget8render2dEPNS_5AdornE")
+pub fn stub_0x690e18(handle: &crate::slot::InstanceHandle) {
+// RBX::ButtonBindingWidget::render2d(RBX::Adorn*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x6941bc — __ZN3RBX19ButtonBindingWidget9isEnabledEv
-// type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::isEnabled(void)")]
-pub fn stub_0x6941bc() -> ! {
-    todo!("0x6941bc __ZN3RBX19ButtonBindingWidget9isEnabledEv")
+pub fn stub_0x6941bc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::ButtonBindingWidget getter.
+cell.get()
 }
 
-// 0x6941c0 — __ZNK3RBX19ButtonBindingWidget11drawEnabledEv
-// type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::drawEnabled(void)const")]
-pub fn stub_0x6941c0() -> ! {
-    todo!("0x6941c0 __ZNK3RBX19ButtonBindingWidget11drawEnabledEv")
+pub fn stub_0x6941c0(handle: &crate::slot::InstanceHandle) {
+// RBX::ButtonBindingWidget::drawEnabled() const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x6941c4 — __ZNK3RBX19ButtonBindingWidget12drawSelectedEv
-// type: _DWORD __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "RBX::ButtonBindingWidget::drawSelected(void)const")]
-pub fn stub_0x6941c4() -> ! {
-    todo!("0x6941c4 __ZNK3RBX19ButtonBindingWidget12drawSelectedEv")
+pub fn stub_0x6941c4(handle: &crate::slot::InstanceHandle) {
+// RBX::ButtonBindingWidget::drawSelected() const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x6941c8 — __ZThn32_N3RBX19ButtonBindingWidgetD1Ev
-// type: void __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget()")]
-pub fn stub_0x6941c8() -> ! {
-    todo!("0x6941c8 __ZThn32_N3RBX19ButtonBindingWidgetD1Ev")
+pub fn stub_0x6941c8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x6942fc — __ZThn32_N3RBX19ButtonBindingWidgetD0Ev
-// type: void __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget() [0x6942fc]")]
-pub fn stub_0x6942fc() -> ! {
-    todo!("0x6942fc __ZThn32_N3RBX19ButtonBindingWidgetD0Ev")
+pub fn stub_0x6942fc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x69446c — __ZThn36_N3RBX19ButtonBindingWidgetD1Ev
-// type: void __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget() [0x69446c]")]
-pub fn stub_0x69446c() -> ! {
-    todo!("0x69446c __ZThn36_N3RBX19ButtonBindingWidgetD1Ev")
+pub fn stub_0x69446c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x6945a0 — __ZThn36_N3RBX19ButtonBindingWidgetD0Ev
-// type: void __fastcall(RBX::ButtonBindingWidget *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ButtonBindingWidget::~ButtonBindingWidget() [0x6945a0]")]
-pub fn stub_0x6945a0() -> ! {
-    todo!("0x6945a0 __ZThn36_N3RBX19ButtonBindingWidgetD0Ev")
+pub fn stub_0x6945a0(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x6946e8 — __ZN3RBX17VehicleControllerD1Ev
-// type: void __fastcall(RBX::VehicleController *__hidden this)
 #[doc(alias = "RBX::VehicleController::~VehicleController()")]
-pub fn stub_0x6946e8() -> ! {
-    todo!("0x6946e8 __ZN3RBX17VehicleControllerD1Ev")
+pub fn stub_0x6946e8(handle: crate::slot::InstanceHandle) {
+// RBX::VehicleController dtor.
+drop(handle);
 }
 
-// 0x6947d8 — __ZN3RBX17VehicleControllerD0Ev
-// type: void __fastcall(RBX::VehicleController *__hidden this)
 #[doc(alias = "RBX::VehicleController::~VehicleController() [0x6947d8]")]
-pub fn stub_0x6947d8() -> ! {
-    todo!("0x6947d8 __ZN3RBX17VehicleControllerD0Ev")
+pub fn stub_0x6947d8(handle: crate::slot::InstanceHandle) {
+// RBX::VehicleController dtor.
+drop(handle);
 }

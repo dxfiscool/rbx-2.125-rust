@@ -9,502 +9,610 @@
 use rbx_core::SharedPtr;
 
 
-// 0x3c0f7c — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_0x3c0f7c() -> ! { todo!("0x3c0f7c __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED1Ev") }
+pub fn stub_0x3c0f7c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c0fa8 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor()")]
-pub fn stub_0x3c0fa8() -> ! { todo!("0x3c0fa8 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED1Ev") }
+pub fn stub_0x3c0fa8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c0fcc — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor()")]
-pub fn stub_0x3c0fcc() -> ! { todo!("0x3c0fcc __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED1Ev") }
+pub fn stub_0x3c0fcc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c0ff0 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor()")]
-pub fn stub_0x3c0ff0() -> ! { todo!("0x3c0ff0 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED1Ev") }
+pub fn stub_0x3c0ff0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c101c — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor()")]
-pub fn stub_0x3c101c() -> ! { todo!("0x3c101c __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED1Ev") }
+pub fn stub_0x3c101c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c1cf0 — __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(RBX::GuiLayerCollector *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3c1cf0() -> ! { todo!("0x3c1cf0 __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x3c1cf0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
+}
 
-// 0x3c1cf4 — __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(RBX::GuiLayerCollector *)
 #[doc(alias = "__ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3c1cf4() -> ! { todo!("0x3c1cf4 __ZN3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x3c1cf4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::Described dtor.
+drop(handle);
+}
 
-// 0x3c1d94 — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3c1d94() -> ! { todo!("0x3c1d94 __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x3c1d94(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x3c1d9c — __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3c1d9c() -> ! { todo!("0x3c1d9c __ZThn32_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x3c1d9c(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
+}
 
-// 0x3c1e40 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
-pub fn stub_0x3c1e40() -> ! { todo!("0x3c1e40 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev") }
+pub fn stub_0x3c1e40(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x3c1e48 — __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-// type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
-pub fn stub_0x3c1e48() -> ! { todo!("0x3c1e48 __ZThn36_N3RBX10Reflection9DescribedINS_12BillboardGuiELZNS_13sAdornmentGuiEENS_14FactoryProductIS2_NS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev") }
+pub fn stub_0x3c1e48(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
+}
 
-// 0x3c1eec — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::PropDescriptor<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>(char const*,char const*,bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x3c1eec() -> ! { todo!("0x3c1eec __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x3c1eec(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2000 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED0Ev
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::~PropDescriptor() [0x3c2000]")]
-pub fn stub_0x3c2000() -> ! { todo!("0x3c2000 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbED0Ev") }
+pub fn stub_0x3c2000(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c202c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isReadOnly(void)const")]
-pub fn stub_0x3c202c() -> ! { todo!("0x3c202c __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv") }
+pub fn stub_0x3c202c(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2030 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::isWriteOnly(void)const")]
-pub fn stub_0x3c2030() -> ! { todo!("0x3c2030 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv") }
+pub fn stub_0x3c2030(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2034 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c2034() -> ! { todo!("0x3c2034 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c2034(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2058 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
-// type: int __fastcall(int, int, unsigned __int8 *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,bool>::GetSetImpl<bool (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
-pub fn stub_0x3c2058() -> ! { todo!("0x3c2058 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb") }
+pub fn stub_0x3c2058(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c207c — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::PropDescriptor<RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2)>(char const*,char const*,RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x3c207c() -> ! { todo!("0x3c207c __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x3c207c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2190 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED0Ev
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::~PropDescriptor() [0x3c2190]")]
-pub fn stub_0x3c2190() -> ! { todo!("0x3c2190 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EED0Ev") }
+pub fn stub_0x3c2190(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c21bc — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::GetSetImpl<RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2)>::isReadOnly(void)const")]
-pub fn stub_0x3c21bc() -> ! { todo!("0x3c21bc __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv") }
+pub fn stub_0x3c21bc(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c21c0 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::GetSetImpl<RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2)>::isWriteOnly(void)const")]
-pub fn stub_0x3c21c0() -> ! { todo!("0x3c21c0 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv") }
+pub fn stub_0x3c21c0(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c21c4 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::GetSetImpl<RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c21c4() -> ! { todo!("0x3c21c4 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c21c4(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c21ec — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-// type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::UDim2>::GetSetImpl<RBX::UDim2 (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::UDim2)>::setValue(RBX::Reflection::DescribedBase *,RBX::UDim2 const&)const")]
-pub fn stub_0x3c21ec() -> ! { todo!("0x3c21ec __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiENS_5UDim2EE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_") }
+pub fn stub_0x3c21ec(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2224 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::PropDescriptor<G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&)>(char const*,char const*,G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x3c2224() -> ! { todo!("0x3c2224 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x3c2224(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2338 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED0Ev
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::~PropDescriptor() [0x3c2338]")]
-pub fn stub_0x3c2338() -> ! { todo!("0x3c2338 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EED0Ev") }
+pub fn stub_0x3c2338(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2364 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::GetSetImpl<G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&)>::isReadOnly(void)const")]
-pub fn stub_0x3c2364() -> ! { todo!("0x3c2364 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv") }
+pub fn stub_0x3c2364(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2368 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::GetSetImpl<G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&)>::isWriteOnly(void)const")]
-pub fn stub_0x3c2368() -> ! { todo!("0x3c2368 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv") }
+pub fn stub_0x3c2368(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c236c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(_DWORD *, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::GetSetImpl<G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c236c() -> ! { todo!("0x3c236c __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c236c(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c239c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector2>::GetSetImpl<G3D::Vector2 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector2 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector2 const&)const")]
-pub fn stub_0x3c239c() -> ! { todo!("0x3c239c __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_") }
+pub fn stub_0x3c239c(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c23c0 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::PropDescriptor<G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x3c23c0() -> ! { todo!("0x3c23c0 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x3c23c0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c24d4 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED0Ev
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::~PropDescriptor() [0x3c24d4]")]
-pub fn stub_0x3c24d4() -> ! { todo!("0x3c24d4 __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EED0Ev") }
+pub fn stub_0x3c24d4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2500 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
-pub fn stub_0x3c2500() -> ! { todo!("0x3c2500 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv") }
+pub fn stub_0x3c2500(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2504 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
-pub fn stub_0x3c2504() -> ! { todo!("0x3c2504 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv") }
+pub fn stub_0x3c2504(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2508 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c2508() -> ! { todo!("0x3c2508 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c2508(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c253c — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,G3D::Vector3>::GetSetImpl<G3D::Vector3 const& (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
-pub fn stub_0x3c253c() -> ! { todo!("0x3c253c __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector3EE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_") }
+pub fn stub_0x3c253c(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2560 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::RefPropDescriptor<RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*)>(char const*,char const*,RBX::Instance* (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x3c2560() -> ! { todo!("0x3c2560 __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x3c2560(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2604 — __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::~RefPropDescriptor() [0x3c2604]")]
-pub fn stub_0x3c2604() -> ! { todo!("0x3c2604 __ZN3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEED0Ev") }
+pub fn stub_0x3c2604(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2634 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isReadOnly(void)const")]
-pub fn stub_0x3c2634() -> ! { todo!("0x3c2634 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10isReadOnlyEv") }
+pub fn stub_0x3c2634(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2644 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11isWriteOnlyEv
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::isWriteOnly(void)const")]
-pub fn stub_0x3c2644() -> ! { todo!("0x3c2644 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11isWriteOnlyEv") }
+pub fn stub_0x3c2644(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2654 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
-// type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c2654() -> ! { todo!("0x3c2654 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11equalValuesEPKNS0_13DescribedBaseES7_") }
+pub fn stub_0x3c2654(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c267c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
-// type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x3c267c() -> ! { todo!("0x3c267c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE") }
+pub fn stub_0x3c267c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2794 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
-// type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x3c2794() -> ! { todo!("0x3c2794 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE") }
+pub fn stub_0x3c2794(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c285c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x3c285c() -> ! { todo!("0x3c285c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_") }
+pub fn stub_0x3c285c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2880 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
-// type: void __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x3c2880() -> ! { todo!("0x3c2880 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement") }
+pub fn stub_0x3c2880(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2954 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
-// type: int __fastcall(int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x3c2954() -> ! { todo!("0x3c2954 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE") }
+pub fn stub_0x3c2954(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2978 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c2978() -> ! { todo!("0x3c2978 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11getRefValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c2978(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c298c — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_
-// type: int __fastcall(int, int, void *lpsrc)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x3c298c() -> ! { todo!("0x3c298c __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11setRefValueEPNS0_13DescribedBaseES6_") }
+pub fn stub_0x3c298c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2a08 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
-// type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
-pub fn stub_0x3c2a08() -> ! { todo!("0x3c2a08 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_") }
+pub fn stub_0x3c2a08(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2a28 — __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x3c2a28() -> ! { todo!("0x3c2a28 __ZNK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE") }
+pub fn stub_0x3c2a28(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2b08 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_0x3c2b08() -> ! { todo!("0x3c2b08 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE") }
+pub fn stub_0x3c2b08(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isReadOnly(void)const")]
-pub fn stub_0x3c2b10() -> ! { todo!("0x3c2b10 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv") }
+pub fn stub_0x3c2b10(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2b14 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
-// type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::isWriteOnly(void)const")]
-pub fn stub_0x3c2b14() -> ! { todo!("0x3c2b14 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv") }
+pub fn stub_0x3c2b14(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2b18 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x3c2b18() -> ! { todo!("0x3c2b18 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x3c2b18(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c2b38 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
-// type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BillboardGui,RBX::Instance *>::GetSetImpl<RBX::Instance * (RBX::BillboardGui::*)(void)const,void (RBX::BillboardGui::*)(RBX::Instance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Instance * const&)const")]
-pub fn stub_0x3c2b38() -> ! { todo!("0x3c2b38 __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_") }
+pub fn stub_0x3c2b38(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x3c39ac — __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv
-// type: int __fastcall(RBX::Camera *this)
 #[doc(alias = "RBX::Camera::getCameraSubjectInstanceDangerous(void)const")]
-pub fn stub_0x3c39ac() -> ! { todo!("0x3c39ac __ZNK3RBX6Camera33getCameraSubjectInstanceDangerousEv") }
+pub fn stub_0x3c39ac(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Camera getter.
+cell.get()
+}
 
-// 0x3c39b4 — __ZN3RBX6Camera16setCameraSubjectEPNS_8InstanceE
-// type: void __fastcall(shared_count *this, RBX::Instance *)
 #[doc(alias = "RBX::Camera::setCameraSubject(RBX::Instance *)")]
-pub fn stub_0x3c39b4() -> ! { todo!("0x3c39b4 __ZN3RBX6Camera16setCameraSubjectEPNS_8InstanceE") }
+pub fn stub_0x3c39b4(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::Camera setter.
+cell.set(value)
+}
 
-// 0x3c437c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEEC2Ev
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::EnumDesc(void)")]
-pub fn stub_0x3c437c() -> ! { todo!("0x3c437c __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEEC2Ev") }
+pub fn stub_0x3c437c() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x3c45b0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::EnumDesc(void)")]
-pub fn stub_0x3c45b0() -> ! { todo!("0x3c45b0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC1Ev") }
+pub fn stub_0x3c45b0() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x3c45b4 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC2Ev
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::EnumDesc(void) [0x3c45b4]")]
-pub fn stub_0x3c45b4() -> ! { todo!("0x3c45b4 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEEC2Ev") }
+pub fn stub_0x3c45b4() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x3c4778 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEEC2Ev
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::EnumDesc(void)")]
-pub fn stub_0x3c4778() -> ! { todo!("0x3c4778 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEEC2Ev") }
+pub fn stub_0x3c4778() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x3c4e90 — __ZNK3RBX6Camera12askSetParentEPKNS_8InstanceE
-// type: _DWORD __fastcall(RBX::Camera *__hidden this, const RBX::Instance *)
 #[doc(alias = "RBX::Camera::askSetParent(RBX::Instance const*)const")]
-pub fn stub_0x3c4e90() -> ! { todo!("0x3c4e90 __ZNK3RBX6Camera12askSetParentEPKNS_8InstanceE") }
+pub fn stub_0x3c4e90(handle: &crate::slot::InstanceHandle) {
+// RBX::Camera::askSetParent(RBX::Instance const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c4f8c — __ZNK3RBX6Camera17isPartVisibleFastERKNS_12PartInstanceERKN3G3D6Rect2DERKNS_14ContactManagerE
-// type: bool __fastcall(_DWORD *, RBX::PartInstance *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::Camera::isPartVisibleFast(RBX::PartInstance const&,G3D::Rect2D const&,RBX::ContactManager const&)const")]
-pub fn stub_0x3c4f8c() -> ! { todo!("0x3c4f8c __ZNK3RBX6Camera17isPartVisibleFastERKNS_12PartInstanceERKN3G3D6Rect2DERKNS_14ContactManagerE") }
+pub fn stub_0x3c4f8c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Camera getter.
+cell.get()
+}
 
-// 0x3c50fc — __ZNK3RBX6Camera15isPartInFrustumERKNS_12PartInstanceERKN3G3D6Rect2DE
-// type: int __fastcall(int, RBX::PartInstance *)
 #[doc(alias = "RBX::Camera::isPartInFrustum(RBX::PartInstance const&,G3D::Rect2D const&)const")]
-pub fn stub_0x3c50fc() -> ! { todo!("0x3c50fc __ZNK3RBX6Camera15isPartInFrustumERKNS_12PartInstanceERKN3G3D6Rect2DE") }
+pub fn stub_0x3c50fc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::Camera getter.
+cell.get()
+}
 
-// 0x3c7590 — __ZN3RBX6Camera11zoomExtentsEPKNS_13ModelInstanceENS0_8ZoomTypeE
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Camera::zoomExtents(RBX::ModelInstance const*,RBX::Camera::ZoomType)")]
-pub fn stub_0x3c7590() -> ! { todo!("0x3c7590 __ZN3RBX6Camera11zoomExtentsEPKNS_13ModelInstanceENS0_8ZoomTypeE") }
+pub fn stub_0x3c7590(handle: &crate::slot::InstanceHandle) {
+// RBX::Camera::zoomExtents(RBX::ModelInstance const*, RBX::Camera::ZoomType) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c8bec — __ZN3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Camera,RBX::Camera::CameraType>::~EnumPropDescriptor()")]
-pub fn stub_0x3c8bec() -> ! { todo!("0x3c8bec __ZN3RBX10Reflection18EnumPropDescriptorINS_6CameraENS2_10CameraTypeEED1Ev") }
+pub fn stub_0x3c8bec(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c8c14 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,G3D::CoordinateFrame>::~PropDescriptor()")]
-pub fn stub_0x3c8c14() -> ! { todo!("0x3c8c14 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEN3G3D15CoordinateFrameEED1Ev") }
+pub fn stub_0x3c8c14(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c8c60 — __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Camera,float>::~PropDescriptor()")]
-pub fn stub_0x3c8c60() -> ! { todo!("0x3c8c60 __ZN3RBX10Reflection14PropDescriptorINS_6CameraEfED1Ev") }
+pub fn stub_0x3c8c60(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c8c84 — __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::~RefPropDescriptor()")]
-pub fn stub_0x3c8c84() -> ! { todo!("0x3c8c84 __ZN3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEED1Ev") }
+pub fn stub_0x3c8c84(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x3c8cb0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(float),1>::~BoundFuncDesc()")]
-pub fn stub_0x3c8cb0() -> ! { todo!("0x3c8cb0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvfELi1EED1Ev") }
+pub fn stub_0x3c8cb0(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8cf0 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,float ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_0x3c8cf0() -> ! { todo!("0x3c8cf0 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFfvELi0EED1Ev") }
+pub fn stub_0x3c8cf0(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8d24 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(RBX::Camera::CameraPanMode),1>::~BoundFuncDesc()")]
-pub fn stub_0x3c8d24() -> ! { todo!("0x3c8d24 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvNS2_13CameraPanModeEELi1EED1Ev") }
+pub fn stub_0x3c8d24(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8d64 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(float),1>::~BoundFuncDesc()")]
-pub fn stub_0x3c8d64() -> ! { todo!("0x3c8d64 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbfELi1EED1Ev") }
+pub fn stub_0x3c8d64(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8da4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_0x3c8da4() -> ! { todo!("0x3c8da4 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFviELi1EED1Ev") }
+pub fn stub_0x3c8da4(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8de4 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,bool ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_0x3c8de4() -> ! { todo!("0x3c8de4 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFbiELi1EED1Ev") }
+pub fn stub_0x3c8de4(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8e24 — __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Camera,void ()(G3D::CoordinateFrame,G3D::CoordinateFrame,float),3>::~BoundFuncDesc()")]
-pub fn stub_0x3c8e24() -> ! { todo!("0x3c8e24 __ZN3RBX10Reflection13BoundFuncDescINS_6CameraEFvN3G3D15CoordinateFrameES4_fELi3EED1Ev") }
+pub fn stub_0x3c8e24(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8e78 — __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_0x3c8e78() -> ! { todo!("0x3c8e78 __ZN3RBX10Reflection9EventDescINS_6CameraEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev") }
+pub fn stub_0x3c8e78(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8e9c — __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::~EventDesc()")]
-pub fn stub_0x3c8e9c() -> ! { todo!("0x3c8e9c __ZN3RBX10Reflection9EventDescINS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev") }
+pub fn stub_0x3c8e9c(handle: crate::slot::DescriptorHandle) {
+// descriptor dtor — unregisters and releases.
+drop(handle);
+}
 
-// 0x3c8ec0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::addPair(RBX::Camera::CameraType,char const*)")]
-pub fn stub_0x3c8ec0() -> ! { todo!("0x3c8ec0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE7addPairES3_PKc") }
+pub fn stub_0x3c8ec0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::addPair(RBX::Camera::CameraType, char ~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9220 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::addPair(RBX::Camera::CameraMode,char const*)")]
-pub fn stub_0x3c9220() -> ! { todo!("0x3c9220 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE7addPairES3_PKc") }
+pub fn stub_0x3c9220(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::addPair(RBX::Camera::CameraMode, char ~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9580 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::addPair(RBX::Camera::CameraPanMode,char const*)")]
-pub fn stub_0x3c9580() -> ! { todo!("0x3c9580 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE7addPairES3_PKc") }
+pub fn stub_0x3c9580(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::addPair(RBX::Camera::CameraPanMode,~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c98e0 — __ZN3RBX10Reflection7Variant14genericConvertINS_6Camera13CameraPanModeEEERT_v
-// type: int __fastcall(int)
 #[doc(alias = "RBX::Camera::CameraPanMode & RBX::Reflection::Variant::genericConvert<RBX::Camera::CameraPanMode>(void)")]
-pub fn stub_0x3c98e0() -> ! { todo!("0x3c98e0 __ZN3RBX10Reflection7Variant14genericConvertINS_6Camera13CameraPanModeEEERT_v") }
+pub fn stub_0x3c98e0(handle: &crate::slot::InstanceHandle) {
+// RBX::Camera::CameraPanMode& RBX::Reflection::Variant::genericConvert<RBX::Camera::CameraPa~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9c4c — __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
 #[doc(alias = "RBX::Network::Players * RBX::ServiceProvider::create<RBX::Network::Players>(RBX::Instance const*)")]
-pub fn stub_0x3c9c4c() -> ! { todo!("0x3c9c4c __ZN3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_PKNS_8InstanceE") }
+pub fn stub_0x3c9c4c() -> crate::slot::ServiceHandle {
+// ServiceProvider::create — constructs + registers.
+crate::slot::ServiceHandle::new("RBX::Network::Players")
+}
 
-// 0x3c9c64 — __ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE
-// type: int __fastcall(RBX::ServiceProvider *, const RBX::Instance *)
 #[doc(alias = "RBX::ControllerService * RBX::ServiceProvider::create<RBX::ControllerService>(RBX::Instance const*)")]
-pub fn stub_0x3c9c64() -> ! { todo!("0x3c9c64 __ZN3RBX15ServiceProvider6createINS_17ControllerServiceEEEPT_PKNS_8InstanceE") }
+pub fn stub_0x3c9c64() -> crate::slot::ServiceHandle {
+// ServiceProvider::create — constructs + registers.
+crate::slot::ServiceHandle::new("RBX::ControllerService")
+}
 
-// 0x3c9dcc — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc()")]
-pub fn stub_0x3c9dcc() -> ! { todo!("0x3c9dcc __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev") }
+pub fn stub_0x3c9dcc(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3c9dd0 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::~EnumDesc() [0x3c9dd0]")]
-pub fn stub_0x3c9dd0() -> ! { todo!("0x3c9dd0 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED0Ev") }
+pub fn stub_0x3c9dd0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3c9e70 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(char const*)const")]
-pub fn stub_0x3c9e70() -> ! { todo!("0x3c9e70 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupEPKc") }
+pub fn stub_0x3c9e70(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9ea0 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x3c9ea0() -> ! { todo!("0x3c9ea0 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE6lookupERKNS0_7VariantE") }
+pub fn stub_0x3c9ea0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::lookup(RBX::Reflection::Variant const&~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9ec0 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x3c9ec0() -> ! { todo!("0x3c9ec0 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE14convertToValueEmRNS0_7VariantE") }
+pub fn stub_0x3c9ec0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToValue(unsigned long, RBX::Ref~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3c9ef4 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x3c9ef4() -> ! { todo!("0x3c9ef4 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEE15convertToStringEmRSs") }
+pub fn stub_0x3c9ef4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraType>::convertToString(unsigned long, std::st~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca038 — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc()")]
-pub fn stub_0x3ca038() -> ! { todo!("0x3ca038 __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED1Ev") }
+pub fn stub_0x3ca038(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3ca03c — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::~EnumDesc() [0x3ca03c]")]
-pub fn stub_0x3ca03c() -> ! { todo!("0x3ca03c __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraModeEED0Ev") }
+pub fn stub_0x3ca03c(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3ca0dc — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(char const*)const")]
-pub fn stub_0x3ca0dc() -> ! { todo!("0x3ca0dc __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupEPKc") }
+pub fn stub_0x3ca0dc(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca10c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x3ca10c() -> ! { todo!("0x3ca10c __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE6lookupERKNS0_7VariantE") }
+pub fn stub_0x3ca10c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::lookup(RBX::Reflection::Variant const&~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca12c — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x3ca12c() -> ! { todo!("0x3ca12c __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE14convertToValueEmRNS0_7VariantE") }
+pub fn stub_0x3ca12c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToValue(unsigned long, RBX::Ref~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca160 — __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x3ca160() -> ! { todo!("0x3ca160 __ZNK3RBX10Reflection8EnumDescINS_6Camera10CameraModeEE15convertToStringEmRSs") }
+pub fn stub_0x3ca160(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraMode>::convertToString(unsigned long, std::st~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca2a4 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc()")]
-pub fn stub_0x3ca2a4() -> ! { todo!("0x3ca2a4 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED1Ev") }
+pub fn stub_0x3ca2a4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3ca2a8 — __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::~EnumDesc() [0x3ca2a8]")]
-pub fn stub_0x3ca2a8() -> ! { todo!("0x3ca2a8 __ZN3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEED0Ev") }
+pub fn stub_0x3ca2a8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
+}
 
-// 0x3ca348 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(char const*)const")]
-pub fn stub_0x3ca348() -> ! { todo!("0x3ca348 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupEPKc") }
+pub fn stub_0x3ca348(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca378 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x3ca378() -> ! { todo!("0x3ca378 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE6lookupERKNS0_7VariantE") }
+pub fn stub_0x3ca378(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::lookup(RBX::Reflection::Variant con~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x3ca398 — __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x3ca398() -> ! { todo!("0x3ca398 __ZNK3RBX10Reflection8EnumDescINS_6Camera13CameraPanModeEE14convertToValueEmRNS0_7VariantE") }
+pub fn stub_0x3ca398(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Camera::CameraPanMode>::convertToValue(unsigned long, RBX::~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}

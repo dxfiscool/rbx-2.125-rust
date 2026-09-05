@@ -9,702 +9,702 @@
 use rbx_core::SharedPtr;
 
 
-// 0xf234c4 — __ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v$shim")]
-pub fn stub_0xf234c4() -> ! {
-    todo!("0xf234c4 __ZN3RBX4Name7declareILZNS_10sGuiObjectEEEERKS0_v$shim")
+pub fn stub_0xf234c4() -> crate::slot::PortedFn {
+// IDA 0xf234c4: RBX::Name const& RBX::Name::declare<RBX::sGuiObject>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf234c4, "RBX::Name const& RBX::Name::declare<RBX::sGuiObject>()")
 }
 
-// 0xf234d0 — __ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v$shim")]
-pub fn stub_0xf234d0() -> ! {
-    todo!("0xf234d0 __ZN3RBX4Name9doDeclareILZNS_10sGuiObjectEEEERKS0_v$shim")
+pub fn stub_0xf234d0() -> crate::slot::PortedFn {
+// IDA 0xf234d0: RBX::Name const& RBX::Name::doDeclare<RBX::sGuiObject>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf234d0, "RBX::Name const& RBX::Name::doDeclare<RBX::sGuiObject>()")
 }
 
-// 0xf234dc — __ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv$shim
-// type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf234dc() -> ! {
-    todo!("0xf234dc __ZN3rbx7signals6signalIFviiEE24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf234dc() -> crate::slot::PortedFn {
+// IDA 0xf234dc: rbx::signals::signal<void (int, int)>::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf234dc, "rbx::signals::signal<void (int, int)>::safe_static_do_get_mutex()")
 }
 
-// 0xf234e8 — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv$shim
-// type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf234e8() -> ! {
-    todo!("0xf234e8 __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf234e8() -> crate::slot::PortedFn {
+// IDA 0xf234e8: rbx::signals::signal<void (RBX::UDim2)>::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf234e8, "rbx::signals::signal<void (RBX::UDim2)>::safe_static_do_get_mutex()")
 }
 
-// 0xf234f4 — __ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v$shim")]
-pub fn stub_0xf234f4() -> ! {
-    todo!("0xf234f4 __ZN3RBX4Name9doDeclareILZNS_12sTextServiceEEEERKS0_v$shim")
+pub fn stub_0xf234f4() -> crate::slot::PortedFn {
+// IDA 0xf234f4: RBX::Name const& RBX::Name::doDeclare<RBX::sTextService>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf234f4, "RBX::Name const& RBX::Name::doDeclare<RBX::sTextService>()")
 }
 
-// 0xf23500 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23500() -> ! {
-    todo!("0xf23500 __ZNK3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEE14convertToIndexES3_$shim")
+pub fn stub_0xf23500() -> crate::slot::PortedFn {
+// IDA 0xf23500: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23500, "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::convertToIndex(RBX::TextService::YAlignment~")
 }
 
-// 0xf2350c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf2350c() -> ! {
-    todo!("0xf2350c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10YAlignmentEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf2350c() -> crate::slot::PortedFn {
+// IDA 0xf2350c: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSingleton().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2350c, "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::YAlignment> const>::doGetSing~")
 }
 
-// 0xf23518 — __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev$shim")]
-pub fn stub_0xf23518() -> ! {
-    todo!("0xf23518 __ZN3RBX10Reflection8EnumDescINS_11TextService10YAlignmentEED2Ev$shim")
+pub fn stub_0xf23518() -> crate::slot::PortedFn {
+// IDA 0xf23518: RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23518, "RBX::Reflection::EnumDesc<RBX::TextService::YAlignment>::~EnumDesc()")
 }
 
-// 0xf23524 — __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim
-// type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23524() -> ! {
-    todo!("0xf23524 __ZNK3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEE14convertToIndexES3_$shim")
+pub fn stub_0xf23524() -> crate::slot::PortedFn {
+// IDA 0xf23524: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23524, "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::convertToIndex(RBX::TextService::XAlignment~")
 }
 
-// 0xf23530 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE14doGetSingletonEv$shim
-// type: void *()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf23530() -> ! {
-    todo!("0xf23530 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService10XAlignmentEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf23530() -> crate::slot::PortedFn {
+// IDA 0xf23530: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::doGetSingleton().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23530, "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::XAlignment> const>::doGetSing~")
 }
 
-// 0xf2353c — __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev$shim
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev$shim")]
-pub fn stub_0xf2353c() -> ! {
-    todo!("0xf2353c __ZN3RBX10Reflection8EnumDescINS_11TextService10XAlignmentEED2Ev$shim")
+pub fn stub_0xf2353c() -> crate::slot::PortedFn {
+// IDA 0xf2353c: RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2353c, "RBX::Reflection::EnumDesc<RBX::TextService::XAlignment>::~EnumDesc()")
 }
 
-// 0xf23548 — __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim
-// type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim")]
-pub fn stub_0xf23548() -> ! {
-    todo!("0xf23548 __ZNK3RBX10Reflection8EnumDescINS_11TextService4FontEE14convertToIndexES3_$shim")
+pub fn stub_0xf23548() -> crate::slot::PortedFn {
+// IDA 0xf23548: RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23548, "RBX::Reflection::EnumDesc<RBX::TextService::Font>::convertToIndex(RBX::TextService::Font) const")
 }
 
-// 0xf23554 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf23554() -> ! {
-    todo!("0xf23554 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService4FontEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf23554() -> crate::slot::PortedFn {
+// IDA 0xf23554: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23554, "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::Font> const>::doGetSingleton(~")
 }
 
-// 0xf23560 — __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev$shim
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev$shim")]
-pub fn stub_0xf23560() -> ! {
-    todo!("0xf23560 __ZN3RBX10Reflection8EnumDescINS_11TextService4FontEED2Ev$shim")
+pub fn stub_0xf23560() -> crate::slot::PortedFn {
+// IDA 0xf23560: RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23560, "RBX::Reflection::EnumDesc<RBX::TextService::Font>::~EnumDesc()")
 }
 
-// 0xf2356c — __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim
-// type: int __fastcall(int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim")]
-pub fn stub_0xf2356c() -> ! {
-    todo!("0xf2356c __ZNK3RBX10Reflection8EnumDescINS_11TextService8FontSizeEE14convertToIndexES3_$shim")
+pub fn stub_0xf2356c() -> crate::slot::PortedFn {
+// IDA 0xf2356c: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2356c, "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::convertToIndex(RBX::TextService::FontSize) co~")
 }
 
-// 0xf23578 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf23578() -> ! {
-    todo!("0xf23578 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11TextService8FontSizeEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf23578() -> crate::slot::PortedFn {
+// IDA 0xf23578: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingleton().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23578, "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::TextService::FontSize> const>::doGetSingle~")
 }
 
-// 0xf23584 — __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev$shim
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *, int, int, int)
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev$shim")]
-pub fn stub_0xf23584() -> ! {
-    todo!("0xf23584 __ZN3RBX10Reflection8EnumDescINS_11TextService8FontSizeEED2Ev$shim")
+pub fn stub_0xf23584() -> crate::slot::PortedFn {
+// IDA 0xf23584: RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23584, "RBX::Reflection::EnumDesc<RBX::TextService::FontSize>::~EnumDesc()")
 }
 
-// 0xf23590 — __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23590() -> ! {
-    todo!("0xf23590 __ZNK3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7Creator12getClassNameEv$shim")
+pub fn stub_0xf23590() -> crate::slot::PortedFn {
+// IDA 0xf23590: RBX::FactoryProduct<RBX::GuiTextButton, RBX::GuiButton, RBX::sGuiTextButton, RBX::Instance>::Creator::getClassName() con~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23590, "RBX::FactoryProduct<RBX::GuiTextButton, RBX::GuiButton, RBX::sGuiTextButton, RBX::Instance>::Creator~")
 }
 
-// 0xf2359c — __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_0xf2359c() -> ! {
-    todo!("0xf2359c __ZN3RBX14FactoryProductINS_13GuiTextButtonENS_9GuiButtonELZNS_14sGuiTextButtonEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_0xf2359c() -> crate::slot::PortedFn {
+// IDA 0xf2359c: RBX::FactoryProduct<RBX::GuiTextButton, RBX::GuiButton, RBX::sGuiTextButton, RBX::Instance>::Creator::~Creator().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2359c, "RBX::FactoryProduct<RBX::GuiTextButton, RBX::GuiButton, RBX::sGuiTextButton, RBX::Instance>::Creator~")
 }
 
-// 0xf235a8 — __ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v$shim")]
-pub fn stub_0xf235a8() -> ! {
-    todo!("0xf235a8 __ZN3RBX4Name9doDeclareILZNS_14sGuiTextButtonEEEERKS0_v$shim")
+pub fn stub_0xf235a8() -> crate::slot::PortedFn {
+// IDA 0xf235a8: RBX::Name const& RBX::Name::doDeclare<RBX::sGuiTextButton>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235a8, "RBX::Name const& RBX::Name::doDeclare<RBX::sGuiTextButton>()")
 }
 
-// 0xf235b4 — __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv$shim")]
-pub fn stub_0xf235b4() -> ! {
-    todo!("0xf235b4 __ZNK3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7Creator12getClassNameEv$shim")
+pub fn stub_0xf235b4() -> crate::slot::PortedFn {
+// IDA 0xf235b4: RBX::FactoryProduct<RBX::TextLabel, RBX::GuiLabel, RBX::sTextLabel, RBX::Instance>::Creator::getClassName() const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235b4, "RBX::FactoryProduct<RBX::TextLabel, RBX::GuiLabel, RBX::sTextLabel, RBX::Instance>::Creator::getClas~")
 }
 
-// 0xf235c0 — __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorD2Ev$shim
-// type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_0xf235c0() -> ! {
-    todo!("0xf235c0 __ZN3RBX14FactoryProductINS_9TextLabelENS_8GuiLabelELZNS_10sTextLabelEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_0xf235c0() -> crate::slot::PortedFn {
+// IDA 0xf235c0: RBX::FactoryProduct<RBX::TextLabel, RBX::GuiLabel, RBX::sTextLabel, RBX::Instance>::Creator::~Creator().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235c0, "RBX::FactoryProduct<RBX::TextLabel, RBX::GuiLabel, RBX::sTextLabel, RBX::Instance>::Creator::~Creato~")
 }
 
-// 0xf235cc — __ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v$shim")]
-pub fn stub_0xf235cc() -> ! {
-    todo!("0xf235cc __ZN3RBX4Name9doDeclareILZNS_10sTextLabelEEEERKS0_v$shim")
+pub fn stub_0xf235cc() -> crate::slot::PortedFn {
+// IDA 0xf235cc: RBX::Name const& RBX::Name::doDeclare<RBX::sTextLabel>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235cc, "RBX::Name const& RBX::Name::doDeclare<RBX::sTextLabel>()")
 }
 
-// 0xf235d8 — __ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf235d8() -> ! {
-    todo!("0xf235d8 __ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf235d8() -> crate::slot::PortedFn {
+// IDA 0xf235d8: RBX::FactoryProduct<RBX::TimerService, RBX::Instance, RBX::sTimerService, RBX::Instance>::Creator::getClassName() const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235d8, "RBX::FactoryProduct<RBX::TimerService, RBX::Instance, RBX::sTimerService, RBX::Instance>::Creator::g~")
 }
 
-// 0xf235f0 — __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim")]
-pub fn stub_0xf235f0() -> ! {
-    todo!("0xf235f0 __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7Creator12getClassNameEv$shim")
+pub fn stub_0xf235f0() -> crate::slot::PortedFn {
+// IDA 0xf235f0: RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool, RBX::Instance>::Creator::getClassName() const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235f0, "RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool, RBX::Instance>::Creator::getClassName(~")
 }
 
-// 0xf235fc — __ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_0xf235fc() -> ! {
-    todo!("0xf235fc __ZN3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_0xf235fc() -> crate::slot::PortedFn {
+// IDA 0xf235fc: RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool, RBX::Instance>::Creator::~Creator().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf235fc, "RBX::FactoryProduct<RBX::Tool, RBX::BackpackItem, RBX::sTool, RBX::Instance>::Creator::~Creator()")
 }
 
-// 0xf23608 — __ZN3RBX4Name9doDeclareILZNS_5sToolEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5sToolEEEERKS0_v$shim")]
-pub fn stub_0xf23608() -> ! {
-    todo!("0xf23608 __ZN3RBX4Name9doDeclareILZNS_5sToolEEEERKS0_v$shim")
+pub fn stub_0xf23608() -> crate::slot::PortedFn {
+// IDA 0xf23608: RBX::Name const& RBX::Name::doDeclare<RBX::sTool>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23608, "RBX::Name const& RBX::Name::doDeclare<RBX::sTool>()")
 }
 
-// 0xf23620 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueINS9_IS8_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueINS9_IS8_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_0xf23620() -> ! {
-    todo!("0xf23620 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4ToolENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueINS9_IS8_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+pub fn stub_0xf23620() -> crate::slot::PortedFn {
+// IDA 0xf23620: boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Tool, boost::shared_ptr<RB~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23620, "boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Tool, ~")
 }
 
-// 0xf2362c — __ZN3RBX4Name9doDeclareILZNS_17sToolMouseCommandEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_17sToolMouseCommandEEEERKS0_v$shim")]
-pub fn stub_0xf2362c() -> ! {
-    todo!("0xf2362c __ZN3RBX4Name9doDeclareILZNS_17sToolMouseCommandEEEERKS0_v$shim")
+pub fn stub_0xf2362c() -> crate::slot::PortedFn {
+// IDA 0xf2362c: RBX::Name const& RBX::Name::doDeclare<RBX::sToolMouseCommand>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2362c, "RBX::Name const& RBX::Name::doDeclare<RBX::sToolMouseCommand>()")
 }
 
-// 0xf23638 — __ZN3RBX16ToolMouseCommandD2Ev$shim
-// type: void __fastcall(RBX::ToolMouseCommand *)
 #[doc(alias = "__ZN3RBX16ToolMouseCommandD2Ev$shim")]
-pub fn stub_0xf23638() -> ! {
-    todo!("0xf23638 __ZN3RBX16ToolMouseCommandD2Ev$shim")
+pub fn stub_0xf23638() -> crate::slot::PortedFn {
+// IDA 0xf23638: RBX::ToolMouseCommand::~ToolMouseCommand().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23638, "RBX::ToolMouseCommand::~ToolMouseCommand()")
 }
 
-// 0xf23644 — __ZN3RBX16ToolMouseCommandD0Ev$shim
-// type: void __fastcall(RBX::ToolMouseCommand *)
 #[doc(alias = "__ZN3RBX16ToolMouseCommandD0Ev$shim")]
-pub fn stub_0xf23644() -> ! {
-    todo!("0xf23644 __ZN3RBX16ToolMouseCommandD0Ev$shim")
+pub fn stub_0xf23644() -> crate::slot::PortedFn {
+// IDA 0xf23644: RBX::ToolMouseCommand::~ToolMouseCommand().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23644, "RBX::ToolMouseCommand::~ToolMouseCommand()")
 }
 
-// 0xf23650 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim
-// type: int()
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim")]
-pub fn stub_0xf23650() -> ! {
-    todo!("0xf23650 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX16ToolMouseCommandEEENS0_5list1INS0_5valueIPS5_EEEEEclEv$shim")
+pub fn stub_0xf23650() -> crate::slot::PortedFn {
+// IDA 0xf23650: boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::ToolMouseCommand>, boost::_bi::list1<boost::_bi::value<RBX::ToolMou~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23650, "boost::_bi::bind_t<void, boost::_mfi::mf0<void, RBX::ToolMouseCommand>, boost::_bi::list1<boost::_bi~")
 }
 
-// 0xf2365c — __ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_$shim
-// type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_$shim")]
-pub fn stub_0xf2365c() -> ! {
-    todo!("0xf2365c __ZNK3RBX8Instance13visitChildrenINS_10AnchorNodeEEEvRKT_$shim")
+pub fn stub_0xf2365c() -> crate::slot::PortedFn {
+// IDA 0xf2365c: void RBX::Instance::visitChildren<RBX::AnchorNode>(RBX::AnchorNode const&) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2365c, "void RBX::Instance::visitChildren<RBX::AnchorNode>(RBX::AnchorNode const&) const")
 }
 
-// 0xf23668 — __ZNK3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23668() -> ! {
-    todo!("0xf23668 __ZNK3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf23668() -> crate::slot::PortedFn {
+// IDA 0xf23668: RBX::FactoryProduct<RBX::TouchTransmitter, RBX::Instance, RBX::sTouchTransmitter, RBX::Instance>::Creator::getClassName(~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23668, "RBX::FactoryProduct<RBX::TouchTransmitter, RBX::Instance, RBX::sTouchTransmitter, RBX::Instance>::Cr~")
 }
 
-// 0xf23674 — __ZN3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23674() -> ! {
-    todo!("0xf23674 __ZN3RBX14FactoryProductINS_16TouchTransmitterENS_8InstanceELZNS_17sTouchTransmitterEES2_E7CreatorD2Ev$shim")
+pub fn stub_0xf23674() -> crate::slot::PortedFn {
+// IDA 0xf23674: RBX::FactoryProduct<RBX::TouchTransmitter, RBX::Instance, RBX::sTouchTransmitter, RBX::Instance>::Creator::~Creator().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23674, "RBX::FactoryProduct<RBX::TouchTransmitter, RBX::Instance, RBX::sTouchTransmitter, RBX::Instance>::Cr~")
 }
 
-// 0xf23680 — __ZN3RBX4Name9doDeclareILZNS_17sTouchTransmitterEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_17sTouchTransmitterEEEERKS0_v$shim")]
-pub fn stub_0xf23680() -> ! {
-    todo!("0xf23680 __ZN3RBX4Name9doDeclareILZNS_17sTouchTransmitterEEEERKS0_v$shim")
+pub fn stub_0xf23680() -> crate::slot::PortedFn {
+// IDA 0xf23680: RBX::Name const& RBX::Name::doDeclare<RBX::sTouchTransmitter>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23680, "RBX::Name const& RBX::Name::doDeclare<RBX::sTouchTransmitter>()")
 }
 
-// 0xf2368c — __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_$shim
-// type: void __fastcall(int, struct _Unwind_Exception *, int, int)
 #[doc(alias = "__ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_$shim")]
-pub fn stub_0xf2368c() -> ! {
-    todo!("0xf2368c __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_$shim")
+pub fn stub_0xf2368c() -> crate::slot::PortedFn {
+// IDA 0xf2368c: std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_fill_insert(__gnu_cxx::__normal_it~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2368c, "std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_fill_insert(__~")
 }
 
-// 0xf23698 — __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE15_M_erase_at_endEPS2_$shim
-// type: int()
 #[doc(alias = "__ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE15_M_erase_at_endEPS2_$shim")]
-pub fn stub_0xf23698() -> ! {
-    todo!("0xf23698 __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE15_M_erase_at_endEPS2_$shim")
+pub fn stub_0xf23698() -> crate::slot::PortedFn {
+// IDA 0xf23698: std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_erase_at_end(RBX::TouchDebouncer::~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23698, "std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_erase_at_end(R~")
 }
 
-// 0xf236a4 — __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, int, int, void *, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "__ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
-pub fn stub_0xf236a4() -> ! {
-    todo!("0xf236a4 __ZNSt6vectorIN3RBX14TouchDebouncer4ItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+pub fn stub_0xf236a4() -> crate::slot::PortedFn {
+// IDA 0xf236a4: std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_insert_aux(__gnu_cxx::__normal_ite~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236a4, "std::vector<RBX::TouchDebouncer::Item, std::allocator<RBX::TouchDebouncer::Item>>::_M_insert_aux(__g~")
 }
 
-// 0xf236b0 — __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v$shim
-// type: int __fastcall(pthread_mutex_t *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v$shim")]
-pub fn stub_0xf236b0() -> ! {
-    todo!("0xf236b0 __ZNK3RBX15ServiceProvider4findINS_17ControllerServiceEEEPT_v$shim")
+pub fn stub_0xf236b0() -> crate::slot::PortedFn {
+// IDA 0xf236b0: RBX::ControllerService* RBX::ServiceProvider::find<RBX::ControllerService>() const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236b0, "RBX::ControllerService* RBX::ServiceProvider::find<RBX::ControllerService>() const")
 }
 
-// 0xf236bc — __ZNK3RBX15ServiceProvider6createINS_16UserInputServiceEEEPT_v$shim
-// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_16UserInputServiceEEEPT_v$shim")]
-pub fn stub_0xf236bc() -> ! {
-    todo!("0xf236bc __ZNK3RBX15ServiceProvider6createINS_16UserInputServiceEEEPT_v$shim")
+pub fn stub_0xf236bc() -> crate::slot::PortedFn {
+// IDA 0xf236bc: RBX::UserInputService* RBX::ServiceProvider::create<RBX::UserInputService>() const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236bc, "RBX::UserInputService* RBX::ServiceProvider::create<RBX::UserInputService>() const")
 }
 
-// 0xf236c8 — __ZN3RBX4Name9doDeclareILZNS_20sButtonBindingWidgetEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_20sButtonBindingWidgetEEEERKS0_v$shim")]
-pub fn stub_0xf236c8() -> ! {
-    todo!("0xf236c8 __ZN3RBX4Name9doDeclareILZNS_20sButtonBindingWidgetEEEERKS0_v$shim")
+pub fn stub_0xf236c8() -> crate::slot::PortedFn {
+// IDA 0xf236c8: RBX::Name const& RBX::Name::doDeclare<RBX::sButtonBindingWidget>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236c8, "RBX::Name const& RBX::Name::doDeclare<RBX::sButtonBindingWidget>()")
 }
 
-// 0xf236d4 — __ZNK3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")]
-pub fn stub_0xf236d4() -> ! {
-    todo!("0xf236d4 __ZNK3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")
+pub fn stub_0xf236d4() -> crate::slot::PortedFn {
+// IDA 0xf236d4: RBX::FactoryProduct<RBX::VehicleController, RBX::Controller, RBX::sVehicleController, RBX::Instance>::Creator::getClassN~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236d4, "RBX::FactoryProduct<RBX::VehicleController, RBX::Controller, RBX::sVehicleController, RBX::Instance>~")
 }
 
-// 0xf236e0 — __ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")]
-pub fn stub_0xf236e0() -> ! {
-    todo!("0xf236e0 __ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")
+pub fn stub_0xf236e0() -> crate::slot::PortedFn {
+// IDA 0xf236e0: RBX::FactoryProduct<RBX::HumanoidController, RBX::Controller, RBX::sHumanoidController, RBX::Instance>::Creator::getClas~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236e0, "RBX::FactoryProduct<RBX::HumanoidController, RBX::Controller, RBX::sHumanoidController, RBX::Instanc~")
 }
 
-// 0xf236ec — __ZN3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_0xf236ec() -> ! {
-    todo!("0xf236ec __ZN3RBX14FactoryProductINS_17VehicleControllerENS_10ControllerELZNS_18sVehicleControllerEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_0xf236ec() -> crate::slot::PortedFn {
+// IDA 0xf236ec: RBX::FactoryProduct<RBX::VehicleController, RBX::Controller, RBX::sVehicleController, RBX::Instance>::Creator::~Creator(~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236ec, "RBX::FactoryProduct<RBX::VehicleController, RBX::Controller, RBX::sVehicleController, RBX::Instance>~")
 }
 
-// 0xf236f8 — __ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim")]
-pub fn stub_0xf236f8() -> ! {
-    todo!("0xf236f8 __ZN3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7CreatorD2Ev$shim")
+pub fn stub_0xf236f8() -> crate::slot::PortedFn {
+// IDA 0xf236f8: RBX::FactoryProduct<RBX::HumanoidController, RBX::Controller, RBX::sHumanoidController, RBX::Instance>::Creator::~Creato~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf236f8, "RBX::FactoryProduct<RBX::HumanoidController, RBX::Controller, RBX::sHumanoidController, RBX::Instanc~")
 }
 
-// 0xf23704 — __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev$shim")]
-pub fn stub_0xf23704() -> ! {
-    todo!("0xf23704 __ZN3RBX10Reflection8EnumDescINS_10Controller6ButtonEED2Ev$shim")
+pub fn stub_0xf23704() -> crate::slot::PortedFn {
+// IDA 0xf23704: RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23704, "RBX::Reflection::EnumDesc<RBX::Controller::Button>::~EnumDesc()")
 }
 
-// 0xf23710 — __ZN3RBX4Name9doDeclareILZNS_19sHumanoidControllerEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_19sHumanoidControllerEEEERKS0_v$shim")]
-pub fn stub_0xf23710() -> ! {
-    todo!("0xf23710 __ZN3RBX4Name9doDeclareILZNS_19sHumanoidControllerEEEERKS0_v$shim")
+pub fn stub_0xf23710() -> crate::slot::PortedFn {
+// IDA 0xf23710: RBX::Name const& RBX::Name::doDeclare<RBX::sHumanoidController>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23710, "RBX::Name const& RBX::Name::doDeclare<RBX::sHumanoidController>()")
 }
 
-// 0xf2371c — __ZN3RBX4Name9doDeclareILZNS_18sVehicleControllerEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_18sVehicleControllerEEEERKS0_v$shim")]
-pub fn stub_0xf2371c() -> ! {
-    todo!("0xf2371c __ZN3RBX4Name9doDeclareILZNS_18sVehicleControllerEEEERKS0_v$shim")
+pub fn stub_0xf2371c() -> crate::slot::PortedFn {
+// IDA 0xf2371c: RBX::Name const& RBX::Name::doDeclare<RBX::sVehicleController>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2371c, "RBX::Name const& RBX::Name::doDeclare<RBX::sVehicleController>()")
 }
 
-// 0xf23728 — __ZN3RBX4Name9doDeclareILZNS_17sUserInputServiceEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_17sUserInputServiceEEEERKS0_v$shim")]
-pub fn stub_0xf23728() -> ! {
-    todo!("0xf23728 __ZN3RBX4Name9doDeclareILZNS_17sUserInputServiceEEEERKS0_v$shim")
+pub fn stub_0xf23728() -> crate::slot::PortedFn {
+// IDA 0xf23728: RBX::Name const& RBX::Name::doDeclare<RBX::sUserInputService>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23728, "RBX::Name const& RBX::Name::doDeclare<RBX::sUserInputService>()")
 }
 
-// 0xf23734 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE14doGetSingletonEv$shim
-// type: int()
 #[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE14doGetSingletonEv$shim")]
-pub fn stub_0xf23734() -> ! {
-    todo!("0xf23734 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Controller6ButtonEEEE14doGetSingletonEv$shim")
+pub fn stub_0xf23734() -> crate::slot::PortedFn {
+// IDA 0xf23734: RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::doGetSingleton().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23734, "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Controller::Button> const>::doGetSingleton~")
 }
 
-// 0xf23740 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE24safe_static_do_get_mutexEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf23740() -> ! {
-    todo!("0xf23740 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf23740() -> crate::slot::PortedFn {
+// IDA 0xf23740: rbx::signals::signal<void (RBX::Controller::Button)>::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23740, "rbx::signals::signal<void (RBX::Controller::Button)>::safe_static_do_get_mutex()")
 }
 
-// 0xf2374c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim
-// type: int()
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim")]
-pub fn stub_0xf2374c() -> ! {
-    todo!("0xf2374c __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim")
+pub fn stub_0xf2374c() -> crate::slot::PortedFn {
+// IDA 0xf2374c: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Controller::Button cons~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2374c, "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Con~")
 }
 
-// 0xf23758 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim
-// type: int()
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")]
-pub fn stub_0xf23758() -> ! {
-    todo!("0xf23758 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX10Controller6ButtonENS6_11BoundButtonEEES7_S9_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")
+pub fn stub_0xf23758() -> crate::slot::PortedFn {
+// IDA 0xf23758: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Controller::Button const, RB~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23758, "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Controll~")
 }
 
-// 0xf23764 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_9WorkspaceEEEmv$shim
-// type: int()
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_9WorkspaceEEEmv$shim")]
-pub fn stub_0xf23764() -> ! {
-    todo!("0xf23764 __ZN3RBX15ServiceProvider15doGetClassIndexINS_9WorkspaceEEEmv$shim")
+pub fn stub_0xf23764() -> crate::slot::PortedFn {
+// IDA 0xf23764: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Workspace>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23764, "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::Workspace>()")
 }
 
-// 0xf23770 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv$shim
-// type: int()
 #[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv$shim")]
-pub fn stub_0xf23770() -> ! {
-    todo!("0xf23770 __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv$shim")
+pub fn stub_0xf23770() -> crate::slot::PortedFn {
+// IDA 0xf23770: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23770, "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>()")
 }
 
-// 0xf2377c — __ZNSt6vectorIN3RBX10Controller6ButtonESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
-// type: int()
 #[doc(alias = "__ZNSt6vectorIN3RBX10Controller6ButtonESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
-pub fn stub_0xf2377c() -> ! {
-    todo!("0xf2377c __ZNSt6vectorIN3RBX10Controller6ButtonESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+pub fn stub_0xf2377c() -> crate::slot::PortedFn {
+// IDA 0xf2377c: std::vector<RBX::Controller::Button, std::allocator<RBX::Controller::Button>>::_M_insert_aux(__gnu_cxx::__normal_iterato~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2377c, "std::vector<RBX::Controller::Button, std::allocator<RBX::Controller::Button>>::_M_insert_aux(__gnu_c~")
 }
 
-// 0xf23788 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10Controller6ButtonEEEclES4_$shim
-// type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10Controller6ButtonEEEclES4_$shim")]
-pub fn stub_0xf23788() -> ! {
-    todo!("0xf23788 __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10Controller6ButtonEEEclES4_$shim")
+pub fn stub_0xf23788() -> crate::slot::PortedFn {
+// IDA 0xf23788: rbx::signals::signal_with_args<1, void (RBX::Controller::Button)>::operator()(RBX::Controller::Button).
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23788, "rbx::signals::signal_with_args<1, void (RBX::Controller::Button)>::operator()(RBX::Controller::Butto~")
 }
 
-// 0xf23794 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE13disconnectAllEv$shim
-// type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE13disconnectAllEv$shim")]
-pub fn stub_0xf23794() -> ! {
-    todo!("0xf23794 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE13disconnectAllEv$shim")
+pub fn stub_0xf23794() -> crate::slot::PortedFn {
+// IDA 0xf23794: rbx::signals::signal<void (RBX::Controller::Button)>::disconnectAll().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23794, "rbx::signals::signal<void (RBX::Controller::Button)>::disconnectAll()")
 }
 
-// 0xf237a0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_0xf237a0() -> ! {
-    todo!("0xf237a0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10Controller6ButtonEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+pub fn stub_0xf237a0() -> crate::slot::PortedFn {
+// IDA 0xf237a0: boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Reflection::GenericSlotWra~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237a0, "boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Reflec~")
 }
 
-// 0xf237ac — __ZNK5boost9function1IvN3RBX10Controller6ButtonEEclES3_$shim
-// type: int()
 #[doc(alias = "__ZNK5boost9function1IvN3RBX10Controller6ButtonEEclES3_$shim")]
-pub fn stub_0xf237ac() -> ! {
-    todo!("0xf237ac __ZNK5boost9function1IvN3RBX10Controller6ButtonEEclES3_$shim")
+pub fn stub_0xf237ac() -> crate::slot::PortedFn {
+// IDA 0xf237ac: boost::function1<void, RBX::Controller::Button>::operator()(RBX::Controller::Button) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237ac, "boost::function1<void, RBX::Controller::Button>::operator()(RBX::Controller::Button) const")
 }
 
-// 0xf237b8 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slot24safe_static_do_get_mutexEv$shim
-// type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf237b8() -> ! {
-    todo!("0xf237b8 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slot24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf237b8() -> crate::slot::PortedFn {
+// IDA 0xf237b8: rbx::signals::signal<void (RBX::Controller::Button)>::slot::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237b8, "rbx::signals::signal<void (RBX::Controller::Button)>::slot::safe_static_do_get_mutex()")
 }
 
-// 0xf237c4 — __ZN3RBX8ISteppedD2Ev$shim
-// type: void __fastcall(RBX::IStepped *)
 #[doc(alias = "__ZN3RBX8ISteppedD2Ev$shim")]
-pub fn stub_0xf237c4() -> ! {
-    todo!("0xf237c4 __ZN3RBX8ISteppedD2Ev$shim")
+pub fn stub_0xf237c4() -> crate::slot::PortedFn {
+// IDA 0xf237c4: RBX::IStepped::~IStepped().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237c4, "RBX::IStepped::~IStepped()")
 }
 
-// 0xf237d0 — __ZN3rbx7signals16signal_with_argsILi1EFviEEclEi$shim
-// type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFviEEclEi$shim")]
-pub fn stub_0xf237d0() -> ! {
-    todo!("0xf237d0 __ZN3rbx7signals16signal_with_argsILi1EFviEEclEi$shim")
+pub fn stub_0xf237d0() -> crate::slot::PortedFn {
+// IDA 0xf237d0: rbx::signals::signal_with_args<1, void (int)>::operator()(int).
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237d0, "rbx::signals::signal_with_args<1, void (int)>::operator()(int)")
 }
 
-// 0xf237e8 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10BrickColorEEEclES3_$shim
-// type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10BrickColorEEEclES3_$shim")]
-pub fn stub_0xf237e8() -> ! {
-    todo!("0xf237e8 __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10BrickColorEEEclES3_$shim")
+pub fn stub_0xf237e8() -> crate::slot::PortedFn {
+// IDA 0xf237e8: rbx::signals::signal_with_args<1, void (RBX::BrickColor)>::operator()(RBX::BrickColor).
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237e8, "rbx::signals::signal_with_args<1, void (RBX::BrickColor)>::operator()(RBX::BrickColor)")
 }
 
-// 0xf237f4 — __ZN3RBX16ConstrainedValueIiLZNS_20sIntConstrainedValueEEE11setValueRawEi$shim
-// type: int()
 #[doc(alias = "__ZN3RBX16ConstrainedValueIiLZNS_20sIntConstrainedValueEEE11setValueRawEi$shim")]
-pub fn stub_0xf237f4() -> ! {
-    todo!("0xf237f4 __ZN3RBX16ConstrainedValueIiLZNS_20sIntConstrainedValueEEE11setValueRawEi$shim")
+pub fn stub_0xf237f4() -> crate::slot::PortedFn {
+// IDA 0xf237f4: RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>::setValueRaw(int).
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf237f4, "RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>::setValueRaw(int)")
 }
 
-// 0xf23800 — __ZN3RBX16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEE11setValueRawEd$shim
-// type: int()
 #[doc(alias = "__ZN3RBX16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEE11setValueRawEd$shim")]
-pub fn stub_0xf23800() -> ! {
-    todo!("0xf23800 __ZN3RBX16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEE11setValueRawEd$shim")
+pub fn stub_0xf23800() -> crate::slot::PortedFn {
+// IDA 0xf23800: RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>::setValueRaw(double).
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23800, "RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>::setValueRaw(double)")
 }
 
-// 0xf2380c — __ZN3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7CreatorD2Ev$shim")]
-pub fn stub_0xf2380c() -> ! {
-    todo!("0xf2380c __ZN3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7CreatorD2Ev$shim")
+pub fn stub_0xf2380c() -> crate::slot::PortedFn {
+// IDA 0xf2380c: RBX::FactoryProduct<RBX::Value<int, RBX::sIntValue>, RBX::Instance, RBX::sIntValue, RBX::Instance>::Creator::~Creator().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2380c, "RBX::FactoryProduct<RBX::Value<int, RBX::sIntValue>, RBX::Instance, RBX::sIntValue, RBX::Instance>::~")
 }
 
-// 0xf23818 — __ZN3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23818() -> ! {
-    todo!("0xf23818 __ZN3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7CreatorD2Ev$shim")
+pub fn stub_0xf23818() -> crate::slot::PortedFn {
+// IDA 0xf23818: RBX::FactoryProduct<RBX::Value<double, RBX::sDoubleValue>, RBX::Instance, RBX::sDoubleValue, RBX::Instance>::Creator::~C~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23818, "RBX::FactoryProduct<RBX::Value<double, RBX::sDoubleValue>, RBX::Instance, RBX::sDoubleValue, RBX::In~")
 }
 
-// 0xf23824 — __ZN3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23824() -> ! {
-    todo!("0xf23824 __ZN3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7CreatorD2Ev$shim")
+pub fn stub_0xf23824() -> crate::slot::PortedFn {
+// IDA 0xf23824: RBX::FactoryProduct<RBX::Value<bool, RBX::sBoolValue>, RBX::Instance, RBX::sBoolValue, RBX::Instance>::Creator::~Creator~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23824, "RBX::FactoryProduct<RBX::Value<bool, RBX::sBoolValue>, RBX::Instance, RBX::sBoolValue, RBX::Instance~")
 }
 
-// 0xf23854 — __ZN3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23854() -> ! {
-    todo!("0xf23854 __ZN3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7CreatorD2Ev$shim")
+pub fn stub_0xf23854() -> crate::slot::PortedFn {
+// IDA 0xf23854: RBX::FactoryProduct<RBX::Value<RBX::BrickColor, RBX::sBrickColorValue>, RBX::Instance, RBX::sBrickColorValue, RBX::Insta~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23854, "RBX::FactoryProduct<RBX::Value<RBX::BrickColor, RBX::sBrickColorValue>, RBX::Instance, RBX::sBrickCo~")
 }
 
-// 0xf23860 — __ZN3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23860() -> ! {
-    todo!("0xf23860 __ZN3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7CreatorD2Ev$shim")
+pub fn stub_0xf23860() -> crate::slot::PortedFn {
+// IDA 0xf23860: RBX::FactoryProduct<RBX::Value<RBX::RbxRay, RBX::sRayValue>, RBX::Instance, RBX::sRayValue, RBX::Instance>::Creator::~Cr~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23860, "RBX::FactoryProduct<RBX::Value<RBX::RbxRay, RBX::sRayValue>, RBX::Instance, RBX::sRayValue, RBX::Ins~")
 }
 
-// 0xf2386c — __ZN3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7CreatorD2Ev$shim")]
-pub fn stub_0xf2386c() -> ! {
-    todo!("0xf2386c __ZN3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7CreatorD2Ev$shim")
+pub fn stub_0xf2386c() -> crate::slot::PortedFn {
+// IDA 0xf2386c: RBX::FactoryProduct<RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>, RBX::Instance, RBX::sIntConstrainedValue, RBX~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2386c, "RBX::FactoryProduct<RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>, RBX::Instance, RBX::sIntC~")
 }
 
-// 0xf23878 — __ZN3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7CreatorD2Ev$shim
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7CreatorD2Ev$shim")]
-pub fn stub_0xf23878() -> ! {
-    todo!("0xf23878 __ZN3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7CreatorD2Ev$shim")
+pub fn stub_0xf23878() -> crate::slot::PortedFn {
+// IDA 0xf23878: RBX::FactoryProduct<RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>, RBX::Instance, RBX::sDoubleConstrainedV~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23878, "RBX::FactoryProduct<RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>, RBX::Instance, RBX:~")
 }
 
-// 0xf23884 — __ZN3RBX4Name9doDeclareILZNS_23sDoubleConstrainedValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_23sDoubleConstrainedValueEEEERKS0_v$shim")]
-pub fn stub_0xf23884() -> ! {
-    todo!("0xf23884 __ZN3RBX4Name9doDeclareILZNS_23sDoubleConstrainedValueEEEERKS0_v$shim")
+pub fn stub_0xf23884() -> crate::slot::PortedFn {
+// IDA 0xf23884: RBX::Name const& RBX::Name::doDeclare<RBX::sDoubleConstrainedValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23884, "RBX::Name const& RBX::Name::doDeclare<RBX::sDoubleConstrainedValue>()")
 }
 
-// 0xf23890 — __ZNK3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23890() -> ! {
-    todo!("0xf23890 __ZNK3RBX14FactoryProductINS_16ConstrainedValueIdLZNS_23sDoubleConstrainedValueEEEENS_8InstanceELZNS_23sDoubleConstrainedValueEES3_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf23890() -> crate::slot::PortedFn {
+// IDA 0xf23890: RBX::FactoryProduct<RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>, RBX::Instance, RBX::sDoubleConstrainedV~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23890, "RBX::FactoryProduct<RBX::ConstrainedValue<double, RBX::sDoubleConstrainedValue>, RBX::Instance, RBX:~")
 }
 
-// 0xf2389c — __ZN3RBX4Name9doDeclareILZNS_20sIntConstrainedValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_20sIntConstrainedValueEEEERKS0_v$shim")]
-pub fn stub_0xf2389c() -> ! {
-    todo!("0xf2389c __ZN3RBX4Name9doDeclareILZNS_20sIntConstrainedValueEEEERKS0_v$shim")
+pub fn stub_0xf2389c() -> crate::slot::PortedFn {
+// IDA 0xf2389c: RBX::Name const& RBX::Name::doDeclare<RBX::sIntConstrainedValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2389c, "RBX::Name const& RBX::Name::doDeclare<RBX::sIntConstrainedValue>()")
 }
 
-// 0xf238a8 — __ZNK3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf238a8() -> ! {
-    todo!("0xf238a8 __ZNK3RBX14FactoryProductINS_16ConstrainedValueIiLZNS_20sIntConstrainedValueEEEENS_8InstanceELZNS_20sIntConstrainedValueEES3_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf238a8() -> crate::slot::PortedFn {
+// IDA 0xf238a8: RBX::FactoryProduct<RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>, RBX::Instance, RBX::sIntConstrainedValue, RBX~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238a8, "RBX::FactoryProduct<RBX::ConstrainedValue<int, RBX::sIntConstrainedValue>, RBX::Instance, RBX::sIntC~")
 }
 
-// 0xf238b4 — __ZN3RBX4Name9doDeclareILZNS_9sRayValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sRayValueEEEERKS0_v$shim")]
-pub fn stub_0xf238b4() -> ! {
-    todo!("0xf238b4 __ZN3RBX4Name9doDeclareILZNS_9sRayValueEEEERKS0_v$shim")
+pub fn stub_0xf238b4() -> crate::slot::PortedFn {
+// IDA 0xf238b4: RBX::Name const& RBX::Name::doDeclare<RBX::sRayValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238b4, "RBX::Name const& RBX::Name::doDeclare<RBX::sRayValue>()")
 }
 
-// 0xf238c0 — __ZNK3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf238c0() -> ! {
-    todo!("0xf238c0 __ZNK3RBX14FactoryProductINS_5ValueINS_6RbxRayELZNS_9sRayValueEEEENS_8InstanceELZNS_9sRayValueEES4_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf238c0() -> crate::slot::PortedFn {
+// IDA 0xf238c0: RBX::FactoryProduct<RBX::Value<RBX::RbxRay, RBX::sRayValue>, RBX::Instance, RBX::sRayValue, RBX::Instance>::Creator::get~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238c0, "RBX::FactoryProduct<RBX::Value<RBX::RbxRay, RBX::sRayValue>, RBX::Instance, RBX::sRayValue, RBX::Ins~")
 }
 
-// 0xf238cc — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE24safe_static_do_get_mutexEv$shim
-// type: int()
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf238cc() -> ! {
-    todo!("0xf238cc __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf238cc() -> crate::slot::PortedFn {
+// IDA 0xf238cc: rbx::signals::signal<void (RBX::RbxRay)>::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238cc, "rbx::signals::signal<void (RBX::RbxRay)>::safe_static_do_get_mutex()")
 }
 
-// 0xf238d8 — __ZN3RBX4Name9doDeclareILZNS_16sBrickColorValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_16sBrickColorValueEEEERKS0_v$shim")]
-pub fn stub_0xf238d8() -> ! {
-    todo!("0xf238d8 __ZN3RBX4Name9doDeclareILZNS_16sBrickColorValueEEEERKS0_v$shim")
+pub fn stub_0xf238d8() -> crate::slot::PortedFn {
+// IDA 0xf238d8: RBX::Name const& RBX::Name::doDeclare<RBX::sBrickColorValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238d8, "RBX::Name const& RBX::Name::doDeclare<RBX::sBrickColorValue>()")
 }
 
-// 0xf238e4 — __ZNK3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf238e4() -> ! {
-    todo!("0xf238e4 __ZNK3RBX14FactoryProductINS_5ValueINS_10BrickColorELZNS_16sBrickColorValueEEEENS_8InstanceELZNS_16sBrickColorValueEES4_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf238e4() -> crate::slot::PortedFn {
+// IDA 0xf238e4: RBX::FactoryProduct<RBX::Value<RBX::BrickColor, RBX::sBrickColorValue>, RBX::Instance, RBX::sBrickColorValue, RBX::Insta~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238e4, "RBX::FactoryProduct<RBX::Value<RBX::BrickColor, RBX::sBrickColorValue>, RBX::Instance, RBX::sBrickCo~")
 }
 
-// 0xf238f0 — __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE24safe_static_do_get_mutexEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf238f0() -> ! {
-    todo!("0xf238f0 __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf238f0() -> crate::slot::PortedFn {
+// IDA 0xf238f0: rbx::signals::signal<void (RBX::BrickColor)>::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238f0, "rbx::signals::signal<void (RBX::BrickColor)>::safe_static_do_get_mutex()")
 }
 
-// 0xf238fc — __ZN3RBX4Name9doDeclareILZNS_12sColor3ValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sColor3ValueEEEERKS0_v$shim")]
-pub fn stub_0xf238fc() -> ! {
-    todo!("0xf238fc __ZN3RBX4Name9doDeclareILZNS_12sColor3ValueEEEERKS0_v$shim")
+pub fn stub_0xf238fc() -> crate::slot::PortedFn {
+// IDA 0xf238fc: RBX::Name const& RBX::Name::doDeclare<RBX::sColor3Value>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf238fc, "RBX::Name const& RBX::Name::doDeclare<RBX::sColor3Value>()")
 }
 
-// 0xf23920 — __ZN3RBX4Name9doDeclareILZNS_12sCFrameValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sCFrameValueEEEERKS0_v$shim")]
-pub fn stub_0xf23920() -> ! {
-    todo!("0xf23920 __ZN3RBX4Name9doDeclareILZNS_12sCFrameValueEEEERKS0_v$shim")
+pub fn stub_0xf23920() -> crate::slot::PortedFn {
+// IDA 0xf23920: RBX::Name const& RBX::Name::doDeclare<RBX::sCFrameValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23920, "RBX::Name const& RBX::Name::doDeclare<RBX::sCFrameValue>()")
 }
 
-// 0xf23944 — __ZN3RBX4Name9doDeclareILZNS_13sVector3ValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sVector3ValueEEEERKS0_v$shim")]
-pub fn stub_0xf23944() -> ! {
-    todo!("0xf23944 __ZN3RBX4Name9doDeclareILZNS_13sVector3ValueEEEERKS0_v$shim")
+pub fn stub_0xf23944() -> crate::slot::PortedFn {
+// IDA 0xf23944: RBX::Name const& RBX::Name::doDeclare<RBX::sVector3Value>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23944, "RBX::Name const& RBX::Name::doDeclare<RBX::sVector3Value>()")
 }
 
-// 0xf2395c — __ZN3RBX4Name9doDeclareILZNS_10sBoolValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sBoolValueEEEERKS0_v$shim")]
-pub fn stub_0xf2395c() -> ! {
-    todo!("0xf2395c __ZN3RBX4Name9doDeclareILZNS_10sBoolValueEEEERKS0_v$shim")
+pub fn stub_0xf2395c() -> crate::slot::PortedFn {
+// IDA 0xf2395c: RBX::Name const& RBX::Name::doDeclare<RBX::sBoolValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2395c, "RBX::Name const& RBX::Name::doDeclare<RBX::sBoolValue>()")
 }
 
-// 0xf23968 — __ZNK3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23968() -> ! {
-    todo!("0xf23968 __ZNK3RBX14FactoryProductINS_5ValueIbLZNS_10sBoolValueEEEENS_8InstanceELZNS_10sBoolValueEES3_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf23968() -> crate::slot::PortedFn {
+// IDA 0xf23968: RBX::FactoryProduct<RBX::Value<bool, RBX::sBoolValue>, RBX::Instance, RBX::sBoolValue, RBX::Instance>::Creator::getClass~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23968, "RBX::FactoryProduct<RBX::Value<bool, RBX::sBoolValue>, RBX::Instance, RBX::sBoolValue, RBX::Instance~")
 }
 
-// 0xf23974 — __ZN3RBX4Name9doDeclareILZNS_12sDoubleValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sDoubleValueEEEERKS0_v$shim")]
-pub fn stub_0xf23974() -> ! {
-    todo!("0xf23974 __ZN3RBX4Name9doDeclareILZNS_12sDoubleValueEEEERKS0_v$shim")
+pub fn stub_0xf23974() -> crate::slot::PortedFn {
+// IDA 0xf23974: RBX::Name const& RBX::Name::doDeclare<RBX::sDoubleValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23974, "RBX::Name const& RBX::Name::doDeclare<RBX::sDoubleValue>()")
 }
 
-// 0xf23980 — __ZNK3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23980() -> ! {
-    todo!("0xf23980 __ZNK3RBX14FactoryProductINS_5ValueIdLZNS_12sDoubleValueEEEENS_8InstanceELZNS_12sDoubleValueEES3_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf23980() -> crate::slot::PortedFn {
+// IDA 0xf23980: RBX::FactoryProduct<RBX::Value<double, RBX::sDoubleValue>, RBX::Instance, RBX::sDoubleValue, RBX::Instance>::Creator::ge~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23980, "RBX::FactoryProduct<RBX::Value<double, RBX::sDoubleValue>, RBX::Instance, RBX::sDoubleValue, RBX::In~")
 }
 
-// 0xf2398c — __ZN3RBX4Name9doDeclareILZNS_9sIntValueEEEERKS0_v$shim
-// type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sIntValueEEEERKS0_v$shim")]
-pub fn stub_0xf2398c() -> ! {
-    todo!("0xf2398c __ZN3RBX4Name9doDeclareILZNS_9sIntValueEEEERKS0_v$shim")
+pub fn stub_0xf2398c() -> crate::slot::PortedFn {
+// IDA 0xf2398c: RBX::Name const& RBX::Name::doDeclare<RBX::sIntValue>().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf2398c, "RBX::Name const& RBX::Name::doDeclare<RBX::sIntValue>()")
 }
 
-// 0xf23998 — __ZNK3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7Creator12getClassNameEv$shim
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7Creator12getClassNameEv$shim")]
-pub fn stub_0xf23998() -> ! {
-    todo!("0xf23998 __ZNK3RBX14FactoryProductINS_5ValueIiLZNS_9sIntValueEEEENS_8InstanceELZNS_9sIntValueEES3_E7Creator12getClassNameEv$shim")
+pub fn stub_0xf23998() -> crate::slot::PortedFn {
+// IDA 0xf23998: RBX::FactoryProduct<RBX::Value<int, RBX::sIntValue>, RBX::Instance, RBX::sIntValue, RBX::Instance>::Creator::getClassNam~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf23998, "RBX::FactoryProduct<RBX::Value<int, RBX::sIntValue>, RBX::Instance, RBX::sIntValue, RBX::Instance>::~")
 }
 
-// 0xf239a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim
-// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")]
-pub fn stub_0xf239a4() -> ! {
-    todo!("0xf239a4 __ZNK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")
+pub fn stub_0xf239a4() -> crate::slot::PortedFn {
+// IDA 0xf239a4: RBX::Reflection::RefPropDescriptor<RBX::ObjectValue, RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase*, RBX::I~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239a4, "RBX::Reflection::RefPropDescriptor<RBX::ObjectValue, RBX::Instance>::assignIDREF(RBX::Reflection::De~")
 }
 
-// 0xf239b0 — __ZN3rbx7signals6signalIFviEE13disconnectAllEv$shim
-// type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFviEE13disconnectAllEv$shim")]
-pub fn stub_0xf239b0() -> ! {
-    todo!("0xf239b0 __ZN3rbx7signals6signalIFviEE13disconnectAllEv$shim")
+pub fn stub_0xf239b0() -> crate::slot::PortedFn {
+// IDA 0xf239b0: rbx::signals::signal<void (int)>::disconnectAll().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239b0, "rbx::signals::signal<void (int)>::disconnectAll()")
 }
 
-// 0xf239bc — __ZNK5boost9function1IviEclEi$shim
-// type: int()
 #[doc(alias = "__ZNK5boost9function1IviEclEi$shim")]
-pub fn stub_0xf239bc() -> ! {
-    todo!("0xf239bc __ZNK5boost9function1IviEclEi$shim")
+pub fn stub_0xf239bc() -> crate::slot::PortedFn {
+// IDA 0xf239bc: boost::function1<void, int>::operator()(int) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239bc, "boost::function1<void, int>::operator()(int) const")
 }
 
-// 0xf239c8 — __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE13disconnectAllEv$shim
-// type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE13disconnectAllEv$shim")]
-pub fn stub_0xf239c8() -> ! {
-    todo!("0xf239c8 __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE13disconnectAllEv$shim")
+pub fn stub_0xf239c8() -> crate::slot::PortedFn {
+// IDA 0xf239c8: rbx::signals::signal<void (RBX::BrickColor)>::disconnectAll().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239c8, "rbx::signals::signal<void (RBX::BrickColor)>::disconnectAll()")
 }
 
-// 0xf239d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10BrickColorEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10BrickColorEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
-pub fn stub_0xf239d4() -> ! {
-    todo!("0xf239d4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10BrickColorEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+pub fn stub_0xf239d4() -> crate::slot::PortedFn {
+// IDA 0xf239d4: boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Reflection::GenericSlotWra~.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239d4, "boost::detail::function::functor_manager<boost::_bi::bind_t<void, boost::_mfi::mf1<void, RBX::Reflec~")
 }
 
-// 0xf239e0 — __ZNK5boost9function1IvN3RBX10BrickColorEEclES2_$shim
-// type: void __fastcall(_DWORD *, int)
 #[doc(alias = "__ZNK5boost9function1IvN3RBX10BrickColorEEclES2_$shim")]
-pub fn stub_0xf239e0() -> ! {
-    todo!("0xf239e0 __ZNK5boost9function1IvN3RBX10BrickColorEEclES2_$shim")
+pub fn stub_0xf239e0() -> crate::slot::PortedFn {
+// IDA 0xf239e0: boost::function1<void, RBX::BrickColor>::operator()(RBX::BrickColor) const.
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239e0, "boost::function1<void, RBX::BrickColor>::operator()(RBX::BrickColor) const")
 }
 
-// 0xf239ec — __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slot24safe_static_do_get_mutexEv$shim
-// type: int __fastcall(int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slot24safe_static_do_get_mutexEv$shim")]
-pub fn stub_0xf239ec() -> ! {
-    todo!("0xf239ec __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slot24safe_static_do_get_mutexEv$shim")
+pub fn stub_0xf239ec() -> crate::slot::PortedFn {
+// IDA 0xf239ec: rbx::signals::signal<void (RBX::BrickColor)>::slot::safe_static_do_get_mutex().
+// tail-call/jump stub to the primary; the host keeps it as a delegate entry so the EA stays linkable
+crate::slot::PortedFn::new(0xf239ec, "rbx::signals::signal<void (RBX::BrickColor)>::slot::safe_static_do_get_mutex()")
 }

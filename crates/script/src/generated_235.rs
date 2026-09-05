@@ -8,502 +8,607 @@
 
 use rbx_core::SharedPtr;
 
-// 0x402e18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x402e18() -> ! { todo!("0x402e18 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x402e18() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x402e30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x402e30() -> ! { todo!("0x402e30 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x402e30() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x402e34 — __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_10PVInstanceEEEE13createServiceEv
-// type: int __fastcall(_DWORD *)
 #[doc(alias = "RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const")]
-pub fn stub_0x402e34() -> ! { todo!("0x402e34 __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_10PVInstanceEEEE13createServiceEv") }
+pub fn stub_0x402e34(handle: &crate::slot::InstanceHandle) {
+// RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x402f14 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_
-// type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> const&)")]
-pub fn stub_0x402f14() -> ! { todo!("0x402f14 __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_") }
+pub fn stub_0x402f14(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
+}
 
-// 0x402f4c — __ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_
-// type: void __fastcall(_DWORD *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)")]
-pub fn stub_0x402f4c() -> ! { todo!("0x402f4c __ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_") }
+pub fn stub_0x402f4c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::FilteredSelection<RBX::PVInstance>")
+}
 
-// 0x403034 — __ZN3RBX21BoolPropertyVerbSetItclEN5boost10shared_ptrINS_8InstanceEEE
-// type: int __fastcall(unsigned __int8 *, int *)
 #[doc(alias = "RBX::BoolPropertyVerbSetIt::operator()(rbx_core::SharedPtr<RBX::Instance>)")]
-pub fn stub_0x403034() -> ! { todo!("0x403034 __ZN3RBX21BoolPropertyVerbSetItclEN5boost10shared_ptrINS_8InstanceEEE") }
+pub fn stub_0x403034() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x403278 — __ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIbPFbPKcS6_ENSD_5list2INSD_5valueISG_EENS2_3argILi1EEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag
-// type: int __fastcall(int, int, int, int)
 #[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)")]
-pub fn stub_0x403278() -> ! { todo!("0x403278 __ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIbPFbPKcS6_ENSD_5list2INSD_5valueISG_EENS2_3argILi1EEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag") }
+pub fn stub_0x403278() -> crate::slot::BoundCall {
+// boost::bind (cf. 0x39d700 args) — captures receiver +
+// member functor + 2 placeholders as a host closure.
+// was: boost::_bi::bind_t/_mfi.
+crate::slot::BoundCall::new(2)
+}
 
-// 0x40336c — __ZN5boost3_bi5list2INS0_5valueIPKcEENS_3argILi1EEEEclIbPFbS4_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRKSD_EEEET_NS0_4typeISK_EERT0_RT1_l
-// type: int __fastcall(int *, int (__fastcall **)(int, sp_counted_base **), const shared_count **)
 #[doc(alias = "bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,long)")]
-pub fn stub_0x40336c() -> ! { todo!("0x40336c __ZN5boost3_bi5list2INS0_5valueIPKcEENS_3argILi1EEEEclIbPFbS4_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRKSD_EEEET_NS0_4typeISK_EERT0_RT1_l") }
+pub fn stub_0x40336c(call: &crate::slot::BoundCall, args: &[f32]) {
+// IDA 0x40336c: list::operator() (cf. 0x39dc18) — resolves the
+// member pointer (incl. the virtual-call branch) and invokes
+// mf(object, args...).
+call.apply(args);
+}
 
-// 0x403820 — __ZN3RBX11CommonVerbsC1EPNS_9DataModelE
-// type: int __fastcall(RBX::CommonVerbs *this, RBX::DataModel *)
 #[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")]
-pub fn stub_0x403820() -> ! { todo!("0x403820 __ZN3RBX11CommonVerbsC1EPNS_9DataModelE") }
+pub fn stub_0x403820() -> crate::slot::InstanceHandle {
+// RBX::CommonVerbs ctor.
+crate::slot::InstanceHandle::new("RBX::CommonVerbs")
+}
 
-// 0x403824 — __ZN3RBX11CommonVerbsC2EPNS_9DataModelE
-// type: RBX::CommonVerbs *__fastcall(RBX::CommonVerbs *this, RBX::DataModel *)
 #[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *) [0x403824]")]
-pub fn stub_0x403824() -> ! { todo!("0x403824 __ZN3RBX11CommonVerbsC2EPNS_9DataModelE") }
+pub fn stub_0x403824() -> crate::slot::InstanceHandle {
+// RBX::CommonVerbs ctor.
+crate::slot::InstanceHandle::new("RBX::CommonVerbs")
+}
 
-// 0x404394 — __ZN3RBX9TToolVerbINS_10HammerToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x404394() -> ! { todo!("0x404394 __ZN3RBX9TToolVerbINS_10HammerToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x404394() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4047d4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4047d4() -> ! { todo!("0x4047d4 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4047d4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::HammerTool")
+}
 
-// 0x404c8c — __ZN3RBX9TToolVerbINS_9CloneToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x404c8c() -> ! { todo!("0x404c8c __ZN3RBX9TToolVerbINS_9CloneToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x404c8c() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4050c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4050c8() -> ! { todo!("0x4050c8 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4050c8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::CloneTool")
+}
 
-// 0x405580 — __ZN3RBX9TToolVerbINS_8GrabToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x405580() -> ! { todo!("0x405580 __ZN3RBX9TToolVerbINS_8GrabToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x405580() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4059bc — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4059bc() -> ! { todo!("0x4059bc __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4059bc() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::GrabTool")
+}
 
-// 0x405e74 — __ZN3RBX9TToolVerbINS_8GameToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x405e74() -> ! { todo!("0x405e74 __ZN3RBX9TToolVerbINS_8GameToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x405e74() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4062b0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4062b0() -> ! { todo!("0x4062b0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4062b0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::GameTool")
+}
 
-// 0x406768 — __ZN3RBX9TToolVerbINS_8NullToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x406768() -> ! { todo!("0x406768 __ZN3RBX9TToolVerbINS_8NullToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x406768() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x406ba4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x406ba4() -> ! { todo!("0x406ba4 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x406ba4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::NullTool")
+}
 
-// 0x406d20 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(rbx_core::SharedPtr<RBX::NullTool> const*,RBX::NullTool *)const")]
-pub fn stub_0x406d20() -> ! { todo!("0x406d20 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x406d20() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::NullTool")
+}
 
-// 0x406e04 — __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x406e04() -> ! { todo!("0x406e04 __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x406e04() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x406efc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x406efc() -> ! { todo!("0x406efc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x406efc(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x406f00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x406f00]")]
-pub fn stub_0x406f00() -> ! { todo!("0x406f00 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x406f00(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x406f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x406f04() -> ! { todo!("0x406f04 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x406f04() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x406f14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x406f14() -> ! { todo!("0x406f14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x406f14() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x406f2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x406f2c() -> ! { todo!("0x406f2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x406f2c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40705c — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x40705c() -> ! { todo!("0x40705c __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x40705c() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4071e0 — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEED0Ev
-// type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::~TToolVerb() [0x4071e0]")]
-pub fn stub_0x4071e0() -> ! { todo!("0x4071e0 __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEED0Ev") }
+pub fn stub_0x4071e0(handle: crate::slot::InstanceHandle) {
+// RBX::TToolVerb dtor.
+drop(handle);
+}
 
-// 0x407280 — __ZNK3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE9isCheckedEv
-// type: bool __fastcall(int)
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::isChecked(void)const")]
-pub fn stub_0x407280() -> ! { todo!("0x407280 __ZNK3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE9isCheckedEv") }
+pub fn stub_0x407280(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::TToolVerb getter.
+cell.get()
+}
 
-// 0x4072b8 — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
-// type: void __fastcall(_BYTE *)
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")]
-pub fn stub_0x4072b8() -> ! { todo!("0x4072b8 __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE") }
+pub fn stub_0x4072b8(handle: &crate::slot::InstanceHandle) {
+// RBX::TToolVerb<RBX::DropperTool, RBX::RunStateVerb>::doIt(RBX::IDataState*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x4073cc — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE15newMouseCommandEv
-// type: void __fastcall(_DWORD *, int)
 #[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::newMouseCommand(void)")]
-pub fn stub_0x4073cc() -> ! { todo!("0x4073cc __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEE15newMouseCommandEv") }
+pub fn stub_0x4073cc(handle: &crate::slot::InstanceHandle) {
+// RBX::TToolVerb<RBX::DropperTool, RBX::RunStateVerb>::newMouseCommand() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x407498 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x407498() -> ! { todo!("0x407498 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x407498() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::DropperTool")
+}
 
-// 0x407574 — __ZNK3RBX11DropperTool13getCursorNameEv
-// type: int __fastcall(RBX::DropperTool *this)
 #[doc(alias = "RBX::DropperTool::getCursorName(void)const")]
-pub fn stub_0x407574() -> ! { todo!("0x407574 __ZNK3RBX11DropperTool13getCursorNameEv") }
+pub fn stub_0x407574(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DropperTool getter.
+cell.get()
+}
 
-// 0x407590 — __ZN5boost10shared_ptrIN3RBX11DropperToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::DropperTool>::shared_ptr<RBX::DropperTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x407590() -> ! { todo!("0x407590 __ZN5boost10shared_ptrIN3RBX11DropperToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x407590() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::DropperTool")
+}
 
-// 0x407658 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(rbx_core::SharedPtr<RBX::DropperTool> const*,RBX::DropperTool *)const")]
-pub fn stub_0x407658() -> ! { todo!("0x407658 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x407658() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::DropperTool")
+}
 
-// 0x40773c — __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40773c() -> ! { todo!("0x40773c __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x40773c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x407834 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x407834() -> ! { todo!("0x407834 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x407834(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x407838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x407838]")]
-pub fn stub_0x407838() -> ! { todo!("0x407838 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x407838(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40783c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x40783c() -> ! { todo!("0x40783c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x40783c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40784c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x40784c() -> ! { todo!("0x40784c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x40784c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x407864 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x407864() -> ! { todo!("0x407864 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x407864() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x407994 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x407994() -> ! { todo!("0x407994 __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x407994() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x407b18 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEED0Ev
-// type: void __fastcall(RBX::RunStateVerb *)
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::~TToolVerb() [0x407b18]")]
-pub fn stub_0x407b18() -> ! { todo!("0x407b18 __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEED0Ev") }
+pub fn stub_0x407b18(handle: crate::slot::InstanceHandle) {
+// RBX::TToolVerb dtor.
+drop(handle);
+}
 
-// 0x407bb8 — __ZNK3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE9isCheckedEv
-// type: bool __fastcall(int)
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::isChecked(void)const")]
-pub fn stub_0x407bb8() -> ! { todo!("0x407bb8 __ZNK3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE9isCheckedEv") }
+pub fn stub_0x407bb8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::TToolVerb getter.
+cell.get()
+}
 
-// 0x407bf0 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE
-// type: void __fastcall(_BYTE *)
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::doIt(RBX::IDataState *)")]
-pub fn stub_0x407bf0() -> ! { todo!("0x407bf0 __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE4doItEPNS_10IDataStateE") }
+pub fn stub_0x407bf0(handle: &crate::slot::InstanceHandle) {
+// RBX::TToolVerb<RBX::MaterialTool, RBX::RunStateVerb>::doIt(RBX::IDataState*) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x407d04 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE15newMouseCommandEv
-// type: void __fastcall(_DWORD *, int)
 #[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::newMouseCommand(void)")]
-pub fn stub_0x407d04() -> ! { todo!("0x407d04 __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEE15newMouseCommandEv") }
+pub fn stub_0x407d04(handle: &crate::slot::InstanceHandle) {
+// RBX::TToolVerb<RBX::MaterialTool, RBX::RunStateVerb>::newMouseCommand() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x407dd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x407dd0() -> ! { todo!("0x407dd0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x407dd0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::MaterialTool")
+}
 
-// 0x407eac — __ZNK3RBX12MaterialTool8isStickyEv
-// type: void __fastcall(RBX::MaterialTool *this, int)
 #[doc(alias = "RBX::MaterialTool::isSticky(void)const")]
-pub fn stub_0x407eac() -> ! { todo!("0x407eac __ZNK3RBX12MaterialTool8isStickyEv") }
+pub fn stub_0x407eac(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::MaterialTool getter.
+cell.get()
+}
 
-// 0x407f74 — __ZNK3RBX12MaterialTool13getCursorNameEv
-// type: int __fastcall(RBX::MaterialTool *this)
 #[doc(alias = "RBX::MaterialTool::getCursorName(void)const")]
-pub fn stub_0x407f74() -> ! { todo!("0x407f74 __ZNK3RBX12MaterialTool13getCursorNameEv") }
+pub fn stub_0x407f74(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::MaterialTool getter.
+cell.get()
+}
 
-// 0x407f90 — __ZN5boost10shared_ptrIN3RBX12MaterialToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::MaterialTool>::shared_ptr<RBX::MaterialTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x407f90() -> ! { todo!("0x407f90 __ZN5boost10shared_ptrIN3RBX12MaterialToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x407f90() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::MaterialTool")
+}
 
-// 0x408058 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(rbx_core::SharedPtr<RBX::MaterialTool> const*,RBX::MaterialTool *)const")]
-pub fn stub_0x408058() -> ! { todo!("0x408058 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x408058() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::MaterialTool")
+}
 
-// 0x40813c — __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40813c() -> ! { todo!("0x40813c __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x40813c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408234 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x408234() -> ! { todo!("0x408234 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x408234(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x408238 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x408238]")]
-pub fn stub_0x408238() -> ! { todo!("0x408238 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x408238(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40823c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x40823c() -> ! { todo!("0x40823c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x40823c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40824c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x40824c() -> ! { todo!("0x40824c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x40824c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408264 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x408264() -> ! { todo!("0x408264 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x408264() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408394 — __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x408394() -> ! { todo!("0x408394 __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x408394() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4087d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4087d0() -> ! { todo!("0x4087d0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4087d0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::FillTool")
+}
 
-// 0x408990 — __ZN5boost10shared_ptrIN3RBX8FillToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::FillTool>::shared_ptr<RBX::FillTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x408990() -> ! { todo!("0x408990 __ZN5boost10shared_ptrIN3RBX8FillToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x408990() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::FillTool")
+}
 
-// 0x408a58 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(rbx_core::SharedPtr<RBX::FillTool> const*,RBX::FillTool *)const")]
-pub fn stub_0x408a58() -> ! { todo!("0x408a58 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x408a58() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::FillTool")
+}
 
-// 0x408b3c — __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x408b3c() -> ! { todo!("0x408b3c __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x408b3c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408c34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x408c34() -> ! { todo!("0x408c34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x408c34(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x408c38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x408c38]")]
-pub fn stub_0x408c38() -> ! { todo!("0x408c38 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x408c38(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x408c3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x408c3c() -> ! { todo!("0x408c3c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x408c3c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408c4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x408c4c() -> ! { todo!("0x408c4c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x408c4c() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408c64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x408c64() -> ! { todo!("0x408c64 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x408c64() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x408d94 — __ZN3RBX9TToolVerbINS_8LockToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x408d94() -> ! { todo!("0x408d94 __ZN3RBX9TToolVerbINS_8LockToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x408d94() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x4091d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x4091d0() -> ! { todo!("0x4091d0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x4091d0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::LockTool")
+}
 
-// 0x409374 — __ZN3RBX11shared_fromINS_8LockToolEEEN5boost10shared_ptrIT_EEPS4_
-// type: void __fastcall(_QWORD *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::LockTool> RBX::shared_from<RBX::LockTool>(RBX::LockTool*)")]
-pub fn stub_0x409374() -> ! { todo!("0x409374 __ZN3RBX11shared_fromINS_8LockToolEEEN5boost10shared_ptrIT_EEPS4_") }
+pub fn stub_0x409374() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::LockTool")
+}
 
-// 0x4094dc — __ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x4094dc() -> ! { todo!("0x4094dc __ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x4094dc() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::LockTool")
+}
 
-// 0x4095a4 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(rbx_core::SharedPtr<RBX::LockTool> const*,RBX::LockTool *)const")]
-pub fn stub_0x4095a4() -> ! { todo!("0x4095a4 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x4095a4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::LockTool")
+}
 
-// 0x409688 — __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x409688() -> ! { todo!("0x409688 __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x409688() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x409780 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x409780() -> ! { todo!("0x409780 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x409780(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x409784 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x409784]")]
-pub fn stub_0x409784() -> ! { todo!("0x409784 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x409784(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x409788 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x409788() -> ! { todo!("0x409788 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x409788() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x409798 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x409798() -> ! { todo!("0x409798 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x409798() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x4097b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x4097b0() -> ! { todo!("0x4097b0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x4097b0() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x4098e0 — __ZN3RBX9TToolVerbINS_10AnchorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x4098e0() -> ! { todo!("0x4098e0 __ZN3RBX9TToolVerbINS_10AnchorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x4098e0() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x409d1c — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x409d1c() -> ! { todo!("0x409d1c __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x409d1c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::AnchorTool")
+}
 
-// 0x409ec8 — __ZN3RBX11shared_fromINS_10AnchorToolEEEN5boost10shared_ptrIT_EEPS4_
-// type: void __fastcall(_QWORD *, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AnchorTool> RBX::shared_from<RBX::AnchorTool>(RBX::AnchorTool*)")]
-pub fn stub_0x409ec8() -> ! { todo!("0x409ec8 __ZN3RBX11shared_fromINS_10AnchorToolEEEN5boost10shared_ptrIT_EEPS4_") }
+pub fn stub_0x409ec8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::AnchorTool")
+}
 
-// 0x40a030 — __ZN5boost10shared_ptrIN3RBX10AnchorToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::AnchorTool>::shared_ptr<RBX::AnchorTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40a030() -> ! { todo!("0x40a030 __ZN5boost10shared_ptrIN3RBX10AnchorToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x40a030() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::AnchorTool")
+}
 
-// 0x40a0f8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(rbx_core::SharedPtr<RBX::AnchorTool> const*,RBX::AnchorTool *)const")]
-pub fn stub_0x40a0f8() -> ! { todo!("0x40a0f8 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x40a0f8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::AnchorTool")
+}
 
-// 0x40a1dc — __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40a1dc() -> ! { todo!("0x40a1dc __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x40a1dc() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40a2d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x40a2d4() -> ! { todo!("0x40a2d4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x40a2d4(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40a2d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x40a2d8]")]
-pub fn stub_0x40a2d8() -> ! { todo!("0x40a2d8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x40a2d8(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40a2dc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x40a2dc() -> ! { todo!("0x40a2dc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x40a2dc() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40a2ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x40a2ec() -> ! { todo!("0x40a2ec __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x40a2ec() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40a304 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x40a304() -> ! { todo!("0x40a304 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x40a304() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40a434 — __ZN3RBX9TToolVerbINS_20SmoothNoOutlinesToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
-// type: int __fastcall(int, int, char)
 #[doc(alias = "RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
-pub fn stub_0x40a434() -> ! { todo!("0x40a434 __ZN3RBX9TToolVerbINS_20SmoothNoOutlinesToolENS_12RunStateVerbEEC2EPNS_9DataModelEb") }
+pub fn stub_0x40a434() -> crate::slot::InstanceHandle {
+// RBX::TToolVerb ctor.
+crate::slot::InstanceHandle::new("RBX::TToolVerb")
+}
 
-// 0x40a870 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-// type: void __fastcall(int, RBX::Workspace *)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")]
-pub fn stub_0x40a870() -> ! { todo!("0x40a870 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_") }
+pub fn stub_0x40a870() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::SmoothNoOutlinesTool")
+}
 
-// 0x40aa30 — __ZN5boost10shared_ptrIN3RBX20SmoothNoOutlinesToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-// type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RBX::SmoothNoOutlinesTool>::shared_ptr<RBX::SmoothNoOutlinesTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40aa30() -> ! { todo!("0x40aa30 __ZN5boost10shared_ptrIN3RBX20SmoothNoOutlinesToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_") }
+pub fn stub_0x40aa30() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::SmoothNoOutlinesTool")
+}
 
-// 0x40aaf8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-// type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(rbx_core::SharedPtr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const")]
-pub fn stub_0x40aaf8() -> ! { todo!("0x40aaf8 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_") }
+pub fn stub_0x40aaf8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::SmoothNoOutlinesTool")
+}
 
-// 0x40abdc — __ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
-// type: _DWORD *__fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
-pub fn stub_0x40abdc() -> ! { todo!("0x40abdc __ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_") }
+pub fn stub_0x40abdc() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40acd4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
-// type: void()
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x40acd4() -> ! { todo!("0x40acd4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev") }
+pub fn stub_0x40acd4(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40acd8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd() [0x40acd8]")]
-pub fn stub_0x40acd8() -> ! { todo!("0x40acd8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev") }
+pub fn stub_0x40acd8(count: crate::slot::SharedCount) {
+// shared_count dtor — releases the counter.
+drop(count);
+}
 
-// 0x40acdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
-pub fn stub_0x40acdc() -> ! { todo!("0x40acdc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv") }
+pub fn stub_0x40acdc() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40acec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_0x40acec() -> ! { todo!("0x40acec __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info") }
+pub fn stub_0x40acec() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}
 
-// 0x40ad04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
-// type: int __fastcall(int)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_0x40ad04() -> ! { todo!("0x40ad04 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv") }
+pub fn stub_0x40ad04() -> crate::slot::SharedCount {
+// shared_count ctor — one strong, one weak (self).
+crate::slot::SharedCount::new()
+}

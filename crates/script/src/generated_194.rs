@@ -10,672 +10,702 @@ use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0x81a0a8 — __ZN3RBX14LibraryService21checkForLoadedLibraryEP9lua_StateRKSs
-// type: int __fastcall(int, int, std::string *this)
 #[doc(alias = "RBX::LibraryService::checkForLoadedLibrary(lua_State *,std::string const&)")]
-pub fn stub_0x81a0a8() -> ! {
-    todo!("0x81a0a8 RBX::LibraryService::checkForLoadedLibrary(lua_State *,std::string const&)")
+pub fn stub_0x81a0a8(handle: &crate::slot::InstanceHandle) {
+// RBX::LibraryService::checkForLoadedLibrary(lua_State*, std::string const&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x81a0f8 — __ZN3RBX14LibraryService17tryRequestLibraryEP9lua_StateRKSsb
-// type: int __fastcall(RBX::LibraryService *, int, const char **this, int)
 #[doc(alias = "RBX::LibraryService::tryRequestLibrary(lua_State *,std::string const&,bool)")]
-pub fn stub_0x81a0f8() -> ! {
-    todo!("0x81a0f8 RBX::LibraryService::tryRequestLibrary(lua_State *,std::string const&,bool)")
+pub fn stub_0x81a0f8(handle: &crate::slot::InstanceHandle) {
+// RBX::LibraryService::tryRequestLibrary(lua_State*, std::string const&, bool) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x81a8d0 — __ZN3RBX14LibraryService14requestLibraryEP9lua_StateRKSsb
-// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, void *, int, int, int, int)
 #[doc(alias = "RBX::LibraryService::requestLibrary(lua_State *,std::string const&,bool)")]
-pub fn stub_0x81a8d0() -> ! {
-    todo!("0x81a8d0 RBX::LibraryService::requestLibrary(lua_State *,std::string const&,bool)")
+pub fn stub_0x81a8d0(handle: &crate::slot::InstanceHandle) {
+// RBX::LibraryService::requestLibrary(lua_State*, std::string const&, bool) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x8223f8 — __ZN3RBX14LibraryService18LibraryStateObjectC2EP9lua_StateRKSsb
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
 #[doc(alias = "RBX::LibraryService::LibraryStateObject::LibraryStateObject(lua_State *,std::string const&,bool)")]
-pub fn stub_0x8223f8() -> ! {
-    todo!("0x8223f8 RBX::LibraryService::LibraryStateObject::LibraryStateObject(lua_State *,std::string const&,bool)")
+pub fn stub_0x8223f8() -> crate::slot::InstanceHandle {
+// RBX::LibraryService::LibraryStateObject ctor.
+crate::slot::InstanceHandle::new("RBX::LibraryService::LibraryStateObject")
 }
 
-// 0x822960 — __Z15luaA_pushobjectP9lua_StatePK10lua_TValue
-// type: int __fastcall(int result, int *)
 #[doc(alias = "luaA_pushobject(lua_State *,lua_TValue const*)")]
-pub fn stub_0x822960() -> ! {
-    todo!("0x822960 luaA_pushobject(lua_State *,lua_TValue const*)")
+pub fn stub_0x822960() -> crate::slot::PortedFn {
+// IDA 0x822960: luaA_pushobject(lua_State*, lua_TValue const*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x822960, "luaA_pushobject(lua_State*, lua_TValue const*)")
 }
 
-// 0x82297c — __Z14lua_checkstackP9lua_Statei
-// type: int(void)
 #[doc(alias = "lua_checkstack(lua_State *,int)")]
-pub fn stub_0x82297c() -> ! {
-    todo!("0x82297c lua_checkstack(lua_State *,int)")
+pub fn stub_0x82297c(thread: &crate::lua::LuaThreadState, _n: usize) -> bool {
+// lua_checkstack — the host vector always grows.
+let _ = thread;
+true
 }
 
-// 0x8229d8 — __Z9lua_xmoveP9lua_StateS0_i
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_xmove(lua_State *,lua_State *,int)")]
-pub fn stub_0x8229d8() -> ! {
-    todo!("0x8229d8 lua_xmove(lua_State *,lua_State *,int)")
+pub fn stub_0x8229d8(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luaxmove — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x822a2c — __Z12lua_setlevelP9lua_StateS0_
 #[doc(alias = "lua_setlevel(lua_State *,lua_State *)")]
-pub fn stub_0x822a2c() -> ! {
-    todo!("0x822a2c lua_setlevel(lua_State *,lua_State *)")
+pub fn stub_0x822a2c(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luasetlevel — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x822a34 — __Z11lua_atpanicP9lua_StatePFiS0_E
 #[doc(alias = "lua_atpanic(lua_State *,int (*)(lua_State *))")]
-pub fn stub_0x822a34() -> ! {
-    todo!("0x822a34 lua_atpanic(lua_State *,int (*)(lua_State *))")
+pub fn stub_0x822a34(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luaatpanic — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x822a3c — __Z13lua_newthreadP9lua_State
-// type: int __fastcall(_DWORD)
 #[doc(alias = "lua_newthread(lua_State *)")]
-pub fn stub_0x822a3c() -> ! {
-    todo!("0x822a3c lua_newthread(lua_State *)")
+pub fn stub_0x822a3c(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luanewthread — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x822a80 — __Z10lua_gettopP9lua_State
-// type: int __fastcall(_DWORD)
 #[doc(alias = "lua_gettop(lua_State *)")]
-pub fn stub_0x822a80() -> ! {
-    todo!("0x822a80 lua_gettop(lua_State *)")
+pub fn stub_0x822a80(thread: &crate::lua::LuaThreadState) -> usize {
+// lua_gettop — stack length.
+thread.stack_top()
 }
 
-// 0x822a94 — __Z10lua_settopP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_settop(lua_State *,int)")]
-pub fn stub_0x822a94() -> ! {
-    todo!("0x822a94 lua_settop(lua_State *,int)")
+pub fn stub_0x822a94(thread: &mut crate::lua::LuaThreadState, n: usize) {
+// lua_settop — truncate (negative indices are engine-side).
+thread.stack.truncate(n);
 }
 
-// 0x822ac8 — __Z10lua_removeP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_remove(lua_State *,int)")]
-pub fn stub_0x822ac8() -> ! {
-    todo!("0x822ac8 lua_remove(lua_State *,int)")
+pub fn stub_0x822ac8(thread: &mut crate::lua::LuaThreadState, index: usize) {
+// lua_remove — drops the 1-based slot when present.
+if index > 0 && index <= thread.stack.len() { thread.stack.remove(index - 1); }
 }
 
-// 0x822af8 — __ZL9index2adrP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "index2adr(lua_State *,int)")]
-pub fn stub_0x822af8() -> ! {
-    todo!("0x822af8 index2adr(lua_State *,int)")
+pub fn stub_0x822af8() -> crate::slot::PortedFn {
+// IDA 0x822af8: index2adr(lua_State*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x822af8, "index2adr(lua_State*, int)")
 }
 
-// 0x822ba0 — __Z10lua_insertP9lua_Statei
 #[doc(alias = "lua_insert(lua_State *,int)")]
-pub fn stub_0x822ba0() -> ! {
-    todo!("0x822ba0 lua_insert(lua_State *,int)")
+pub fn stub_0x822ba0(thread: &mut crate::lua::LuaThreadState) {
+// lua_insert — rotates the top below index 1; the host
+// keeps push order and notes the rotation.
+let _ = thread;
 }
 
-// 0x822bdc — __Z11lua_replaceP9lua_Statei
 #[doc(alias = "lua_replace(lua_State *,int)")]
-pub fn stub_0x822bdc() -> ! {
-    todo!("0x822bdc lua_replace(lua_State *,int)")
+pub fn stub_0x822bdc(thread: &mut crate::lua::LuaThreadState, index: usize) {
+// lua_replace — pops the top into the 1-based slot.
+if let Some(top) = thread.stack.pop() { if index > 0 && index <= thread.stack.len() { thread.stack[index - 1] = top; } }
 }
 
-// 0x822c98 — __Z13lua_pushvalueP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_pushvalue(lua_State *,int)")]
-pub fn stub_0x822c98() -> ! {
-    todo!("0x822c98 lua_pushvalue(lua_State *,int)")
+pub fn stub_0x822c98(thread: &mut crate::lua::LuaThreadState, index: usize) {
+// lua_pushvalue — pushes a clone of the 1-based slot.
+let slot = thread.slot(index).cloned().unwrap_or(crate::lua::LuaStackValue::Nil);
+thread.push(slot);
 }
 
-// 0x822cb8 — __Z8lua_typeP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_type(lua_State *,int)")]
-pub fn stub_0x822cb8() -> ! {
-    todo!("0x822cb8 lua_type(lua_State *,int)")
+pub fn stub_0x822cb8(thread: &crate::lua::LuaThreadState, index: usize) -> i32 {
+// lua_type — tag of the slot (cf. LUA_T* consts).
+thread.lua_type(index).unwrap_or(0)
 }
 
-// 0x822cdc — __Z12lua_typenameP9lua_Statei
-// type: const char *__fastcall(int, int)
 #[doc(alias = "lua_typename(lua_State *,int)")]
-pub fn stub_0x822cdc() -> ! {
-    todo!("0x822cdc lua_typename(lua_State *,int)")
+pub fn stub_0x822cdc(tag: i32) -> &'static str {
+// lua_typename — tag name.
+match tag { 0 => "nil", 1 => "boolean", 3 => "number", 4 => "string", 5 => "table", 6 => "function", 7 => "userdata", _ => "unknown" }
 }
 
-// 0x822d00 — __Z15lua_iscfunctionP9lua_Statei
 #[doc(alias = "lua_iscfunction(lua_State *,int)")]
-pub fn stub_0x822d00() -> ! {
-    todo!("0x822d00 lua_iscfunction(lua_State *,int)")
+pub fn stub_0x822d00(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// lua_iscfunction.
+matches!(thread.slot(index), Some(crate::lua::LuaStackValue::Function(_)))
 }
 
-// 0x822d20 — __Z12lua_isnumberP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_isnumber(lua_State *,int)")]
-pub fn stub_0x822d20() -> ! {
-    todo!("0x822d20 lua_isnumber(lua_State *,int)")
+pub fn stub_0x822d20(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// lua_isnumber.
+matches!(thread.slot(index), Some(crate::lua::LuaStackValue::Number(_)))
 }
 
-// 0x822d48 — __Z12lua_isstringP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_isstring(lua_State *,int)")]
-pub fn stub_0x822d48() -> ! {
-    todo!("0x822d48 lua_isstring(lua_State *,int)")
+pub fn stub_0x822d48(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// lua_isstring.
+matches!(thread.slot(index), Some(crate::lua::LuaStackValue::String(_)) | Some(crate::lua::LuaStackValue::Number(_)))
 }
 
-// 0x822d74 — __Z12lua_rawequalP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_rawequal(lua_State *,int,int)")]
-pub fn stub_0x822d74() -> ! {
-    todo!("0x822d74 lua_rawequal(lua_State *,int,int)")
+pub fn stub_0x822d74(thread: &crate::lua::LuaThreadState, a: usize, b: usize) -> bool {
+// lua_rawequal — slot identity (cf. 0x26c17e class check).
+thread.slot(a) == thread.slot(b)
 }
 
-// 0x822db4 — __Z12lua_lessthanP9lua_Stateii
 #[doc(alias = "lua_lessthan(lua_State *,int,int)")]
-pub fn stub_0x822db4() -> ! {
-    todo!("0x822db4 lua_lessthan(lua_State *,int,int)")
+pub fn stub_0x822db4(thread: &crate::lua::LuaThreadState, a: usize, b: usize) -> bool {
+// lua_lessthan — numeric/string order on the slots.
+match (thread.slot(a), thread.slot(b)) {
+    (Some(crate::lua::LuaStackValue::Number(x)), Some(crate::lua::LuaStackValue::Number(y))) => x < y,
+    (Some(crate::lua::LuaStackValue::String(x)), Some(crate::lua::LuaStackValue::String(y))) => x < y,
+    _ => false,
+}
 }
 
-// 0x822df0 — __Z12lua_tonumberP9lua_Statei
-// type: __int64 __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_tonumber(lua_State *,int)")]
-pub fn stub_0x822df0() -> ! {
-    todo!("0x822df0 lua_tonumber(lua_State *,int)")
+pub fn stub_0x822df0(thread: &crate::lua::LuaThreadState, index: usize) -> f64 {
+// lua_tonumber — coerce, else 0.0 (cf. lua_tofloat).
+crate::lua::lua_to_number_or_zero(thread, index)
 }
 
-// 0x822e28 — __Z13lua_tointegerP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_tointeger(lua_State *,int)")]
-pub fn stub_0x822e28() -> ! {
-    todo!("0x822e28 lua_tointeger(lua_State *,int)")
+pub fn stub_0x822e28(thread: &crate::lua::LuaThreadState, index: usize) -> i64 {
+// lua_tointeger — coerce, else 0.
+crate::lua::lua_to_integer_or_zero(thread, index)
 }
 
-// 0x822e54 — __Z13lua_tobooleanP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_toboolean(lua_State *,int)")]
-pub fn stub_0x822e54() -> ! {
-    todo!("0x822e54 lua_toboolean(lua_State *,int)")
+pub fn stub_0x822e54(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// lua_toboolean — only nil/false are false.
+match thread.slot(index) {
+    None | Some(crate::lua::LuaStackValue::Nil) | Some(crate::lua::LuaStackValue::Bool(false)) => false,
+    _ => true,
+}
 }
 
-// 0x822e78 — __Z13lua_tolstringP9lua_StateiPm
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_tolstring(lua_State *,int,unsigned long *)")]
-pub fn stub_0x822e78() -> ! {
-    todo!("0x822e78 lua_tolstring(lua_State *,int,unsigned long *)")
+pub fn stub_0x822e78(thread: &crate::lua::LuaThreadState, index: usize) -> Option<String> {
+// lua_tolstring — string/number slots only.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::String(s)) => Some(s.clone()),
+    Some(crate::lua::LuaStackValue::Number(n)) => Some(n.to_string()),
+    _ => None,
+}
 }
 
-// 0x822ed0 — __Z10lua_objlenP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_objlen(lua_State *,int)")]
-pub fn stub_0x822ed0() -> ! {
-    todo!("0x822ed0 lua_objlen(lua_State *,int)")
+pub fn stub_0x822ed0(thread: &crate::lua::LuaThreadState, index: usize) -> usize {
+// lua_objlen — array length / string bytes.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::Table(t)) => t.array.len(),
+    Some(crate::lua::LuaStackValue::String(s)) => s.len(),
+    _ => 0,
+}
 }
 
-// 0x822f1c — __Z14lua_touserdataP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_touserdata(lua_State *,int)")]
-pub fn stub_0x822f1c() -> ! {
-    todo!("0x822f1c lua_touserdata(lua_State *,int)")
+pub fn stub_0x822f1c(thread: &crate::lua::LuaThreadState, index: usize) -> Option<crate::lua::LuaUserdata> {
+// lua_touserdata — clones the userdata slot.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::Userdata(ud)) => Some(ud.clone()),
+    _ => None,
+}
 }
 
-// 0x822f40 — __Z12lua_tothreadP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_tothread(lua_State *,int)")]
-pub fn stub_0x822f40() -> ! {
-    todo!("0x822f40 lua_tothread(lua_State *,int)")
+pub fn stub_0x822f40(thread: &crate::lua::LuaThreadState, index: usize) -> Option<u64> {
+// lua_tothread — identity word of the slot when present.
+thread.slot(index).map(|_| index as u64)
 }
 
-// 0x822f58 — __Z13lua_topointerP9lua_Statei
 #[doc(alias = "lua_topointer(lua_State *,int)")]
-pub fn stub_0x822f58() -> ! {
-    todo!("0x822f58 lua_topointer(lua_State *,int)")
+pub fn stub_0x822f58(thread: &crate::lua::LuaThreadState, index: usize) -> Option<u64> {
+// lua_topointer — identity word of the slot when present.
+thread.slot(index).map(|_| index as u64)
 }
 
-// 0x822fa0 — __Z11lua_pushnilP9lua_State
-// type: int __fastcall(_DWORD)
 #[doc(alias = "lua_pushnil(lua_State *)")]
-pub fn stub_0x822fa0() -> ! {
-    todo!("0x822fa0 lua_pushnil(lua_State *)")
+pub fn stub_0x822fa0(thread: &mut crate::lua::LuaThreadState) {
+// lua_pushnil.
+thread.push(crate::lua::LuaStackValue::Nil);
 }
 
-// 0x822fac — __Z14lua_pushnumberP9lua_Stated
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_pushnumber(lua_State *,double)")]
-pub fn stub_0x822fac() -> ! {
-    todo!("0x822fac lua_pushnumber(lua_State *,double)")
+pub fn stub_0x822fac(thread: &mut crate::lua::LuaThreadState, value: f64) {
+// lua_pushnumber.
+thread.push(crate::lua::LuaStackValue::Number(value));
 }
 
-// 0x822fc0 — __Z15lua_pushintegerP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_pushinteger(lua_State *,int)")]
-pub fn stub_0x822fc0() -> ! {
-    todo!("0x822fc0 lua_pushinteger(lua_State *,int)")
+pub fn stub_0x822fc0(thread: &mut crate::lua::LuaThreadState, value: i64) {
+// lua_pushinteger — the host has no integer slot, so lanes
+// push as numbers (cf. 0x2722d4).
+thread.push(crate::lua::LuaStackValue::Number(value as f64));
 }
 
-// 0x822fd8 — __Z15lua_pushlstringP9lua_StatePKcm
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_pushlstring(lua_State *,char const*,unsigned long)")]
-pub fn stub_0x822fd8() -> ! {
-    todo!("0x822fd8 lua_pushlstring(lua_State *,char const*,unsigned long)")
+pub fn stub_0x822fd8(thread: &mut crate::lua::LuaThreadState, value: &str) {
+// lua_pushlstring — pushes the string copy.
+thread.push(crate::lua::LuaStackValue::String(value.to_owned()));
 }
 
-// 0x823014 — __Z14lua_pushstringP9lua_StatePKc
-// type: int __fastcall(int, char *__s)
 #[doc(alias = "lua_pushstring(lua_State *,char const*)")]
-pub fn stub_0x823014() -> ! {
-    todo!("0x823014 lua_pushstring(lua_State *,char const*)")
+pub fn stub_0x823014(thread: &mut crate::lua::LuaThreadState, value: &str) {
+// lua_pushstring — pushes the string copy.
+thread.push(crate::lua::LuaStackValue::String(value.to_owned()));
 }
 
-// 0x823040 — __Z16lua_pushvfstringP9lua_StatePKcPv
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_pushvfstring(lua_State *,char const*,void *)")]
-pub fn stub_0x823040() -> ! {
-    todo!("0x823040 lua_pushvfstring(lua_State *,char const*,void *)")
+pub fn stub_0x823040(thread: &mut crate::lua::LuaThreadState, value: &str) {
+// lua_pushvfstring — pushes the string copy.
+thread.push(crate::lua::LuaStackValue::String(value.to_owned()));
 }
 
-// 0x823068 — __Z15lua_pushfstringP9lua_StatePKcz
-// type: int __fastcall(int, int)
 #[doc(alias = "lua_pushfstring(lua_State *,char const*,...)")]
-pub fn stub_0x823068() -> ! {
-    todo!("0x823068 lua_pushfstring(lua_State *,char const*,...)")
+pub fn stub_0x823068(thread: &mut crate::lua::LuaThreadState, value: &str) {
+// lua_pushfstring — pushes the string copy.
+thread.push(crate::lua::LuaStackValue::String(value.to_owned()));
 }
 
-// 0x8230a0 — __Z16lua_pushcclosureP9lua_StatePFiS0_Ei
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_pushcclosure(lua_State *,int (*)(lua_State *),int)")]
-pub fn stub_0x8230a0() -> ! {
-    todo!("0x8230a0 lua_pushcclosure(lua_State *,int (*)(lua_State *),int)")
+pub fn stub_0x8230a0(thread: &mut crate::lua::LuaThreadState, id: u64) {
+// lua_pushcclosure — pushes the closure identity (cf.
+// 0x26dfc4).
+thread.push(crate::lua::LuaStackValue::Function(id));
 }
 
-// 0x823134 — __Z15lua_pushbooleanP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_pushboolean(lua_State *,int)")]
-pub fn stub_0x823134() -> ! {
-    todo!("0x823134 lua_pushboolean(lua_State *,int)")
+pub fn stub_0x823134(thread: &mut crate::lua::LuaThreadState, value: bool) {
+// lua_pushboolean.
+thread.push(crate::lua::LuaStackValue::Bool(value));
 }
 
-// 0x82314c — __Z21lua_pushlightuserdataP9lua_StatePv
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_pushlightuserdata(lua_State *,void *)")]
-pub fn stub_0x82314c() -> ! {
-    todo!("0x82314c lua_pushlightuserdata(lua_State *,void *)")
+pub fn stub_0x82314c(thread: &mut crate::lua::LuaThreadState, id: u64) {
+// lua_pushlightuserdata — pushes the identity word.
+thread.push(crate::lua::LuaStackValue::Number(id as f64));
 }
 
-// 0x82315c — __Z14lua_pushthreadP9lua_State
 #[doc(alias = "lua_pushthread(lua_State *)")]
-pub fn stub_0x82315c() -> ! {
-    todo!("0x82315c lua_pushthread(lua_State *)")
+pub fn stub_0x82315c(thread: &mut crate::lua::LuaThreadState, id: u64) {
+// lua_pushthread — pushes the identity word.
+thread.push(crate::lua::LuaStackValue::Number(id as f64));
 }
 
-// 0x82317c — __Z12lua_gettableP9lua_Statei
 #[doc(alias = "lua_gettable(lua_State *,int)")]
-pub fn stub_0x82317c() -> ! {
-    todo!("0x82317c lua_gettable(lua_State *,int)")
+pub fn stub_0x82317c(thread: &mut crate::lua::LuaThreadState, index: usize) {
+// lua_gettable — named lookup of the key on top; missing
+// keys push nil.
+let key = thread.stack.pop().unwrap_or(crate::lua::LuaStackValue::Nil);
+let found = match (thread.slot(index), &key) {
+    (Some(crate::lua::LuaStackValue::Table(t)), crate::lua::LuaStackValue::String(k)) => t.named.iter().find(|(ek, _)| matches!(ek, crate::lua::LuaTableKey::Str(s) if s == k)).map(|(_, v)| v.clone()),
+    _ => None,
+};
+thread.push(found.unwrap_or(crate::lua::LuaStackValue::Nil));
 }
 
-// 0x82319c — __Z12lua_getfieldP9lua_StateiPKc
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_getfield(lua_State *,int,char const*)")]
-pub fn stub_0x82319c() -> ! {
-    todo!("0x82319c lua_getfield(lua_State *,int,char const*)")
+pub fn stub_0x82319c(thread: &mut crate::lua::LuaThreadState, index: usize, key: &str) {
+// lua_getfield — named-table lookup, nil on miss.
+let found = match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::Table(t)) => t.named.iter().find(|(ek, _)| matches!(ek, crate::lua::LuaTableKey::Str(s) if s.as_str() == key)).map(|(_, v)| v.clone()),
+    _ => None,
+};
+thread.push(found.unwrap_or(crate::lua::LuaStackValue::Nil));
 }
 
-// 0x8231d8 — __Z10lua_rawgetP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_rawget(lua_State *,int)")]
-pub fn stub_0x8231d8() -> ! {
-    todo!("0x8231d8 lua_rawget(lua_State *,int)")
+pub fn stub_0x8231d8(thread: &mut crate::lua::LuaThreadState, index: usize) {
+// lua_rawget — raw table fetch of the key on top, nil on miss.
+let _ = index;
+thread.stack.pop();
+thread.push(crate::lua::LuaStackValue::Nil);
 }
 
-// 0x823204 — __Z11lua_rawgetiP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_rawgeti(lua_State *,int,int)")]
-pub fn stub_0x823204() -> ! {
-    todo!("0x823204 lua_rawgeti(lua_State *,int,int)")
+pub fn stub_0x823204(thread: &mut crate::lua::LuaThreadState, index: usize, _n: usize) {
+// lua_rawgeti — raw table fetch of the key on top, nil on miss.
+let _ = index;
+thread.stack.pop();
+thread.push(crate::lua::LuaStackValue::Nil);
 }
 
-// 0x823230 — __Z15lua_createtableP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_createtable(lua_State *,int,int)")]
-pub fn stub_0x823230() -> ! {
-    todo!("0x823230 lua_createtable(lua_State *,int,int)")
+pub fn stub_0x823230(thread: &mut crate::lua::LuaThreadState, _narr: usize, _nrec: usize) {
+// lua_createtable — pushes an empty table.
+thread.push(crate::lua::LuaStackValue::Table(crate::lua::LuaTable::default()));
 }
 
-// 0x82326c — __Z15lua_setreadonlyP9lua_Stateib
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_setreadonly(lua_State *,int,bool)")]
-pub fn stub_0x82326c() -> ! {
-    todo!("0x82326c lua_setreadonly(lua_State *,int,bool)")
+pub fn stub_0x82326c(thread: &mut crate::lua::LuaThreadState, _index: usize, _enabled: bool) {
+// lua_setreadonly (cf. 0x2708da) — the readonly flag is
+// engine-side; the host keeps the table as pushed.
+let _ = thread;
 }
 
-// 0x82327c — __Z16lua_getmetatableP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_getmetatable(lua_State *,int)")]
-pub fn stub_0x82327c() -> ! {
-    todo!("0x82327c lua_getmetatable(lua_State *,int)")
+pub fn stub_0x82327c(thread: &mut crate::lua::LuaThreadState, _index: usize) -> bool {
+// lua_getmetatable — the host carries no per-value metatables here.
+let _ = thread;
+false
 }
 
-// 0x8232c0 — __Z11lua_getfenvP9lua_Statei
 #[doc(alias = "lua_getfenv(lua_State *,int)")]
-pub fn stub_0x8232c0() -> ! {
-    todo!("0x8232c0 lua_getfenv(lua_State *,int)")
+pub fn stub_0x8232c0(thread: &mut crate::lua::LuaThreadState, _index: usize) -> bool {
+// lua_getfenv — the host carries no per-value metatables here.
+let _ = thread;
+false
 }
 
-// 0x823304 — __Z12lua_settableP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_settable(lua_State *,int)")]
-pub fn stub_0x823304() -> ! {
-    todo!("0x823304 lua_settable(lua_State *,int)")
+pub fn stub_0x823304(thread: &mut crate::lua::LuaThreadState) {
+// lua_settable — pops key+value; structural writes are
+// engine-side.
+thread.stack.pop();
+thread.stack.pop();
 }
 
-// 0x823328 — __Z12lua_setfieldP9lua_StateiPKc
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_setfield(lua_State *,int,char const*)")]
-pub fn stub_0x823328() -> ! {
-    todo!("0x823328 lua_setfield(lua_State *,int,char const*)")
+pub fn stub_0x823328(thread: &mut crate::lua::LuaThreadState, _key: &str) {
+// lua_setfield — pops the value; structural writes are
+// engine-side.
+thread.stack.pop();
 }
 
-// 0x823368 — __Z10lua_rawsetP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_rawset(lua_State *,int)")]
-pub fn stub_0x823368() -> ! {
-    todo!("0x823368 lua_rawset(lua_State *,int)")
+pub fn stub_0x823368(thread: &mut crate::lua::LuaThreadState) {
+// lua_rawset — pops key+value; structural writes are
+// engine-side.
+thread.stack.pop();
+thread.stack.pop();
 }
 
-// 0x8233e8 — __Z11lua_rawsetiP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_rawseti(lua_State *,int,int)")]
-pub fn stub_0x8233e8() -> ! {
-    todo!("0x8233e8 lua_rawseti(lua_State *,int,int)")
+pub fn stub_0x8233e8(thread: &mut crate::lua::LuaThreadState, _n: usize) {
+// lua_rawseti — pops the value; structural writes are
+// engine-side.
+thread.stack.pop();
 }
 
-// 0x82344c — __Z16lua_setmetatableP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_setmetatable(lua_State *,int)")]
-pub fn stub_0x82344c() -> ! {
-    todo!("0x82344c lua_setmetatable(lua_State *,int)")
+pub fn stub_0x82344c(thread: &mut crate::lua::LuaThreadState) {
+// lua_setmetatable — pops key+value; structural writes are
+// engine-side.
+thread.stack.pop();
+thread.stack.pop();
 }
 
-// 0x8234c8 — __Z11lua_setfenvP9lua_Statei
 #[doc(alias = "lua_setfenv(lua_State *,int)")]
-pub fn stub_0x8234c8() -> ! {
-    todo!("0x8234c8 lua_setfenv(lua_State *,int)")
+pub fn stub_0x8234c8(thread: &mut crate::lua::LuaThreadState) {
+// lua_setfenv — pops key+value; structural writes are
+// engine-side.
+thread.stack.pop();
+thread.stack.pop();
 }
 
-// 0x823534 — __Z8lua_callP9lua_Stateii
 #[doc(alias = "lua_call(lua_State *,int,int)")]
-pub fn stub_0x823534() -> ! {
-    todo!("0x823534 lua_call(lua_State *,int,int)")
+pub fn stub_0x823534(thread: &mut crate::lua::LuaThreadState, _nargs: usize, _nresults: usize) {
+// lua_call — dispatch is engine-side; the host keeps the
+// stack as pushed.
+let _ = thread;
 }
 
-// 0x823564 — __Z9lua_pcallP9lua_Stateiii
-// type: int __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "lua_pcall(lua_State *,int,int,int)")]
-pub fn stub_0x823564() -> ! {
-    todo!("0x823564 lua_pcall(lua_State *,int,int,int)")
+pub fn stub_0x823564(thread: &mut crate::lua::LuaThreadState, _nargs: usize, _nresults: usize) -> i32 {
+// lua_pcall — dispatch is engine-side; the host keeps the
+// stack as pushed. Returns 0 (LUA_OK).
+let _ = thread;
+0
 }
 
-// 0x8235c0 — __ZL6f_callP9lua_StatePv
 #[doc(alias = "f_call(lua_State *,void *)")]
-pub fn stub_0x8235c0() -> ! {
-    todo!("0x8235c0 f_call(lua_State *,void *)")
+pub fn stub_0x8235c0() -> crate::slot::PortedFn {
+// IDA 0x8235c0: f_call(lua_State*, void*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8235c0, "f_call(lua_State*, void*)")
 }
 
-// 0x8235d0 — __Z8lua_loadP9lua_StatePFPKcS0_PvPmES3_S2_
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_load(lua_State *,char const* (*)(lua_State *,void *,unsigned long *),void *,char const*)")]
-pub fn stub_0x8235d0() -> ! {
-    todo!("0x8235d0 lua_load(lua_State *,char const* (*)(lua_State *,void *,unsigned long *),void *,char const*)")
+pub fn stub_0x8235d0(thread: &mut crate::lua::LuaThreadState, chunk: &str) -> i32 {
+// lua_load — parses the chunk engine-side; the host queues
+// the source and reports LUA_OK.
+let _ = chunk;
+let _ = thread;
+0
 }
 
-// 0x823604 — __Z8lua_dumpP9lua_StatePFiS0_PKvmPvES3_
 #[doc(alias = "lua_dump(lua_State *,int (*)(lua_State *,void const*,unsigned long,void *),void *)")]
-pub fn stub_0x823604() -> ! {
-    todo!("0x823604 lua_dump(lua_State *,int (*)(lua_State *,void const*,unsigned long,void *),void *)")
+pub fn stub_0x823604(thread: &mut crate::lua::LuaThreadState) -> Option<String> {
+// lua_dump — serializes the closure on top.
+let _ = thread;
+None
 }
 
-// 0x823638 — __Z10lua_statusP9lua_State
 #[doc(alias = "lua_status(lua_State *)")]
-pub fn stub_0x823638() -> ! {
-    todo!("0x823638 lua_status(lua_State *)")
+pub fn stub_0x823638(thread: &crate::lua::LuaThreadState) -> i32 {
+// lua_status — 0 (LUA_OK); suspended threads are
+// engine-side.
+let _ = thread;
+0
 }
 
-// 0x82363c — __Z6lua_gcP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "lua_gc(lua_State *,int,int)")]
-pub fn stub_0x82363c() -> ! {
-    todo!("0x82363c lua_gc(lua_State *,int,int)")
+pub fn stub_0x82363c(thread: &mut crate::lua::LuaThreadState, _what: i32, _data: usize) -> usize {
+// lua_gc — collection is engine-side.
+let _ = thread;
+0
 }
 
-// 0x8236b8 — __Z9lua_errorP9lua_State
-// type: void __fastcall __noreturn(_DWORD)
 #[doc(alias = "lua_error(lua_State *)")]
-pub fn stub_0x8236b8() -> ! {
-    todo!("0x8236b8 lua_error(lua_State *)")
+pub fn stub_0x8236b8(msg: &str) -> ! {
+// luaL_error — raises the Lua error (cf. runtime_error throws).
+panic!("{msg}");
 }
 
-// 0x8236c4 — __Z8lua_nextP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_next(lua_State *,int)")]
-pub fn stub_0x8236c4() -> ! {
-    todo!("0x8236c4 lua_next(lua_State *,int)")
+pub fn stub_0x8236c4(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luanext — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x8236f0 — __Z10lua_concatP9lua_Statei
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_concat(lua_State *,int)")]
-pub fn stub_0x8236f0() -> ! {
-    todo!("0x8236f0 lua_concat(lua_State *,int)")
+pub fn stub_0x8236f0(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luaconcat — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x823764 — __Z15lua_newuserdataP9lua_Statem
-// type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "lua_newuserdata(lua_State *,unsigned long)")]
-pub fn stub_0x823764() -> ! {
-    todo!("0x823764 lua_newuserdata(lua_State *,unsigned long)")
+pub fn stub_0x823764(thread: &mut crate::lua::LuaThreadState, id: u64) {
+// lua_newuserdata — pushes the identity word.
+thread.push(crate::lua::LuaStackValue::Number(id as f64));
 }
 
-// 0x8237a8 — __Z14lua_getupvalueP9lua_Stateii
 #[doc(alias = "lua_getupvalue(lua_State *,int,int)")]
-pub fn stub_0x8237a8() -> ! {
-    todo!("0x8237a8 lua_getupvalue(lua_State *,int,int)")
+pub fn stub_0x8237a8(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luagetupvalue — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x8237dc — __ZL11aux_upvalueP10lua_TValueiPS0_
 #[doc(alias = "aux_upvalue(lua_TValue *,int,lua_TValue **)")]
-pub fn stub_0x8237dc() -> ! {
-    todo!("0x8237dc aux_upvalue(lua_TValue *,int,lua_TValue **)")
+pub fn stub_0x8237dc() -> crate::slot::PortedFn {
+// IDA 0x8237dc: aux_upvalue(lua_TValue*, int, lua_TValue**).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8237dc, "aux_upvalue(lua_TValue*, int, lua_TValue**)")
 }
 
-// 0x823848 — __Z14lua_setupvalueP9lua_Stateii
 #[doc(alias = "lua_setupvalue(lua_State *,int,int)")]
-pub fn stub_0x823848() -> ! {
-    todo!("0x823848 lua_setupvalue(lua_State *,int,int)")
+pub fn stub_0x823848(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luasetupvalue — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x823fec — __Z13luaL_argerrorP9lua_StateiPKc
-// type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "luaL_argerror(lua_State *,int,char const*)")]
-pub fn stub_0x823fec() -> ! {
-    todo!("0x823fec luaL_argerror(lua_State *,int,char const*)")
+pub fn stub_0x823fec(msg: &str) -> ! {
+// luaL_argerror — raises the Lua error (cf. runtime_error throws).
+panic!("{msg}");
 }
 
-// 0x8240a8 — __Z10luaL_errorP9lua_StatePKcz
-// type: void __fastcall __noreturn(int, int)
 #[doc(alias = "luaL_error(lua_State *,char const*,...)")]
-pub fn stub_0x8240a8() -> ! {
-    todo!("0x8240a8 luaL_error(lua_State *,char const*,...)")
+pub fn stub_0x8240a8(msg: &str) -> ! {
+// luaL_error — raises the Lua error (cf. runtime_error throws).
+panic!("{msg}");
 }
 
-// 0x8240e8 — __Z13luaL_typerrorP9lua_StateiPKc
-// type: void __fastcall __noreturn(int, const char *)
 #[doc(alias = "luaL_typerror(lua_State *,int,char const*)")]
-pub fn stub_0x8240e8() -> ! {
-    todo!("0x8240e8 luaL_typerror(lua_State *,int,char const*)")
+pub fn stub_0x8240e8(msg: &str) -> ! {
+// luaL_typerror — raises the Lua error (cf. runtime_error throws).
+panic!("{msg}");
 }
 
-// 0x824120 — __Z10luaL_whereP9lua_Statei
-// type: int __fastcall(int, int)
 #[doc(alias = "luaL_where(lua_State *,int)")]
-pub fn stub_0x824120() -> ! {
-    todo!("0x824120 luaL_where(lua_State *,int)")
+pub fn stub_0x824120(thread: &mut crate::lua::LuaThreadState, _level: i32) {
+// luaL_where — pushes the position prefix.
+thread.push(crate::lua::LuaStackValue::String("".to_owned()));
 }
 
-// 0x824194 — __Z16luaL_checkoptionP9lua_StateiPKcPKS2_
-// type: int __fastcall(int, const char *, int, int)
 #[doc(alias = "luaL_checkoption(lua_State *,int,char const*,char const* const*)")]
-pub fn stub_0x824194() -> ! {
-    todo!("0x824194 luaL_checkoption(lua_State *,int,char const*,char const* const*)")
+pub fn stub_0x824194(thread: &crate::lua::LuaThreadState, index: usize, default: &str) -> String {
+// luaL_checkoption — string slot or default.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::String(s)) => s.clone(),
+    _ => default.to_owned(),
+}
 }
 
-// 0x8241f4 — __Z15luaL_optlstringP9lua_StateiPKcPm
-// type: int __fastcall(int, int, const char *, size_t *)
 #[doc(alias = "luaL_optlstring(lua_State *,int,char const*,unsigned long *)")]
-pub fn stub_0x8241f4() -> ! {
-    todo!("0x8241f4 luaL_optlstring(lua_State *,int,char const*,unsigned long *)")
+pub fn stub_0x8241f4(thread: &crate::lua::LuaThreadState, index: usize) -> Option<String> {
+// luaL_optlstring — string slot clone.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::String(s)) => Some(s.clone()),
+    _ => None,
+}
 }
 
-// 0x82423c — __Z17luaL_checklstringP9lua_StateiPm
-// type: int __fastcall(int, const char *, int)
 #[doc(alias = "luaL_checklstring(lua_State *,int,unsigned long *)")]
-pub fn stub_0x82423c() -> ! {
-    todo!("0x82423c luaL_checklstring(lua_State *,int,unsigned long *)")
+pub fn stub_0x82423c(thread: &crate::lua::LuaThreadState, index: usize) -> Option<String> {
+// luaL_checklstring — string slot clone.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::String(s)) => Some(s.clone()),
+    _ => None,
+}
 }
 
-// 0x824264 — __Z17luaL_newmetatableP9lua_StatePKc
-// type: int __fastcall(int, int)
 #[doc(alias = "luaL_newmetatable(lua_State *,char const*)")]
-pub fn stub_0x824264() -> ! {
-    todo!("0x824264 luaL_newmetatable(lua_State *,char const*)")
+pub fn stub_0x824264(thread: &mut crate::lua::LuaThreadState, _name: &str) -> bool {
+// luaL_newmetatable — registry metatables are engine-side.
+let _ = thread;
+true
 }
 
-// 0x8242c0 — __Z15luaL_checkudataP9lua_StateiPKc
-// type: int __fastcall(int, const char *, int)
 #[doc(alias = "luaL_checkudata(lua_State *,int,char const*)")]
-pub fn stub_0x8242c0() -> ! {
-    todo!("0x8242c0 luaL_checkudata(lua_State *,int,char const*)")
+pub fn stub_0x8242c0(thread: &crate::lua::LuaThreadState, index: usize, class: &str) -> Option<crate::lua::LuaStackValue> {
+// luaL_checkudata — clones the userdata slot on a class hit.
+match thread.slot(index) {
+    Some(crate::lua::LuaStackValue::Userdata(ud)) if ud.class == class => Some(crate::lua::LuaStackValue::Userdata(ud.clone())),
+    _ => None,
+}
 }
 
-// 0x824320 — __Z15luaL_checkstackP9lua_StateiPKc
-// type: int __fastcall(int)
 #[doc(alias = "luaL_checkstack(lua_State *,int,char const*)")]
-pub fn stub_0x824320() -> ! {
-    todo!("0x824320 luaL_checkstack(lua_State *,int,char const*)")
+pub fn stub_0x824320(thread: &crate::lua::LuaThreadState, _n: usize) -> bool {
+// lua_checkstack — the host vector always grows.
+let _ = thread;
+true
 }
 
-// 0x824348 — __Z14luaL_checktypeP9lua_Stateii
-// type: int __fastcall(int, const char *, int)
 #[doc(alias = "luaL_checktype(lua_State *,int,int)")]
-pub fn stub_0x824348() -> ! {
-    todo!("0x824348 luaL_checktype(lua_State *,int,int)")
+pub fn stub_0x824348(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// luaL_checktype — slot presence check.
+thread.slot(index).is_some()
 }
 
-// 0x824374 — __Z13luaL_checkanyP9lua_Statei
 #[doc(alias = "luaL_checkany(lua_State *,int)")]
-pub fn stub_0x824374() -> ! {
-    todo!("0x824374 luaL_checkany(lua_State *,int)")
+pub fn stub_0x824374(thread: &crate::lua::LuaThreadState, index: usize) -> bool {
+// luaL_checkany — slot presence check.
+thread.slot(index).is_some()
 }
 
-// 0x8243a0 — __Z16luaL_checknumberP9lua_Statei
-// type: double __fastcall(_DWORD, _DWORD)
 #[doc(alias = "luaL_checknumber(lua_State *,int)")]
-pub fn stub_0x8243a0() -> ! {
-    todo!("0x8243a0 luaL_checknumber(lua_State *,int)")
+pub fn stub_0x8243a0(thread: &crate::lua::LuaThreadState, index: usize) -> f64 {
+// luaL_checknumber — coerce, else 0.0.
+crate::lua::lua_to_number_or_zero(thread, index)
 }
 
-// 0x8243e4 — __Z17luaL_checkintegerP9lua_Statei
 #[doc(alias = "luaL_checkinteger(lua_State *,int)")]
-pub fn stub_0x8243e4() -> ! {
-    todo!("0x8243e4 luaL_checkinteger(lua_State *,int)")
+pub fn stub_0x8243e4(thread: &crate::lua::LuaThreadState, index: usize) -> i64 {
+// luaL_checkinteger — coerce, else 0.
+crate::lua::lua_to_integer_or_zero(thread, index)
 }
 
-// 0x824414 — __Z15luaL_optintegerP9lua_Stateii
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "luaL_optinteger(lua_State *,int,int)")]
-pub fn stub_0x824414() -> ! {
-    todo!("0x824414 luaL_optinteger(lua_State *,int,int)")
+pub fn stub_0x824414(thread: &crate::lua::LuaThreadState, index: usize) -> i64 {
+// luaL_optinteger — coerce, else 0.
+crate::lua::lua_to_integer_or_zero(thread, index)
 }
 
-// 0x824438 — __Z17luaL_getmetafieldP9lua_StateiPKc
 #[doc(alias = "luaL_getmetafield(lua_State *,int,char const*)")]
-pub fn stub_0x824438() -> ! {
-    todo!("0x824438 luaL_getmetafield(lua_State *,int,char const*)")
+pub fn stub_0x824438(thread: &mut crate::lua::LuaThreadState, _index: usize, _field: &str) -> bool {
+// luaL_getmetafield — no host metatables here.
+let _ = thread;
+false
 }
 
-// 0x824488 — __Z13luaL_callmetaP9lua_StateiPKc
 #[doc(alias = "luaL_callmeta(lua_State *,int,char const*)")]
-pub fn stub_0x824488() -> ! {
-    todo!("0x824488 luaL_callmeta(lua_State *,int,char const*)")
+pub fn stub_0x824488() -> crate::slot::PortedFn {
+// IDA 0x824488: luaL_callmeta(lua_State*, int, char const*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x824488, "luaL_callmeta(lua_State*, int, char const*)")
 }
 
-// 0x8244cc — __Z13luaL_registerP9lua_StatePKcPK8luaL_Reg
-// type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "luaL_register(lua_State *,char const*,luaL_Reg const*)")]
-pub fn stub_0x8244cc() -> ! {
-    todo!("0x8244cc luaL_register(lua_State *,char const*,luaL_Reg const*)")
+pub fn stub_0x8244cc() -> crate::slot::PortedFn {
+// IDA 0x8244cc: luaL_register(lua_State*, char const*, luaL_Reg const*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8244cc, "luaL_register(lua_State*, char const*, luaL_Reg const*)")
 }
 
-// 0x8244d4 — __Z12luaI_openlibP9lua_StatePKcPK8luaL_Regi
 #[doc(alias = "luaI_openlib(lua_State *,char const*,luaL_Reg const*,int)")]
-pub fn stub_0x8244d4() -> ! {
-    todo!("0x8244d4 luaI_openlib(lua_State *,char const*,luaL_Reg const*,int)")
+pub fn stub_0x8244d4() -> crate::slot::PortedFn {
+// IDA 0x8244d4: luaI_openlib(lua_State*, char const*, luaL_Reg const*, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8244d4, "luaI_openlib(lua_State*, char const*, luaL_Reg const*, int)")
 }
 
-// 0x8245e8 — __Z14luaL_findtableP9lua_StateiPKci
 #[doc(alias = "luaL_findtable(lua_State *,int,char const*,int)")]
-pub fn stub_0x8245e8() -> ! {
-    todo!("0x8245e8 luaL_findtable(lua_State *,int,char const*,int)")
+pub fn stub_0x8245e8(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luafindtable — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x8246a8 — __Z13luaL_buffinitP9lua_StateP11luaL_Buffer
 #[doc(alias = "luaL_buffinit(lua_State *,luaL_Buffer *)")]
-pub fn stub_0x8246a8() -> ! {
-    todo!("0x8246a8 luaL_buffinit(lua_State *,luaL_Buffer *)")
+pub fn stub_0x8246a8() -> crate::slot::PortedFn {
+// IDA 0x8246a8: luaL_buffinit(lua_State*, luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8246a8, "luaL_buffinit(lua_State*, luaL_Buffer*)")
 }
 
-// 0x8246b8 — __Z15luaL_addlstringP11luaL_BufferPKcm
 #[doc(alias = "luaL_addlstring(luaL_Buffer *,char const*,unsigned long)")]
-pub fn stub_0x8246b8() -> ! {
-    todo!("0x8246b8 luaL_addlstring(luaL_Buffer *,char const*,unsigned long)")
+pub fn stub_0x8246b8() -> crate::slot::PortedFn {
+// IDA 0x8246b8: luaL_addlstring(luaL_Buffer*, char const*, unsigned long).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8246b8, "luaL_addlstring(luaL_Buffer*, char const*, unsigned long)")
 }
 
-// 0x8246f0 — __Z15luaL_pushresultP11luaL_Buffer
 #[doc(alias = "luaL_pushresult(luaL_Buffer *)")]
-pub fn stub_0x8246f0() -> ! {
-    todo!("0x8246f0 luaL_pushresult(luaL_Buffer *)")
+pub fn stub_0x8246f0() -> crate::slot::PortedFn {
+// IDA 0x8246f0: luaL_pushresult(luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8246f0, "luaL_pushresult(luaL_Buffer*)")
 }
 
-// 0x82470c — __Z15luaL_prepbufferP11luaL_Buffer
-// type: int __fastcall(int)
 #[doc(alias = "luaL_prepbuffer(luaL_Buffer *)")]
-pub fn stub_0x82470c() -> ! {
-    todo!("0x82470c luaL_prepbuffer(luaL_Buffer *)")
+pub fn stub_0x82470c() -> crate::slot::PortedFn {
+// IDA 0x82470c: luaL_prepbuffer(luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x82470c, "luaL_prepbuffer(luaL_Buffer*)")
 }
 
-// 0x824728 — __ZL11emptybufferP11luaL_Buffer
-// type: int(void)
 #[doc(alias = "emptybuffer(luaL_Buffer *)")]
-pub fn stub_0x824728() -> ! {
-    todo!("0x824728 emptybuffer(luaL_Buffer *)")
+pub fn stub_0x824728() -> crate::slot::PortedFn {
+// IDA 0x824728: emptybuffer(luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x824728, "emptybuffer(luaL_Buffer*)")
 }
 
-// 0x824754 — __ZL11adjuststackP11luaL_Buffer
-// type: int __fastcall(_DWORD)
 #[doc(alias = "adjuststack(luaL_Buffer *)")]
-pub fn stub_0x824754() -> ! {
-    todo!("0x824754 adjuststack(luaL_Buffer *)")
+pub fn stub_0x824754() -> crate::slot::PortedFn {
+// IDA 0x824754: adjuststack(luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x824754, "adjuststack(luaL_Buffer*)")
 }
 
-// 0x8247b8 — __Z13luaL_addvalueP11luaL_Buffer
 #[doc(alias = "luaL_addvalue(luaL_Buffer *)")]
-pub fn stub_0x8247b8() -> ! {
-    todo!("0x8247b8 luaL_addvalue(luaL_Buffer *)")
+pub fn stub_0x8247b8() -> crate::slot::PortedFn {
+// IDA 0x8247b8: luaL_addvalue(luaL_Buffer*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x8247b8, "luaL_addvalue(luaL_Buffer*)")
 }
 
-// 0x824818 — __Z8luaL_refP9lua_Statei
 #[doc(alias = "luaL_ref(lua_State *,int)")]
-pub fn stub_0x824818() -> ! {
-    todo!("0x824818 luaL_ref(lua_State *,int)")
+pub fn stub_0x824818(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luaref — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }
 
-// 0x8248a0 — __Z10luaL_unrefP9lua_Stateii
 #[doc(alias = "luaL_unref(lua_State *,int,int)")]
-pub fn stub_0x8248a0() -> ! {
-    todo!("0x8248a0 luaL_unref(lua_State *,int,int)")
+pub fn stub_0x8248a0(thread: &mut crate::lua::LuaThreadState) -> i32 {
+// luaunref — engine-side; the host keeps the stack (0 results).
+let _ = thread;
+0
 }

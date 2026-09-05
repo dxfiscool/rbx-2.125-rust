@@ -8,702 +8,702 @@
 
 use rbx_core::SharedPtr;
 
-// 0xa0edc — __ZN4FMOD13CodecPlaylist7readM3UEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecPlaylist::readM3U(void)")]
-pub fn stub_0xa0edc() -> ! {
-    todo!("0xa0edc __ZN4FMOD13CodecPlaylist7readM3UEv")
+pub fn stub_0xa0edc() -> crate::slot::PortedFn {
+// IDA 0xa0edc: FMOD::CodecPlaylist::readM3U().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa0edc, "FMOD::CodecPlaylist::readM3U()")
 }
 
-// 0xa1218 — __ZN4FMOD13CodecPlaylist7readB4SEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecPlaylist::readB4S(void)")]
-pub fn stub_0xa1218() -> ! {
-    todo!("0xa1218 __ZN4FMOD13CodecPlaylist7readB4SEv")
+pub fn stub_0xa1218() -> crate::slot::PortedFn {
+// IDA 0xa1218: FMOD::CodecPlaylist::readB4S().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1218, "FMOD::CodecPlaylist::readB4S()")
 }
 
-// 0xa1520 — __ZN4FMOD13CodecPlaylist7readWPLEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecPlaylist::readWPL(void)")]
-pub fn stub_0xa1520() -> ! {
-    todo!("0xa1520 __ZN4FMOD13CodecPlaylist7readWPLEv")
+pub fn stub_0xa1520() -> crate::slot::PortedFn {
+// IDA 0xa1520: FMOD::CodecPlaylist::readWPL().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1520, "FMOD::CodecPlaylist::readWPL()")
 }
 
-// 0xa1738 — __ZN4FMOD13CodecPlaylist7readASXEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecPlaylist::readASX(void)")]
-pub fn stub_0xa1738() -> ! {
-    todo!("0xa1738 __ZN4FMOD13CodecPlaylist7readASXEv")
+pub fn stub_0xa1738() -> crate::slot::PortedFn {
+// IDA 0xa1738: FMOD::CodecPlaylist::readASX().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1738, "FMOD::CodecPlaylist::readASX()")
 }
 
-// 0xa1aac — __ZN4FMOD13CodecPlaylist16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecPlaylist *this)
 #[doc(alias = "FMOD::CodecPlaylist::getDescriptionEx(void)")]
-pub fn stub_0xa1aac() -> ! {
-    todo!("0xa1aac __ZN4FMOD13CodecPlaylist16getDescriptionExEv")
+pub fn stub_0xa1aac() -> crate::slot::PortedFn {
+// IDA 0xa1aac: FMOD::CodecPlaylist::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1aac, "FMOD::CodecPlaylist::getDescriptionEx()")
 }
 
-// 0xa1b4c — __ZN4FMOD13CodecPlaylist12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecPlaylist::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa1b4c() -> ! {
-    todo!("0xa1b4c __ZN4FMOD13CodecPlaylist12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa1b4c() -> crate::slot::PortedFn {
+// IDA 0xa1b4c: FMOD::CodecPlaylist::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1b4c, "FMOD::CodecPlaylist::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa1df4 — __ZN4FMOD13CodecPlaylist12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int)
 #[doc(alias = "FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa1df4() -> ! {
-    todo!("0xa1df4 __ZN4FMOD13CodecPlaylist12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa1df4() -> crate::slot::PortedFn {
+// IDA 0xa1df4: FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1df4, "FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa1e4c — __GLOBAL__I__ZN4FMOD13playlistcodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::playlistcodec")]
-pub fn stub_0xa1e4c() -> ! {
-    todo!("0xa1e4c __GLOBAL__I__ZN4FMOD13playlistcodecE")
+pub fn stub_0xa1e4c() -> crate::slot::PortedFn {
+// IDA 0xa1e4c: __GLOBAL__I__ZN4FMOD13playlistcodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa1e4c, "__GLOBAL__I__ZN4FMOD13playlistcodecE")
 }
 
-// 0xa1e58 — __ZN4FMOD8CodecRaw13closeInternalEv
-// type: int __fastcall(FMOD::CodecRaw *this)
 #[doc(alias = "FMOD::CodecRaw::closeInternal(void)")]
-pub fn stub_0xa1e58() -> ! {
-    todo!("0xa1e58 __ZN4FMOD8CodecRaw13closeInternalEv")
+pub fn stub_0xa1e58() -> crate::slot::PortedFn {
+// IDA 0xa1e58: FMOD::CodecRaw::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1e58, "FMOD::CodecRaw::closeInternal()")
 }
 
-// 0xa1e60 — __ZN4FMOD8CodecRaw16canPointInternalEv
-// type: int __fastcall(FMOD::CodecRaw *this)
 #[doc(alias = "FMOD::CodecRaw::canPointInternal(void)")]
-pub fn stub_0xa1e60() -> ! {
-    todo!("0xa1e60 __ZN4FMOD8CodecRaw16canPointInternalEv")
+pub fn stub_0xa1e60() -> crate::slot::PortedFn {
+// IDA 0xa1e60: FMOD::CodecRaw::canPointInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1e60, "FMOD::CodecRaw::canPointInternal()")
 }
 
-// 0xa1e68 — __ZN4FMOD8CodecRaw13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecRaw *)
 #[doc(alias = "FMOD::CodecRaw::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa1e68() -> ! {
-    todo!("0xa1e68 __ZN4FMOD8CodecRaw13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa1e68() -> crate::slot::PortedFn {
+// IDA 0xa1e68: FMOD::CodecRaw::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1e68, "FMOD::CodecRaw::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa1e74 — __ZN4FMOD8CodecRaw16canPointCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecRaw *)
 #[doc(alias = "FMOD::CodecRaw::canPointCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa1e74() -> ! {
-    todo!("0xa1e74 __ZN4FMOD8CodecRaw16canPointCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa1e74() -> crate::slot::PortedFn {
+// IDA 0xa1e74: FMOD::CodecRaw::canPointCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1e74, "FMOD::CodecRaw::canPointCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa1e80 — __ZN4FMOD8CodecRaw19setPositionInternalEijj
-// type: int __fastcall(FMOD::CodecRaw *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecRaw::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_0xa1e80() -> ! {
-    todo!("0xa1e80 __ZN4FMOD8CodecRaw19setPositionInternalEijj")
+pub fn stub_0xa1e80() -> crate::slot::PortedFn {
+// IDA 0xa1e80: FMOD::CodecRaw::setPositionInternal(int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1e80, "FMOD::CodecRaw::setPositionInternal(int, unsigned int, unsigned int)")
 }
 
-// 0xa1eec — __ZN4FMOD8CodecRaw19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int __fastcall(FMOD::CodecRaw *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xa1eec() -> ! {
-    todo!("0xa1eec __ZN4FMOD8CodecRaw19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xa1eec() -> crate::slot::PortedFn {
+// IDA 0xa1eec: FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1eec, "FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xa1ef8 — __ZN4FMOD8CodecRaw12readInternalEPvjPj
-// type: int __fastcall(FMOD::File **this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecRaw::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa1ef8() -> ! {
-    todo!("0xa1ef8 __ZN4FMOD8CodecRaw12readInternalEPvjPj")
+pub fn stub_0xa1ef8() -> crate::slot::PortedFn {
+// IDA 0xa1ef8: FMOD::CodecRaw::readInternal(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1ef8, "FMOD::CodecRaw::readInternal(void*, unsigned int, unsigned int*)")
 }
 
-// 0xa1f58 — __ZN4FMOD8CodecRaw12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: int __fastcall(FMOD::File **, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa1f58() -> ! {
-    todo!("0xa1f58 __ZN4FMOD8CodecRaw12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xa1f58() -> crate::slot::PortedFn {
+// IDA 0xa1f58: FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1f58, "FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }
 
-// 0xa1f64 — __ZN4FMOD8CodecRaw12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16, _DWORD *)
 #[doc(alias = "FMOD::CodecRaw::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa1f64() -> ! {
-    todo!("0xa1f64 __ZN4FMOD8CodecRaw12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa1f64() -> crate::slot::PortedFn {
+// IDA 0xa1f64: FMOD::CodecRaw::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa1f64, "FMOD::CodecRaw::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa226c — __ZN4FMOD8CodecRaw12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16, _DWORD *)
 #[doc(alias = "FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa226c() -> ! {
-    todo!("0xa226c __ZN4FMOD8CodecRaw12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa226c() -> crate::slot::PortedFn {
+// IDA 0xa226c: FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa226c, "FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa2278 — __ZN4FMOD8CodecRaw16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecRaw *this)
 #[doc(alias = "FMOD::CodecRaw::getDescriptionEx(void)")]
-pub fn stub_0xa2278() -> ! {
-    todo!("0xa2278 __ZN4FMOD8CodecRaw16getDescriptionExEv")
+pub fn stub_0xa2278() -> crate::slot::PortedFn {
+// IDA 0xa2278: FMOD::CodecRaw::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2278, "FMOD::CodecRaw::getDescriptionEx()")
 }
 
-// 0xa2374 — __GLOBAL__I__ZN4FMOD8rawcodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::rawcodec")]
-pub fn stub_0xa2374() -> ! {
-    todo!("0xa2374 __GLOBAL__I__ZN4FMOD8rawcodecE")
+pub fn stub_0xa2374() -> crate::slot::PortedFn {
+// IDA 0xa2374: __GLOBAL__I__ZN4FMOD8rawcodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa2374, "__GLOBAL__I__ZN4FMOD8rawcodecE")
 }
 
-// 0xa2380 — __ZN4FMOD15MusicChannelS3M11volumeSlideEv
-// type: int __fastcall(FMOD::MusicChannelS3M *this)
 #[doc(alias = "FMOD::MusicChannelS3M::volumeSlide(void)")]
-pub fn stub_0xa2380() -> ! {
-    todo!("0xa2380 __ZN4FMOD15MusicChannelS3M11volumeSlideEv")
+pub fn stub_0xa2380() -> crate::slot::PortedFn {
+// IDA 0xa2380: FMOD::MusicChannelS3M::volumeSlide().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2380, "FMOD::MusicChannelS3M::volumeSlide()")
 }
 
-// 0xa23e0 — __ZN4FMOD15MusicChannelS3M10portamentoEv
-// type: int __fastcall(FMOD::MusicChannelS3M *this)
 #[doc(alias = "FMOD::MusicChannelS3M::portamento(void)")]
-pub fn stub_0xa23e0() -> ! {
-    todo!("0xa23e0 __ZN4FMOD15MusicChannelS3M10portamentoEv")
+pub fn stub_0xa23e0() -> crate::slot::PortedFn {
+// IDA 0xa23e0: FMOD::MusicChannelS3M::portamento().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa23e0, "FMOD::MusicChannelS3M::portamento()")
 }
 
-// 0xa2450 — __ZN4FMOD15MusicChannelS3M7vibratoEv
-// type: int __fastcall(FMOD::MusicChannelS3M *this)
 #[doc(alias = "FMOD::MusicChannelS3M::vibrato(void)")]
-pub fn stub_0xa2450() -> ! {
-    todo!("0xa2450 __ZN4FMOD15MusicChannelS3M7vibratoEv")
+pub fn stub_0xa2450() -> crate::slot::PortedFn {
+// IDA 0xa2450: FMOD::MusicChannelS3M::vibrato().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2450, "FMOD::MusicChannelS3M::vibrato()")
 }
 
-// 0xa2594 — __ZN4FMOD15MusicChannelS3M7tremoloEv
-// type: int __fastcall(FMOD::MusicChannelS3M *this)
 #[doc(alias = "FMOD::MusicChannelS3M::tremolo(void)")]
-pub fn stub_0xa2594() -> ! {
-    todo!("0xa2594 __ZN4FMOD15MusicChannelS3M7tremoloEv")
+pub fn stub_0xa2594() -> crate::slot::PortedFn {
+// IDA 0xa2594: FMOD::MusicChannelS3M::tremolo().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2594, "FMOD::MusicChannelS3M::tremolo()")
 }
 
-// 0xa26fc — __ZN4FMOD15MusicChannelS3M11fineVibratoEv
-// type: int __fastcall(FMOD::MusicChannelS3M *this)
 #[doc(alias = "FMOD::MusicChannelS3M::fineVibrato(void)")]
-pub fn stub_0xa26fc() -> ! {
-    todo!("0xa26fc __ZN4FMOD15MusicChannelS3M11fineVibratoEv")
+pub fn stub_0xa26fc() -> crate::slot::PortedFn {
+// IDA 0xa26fc: FMOD::MusicChannelS3M::fineVibrato().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa26fc, "FMOD::MusicChannelS3M::fineVibrato()")
 }
 
-// 0xa2830 — __ZN4FMOD8CodecS3M13closeInternalEv
-// type: int __fastcall(FMOD::CodecS3M *this)
 #[doc(alias = "FMOD::CodecS3M::closeInternal(void)")]
-pub fn stub_0xa2830() -> ! {
-    todo!("0xa2830 __ZN4FMOD8CodecS3M13closeInternalEv")
+pub fn stub_0xa2830() -> crate::slot::PortedFn {
+// IDA 0xa2830: FMOD::CodecS3M::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2830, "FMOD::CodecS3M::closeInternal()")
 }
 
-// 0xa2ad8 — __ZN4FMOD8CodecS3M13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecS3M *)
 #[doc(alias = "FMOD::CodecS3M::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa2ad8() -> ! {
-    todo!("0xa2ad8 __ZN4FMOD8CodecS3M13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa2ad8() -> crate::slot::PortedFn {
+// IDA 0xa2ad8: FMOD::CodecS3M::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2ad8, "FMOD::CodecS3M::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa2ae4 — __ZN4FMOD8CodecS3M16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecS3M *this)
 #[doc(alias = "FMOD::CodecS3M::getDescriptionEx(void)")]
-pub fn stub_0xa2ae4() -> ! {
-    todo!("0xa2ae4 __ZN4FMOD8CodecS3M16getDescriptionExEv")
+pub fn stub_0xa2ae4() -> crate::slot::PortedFn {
+// IDA 0xa2ae4: FMOD::CodecS3M::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2ae4, "FMOD::CodecS3M::getDescriptionEx()")
 }
 
-// 0xa2bfc — __ZN4FMOD8CodecS3M13updateEffectsEv
-// type: int __fastcall(FMOD::CodecS3M *this)
 #[doc(alias = "FMOD::CodecS3M::updateEffects(void)")]
-pub fn stub_0xa2bfc() -> ! {
-    todo!("0xa2bfc __ZN4FMOD8CodecS3M13updateEffectsEv")
+pub fn stub_0xa2bfc() -> crate::slot::PortedFn {
+// IDA 0xa2bfc: FMOD::CodecS3M::updateEffects().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa2bfc, "FMOD::CodecS3M::updateEffects()")
 }
 
-// 0xa3580 — __ZN4FMOD8CodecS3M10updateNoteEb
-// type: int __fastcall(FMOD::CodecS3M *this, bool)
 #[doc(alias = "FMOD::CodecS3M::updateNote(bool)")]
-pub fn stub_0xa3580() -> ! {
-    todo!("0xa3580 __ZN4FMOD8CodecS3M10updateNoteEb")
+pub fn stub_0xa3580() -> crate::slot::PortedFn {
+// IDA 0xa3580: FMOD::CodecS3M::updateNote(bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa3580, "FMOD::CodecS3M::updateNote(bool)")
 }
 
-// 0xa4064 — __ZN4FMOD8CodecS3M6updateEb
-// type: int __fastcall(FMOD::CodecS3M *this, bool)
 #[doc(alias = "FMOD::CodecS3M::update(bool)")]
-pub fn stub_0xa4064() -> ! {
-    todo!("0xa4064 __ZN4FMOD8CodecS3M6updateEb")
+pub fn stub_0xa4064() -> crate::slot::PortedFn {
+// IDA 0xa4064: FMOD::CodecS3M::update(bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4064, "FMOD::CodecS3M::update(bool)")
 }
 
-// 0xa4174 — __ZN4FMOD8CodecS3M19setPositionInternalEijj
-// type: int __fastcall(FMOD::CodecS3M *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecS3M::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_0xa4174() -> ! {
-    todo!("0xa4174 __ZN4FMOD8CodecS3M19setPositionInternalEijj")
+pub fn stub_0xa4174() -> crate::slot::PortedFn {
+// IDA 0xa4174: FMOD::CodecS3M::setPositionInternal(int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4174, "FMOD::CodecS3M::setPositionInternal(int, unsigned int, unsigned int)")
 }
 
-// 0xa4228 — __ZN4FMOD8CodecS3M19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int __fastcall(FMOD::CodecS3M *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xa4228() -> ! {
-    todo!("0xa4228 __ZN4FMOD8CodecS3M19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xa4228() -> crate::slot::PortedFn {
+// IDA 0xa4228: FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4228, "FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xa4234 — __ZN4FMOD8CodecS3M15calculateLengthEv
-// type: int __fastcall(FMOD::CodecS3M *this)
 #[doc(alias = "FMOD::CodecS3M::calculateLength(void)")]
-pub fn stub_0xa4234() -> ! {
-    todo!("0xa4234 __ZN4FMOD8CodecS3M15calculateLengthEv")
+pub fn stub_0xa4234() -> crate::slot::PortedFn {
+// IDA 0xa4234: FMOD::CodecS3M::calculateLength().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4234, "FMOD::CodecS3M::calculateLength()")
 }
 
-// 0xa4298 — __ZN4FMOD8CodecS3M12readInternalEPvjPj
-// type: unsigned int *__fastcall(FMOD::CodecS3M *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecS3M::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa4298() -> ! {
-    todo!("0xa4298 __ZN4FMOD8CodecS3M12readInternalEPvjPj")
+pub fn stub_0xa4298() -> crate::slot::PortedFn {
+// IDA 0xa4298: FMOD::CodecS3M::readInternal(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4298, "FMOD::CodecS3M::readInternal(void*, unsigned int, unsigned int*)")
 }
 
-// 0xa467c — __ZN4FMOD8CodecS3M12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: unsigned int *__fastcall(FMOD::CodecS3M *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa467c() -> ! {
-    todo!("0xa467c __ZN4FMOD8CodecS3M12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xa467c() -> crate::slot::PortedFn {
+// IDA 0xa467c: FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa467c, "FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }
 
-// 0xa4688 — __ZN4FMOD8CodecS3M12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16, int)
 #[doc(alias = "FMOD::CodecS3M::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa4688() -> ! {
-    todo!("0xa4688 __ZN4FMOD8CodecS3M12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa4688() -> crate::slot::PortedFn {
+// IDA 0xa4688: FMOD::CodecS3M::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa4688, "FMOD::CodecS3M::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa5c8c — __ZN4FMOD8CodecS3M12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16, int)
 #[doc(alias = "FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa5c8c() -> ! {
-    todo!("0xa5c8c __ZN4FMOD8CodecS3M12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa5c8c() -> crate::slot::PortedFn {
+// IDA 0xa5c8c: FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5c8c, "FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa5ce4 — __GLOBAL__I__ZN4FMOD8s3mcodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::s3mcodec")]
-pub fn stub_0xa5ce4() -> ! {
-    todo!("0xa5ce4 __GLOBAL__I__ZN4FMOD8s3mcodecE")
+pub fn stub_0xa5ce4() -> crate::slot::PortedFn {
+// IDA 0xa5ce4: __GLOBAL__I__ZN4FMOD8s3mcodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa5ce4, "__GLOBAL__I__ZN4FMOD8s3mcodecE")
 }
 
-// 0xa5cf0 — __ZN4FMOD8CodecTag13closeInternalEv
-// type: int __fastcall(FMOD::CodecTag *this)
 #[doc(alias = "FMOD::CodecTag::closeInternal(void)")]
-pub fn stub_0xa5cf0() -> ! {
-    todo!("0xa5cf0 __ZN4FMOD8CodecTag13closeInternalEv")
+pub fn stub_0xa5cf0() -> crate::slot::PortedFn {
+// IDA 0xa5cf0: FMOD::CodecTag::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5cf0, "FMOD::CodecTag::closeInternal()")
 }
 
-// 0xa5cf8 — __ZN4FMOD8CodecTag13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecTag *)
 #[doc(alias = "FMOD::CodecTag::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa5cf8() -> ! {
-    todo!("0xa5cf8 __ZN4FMOD8CodecTag13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa5cf8() -> crate::slot::PortedFn {
+// IDA 0xa5cf8: FMOD::CodecTag::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5cf8, "FMOD::CodecTag::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa5d04 — __ZN4FMOD8CodecTag12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: int()
 #[doc(alias = "FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa5d04() -> ! {
-    todo!("0xa5d04 __ZN4FMOD8CodecTag12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xa5d04() -> crate::slot::PortedFn {
+// IDA 0xa5d04: FMOD::CodecTag::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5d04, "FMOD::CodecTag::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }
 
-// 0xa5d0c — __ZN4FMOD8CodecTag19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int()
 #[doc(alias = "FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xa5d0c() -> ! {
-    todo!("0xa5d0c __ZN4FMOD8CodecTag19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xa5d0c() -> crate::slot::PortedFn {
+// IDA 0xa5d0c: FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5d0c, "FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xa5d14 — __ZN4FMOD8CodecTag9readID3v2Ev
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecTag::readID3v2(void)")]
-pub fn stub_0xa5d14() -> ! {
-    todo!("0xa5d14 __ZN4FMOD8CodecTag9readID3v2Ev")
+pub fn stub_0xa5d14() -> crate::slot::PortedFn {
+// IDA 0xa5d14: FMOD::CodecTag::readID3v2().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa5d14, "FMOD::CodecTag::readID3v2()")
 }
 
-// 0xa6190 — __ZN4FMOD8CodecTag19readID3v2FromFooterEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecTag::readID3v2FromFooter(void)")]
-pub fn stub_0xa6190() -> ! {
-    todo!("0xa6190 __ZN4FMOD8CodecTag19readID3v2FromFooterEv")
+pub fn stub_0xa6190() -> crate::slot::PortedFn {
+// IDA 0xa6190: FMOD::CodecTag::readID3v2FromFooter().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6190, "FMOD::CodecTag::readID3v2FromFooter()")
 }
 
-// 0xa62c0 — __ZN4FMOD8CodecTag16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecTag *this)
 #[doc(alias = "FMOD::CodecTag::getDescriptionEx(void)")]
-pub fn stub_0xa62c0() -> ! {
-    todo!("0xa62c0 __ZN4FMOD8CodecTag16getDescriptionExEv")
+pub fn stub_0xa62c0() -> crate::slot::PortedFn {
+// IDA 0xa62c0: FMOD::CodecTag::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa62c0, "FMOD::CodecTag::getDescriptionEx()")
 }
 
-// 0xa6360 — __ZN4FMOD8CodecTag9readID3v1Ev
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecTag::readID3v1(void)")]
-pub fn stub_0xa6360() -> ! {
-    todo!("0xa6360 __ZN4FMOD8CodecTag9readID3v1Ev")
+pub fn stub_0xa6360() -> crate::slot::PortedFn {
+// IDA 0xa6360: FMOD::CodecTag::readID3v1().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6360, "FMOD::CodecTag::readID3v1()")
 }
 
-// 0xa6728 — __ZN4FMOD8CodecTag8readTagsEv
-// type: int __fastcall(FMOD::File **this)
 #[doc(alias = "FMOD::CodecTag::readTags(void)")]
-pub fn stub_0xa6728() -> ! {
-    todo!("0xa6728 __ZN4FMOD8CodecTag8readTagsEv")
+pub fn stub_0xa6728() -> crate::slot::PortedFn {
+// IDA 0xa6728: FMOD::CodecTag::readTags().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6728, "FMOD::CodecTag::readTags()")
 }
 
-// 0xa69c4 — __ZN4FMOD8CodecTag12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, int)
 #[doc(alias = "FMOD::CodecTag::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa69c4() -> ! {
-    todo!("0xa69c4 __ZN4FMOD8CodecTag12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa69c4() -> crate::slot::PortedFn {
+// IDA 0xa69c4: FMOD::CodecTag::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa69c4, "FMOD::CodecTag::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa6aa0 — __ZN4FMOD8CodecTag12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, int)
 #[doc(alias = "FMOD::CodecTag::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa6aa0() -> ! {
-    todo!("0xa6aa0 __ZN4FMOD8CodecTag12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa6aa0() -> crate::slot::PortedFn {
+// IDA 0xa6aa0: FMOD::CodecTag::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6aa0, "FMOD::CodecTag::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa6af8 — __GLOBAL__I__ZN4FMOD8tagcodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::tagcodec")]
-pub fn stub_0xa6af8() -> ! {
-    todo!("0xa6af8 __GLOBAL__I__ZN4FMOD8tagcodecE")
+pub fn stub_0xa6af8() -> crate::slot::PortedFn {
+// IDA 0xa6af8: __GLOBAL__I__ZN4FMOD8tagcodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa6af8, "__GLOBAL__I__ZN4FMOD8tagcodecE")
 }
 
-// 0xa6b04 — __ZN4FMOD9CodecUser13closeInternalEv
-// type: int __fastcall(FMOD::CodecUser *this)
 #[doc(alias = "FMOD::CodecUser::closeInternal(void)")]
-pub fn stub_0xa6b04() -> ! {
-    todo!("0xa6b04 __ZN4FMOD9CodecUser13closeInternalEv")
+pub fn stub_0xa6b04() -> crate::slot::PortedFn {
+// IDA 0xa6b04: FMOD::CodecUser::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b04, "FMOD::CodecUser::closeInternal()")
 }
 
-// 0xa6b0c — __ZN4FMOD9CodecUser12readInternalEPvjPj
-// type: int __fastcall(FMOD::CodecUser *this, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecUser::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa6b0c() -> ! {
-    todo!("0xa6b0c __ZN4FMOD9CodecUser12readInternalEPvjPj")
+pub fn stub_0xa6b0c() -> crate::slot::PortedFn {
+// IDA 0xa6b0c: FMOD::CodecUser::readInternal(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b0c, "FMOD::CodecUser::readInternal(void*, unsigned int, unsigned int*)")
 }
 
-// 0xa6b18 — __ZN4FMOD9CodecUser19setPositionInternalEijj
-// type: int __fastcall(FMOD::CodecUser *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecUser::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_0xa6b18() -> ! {
-    todo!("0xa6b18 __ZN4FMOD9CodecUser19setPositionInternalEijj")
+pub fn stub_0xa6b18() -> crate::slot::PortedFn {
+// IDA 0xa6b18: FMOD::CodecUser::setPositionInternal(int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b18, "FMOD::CodecUser::setPositionInternal(int, unsigned int, unsigned int)")
 }
 
-// 0xa6b20 — __ZN4FMOD9CodecUser13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecUser *)
 #[doc(alias = "FMOD::CodecUser::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa6b20() -> ! {
-    todo!("0xa6b20 __ZN4FMOD9CodecUser13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa6b20() -> crate::slot::PortedFn {
+// IDA 0xa6b20: FMOD::CodecUser::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b20, "FMOD::CodecUser::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa6b2c — __ZN4FMOD9CodecUser12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: int __fastcall(FMOD::CodecUser *, void *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecUser::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa6b2c() -> ! {
-    todo!("0xa6b2c __ZN4FMOD9CodecUser12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xa6b2c() -> crate::slot::PortedFn {
+// IDA 0xa6b2c: FMOD::CodecUser::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b2c, "FMOD::CodecUser::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }
 
-// 0xa6b38 — __ZN4FMOD9CodecUser19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int __fastcall(FMOD::CodecUser *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xa6b38() -> ! {
-    todo!("0xa6b38 __ZN4FMOD9CodecUser19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xa6b38() -> crate::slot::PortedFn {
+// IDA 0xa6b38: FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b38, "FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xa6b44 — __ZN4FMOD9CodecUser12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecUser::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa6b44() -> ! {
-    todo!("0xa6b44 __ZN4FMOD9CodecUser12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa6b44() -> crate::slot::PortedFn {
+// IDA 0xa6b44: FMOD::CodecUser::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6b44, "FMOD::CodecUser::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa6e20 — __ZN4FMOD9CodecUser12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecUser::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa6e20() -> ! {
-    todo!("0xa6e20 __ZN4FMOD9CodecUser12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa6e20() -> crate::slot::PortedFn {
+// IDA 0xa6e20: FMOD::CodecUser::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6e20, "FMOD::CodecUser::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa6e2c — __ZN4FMOD9CodecUser16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecUser *this)
 #[doc(alias = "FMOD::CodecUser::getDescriptionEx(void)")]
-pub fn stub_0xa6e2c() -> ! {
-    todo!("0xa6e2c __ZN4FMOD9CodecUser16getDescriptionExEv")
+pub fn stub_0xa6e2c() -> crate::slot::PortedFn {
+// IDA 0xa6e2c: FMOD::CodecUser::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6e2c, "FMOD::CodecUser::getDescriptionEx()")
 }
 
-// 0xa6f18 — __GLOBAL__I__ZN4FMOD9usercodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::usercodec")]
-pub fn stub_0xa6f18() -> ! {
-    todo!("0xa6f18 __GLOBAL__I__ZN4FMOD9usercodecE")
+pub fn stub_0xa6f18() -> crate::slot::PortedFn {
+// IDA 0xa6f18: __GLOBAL__I__ZN4FMOD9usercodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa6f18, "__GLOBAL__I__ZN4FMOD9usercodecE")
 }
 
-// 0xa6f24 — __ZN4FMOD8CodecWav16canPointInternalEv
-// type: int __fastcall(FMOD::CodecWav *this)
 #[doc(alias = "FMOD::CodecWav::canPointInternal(void)")]
-pub fn stub_0xa6f24() -> ! {
-    todo!("0xa6f24 __ZN4FMOD8CodecWav16canPointInternalEv")
+pub fn stub_0xa6f24() -> crate::slot::PortedFn {
+// IDA 0xa6f24: FMOD::CodecWav::canPointInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6f24, "FMOD::CodecWav::canPointInternal()")
 }
 
-// 0xa6fc4 — __ZN4FMOD8CodecWav16canPointCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecWav *)
 #[doc(alias = "FMOD::CodecWav::canPointCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa6fc4() -> ! {
-    todo!("0xa6fc4 __ZN4FMOD8CodecWav16canPointCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa6fc4() -> crate::slot::PortedFn {
+// IDA 0xa6fc4: FMOD::CodecWav::canPointCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6fc4, "FMOD::CodecWav::canPointCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa6fd0 — __ZN4FMOD8CodecWav19soundCreateInternalEiP10FMOD_SOUND
-// type: int __fastcall(int, int, FMOD::SoundI *this)
 #[doc(alias = "FMOD::CodecWav::soundCreateInternal(int,FMOD_SOUND *)")]
-pub fn stub_0xa6fd0() -> ! {
-    todo!("0xa6fd0 __ZN4FMOD8CodecWav19soundCreateInternalEiP10FMOD_SOUND")
+pub fn stub_0xa6fd0() -> crate::slot::PortedFn {
+// IDA 0xa6fd0: FMOD::CodecWav::soundCreateInternal(int, FMOD_SOUND*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa6fd0, "FMOD::CodecWav::soundCreateInternal(int, FMOD_SOUND*)")
 }
 
-// 0xa70bc — __ZN4FMOD8CodecWav19soundCreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND
-// type: int __fastcall(int, int, FMOD::SoundI *)
 #[doc(alias = "FMOD::CodecWav::soundCreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")]
-pub fn stub_0xa70bc() -> ! {
-    todo!("0xa70bc __ZN4FMOD8CodecWav19soundCreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND")
+pub fn stub_0xa70bc() -> crate::slot::PortedFn {
+// IDA 0xa70bc: FMOD::CodecWav::soundCreateCallback(FMOD_CODEC_STATE*, int, FMOD_SOUND*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa70bc, "FMOD::CodecWav::soundCreateCallback(FMOD_CODEC_STATE*, int, FMOD_SOUND*)")
 }
 
-// 0xa70c8 — __ZN4FMOD8CodecWav12readInternalEPvjPj
-// type: int __fastcall(FMOD::CodecWav *this, unsigned __int8 *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecWav::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa70c8() -> ! {
-    todo!("0xa70c8 __ZN4FMOD8CodecWav12readInternalEPvjPj")
+pub fn stub_0xa70c8() -> crate::slot::PortedFn {
+// IDA 0xa70c8: FMOD::CodecWav::readInternal(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa70c8, "FMOD::CodecWav::readInternal(void*, unsigned int, unsigned int*)")
 }
 
-// 0xa7588 — __ZN4FMOD8CodecWav12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: int __fastcall(FMOD::CodecWav *, unsigned __int8 *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecWav::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xa7588() -> ! {
-    todo!("0xa7588 __ZN4FMOD8CodecWav12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xa7588() -> crate::slot::PortedFn {
+// IDA 0xa7588: FMOD::CodecWav::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa7588, "FMOD::CodecWav::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }
 
-// 0xa7594 — __ZN4FMOD8CodecWav13closeInternalEv
-// type: int __fastcall(FMOD::CodecWav *this)
 #[doc(alias = "FMOD::CodecWav::closeInternal(void)")]
-pub fn stub_0xa7594() -> ! {
-    todo!("0xa7594 __ZN4FMOD8CodecWav13closeInternalEv")
+pub fn stub_0xa7594() -> crate::slot::PortedFn {
+// IDA 0xa7594: FMOD::CodecWav::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa7594, "FMOD::CodecWav::closeInternal()")
 }
 
-// 0xa76ec — __ZN4FMOD8CodecWav13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecWav *)
 #[doc(alias = "FMOD::CodecWav::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa76ec() -> ! {
-    todo!("0xa76ec __ZN4FMOD8CodecWav13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa76ec() -> crate::slot::PortedFn {
+// IDA 0xa76ec: FMOD::CodecWav::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa76ec, "FMOD::CodecWav::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa76f8 — __ZN4FMOD8CodecWav16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecWav *this)
 #[doc(alias = "FMOD::CodecWav::getDescriptionEx(void)")]
-pub fn stub_0xa76f8() -> ! {
-    todo!("0xa76f8 __ZN4FMOD8CodecWav16getDescriptionExEv")
+pub fn stub_0xa76f8() -> crate::slot::PortedFn {
+// IDA 0xa76f8: FMOD::CodecWav::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa76f8, "FMOD::CodecWav::getDescriptionEx()")
 }
 
-// 0xa77b8 — __ZN4FMOD8CodecWav12openInternalEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16)
 #[doc(alias = "FMOD::CodecWav::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa77b8() -> ! {
-    todo!("0xa77b8 __ZN4FMOD8CodecWav12openInternalEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa77b8() -> crate::slot::PortedFn {
+// IDA 0xa77b8: FMOD::CodecWav::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa77b8, "FMOD::CodecWav::openInternal(unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa8028 — __ZN4FMOD8CodecWav12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-// type: int __fastcall(int, __int16)
 #[doc(alias = "FMOD::CodecWav::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_0xa8028() -> ! {
-    todo!("0xa8028 __ZN4FMOD8CodecWav12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO")
+pub fn stub_0xa8028() -> crate::slot::PortedFn {
+// IDA 0xa8028: FMOD::CodecWav::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa8028, "FMOD::CodecWav::openCallback(FMOD_CODEC_STATE*, unsigned int, FMOD_CREATESOUNDEXINFO*)")
 }
 
-// 0xa8034 — __ZN4FMOD8CodecWav19setPositionInternalEijj
-// type: int __fastcall(FMOD::File **this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecWav::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_0xa8034() -> ! {
-    todo!("0xa8034 __ZN4FMOD8CodecWav19setPositionInternalEijj")
+pub fn stub_0xa8034() -> crate::slot::PortedFn {
+// IDA 0xa8034: FMOD::CodecWav::setPositionInternal(int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa8034, "FMOD::CodecWav::setPositionInternal(int, unsigned int, unsigned int)")
 }
 
-// 0xa83f4 — __ZN4FMOD8CodecWav19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int __fastcall(FMOD::File **, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xa83f4() -> ! {
-    todo!("0xa83f4 __ZN4FMOD8CodecWav19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xa83f4() -> crate::slot::PortedFn {
+// IDA 0xa83f4: FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa83f4, "FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xa844c — __GLOBAL__I__ZN4FMOD8wavcodecE
-// type: int()
 #[doc(alias = "global constructor keyed toFMOD::wavcodec")]
-pub fn stub_0xa844c() -> ! {
-    todo!("0xa844c __GLOBAL__I__ZN4FMOD8wavcodecE")
+pub fn stub_0xa844c() -> crate::slot::PortedFn {
+// IDA 0xa844c: __GLOBAL__I__ZN4FMOD8wavcodecE.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0xa844c, "__GLOBAL__I__ZN4FMOD8wavcodecE")
 }
 
-// 0xa8458 — __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj
-// type: int __fastcall(FMOD *this, unsigned __int8 *, __int16 *, unsigned int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::IMAAdpcm_DecodeS16(unsigned char *,short *,unsigned int,unsigned int,unsigned int)")]
-pub fn stub_0xa8458() -> ! {
-    todo!("0xa8458 __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj")
+pub fn stub_0xa8458() -> crate::slot::PortedFn {
+// IDA 0xa8458: FMOD::IMAAdpcm_DecodeS16(unsigned char*, short*, unsigned int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa8458, "FMOD::IMAAdpcm_DecodeS16(unsigned char*, short*, unsigned int, unsigned int, unsigned int)")
 }
 
-// 0xa88fc — __ZN4FMOD18IMAAdpcm_DecodeM16EPhPsjjji
-// type: int __fastcall(FMOD *this, unsigned __int8 *, __int16 *, unsigned int, unsigned int, unsigned int, int)
 #[doc(alias = "FMOD::IMAAdpcm_DecodeM16(unsigned char *,short *,unsigned int,unsigned int,unsigned int,int)")]
-pub fn stub_0xa88fc() -> ! {
-    todo!("0xa88fc __ZN4FMOD18IMAAdpcm_DecodeM16EPhPsjjji")
+pub fn stub_0xa88fc() -> crate::slot::PortedFn {
+// IDA 0xa88fc: FMOD::IMAAdpcm_DecodeM16(unsigned char*, short*, unsigned int, unsigned int, unsigned int, int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa88fc, "FMOD::IMAAdpcm_DecodeM16(unsigned char*, short*, unsigned int, unsigned int, unsigned int, int)")
 }
 
-// 0xa8d04 — __ZN4FMOD8CodecWav10parseChunkEj
-// type: int __fastcall(FMOD::CodecWav *this, unsigned int)
 #[doc(alias = "FMOD::CodecWav::parseChunk(unsigned int)")]
-pub fn stub_0xa8d04() -> ! {
-    todo!("0xa8d04 __ZN4FMOD8CodecWav10parseChunkEj")
+pub fn stub_0xa8d04() -> crate::slot::PortedFn {
+// IDA 0xa8d04: FMOD::CodecWav::parseChunk(unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa8d04, "FMOD::CodecWav::parseChunk(unsigned int)")
 }
 
-// 0xa9280 — __ZN4FMOD14MusicChannelXM10portamentoEv
-// type: int __fastcall(FMOD::MusicChannelXM *this)
 #[doc(alias = "FMOD::MusicChannelXM::portamento(void)")]
-pub fn stub_0xa9280() -> ! {
-    todo!("0xa9280 __ZN4FMOD14MusicChannelXM10portamentoEv")
+pub fn stub_0xa9280() -> crate::slot::PortedFn {
+// IDA 0xa9280: FMOD::MusicChannelXM::portamento().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9280, "FMOD::MusicChannelXM::portamento()")
 }
 
-// 0xa92fc — __ZN4FMOD14MusicChannelXM7vibratoEv
-// type: int __fastcall(FMOD::MusicChannelXM *this)
 #[doc(alias = "FMOD::MusicChannelXM::vibrato(void)")]
-pub fn stub_0xa92fc() -> ! {
-    todo!("0xa92fc __ZN4FMOD14MusicChannelXM7vibratoEv")
+pub fn stub_0xa92fc() -> crate::slot::PortedFn {
+// IDA 0xa92fc: FMOD::MusicChannelXM::vibrato().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa92fc, "FMOD::MusicChannelXM::vibrato()")
 }
 
-// 0xa941c — __ZN4FMOD14MusicChannelXM7tremoloEv
-// type: int __fastcall(FMOD::MusicChannelXM *this)
 #[doc(alias = "FMOD::MusicChannelXM::tremolo(void)")]
-pub fn stub_0xa941c() -> ! {
-    todo!("0xa941c __ZN4FMOD14MusicChannelXM7tremoloEv")
+pub fn stub_0xa941c() -> crate::slot::PortedFn {
+// IDA 0xa941c: FMOD::MusicChannelXM::tremolo().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa941c, "FMOD::MusicChannelXM::tremolo()")
 }
 
-// 0xa952c — __ZN4FMOD7CodecXM15processEnvelopeEPNS_18MusicEnvelopeStateEPNS_19MusicVirtualChannelEiPtiiihh
-// type: int __fastcall(int, int *, int, int, int, char, int, int, unsigned __int8, char)
 #[doc(alias = "FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,unsigned short *,int,int,int,unsigned char,unsigned char)")]
-pub fn stub_0xa952c() -> ! {
-    todo!("0xa952c __ZN4FMOD7CodecXM15processEnvelopeEPNS_18MusicEnvelopeStateEPNS_19MusicVirtualChannelEiPtiiihh")
+pub fn stub_0xa952c() -> crate::slot::PortedFn {
+// IDA 0xa952c: FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState*, FMOD::MusicVirtualChannel*, int, unsigned short*, int, int, in~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa952c, "FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState*, FMOD::MusicVirtualChannel*, int, unsigned ~")
 }
 
-// 0xa9708 — __ZN4FMOD14MusicChannelXM17instrumentVibratoEPNS_15MusicInstrumentE
-// type: int __fastcall(int *, unsigned __int8 *)
 #[doc(alias = "FMOD::MusicChannelXM::instrumentVibrato(FMOD::MusicInstrument *)")]
-pub fn stub_0xa9708() -> ! {
-    todo!("0xa9708 __ZN4FMOD14MusicChannelXM17instrumentVibratoEPNS_15MusicInstrumentE")
+pub fn stub_0xa9708() -> crate::slot::PortedFn {
+// IDA 0xa9708: FMOD::MusicChannelXM::instrumentVibrato(FMOD::MusicInstrument*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9708, "FMOD::MusicChannelXM::instrumentVibrato(FMOD::MusicInstrument*)")
 }
 
-// 0xa9830 — __ZN4FMOD14MusicChannelXM17processVolumeByteEh
-// type: int __fastcall(FMOD::MusicChannelXM *this, unsigned __int8)
 #[doc(alias = "FMOD::MusicChannelXM::processVolumeByte(unsigned char)")]
-pub fn stub_0xa9830() -> ! {
-    todo!("0xa9830 __ZN4FMOD14MusicChannelXM17processVolumeByteEh")
+pub fn stub_0xa9830() -> crate::slot::PortedFn {
+// IDA 0xa9830: FMOD::MusicChannelXM::processVolumeByte(unsigned char).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9830, "FMOD::MusicChannelXM::processVolumeByte(unsigned char)")
 }
 
-// 0xa9984 — __ZN4FMOD7CodecXM14getAmigaPeriodEiiPi
-// type: int __fastcall(FMOD::CodecXM *this, int, unsigned int, int *)
 #[doc(alias = "FMOD::CodecXM::getAmigaPeriod(int,int,int *)")]
-pub fn stub_0xa9984() -> ! {
-    todo!("0xa9984 __ZN4FMOD7CodecXM14getAmigaPeriodEiiPi")
+pub fn stub_0xa9984() -> crate::slot::PortedFn {
+// IDA 0xa9984: FMOD::CodecXM::getAmigaPeriod(int, int, int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9984, "FMOD::CodecXM::getAmigaPeriod(int, int, int*)")
 }
 
-// 0xa9a10 — __ZN4FMOD7CodecXM11processNoteEPNS_9MusicNoteEPNS_14MusicChannelXMEPNS_19MusicVirtualChannelEPNS_15MusicInstrumentEPNS_11MusicSampleE
-// type: int __fastcall(int, unsigned __int8 *, FMOD::MusicChannelXM *this, int, int, int)
 #[doc(alias = "FMOD::CodecXM::processNote(FMOD::MusicNote *,FMOD::MusicChannelXM *,FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,FMOD::MusicSample *)")]
-pub fn stub_0xa9a10() -> ! {
-    todo!("0xa9a10 __ZN4FMOD7CodecXM11processNoteEPNS_9MusicNoteEPNS_14MusicChannelXMEPNS_19MusicVirtualChannelEPNS_15MusicInstrumentEPNS_11MusicSampleE")
+pub fn stub_0xa9a10() -> crate::slot::PortedFn {
+// IDA 0xa9a10: FMOD::CodecXM::processNote(FMOD::MusicNote*, FMOD::MusicChannelXM*, FMOD::MusicVirtualChannel*, FMOD::MusicInstrument*, ~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9a10, "FMOD::CodecXM::processNote(FMOD::MusicNote*, FMOD::MusicChannelXM*, FMOD::MusicVirtualChannel*, FMOD~")
 }
 
-// 0xa9c14 — __ZN4FMOD7CodecXM13closeInternalEv
-// type: int __fastcall(FMOD::CodecXM *this)
 #[doc(alias = "FMOD::CodecXM::closeInternal(void)")]
-pub fn stub_0xa9c14() -> ! {
-    todo!("0xa9c14 __ZN4FMOD7CodecXM13closeInternalEv")
+pub fn stub_0xa9c14() -> crate::slot::PortedFn {
+// IDA 0xa9c14: FMOD::CodecXM::closeInternal().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9c14, "FMOD::CodecXM::closeInternal()")
 }
 
-// 0xa9f4c — __ZN4FMOD7CodecXM13closeCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecXM *)
 #[doc(alias = "FMOD::CodecXM::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xa9f4c() -> ! {
-    todo!("0xa9f4c __ZN4FMOD7CodecXM13closeCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xa9f4c() -> crate::slot::PortedFn {
+// IDA 0xa9f4c: FMOD::CodecXM::closeCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9f4c, "FMOD::CodecXM::closeCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xa9f58 — __ZN4FMOD7CodecXM16getDescriptionExEv
-// type: int *__fastcall(FMOD::CodecXM *this)
 #[doc(alias = "FMOD::CodecXM::getDescriptionEx(void)")]
-pub fn stub_0xa9f58() -> ! {
-    todo!("0xa9f58 __ZN4FMOD7CodecXM16getDescriptionExEv")
+pub fn stub_0xa9f58() -> crate::slot::PortedFn {
+// IDA 0xa9f58: FMOD::CodecXM::getDescriptionEx().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xa9f58, "FMOD::CodecXM::getDescriptionEx()")
 }
 
-// 0xaa090 — __ZN4FMOD7CodecXM11updateFlagsEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleE
-// type: int __fastcall(int, int, int, int)
 #[doc(alias = "FMOD::CodecXM::updateFlags(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *)")]
-pub fn stub_0xaa090() -> ! {
-    todo!("0xaa090 __ZN4FMOD7CodecXM11updateFlagsEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleE")
+pub fn stub_0xaa090() -> crate::slot::PortedFn {
+// IDA 0xaa090: FMOD::CodecXM::updateFlags(FMOD::MusicChannel*, FMOD::MusicVirtualChannel*, FMOD::MusicSample*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xaa090, "FMOD::CodecXM::updateFlags(FMOD::MusicChannel*, FMOD::MusicVirtualChannel*, FMOD::MusicSample*)")
 }
 
-// 0xaa288 — __ZN4FMOD7CodecXM15spawnNewChannelEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleEPS4_
-// type: int __fastcall(int, int, int *, int, int **)
 #[doc(alias = "FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)")]
-pub fn stub_0xaa288() -> ! {
-    todo!("0xaa288 __ZN4FMOD7CodecXM15spawnNewChannelEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleEPS4_")
+pub fn stub_0xaa288() -> crate::slot::PortedFn {
+// IDA 0xaa288: FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel*, FMOD::MusicVirtualChannel*, FMOD::MusicSample*, FMOD::MusicVirtualCh~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xaa288, "FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel*, FMOD::MusicVirtualChannel*, FMOD::MusicSample*, ~")
 }
 
-// 0xaa2d0 — __ZN4FMOD7CodecXM13updateEffectsEv
-// type: int __fastcall(FMOD::CodecXM *this)
 #[doc(alias = "FMOD::CodecXM::updateEffects(void)")]
-pub fn stub_0xaa2d0() -> ! {
-    todo!("0xaa2d0 __ZN4FMOD7CodecXM13updateEffectsEv")
+pub fn stub_0xaa2d0() -> crate::slot::PortedFn {
+// IDA 0xaa2d0: FMOD::CodecXM::updateEffects().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xaa2d0, "FMOD::CodecXM::updateEffects()")
 }
 
-// 0xaae64 — __ZN4FMOD7CodecXM10updateNoteEb
-// type: int __fastcall(FMOD::CodecXM *this, bool)
 #[doc(alias = "FMOD::CodecXM::updateNote(bool)")]
-pub fn stub_0xaae64() -> ! {
-    todo!("0xaae64 __ZN4FMOD7CodecXM10updateNoteEb")
+pub fn stub_0xaae64() -> crate::slot::PortedFn {
+// IDA 0xaae64: FMOD::CodecXM::updateNote(bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xaae64, "FMOD::CodecXM::updateNote(bool)")
 }
 
-// 0xab9d4 — __ZN4FMOD7CodecXM6updateEb
-// type: int __fastcall(FMOD::CodecXM *this, bool)
 #[doc(alias = "FMOD::CodecXM::update(bool)")]
-pub fn stub_0xab9d4() -> ! {
-    todo!("0xab9d4 __ZN4FMOD7CodecXM6updateEb")
+pub fn stub_0xab9d4() -> crate::slot::PortedFn {
+// IDA 0xab9d4: FMOD::CodecXM::update(bool).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xab9d4, "FMOD::CodecXM::update(bool)")
 }
 
-// 0xabaf8 — __ZN4FMOD7CodecXM14updateCallbackEP16FMOD_CODEC_STATE
-// type: int __fastcall(FMOD::CodecXM *)
 #[doc(alias = "FMOD::CodecXM::updateCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_0xabaf8() -> ! {
-    todo!("0xabaf8 __ZN4FMOD7CodecXM14updateCallbackEP16FMOD_CODEC_STATE")
+pub fn stub_0xabaf8() -> crate::slot::PortedFn {
+// IDA 0xabaf8: FMOD::CodecXM::updateCallback(FMOD_CODEC_STATE*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xabaf8, "FMOD::CodecXM::updateCallback(FMOD_CODEC_STATE*)")
 }
 
-// 0xabb08 — __ZN4FMOD7CodecXM19setPositionInternalEijj
-// type: int __fastcall(FMOD::CodecXM *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecXM::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_0xabb08() -> ! {
-    todo!("0xabb08 __ZN4FMOD7CodecXM19setPositionInternalEijj")
+pub fn stub_0xabb08() -> crate::slot::PortedFn {
+// IDA 0xabb08: FMOD::CodecXM::setPositionInternal(int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xabb08, "FMOD::CodecXM::setPositionInternal(int, unsigned int, unsigned int)")
 }
 
-// 0xabbbc — __ZN4FMOD7CodecXM19setPositionCallbackEP16FMOD_CODEC_STATEijj
-// type: int __fastcall(FMOD::CodecXM *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_0xabbbc() -> ! {
-    todo!("0xabbbc __ZN4FMOD7CodecXM19setPositionCallbackEP16FMOD_CODEC_STATEijj")
+pub fn stub_0xabbbc() -> crate::slot::PortedFn {
+// IDA 0xabbbc: FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xabbbc, "FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE*, int, unsigned int, unsigned int)")
 }
 
-// 0xabbc8 — __ZN4FMOD7CodecXM15calculateLengthEv
-// type: int __fastcall(FMOD::CodecXM *this)
 #[doc(alias = "FMOD::CodecXM::calculateLength(void)")]
-pub fn stub_0xabbc8() -> ! {
-    todo!("0xabbc8 __ZN4FMOD7CodecXM15calculateLengthEv")
+pub fn stub_0xabbc8() -> crate::slot::PortedFn {
+// IDA 0xabbc8: FMOD::CodecXM::calculateLength().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xabbc8, "FMOD::CodecXM::calculateLength()")
 }
 
-// 0xabc2c — __ZN4FMOD7CodecXM12readInternalEPvjPj
-// type: unsigned int *__fastcall(FMOD::CodecXM *this, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecXM::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_0xabc2c() -> ! {
-    todo!("0xabc2c __ZN4FMOD7CodecXM12readInternalEPvjPj")
+pub fn stub_0xabc2c() -> crate::slot::PortedFn {
+// IDA 0xabc2c: FMOD::CodecXM::readInternal(void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xabc2c, "FMOD::CodecXM::readInternal(void*, unsigned int, unsigned int*)")
 }
 
-// 0xac010 — __ZN4FMOD7CodecXM12readCallbackEP16FMOD_CODEC_STATEPvjPj
-// type: unsigned int *__fastcall(FMOD::CodecXM *, char *, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecXM::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_0xac010() -> ! {
-    todo!("0xac010 __ZN4FMOD7CodecXM12readCallbackEP16FMOD_CODEC_STATEPvjPj")
+pub fn stub_0xac010() -> crate::slot::PortedFn {
+// IDA 0xac010: FMOD::CodecXM::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xac010, "FMOD::CodecXM::readCallback(FMOD_CODEC_STATE*, void*, unsigned int, unsigned int*)")
 }

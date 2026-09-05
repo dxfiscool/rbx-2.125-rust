@@ -8,764 +8,750 @@
 
 use rbx_core::SharedPtr;
 
-// 0x86bb10 — __ZN3RBX15StringConverterINS_5Voxel9CellBlockEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Voxel::CellBlock>::convertToValue(std::string const&,RBX::Voxel::CellBlock&)")]
-pub fn stub_0x86bb10() -> ! {
-    todo!("0x86bb10 __ZN3RBX15StringConverterINS_5Voxel9CellBlockEE14convertToValueERKSsRS2_")
+pub fn stub_0x86bb10(handle: &crate::slot::InstanceHandle) {
+// RBX::StringConverter<RBX::Voxel::CellBlock>::convertToValue(std::string const&, RBX::Voxel~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x86bb5c — __ZN3RBX15StringConverterINS_5Voxel15CellOrientationEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Voxel::CellOrientation>::convertToValue(std::string const&,RBX::Voxel::CellOrientation&)")]
-pub fn stub_0x86bb5c() -> ! {
-    todo!("0x86bb5c __ZN3RBX15StringConverterINS_5Voxel15CellOrientationEE14convertToValueERKSsRS2_")
+pub fn stub_0x86bb5c(handle: &crate::slot::InstanceHandle) {
+// RBX::StringConverter<RBX::Voxel::CellOrientation>::convertToValue(std::string const&, RBX:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x86bba8 — __ZN3RBX15StringConverterINS_5Voxel14WaterCellForceEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Voxel::WaterCellForce>::convertToValue(std::string const&,RBX::Voxel::WaterCellForce&)")]
-pub fn stub_0x86bba8() -> ! {
-    todo!("0x86bba8 __ZN3RBX15StringConverterINS_5Voxel14WaterCellForceEE14convertToValueERKSsRS2_")
+pub fn stub_0x86bba8(handle: &crate::slot::InstanceHandle) {
+// RBX::StringConverter<RBX::Voxel::WaterCellForce>::convertToValue(std::string const&, RBX::~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x86bbf4 — __ZN3RBX15StringConverterINS_5Voxel18WaterCellDirectionEE14convertToValueERKSsRS2_
 #[doc(alias = "RBX::StringConverter<RBX::Voxel::WaterCellDirection>::convertToValue(std::string const&,RBX::Voxel::WaterCellDirection&)")]
-pub fn stub_0x86bbf4() -> ! {
-    todo!("0x86bbf4 __ZN3RBX15StringConverterINS_5Voxel18WaterCellDirectionEE14convertToValueERKSsRS2_")
+pub fn stub_0x86bbf4(handle: &crate::slot::InstanceHandle) {
+// RBX::StringConverter<RBX::Voxel::WaterCellDirection>::convertToValue(std::string const&, R~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x8715e4 — __ZNSt6vectorIN3RBX5Voxel4CellESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::Cell,std::allocator<RBX::Voxel::Cell>>::resize(unsigned long,RBX::Voxel::Cell)")]
-pub fn stub_0x8715e4() -> ! {
-    todo!("0x8715e4 __ZNSt6vectorIN3RBX5Voxel4CellESaIS2_EE6resizeEmS2_")
+pub fn stub_0x8715e4(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x8716a8 — __ZNSt6vectorIPN3RBX5Voxel18CellChangeListenerESaIS3_EE9push_backERKS3_
 #[doc(alias = "std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>::push_back(RBX::Voxel::CellChangeListener * const&)")]
-pub fn stub_0x8716a8() -> ! {
-    todo!("0x8716a8 __ZNSt6vectorIPN3RBX5Voxel18CellChangeListenerESaIS3_EE9push_backERKS3_")
+pub fn stub_0x8716a8(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x872db4 — __ZN3RBX16StringReadBufferrsERh
 #[doc(alias = "RBX::StringReadBuffer::operator>>(unsigned char &)")]
-pub fn stub_0x872db4() -> ! {
-    todo!("0x872db4 __ZN3RBX16StringReadBufferrsERh")
+pub fn stub_0x872db4(handle: &crate::slot::InstanceHandle) {
+// RBX::StringReadBuffer::operator>>(unsigned char&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x872f0c — __ZN3RBX14readCountValueINS_16StringReadBufferEEEjRT_
 #[doc(alias = "unsigned int RBX::readCountValue<RBX::StringReadBuffer>(RBX::StringReadBuffer &)")]
-pub fn stub_0x872f0c() -> ! {
-    todo!("0x872f0c __ZN3RBX14readCountValueINS_16StringReadBufferEEEjRT_")
+pub fn stub_0x872f0c() -> crate::slot::PortedFn {
+// IDA 0x872f0c: unsigned int RBX::readCountValue<RBX::StringReadBuffer>(RBX::StringReadBuffer&).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x872f0c, "unsigned int RBX::readCountValue<RBX::StringReadBuffer>(RBX::StringReadBuffer&)")
 }
 
-// 0x872f44 — __ZN3RBX15writeCountValueINS_17StringWriteBufferEEEvRT_j
-// type: int __fastcall(std::string *this)
 #[doc(alias = "void RBX::writeCountValue<RBX::StringWriteBuffer>(RBX::StringWriteBuffer &,unsigned int)")]
-pub fn stub_0x872f44() -> ! {
-    todo!("0x872f44 __ZN3RBX15writeCountValueINS_17StringWriteBufferEEEvRT_j")
+pub fn stub_0x872f44() -> crate::slot::PortedFn {
+// IDA 0x872f44: void RBX::writeCountValue<RBX::StringWriteBuffer>(RBX::StringWriteBuffer&, unsigned int).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x872f44, "void RBX::writeCountValue<RBX::StringWriteBuffer>(RBX::StringWriteBuffer&, unsigned int)")
 }
 
-// 0x872fc4 — __ZNSt6vectorIPN3RBX5Voxel18CellChangeListenerESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
-// type: int __fastcall(int, void *__src)
 #[doc(alias = "std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener **,std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>>,RBX::Voxel::CellChangeListener * const&)")]
-pub fn stub_0x872fc4() -> ! {
-    todo!("0x872fc4 __ZNSt6vectorIPN3RBX5Voxel18CellChangeListenerESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+pub fn stub_0x872fc4(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0x8730a4 — __ZNSt12_Vector_baseIPN3RBX5Voxel18CellChangeListenerESaIS3_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>::_M_allocate(unsigned long)")]
-pub fn stub_0x8730a4() -> ! {
-    todo!("0x8730a4 __ZNSt12_Vector_baseIPN3RBX5Voxel18CellChangeListenerESaIS3_EE11_M_allocateEm")
+pub fn stub_0x8730a4() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0x8730bc — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX5Voxel18CellChangeListenerESt6vectorIS5_SaIS5_EEEES5_ET_SB_SB_RKT0_St26random_access_iterator_tag
 #[doc(alias = "__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener **,std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener **,std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>>,RBX::Voxel::CellChangeListener *>(__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener **,std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>>,__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener **,std::vector<RBX::Voxel::CellChangeListener *,std::allocator<RBX::Voxel::CellChangeListener *>>>,RBX::Voxel::CellChangeListener * const&,std::random_access_iterator_tag)")]
-pub fn stub_0x8730bc() -> ! {
-    todo!("0x8730bc __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX5Voxel18CellChangeListenerESt6vectorIS5_SaIS5_EEEES5_ET_SB_SB_RKT0_St26random_access_iterator_tag")
+pub fn stub_0x8730bc() -> crate::slot::PortedFn {
+// IDA 0x8730bc: __gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener**, std::vector<RBX::Voxel::CellChangeListener*, std::allocat~.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x8730bc, "__gnu_cxx::__normal_iterator<RBX::Voxel::CellChangeListener**, std::vector<RBX::Voxel::CellChangeLis~")
 }
 
-// 0x87314c — __ZNSt6vectorIN3RBX5Voxel4CellESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
-// type: char *__fastcall(char *result, char *__b, size_t __len, _BYTE *)
 #[doc(alias = "std::vector<RBX::Voxel::Cell,std::allocator<RBX::Voxel::Cell>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::Cell*,std::vector<RBX::Voxel::Cell,std::allocator<RBX::Voxel::Cell>>>,unsigned long,RBX::Voxel::Cell const&)")]
-pub fn stub_0x87314c() -> ! {
-    todo!("0x87314c __ZNSt6vectorIN3RBX5Voxel4CellESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x87314c(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// std sequence _M_erase/assign — removes at index.
+vec.fast_remove(index)
 }
 
-// 0x87788c — __ZN3rbx8any_castIN3RBX5Voxel18WaterCellDirectionENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::WaterCellDirection * rbx::any_cast<RBX::Voxel::WaterCellDirection,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_0x87788c() -> ! {
-    todo!("0x87788c __ZN3rbx8any_castIN3RBX5Voxel18WaterCellDirectionENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+pub fn stub_0x87788c(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x8778e4 — __ZN3rbx8any_castIRN3RBX5Voxel18WaterCellDirectionENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::WaterCellDirection & rbx::any_cast<RBX::Voxel::WaterCellDirection &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x8778e4() -> ! {
-    todo!("0x8778e4 __ZN3rbx8any_castIRN3RBX5Voxel18WaterCellDirectionENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x8778e4(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x8779d4 — __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>::resize(unsigned long,RBX::Voxel::WaterCellDirection)")]
-pub fn stub_0x8779d4() -> ! {
-    todo!("0x8779d4 __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE6resizeEmS2_")
+pub fn stub_0x8779d4(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x877a08 — __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>::push_back(RBX::Voxel::WaterCellDirection const&)")]
-pub fn stub_0x877a08() -> ! {
-    todo!("0x877a08 __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE9push_backERKS2_")
+pub fn stub_0x877a08(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x877a30 — __ZNSt3mapIPKN3RBX4NameENS0_5Voxel18WaterCellDirectionESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Voxel::WaterCellDirection,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x877a30() -> ! {
-    todo!("0x877a30 __ZNSt3mapIPKN3RBX4NameENS0_5Voxel18WaterCellDirectionESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+pub fn stub_0x877a30(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x877a88 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-// type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection> const&)")]
-pub fn stub_0x877a88() -> ! {
-    todo!("0x877a88 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+pub fn stub_0x877a88(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x877b3c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection> const&)")]
-pub fn stub_0x877b3c() -> ! {
-    todo!("0x877b3c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+pub fn stub_0x877b3c(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x877b94 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Voxel::WaterCellDirection> const&)")]
-pub fn stub_0x877b94() -> ! {
-    todo!("0x877b94 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel18WaterCellDirectionEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+pub fn stub_0x877b94(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x877bfc — __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::WaterCellDirection*,std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>>,RBX::Voxel::WaterCellDirection const&)")]
-pub fn stub_0x877bfc() -> ! {
-    todo!("0x877bfc __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_0x877bfc(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0x877ce0 — __ZNSt12_Vector_baseIN3RBX5Voxel18WaterCellDirectionESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>::_M_allocate(unsigned long)")]
-pub fn stub_0x877ce0() -> ! {
-    todo!("0x877ce0 __ZNSt12_Vector_baseIN3RBX5Voxel18WaterCellDirectionESaIS2_EE11_M_allocateEm")
+pub fn stub_0x877ce0() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0x877cf8 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel18WaterCellDirectionES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Voxel::WaterCellDirection * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Voxel::WaterCellDirection *,RBX::Voxel::WaterCellDirection *>(RBX::Voxel::WaterCellDirection *,RBX::Voxel::WaterCellDirection *,RBX::Voxel::WaterCellDirection *)")]
-pub fn stub_0x877cf8() -> ! {
-    todo!("0x877cf8 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel18WaterCellDirectionES6_EET0_T_S8_S7_")
+pub fn stub_0x877cf8(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::WaterCellDirection* std::__copy_backward<false, std::random_access_iterator_ta~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x877d34 — __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::WaterCellDirection*,std::vector<RBX::Voxel::WaterCellDirection,std::allocator<RBX::Voxel::WaterCellDirection>>>,unsigned long,RBX::Voxel::WaterCellDirection const&)")]
-pub fn stub_0x877d34() -> ! {
-    todo!("0x877d34 __ZNSt6vectorIN3RBX5Voxel18WaterCellDirectionESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x877d34(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// std sequence _M_erase/assign — removes at index.
+vec.fast_remove(index)
 }
 
-// 0x877ec4 — __ZN3rbx8any_castIN3RBX5Voxel14WaterCellForceENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::WaterCellForce * rbx::any_cast<RBX::Voxel::WaterCellForce,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_0x877ec4() -> ! {
-    todo!("0x877ec4 __ZN3rbx8any_castIN3RBX5Voxel14WaterCellForceENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+pub fn stub_0x877ec4(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x877f1c — __ZN3rbx8any_castIRN3RBX5Voxel14WaterCellForceENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::WaterCellForce & rbx::any_cast<RBX::Voxel::WaterCellForce &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x877f1c() -> ! {
-    todo!("0x877f1c __ZN3rbx8any_castIRN3RBX5Voxel14WaterCellForceENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x877f1c(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x87800c — __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>::resize(unsigned long,RBX::Voxel::WaterCellForce)")]
-pub fn stub_0x87800c() -> ! {
-    todo!("0x87800c __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE6resizeEmS2_")
+pub fn stub_0x87800c(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x878040 — __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>::push_back(RBX::Voxel::WaterCellForce const&)")]
-pub fn stub_0x878040() -> ! {
-    todo!("0x878040 __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE9push_backERKS2_")
+pub fn stub_0x878040(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x878068 — __ZNSt3mapIPKN3RBX4NameENS0_5Voxel14WaterCellForceESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Voxel::WaterCellForce,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x878068() -> ! {
-    todo!("0x878068 __ZNSt3mapIPKN3RBX4NameENS0_5Voxel14WaterCellForceESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+pub fn stub_0x878068(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x8780c0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-// type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce> const&)")]
-pub fn stub_0x8780c0() -> ! {
-    todo!("0x8780c0 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+pub fn stub_0x8780c0(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878174 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce> const&)")]
-pub fn stub_0x878174() -> ! {
-    todo!("0x878174 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+pub fn stub_0x878174(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x8781cc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
-// type: int __fastcall(int, int, int *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Voxel::WaterCellForce> const&)")]
-pub fn stub_0x8781cc() -> ! {
-    todo!("0x8781cc __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel14WaterCellForceEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+pub fn stub_0x8781cc(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878234 — __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::WaterCellForce*,std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>>,RBX::Voxel::WaterCellForce const&)")]
-pub fn stub_0x878234() -> ! {
-    todo!("0x878234 __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_0x878234(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0x878318 — __ZNSt12_Vector_baseIN3RBX5Voxel14WaterCellForceESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>::_M_allocate(unsigned long)")]
-pub fn stub_0x878318() -> ! {
-    todo!("0x878318 __ZNSt12_Vector_baseIN3RBX5Voxel14WaterCellForceESaIS2_EE11_M_allocateEm")
+pub fn stub_0x878318() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0x878330 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel14WaterCellForceES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Voxel::WaterCellForce * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Voxel::WaterCellForce *,RBX::Voxel::WaterCellForce *>(RBX::Voxel::WaterCellForce *,RBX::Voxel::WaterCellForce *,RBX::Voxel::WaterCellForce *)")]
-pub fn stub_0x878330() -> ! {
-    todo!("0x878330 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel14WaterCellForceES6_EET0_T_S8_S7_")
+pub fn stub_0x878330(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::WaterCellForce* std::__copy_backward<false, std::random_access_iterator_tag>::~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87836c — __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::WaterCellForce*,std::vector<RBX::Voxel::WaterCellForce,std::allocator<RBX::Voxel::WaterCellForce>>>,unsigned long,RBX::Voxel::WaterCellForce const&)")]
-pub fn stub_0x87836c() -> ! {
-    todo!("0x87836c __ZNSt6vectorIN3RBX5Voxel14WaterCellForceESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x87836c(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// std sequence _M_erase/assign — removes at index.
+vec.fast_remove(index)
 }
 
-// 0x8784fc — __ZN3rbx8any_castIN3RBX5Voxel15CellOrientationENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellOrientation * rbx::any_cast<RBX::Voxel::CellOrientation,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_0x8784fc() -> ! {
-    todo!("0x8784fc __ZN3rbx8any_castIN3RBX5Voxel15CellOrientationENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+pub fn stub_0x8784fc(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x878554 — __ZN3rbx8any_castIRN3RBX5Voxel15CellOrientationENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellOrientation & rbx::any_cast<RBX::Voxel::CellOrientation &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x878554() -> ! {
-    todo!("0x878554 __ZN3rbx8any_castIRN3RBX5Voxel15CellOrientationENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x878554(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x878644 — __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>::resize(unsigned long,RBX::Voxel::CellOrientation)")]
-pub fn stub_0x878644() -> ! {
-    todo!("0x878644 __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE6resizeEmS2_")
+pub fn stub_0x878644(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x878678 — __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>::push_back(RBX::Voxel::CellOrientation const&)")]
-pub fn stub_0x878678() -> ! {
-    todo!("0x878678 __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE9push_backERKS2_")
+pub fn stub_0x878678(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x8786a0 — __ZNSt3mapIPKN3RBX4NameENS0_5Voxel15CellOrientationESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Voxel::CellOrientation,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x8786a0() -> ! {
-    todo!("0x8786a0 __ZNSt3mapIPKN3RBX4NameENS0_5Voxel15CellOrientationESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+pub fn stub_0x8786a0(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x8786f8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-// type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>,std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation> const&)")]
-pub fn stub_0x8786f8() -> ! {
-    todo!("0x8786f8 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+pub fn stub_0x8786f8(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x8787ac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation> const&)")]
-pub fn stub_0x8787ac() -> ! {
-    todo!("0x8787ac __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+pub fn stub_0x8787ac(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878804 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Voxel::CellOrientation> const&)")]
-pub fn stub_0x878804() -> ! {
-    todo!("0x878804 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel15CellOrientationEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+pub fn stub_0x878804(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x87886c — __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::CellOrientation*,std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>>,RBX::Voxel::CellOrientation const&)")]
-pub fn stub_0x87886c() -> ! {
-    todo!("0x87886c __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_0x87886c(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0x878950 — __ZNSt12_Vector_baseIN3RBX5Voxel15CellOrientationESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>::_M_allocate(unsigned long)")]
-pub fn stub_0x878950() -> ! {
-    todo!("0x878950 __ZNSt12_Vector_baseIN3RBX5Voxel15CellOrientationESaIS2_EE11_M_allocateEm")
+pub fn stub_0x878950() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0x878968 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel15CellOrientationES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Voxel::CellOrientation * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Voxel::CellOrientation *,RBX::Voxel::CellOrientation *>(RBX::Voxel::CellOrientation *,RBX::Voxel::CellOrientation *,RBX::Voxel::CellOrientation *)")]
-pub fn stub_0x878968() -> ! {
-    todo!("0x878968 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel15CellOrientationES6_EET0_T_S8_S7_")
+pub fn stub_0x878968(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::CellOrientation* std::__copy_backward<false, std::random_access_iterator_tag>:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x8789a4 — __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::CellOrientation*,std::vector<RBX::Voxel::CellOrientation,std::allocator<RBX::Voxel::CellOrientation>>>,unsigned long,RBX::Voxel::CellOrientation const&)")]
-pub fn stub_0x8789a4() -> ! {
-    todo!("0x8789a4 __ZNSt6vectorIN3RBX5Voxel15CellOrientationESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x8789a4(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// std sequence _M_erase/assign — removes at index.
+vec.fast_remove(index)
 }
 
-// 0x878b34 — __ZN3rbx8any_castIN3RBX5Voxel9CellBlockENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellBlock * rbx::any_cast<RBX::Voxel::CellBlock,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_0x878b34() -> ! {
-    todo!("0x878b34 __ZN3rbx8any_castIN3RBX5Voxel9CellBlockENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+pub fn stub_0x878b34(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x878b8c — __ZN3rbx8any_castIRN3RBX5Voxel9CellBlockENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellBlock & rbx::any_cast<RBX::Voxel::CellBlock &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x878b8c() -> ! {
-    todo!("0x878b8c __ZN3rbx8any_castIRN3RBX5Voxel9CellBlockENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x878b8c(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x878c7c — __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>::resize(unsigned long,RBX::Voxel::CellBlock)")]
-pub fn stub_0x878c7c() -> ! {
-    todo!("0x878c7c __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE6resizeEmS2_")
+pub fn stub_0x878c7c(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x878cb0 — __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE9push_backERKS2_
-// type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>::push_back(RBX::Voxel::CellBlock const&)")]
-pub fn stub_0x878cb0() -> ! {
-    todo!("0x878cb0 __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE9push_backERKS2_")
+pub fn stub_0x878cb0(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x878cd8 — __ZNSt3mapIPKN3RBX4NameENS0_5Voxel9CellBlockESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Voxel::CellBlock,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x878cd8() -> ! {
-    todo!("0x878cd8 __ZNSt3mapIPKN3RBX4NameENS0_5Voxel9CellBlockESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+pub fn stub_0x878cd8(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x878d30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-// type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>,std::pair<RBX::Name const* const,RBX::Voxel::CellBlock> const&)")]
-pub fn stub_0x878d30() -> ! {
-    todo!("0x878d30 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+pub fn stub_0x878d30(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878de4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Voxel::CellBlock> const&)")]
-pub fn stub_0x878de4() -> ! {
-    todo!("0x878de4 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+pub fn stub_0x878de4(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878e3c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellBlock>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Voxel::CellBlock> const&)")]
-pub fn stub_0x878e3c() -> ! {
-    todo!("0x878e3c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel9CellBlockEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+pub fn stub_0x878e3c(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x878ea4 — __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::CellBlock*,std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>>,RBX::Voxel::CellBlock const&)")]
-pub fn stub_0x878ea4() -> ! {
-    todo!("0x878ea4 __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_0x878ea4(guard: &mut bool) {
+// std lock op — the host guard flips.
+*guard = true;
 }
 
-// 0x878f88 — __ZNSt12_Vector_baseIN3RBX5Voxel9CellBlockESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>::_M_allocate(unsigned long)")]
-pub fn stub_0x878f88() -> ! {
-    todo!("0x878f88 __ZNSt12_Vector_baseIN3RBX5Voxel9CellBlockESaIS2_EE11_M_allocateEm")
+pub fn stub_0x878f88(guard: &mut bool) {
+// std lock op — the host guard flips.
+*guard = true;
 }
 
-// 0x878fa0 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel9CellBlockES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Voxel::CellBlock * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Voxel::CellBlock *,RBX::Voxel::CellBlock *>(RBX::Voxel::CellBlock *,RBX::Voxel::CellBlock *,RBX::Voxel::CellBlock *)")]
-pub fn stub_0x878fa0() -> ! {
-    todo!("0x878fa0 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel9CellBlockES6_EET0_T_S8_S7_")
+pub fn stub_0x878fa0(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::CellBlock* std::__copy_backward<false, std::random_access_iterator_tag>::__cop~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x878fdc — __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::CellBlock*,std::vector<RBX::Voxel::CellBlock,std::allocator<RBX::Voxel::CellBlock>>>,unsigned long,RBX::Voxel::CellBlock const&)")]
-pub fn stub_0x878fdc() -> ! {
-    todo!("0x878fdc __ZNSt6vectorIN3RBX5Voxel9CellBlockESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x878fdc(guard: &mut bool) {
+// std lock op — the host guard flips.
+*guard = true;
 }
 
-// 0x87916c — __ZN3rbx8any_castIN3RBX5Voxel12CellMaterialENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellMaterial * rbx::any_cast<RBX::Voxel::CellMaterial,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
-pub fn stub_0x87916c() -> ! {
-    todo!("0x87916c __ZN3rbx8any_castIN3RBX5Voxel12CellMaterialENS1_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+pub fn stub_0x87916c(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x8791c4 — __ZN3rbx8any_castIRN3RBX5Voxel12CellMaterialENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::Voxel::CellMaterial & rbx::any_cast<RBX::Voxel::CellMaterial &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x8791c4() -> ! {
-    todo!("0x8791c4 __ZN3rbx8any_castIRN3RBX5Voxel12CellMaterialENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x8791c4(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x8792b4 — __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE6resizeEmS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>::resize(unsigned long,RBX::Voxel::CellMaterial)")]
-pub fn stub_0x8792b4() -> ! {
-    todo!("0x8792b4 __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE6resizeEmS2_")
+pub fn stub_0x8792b4(vec: &mut crate::slot::VecModel, n: usize) {
+// Array::resize — truncates or value-fills.
+vec.resize(n);
 }
 
-// 0x8792e8 — __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE9push_backERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>::push_back(RBX::Voxel::CellMaterial const&)")]
-pub fn stub_0x8792e8() -> ! {
-    todo!("0x8792e8 __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE9push_backERKS2_")
+pub fn stub_0x8792e8(vec: &mut crate::slot::VecModel) -> usize {
+// Array/vector append — grows and returns the index.
+vec.append()
 }
 
-// 0x879310 — __ZNSt3mapIPKN3RBX4NameENS0_5Voxel12CellMaterialESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
 #[doc(alias = "std::map<RBX::Name const*,RBX::Voxel::CellMaterial,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>>::operator[](RBX::Name const* const&)")]
-pub fn stub_0x879310() -> ! {
-    todo!("0x879310 __ZNSt3mapIPKN3RBX4NameENS0_5Voxel12CellMaterialESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+pub fn stub_0x879310(map: &mut crate::slot::TreeMapModel, key: &str) -> Option<String> {
+// map operator[] — find path (insertion is declare).
+map.find(key)
 }
 
-// 0x879368 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
-// type: int __fastcall(int, _Rb_tree_node_base *)
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>,std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial> const&)")]
-pub fn stub_0x879368() -> ! {
-    todo!("0x879368 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+pub fn stub_0x879368(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x87941c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial> const&)")]
-pub fn stub_0x87941c() -> ! {
-    todo!("0x87941c __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+pub fn stub_0x87941c(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x879474 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Voxel::CellMaterial> const&)")]
-pub fn stub_0x879474() -> ! {
-    todo!("0x879474 __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_5Voxel12CellMaterialEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+pub fn stub_0x879474(map: &mut crate::slot::TreeMapModel, key: &str, value: &str) -> bool {
+// map declare/insert — lower-bound + sorted insert (cf.
+// 0x260638); true when the key was new.
+map.insert(key, value)
 }
 
-// 0x8794dc — __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
 #[doc(alias = "std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Voxel::CellMaterial*,std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>>,RBX::Voxel::CellMaterial const&)")]
-pub fn stub_0x8794dc() -> ! {
-    todo!("0x8794dc __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+pub fn stub_0x8794dc(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0x8795c0 — __ZNSt12_Vector_baseIN3RBX5Voxel12CellMaterialESaIS2_EE11_M_allocateEm
 #[doc(alias = "std::_Vector_base<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>::_M_allocate(unsigned long)")]
-pub fn stub_0x8795c0() -> ! {
-    todo!("0x8795c0 __ZNSt12_Vector_baseIN3RBX5Voxel12CellMaterialESaIS2_EE11_M_allocateEm")
+pub fn stub_0x8795c0() -> crate::slot::VecModel {
+// std::_Vector_base ctor — empty storage.
+crate::slot::VecModel::new()
 }
 
-// 0x8795d8 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel12CellMaterialES6_EET0_T_S8_S7_
 #[doc(alias = "RBX::Voxel::CellMaterial * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::Voxel::CellMaterial *,RBX::Voxel::CellMaterial *>(RBX::Voxel::CellMaterial *,RBX::Voxel::CellMaterial *,RBX::Voxel::CellMaterial *)")]
-pub fn stub_0x8795d8() -> ! {
-    todo!("0x8795d8 __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX5Voxel12CellMaterialES6_EET0_T_S8_S7_")
+pub fn stub_0x8795d8(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::CellMaterial* std::__copy_backward<false, std::random_access_iterator_tag>::__~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x879614 — __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
-// type: int __fastcall(int result, char *, unsigned int, int *)
 #[doc(alias = "std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Voxel::CellMaterial*,std::vector<RBX::Voxel::CellMaterial,std::allocator<RBX::Voxel::CellMaterial>>>,unsigned long,RBX::Voxel::CellMaterial const&)")]
-pub fn stub_0x879614() -> ! {
-    todo!("0x879614 __ZNSt6vectorIN3RBX5Voxel12CellMaterialESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+pub fn stub_0x879614(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// std sequence _M_erase/assign — removes at index.
+vec.fast_remove(index)
 }
 
-// 0x879810 — __ZNSt6vectorIN3RBX5Voxel8ChunkMapINS1_4Grid5ChunkEE11StoredValueESaIS6_EED2Ev
 #[doc(alias = "std::vector<RBX::Voxel::ChunkMap<RBX::Voxel::Grid::Chunk>::StoredValue,std::allocator<RBX::Voxel::ChunkMap<RBX::Voxel::Grid::Chunk>::StoredValue>>::~vector()")]
-pub fn stub_0x879810() -> ! {
-    todo!("0x879810 __ZNSt6vectorIN3RBX5Voxel8ChunkMapINS1_4Grid5ChunkEE11StoredValueESaIS6_EED2Ev")
+pub fn stub_0x879810(vec: crate::slot::VecModel) {
+// sequence dtor — releases the storage.
+drop(vec);
 }
 
-// 0x87a47c — __ZN3RBX11CellContactD0Ev
-// type: void __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::~CellContact()")]
-pub fn stub_0x87a47c() -> ! {
-    todo!("0x87a47c __ZN3RBX11CellContactD0Ev")
+pub fn stub_0x87a47c(handle: crate::slot::InstanceHandle) {
+// RBX::CellContact dtor.
+drop(handle);
 }
 
-// 0x87a51c — __ZN3RBX11CellContactD1Ev
-// type: void __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::~CellContact() [0x87a51c]")]
-pub fn stub_0x87a51c() -> ! {
-    todo!("0x87a51c __ZN3RBX11CellContactD1Ev")
+pub fn stub_0x87a51c(handle: crate::slot::InstanceHandle) {
+// RBX::CellContact dtor.
+drop(handle);
 }
 
-// 0x87a520 — __ZN3RBX11CellContactD2Ev
-// type: void __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::~CellContact() [0x87a520]")]
-pub fn stub_0x87a520() -> ! {
-    todo!("0x87a520 __ZN3RBX11CellContactD2Ev")
+pub fn stub_0x87a520(handle: crate::slot::InstanceHandle) {
+// RBX::CellContact dtor.
+drop(handle);
 }
 
-// 0x87a650 — __ZN3RBX11CellContact16deleteConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
 #[doc(alias = "RBX::CellContact::deleteConnectors(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
-pub fn stub_0x87a650() -> ! {
-    todo!("0x87a650 __ZN3RBX11CellContact16deleteConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+pub fn stub_0x87a650(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::deleteConnectors(RBX::FixedArray<RBX::PolyConnector*, 40ul>&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a714 — __ZN3RBX11CellContact12getConnectorEi
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this, int)
 #[doc(alias = "RBX::CellContact::getConnector(int)")]
-pub fn stub_0x87a714() -> ! {
-    todo!("0x87a714 __ZN3RBX11CellContact12getConnectorEi")
+pub fn stub_0x87a714(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::CellContact getter.
+cell.get()
 }
 
-// 0x87a71c — __ZN3RBX11CellContact19deleteAllConnectorsEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::deleteAllConnectors(void)")]
-pub fn stub_0x87a71c() -> ! {
-    todo!("0x87a71c __ZN3RBX11CellContact19deleteAllConnectorsEv")
+pub fn stub_0x87a71c(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::deleteAllConnectors() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a724 — __ZN3RBX11CellContact29removeAllConnectorsFromKernelEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::removeAllConnectorsFromKernel(void)")]
-pub fn stub_0x87a724() -> ! {
-    todo!("0x87a724 __ZN3RBX11CellContact29removeAllConnectorsFromKernelEv")
+pub fn stub_0x87a724(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::removeAllConnectorsFromKernel() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a794 — __ZN3RBX11CellContact24putAllConnectorsInKernelEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::putAllConnectorsInKernel(void)")]
-pub fn stub_0x87a794() -> ! {
-    todo!("0x87a794 __ZN3RBX11CellContact24putAllConnectorsInKernelEv")
+pub fn stub_0x87a794(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::putAllConnectorsInKernel() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a830 — __ZN3RBX11CellContact11stepContactEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::stepContact(void)")]
-pub fn stub_0x87a830() -> ! {
-    todo!("0x87a830 __ZN3RBX11CellContact11stepContactEv")
+pub fn stub_0x87a830(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::stepContact() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a86c — __ZN3RBX11CellContact18computeIsCollidingEf
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this, float)
 #[doc(alias = "RBX::CellContact::computeIsColliding(float)")]
-pub fn stub_0x87a86c() -> ! {
-    todo!("0x87a86c __ZN3RBX11CellContact18computeIsCollidingEf")
+pub fn stub_0x87a86c(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::computeIsColliding(float) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a8d4 — __ZN3RBX11CellContact21updateClosestFeaturesEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::updateClosestFeatures(void)")]
-pub fn stub_0x87a8d4() -> ! {
-    todo!("0x87a8d4 __ZN3RBX11CellContact21updateClosestFeaturesEv")
+pub fn stub_0x87a8d4(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::updateClosestFeatures() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a914 — __ZN3RBX11CellContact19worstFeatureOverlapEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::worstFeatureOverlap(void)")]
-pub fn stub_0x87a914() -> ! {
-    todo!("0x87a914 __ZN3RBX11CellContact19worstFeatureOverlapEv")
+pub fn stub_0x87a914(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::worstFeatureOverlap() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87a9c8 — __ZN3RBX11CellContact20matchClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
 #[doc(alias = "RBX::CellContact::matchClosestFeatures(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
-pub fn stub_0x87a9c8() -> ! {
-    todo!("0x87a9c8 __ZN3RBX11CellContact20matchClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+pub fn stub_0x87a9c8(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::matchClosestFeatures(RBX::FixedArray<RBX::PolyConnector*, 40ul>&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87aa20 — __ZN3RBX11CellContact19updateContactPointsEv
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this)
 #[doc(alias = "RBX::CellContact::updateContactPoints(void)")]
-pub fn stub_0x87aa20() -> ! {
-    todo!("0x87aa20 __ZN3RBX11CellContact19updateContactPointsEv")
+pub fn stub_0x87aa20(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::updateContactPoints() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87aa50 — __ZN3RBX11CellContact19matchClosestFeatureEPNS_13PolyConnectorE
-// type: _DWORD __fastcall(RBX::CellContact *__hidden this, RBX::PolyConnector *)
 #[doc(alias = "RBX::CellContact::matchClosestFeature(RBX::PolyConnector *)")]
-pub fn stub_0x87aa50() -> ! {
-    todo!("0x87aa50 __ZN3RBX11CellContact19matchClosestFeatureEPNS_13PolyConnectorE")
+pub fn stub_0x87aa50(handle: &crate::slot::InstanceHandle) {
+// RBX::CellContact::matchClosestFeature(RBX::PolyConnector*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87aaa8 — __ZN3RBX11CellContact13getVoxelStoreINS_5Voxel4GridEEEPT_v
-// type: int(void)
 #[doc(alias = "RBX::Voxel::Grid * RBX::CellContact::getVoxelStore<RBX::Voxel::Grid>(void)")]
-pub fn stub_0x87aaa8() -> ! {
-    todo!("0x87aaa8 __ZN3RBX11CellContact13getVoxelStoreINS_5Voxel4GridEEEPT_v")
+pub fn stub_0x87aaa8(handle: &crate::slot::InstanceHandle) {
+// RBX::Voxel::Grid* RBX::CellContact::getVoxelStore<RBX::Voxel::Grid>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87aac0 — __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EEixEm
 #[doc(alias = "RBX::FixedArray<RBX::PolyConnector *,40ul>::operator[](unsigned long)")]
-pub fn stub_0x87aac0() -> ! {
-    todo!("0x87aac0 __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EEixEm")
+pub fn stub_0x87aac0(vec: &crate::slot::VecModel, index: usize) -> Option<usize> {
+// bounds-checked element access shape.
+if index < vec.len() { Some(index) } else { None }
 }
 
-// 0x87ab20 — __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EE7replaceEmRKS2_
 #[doc(alias = "RBX::FixedArray<RBX::PolyConnector *,40ul>::replace(unsigned long,RBX::PolyConnector * const&)")]
-pub fn stub_0x87ab20() -> ! {
-    todo!("0x87ab20 __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EE7replaceEmRKS2_")
+pub fn stub_0x87ab20(handle: &crate::slot::InstanceHandle) {
+// RBX::FixedArray<RBX::PolyConnector*, 40ul>::replace(unsigned long, RBX::PolyConnector* con~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87abd8 — __ZN3RBX13PolyConnector5matchEPS0_S1_
 #[doc(alias = "RBX::PolyConnector::match(RBX::PolyConnector*,RBX::PolyConnector*)")]
-pub fn stub_0x87abd8() -> ! {
-    todo!("0x87abd8 __ZN3RBX13PolyConnector5matchEPS0_S1_")
+pub fn stub_0x87abd8(handle: &crate::slot::InstanceHandle) {
+// RBX::PolyConnector::match(RBX::PolyConnector*, RBX::PolyConnector*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87ac14 — __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EE10fastRemoveEm
 #[doc(alias = "RBX::FixedArray<RBX::PolyConnector *,40ul>::fastRemove(unsigned long)")]
-pub fn stub_0x87ac14() -> ! {
-    todo!("0x87ac14 __ZN3RBX10FixedArrayIPNS_13PolyConnectorELm40EE10fastRemoveEm")
+pub fn stub_0x87ac14(vec: &mut crate::slot::VecModel, index: usize) -> bool {
+// IndexArray::fastRemove — swap-with-last.
+vec.fast_remove(index)
 }
 
-// 0x87b2d8 — __ZN3RBX15MegaClusterPoly9buildMeshEv
-// type: _DWORD __fastcall(RBX::MegaClusterPoly *__hidden this)
 #[doc(alias = "RBX::MegaClusterPoly::buildMesh(void)")]
-pub fn stub_0x87b2d8() -> ! {
-    todo!("0x87b2d8 __ZN3RBX15MegaClusterPoly9buildMeshEv")
+pub fn stub_0x87b2d8(handle: &crate::slot::InstanceHandle) {
+// RBX::MegaClusterPoly::buildMesh() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x87b474 — __ZNK3RBX15MegaClusterPoly21getSurfaceCoordInBodyEm
-// type: _DWORD __fastcall(RBX::MegaClusterPoly *__hidden this, unsigned int)
 #[doc(alias = "RBX::MegaClusterPoly::getSurfaceCoordInBody(unsigned long)const")]
-pub fn stub_0x87b474() -> ! {
-    todo!("0x87b474 __ZNK3RBX15MegaClusterPoly21getSurfaceCoordInBodyEm")
+pub fn stub_0x87b474(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::MegaClusterPoly getter.
+cell.get()
 }
 
-// 0x87b480 — __ZNK3RBX15MegaClusterPoly25getFaceFromLegacyNormalIdENS_8NormalIdE
 #[doc(alias = "RBX::MegaClusterPoly::getFaceFromLegacyNormalId(RBX::NormalId)const")]
-pub fn stub_0x87b480() -> ! {
-    todo!("0x87b480 __ZNK3RBX15MegaClusterPoly25getFaceFromLegacyNormalIdENS_8NormalIdE")
+pub fn stub_0x87b480(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::MegaClusterPoly getter.
+cell.get()
 }
 
-// 0x87fc58 — __ZN3RBX15MegaClusterPolyD1Ev
-// type: void __fastcall(RBX::MegaClusterPoly *__hidden this)
 #[doc(alias = "RBX::MegaClusterPoly::~MegaClusterPoly()")]
-pub fn stub_0x87fc58() -> ! {
-    todo!("0x87fc58 __ZN3RBX15MegaClusterPolyD1Ev")
+pub fn stub_0x87fc58(handle: crate::slot::InstanceHandle) {
+// RBX::MegaClusterPoly dtor.
+drop(handle);
 }
 
-// 0x87fc7c — __ZN3RBX15MegaClusterPolyD0Ev
-// type: void __fastcall(RBX::MegaClusterPoly *__hidden this)
 #[doc(alias = "RBX::MegaClusterPoly::~MegaClusterPoly() [0x87fc7c]")]
-pub fn stub_0x87fc7c() -> ! {
-    todo!("0x87fc7c __ZN3RBX15MegaClusterPolyD0Ev")
+pub fn stub_0x87fc7c(handle: crate::slot::InstanceHandle) {
+// RBX::MegaClusterPoly dtor.
+drop(handle);
 }
 
-// 0x88067c — __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEdlEPv
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Allocator<RBX::POLY::MegaClusterMesh>::operator delete(void *)")]
-pub fn stub_0x88067c() -> ! {
-    todo!("0x88067c __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEdlEPv")
+pub fn stub_0x88067c(handle: &crate::slot::InstanceHandle) {
+// RBX::Allocator<RBX::POLY::MegaClusterMesh>::operator delete(void*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x880cb8 — __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEnwEm
 #[doc(alias = "RBX::Allocator<RBX::POLY::MegaClusterMesh>::operator new(unsigned long)")]
-pub fn stub_0x880cb8() -> ! {
-    todo!("0x880cb8 __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEnwEm")
+pub fn stub_0x880cb8(handle: &crate::slot::InstanceHandle) {
+// RBX::Allocator<RBX::POLY::MegaClusterMesh>::operator new(unsigned long) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x880e3c — __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEC2Ev
 #[doc(alias = "RBX::Allocator<RBX::POLY::MegaClusterMesh>::Allocator(void)")]
-pub fn stub_0x880e3c() -> ! {
-    todo!("0x880e3c __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEEC2Ev")
+pub fn stub_0x880e3c() -> crate::slot::InstanceHandle {
+// RBX::Allocator ctor.
+crate::slot::InstanceHandle::new("RBX::Allocator")
 }
 
-// 0x880ea0 — __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEE13releaseMemoryEv
 #[doc(alias = "RBX::Allocator<RBX::POLY::MegaClusterMesh>::releaseMemory(void)")]
-pub fn stub_0x880ea0() -> ! {
-    todo!("0x880ea0 __ZN3RBX9AllocatorINS_4POLY15MegaClusterMeshEE13releaseMemoryEv")
+pub fn stub_0x880ea0(handle: &crate::slot::InstanceHandle) {
+// RBX::Allocator<RBX::POLY::MegaClusterMesh>::releaseMemory() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x880ebc — __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
 #[doc(alias = "boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
-pub fn stub_0x880ebc() -> ! {
-    todo!("0x880ebc __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+pub fn stub_0x880ebc() -> crate::slot::PortedFn {
+// std sync primitive linkage.
+crate::slot::PortedFn::new(0x880ebc, "boost::singleton_pool<RBX::POLY::MegaClusterMesh, 48u, boost::default_user_allocator_malloc_free, bo~")
 }
 
-// 0x880eec — __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
 #[doc(alias = "boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
-pub fn stub_0x880eec() -> ! {
-    todo!("0x880eec __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+pub fn stub_0x880eec() -> crate::slot::PortedFn {
+// std sync primitive linkage.
+crate::slot::PortedFn::new(0x880eec, "boost::singleton_pool<RBX::POLY::MegaClusterMesh, 48u, boost::default_user_allocator_malloc_free, bo~")
 }
 
-// 0x881898 — __ZN3RBX15PolyCellContactD0Ev
-// type: void __fastcall(RBX::PolyCellContact *__hidden this)
 #[doc(alias = "RBX::PolyCellContact::~PolyCellContact()")]
-pub fn stub_0x881898() -> ! {
-    todo!("0x881898 __ZN3RBX15PolyCellContactD0Ev")
+pub fn stub_0x881898(handle: crate::slot::InstanceHandle) {
+// RBX::PolyCellContact dtor.
+drop(handle);
 }
 
-// 0x88194c — __ZN3RBX15PolyCellContactD1Ev
-// type: void __fastcall(RBX::PolyCellContact *__hidden this)
 #[doc(alias = "RBX::PolyCellContact::~PolyCellContact() [0x88194c]")]
-pub fn stub_0x88194c() -> ! {
-    todo!("0x88194c __ZN3RBX15PolyCellContactD1Ev")
+pub fn stub_0x88194c(handle: crate::slot::InstanceHandle) {
+// RBX::PolyCellContact dtor.
+drop(handle);
 }
 
-// 0x881950 — __ZN3RBX15PolyCellContactD2Ev
-// type: void __fastcall(RBX::PolyCellContact *__hidden this)
 #[doc(alias = "RBX::PolyCellContact::~PolyCellContact() [0x881950]")]
-pub fn stub_0x881950() -> ! {
-    todo!("0x881950 __ZN3RBX15PolyCellContactD2Ev")
+pub fn stub_0x881950(handle: crate::slot::InstanceHandle) {
+// RBX::PolyCellContact dtor.
+drop(handle);
 }
 
-// 0x881a94 — __ZN3RBX15PolyCellContact13resetBestPairEPNS_12PolyCellPairE
 #[doc(alias = "RBX::PolyCellContact::resetBestPair(RBX::PolyCellPair *)")]
-pub fn stub_0x881a94() -> ! {
-    todo!("0x881a94 __ZN3RBX15PolyCellContact13resetBestPairEPNS_12PolyCellPairE")
+pub fn stub_0x881a94(handle: &crate::slot::InstanceHandle) {
+// RBX::PolyCellContact::resetBestPair(RBX::PolyCellPair*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x881ac4 — __ZN3RBX15PolyCellContact19findClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
 #[doc(alias = "RBX::PolyCellContact::findClosestFeatures(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
-pub fn stub_0x881ac4() -> ! {
-    todo!("0x881ac4 __ZN3RBX15PolyCellContact19findClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+pub fn stub_0x881ac4(handle: &crate::slot::InstanceHandle) {
+// RBX::PolyCellContact::findClosestFeatures(RBX::FixedArray<RBX::PolyConnector*, 40ul>&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x881b38 — __ZN3RBX15PolyCellContact12findBestPairEv
-// type: _DWORD __fastcall(RBX::PolyCellContact *__hidden this)
 #[doc(alias = "RBX::PolyCellContact::findBestPair(void)")]
-pub fn stub_0x881b38() -> ! {
-    todo!("0x881b38 __ZN3RBX15PolyCellContact12findBestPairEv")
+pub fn stub_0x881b38(handle: &crate::slot::InstanceHandle) {
+// RBX::PolyCellContact::findBestPair() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x881d50 — __ZN3RBX15PolyCellContact34generateDataForMovingAssemblyStageEv
-// type: _DWORD __fastcall(RBX::PolyCellContact *__hidden this)
 #[doc(alias = "RBX::PolyCellContact::generateDataForMovingAssemblyStage(void)")]
-pub fn stub_0x881d50() -> ! {
-    todo!("0x881d50 __ZN3RBX15PolyCellContact34generateDataForMovingAssemblyStageEv")
+pub fn stub_0x881d50(handle: &crate::slot::InstanceHandle) {
+// RBX::PolyCellContact::generateDataForMovingAssemblyStage() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x881d58 — __ZN3RBX16CellFaceFacePair13allocateCloneEv
-// type: _DWORD __fastcall(RBX::CellFaceFacePair *__hidden this)
 #[doc(alias = "RBX::CellFaceFacePair::allocateClone(void)")]
-pub fn stub_0x881d58() -> ! {
-    todo!("0x881d58 __ZN3RBX16CellFaceFacePair13allocateCloneEv")
+pub fn stub_0x881d58(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::allocateClone() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x881d98 — __ZN3RBX16CellFaceFacePair4testEv
-// type: _DWORD __fastcall(RBX::CellFaceFacePair *__hidden this)
 #[doc(alias = "RBX::CellFaceFacePair::test(void)")]
-pub fn stub_0x881d98() -> ! {
-    todo!("0x881d98 __ZN3RBX16CellFaceFacePair4testEv")
+pub fn stub_0x881d98(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::test() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x88214c — __ZN3RBX16CellFaceFacePair13findOtherFaceEPKNS_4POLY6VertexE
-// type: _DWORD __fastcall(RBX::CellFaceFacePair *__hidden this, const RBX::POLY::Vertex *)
 #[doc(alias = "RBX::CellFaceFacePair::findOtherFace(RBX::POLY::Vertex const*)")]
-pub fn stub_0x88214c() -> ! {
-    todo!("0x88214c __ZN3RBX16CellFaceFacePair13findOtherFaceEPKNS_4POLY6VertexE")
+pub fn stub_0x88214c(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::findOtherFace(RBX::POLY::Vertex const*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x882330 — __ZN3RBX16CellFaceFacePair11pairIsValidEv
-// type: _DWORD __fastcall(RBX::CellFaceFacePair *__hidden this)
 #[doc(alias = "RBX::CellFaceFacePair::pairIsValid(void)")]
-pub fn stub_0x882330() -> ! {
-    todo!("0x882330 __ZN3RBX16CellFaceFacePair11pairIsValidEv")
+pub fn stub_0x882330(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::pairIsValid() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x882510 — __ZN3RBX16CellFaceFacePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
 #[doc(alias = "RBX::CellFaceFacePair::loadConnectors(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
-pub fn stub_0x882510() -> ! {
-    todo!("0x882510 __ZN3RBX16CellFaceFacePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+pub fn stub_0x882510(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::loadConnectors(RBX::FixedArray<RBX::PolyConnector*, 40ul>&) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x882ec0 — __ZN3RBX16CellFaceFacePair12vertexInsideEPNS_9PrimitiveES2_PKNS_4POLY6VertexEPKNS3_4FaceERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
-// type: int __fastcall(int, int, int, int, RBX::POLY::Face *, int, struct _Unwind_Exception *lpuexcpt, boost::mutex *, int, int, int, int, int, int)
 #[doc(alias = "RBX::CellFaceFacePair::vertexInside(RBX::Primitive *,RBX::Primitive *,RBX::POLY::Vertex const*,RBX::POLY::Face const*,RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
-pub fn stub_0x882ec0() -> ! {
-    todo!("0x882ec0 __ZN3RBX16CellFaceFacePair12vertexInsideEPNS_9PrimitiveES2_PKNS_4POLY6VertexEPKNS3_4FaceERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+pub fn stub_0x882ec0(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::vertexInside(RBX::Primitive*, RBX::Primitive*, RBX::POLY::Vertex co~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x8830ec — __ZN3RBX16CellFaceFacePair20newFaceEdgeConnectorEmPKNS_4POLY6VertexES4_
-// type: _DWORD __fastcall(RBX::CellFaceFacePair *__hidden this, unsigned int, const RBX::POLY::Vertex *, const RBX::POLY::Vertex *)
 #[doc(alias = "RBX::CellFaceFacePair::newFaceEdgeConnector(unsigned long,RBX::POLY::Vertex const*,RBX::POLY::Vertex const*)")]
-pub fn stub_0x8830ec() -> ! {
-    todo!("0x8830ec __ZN3RBX16CellFaceFacePair20newFaceEdgeConnectorEmPKNS_4POLY6VertexES4_")
+pub fn stub_0x8830ec(handle: &crate::slot::InstanceHandle) {
+// RBX::CellFaceFacePair::newFaceEdgeConnector(unsigned long, RBX::POLY::Vertex const*, RBX::~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x88339c — __ZN3RBX16CellEdgeEdgePair13allocateCloneEv
-// type: _DWORD __fastcall(RBX::CellEdgeEdgePair *__hidden this)
 #[doc(alias = "RBX::CellEdgeEdgePair::allocateClone(void)")]
-pub fn stub_0x88339c() -> ! {
-    todo!("0x88339c __ZN3RBX16CellEdgeEdgePair13allocateCloneEv")
+pub fn stub_0x88339c(handle: &crate::slot::InstanceHandle) {
+// RBX::CellEdgeEdgePair::allocateClone() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }

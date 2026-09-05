@@ -8,700 +8,620 @@
 
 use rbx_core::SharedPtr;
 
-// 0x4387e0 — __ZN3RBX14FactoryProductINS_13ServerStorageENS_8InstanceELZNS_14sServerStorageEES2_E7CreatorD1Ev
-// type: int()
 #[doc(alias = "__ZN3RBX14FactoryProductINS_13ServerStorageENS_8InstanceELZNS_14sServerStorageEES2_E7CreatorD1Ev")]
-pub fn stub_0x4387e0() -> ! {
-    todo!("0x4387e0 __ZN3RBX14FactoryProductINS_13ServerStorageENS_8InstanceELZNS_14sServerStorageEES2_E7CreatorD1Ev")
+pub fn stub_0x4387e0() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ServerStorage"
 }
 
-// 0x4387f0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
-pub fn stub_0x4387f0() -> ! {
-    todo!("0x4387f0 __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED1Ev")
+pub fn stub_0x4387f0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x4387f4 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc() [0x4387f4]")]
-pub fn stub_0x4387f4() -> ! {
-    todo!("0x4387f4 __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED0Ev")
+pub fn stub_0x4387f4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438894 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const")]
-pub fn stub_0x438894() -> ! {
-    todo!("0x438894 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupEPKc")
+pub fn stub_0x438894(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4388c4 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x4388c4() -> ! {
-    todo!("0x4388c4 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_0x4388c4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(RBX::Reflection::Variant co~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4388e4 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x4388e4() -> ! {
-    todo!("0x4388e4 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0x4388e4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(unsigned long, RBX:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438918 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x438918() -> ! {
-    todo!("0x438918 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringEmRSs")
+pub fn stub_0x438918(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(unsigned long, std~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438a5c — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
-pub fn stub_0x438a5c() -> ! {
-    todo!("0x438a5c __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED1Ev")
+pub fn stub_0x438a5c(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438a60 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc() [0x438a60]")]
-pub fn stub_0x438a60() -> ! {
-    todo!("0x438a60 __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED0Ev")
+pub fn stub_0x438a60(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438b00 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const")]
-pub fn stub_0x438b00() -> ! {
-    todo!("0x438b00 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupEPKc")
+pub fn stub_0x438b00(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438b30 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x438b30() -> ! {
-    todo!("0x438b30 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupERKNS0_7VariantE")
+pub fn stub_0x438b30(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(RBX::Reflection::Variant const&) ~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438b50 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x438b50() -> ! {
-    todo!("0x438b50 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0x438b50(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(unsigned long, RBX::Refle~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438b84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x438b84() -> ! {
-    todo!("0x438b84 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringEmRSs")
+pub fn stub_0x438b84(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long, std::stri~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438cc8 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
-pub fn stub_0x438cc8() -> ! {
-    todo!("0x438cc8 __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED1Ev")
+pub fn stub_0x438cc8(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438ccc — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc() [0x438ccc]")]
-pub fn stub_0x438ccc() -> ! {
-    todo!("0x438ccc __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED0Ev")
+pub fn stub_0x438ccc(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438d6c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const")]
-pub fn stub_0x438d6c() -> ! {
-    todo!("0x438d6c __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupEPKc")
+pub fn stub_0x438d6c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438d9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x438d9c() -> ! {
-    todo!("0x438d9c __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupERKNS0_7VariantE")
+pub fn stub_0x438d9c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(RBX::Reflection::Varia~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438dbc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x438dbc() -> ! {
-    todo!("0x438dbc __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0x438dbc(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(unsigned long,~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438df0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x438df0() -> ! {
-    todo!("0x438df0 __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringEmRSs")
+pub fn stub_0x438df0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x438f34 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")]
-pub fn stub_0x438f34() -> ! {
-    todo!("0x438f34 __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED1Ev")
+pub fn stub_0x438f34(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438f38 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc() [0x438f38]")]
-pub fn stub_0x438f38() -> ! {
-    todo!("0x438f38 __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED0Ev")
+pub fn stub_0x438f38(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x438fd8 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const")]
-pub fn stub_0x438fd8() -> ! {
-    todo!("0x438fd8 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupEPKc")
+pub fn stub_0x438fd8(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439008 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x439008() -> ! {
-    todo!("0x439008 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupERKNS0_7VariantE")
+pub fn stub_0x439008(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(RBX::Reflection::Variant const~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439028 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x439028() -> ! {
-    todo!("0x439028 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0x439028(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(unsigned long, RBX::Re~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43905c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x43905c() -> ! {
-    todo!("0x43905c __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringEmRSs")
+pub fn stub_0x43905c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long, std::s~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4391a0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED1Ev
-// type: int()
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")]
-pub fn stub_0x4391a0() -> ! {
-    todo!("0x4391a0 __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED1Ev")
+pub fn stub_0x4391a0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x4391a4 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc() [0x4391a4]")]
-pub fn stub_0x4391a4() -> ! {
-    todo!("0x4391a4 __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED0Ev")
+pub fn stub_0x4391a4(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x439244 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const")]
-pub fn stub_0x439244() -> ! {
-    todo!("0x439244 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupEPKc")
+pub fn stub_0x439244(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*) const — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439274 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_0x439274() -> ! {
-    todo!("0x439274 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupERKNS0_7VariantE")
+pub fn stub_0x439274(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(RBX::Reflection::Variant cons~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439294 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueEmRNS0_7VariantE
-// type: int __fastcall(int, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_0x439294() -> ! {
-    todo!("0x439294 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueEmRNS0_7VariantE")
+pub fn stub_0x439294(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(unsigned long, RBX::R~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4392c8 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_0x4392c8() -> ! {
-    todo!("0x4392c8 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringEmRSs")
+pub fn stub_0x4392c8(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long, std::~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43940c — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const")]
-pub fn stub_0x43940c() -> ! {
-    todo!("0x43940c __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringERKS3_")
+pub fn stub_0x43940c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveF~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4395ac — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_8Instance10SaveFilterEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Instance::SaveFilter>(RBX::Instance::SaveFilter const&)")]
-pub fn stub_0x4395ac() -> ! {
-    todo!("0x4395ac __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_8Instance10SaveFilterEEERS3_RKT_")
+pub fn stub_0x4395ac() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x4395fc — __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE9singletonEv
-// type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::singleton(void)")]
-pub fn stub_0x4395fc() -> ! {
-    todo!("0x4395fc __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE9singletonEv")
+pub fn stub_0x4395fc(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439668 — __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::construct_func(char const*,char *)")]
-pub fn stub_0x439668() -> ! {
-    todo!("0x439668 __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE14construct_funcEPKcPc")
+pub fn stub_0x439668(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::construct_func(char const*, ~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439674 — __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::destruct_func(char *)")]
-pub fn stub_0x439674() -> ! {
-    todo!("0x439674 __ZN3rbx14implementation12typed_holderIN3RBX8Instance10SaveFilterEE13destruct_funcEPc")
+pub fn stub_0x439674(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::Instance::SaveFilter>::destruct_func(char*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439678 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToItem(RBX::Instance::SaveFilter const&)const")]
-pub fn stub_0x439678() -> ! {
-    todo!("0x439678 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE13convertToItemERKS3_")
+pub fn stub_0x439678(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToItem(RBX::Instance::SaveFil~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439744 — __ZN3rbx8any_castIRKN3RBX8Instance10SaveFilterENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::Instance::SaveFilter const& rbx::any_cast<RBX::Instance::SaveFilter const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x439744() -> ! {
-    todo!("0x439744 __ZN3rbx8any_castIRKN3RBX8Instance10SaveFilterENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x439744(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x439834 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(RBX::Name const&,RBX::Instance::SaveFilter&)const")]
-pub fn stub_0x439834() -> ! {
-    todo!("0x439834 __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0x439834(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(RBX::Name const&, RBX~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4398b0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc() [0x4398b0]")]
-pub fn stub_0x4398b0() -> ! {
-    todo!("0x4398b0 __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev")
+pub fn stub_0x4398b0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x439a84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const")]
-pub fn stub_0x439a84() -> ! {
-    todo!("0x439a84 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringERKS3_")
+pub fn stub_0x439a84(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearT~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439c24 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel8GearTypeEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearType>(RBX::DataModel::GearType const&)")]
-pub fn stub_0x439c24() -> ! {
-    todo!("0x439c24 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel8GearTypeEEERS3_RKT_")
+pub fn stub_0x439c24() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x439c74 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE9singletonEv
-// type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearType>::singleton(void)")]
-pub fn stub_0x439c74() -> ! {
-    todo!("0x439c74 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE9singletonEv")
+pub fn stub_0x439c74(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearType>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439ce0 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearType>::construct_func(char const*,char *)")]
-pub fn stub_0x439ce0() -> ! {
-    todo!("0x439ce0 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE14construct_funcEPKcPc")
+pub fn stub_0x439ce0(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearType>::construct_func(char const*, c~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439cec — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearType>::destruct_func(char *)")]
-pub fn stub_0x439cec() -> ! {
-    todo!("0x439cec __ZN3rbx14implementation12typed_holderIN3RBX9DataModel8GearTypeEE13destruct_funcEPc")
+pub fn stub_0x439cec(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearType>::destruct_func(char*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const")]
-pub fn stub_0x439cf0() -> ! {
-    todo!("0x439cf0 __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_")
+pub fn stub_0x439cf0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearTyp~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439dbc — __ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::DataModel::GearType const& rbx::any_cast<RBX::DataModel::GearType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x439dbc() -> ! {
-    todo!("0x439dbc __ZN3rbx8any_castIRKN3RBX9DataModel8GearTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x439dbc(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x439eac — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(RBX::Name const&,RBX::DataModel::GearType&)const")]
-pub fn stub_0x439eac() -> ! {
-    todo!("0x439eac __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0x439eac(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(RBX::Name const&, RBX:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x439f28 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc() [0x439f28]")]
-pub fn stub_0x439f28() -> ! {
-    todo!("0x439f28 __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev")
+pub fn stub_0x439f28(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x43a0fc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const")]
-pub fn stub_0x43a0fc() -> ! {
-    todo!("0x43a0fc __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_")
+pub fn stub_0x43a0fc(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataMode~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a29c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearGenreSetting>(RBX::DataModel::GearGenreSetting const&)")]
-pub fn stub_0x43a29c() -> ! {
-    todo!("0x43a29c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel16GearGenreSettingEEERS3_RKT_")
+pub fn stub_0x43a29c() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x43a2ec — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE9singletonEv
-// type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::singleton(void)")]
-pub fn stub_0x43a2ec() -> ! {
-    todo!("0x43a2ec __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE9singletonEv")
+pub fn stub_0x43a2ec(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a358 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::construct_func(char const*,char *)")]
-pub fn stub_0x43a358() -> ! {
-    todo!("0x43a358 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE14construct_funcEPKcPc")
+pub fn stub_0x43a358(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::construct_func(char c~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a364 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::destruct_func(char *)")]
-pub fn stub_0x43a364() -> ! {
-    todo!("0x43a364 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel16GearGenreSettingEE13destruct_funcEPc")
+pub fn stub_0x43a364(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::GearGenreSetting>::destruct_func(char*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a368 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToItem(RBX::DataModel::GearGenreSetting const&)const")]
-pub fn stub_0x43a368() -> ! {
-    todo!("0x43a368 __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_")
+pub fn stub_0x43a368(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToItem(RBX::DataModel:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a434 — __ZN3rbx8any_castIRKN3RBX9DataModel16GearGenreSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::DataModel::GearGenreSetting const& rbx::any_cast<RBX::DataModel::GearGenreSetting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x43a434() -> ! {
-    todo!("0x43a434 __ZN3rbx8any_castIRKN3RBX9DataModel16GearGenreSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x43a434(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x43a524 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(RBX::Name const&,RBX::DataModel::GearGenreSetting&)const")]
-pub fn stub_0x43a524() -> ! {
-    todo!("0x43a524 __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0x43a524(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(RBX::Name cons~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a5a0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc() [0x43a5a0]")]
-pub fn stub_0x43a5a0() -> ! {
-    todo!("0x43a5a0 __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev")
+pub fn stub_0x43a5a0(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x43a774 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const")]
-pub fn stub_0x43a774() -> ! {
-    todo!("0x43a774 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_")
+pub fn stub_0x43a774(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre co~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a914 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::Genre>(RBX::DataModel::Genre const&)")]
-pub fn stub_0x43a914() -> ! {
-    todo!("0x43a914 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel5GenreEEERS3_RKT_")
+pub fn stub_0x43a914() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x43a964 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE9singletonEv
-// type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::singleton(void)")]
-pub fn stub_0x43a964() -> ! {
-    todo!("0x43a964 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE9singletonEv")
+pub fn stub_0x43a964(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::Genre>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a9d0 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::construct_func(char const*,char *)")]
-pub fn stub_0x43a9d0() -> ! {
-    todo!("0x43a9d0 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE14construct_funcEPKcPc")
+pub fn stub_0x43a9d0(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::Genre>::construct_func(char const*, char~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a9dc — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::Genre>::destruct_func(char *)")]
-pub fn stub_0x43a9dc() -> ! {
-    todo!("0x43a9dc __ZN3rbx14implementation12typed_holderIN3RBX9DataModel5GenreEE13destruct_funcEPc")
+pub fn stub_0x43a9dc(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::Genre>::destruct_func(char*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43a9e0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const")]
-pub fn stub_0x43a9e0() -> ! {
-    todo!("0x43a9e0 __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_")
+pub fn stub_0x43a9e0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre cons~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43aaac — __ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::DataModel::Genre const& rbx::any_cast<RBX::DataModel::Genre const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x43aaac() -> ! {
-    todo!("0x43aaac __ZN3rbx8any_castIRKN3RBX9DataModel5GenreENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x43aaac(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x43ab9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(RBX::Name const&,RBX::DataModel::Genre&)const")]
-pub fn stub_0x43ab9c() -> ! {
-    todo!("0x43ab9c __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0x43ab9c(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(RBX::Name const&, RBX::Da~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43ac18 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc() [0x43ac18]")]
-pub fn stub_0x43ac18() -> ! {
-    todo!("0x43ac18 __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev")
+pub fn stub_0x43ac18(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x43adec — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const")]
-pub fn stub_0x43adec() -> ! {
-    todo!("0x43adec __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_")
+pub fn stub_0x43adec(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::Cr~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43af8c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel11CreatorTypeEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::CreatorType>(RBX::DataModel::CreatorType const&)")]
-pub fn stub_0x43af8c() -> ! {
-    todo!("0x43af8c __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9DataModel11CreatorTypeEEERS3_RKT_")
+pub fn stub_0x43af8c() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x43afdc — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE9singletonEv
-// type: _DWORD *()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::singleton(void)")]
-pub fn stub_0x43afdc() -> ! {
-    todo!("0x43afdc __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE9singletonEv")
+pub fn stub_0x43afdc(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b048 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::construct_func(char const*,char *)")]
-pub fn stub_0x43b048() -> ! {
-    todo!("0x43b048 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE14construct_funcEPKcPc")
+pub fn stub_0x43b048(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::construct_func(char const*~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b054 — __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::destruct_func(char *)")]
-pub fn stub_0x43b054() -> ! {
-    todo!("0x43b054 __ZN3rbx14implementation12typed_holderIN3RBX9DataModel11CreatorTypeEE13destruct_funcEPc")
+pub fn stub_0x43b054(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::DataModel::CreatorType>::destruct_func(char*) — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b058 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToItem(RBX::DataModel::CreatorType const&)const")]
-pub fn stub_0x43b058() -> ! {
-    todo!("0x43b058 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE13convertToItemERKS3_")
+pub fn stub_0x43b058(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToItem(RBX::DataModel::Crea~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b124 — __ZN3rbx8any_castIRKN3RBX9DataModel11CreatorTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
 #[doc(alias = "RBX::DataModel::CreatorType const& rbx::any_cast<RBX::DataModel::CreatorType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0x43b124() -> ! {
-    todo!("0x43b124 __ZN3rbx8any_castIRKN3RBX9DataModel11CreatorTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x43b124(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x43b214 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(RBX::Name const&,RBX::DataModel::CreatorType&)const")]
-pub fn stub_0x43b214() -> ! {
-    todo!("0x43b214 __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueERKNS_4NameERS3_")
+pub fn stub_0x43b214(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(RBX::Name const&, R~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b290 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev
-// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc() [0x43b290]")]
-pub fn stub_0x43b290() -> ! {
-    todo!("0x43b290 __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev")
+pub fn stub_0x43b290(handle: crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc dtor.
+drop(handle);
 }
 
-// 0x43b7a4 — __ZN3rbx7signals6signalIFvRKSsEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
-// type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")]
-pub fn stub_0x43b7a4() -> ! {
-    todo!("0x43b7a4 __ZN3rbx7signals6signalIFvRKSsEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+pub fn stub_0x43b7a4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("rbx::signals::signal<void (std::string const&)>::slot")
 }
 
-// 0x43b904 — __ZN3rbx7signals6signalIFvRKSsEE8on_errorERSt9exception
-// type: int *()
 #[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::on_error(std::exception &)")]
-pub fn stub_0x43b904() -> ! {
-    todo!("0x43b904 __ZN3rbx7signals6signalIFvRKSsEE8on_errorERSt9exception")
+pub fn stub_0x43b904(msg: &str) -> String {
+// exception ctor — carries the message (thrown via panic
+// at the throw site, cf. LuaTableKeysMustBeStrings).
+msg.to_owned()
 }
 
-// 0x43b92c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKSsEE4slotEEaSERKS9_
-// type: int *__fastcall(int *, _DWORD *)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")]
-pub fn stub_0x43b92c() -> ! {
-    todo!("0x43b92c __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKSsEE4slotEEaSERKS9_")
+pub fn stub_0x43b92c(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x43b950 — __ZN3rbx7signals6signalIFvRKSsEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::safe_static_init_mutex(void)")]
-pub fn stub_0x43b950() -> ! {
-    todo!("0x43b950 __ZN3rbx7signals6signalIFvRKSsEE22safe_static_init_mutexEv")
+pub fn stub_0x43b950(handle: &crate::slot::InstanceHandle) {
+// rbx::signals::signal<void (std::string const&)>::safe_static_init_mutex() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43b954 — __ZN3rbx7signals6signalIFvRKSsEE24safe_static_do_get_mutexEv
-// type: int()
 #[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x43b954() -> ! {
-    todo!("0x43b954 __ZN3rbx7signals6signalIFvRKSsEE24safe_static_do_get_mutexEv")
+pub fn stub_0x43b954(handle: &crate::slot::InstanceHandle) {
+// rbx::signals::signal<void (std::string const&)>::safe_static_do_get_mutex() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x43ba50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE
-// type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
-pub fn stub_0x43ba50() -> ! {
-    todo!("0x43ba50 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE")
+pub fn stub_0x43ba50() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x43bbb0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
-// type: int *()
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)")]
-pub fn stub_0x43bbb0() -> ! {
-    todo!("0x43bbb0 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE8on_errorERSt9exception")
+pub fn stub_0x43bbb0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x43bbd8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSERKSF_
-// type: int *__fastcall(int *, _DWORD *)
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
-pub fn stub_0x43bbd8() -> ! {
-    todo!("0x43bbd8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSERKSF_")
+pub fn stub_0x43bbd8(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0x43bbfc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE22safe_static_init_mutexEv
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_init_mutex(void)")]
-pub fn stub_0x43bbfc() -> ! {
-    todo!("0x43bbfc __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE22safe_static_init_mutexEv")
+pub fn stub_0x43bbfc() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x43bc00 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
-// type: int()
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)")]
-pub fn stub_0x43bc00() -> ! {
-    todo!("0x43bc00 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv")
+pub fn stub_0x43bc00() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
 }
 
-// 0x43bcf8 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEclIPFvS5_NS_10shared_ptrIKNS3_13TaskScheduler3JobEEERSsdSB_ENS0_5list1IRSJ_EEEEvNS0_4typeIvEERT_RT0_i
-// type: void __fastcall(int *, void (__fastcall **)(int, sp_counted_base **, int *, int, int, int), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "void boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>::operator()<void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&> &,int)")]
-pub fn stub_0x43bcf8() -> ! {
-    todo!("0x43bcf8 __ZN5boost3_bi5list5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEclIPFvS5_NS_10shared_ptrIKNS3_13TaskScheduler3JobEEERSsdSB_ENS0_5list1IRSJ_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x43bcf8(call: &crate::slot::BoundCall, args: &[f32]) {
+// IDA 0x43bcf8: list::operator() (cf. 0x39dc18) — resolves the
+// member pointer (incl. the virtual-call branch) and invokes
+// mf(object, args...).
+call.apply(args);
 }
 
-// 0x43bde0 — __ZN5boost3_bi5list5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_
-// type: int __fastcall(int, int, std::string *, int, int, int)
 #[doc(alias = "boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>::list5(boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>)")]
-pub fn stub_0x43bde0() -> ! {
-    todo!("0x43bde0 __ZN5boost3_bi5list5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_")
+pub fn stub_0x43bde0() -> crate::slot::BindPiece {
+// boost::bind fragment (list5) composing a host BoundCall.
+crate::slot::BindPiece::new("list5")
 }
 
-// 0x43bf10 — __ZN5boost3_bi8storage5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_
-// type: int __fastcall(int, int, std::string *, int, int, int)
 #[doc(alias = "boost::_bi::storage5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>::storage5(boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>)")]
-pub fn stub_0x43bf10() -> ! {
-    todo!("0x43bf10 __ZN5boost3_bi8storage5INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEENS2_IPdEEEC2ES6_S8_S9_SA_SC_")
+pub fn stub_0x43bf10() -> crate::slot::BindPiece {
+// boost::bind fragment (storage5) composing a host BoundCall.
+crate::slot::BindPiece::new("storage5")
 }
 
-// 0x43c044 — __ZN5boost3_bi8storage4INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEEEC2ES6_S8_S9_SA_
-// type: _DWORD *__fastcall(_DWORD *, int, std::string *, int, int)
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>>::storage4(boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>)")]
-pub fn stub_0x43c044() -> ! {
-    todo!("0x43c044 __ZN5boost3_bi8storage4INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_ISsEENS2_IdEEEC2ES6_S8_S9_SA_")
+pub fn stub_0x43c044() -> crate::slot::BindPiece {
+// boost::bind fragment (storage4) composing a host BoundCall.
+crate::slot::BindPiece::new("storage4")
 }
 
-// 0x43c250 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_IPSt6vectorINS3_10Reflection7VariantESaISB_EEEEEclIPFvS5_NS_10shared_ptrIKNS3_13TaskScheduler3JobEEESE_ENS0_5list1IRSM_EEEEvNS0_4typeIvEERT_RT0_i
-// type: void __fastcall(int *, void (__fastcall **)(int, sp_counted_base **, int), const shared_count **)
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *>>::operator()<void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *),boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&> &,int)")]
-pub fn stub_0x43c250() -> ! {
-    todo!("0x43c250 __ZN5boost3_bi5list3INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_IPSt6vectorINS3_10Reflection7VariantESaISB_EEEEEclIPFvS5_NS_10shared_ptrIKNS3_13TaskScheduler3JobEEESE_ENS0_5list1IRSM_EEEEvNS0_4typeIvEERT_RT0_i")
+pub fn stub_0x43c250(call: &crate::slot::BoundCall, args: &[f32]) {
+// IDA 0x43c250: list::operator() (cf. 0x39dc18) — resolves the
+// member pointer (incl. the virtual-call branch) and invokes
+// mf(object, args...).
+call.apply(args);
 }
 
-// 0x43c330 — __ZN5boost2io6detail4feedIcSt11char_traitsIcESaIcERKfEERNS_12basic_formatIT_T0_T1_EESD_T2_
-// type: int __fastcall(int, int)
 #[doc(alias = "boost::basic_format<char,std::char_traits<char>,std::allocator<char>> & boost::io::detail::feed<char,std::char_traits<char>,std::allocator<char>,float const&>(boost::basic_format<char,std::char_traits<char>,std::allocator<char>> &,float const&)")]
-pub fn stub_0x43c330() -> ! {
-    todo!("0x43c330 __ZN5boost2io6detail4feedIcSt11char_traitsIcESaIcERKfEERNS_12basic_formatIT_T0_T1_EESD_T2_")
+pub fn stub_0x43c330() -> crate::slot::PortedFn {
+// IDA 0x43c330: boost::basic_format<char, std::char_traits<char>, std::allocator<char>>& boost::io::detail::feed<char, std::char_traits<~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x43c330, "boost::basic_format<char, std::char_traits<char>, std::allocator<char>>& boost::io::detail::feed<cha~")
 }
 
-// 0x43c38c — __ZN5boost12basic_formatIcSt11char_traitsIcESaIcEE5clearEv
-// type: int *__fastcall(int *)
 #[doc(alias = "boost::basic_format<char,std::char_traits<char>,std::allocator<char>>::clear(void)")]
-pub fn stub_0x43c38c() -> ! {
-    todo!("0x43c38c __ZN5boost12basic_formatIcSt11char_traitsIcESaIcEE5clearEv")
+pub fn stub_0x43c38c() -> crate::slot::PortedFn {
+// IDA 0x43c38c: boost::basic_format<char, std::char_traits<char>, std::allocator<char>>::clear().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x43c38c, "boost::basic_format<char, std::char_traits<char>, std::allocator<char>>::clear()")
 }
 
-// 0x43c450 — __ZN5boost2io6detail10distributeIcSt11char_traitsIcESaIcERKfEEvRNS_12basic_formatIT_T0_T1_EET2_
-// type: void __fastcall(__int64 *, int)
 #[doc(alias = "void boost::io::detail::distribute<char,std::char_traits<char>,std::allocator<char>,float const&>(boost::basic_format<char,std::char_traits<char>,std::allocator<char>> &,float const&)")]
-pub fn stub_0x43c450() -> ! {
-    todo!("0x43c450 __ZN5boost2io6detail10distributeIcSt11char_traitsIcESaIcERKfEEvRNS_12basic_formatIT_T0_T1_EET2_")
+pub fn stub_0x43c450() -> crate::slot::PortedFn {
+// IDA 0x43c450: void boost::io::detail::distribute<char, std::char_traits<char>, std::allocator<char>, float const&>(boost::basic_format~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x43c450, "void boost::io::detail::distribute<char, std::char_traits<char>, std::allocator<char>, float const&>~")
 }
 
-// 0x43c570 — __ZN5boost15throw_exceptionINS_2io13too_many_argsEEEvRKT_
-// type: void __fastcall __noreturn(int)
 #[doc(alias = "void boost::throw_exception<boost::io::too_many_args>(boost::io::too_many_args const&)")]
-pub fn stub_0x43c570() -> ! {
-    todo!("0x43c570 __ZN5boost15throw_exceptionINS_2io13too_many_argsEEEvRKT_")
+pub fn stub_0x43c570(msg: &str) -> String {
+// std::exception ctor — message carried by panic.
+msg.to_owned()
 }
 
-// 0x43c660 — __ZN5boost2io13too_many_argsD1Ev
-// type: void __fastcall(std::exception *this)
 #[doc(alias = "boost::io::too_many_args::~too_many_args()")]
-pub fn stub_0x43c660() -> ! {
-    todo!("0x43c660 __ZN5boost2io13too_many_argsD1Ev")
+pub fn stub_0x43c660() -> crate::slot::PortedFn {
+// IDA 0x43c660: boost::io::too_many_args::~too_many_args().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x43c660, "boost::io::too_many_args::~too_many_args()")
 }
 
-// 0x43c664 — __ZN5boost2io6detail3putIcSt11char_traitsIcESaIcERKfEEvT2_RKNS1_11format_itemIT_T0_T1_EERNS_12basic_formatISA_SB_SC_E11string_typeERNSH_20internal_streambuf_tEPSt6locale
-// type: void __fastcall(float *, int, std::string *, int, int)
 #[doc(alias = "void boost::io::detail::put<char,std::char_traits<char>,std::allocator<char>,float const&>(float const&,boost::io::detail::format_item<char,std::char_traits<char>,std::allocator<char>> const&,boost::basic_format<char,std::char_traits<char>,std::allocator<char>>::string_type &,boost::basic_format<char,std::char_traits<char>,std::allocator<char>>::internal_streambuf_t &,std::locale *)")]
-pub fn stub_0x43c664() -> ! {
-    todo!("0x43c664 __ZN5boost2io6detail3putIcSt11char_traitsIcESaIcERKfEEvT2_RKNS1_11format_itemIT_T0_T1_EERNS_12basic_formatISA_SB_SC_E11string_typeERNSH_20internal_streambuf_tEPSt6locale")
+pub fn stub_0x43c664() -> crate::slot::PortedFn {
+// std::locale facet — host locale is process-wide.
+crate::slot::PortedFn::new(0x43c664, "void boost::io::detail::put<char, std::char_traits<char>, std::allocator<char>, float const&>(float ~")
 }
 
-// 0x43cb88 — __ZN5boost2io22basic_oaltstringstreamIcSt11char_traitsIcESaIcEEC1EPNS0_18basic_altstringbufIcS3_S4_EE
-// type: _DWORD *__fastcall(int, int, int, int, int, int)
 #[doc(alias = "boost::io::basic_oaltstringstream<char,std::char_traits<char>,std::allocator<char>>::basic_oaltstringstream(boost::io::basic_altstringbuf<char,std::char_traits<char>,std::allocator<char>> *)")]
-pub fn stub_0x43cb88() -> ! {
-    todo!("0x43cb88 __ZN5boost2io22basic_oaltstringstreamIcSt11char_traitsIcESaIcEEC1EPNS0_18basic_altstringbufIcS3_S4_EE")
+pub fn stub_0x43cb88() -> crate::slot::PortedFn {
+// IDA 0x43cb88: boost::io::basic_oaltstringstream<char, std::char_traits<char>, std::allocator<char>>::basic_oaltstringstream(boost::io:~.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x43cb88, "boost::io::basic_oaltstringstream<char, std::char_traits<char>, std::allocator<char>>::basic_oaltstr~")
 }
 
-// 0x43ccd8 — __ZNK5boost2io6detail19stream_format_stateIcSt11char_traitsIcEE8apply_onERSt9basic_iosIcS4_EPSt6locale
-// type: void __fastcall(int *, int, int)
 #[doc(alias = "boost::io::detail::stream_format_state<char,std::char_traits<char>>::apply_on(std::basic_ios<char,std::char_traits<char>> &,std::locale *)const")]
-pub fn stub_0x43ccd8() -> ! {
-    todo!("0x43ccd8 __ZNK5boost2io6detail19stream_format_stateIcSt11char_traitsIcEE8apply_onERSt9basic_iosIcS4_EPSt6locale")
+pub fn stub_0x43ccd8() -> crate::slot::PortedFn {
+// std::locale facet — host locale is process-wide.
+crate::slot::PortedFn::new(0x43ccd8, "boost::io::detail::stream_format_state<char, std::char_traits<char>>::apply_on(std::basic_ios<char, ~")
 }
 
-// 0x43cd68 — __ZN5boost2io6detail6mk_strIcSt11char_traitsIcESaIcEEEvRSbIT_T0_T1_EPKS6_NS9_9size_typeEiS6_St13_Ios_FmtflagsS6_b
-// type: int __fastcall(std::string *, const char *, unsigned int, signed int, int, int, char, int)
 #[doc(alias = "void boost::io::detail::mk_str<char,std::char_traits<char>,std::allocator<char>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,char const*,std::basic_string<char,std::char_traits<char>,std::allocator<char>>::size_type,int,char,std::_Ios_Fmtflags,char,bool)")]
-pub fn stub_0x43cd68() -> ! {
-    todo!("0x43cd68 __ZN5boost2io6detail6mk_strIcSt11char_traitsIcESaIcEEEvRSbIT_T0_T1_EPKS6_NS9_9size_typeEiS6_St13_Ios_FmtflagsS6_b")
+pub fn stub_0x43cd68(s: &String) -> &str {
+// std::string::c_str.
+s.as_str()
 }

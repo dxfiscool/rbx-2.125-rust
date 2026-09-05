@@ -8,317 +8,368 @@
 
 use rbx_core::SharedPtr;
 
-// 0xf6f8e8 — sub_F6F8E8
 #[doc(alias = "sub_F6F8E8")]
-pub fn stub_0xf6f8e8() -> ! {
-    todo!("0xf6f8e8 sub_F6F8E8")
+pub fn stub_0xf6f8e8() -> crate::slot::PortedFn {
+// IDA 0xf6f8e8: sub_F6F8E8.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f8e8, "sub_F6F8E8")
 }
 
-// 0xf6f8f4 — sub_F6F8F4
 #[doc(alias = "sub_F6F8F4")]
-pub fn stub_0xf6f8f4() -> ! {
-    todo!("0xf6f8f4 sub_F6F8F4")
+pub fn stub_0xf6f8f4() -> crate::slot::PortedFn {
+// IDA 0xf6f8f4: sub_F6F8F4.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f8f4, "sub_F6F8F4")
 }
 
-// 0xf6f900 — sub_F6F900
 #[doc(alias = "sub_F6F900")]
-pub fn stub_0xf6f900() -> ! {
-    todo!("0xf6f900 sub_F6F900")
+pub fn stub_0xf6f900() -> crate::slot::PortedFn {
+// IDA 0xf6f900: sub_F6F900.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f900, "sub_F6F900")
 }
 
-// 0xf6f90c — sub_F6F90C
 #[doc(alias = "sub_F6F90C")]
-pub fn stub_0xf6f90c() -> ! {
-    todo!("0xf6f90c sub_F6F90C")
+pub fn stub_0xf6f90c() -> crate::slot::PortedFn {
+// IDA 0xf6f90c: sub_F6F90C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f90c, "sub_F6F90C")
 }
 
-// 0xf6f918 — sub_F6F918
 #[doc(alias = "sub_F6F918")]
-pub fn stub_0xf6f918() -> ! {
-    todo!("0xf6f918 sub_F6F918")
+pub fn stub_0xf6f918() -> crate::slot::PortedFn {
+// IDA 0xf6f918: sub_F6F918.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f918, "sub_F6F918")
 }
 
-// 0xf6f924 — sub_F6F924
 #[doc(alias = "sub_F6F924")]
-pub fn stub_0xf6f924() -> ! {
-    todo!("0xf6f924 sub_F6F924")
+pub fn stub_0xf6f924() -> crate::slot::PortedFn {
+// IDA 0xf6f924: sub_F6F924.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f924, "sub_F6F924")
 }
 
-// 0xf6f930 — sub_F6F930
 #[doc(alias = "sub_F6F930")]
-pub fn stub_0xf6f930() -> ! {
-    todo!("0xf6f930 sub_F6F930")
+pub fn stub_0xf6f930() -> crate::slot::PortedFn {
+// IDA 0xf6f930: sub_F6F930.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f930, "sub_F6F930")
 }
 
-// 0xf6f93c — sub_F6F93C
 #[doc(alias = "sub_F6F93C")]
-pub fn stub_0xf6f93c() -> ! {
-    todo!("0xf6f93c sub_F6F93C")
+pub fn stub_0xf6f93c() -> crate::slot::PortedFn {
+// IDA 0xf6f93c: sub_F6F93C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f93c, "sub_F6F93C")
 }
 
-// 0xf6f948 — sub_F6F948
 #[doc(alias = "sub_F6F948")]
-pub fn stub_0xf6f948() -> ! {
-    todo!("0xf6f948 sub_F6F948")
+pub fn stub_0xf6f948() -> crate::slot::PortedFn {
+// IDA 0xf6f948: sub_F6F948.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f948, "sub_F6F948")
 }
 
-// 0xf6f954 — sub_F6F954
 #[doc(alias = "sub_F6F954")]
-pub fn stub_0xf6f954() -> ! {
-    todo!("0xf6f954 sub_F6F954")
+pub fn stub_0xf6f954() -> crate::slot::PortedFn {
+// IDA 0xf6f954: sub_F6F954.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f954, "sub_F6F954")
 }
 
-// 0xf6f960 — sub_F6F960
 #[doc(alias = "sub_F6F960")]
-pub fn stub_0xf6f960() -> ! {
-    todo!("0xf6f960 sub_F6F960")
+pub fn stub_0xf6f960() -> crate::slot::PortedFn {
+// IDA 0xf6f960: sub_F6F960.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f960, "sub_F6F960")
 }
 
-// 0xf6f96c — sub_F6F96C
 #[doc(alias = "sub_F6F96C")]
-pub fn stub_0xf6f96c() -> ! {
-    todo!("0xf6f96c sub_F6F96C")
+pub fn stub_0xf6f96c() -> crate::slot::PortedFn {
+// IDA 0xf6f96c: sub_F6F96C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f96c, "sub_F6F96C")
 }
 
-// 0xf6f978 — sub_F6F978
 #[doc(alias = "sub_F6F978")]
-pub fn stub_0xf6f978() -> ! {
-    todo!("0xf6f978 sub_F6F978")
+pub fn stub_0xf6f978() -> crate::slot::PortedFn {
+// IDA 0xf6f978: sub_F6F978.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f978, "sub_F6F978")
 }
 
-// 0xf6f984 — sub_F6F984
 #[doc(alias = "sub_F6F984")]
-pub fn stub_0xf6f984() -> ! {
-    todo!("0xf6f984 sub_F6F984")
+pub fn stub_0xf6f984() -> crate::slot::PortedFn {
+// IDA 0xf6f984: sub_F6F984.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f984, "sub_F6F984")
 }
 
-// 0xf6f990 — sub_F6F990
 #[doc(alias = "sub_F6F990")]
-pub fn stub_0xf6f990() -> ! {
-    todo!("0xf6f990 sub_F6F990")
+pub fn stub_0xf6f990() -> crate::slot::PortedFn {
+// IDA 0xf6f990: sub_F6F990.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f990, "sub_F6F990")
 }
 
-// 0xf6f99c — sub_F6F99C
 #[doc(alias = "sub_F6F99C")]
-pub fn stub_0xf6f99c() -> ! {
-    todo!("0xf6f99c sub_F6F99C")
+pub fn stub_0xf6f99c() -> crate::slot::PortedFn {
+// IDA 0xf6f99c: sub_F6F99C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f99c, "sub_F6F99C")
 }
 
-// 0xf6f9a8 — sub_F6F9A8
 #[doc(alias = "sub_F6F9A8")]
-pub fn stub_0xf6f9a8() -> ! {
-    todo!("0xf6f9a8 sub_F6F9A8")
+pub fn stub_0xf6f9a8() -> crate::slot::PortedFn {
+// IDA 0xf6f9a8: sub_F6F9A8.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9a8, "sub_F6F9A8")
 }
 
-// 0xf6f9b4 — sub_F6F9B4
 #[doc(alias = "sub_F6F9B4")]
-pub fn stub_0xf6f9b4() -> ! {
-    todo!("0xf6f9b4 sub_F6F9B4")
+pub fn stub_0xf6f9b4() -> crate::slot::PortedFn {
+// IDA 0xf6f9b4: sub_F6F9B4.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9b4, "sub_F6F9B4")
 }
 
-// 0xf6f9c0 — sub_F6F9C0
 #[doc(alias = "sub_F6F9C0")]
-pub fn stub_0xf6f9c0() -> ! {
-    todo!("0xf6f9c0 sub_F6F9C0")
+pub fn stub_0xf6f9c0() -> crate::slot::PortedFn {
+// IDA 0xf6f9c0: sub_F6F9C0.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9c0, "sub_F6F9C0")
 }
 
-// 0xf6f9cc — sub_F6F9CC
 #[doc(alias = "sub_F6F9CC")]
-pub fn stub_0xf6f9cc() -> ! {
-    todo!("0xf6f9cc sub_F6F9CC")
+pub fn stub_0xf6f9cc() -> crate::slot::PortedFn {
+// IDA 0xf6f9cc: sub_F6F9CC.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9cc, "sub_F6F9CC")
 }
 
-// 0xf6f9d8 — sub_F6F9D8
 #[doc(alias = "sub_F6F9D8")]
-pub fn stub_0xf6f9d8() -> ! {
-    todo!("0xf6f9d8 sub_F6F9D8")
+pub fn stub_0xf6f9d8() -> crate::slot::PortedFn {
+// IDA 0xf6f9d8: sub_F6F9D8.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9d8, "sub_F6F9D8")
 }
 
-// 0xf6f9e4 — sub_F6F9E4
 #[doc(alias = "sub_F6F9E4")]
-pub fn stub_0xf6f9e4() -> ! {
-    todo!("0xf6f9e4 sub_F6F9E4")
+pub fn stub_0xf6f9e4() -> crate::slot::PortedFn {
+// IDA 0xf6f9e4: sub_F6F9E4.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9e4, "sub_F6F9E4")
 }
 
-// 0xf6f9f0 — sub_F6F9F0
 #[doc(alias = "sub_F6F9F0")]
-pub fn stub_0xf6f9f0() -> ! {
-    todo!("0xf6f9f0 sub_F6F9F0")
+pub fn stub_0xf6f9f0() -> crate::slot::PortedFn {
+// IDA 0xf6f9f0: sub_F6F9F0.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9f0, "sub_F6F9F0")
 }
 
-// 0xf6f9fc — sub_F6F9FC
 #[doc(alias = "sub_F6F9FC")]
-pub fn stub_0xf6f9fc() -> ! {
-    todo!("0xf6f9fc sub_F6F9FC")
+pub fn stub_0xf6f9fc() -> crate::slot::PortedFn {
+// IDA 0xf6f9fc: sub_F6F9FC.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6f9fc, "sub_F6F9FC")
 }
 
-// 0xf6fa08 — sub_F6FA08
 #[doc(alias = "sub_F6FA08")]
-pub fn stub_0xf6fa08() -> ! {
-    todo!("0xf6fa08 sub_F6FA08")
+pub fn stub_0xf6fa08() -> crate::slot::PortedFn {
+// IDA 0xf6fa08: sub_F6FA08.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa08, "sub_F6FA08")
 }
 
-// 0xf6fa14 — sub_F6FA14
 #[doc(alias = "sub_F6FA14")]
-pub fn stub_0xf6fa14() -> ! {
-    todo!("0xf6fa14 sub_F6FA14")
+pub fn stub_0xf6fa14() -> crate::slot::PortedFn {
+// IDA 0xf6fa14: sub_F6FA14.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa14, "sub_F6FA14")
 }
 
-// 0xf6fa20 — sub_F6FA20
 #[doc(alias = "sub_F6FA20")]
-pub fn stub_0xf6fa20() -> ! {
-    todo!("0xf6fa20 sub_F6FA20")
+pub fn stub_0xf6fa20() -> crate::slot::PortedFn {
+// IDA 0xf6fa20: sub_F6FA20.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa20, "sub_F6FA20")
 }
 
-// 0xf6fa2c — sub_F6FA2C
 #[doc(alias = "sub_F6FA2C")]
-pub fn stub_0xf6fa2c() -> ! {
-    todo!("0xf6fa2c sub_F6FA2C")
+pub fn stub_0xf6fa2c() -> crate::slot::PortedFn {
+// IDA 0xf6fa2c: sub_F6FA2C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa2c, "sub_F6FA2C")
 }
 
-// 0xf6fa38 — sub_F6FA38
 #[doc(alias = "sub_F6FA38")]
-pub fn stub_0xf6fa38() -> ! {
-    todo!("0xf6fa38 sub_F6FA38")
+pub fn stub_0xf6fa38() -> crate::slot::PortedFn {
+// IDA 0xf6fa38: sub_F6FA38.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa38, "sub_F6FA38")
 }
 
-// 0xf6fa44 — sub_F6FA44
 #[doc(alias = "sub_F6FA44")]
-pub fn stub_0xf6fa44() -> ! {
-    todo!("0xf6fa44 sub_F6FA44")
+pub fn stub_0xf6fa44() -> crate::slot::PortedFn {
+// IDA 0xf6fa44: sub_F6FA44.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa44, "sub_F6FA44")
 }
 
-// 0xf6fa50 — sub_F6FA50
 #[doc(alias = "sub_F6FA50")]
-pub fn stub_0xf6fa50() -> ! {
-    todo!("0xf6fa50 sub_F6FA50")
+pub fn stub_0xf6fa50() -> crate::slot::PortedFn {
+// IDA 0xf6fa50: sub_F6FA50.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa50, "sub_F6FA50")
 }
 
-// 0xf6fa5c — sub_F6FA5C
 #[doc(alias = "sub_F6FA5C")]
-pub fn stub_0xf6fa5c() -> ! {
-    todo!("0xf6fa5c sub_F6FA5C")
+pub fn stub_0xf6fa5c() -> crate::slot::PortedFn {
+// IDA 0xf6fa5c: sub_F6FA5C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa5c, "sub_F6FA5C")
 }
 
-// 0xf6fa68 — sub_F6FA68
 #[doc(alias = "sub_F6FA68")]
-pub fn stub_0xf6fa68() -> ! {
-    todo!("0xf6fa68 sub_F6FA68")
+pub fn stub_0xf6fa68() -> crate::slot::PortedFn {
+// IDA 0xf6fa68: sub_F6FA68.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa68, "sub_F6FA68")
 }
 
-// 0xf6fa74 — sub_F6FA74
 #[doc(alias = "sub_F6FA74")]
-pub fn stub_0xf6fa74() -> ! {
-    todo!("0xf6fa74 sub_F6FA74")
+pub fn stub_0xf6fa74() -> crate::slot::PortedFn {
+// IDA 0xf6fa74: sub_F6FA74.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa74, "sub_F6FA74")
 }
 
-// 0xf6fa80 — sub_F6FA80
 #[doc(alias = "sub_F6FA80")]
-pub fn stub_0xf6fa80() -> ! {
-    todo!("0xf6fa80 sub_F6FA80")
+pub fn stub_0xf6fa80() -> crate::slot::PortedFn {
+// IDA 0xf6fa80: sub_F6FA80.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa80, "sub_F6FA80")
 }
 
-// 0xf6fa8c — sub_F6FA8C
 #[doc(alias = "sub_F6FA8C")]
-pub fn stub_0xf6fa8c() -> ! {
-    todo!("0xf6fa8c sub_F6FA8C")
+pub fn stub_0xf6fa8c() -> crate::slot::PortedFn {
+// IDA 0xf6fa8c: sub_F6FA8C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa8c, "sub_F6FA8C")
 }
 
-// 0xf6fa98 — sub_F6FA98
 #[doc(alias = "sub_F6FA98")]
-pub fn stub_0xf6fa98() -> ! {
-    todo!("0xf6fa98 sub_F6FA98")
+pub fn stub_0xf6fa98() -> crate::slot::PortedFn {
+// IDA 0xf6fa98: sub_F6FA98.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fa98, "sub_F6FA98")
 }
 
-// 0xf6faa4 — sub_F6FAA4
 #[doc(alias = "sub_F6FAA4")]
-pub fn stub_0xf6faa4() -> ! {
-    todo!("0xf6faa4 sub_F6FAA4")
+pub fn stub_0xf6faa4() -> crate::slot::PortedFn {
+// IDA 0xf6faa4: sub_F6FAA4.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6faa4, "sub_F6FAA4")
 }
 
-// 0xf6fab0 — sub_F6FAB0
 #[doc(alias = "sub_F6FAB0")]
-pub fn stub_0xf6fab0() -> ! {
-    todo!("0xf6fab0 sub_F6FAB0")
+pub fn stub_0xf6fab0() -> crate::slot::PortedFn {
+// IDA 0xf6fab0: sub_F6FAB0.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fab0, "sub_F6FAB0")
 }
 
-// 0xf6fabc — sub_F6FABC
 #[doc(alias = "sub_F6FABC")]
-pub fn stub_0xf6fabc() -> ! {
-    todo!("0xf6fabc sub_F6FABC")
+pub fn stub_0xf6fabc() -> crate::slot::PortedFn {
+// IDA 0xf6fabc: sub_F6FABC.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fabc, "sub_F6FABC")
 }
 
-// 0xf6fac8 — sub_F6FAC8
 #[doc(alias = "sub_F6FAC8")]
-pub fn stub_0xf6fac8() -> ! {
-    todo!("0xf6fac8 sub_F6FAC8")
+pub fn stub_0xf6fac8() -> crate::slot::PortedFn {
+// IDA 0xf6fac8: sub_F6FAC8.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fac8, "sub_F6FAC8")
 }
 
-// 0xf6fad4 — sub_F6FAD4
 #[doc(alias = "sub_F6FAD4")]
-pub fn stub_0xf6fad4() -> ! {
-    todo!("0xf6fad4 sub_F6FAD4")
+pub fn stub_0xf6fad4() -> crate::slot::PortedFn {
+// IDA 0xf6fad4: sub_F6FAD4.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fad4, "sub_F6FAD4")
 }
 
-// 0xf6fae0 — sub_F6FAE0
 #[doc(alias = "sub_F6FAE0")]
-pub fn stub_0xf6fae0() -> ! {
-    todo!("0xf6fae0 sub_F6FAE0")
+pub fn stub_0xf6fae0() -> crate::slot::PortedFn {
+// IDA 0xf6fae0: sub_F6FAE0.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fae0, "sub_F6FAE0")
 }
 
-// 0xf6faec — sub_F6FAEC
 #[doc(alias = "sub_F6FAEC")]
-pub fn stub_0xf6faec() -> ! {
-    todo!("0xf6faec sub_F6FAEC")
+pub fn stub_0xf6faec() -> crate::slot::PortedFn {
+// IDA 0xf6faec: sub_F6FAEC.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6faec, "sub_F6FAEC")
 }
 
-// 0xf6faf8 — sub_F6FAF8
 #[doc(alias = "sub_F6FAF8")]
-pub fn stub_0xf6faf8() -> ! {
-    todo!("0xf6faf8 sub_F6FAF8")
+pub fn stub_0xf6faf8() -> crate::slot::PortedFn {
+// IDA 0xf6faf8: sub_F6FAF8.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6faf8, "sub_F6FAF8")
 }
 
-// 0xf6fb04 — sub_F6FB04
 #[doc(alias = "sub_F6FB04")]
-pub fn stub_0xf6fb04() -> ! {
-    todo!("0xf6fb04 sub_F6FB04")
+pub fn stub_0xf6fb04() -> crate::slot::PortedFn {
+// IDA 0xf6fb04: sub_F6FB04.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb04, "sub_F6FB04")
 }
 
-// 0xf6fb10 — sub_F6FB10
 #[doc(alias = "sub_F6FB10")]
-pub fn stub_0xf6fb10() -> ! {
-    todo!("0xf6fb10 sub_F6FB10")
+pub fn stub_0xf6fb10() -> crate::slot::PortedFn {
+// IDA 0xf6fb10: sub_F6FB10.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb10, "sub_F6FB10")
 }
 
-// 0xf6fb1c — sub_F6FB1C
 #[doc(alias = "sub_F6FB1C")]
-pub fn stub_0xf6fb1c() -> ! {
-    todo!("0xf6fb1c sub_F6FB1C")
+pub fn stub_0xf6fb1c() -> crate::slot::PortedFn {
+// IDA 0xf6fb1c: sub_F6FB1C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb1c, "sub_F6FB1C")
 }
 
-// 0xf6fb28 — sub_F6FB28
 #[doc(alias = "sub_F6FB28")]
-pub fn stub_0xf6fb28() -> ! {
-    todo!("0xf6fb28 sub_F6FB28")
+pub fn stub_0xf6fb28() -> crate::slot::PortedFn {
+// IDA 0xf6fb28: sub_F6FB28.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb28, "sub_F6FB28")
 }
 
-// 0xf6fb34 — sub_F6FB34
 #[doc(alias = "sub_F6FB34")]
-pub fn stub_0xf6fb34() -> ! {
-    todo!("0xf6fb34 sub_F6FB34")
+pub fn stub_0xf6fb34() -> crate::slot::PortedFn {
+// IDA 0xf6fb34: sub_F6FB34.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb34, "sub_F6FB34")
 }
 
-// 0xf6fb40 — sub_F6FB40
 #[doc(alias = "sub_F6FB40")]
-pub fn stub_0xf6fb40() -> ! {
-    todo!("0xf6fb40 sub_F6FB40")
+pub fn stub_0xf6fb40() -> crate::slot::PortedFn {
+// IDA 0xf6fb40: sub_F6FB40.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb40, "sub_F6FB40")
 }
 
-// 0xf6fb4c — sub_F6FB4C
-// type: int()
 #[doc(alias = "sub_F6FB4C")]
-pub fn stub_0xf6fb4c() -> ! {
-    todo!("0xf6fb4c sub_F6FB4C")
+pub fn stub_0xf6fb4c() -> crate::slot::PortedFn {
+// IDA 0xf6fb4c: sub_F6FB4C.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xf6fb4c, "sub_F6FB4C")
 }
 
 // ---- Low-EA runtime shims (IDA 0x84e0..0xd47c) ----

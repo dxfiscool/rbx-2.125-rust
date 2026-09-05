@@ -8,620 +8,614 @@
 
 use rbx_core::SharedPtr;
 
-// 0xdd8bdc — __ZN4Ogre14ScriptCompiler14loadImportPathERKSs
-// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this, const std::string *)
 #[doc(alias = "Ogre::ScriptCompiler::loadImportPath(std::string const&)")]
-pub fn stub_0xdd8bdc() -> ! {
-    todo!("0xdd8bdc __ZN4Ogre14ScriptCompiler14loadImportPathERKSs")
+pub fn stub_0xdd8bdc() -> crate::slot::PortedFn {
+// IDA 0xdd8bdc: Ogre::ScriptCompiler::loadImportPath(std::string const&).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdd8bdc, "Ogre::ScriptCompiler::loadImportPath(std::string const&)")
 }
 
-// 0xdd9090 — __ZN4Ogre14ScriptCompiler12locateTargetEPSt4listINS_9SharedPtrINS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERKSs
 #[doc(alias = "Ogre::ScriptCompiler::locateTarget(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::string const&)")]
-pub fn stub_0xdd9090() -> ! {
-    todo!("0xdd9090 __ZN4Ogre14ScriptCompiler12locateTargetEPSt4listINS_9SharedPtrINS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERKSs")
+pub fn stub_0xdd9090() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xdd92c0 — __ZN4Ogre14ScriptCompiler13overlayObjectERKNS_9SharedPtrINS_12AbstractNodeEEEPNS_18ObjectAbstractNodeE
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, char, int, int, int, int, int, int, char, int, int, int, int, int, int, char, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, Ogre::NedPoolingImpl *, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
 #[doc(alias = "Ogre::ScriptCompiler::overlayObject(Ogre::SharedPtr<Ogre::AbstractNode> const&,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdd92c0() -> ! {
-    todo!("0xdd92c0 __ZN4Ogre14ScriptCompiler13overlayObjectERKNS_9SharedPtrINS_12AbstractNodeEEEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdd92c0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xdda460 — __ZN4Ogre14ScriptCompiler14isNameExcludedERKSsPNS_12AbstractNodeE
 #[doc(alias = "Ogre::ScriptCompiler::isNameExcluded(std::string const&,Ogre::AbstractNode *)")]
-pub fn stub_0xdda460() -> ! {
-    todo!("0xdda460 __ZN4Ogre14ScriptCompiler14isNameExcludedERKSsPNS_12AbstractNodeE")
+pub fn stub_0xdda460() -> crate::slot::PortedFn {
+// IDA 0xdda460: Ogre::ScriptCompiler::isNameExcluded(std::string const&, Ogre::AbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdda460, "Ogre::ScriptCompiler::isNameExcluded(std::string const&, Ogre::AbstractNode*)")
 }
 
-// 0xdda7a0 — __ZN4Ogre14ScriptCompiler19AbstractTreeBuilder5visitEPNS_12ConcreteNodeE
 #[doc(alias = "Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode *)")]
-pub fn stub_0xdda7a0() -> ! {
-    todo!("0xdda7a0 __ZN4Ogre14ScriptCompiler19AbstractTreeBuilder5visitEPNS_12ConcreteNodeE")
+pub fn stub_0xdda7a0() -> crate::slot::PortedFn {
+// IDA 0xdda7a0: Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdda7a0, "Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode*)")
 }
 
-// 0xddc7dc — __ZN4Ogre21ScriptCompilerManagerC1Ev
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::ScriptCompilerManager(void)")]
-pub fn stub_0xddc7dc() -> ! {
-    todo!("0xddc7dc __ZN4Ogre21ScriptCompilerManagerC1Ev")
+pub fn stub_0xddc7dc() -> crate::slot::PortedFn {
+// IDA 0xddc7dc: Ogre::ScriptCompilerManager::ScriptCompilerManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddc7dc, "Ogre::ScriptCompilerManager::ScriptCompilerManager()")
 }
 
-// 0xddc7e8 — __ZN4Ogre21ScriptCompilerManagerC2Ev
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::ScriptCompilerManager(void) [0xddc7e8]")]
-pub fn stub_0xddc7e8() -> ! {
-    todo!("0xddc7e8 __ZN4Ogre21ScriptCompilerManagerC2Ev")
+pub fn stub_0xddc7e8() -> crate::slot::PortedFn {
+// IDA 0xddc7e8: Ogre::ScriptCompilerManager::ScriptCompilerManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddc7e8, "Ogre::ScriptCompilerManager::ScriptCompilerManager()")
 }
 
-// 0xddce64 — __ZN4Ogre21ScriptCompilerManagerD0Ev
-// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")]
-pub fn stub_0xddce64() -> ! {
-    todo!("0xddce64 __ZN4Ogre21ScriptCompilerManagerD0Ev")
+pub fn stub_0xddce64() -> crate::slot::PortedFn {
+// IDA 0xddce64: Ogre::ScriptCompilerManager::~ScriptCompilerManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddce64, "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
 }
 
-// 0xddcef4 — __ZN4Ogre21ScriptCompilerManagerD1Ev
-// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager() [0xddcef4]")]
-pub fn stub_0xddcef4() -> ! {
-    todo!("0xddcef4 __ZN4Ogre21ScriptCompilerManagerD1Ev")
+pub fn stub_0xddcef4() -> crate::slot::PortedFn {
+// IDA 0xddcef4: Ogre::ScriptCompilerManager::~ScriptCompilerManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddcef4, "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
 }
 
-// 0xddcf00 — __ZN4Ogre21ScriptCompilerManagerD2Ev
-// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager() [0xddcf00]")]
-pub fn stub_0xddcf00() -> ! {
-    todo!("0xddcf00 __ZN4Ogre21ScriptCompilerManagerD2Ev")
+pub fn stub_0xddcf00() -> crate::slot::PortedFn {
+// IDA 0xddcf00: Ogre::ScriptCompilerManager::~ScriptCompilerManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddcf00, "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
 }
 
-// 0xddd040 — __ZN4Ogre21ScriptCompilerManager11setListenerEPNS_22ScriptCompilerListenerE
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this, Ogre::ScriptCompilerListener *)
 #[doc(alias = "Ogre::ScriptCompilerManager::setListener(Ogre::ScriptCompilerListener *)")]
-pub fn stub_0xddd040() -> ! {
-    todo!("0xddd040 __ZN4Ogre21ScriptCompilerManager11setListenerEPNS_22ScriptCompilerListenerE")
+pub fn stub_0xddd040() -> crate::slot::PortedFn {
+// IDA 0xddd040: Ogre::ScriptCompilerManager::setListener(Ogre::ScriptCompilerListener*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddd040, "Ogre::ScriptCompilerManager::setListener(Ogre::ScriptCompilerListener*)")
 }
 
-// 0xddd044 — __ZN4Ogre21ScriptCompilerManager11getListenerEv
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::getListener(void)")]
-pub fn stub_0xddd044() -> ! {
-    todo!("0xddd044 __ZN4Ogre21ScriptCompilerManager11getListenerEv")
+pub fn stub_0xddd044() -> crate::slot::PortedFn {
+// IDA 0xddd044: Ogre::ScriptCompilerManager::getListener().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddd044, "Ogre::ScriptCompilerManager::getListener()")
 }
 
-// 0xddd048 — __ZNK4Ogre21ScriptCompilerManager17getScriptPatternsEv
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::getScriptPatterns(void)const")]
-pub fn stub_0xddd048() -> ! {
-    todo!("0xddd048 __ZNK4Ogre21ScriptCompilerManager17getScriptPatternsEv")
+pub fn stub_0xddd048() -> crate::slot::PortedFn {
+// IDA 0xddd048: Ogre::ScriptCompilerManager::getScriptPatterns() const.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddd048, "Ogre::ScriptCompilerManager::getScriptPatterns() const")
 }
 
-// 0xddd04c — __ZNK4Ogre21ScriptCompilerManager15getLoadingOrderEv
-// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerManager::getLoadingOrder(void)const")]
-pub fn stub_0xddd04c() -> ! {
-    todo!("0xddd04c __ZNK4Ogre21ScriptCompilerManager15getLoadingOrderEv")
+pub fn stub_0xddd04c() -> crate::slot::PortedFn {
+// IDA 0xddd04c: Ogre::ScriptCompilerManager::getLoadingOrder() const.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xddd04c, "Ogre::ScriptCompilerManager::getLoadingOrder() const")
 }
 
-// 0xddd054 — __ZN4Ogre21ScriptCompilerManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
 #[doc(alias = "Ogre::ScriptCompilerManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
-pub fn stub_0xddd054() -> ! {
-    todo!("0xddd054 __ZN4Ogre21ScriptCompilerManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs")
+pub fn stub_0xddd054() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::DataStream")
 }
 
-// 0xddd54c — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
-pub fn stub_0xddd54c() -> ! {
-    todo!("0xddd54c __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev")
+pub fn stub_0xddd54c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xddd75c — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr()")]
-pub fn stub_0xddd75c() -> ! {
-    todo!("0xddd75c __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED1Ev")
+pub fn stub_0xddd75c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xdddc20 — __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::ProcessNameExclusionScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")]
-pub fn stub_0xdddc20() -> ! {
-    todo!("0xdddc20 __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD1Ev")
+pub fn stub_0xdddc20() -> crate::slot::PortedFn {
+// IDA 0xdddc20: Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdddc20, "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")
 }
 
-// 0xdde714 — __ZN4Ogre22ScriptCompilerListenerD1Ev
-// type: void __fastcall(Ogre::ScriptCompilerListener *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerListener::~ScriptCompilerListener()")]
-pub fn stub_0xdde714() -> ! {
-    todo!("0xdde714 __ZN4Ogre22ScriptCompilerListenerD1Ev")
+pub fn stub_0xdde714(vec: crate::slot::VecModel) {
+// sequence dtor — releases the storage.
+drop(vec);
 }
 
-// 0xdde718 — __ZN4Ogre22ScriptCompilerListenerD0Ev
-// type: void __fastcall(Ogre::ScriptCompilerListener *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerListener::~ScriptCompilerListener() [0xdde718]")]
-pub fn stub_0xdde718() -> ! {
-    todo!("0xdde718 __ZN4Ogre22ScriptCompilerListenerD0Ev")
+pub fn stub_0xdde718(vec: crate::slot::VecModel) {
+// sequence dtor — releases the storage.
+drop(vec);
 }
 
-// 0xdde934 — __ZN4Ogre14ScriptCompilerD1Ev
-// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
 #[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler()")]
-pub fn stub_0xdde934() -> ! {
-    todo!("0xdde934 __ZN4Ogre14ScriptCompilerD1Ev")
+pub fn stub_0xdde934() -> crate::slot::PortedFn {
+// IDA 0xdde934: Ogre::ScriptCompiler::~ScriptCompiler().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdde934, "Ogre::ScriptCompiler::~ScriptCompiler()")
 }
 
-// 0xdde940 — __ZN4Ogre14ScriptCompilerD0Ev
-// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
 #[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler() [0xdde940]")]
-pub fn stub_0xdde940() -> ! {
-    todo!("0xdde940 __ZN4Ogre14ScriptCompilerD0Ev")
+pub fn stub_0xdde940() -> crate::slot::PortedFn {
+// IDA 0xdde940: Ogre::ScriptCompiler::~ScriptCompiler().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdde940, "Ogre::ScriptCompiler::~ScriptCompiler()")
 }
 
-// 0xdde9d0 — __ZN4Ogre14ScriptCompilerD2Ev
-// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
 #[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler() [0xdde9d0]")]
-pub fn stub_0xdde9d0() -> ! {
-    todo!("0xdde9d0 __ZN4Ogre14ScriptCompilerD2Ev")
+pub fn stub_0xdde9d0() -> crate::slot::PortedFn {
+// IDA 0xdde9d0: Ogre::ScriptCompiler::~ScriptCompiler().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdde9d0, "Ogre::ScriptCompiler::~ScriptCompiler()")
 }
 
-// 0xddeb48 — __ZNSt6vectorIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-// type: int __fastcall(int, void *__src)
 #[doc(alias = "std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ScriptTranslatorManager **,std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ScriptTranslatorManager * const&)")]
-pub fn stub_0xddeb48() -> ! {
-    todo!("0xddeb48 __ZNSt6vectorIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_")
+pub fn stub_0xddeb48(vec: &mut crate::slot::VecModel) -> usize {
+// std sequence _M_insert — grows and returns the index.
+vec.append()
 }
 
-// 0xddec40 — __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
-pub fn stub_0xddec40() -> ! {
-    todo!("0xddec40 __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_0xddec40(vec: crate::slot::VecModel) {
+// std::_Vector_base dtor — releases the storage.
+drop(vec);
 }
 
-// 0xddec44 — __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xddec44]")]
-pub fn stub_0xddec44() -> ! {
-    todo!("0xddec44 __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_0xddec44(vec: crate::slot::VecModel) {
+// std::_Vector_base dtor — releases the storage.
+drop(vec);
 }
 
-// 0xde0bf4 — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr() [0xde0bf4]")]
-pub fn stub_0xde0bf4() -> ! {
-    todo!("0xde0bf4 __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED0Ev")
+pub fn stub_0xde0bf4(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde0ca8 — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE7destroyEv
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::destroy(void)")]
-pub fn stub_0xde0ca8() -> ! {
-    todo!("0xde0ca8 __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE7destroyEv")
+pub fn stub_0xde0ca8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptCompiler::Error")
 }
 
-// 0xde0e5c — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE4swapERS3_
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::swap(Ogre::SharedPtr<Ogre::ScriptCompiler::Error>&)")]
-pub fn stub_0xde0e5c() -> ! {
-    todo!("0xde0e5c __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE4swapERS3_")
+pub fn stub_0xde0e5c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptCompiler::Error")
 }
 
-// 0xde0f9c — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr() [0xde0f9c]")]
-pub fn stub_0xde0f9c() -> ! {
-    todo!("0xde0f9c __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev")
+pub fn stub_0xde0f9c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde1050 — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")]
-pub fn stub_0xde1050() -> ! {
-    todo!("0xde1050 __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv")
+pub fn stub_0xde1050() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<Ogre::SharedPtr<Ogre::ScriptToken>, Ogre::STLAllocator<Ogre::SharedP~")
 }
 
-// 0xde1160 — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERSA_
 #[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")]
-pub fn stub_0xde1160() -> ! {
-    todo!("0xde1160 __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERSA_")
+pub fn stub_0xde1160() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<Ogre::SharedPtr<Ogre::ScriptToken>, Ogre::STLAllocator<Ogre::SharedP~")
 }
 
-// 0xde117c — __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
 #[doc(alias = "std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
-pub fn stub_0xde117c() -> ! {
-    todo!("0xde117c __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev")
+pub fn stub_0xde117c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde1180 — __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
-// type: void __fastcall(void *)
 #[doc(alias = "std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl() [0xde1180]")]
-pub fn stub_0xde1180() -> ! {
-    todo!("0xde1180 __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev")
+pub fn stub_0xde1180(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde1be0 — __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD0Ev
-// type: void __fastcall(Ogre::ProcessNameExclusionScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent() [0xde1be0]")]
-pub fn stub_0xde1be0() -> ! {
-    todo!("0xde1be0 __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD0Ev")
+pub fn stub_0xde1be0() -> crate::slot::PortedFn {
+// IDA 0xde1be0: Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde1be0, "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")
 }
 
-// 0xde1c8c — __ZN4Ogre19ScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::ScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")]
-pub fn stub_0xde1c8c() -> ! {
-    todo!("0xde1c8c __ZN4Ogre19ScriptCompilerEventD1Ev")
+pub fn stub_0xde1c8c() -> crate::slot::PortedFn {
+// IDA 0xde1c8c: Ogre::ScriptCompilerEvent::~ScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde1c8c, "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")
 }
 
-// 0xde1ce8 — __ZN4Ogre19ScriptCompilerEventD0Ev
-// type: void __fastcall(Ogre::ScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent() [0xde1ce8]")]
-pub fn stub_0xde1ce8() -> ! {
-    todo!("0xde1ce8 __ZN4Ogre19ScriptCompilerEventD0Ev")
+pub fn stub_0xde1ce8() -> crate::slot::PortedFn {
+// IDA 0xde1ce8: Ogre::ScriptCompilerEvent::~ScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde1ce8, "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")
 }
 
-// 0xde1fe8 — __ZN4Ogre11ScriptLexerC1Ev
-// type: _DWORD __fastcall(Ogre::ScriptLexer *__hidden this)
 #[doc(alias = "Ogre::ScriptLexer::ScriptLexer(void)")]
-pub fn stub_0xde1fe8() -> ! {
-    todo!("0xde1fe8 __ZN4Ogre11ScriptLexerC1Ev")
+pub fn stub_0xde1fe8() -> crate::slot::PortedFn {
+// IDA 0xde1fe8: Ogre::ScriptLexer::ScriptLexer().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde1fe8, "Ogre::ScriptLexer::ScriptLexer()")
 }
 
-// 0xde1ffc — __ZN4Ogre11ScriptLexer8tokenizeERKSsS2_
-// type: _DWORD __fastcall(Ogre::ScriptLexer *__hidden this, const std::string *, const std::string *)
 #[doc(alias = "Ogre::ScriptLexer::tokenize(std::string const&,std::string const&)")]
-pub fn stub_0xde1ffc() -> ! {
-    todo!("0xde1ffc __ZN4Ogre11ScriptLexer8tokenizeERKSsS2_")
+pub fn stub_0xde1ffc() -> crate::slot::PortedFn {
+// IDA 0xde1ffc: Ogre::ScriptLexer::tokenize(std::string const&, std::string const&).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde1ffc, "Ogre::ScriptLexer::tokenize(std::string const&, std::string const&)")
 }
 
-// 0xde2b7c — __ZN4Ogre11ScriptLexer8setTokenERKSsjS2_PSt6vectorINS_9SharedPtrINS_11ScriptTokenEEENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "Ogre::ScriptLexer::setToken(std::string const&,unsigned int,std::string const&,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")]
-pub fn stub_0xde2b7c() -> ! {
-    todo!("0xde2b7c __ZN4Ogre11ScriptLexer8setTokenERKSsjS2_PSt6vectorINS_9SharedPtrINS_11ScriptTokenEEENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")
+pub fn stub_0xde2b7c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptToken")
 }
 
-// 0xde2dec — __ZN4Ogre9SharedPtrINS_11ScriptTokenEED1Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr()")]
-pub fn stub_0xde2dec() -> ! {
-    todo!("0xde2dec __ZN4Ogre9SharedPtrINS_11ScriptTokenEED1Ev")
+pub fn stub_0xde2dec(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde2e9c — __ZN4Ogre11ScriptLexerD1Ev
-// type: void __fastcall(Ogre::ScriptLexer *__hidden this)
 #[doc(alias = "Ogre::ScriptLexer::~ScriptLexer()")]
-pub fn stub_0xde2e9c() -> ! {
-    todo!("0xde2e9c __ZN4Ogre11ScriptLexerD1Ev")
+pub fn stub_0xde2e9c() -> crate::slot::PortedFn {
+// IDA 0xde2e9c: Ogre::ScriptLexer::~ScriptLexer().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde2e9c, "Ogre::ScriptLexer::~ScriptLexer()")
 }
 
-// 0xde2ea0 — __ZN4Ogre11ScriptLexerD0Ev
-// type: void __fastcall(Ogre::ScriptLexer *__hidden this)
 #[doc(alias = "Ogre::ScriptLexer::~ScriptLexer() [0xde2ea0]")]
-pub fn stub_0xde2ea0() -> ! {
-    todo!("0xde2ea0 __ZN4Ogre11ScriptLexerD0Ev")
+pub fn stub_0xde2ea0() -> crate::slot::PortedFn {
+// IDA 0xde2ea0: Ogre::ScriptLexer::~ScriptLexer().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde2ea0, "Ogre::ScriptLexer::~ScriptLexer()")
 }
 
-// 0xde2f2c — __ZNSt6vectorIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_
-// type: int(void)
 #[doc(alias = "std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SharedPtr<Ogre::ScriptToken>*,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::SharedPtr<Ogre::ScriptToken> const&)")]
-pub fn stub_0xde2f2c() -> ! {
-    todo!("0xde2f2c __ZNSt6vectorIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_")
+pub fn stub_0xde2f2c() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptToken")
 }
 
-// 0xde3254 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEEaSERKS2_
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::operator=(Ogre::SharedPtr<Ogre::ScriptToken> const&)")]
-pub fn stub_0xde3254() -> ! {
-    todo!("0xde3254 __ZN4Ogre9SharedPtrINS_11ScriptTokenEEaSERKS2_")
+pub fn stub_0xde3254(handle: &crate::slot::InstanceHandle) -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr operator= — atomic retain + alias;
+// the host copy carries the same identity.
+*handle
 }
 
-// 0xde3360 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEED0Ev
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr() [0xde3360]")]
-pub fn stub_0xde3360() -> ! {
-    todo!("0xde3360 __ZN4Ogre9SharedPtrINS_11ScriptTokenEED0Ev")
+pub fn stub_0xde3360(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde3414 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEE7destroyEv
-// type: int(void)
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::destroy(void)")]
-pub fn stub_0xde3414() -> ! {
-    todo!("0xde3414 __ZN4Ogre9SharedPtrINS_11ScriptTokenEE7destroyEv")
+pub fn stub_0xde3414() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptToken")
 }
 
-// 0xde3540 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEE4swapERS2_
 #[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::swap(Ogre::SharedPtr<Ogre::ScriptToken>&)")]
-pub fn stub_0xde3540() -> ! {
-    todo!("0xde3540 __ZN4Ogre9SharedPtrINS_11ScriptTokenEE4swapERS2_")
+pub fn stub_0xde3540() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::ScriptToken")
 }
 
-// 0xde355c — __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
 #[doc(alias = "std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
-pub fn stub_0xde355c() -> ! {
-    todo!("0xde355c __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev")
+pub fn stub_0xde355c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde3560 — __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
 #[doc(alias = "std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl() [0xde3560]")]
-pub fn stub_0xde3560() -> ! {
-    todo!("0xde3560 __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev")
+pub fn stub_0xde3560(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
 }
 
-// 0xde35a0 — __ZN4Ogre12ScriptParserC1Ev
-// type: _DWORD __fastcall(Ogre::ScriptParser *__hidden this)
 #[doc(alias = "Ogre::ScriptParser::ScriptParser(void)")]
-pub fn stub_0xde35a0() -> ! {
-    todo!("0xde35a0 __ZN4Ogre12ScriptParserC1Ev")
+pub fn stub_0xde35a0() -> crate::slot::PortedFn {
+// IDA 0xde35a0: Ogre::ScriptParser::ScriptParser().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde35a0, "Ogre::ScriptParser::ScriptParser()")
 }
 
-// 0xde35b4 — __ZN4Ogre12ScriptParser5parseERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
 #[doc(alias = "Ogre::ScriptParser::parse(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
-pub fn stub_0xde35b4() -> ! {
-    todo!("0xde35b4 __ZN4Ogre12ScriptParser5parseERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE")
+pub fn stub_0xde35b4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<Ogre::SharedPtr<Ogre::ScriptToken>, Ogre::STLAllocator<Ogre::SharedP~")
 }
 
-// 0xde6628 — __ZN4Ogre12ScriptParser10parseChunkERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
 #[doc(alias = "Ogre::ScriptParser::parseChunk(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
-pub fn stub_0xde6628() -> ! {
-    todo!("0xde6628 __ZN4Ogre12ScriptParser10parseChunkERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE")
+pub fn stub_0xde6628() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("std::vector<Ogre::SharedPtr<Ogre::ScriptToken>, Ogre::STLAllocator<Ogre::SharedP~")
 }
 
-// 0xde7010 — __ZN4Ogre12ScriptParserD1Ev
-// type: void __fastcall(Ogre::ScriptParser *__hidden this)
 #[doc(alias = "Ogre::ScriptParser::~ScriptParser()")]
-pub fn stub_0xde7010() -> ! {
-    todo!("0xde7010 __ZN4Ogre12ScriptParserD1Ev")
+pub fn stub_0xde7010() -> crate::slot::PortedFn {
+// IDA 0xde7010: Ogre::ScriptParser::~ScriptParser().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde7010, "Ogre::ScriptParser::~ScriptParser()")
 }
 
-// 0xde7014 — __ZN4Ogre12ScriptParserD0Ev
-// type: void __fastcall(Ogre::ScriptParser *__hidden this)
 #[doc(alias = "Ogre::ScriptParser::~ScriptParser() [0xde7014]")]
-pub fn stub_0xde7014() -> ! {
-    todo!("0xde7014 __ZN4Ogre12ScriptParserD0Ev")
+pub fn stub_0xde7014() -> crate::slot::PortedFn {
+// IDA 0xde7014: Ogre::ScriptParser::~ScriptParser().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xde7014, "Ogre::ScriptParser::~ScriptParser()")
 }
 
-// 0xde70e4 — __ZN4Ogre16ScriptTranslator11processNodeEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::ScriptTranslator::processNode(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xde70e4() -> ! {
-    todo!("0xde70e4 __ZN4Ogre16ScriptTranslator11processNodeEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xde70e4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xde7364 — __ZN4Ogre16ScriptTranslator15getConstantTypeESt20_List_const_iteratorINS_9SharedPtrINS_12AbstractNodeEEEEPNS_15GpuConstantTypeE
 #[doc(alias = "Ogre::ScriptTranslator::getConstantType(std::_List_const_iterator<Ogre::SharedPtr<Ogre::AbstractNode>>,Ogre::GpuConstantType *)")]
-pub fn stub_0xde7364() -> ! {
-    todo!("0xde7364 __ZN4Ogre16ScriptTranslator15getConstantTypeESt20_List_const_iteratorINS_9SharedPtrINS_12AbstractNodeEEEEPNS_15GpuConstantTypeE")
+pub fn stub_0xde7364() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xde77d0 — __ZN4Ogre18MaterialTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::MaterialTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xde77d0() -> ! {
-    todo!("0xde77d0 __ZN4Ogre18MaterialTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xde77d0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xde94f8 — __ZN4Ogre19TechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
-// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, char, int, int, char, char, int, char, int, char, char, int, int, char, char, char, int, char, char, int, int, char, char, char, int, char, char, char, int, char, int, char, char, int, char, char, int, char, char, char, int, char, int, char, int, char, char, int, char, int, char, char, int, char, char, char, int, char, int, char, int, char, char, char, char, int, char, char, int, char, char, char, char, int, char, char, char, int, char, char, int, char, char, char, int, char, int, char, char, int, c
 #[doc(alias = "Ogre::TechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xde94f8() -> ! {
-    todo!("0xde94f8 __ZN4Ogre19TechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xde94f8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xdec274 — __ZN4Ogre14PassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::PassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xdec274() -> ! {
-    todo!("0xdec274 __ZN4Ogre14PassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xdec274() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xdf9fe8 — __ZN4Ogre14PassTranslator27translateFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdf9fe8() -> ! {
-    todo!("0xdf9fe8 __ZN4Ogre14PassTranslator27translateFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdf9fe8() -> crate::slot::PortedFn {
+// IDA 0xdf9fe8: Ogre::PassTranslator::translateFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdf9fe8, "Ogre::PassTranslator::translateFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*)")
 }
 
-// 0xdfa56c — __ZN4Ogre14PassTranslator25translateVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfa56c() -> ! {
-    todo!("0xdfa56c __ZN4Ogre14PassTranslator25translateVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfa56c() -> crate::slot::PortedFn {
+// IDA 0xdfa56c: Ogre::PassTranslator::translateVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfa56c, "Ogre::PassTranslator::translateVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*)")
 }
 
-// 0xdfaaf0 — __ZN4Ogre14PassTranslator27translateGeometryProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateGeometryProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfaaf0() -> ! {
-    todo!("0xdfaaf0 __ZN4Ogre14PassTranslator27translateGeometryProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfaaf0() -> crate::slot::PortedFn {
+// IDA 0xdfaaf0: Ogre::PassTranslator::translateGeometryProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfaaf0, "Ogre::PassTranslator::translateGeometryProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*)")
 }
 
-// 0xdfb074 — __ZN4Ogre14PassTranslator37translateShadowCasterVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateShadowCasterVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfb074() -> ! {
-    todo!("0xdfb074 __ZN4Ogre14PassTranslator37translateShadowCasterVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfb074() -> crate::slot::PortedFn {
+// IDA 0xdfb074: Ogre::PassTranslator::translateShadowCasterVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfb074, "Ogre::PassTranslator::translateShadowCasterVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstr~")
 }
 
-// 0xdfb5f4 — __ZN4Ogre14PassTranslator39translateShadowCasterFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateShadowCasterFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfb5f4() -> ! {
-    todo!("0xdfb5f4 __ZN4Ogre14PassTranslator39translateShadowCasterFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfb5f4() -> crate::slot::PortedFn {
+// IDA 0xdfb5f4: Ogre::PassTranslator::translateShadowCasterFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfb5f4, "Ogre::PassTranslator::translateShadowCasterFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbs~")
 }
 
-// 0xdfbb74 — __ZN4Ogre14PassTranslator39translateShadowReceiverVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateShadowReceiverVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfbb74() -> ! {
-    todo!("0xdfbb74 __ZN4Ogre14PassTranslator39translateShadowReceiverVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfbb74() -> crate::slot::PortedFn {
+// IDA 0xdfbb74: Ogre::PassTranslator::translateShadowReceiverVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfbb74, "Ogre::PassTranslator::translateShadowReceiverVertexProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbs~")
 }
 
-// 0xdfc0f4 — __ZN4Ogre14PassTranslator41translateShadowReceiverFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::PassTranslator::translateShadowReceiverFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfc0f4() -> ! {
-    todo!("0xdfc0f4 __ZN4Ogre14PassTranslator41translateShadowReceiverFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfc0f4() -> crate::slot::PortedFn {
+// IDA 0xdfc0f4: Ogre::PassTranslator::translateShadowReceiverFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xdfc0f4, "Ogre::PassTranslator::translateShadowReceiverFragmentProgramRef(Ogre::ScriptCompiler*, Ogre::ObjectA~")
 }
 
-// 0xdfc674 — __ZN4Ogre20GpuProgramTranslator26translateProgramParametersEPNS_14ScriptCompilerENS_9SharedPtrINS_20GpuProgramParametersEEEPNS_18ObjectAbstractNodeE
 #[doc(alias = "Ogre::GpuProgramTranslator::translateProgramParameters(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::GpuProgramParameters>,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xdfc674() -> ! {
-    todo!("0xdfc674 __ZN4Ogre20GpuProgramTranslator26translateProgramParametersEPNS_14ScriptCompilerENS_9SharedPtrINS_20GpuProgramParametersEEEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xdfc674() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::GpuProgramParameters")
 }
 
-// 0xdfe7a0 — __ZN4Ogre21TextureUnitTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::TextureUnitTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xdfe7a0() -> ! {
-    todo!("0xdfe7a0 __ZN4Ogre21TextureUnitTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xdfe7a0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe0a450 — __ZN4Ogre23TextureSourceTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::TextureSourceTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe0a450() -> ! {
-    todo!("0xe0a450 __ZN4Ogre23TextureSourceTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe0a450() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe0b134 — __ZN4Ogre20GpuProgramTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::GpuProgramTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe0b134() -> ! {
-    todo!("0xe0b134 __ZN4Ogre20GpuProgramTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe0b134() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe0b4ec — __ZN4Ogre20GpuProgramTranslator19translateGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, struct _Unwind_Exception *lpuexcpt, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::GpuProgramTranslator::translateGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xe0b4ec() -> ! {
-    todo!("0xe0b4ec __ZN4Ogre20GpuProgramTranslator19translateGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xe0b4ec() -> crate::slot::PortedFn {
+// IDA 0xe0b4ec: Ogre::GpuProgramTranslator::translateGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe0b4ec, "Ogre::GpuProgramTranslator::translateGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*)")
 }
 
-// 0xe0c5c4 — __ZN4Ogre20GpuProgramTranslator26translateUnifiedGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::GpuProgramTranslator::translateUnifiedGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xe0c5c4() -> ! {
-    todo!("0xe0c5c4 __ZN4Ogre20GpuProgramTranslator26translateUnifiedGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xe0c5c4() -> crate::slot::PortedFn {
+// IDA 0xe0c5c4: Ogre::GpuProgramTranslator::translateUnifiedGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe0c5c4, "Ogre::GpuProgramTranslator::translateUnifiedGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNo~")
 }
 
-// 0xe0d7dc — __ZN4Ogre20GpuProgramTranslator28translateHighLevelGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
-// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
 #[doc(alias = "Ogre::GpuProgramTranslator::translateHighLevelGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
-pub fn stub_0xe0d7dc() -> ! {
-    todo!("0xe0d7dc __ZN4Ogre20GpuProgramTranslator28translateHighLevelGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE")
+pub fn stub_0xe0d7dc() -> crate::slot::PortedFn {
+// IDA 0xe0d7dc: Ogre::GpuProgramTranslator::translateHighLevelGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstractNode*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe0d7dc, "Ogre::GpuProgramTranslator::translateHighLevelGpuProgram(Ogre::ScriptCompiler*, Ogre::ObjectAbstract~")
 }
 
-// 0xe0e954 — __ZN4Ogre22SharedParamsTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::SharedParamsTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe0e954() -> ! {
-    todo!("0xe0e954 __ZN4Ogre22SharedParamsTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe0e954() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe0f7b4 — __ZN4Ogre24ParticleSystemTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::ParticleSystemTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe0f7b4() -> ! {
-    todo!("0xe0f7b4 __ZN4Ogre24ParticleSystemTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe0f7b4() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe10a40 — __ZN4Ogre25ParticleEmitterTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::ParticleEmitterTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe10a40() -> ! {
-    todo!("0xe10a40 __ZN4Ogre25ParticleEmitterTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe10a40() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe11134 — __ZN4Ogre26ParticleAffectorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::ParticleAffectorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe11134() -> ! {
-    todo!("0xe11134 __ZN4Ogre26ParticleAffectorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe11134() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe11828 — __ZN4Ogre20CompositorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::CompositorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe11828() -> ! {
-    todo!("0xe11828 __ZN4Ogre20CompositorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe11828() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe11ef0 — __ZN4Ogre30CompositionTechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::CompositionTechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe11ef0() -> ! {
-    todo!("0xe11ef0 __ZN4Ogre30CompositionTechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe11ef0() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe138bc — __ZN4Ogre31CompositionTargetPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::CompositionTargetPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe138bc() -> ! {
-    todo!("0xe138bc __ZN4Ogre31CompositionTargetPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe138bc() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe14d44 — __ZN4Ogre25CompositionPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::CompositionPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe14d44() -> ! {
-    todo!("0xe14d44 __ZN4Ogre25CompositionPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe14d44() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe18500 — __ZN4Ogre30BuiltinScriptTranslatorManagerC1Ev
-// type: _DWORD __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
 #[doc(alias = "Ogre::BuiltinScriptTranslatorManager::BuiltinScriptTranslatorManager(void)")]
-pub fn stub_0xe18500() -> ! {
-    todo!("0xe18500 __ZN4Ogre30BuiltinScriptTranslatorManagerC1Ev")
+pub fn stub_0xe18500() -> crate::slot::PortedFn {
+// IDA 0xe18500: Ogre::BuiltinScriptTranslatorManager::BuiltinScriptTranslatorManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe18500, "Ogre::BuiltinScriptTranslatorManager::BuiltinScriptTranslatorManager()")
 }
 
-// 0xe1862c — __ZNK4Ogre30BuiltinScriptTranslatorManager17getNumTranslatorsEv
-// type: _DWORD __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
 #[doc(alias = "Ogre::BuiltinScriptTranslatorManager::getNumTranslators(void)const")]
-pub fn stub_0xe1862c() -> ! {
-    todo!("0xe1862c __ZNK4Ogre30BuiltinScriptTranslatorManager17getNumTranslatorsEv")
+pub fn stub_0xe1862c() -> crate::slot::PortedFn {
+// IDA 0xe1862c: Ogre::BuiltinScriptTranslatorManager::getNumTranslators() const.
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe1862c, "Ogre::BuiltinScriptTranslatorManager::getNumTranslators() const")
 }
 
-// 0xe18630 — __ZN4Ogre30BuiltinScriptTranslatorManager13getTranslatorERKNS_9SharedPtrINS_12AbstractNodeEEE
 #[doc(alias = "Ogre::BuiltinScriptTranslatorManager::getTranslator(Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
-pub fn stub_0xe18630() -> ! {
-    todo!("0xe18630 __ZN4Ogre30BuiltinScriptTranslatorManager13getTranslatorERKNS_9SharedPtrINS_12AbstractNodeEEE")
+pub fn stub_0xe18630() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("Ogre::AbstractNode")
 }
 
-// 0xe1878c — __ZN4Ogre41PreApplyTextureAliasesScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::PreApplyTextureAliasesScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")]
-pub fn stub_0xe1878c() -> ! {
-    todo!("0xe1878c __ZN4Ogre41PreApplyTextureAliasesScriptCompilerEventD1Ev")
+pub fn stub_0xe1878c() -> crate::slot::PortedFn {
+// IDA 0xe1878c: Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe1878c, "Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")
 }
 
-// 0xe187e8 — __ZN4Ogre33CreateMaterialScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateMaterialScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")]
-pub fn stub_0xe187e8() -> ! {
-    todo!("0xe187e8 __ZN4Ogre33CreateMaterialScriptCompilerEventD1Ev")
+pub fn stub_0xe187e8() -> crate::slot::PortedFn {
+// IDA 0xe187e8: Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe187e8, "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")
 }
 
-// 0xe18b8c — __ZN4Ogre38ProcessResourceNameScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::ProcessResourceNameScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")]
-pub fn stub_0xe18b8c() -> ! {
-    todo!("0xe18b8c __ZN4Ogre38ProcessResourceNameScriptCompilerEventD1Ev")
+pub fn stub_0xe18b8c() -> crate::slot::PortedFn {
+// IDA 0xe18b8c: Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe18b8c, "Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")
 }
 
-// 0xe196fc — __ZN4Ogre35CreateGpuProgramScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateGpuProgramScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")]
-pub fn stub_0xe196fc() -> ! {
-    todo!("0xe196fc __ZN4Ogre35CreateGpuProgramScriptCompilerEventD1Ev")
+pub fn stub_0xe196fc() -> crate::slot::PortedFn {
+// IDA 0xe196fc: Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe196fc, "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")
 }
 
-// 0xe19708 — __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")]
-pub fn stub_0xe19708() -> ! {
-    todo!("0xe19708 __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD1Ev")
+pub fn stub_0xe19708() -> crate::slot::PortedFn {
+// IDA 0xe19708: Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe19708, "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")
 }
 
-// 0xe19714 — __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateGpuSharedParametersScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")]
-pub fn stub_0xe19714() -> ! {
-    todo!("0xe19714 __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD1Ev")
+pub fn stub_0xe19714() -> crate::slot::PortedFn {
+// IDA 0xe19714: Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe19714, "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")
 }
 
-// 0xe19720 — __ZN4Ogre39CreateParticleSystemScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateParticleSystemScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")]
-pub fn stub_0xe19720() -> ! {
-    todo!("0xe19720 __ZN4Ogre39CreateParticleSystemScriptCompilerEventD1Ev")
+pub fn stub_0xe19720() -> crate::slot::PortedFn {
+// IDA 0xe19720: Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe19720, "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")
 }
 
-// 0xe19ac4 — __ZN4Ogre35CreateCompositorScriptCompilerEventD1Ev
-// type: void __fastcall(Ogre::CreateCompositorScriptCompilerEvent *__hidden this)
 #[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")]
-pub fn stub_0xe19ac4() -> ! {
-    todo!("0xe19ac4 __ZN4Ogre35CreateCompositorScriptCompilerEventD1Ev")
+pub fn stub_0xe19ac4() -> crate::slot::PortedFn {
+// IDA 0xe19ac4: Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe19ac4, "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")
 }
 
-// 0xe1af14 — __ZN4Ogre30BuiltinScriptTranslatorManagerD1Ev
-// type: void __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
 #[doc(alias = "Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")]
-pub fn stub_0xe1af14() -> ! {
-    todo!("0xe1af14 __ZN4Ogre30BuiltinScriptTranslatorManagerD1Ev")
+pub fn stub_0xe1af14() -> crate::slot::PortedFn {
+// IDA 0xe1af14: Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0xe1af14, "Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")
 }

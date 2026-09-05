@@ -187,7 +187,7 @@ pub fn stub_0xc57c(desc: &RenderEnumDesc, name: &str) -> i32 {
 pub fn stub_0xc5ac(desc: &RenderEnumDesc, variant: &PlacementAnyRegion3) -> i32 {
     // IDA 0xc5be: any_cast<ResolutionPreset const&>(variant + 4); host holders
     // are unique per type, so identity subsumes the typeinfo-name fallback.
-    if variant.holder != stub_0xc95c() {
+    if variant.holder != crate::generated_24::stub_0xc95c() {
         panic!("rbx::bad_placement_any_cast at IDA 0xc5ac");
     }
     stub_0xc9d8(desc, variant.storage as i32)
@@ -205,8 +205,8 @@ pub fn stub_0xc5cc(desc: &RenderEnumDesc, value: u32, out: &mut PlacementAnyRegi
         && (value as usize) < desc.value_to_item.len();
     let temp = if hit { desc.value_to_item[value as usize] as u32 } else { 0 };
     // 0xc5fc..0xc61c: singleton holder store + operator=<ResolutionPreset>.
-    out.holder = stub_0xc95c();
-    stub_0xc90c(out as *mut PlacementAnyRegion3, &temp as *const u32);
+    out.holder = crate::generated_24::stub_0xc95c();
+    crate::generated_24::stub_0xc90c(out as *mut PlacementAnyRegion3, &temp as *const u32);
     hit
 }
 

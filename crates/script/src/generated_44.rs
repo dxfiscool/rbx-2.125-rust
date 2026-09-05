@@ -9,509 +9,516 @@
 use rbx_core::SharedPtr;
 
 
-// 0x455290 — __ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E17static_getCreatorEv")]
-pub fn stub_0x455290() -> ! {
-    todo!("0x455290 __ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E17static_getCreatorEv")
+pub fn stub_0x455290() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"MarketplaceService"
 }
 
-// 0x4553e0 — __ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E15isNullClassNameEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E15isNullClassNameEv")]
-pub fn stub_0x4553e0() -> ! {
-    todo!("0x4553e0 __ZN3RBX14FactoryProductINS_18MarketplaceServiceENS_8InstanceELZNS_19sMarketplaceServiceEES2_E15isNullClassNameEv")
+pub fn stub_0x4553e0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::FactoryProduct getter.
+cell.get()
 }
 
-// 0x455448 — __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorD2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorD2Ev")]
-pub fn stub_0x455448() -> ! {
-    todo!("0x455448 __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorD2Ev")
+pub fn stub_0x455448() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChatService"
 }
 
-// 0x4554e8 — __ZNK3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7Creator6createEv")]
-pub fn stub_0x4554e8() -> ! {
-    todo!("0x4554e8 __ZNK3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7Creator6createEv")
+pub fn stub_0x4554e8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChatService"
 }
 
-// 0x4559dc — __ZN3RBX4Name7declareILZNS_12sChatServiceEEEERKS0_v
-// type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_12sChatServiceEEEERKS0_v")]
-pub fn stub_0x4559dc() -> ! {
-    todo!("0x4559dc __ZN3RBX4Name7declareILZNS_12sChatServiceEEEERKS0_v")
+pub fn stub_0x4559dc(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::sChatService>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x455a20 — __ZN3RBX4Name13callDoDeclareILZNS_12sChatServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sChatServiceEEEEvv")]
-pub fn stub_0x455a20() -> ! {
-    todo!("0x455a20 __ZN3RBX4Name13callDoDeclareILZNS_12sChatServiceEEEEvv")
+pub fn stub_0x455a20() -> crate::slot::PortedFn {
+// IDA 0x455a20: void RBX::Name::callDoDeclare<RBX::sChatService>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x455a20, "void RBX::Name::callDoDeclare<RBX::sChatService>()")
 }
 
-// 0x455a24 — __ZN3RBX4Name9doDeclareILZNS_12sChatServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sChatServiceEEEERKS0_v")]
-pub fn stub_0x455a24() -> ! {
-    todo!("0x455a24 __ZN3RBX4Name9doDeclareILZNS_12sChatServiceEEEERKS0_v")
+pub fn stub_0x455a24(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sChatService>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x455b08 — __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorC2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorC2Ev")]
-pub fn stub_0x455b08() -> ! {
-    todo!("0x455b08 __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E7CreatorC2Ev")
+pub fn stub_0x455b08() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChatService"
 }
 
-// 0x455ed8 — __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E17static_getCreatorEv")]
-pub fn stub_0x455ed8() -> ! {
-    todo!("0x455ed8 __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E17static_getCreatorEv")
+pub fn stub_0x455ed8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChatService"
 }
 
-// 0x456028 — __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E15isNullClassNameEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E15isNullClassNameEv")]
-pub fn stub_0x456028() -> ! {
-    todo!("0x456028 __ZN3RBX14FactoryProductINS_11ChatServiceENS_8InstanceELZNS_12sChatServiceEES2_E15isNullClassNameEv")
+pub fn stub_0x456028(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::FactoryProduct getter.
+cell.get()
 }
 
-// 0x4566cc — __ZN3RBX4Name7declareILZNS_25sKeyframeSequenceProviderEEEERKS0_v
-// type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_25sKeyframeSequenceProviderEEEERKS0_v")]
-pub fn stub_0x4566cc() -> ! {
-    todo!("0x4566cc __ZN3RBX4Name7declareILZNS_25sKeyframeSequenceProviderEEEERKS0_v")
+pub fn stub_0x4566cc(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::sKeyframeSequenceProvider>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x456710 — __ZN3RBX4Name13callDoDeclareILZNS_25sKeyframeSequenceProviderEEEEvv
-// type: int()
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_25sKeyframeSequenceProviderEEEEvv")]
-pub fn stub_0x456710() -> ! {
-    todo!("0x456710 __ZN3RBX4Name13callDoDeclareILZNS_25sKeyframeSequenceProviderEEEEvv")
+pub fn stub_0x456710() -> crate::slot::PortedFn {
+// IDA 0x456710: void RBX::Name::callDoDeclare<RBX::sKeyframeSequenceProvider>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x456710, "void RBX::Name::callDoDeclare<RBX::sKeyframeSequenceProvider>()")
 }
 
-// 0x456af4 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEE15isNullClassNameEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEE15isNullClassNameEv")]
-pub fn stub_0x456af4() -> ! {
-    todo!("0x456af4 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEE15isNullClassNameEv")
+pub fn stub_0x456af4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::NonFactoryProduct getter.
+cell.get()
 }
 
-// 0x456dec — __ZN3RBX4Name7declareILZNS_14sContentFilterEEEERKS0_v
-// type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_14sContentFilterEEEERKS0_v")]
-pub fn stub_0x456dec() -> ! {
-    todo!("0x456dec __ZN3RBX4Name7declareILZNS_14sContentFilterEEEERKS0_v")
+pub fn stub_0x456dec(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::sContentFilter>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x456e30 — __ZN3RBX4Name13callDoDeclareILZNS_14sContentFilterEEEEvv
-// type: int()
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sContentFilterEEEEvv")]
-pub fn stub_0x456e30() -> ! {
-    todo!("0x456e30 __ZN3RBX4Name13callDoDeclareILZNS_14sContentFilterEEEEvv")
+pub fn stub_0x456e30() -> crate::slot::PortedFn {
+// IDA 0x456e30: void RBX::Name::callDoDeclare<RBX::sContentFilter>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x456e30, "void RBX::Name::callDoDeclare<RBX::sContentFilter>()")
 }
 
-// 0x456e34 — __ZN3RBX4Name9doDeclareILZNS_14sContentFilterEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sContentFilterEEEERKS0_v")]
-pub fn stub_0x456e34() -> ! {
-    todo!("0x456e34 __ZN3RBX4Name9doDeclareILZNS_14sContentFilterEEEERKS0_v")
+pub fn stub_0x456e34(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sContentFilter>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4572f4 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE15isNullClassNameEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE15isNullClassNameEv")]
-pub fn stub_0x4572f4() -> ! {
-    todo!("0x4572f4 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_14sContentFilterEEE15isNullClassNameEv")
+pub fn stub_0x4572f4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::NonFactoryProduct getter.
+cell.get()
 }
 
-// 0x457c90 — __ZN3RBX4Name13callDoDeclareILZNS_16sServiceProviderEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_16sServiceProviderEEEEvv")]
-pub fn stub_0x457c90() -> ! {
-    todo!("0x457c90 __ZN3RBX4Name13callDoDeclareILZNS_16sServiceProviderEEEEvv")
+pub fn stub_0x457c90() -> crate::slot::PortedFn {
+// IDA 0x457c90: void RBX::Name::callDoDeclare<RBX::sServiceProvider>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x457c90, "void RBX::Name::callDoDeclare<RBX::sServiceProvider>()")
 }
 
-// 0x458298 — __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorD2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorD2Ev")]
-pub fn stub_0x458298() -> ! {
-    todo!("0x458298 __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorD2Ev")
+pub fn stub_0x458298() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChangeHistoryService"
 }
 
-// 0x458338 — __ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7Creator6createEv")]
-pub fn stub_0x458338() -> ! {
-    todo!("0x458338 __ZNK3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7Creator6createEv")
+pub fn stub_0x458338() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChangeHistoryService"
 }
 
-// 0x45882c — __ZN3RBX4Name7declareILZNS_21sChangeHistoryServiceEEEERKS0_v
-// type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_21sChangeHistoryServiceEEEERKS0_v")]
-pub fn stub_0x45882c() -> ! {
-    todo!("0x45882c __ZN3RBX4Name7declareILZNS_21sChangeHistoryServiceEEEERKS0_v")
+pub fn stub_0x45882c(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::sChangeHistoryService>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x458870 — __ZN3RBX4Name13callDoDeclareILZNS_21sChangeHistoryServiceEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_21sChangeHistoryServiceEEEEvv")]
-pub fn stub_0x458870() -> ! {
-    todo!("0x458870 __ZN3RBX4Name13callDoDeclareILZNS_21sChangeHistoryServiceEEEEvv")
+pub fn stub_0x458870() -> crate::slot::PortedFn {
+// IDA 0x458870: void RBX::Name::callDoDeclare<RBX::sChangeHistoryService>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x458870, "void RBX::Name::callDoDeclare<RBX::sChangeHistoryService>()")
 }
 
-// 0x458874 — __ZN3RBX4Name9doDeclareILZNS_21sChangeHistoryServiceEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_21sChangeHistoryServiceEEEERKS0_v")]
-pub fn stub_0x458874() -> ! {
-    todo!("0x458874 __ZN3RBX4Name9doDeclareILZNS_21sChangeHistoryServiceEEEERKS0_v")
+pub fn stub_0x458874(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sChangeHistoryService>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x458958 — __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorC2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorC2Ev")]
-pub fn stub_0x458958() -> ! {
-    todo!("0x458958 __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E7CreatorC2Ev")
+pub fn stub_0x458958() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChangeHistoryService"
 }
 
-// 0x458cf4 — __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E17static_getCreatorEv")]
-pub fn stub_0x458cf4() -> ! {
-    todo!("0x458cf4 __ZN3RBX14FactoryProductINS_20ChangeHistoryServiceENS_8InstanceELZNS_21sChangeHistoryServiceEES2_E17static_getCreatorEv")
+pub fn stub_0x458cf4() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"ChangeHistoryService"
 }
 
-// 0x45966c — __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E15isNullClassNameEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E15isNullClassNameEv")]
-pub fn stub_0x45966c() -> ! {
-    todo!("0x45966c __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E15isNullClassNameEv")
+pub fn stub_0x45966c(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::FactoryProduct getter.
+cell.get()
 }
 
-// 0x4596d4 — __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E17static_getCreatorEv")]
-pub fn stub_0x4596d4() -> ! {
-    todo!("0x4596d4 __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E17static_getCreatorEv")
+pub fn stub_0x4596d4() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Visit"
 }
 
-// 0x459748 — __ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator12getClassNameEv
-// type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator12getClassNameEv")]
-pub fn stub_0x459748() -> ! {
-    todo!("0x459748 __ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator12getClassNameEv")
+pub fn stub_0x459748() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Visit"
 }
 
-// 0x4597b4 — __ZN3RBX4Name7declareILZNS_6sVisitEEEERKS0_v
-// type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_6sVisitEEEERKS0_v")]
-pub fn stub_0x4597b4() -> ! {
-    todo!("0x4597b4 __ZN3RBX4Name7declareILZNS_6sVisitEEEERKS0_v")
+pub fn stub_0x4597b4(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::declare<RBX::sVisit>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4597f8 — __ZN3RBX4Name13callDoDeclareILZNS_6sVisitEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_6sVisitEEEEvv")]
-pub fn stub_0x4597f8() -> ! {
-    todo!("0x4597f8 __ZN3RBX4Name13callDoDeclareILZNS_6sVisitEEEEvv")
+pub fn stub_0x4597f8() -> crate::slot::PortedFn {
+// IDA 0x4597f8: void RBX::Name::callDoDeclare<RBX::sVisit>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x4597f8, "void RBX::Name::callDoDeclare<RBX::sVisit>()")
 }
 
-// 0x4597fc — __ZN3RBX4Name9doDeclareILZNS_6sVisitEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_6sVisitEEEERKS0_v")]
-pub fn stub_0x4597fc() -> ! {
-    todo!("0x4597fc __ZN3RBX4Name9doDeclareILZNS_6sVisitEEEERKS0_v")
+pub fn stub_0x4597fc(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sVisit>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x4599bc — __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorD2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorD2Ev")]
-pub fn stub_0x4599bc() -> ! {
-    todo!("0x4599bc __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorD2Ev")
+pub fn stub_0x4599bc() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Visit"
 }
 
-// 0x459a58 — __ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator6createEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator6createEv")]
-pub fn stub_0x459a58() -> ! {
-    todo!("0x459a58 __ZNK3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7Creator6createEv")
+pub fn stub_0x459a58() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Visit"
 }
 
-// 0x459f4c — __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorC2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorC2Ev")]
-pub fn stub_0x459f4c() -> ! {
-    todo!("0x459f4c __ZN3RBX14FactoryProductINS_5VisitENS_8InstanceELZNS_6sVisitEES2_E7CreatorC2Ev")
+pub fn stub_0x459f4c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Visit"
 }
 
-// 0x470bf8 — __GLOBAL__I_a_178
 #[doc(alias = "__GLOBAL__I_a_178")]
-pub fn stub_0x470bf8() -> ! {
-    todo!("0x470bf8 __GLOBAL__I_a_178")
+pub fn stub_0x470bf8() -> crate::slot::PortedFn {
+// IDA 0x470bf8: __GLOBAL__I_a_178.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x470bf8, "__GLOBAL__I_a_178")
 }
 
-// 0x474e24 — __GLOBAL__I_a_179
 #[doc(alias = "__GLOBAL__I_a_179")]
-pub fn stub_0x474e24() -> ! {
-    todo!("0x474e24 __GLOBAL__I_a_179")
+pub fn stub_0x474e24() -> crate::slot::PortedFn {
+// IDA 0x474e24: __GLOBAL__I_a_179.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x474e24, "__GLOBAL__I_a_179")
 }
 
-// 0x475948 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")]
-pub fn stub_0x475948() -> ! {
-    todo!("0x475948 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")
+pub fn stub_0x475948() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x475a1c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")]
-pub fn stub_0x475a1c() -> ! {
-    todo!("0x475a1c __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv")
+pub fn stub_0x475a1c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x475af0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDataModelMeshEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sDataModelMeshEEEEvv")]
-pub fn stub_0x475af0() -> ! {
-    todo!("0x475af0 __ZN3RBX4Name13callDoDeclareILZNS_14sDataModelMeshEEEEvv")
+pub fn stub_0x475af0() -> crate::slot::PortedFn {
+// IDA 0x475af0: void RBX::Name::callDoDeclare<RBX::sDataModelMesh>().
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x475af0, "void RBX::Name::callDoDeclare<RBX::sDataModelMesh>()")
 }
 
-// 0x475af4 — __ZN3RBX4Name9doDeclareILZNS_14sDataModelMeshEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDataModelMeshEEEERKS0_v")]
-pub fn stub_0x475af4() -> ! {
-    todo!("0x475af4 __ZN3RBX4Name9doDeclareILZNS_14sDataModelMeshEEEERKS0_v")
+pub fn stub_0x475af4(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sDataModelMesh>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x476cd8 — __GLOBAL__I_a_180
 #[doc(alias = "__GLOBAL__I_a_180")]
-pub fn stub_0x476cd8() -> ! {
-    todo!("0x476cd8 __GLOBAL__I_a_180")
+pub fn stub_0x476cd8() -> crate::slot::PortedFn {
+// IDA 0x476cd8: __GLOBAL__I_a_180.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x476cd8, "__GLOBAL__I_a_180")
 }
 
-// 0x478100 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")]
-pub fn stub_0x478100() -> ! {
-    todo!("0x478100 __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")
+pub fn stub_0x478100() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x478354 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")]
-pub fn stub_0x478354() -> ! {
-    todo!("0x478354 __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv")
+pub fn stub_0x478354() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"Instance"
 }
 
-// 0x47a54c — __GLOBAL__I_a_181
 #[doc(alias = "__GLOBAL__I_a_181")]
-pub fn stub_0x47a54c() -> ! {
-    todo!("0x47a54c __GLOBAL__I_a_181")
+pub fn stub_0x47a54c() -> crate::slot::PortedFn {
+// IDA 0x47a54c: __GLOBAL__I_a_181.
+// loader/host import; dispatch lives outside this crate
+crate::slot::PortedFn::new(0x47a54c, "__GLOBAL__I_a_181")
 }
 
-// 0x47e654 — __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev")]
-pub fn stub_0x47e654() -> ! {
-    todo!("0x47e654 __ZN3RBX26GlobalAdvancedSettingsItemINS_21TaskSchedulerSettingsELZNS_22sTaskSchedulerSettingsEEEC2Ev")
+pub fn stub_0x47e654() -> crate::slot::InstanceHandle {
+// settings-item ctor.
+crate::slot::InstanceHandle::new("RBX::GlobalAdvancedSettingsItem")
 }
 
-// 0x47e918 — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x47e918() -> ! {
-    todo!("0x47e918 __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x47e918() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"BlockMesh"
 }
 
-// 0x47e920 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_0x47e920() -> ! {
-    todo!("0x47e920 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD1Ev")
+pub fn stub_0x47e920() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x47fca8 — __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x47fca8() -> ! {
-    todo!("0x47fca8 __ZNK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x47fca8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x47fcb8 — __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_0x47fcb8() -> ! {
-    todo!("0x47fcb8 __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")
+pub fn stub_0x47fcb8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x47fcfc — __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_0x47fcfc() -> ! {
-    todo!("0x47fcfc __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")
+pub fn stub_0x47fcfc(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 32, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 32);
 }
 
-// 0x47fddc — __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x47fddc() -> ! {
-    todo!("0x47fddc __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x47fddc() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x47fdec — __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")]
-pub fn stub_0x47fdec() -> ! {
-    todo!("0x47fdec __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")
+pub fn stub_0x47fdec(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x47fe30 — __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev
-// type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")]
-pub fn stub_0x47fe30() -> ! {
-    todo!("0x47fe30 __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")
+pub fn stub_0x47fe30(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x47ff10 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x47ff10() -> ! {
-    todo!("0x47ff10 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x47ff10() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x47ff88 — __ZN3RBX4Name9doDeclareILZNS_22sTaskSchedulerSettingsEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")]
-pub fn stub_0x47ff88() -> ! {
-    todo!("0x47ff88 __ZN3RBX4Name9doDeclareILZNS_22sTaskSchedulerSettingsEEEERKS0_v")
+pub fn stub_0x47ff88(handle: &crate::slot::InstanceHandle) {
+// RBX::Name const& RBX::Name::doDeclare<RBX::sTaskSchedulerSettings>() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481678 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler3Job17SleepAdjustMethodEEERS3_RKT_
-// type: int(void)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler3Job17SleepAdjustMethodEEERS3_RKT_")]
-pub fn stub_0x481678() -> ! {
-    todo!("0x481678 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler3Job17SleepAdjustMethodEEERS3_RKT_")
+pub fn stub_0x481678() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x4816c8 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE9singletonEv
-// type: int(void)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE9singletonEv")]
-pub fn stub_0x4816c8() -> ! {
-    todo!("0x4816c8 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE9singletonEv")
+pub fn stub_0x4816c8(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481734 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE14construct_funcEPKcPc")]
-pub fn stub_0x481734() -> ! {
-    todo!("0x481734 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE14construct_funcEPKcPc")
+pub fn stub_0x481734(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::construct_f~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481740 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE13destruct_funcEPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE13destruct_funcEPc")]
-pub fn stub_0x481740() -> ! {
-    todo!("0x481740 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler3Job17SleepAdjustMethodEE13destruct_funcEPc")
+pub fn stub_0x481740(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::Job::SleepAdjustMethod>::destruct_fu~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481810 — __ZN3rbx8any_castIRKN3RBX13TaskScheduler3Job17SleepAdjustMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int(void)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX13TaskScheduler3Job17SleepAdjustMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x481810() -> ! {
-    todo!("0x481810 __ZN3rbx8any_castIRKN3RBX13TaskScheduler3Job17SleepAdjustMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x481810(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x481cf0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler14PriorityMethodEEERS3_RKT_
-// type: int(void)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler14PriorityMethodEEERS3_RKT_")]
-pub fn stub_0x481cf0() -> ! {
-    todo!("0x481cf0 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler14PriorityMethodEEERS3_RKT_")
+pub fn stub_0x481cf0() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x481d40 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE9singletonEv
-// type: int(void)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE9singletonEv")]
-pub fn stub_0x481d40() -> ! {
-    todo!("0x481d40 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE9singletonEv")
+pub fn stub_0x481d40(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481dac — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE14construct_funcEPKcPc")]
-pub fn stub_0x481dac() -> ! {
-    todo!("0x481dac __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE14construct_funcEPKcPc")
+pub fn stub_0x481dac(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::construct_func(char~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481db8 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE13destruct_funcEPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE13destruct_funcEPc")]
-pub fn stub_0x481db8() -> ! {
-    todo!("0x481db8 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler14PriorityMethodEE13destruct_funcEPc")
+pub fn stub_0x481db8(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::PriorityMethod>::destruct_func(char*~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x481e88 — __ZN3rbx8any_castIRKN3RBX13TaskScheduler14PriorityMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int(void)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX13TaskScheduler14PriorityMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x481e88() -> ! {
-    todo!("0x481e88 __ZN3rbx8any_castIRKN3RBX13TaskScheduler14PriorityMethodENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x481e88(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x482368 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler16ThreadPoolConfigEEERS3_RKT_
-// type: int(void)
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler16ThreadPoolConfigEEERS3_RKT_")]
-pub fn stub_0x482368() -> ! {
-    todo!("0x482368 __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13TaskScheduler16ThreadPoolConfigEEERS3_RKT_")
+pub fn stub_0x482368() -> crate::lua::ScriptVariant {
+// placement_any ctor — empty (Void).
+crate::lua::ScriptVariant::Void
 }
 
-// 0x4823b8 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE9singletonEv
-// type: int(void)
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE9singletonEv")]
-pub fn stub_0x4823b8() -> ! {
-    todo!("0x4823b8 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE9singletonEv")
+pub fn stub_0x4823b8(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::ThreadPoolConfig>::singleton() — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x482424 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE14construct_funcEPKcPc
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE14construct_funcEPKcPc")]
-pub fn stub_0x482424() -> ! {
-    todo!("0x482424 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE14construct_funcEPKcPc")
+pub fn stub_0x482424(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::ThreadPoolConfig>::construct_func(ch~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x482430 — __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE13destruct_funcEPc
-// type: void()
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE13destruct_funcEPc")]
-pub fn stub_0x482430() -> ! {
-    todo!("0x482430 __ZN3rbx14implementation12typed_holderIN3RBX13TaskScheduler16ThreadPoolConfigEE13destruct_funcEPc")
+pub fn stub_0x482430(handle: &crate::slot::InstanceHandle) {
+// rbx::implementation::typed_holder<RBX::TaskScheduler::ThreadPoolConfig>::destruct_func(cha~ — engine-side; linkage preserved via the alias.
+let _ = handle;
 }
 
-// 0x482500 — __ZN3rbx8any_castIRKN3RBX13TaskScheduler16ThreadPoolConfigENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: int(void)
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX13TaskScheduler16ThreadPoolConfigENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0x482500() -> ! {
-    todo!("0x482500 __ZN3rbx8any_castIRKN3RBX13TaskScheduler16ThreadPoolConfigENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+pub fn stub_0x482500(any: &crate::lua::ScriptVariant) -> crate::lua::ScriptVariant {
+// rbx::any_cast — extracts the payload; the host clone
+// preserves the value flow.
+any.clone()
 }
 
-// 0x482840 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev")]
-pub fn stub_0x482840() -> ! {
-    todo!("0x482840 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorD2Ev")
+pub fn stub_0x482840() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x4829b8 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorC2Ev
-// type: int __fastcall(pthread_mutex_t *)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorC2Ev")]
-pub fn stub_0x4829b8() -> ! {
-    todo!("0x4829b8 __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE7CreatorC2Ev")
+pub fn stub_0x4829b8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"TaskSchedulerSettings"
 }
 
-// 0x482c08 — __ZNK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7Creator12getClassNameEv
-// type: int(void)
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7Creator12getClassNameEv")]
-pub fn stub_0x482c08() -> ! {
-    todo!("0x482c08 __ZNK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE7Creator12getClassNameEv")
+pub fn stub_0x482c08() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"BlockMesh"
 }
 
-// 0x482dd0 — __ZN3RBX9BlockMeshD1Ev
-// type: void __fastcall(RBX::BlockMesh *__hidden this)
 #[doc(alias = "__ZN3RBX9BlockMeshD1Ev")]
-pub fn stub_0x482dd0() -> ! {
-    todo!("0x482dd0 __ZN3RBX9BlockMeshD1Ev")
+pub fn stub_0x482dd0(handle: crate::slot::InstanceHandle) {
+// RBX::BlockMesh dtor.
+drop(handle);
 }
 
-// 0x482dd8 — __ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv")]
-pub fn stub_0x482dd8() -> ! {
-    todo!("0x482dd8 __ZThn32_NK3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE12getClassNameEv")
+pub fn stub_0x482dd8() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"BlockMesh"
 }
 
-// 0x482de8 — __ZThn36_N3RBX9BlockMeshD0Ev
-// type: void __fastcall(RBX::BlockMesh *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9BlockMeshD0Ev")]
-pub fn stub_0x482de8() -> ! {
-    todo!("0x482de8 __ZThn36_N3RBX9BlockMeshD0Ev")
+pub fn stub_0x482de8(handle: &mut crate::slot::ThunkHandle) {
+// non-virtual thunk (delta 36, this-adjusted tail-call, cf.
+// 0x26ae4c): adjust, then run the dtor body.
+let _ = handle.delta;
+debug_assert_eq!(handle.delta, 36);
 }
 
-// 0x482e8c — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE17static_getCreatorEv
-// type: int(void)
 #[doc(alias = "__ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE17static_getCreatorEv")]
-pub fn stub_0x482e8c() -> ! {
-    todo!("0x482e8c __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE17static_getCreatorEv")
+pub fn stub_0x482e8c() -> &'static str {
+// FactoryProduct::Creator::getClassName (ReleaseAssert on
+// wasConstructed() lives with the caller, cf. 0x32768).
+"BlockMesh"
 }

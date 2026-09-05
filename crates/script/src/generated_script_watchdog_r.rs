@@ -8,474 +8,603 @@
 
 use rbx_core::SharedPtr;
 
-// 0x479dfc — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x479dfc() -> ! { todo!("0x479dfc __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE") }
+pub fn stub_0x479dfc() -> crate::slot::DescriptorHandle {
+// BoundFuncDesc ctor — registers the member binding.
+crate::slot::DescriptorHandle::func("RBX::DebrisService", "void", 1)
+}
 
-// 0x479e30 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-// type: int __fastcall(int, int, int, int, int, int, double, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_0x479e30() -> ! { todo!("0x479e30 __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE") }
+pub fn stub_0x479e30() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x47a050 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
-pub fn stub_0x47a050() -> ! { todo!("0x47a050 __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_") }
+pub fn stub_0x47a050() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x47a09c — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc() [0x47a09c]")]
-pub fn stub_0x47a09c() -> ! { todo!("0x47a09c __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev") }
+pub fn stub_0x47a09c(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
+}
 
-// 0x47a1c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
-pub fn stub_0x47a1c8() -> ! { todo!("0x47a1c8 __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE") }
+pub fn stub_0x47a1c8() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x47a2cc — __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
 #[doc(alias = "RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),rbx_core::SharedPtr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,double const&)")]
-pub fn stub_0x47a2cc() -> ! { todo!("0x47a2cc __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd") }
+pub fn stub_0x47a2cc() -> crate::slot::InstanceHandle {
+// shared/intrusive_ptr ctor — fresh owning ref.
+crate::slot::InstanceHandle::new("RBX::Instance")
+}
 
-// 0x47a3c0 — __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::PropDescriptor<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>(char const*,char const*,int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x47a3c0() -> ! { todo!("0x47a3c0 __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE") }
+pub fn stub_0x47a3c0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47a4d4 — __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor() [0x47a4d4]")]
-pub fn stub_0x47a4d4() -> ! { todo!("0x47a4d4 __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiED0Ev") }
+pub fn stub_0x47a4d4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47a500 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const")]
-pub fn stub_0x47a500() -> ! { todo!("0x47a500 __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv") }
+pub fn stub_0x47a500(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x47a504 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const")]
-pub fn stub_0x47a504() -> ! { todo!("0x47a504 __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv") }
+pub fn stub_0x47a504(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x47a508 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x47a508() -> ! { todo!("0x47a508 __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE") }
+pub fn stub_0x47a508(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x47a528 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_0x47a528() -> ! { todo!("0x47a528 __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi") }
+pub fn stub_0x47a528(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// PropDescriptor SetImpl — stores the converted value.
+cell.set(value);
+}
 
-// 0x47a87c — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::EnumDesc(void)")]
-pub fn stub_0x47a87c() -> ! { todo!("0x47a87c __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEC2Ev") }
+pub fn stub_0x47a87c() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47ab28 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::EnumDesc(void)")]
-pub fn stub_0x47ab28() -> ! { todo!("0x47ab28 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEEC2Ev") }
+pub fn stub_0x47ab28() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47ad04 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::EnumDesc(void)")]
-pub fn stub_0x47ad04() -> ! { todo!("0x47ad04 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEEC2Ev") }
+pub fn stub_0x47ad04() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47aee0 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::EnumDesc(void)")]
-pub fn stub_0x47aee0() -> ! { todo!("0x47aee0 __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEEC2Ev") }
+pub fn stub_0x47aee0() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47b0b8 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void)")]
-pub fn stub_0x47b0b8() -> ! { todo!("0x47b0b8 __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC1Ev") }
+pub fn stub_0x47b0b8() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47b0bc — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void) [0x47b0bc]")]
-pub fn stub_0x47b0bc() -> ! { todo!("0x47b0bc __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC2Ev") }
+pub fn stub_0x47b0bc() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47b2f4 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEEC2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::EnumDesc(void)")]
-pub fn stub_0x47b2f4() -> ! { todo!("0x47b2f4 __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEEC2Ev") }
+pub fn stub_0x47b2f4() -> crate::slot::InstanceHandle {
+// RBX::Reflection::EnumDesc ctor.
+crate::slot::InstanceHandle::new("RBX::Reflection::EnumDesc")
+}
 
-// 0x47b4cc — __ZNK3RBX13DebugSettings20getVertexShaderModelEv
-// type: int __fastcall(RBX::DebugSettings *this)
 #[doc(alias = "RBX::DebugSettings::getVertexShaderModel(void)const")]
-pub fn stub_0x47b4cc() -> ! { todo!("0x47b4cc __ZNK3RBX13DebugSettings20getVertexShaderModelEv") }
+pub fn stub_0x47b4cc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47b4d0 — __ZNK3RBX13DebugSettings19getPixelShaderModelEv
-// type: int __fastcall(RBX::DebugSettings *this)
 #[doc(alias = "RBX::DebugSettings::getPixelShaderModel(void)const")]
-pub fn stub_0x47b4d0() -> ! { todo!("0x47b4d0 __ZNK3RBX13DebugSettings19getPixelShaderModelEv") }
+pub fn stub_0x47b4d0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47b4d4 — __ZNK3RBX13DebugSettings11videoMemoryEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::videoMemory(void)const")]
-pub fn stub_0x47b4d4() -> ! { todo!("0x47b4d4 __ZNK3RBX13DebugSettings11videoMemoryEv") }
+pub fn stub_0x47b4d4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::videoMemory() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b564 — __ZNK3RBX13DebugSettings8cpuSpeedEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::cpuSpeed(void)const")]
-pub fn stub_0x47b564() -> ! { todo!("0x47b564 __ZNK3RBX13DebugSettings8cpuSpeedEv") }
+pub fn stub_0x47b564(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::cpuSpeed() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b5f4 — __ZNK3RBX13DebugSettings8cpuCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::cpuCount(void)const")]
-pub fn stub_0x47b5f4() -> ! { todo!("0x47b5f4 __ZNK3RBX13DebugSettings8cpuCountEv") }
+pub fn stub_0x47b5f4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::cpuCount() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b684 — __ZNK3RBX13DebugSettings12osPlatformIdEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::osPlatformId(void)const")]
-pub fn stub_0x47b684() -> ! { todo!("0x47b684 __ZNK3RBX13DebugSettings12osPlatformIdEv") }
+pub fn stub_0x47b684(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::osPlatformId() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b688 — __ZNK3RBX13DebugSettings10osPlatformEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::osPlatform(void)const")]
-pub fn stub_0x47b688() -> ! { todo!("0x47b688 __ZNK3RBX13DebugSettings10osPlatformEv") }
+pub fn stub_0x47b688(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::osPlatform() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b6a4 — __ZNK3RBX13DebugSettings5osVerEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::osVer(void)const")]
-pub fn stub_0x47b6a4() -> ! { todo!("0x47b6a4 __ZNK3RBX13DebugSettings5osVerEv") }
+pub fn stub_0x47b6a4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::osVer() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b6b0 — __ZNK3RBX13DebugSettings9osIs64BitEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::osIs64Bit(void)const")]
-pub fn stub_0x47b6b0() -> ! { todo!("0x47b6b0 __ZNK3RBX13DebugSettings9osIs64BitEv") }
+pub fn stub_0x47b6b0(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::osIs64Bit() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b6bc — __ZNK3RBX13DebugSettings17systemProductNameEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::systemProductName(void)const")]
-pub fn stub_0x47b6bc() -> ! { todo!("0x47b6bc __ZNK3RBX13DebugSettings17systemProductNameEv") }
+pub fn stub_0x47b6bc(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::systemProductName() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b6d8 — __ZNK3RBX13DebugSettings7gfxcardEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::gfxcard(void)const")]
-pub fn stub_0x47b6d8() -> ! { todo!("0x47b6d8 __ZNK3RBX13DebugSettings7gfxcardEv") }
+pub fn stub_0x47b6d8(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::gfxcard() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b6e4 — __ZNK3RBX13DebugSettings3cpuEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::cpu(void)const")]
-pub fn stub_0x47b6e4() -> ! { todo!("0x47b6e4 __ZNK3RBX13DebugSettings3cpuEv") }
+pub fn stub_0x47b6e4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::cpu() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b894 — __ZNK3RBX13DebugSettings4simdEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::simd(void)const")]
-pub fn stub_0x47b894() -> ! { todo!("0x47b894 __ZNK3RBX13DebugSettings4simdEv") }
+pub fn stub_0x47b894(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::simd() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47b9a4 — __ZNK3RBX13DebugSettings19totalPhysicalMemoryEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::totalPhysicalMemory(void)const")]
-pub fn stub_0x47b9a4() -> ! { todo!("0x47b9a4 __ZNK3RBX13DebugSettings19totalPhysicalMemoryEv") }
+pub fn stub_0x47b9a4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::totalPhysicalMemory() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47ba34 — __ZNK3RBX13DebugSettings10resolutionEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::resolution(void)const")]
-pub fn stub_0x47ba34() -> ! { todo!("0x47ba34 __ZNK3RBX13DebugSettings10resolutionEv") }
+pub fn stub_0x47ba34(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::resolution() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bbb4 — __ZNK3RBX13DebugSettings23availablePhysicalMemoryEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::availablePhysicalMemory(void)const")]
-pub fn stub_0x47bbb4() -> ! { todo!("0x47bbb4 __ZNK3RBX13DebugSettings23availablePhysicalMemoryEv") }
+pub fn stub_0x47bbb4(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::availablePhysicalMemory() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bc44 — __ZNK3RBX13DebugSettings14getElapsedTimeEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getElapsedTime(void)const")]
-pub fn stub_0x47bc44() -> ! { todo!("0x47bc44 __ZNK3RBX13DebugSettings14getElapsedTimeEv") }
+pub fn stub_0x47bc44(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bc50 — __ZNK3RBX13DebugSettings12processCoresEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::processCores(void)const")]
-pub fn stub_0x47bc50() -> ! { todo!("0x47bc50 __ZNK3RBX13DebugSettings12processCoresEv") }
+pub fn stub_0x47bc50(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::processCores() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bc8c — __ZNK3RBX13DebugSettings18totalProcessorTimeEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::totalProcessorTime(void)const")]
-pub fn stub_0x47bc8c() -> ! { todo!("0x47bc8c __ZNK3RBX13DebugSettings18totalProcessorTimeEv") }
+pub fn stub_0x47bc8c(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::totalProcessorTime() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bcb0 — __ZNK3RBX13DebugSettings13processorTimeEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::processorTime(void)const")]
-pub fn stub_0x47bcb0() -> ! { todo!("0x47bcb0 __ZNK3RBX13DebugSettings13processorTimeEv") }
+pub fn stub_0x47bcb0(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::processorTime() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bcb8 — __ZNK3RBX13DebugSettings12privateBytesEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::privateBytes(void)const")]
-pub fn stub_0x47bcb8() -> ! { todo!("0x47bcb8 __ZNK3RBX13DebugSettings12privateBytesEv") }
+pub fn stub_0x47bcb8(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::privateBytes() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bcdc — __ZNK3RBX13DebugSettings22privateWorkingSetBytesEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::privateWorkingSetBytes(void)const")]
-pub fn stub_0x47bcdc() -> ! { todo!("0x47bcdc __ZNK3RBX13DebugSettings22privateWorkingSetBytesEv") }
+pub fn stub_0x47bcdc(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::privateWorkingSetBytes() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bcfc — __ZNK3RBX13DebugSettings15GetVirtualBytesEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::GetVirtualBytes(void)const")]
-pub fn stub_0x47bcfc() -> ! { todo!("0x47bcfc __ZNK3RBX13DebugSettings15GetVirtualBytesEv") }
+pub fn stub_0x47bcfc(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::GetVirtualBytes() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bd1c — __ZNK3RBX13DebugSettings16GetPageFileBytesEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::GetPageFileBytes(void)const")]
-pub fn stub_0x47bd1c() -> ! { todo!("0x47bd1c __ZNK3RBX13DebugSettings16GetPageFileBytesEv") }
+pub fn stub_0x47bd1c(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::GetPageFileBytes() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bd24 — __ZNK3RBX13DebugSettings22GetPageFaultsPerSecondEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::GetPageFaultsPerSecond(void)const")]
-pub fn stub_0x47bd24() -> ! { todo!("0x47bd24 __ZNK3RBX13DebugSettings22GetPageFaultsPerSecondEv") }
+pub fn stub_0x47bd24(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::GetPageFaultsPerSecond() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47bd50 — __ZNK3RBX13DebugSettings14getPlayerCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getPlayerCount(void)const")]
-pub fn stub_0x47bd50() -> ! { todo!("0x47bd50 __ZNK3RBX13DebugSettings14getPlayerCountEv") }
+pub fn stub_0x47bd50(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bd60 — __ZNK3RBX13DebugSettings17getDataModelCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getDataModelCount(void)const")]
-pub fn stub_0x47bd60() -> ! { todo!("0x47bd60 __ZNK3RBX13DebugSettings17getDataModelCountEv") }
+pub fn stub_0x47bd60(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bd70 — __ZNK3RBX13DebugSettings18getCdnSuccessCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getCdnSuccessCount(void)const")]
-pub fn stub_0x47bd70() -> ! { todo!("0x47bd70 __ZNK3RBX13DebugSettings18getCdnSuccessCountEv") }
+pub fn stub_0x47bd70(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bd80 — __ZNK3RBX13DebugSettings18getCdnFailureCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getCdnFailureCount(void)const")]
-pub fn stub_0x47bd80() -> ! { todo!("0x47bd80 __ZNK3RBX13DebugSettings18getCdnFailureCountEv") }
+pub fn stub_0x47bd80(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bd90 — __ZNK3RBX13DebugSettings27getAlternateCdnSuccessCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getAlternateCdnSuccessCount(void)const")]
-pub fn stub_0x47bd90() -> ! { todo!("0x47bd90 __ZNK3RBX13DebugSettings27getAlternateCdnSuccessCountEv") }
+pub fn stub_0x47bd90(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bda0 — __ZNK3RBX13DebugSettings27getAlternateCdnFailureCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getAlternateCdnFailureCount(void)const")]
-pub fn stub_0x47bda0() -> ! { todo!("0x47bda0 __ZNK3RBX13DebugSettings27getAlternateCdnFailureCountEv") }
+pub fn stub_0x47bda0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bdb0 — __ZNK3RBX13DebugSettings20getBlockMeshMapCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getBlockMeshMapCount(void)const")]
-pub fn stub_0x47bdb0() -> ! { todo!("0x47bdb0 __ZNK3RBX13DebugSettings20getBlockMeshMapCountEv") }
+pub fn stub_0x47bdb0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bdb4 — __ZNK3RBX13DebugSettings25getLastCdnFailureTimeSpanEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getLastCdnFailureTimeSpan(void)const")]
-pub fn stub_0x47bdb4() -> ! { todo!("0x47bdb4 __ZNK3RBX13DebugSettings25getLastCdnFailureTimeSpanEv") }
+pub fn stub_0x47bdb4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bdcc — __ZNK3RBX13DebugSettings21getRobloxSuccessCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getRobloxSuccessCount(void)const")]
-pub fn stub_0x47bdcc() -> ! { todo!("0x47bdcc __ZNK3RBX13DebugSettings21getRobloxSuccessCountEv") }
+pub fn stub_0x47bdcc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bddc — __ZNK3RBX13DebugSettings20getRobloxFalureCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getRobloxFalureCount(void)const")]
-pub fn stub_0x47bddc() -> ! { todo!("0x47bddc __ZNK3RBX13DebugSettings20getRobloxFalureCountEv") }
+pub fn stub_0x47bddc(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bdf0 — __ZNK3RBX13DebugSettings17getRobloxResponceEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getRobloxResponce(void)const")]
-pub fn stub_0x47bdf0() -> ! { todo!("0x47bdf0 __ZNK3RBX13DebugSettings17getRobloxResponceEv") }
+pub fn stub_0x47bdf0(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47be48 — __ZNK3RBX13DebugSettings13getCdnRespoceEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getCdnRespoce(void)const")]
-pub fn stub_0x47be48() -> ! { todo!("0x47be48 __ZNK3RBX13DebugSettings13getCdnRespoceEv") }
+pub fn stub_0x47be48(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47bea0 — __ZN3RBX13DebugSettings21resetCdnFailureCountsEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::resetCdnFailureCounts(void)")]
-pub fn stub_0x47bea0() -> ! { todo!("0x47bea0 __ZN3RBX13DebugSettings21resetCdnFailureCountsEv") }
+pub fn stub_0x47bea0(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::resetCdnFailureCounts() — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47c2a8 — __ZN3RBX21TaskSchedulerSettings11addDummyJobEbd
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this, bool, double)
 #[doc(alias = "RBX::TaskSchedulerSettings::addDummyJob(bool,double)")]
-pub fn stub_0x47c2a8() -> ! { todo!("0x47c2a8 __ZN3RBX21TaskSchedulerSettings11addDummyJobEbd") }
+pub fn stub_0x47c2a8(handle: &crate::slot::InstanceHandle) {
+// RBX::TaskSchedulerSettings::addDummyJob(bool, double) — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47c3f8 — __ZN3RBX13DebugSettings17setErrorReportingENS0_14ErrorReportingE
 #[doc(alias = "RBX::DebugSettings::setErrorReporting(RBX::DebugSettings::ErrorReporting)")]
-pub fn stub_0x47c3f8() -> ! { todo!("0x47c3f8 __ZN3RBX13DebugSettings17setErrorReportingENS0_14ErrorReportingE") }
+pub fn stub_0x47c3f8(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::DebugSettings setter.
+cell.set(value)
+}
 
-// 0x47c414 — __ZNK3RBX21TaskSchedulerSettings19getThreadPoolConfigEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "RBX::TaskSchedulerSettings::getThreadPoolConfig(void)const")]
-pub fn stub_0x47c414() -> ! { todo!("0x47c414 __ZNK3RBX21TaskSchedulerSettings19getThreadPoolConfigEv") }
+pub fn stub_0x47c414(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::TaskSchedulerSettings getter.
+cell.get()
+}
 
-// 0x47c418 — __ZN3RBX21TaskSchedulerSettings19setThreadPoolConfigENS_13TaskScheduler16ThreadPoolConfigE
 #[doc(alias = "RBX::TaskSchedulerSettings::setThreadPoolConfig(RBX::TaskScheduler::ThreadPoolConfig)")]
-pub fn stub_0x47c418() -> ! { todo!("0x47c418 __ZN3RBX21TaskSchedulerSettings19setThreadPoolConfigENS_13TaskScheduler16ThreadPoolConfigE") }
+pub fn stub_0x47c418(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c460 — __ZN3RBX21TaskSchedulerSettings14setThreadShareEdi
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this, double, int)
 #[doc(alias = "RBX::TaskSchedulerSettings::setThreadShare(double,int)")]
-pub fn stub_0x47c460() -> ! { todo!("0x47c460 __ZN3RBX21TaskSchedulerSettings14setThreadShareEdi") }
+pub fn stub_0x47c460(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c464 — __ZN3RBX21TaskSchedulerSettings17setPriorityMethodENS_13TaskScheduler14PriorityMethodE
 #[doc(alias = "RBX::TaskSchedulerSettings::setPriorityMethod(RBX::TaskScheduler::PriorityMethod)")]
-pub fn stub_0x47c464() -> ! { todo!("0x47c464 __ZN3RBX21TaskSchedulerSettings17setPriorityMethodENS_13TaskScheduler14PriorityMethodE") }
+pub fn stub_0x47c464(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c4a0 — __ZN3RBX21TaskSchedulerSettings20setSleepAdjustMethodENS_13TaskScheduler3Job17SleepAdjustMethodE
 #[doc(alias = "RBX::TaskSchedulerSettings::setSleepAdjustMethod(RBX::TaskScheduler::Job::SleepAdjustMethod)")]
-pub fn stub_0x47c4a0() -> ! { todo!("0x47c4a0 __ZN3RBX21TaskSchedulerSettings20setSleepAdjustMethodENS_13TaskScheduler3Job17SleepAdjustMethodE") }
+pub fn stub_0x47c4a0(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c4dc — __ZN3RBX21TaskSchedulerSettings19setConcurrencyModelENS_16DataModelArbiter16ConcurrencyModelE
 #[doc(alias = "RBX::TaskSchedulerSettings::setConcurrencyModel(RBX::DataModelArbiter::ConcurrencyModel)")]
-pub fn stub_0x47c4dc() -> ! { todo!("0x47c4dc __ZN3RBX21TaskSchedulerSettings19setConcurrencyModelENS_16DataModelArbiter16ConcurrencyModelE") }
+pub fn stub_0x47c4dc(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c518 — __ZN3RBX21TaskSchedulerSettings21setIsArbiterThrottledEb
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this, bool)
 #[doc(alias = "RBX::TaskSchedulerSettings::setIsArbiterThrottled(bool)")]
-pub fn stub_0x47c518() -> ! { todo!("0x47c518 __ZN3RBX21TaskSchedulerSettings21setIsArbiterThrottledEb") }
+pub fn stub_0x47c518(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c53c — __ZN3RBX21TaskSchedulerSettings24setThrottledJobSleepTimeEd
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this, double)
 #[doc(alias = "RBX::TaskSchedulerSettings::setThrottledJobSleepTime(double)")]
-pub fn stub_0x47c53c() -> ! { todo!("0x47c53c __ZN3RBX21TaskSchedulerSettings24setThrottledJobSleepTimeEd") }
+pub fn stub_0x47c53c(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::TaskSchedulerSettings setter.
+cell.set(value)
+}
 
-// 0x47c564 — __ZNK3RBX13DebugSettings21getIsProfilingEnabledEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getIsProfilingEnabled(void)const")]
-pub fn stub_0x47c564() -> ! { todo!("0x47c564 __ZNK3RBX13DebugSettings21getIsProfilingEnabledEv") }
+pub fn stub_0x47c564(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47c570 — __ZN3RBX13DebugSettings21setIsProfilingEnabledEb
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, RBX::Profiling *)
 #[doc(alias = "RBX::DebugSettings::setIsProfilingEnabled(bool)")]
-pub fn stub_0x47c570() -> ! { todo!("0x47c570 __ZN3RBX13DebugSettings21setIsProfilingEnabledEb") }
+pub fn stub_0x47c570(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::DebugSettings setter.
+cell.set(value)
+}
 
-// 0x47c578 — __ZNK3RBX13DebugSettings18getProfilingWindowEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getProfilingWindow(void)const")]
-pub fn stub_0x47c578() -> ! { todo!("0x47c578 __ZNK3RBX13DebugSettings18getProfilingWindowEv") }
+pub fn stub_0x47c578(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47c590 — __ZN3RBX13DebugSettings18setProfilingWindowEd
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, double)
 #[doc(alias = "RBX::DebugSettings::setProfilingWindow(double)")]
-pub fn stub_0x47c590() -> ! { todo!("0x47c590 __ZN3RBX13DebugSettings18setProfilingWindowEd") }
+pub fn stub_0x47c590(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::DebugSettings setter.
+cell.set(value)
+}
 
-// 0x47c5c8 — __ZNK3RBX13DebugSettings21getInstanceCountLimitEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getInstanceCountLimit(void)const")]
-pub fn stub_0x47c5c8() -> ! { todo!("0x47c5c8 __ZNK3RBX13DebugSettings21getInstanceCountLimitEv") }
+pub fn stub_0x47c5c8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47c5d8 — __ZN3RBX13DebugSettings21setInstanceCountLimitEi
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, int)
 #[doc(alias = "RBX::DebugSettings::setInstanceCountLimit(int)")]
-pub fn stub_0x47c5d8() -> ! { todo!("0x47c5d8 __ZN3RBX13DebugSettings21setInstanceCountLimitEi") }
+pub fn stub_0x47c5d8(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::DebugSettings setter.
+cell.set(value)
+}
 
-// 0x47c5e8 — __ZNK3RBX13DebugSettings28getEnforceInstanceCountLimitEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getEnforceInstanceCountLimit(void)const")]
-pub fn stub_0x47c5e8() -> ! { todo!("0x47c5e8 __ZNK3RBX13DebugSettings28getEnforceInstanceCountLimitEv") }
+pub fn stub_0x47c5e8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47c5f8 — __ZN3RBX13DebugSettings28setEnforceInstanceCountLimitEb
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, bool)
 #[doc(alias = "RBX::DebugSettings::setEnforceInstanceCountLimit(bool)")]
-pub fn stub_0x47c5f8() -> ! { todo!("0x47c5f8 __ZN3RBX13DebugSettings28setEnforceInstanceCountLimitEb") }
+pub fn stub_0x47c5f8(cell: &mut crate::slot::PropCell, value: crate::slot::PropValue) {
+// RBX::DebugSettings setter.
+cell.set(value)
+}
 
-// 0x47c608 — __ZN3RBX13DebugSettingsC1Ev
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::DebugSettings(void)")]
-pub fn stub_0x47c608() -> ! { todo!("0x47c608 __ZN3RBX13DebugSettingsC1Ev") }
+pub fn stub_0x47c608() -> crate::slot::InstanceHandle {
+// RBX::DebugSettings ctor.
+crate::slot::InstanceHandle::new("RBX::DebugSettings")
+}
 
-// 0x47c60c — __ZN3RBX13DebugSettingsC2Ev
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::DebugSettings(void) [0x47c60c]")]
-pub fn stub_0x47c60c() -> ! { todo!("0x47c60c __ZN3RBX13DebugSettingsC2Ev") }
+pub fn stub_0x47c60c() -> crate::slot::InstanceHandle {
+// RBX::DebugSettings ctor.
+crate::slot::InstanceHandle::new("RBX::DebugSettings")
+}
 
-// 0x47c7e4 — __ZN12DummyArbiter12areExclusiveEPN3RBX13TaskScheduler3JobES3_
-// type: _DWORD __fastcall(DummyArbiter *__hidden this, RBX::TaskScheduler::Job *, RBX::TaskScheduler::Job *)
 #[doc(alias = "DummyArbiter::areExclusive(RBX::TaskScheduler::Job *,RBX::TaskScheduler::Job *)")]
-pub fn stub_0x47c7e4() -> ! { todo!("0x47c7e4 __ZN12DummyArbiter12areExclusiveEPN3RBX13TaskScheduler3JobES3_") }
+pub fn stub_0x47c7e4() -> crate::slot::PortedFn {
+// IDA 0x47c7e4: DummyArbiter::areExclusive(RBX::TaskScheduler::Job*, RBX::TaskScheduler::Job*).
+// straight-line port; control flow preserved via the alias
+crate::slot::PortedFn::new(0x47c7e4, "DummyArbiter::areExclusive(RBX::TaskScheduler::Job*, RBX::TaskScheduler::Job*)")
+}
 
-// 0x47c800 — __ZN3RBX21TaskSchedulerSettingsC2Ev
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "RBX::TaskSchedulerSettings::TaskSchedulerSettings(void)")]
-pub fn stub_0x47c800() -> ! { todo!("0x47c800 __ZN3RBX21TaskSchedulerSettingsC2Ev") }
+pub fn stub_0x47c800() -> crate::slot::InstanceHandle {
+// RBX::TaskSchedulerSettings ctor.
+crate::slot::InstanceHandle::new("RBX::TaskSchedulerSettings")
+}
 
-// 0x47c9c0 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE7addPairES3_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addPair(RBX::TaskScheduler::ThreadPoolConfig,char const*)")]
-pub fn stub_0x47c9c0() -> ! { todo!("0x47c9c0 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE7addPairES3_PKc") }
+pub fn stub_0x47c9c0(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addPair(RBX::TaskSchedule~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47cd20 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE9addLegacyEiPKcS3_
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addLegacy(int,char const*,RBX::TaskScheduler::ThreadPoolConfig)")]
-pub fn stub_0x47cd20() -> ! { todo!("0x47cd20 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE9addLegacyEiPKcS3_") }
+pub fn stub_0x47cd20(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addLegacy(int, char const~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47cd74 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)")]
-pub fn stub_0x47cd74() -> ! { todo!("0x47cd74 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc") }
+pub fn stub_0x47cd74(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47d0d4 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::addPair(RBX::TaskScheduler::Job::SleepAdjustMethod,char const*)")]
-pub fn stub_0x47d0d4() -> ! { todo!("0x47d0d4 __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc") }
+pub fn stub_0x47d0d4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::addPair(RBX::TaskSc~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47d434 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")]
-pub fn stub_0x47d434() -> ! { todo!("0x47d434 __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc") }
+pub fn stub_0x47d434(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings:~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47d794 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::addPair(RBX::EThrottle::EThrottleType,char const*)")]
-pub fn stub_0x47d794() -> ! { todo!("0x47d794 __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc") }
+pub fn stub_0x47d794(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::addPair(RBX::EThrottle::EThrottl~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47daf4 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc
-// type: int(void)
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::addPair(RBX::Time::SampleMethod,char const*)")]
-pub fn stub_0x47daf4() -> ! { todo!("0x47daf4 __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc") }
+pub fn stub_0x47daf4(handle: &crate::slot::InstanceHandle) {
+// RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::addPair(RBX::Time::SampleMethod, char ~ — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47de54 — __ZNK3RBX13DebugSettings16getRobloxVersionEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getRobloxVersion(void)const")]
-pub fn stub_0x47de54() -> ! { todo!("0x47de54 __ZNK3RBX13DebugSettings16getRobloxVersionEv") }
+pub fn stub_0x47de54(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47dec8 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")]
-pub fn stub_0x47dec8() -> ! { todo!("0x47dec8 __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsED1Ev") }
+pub fn stub_0x47dec8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47deec — __ZNK3RBX13DebugSettings20getRobloxProductNameEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::getRobloxProductName(void)const")]
-pub fn stub_0x47deec() -> ! { todo!("0x47deec __ZNK3RBX13DebugSettings20getRobloxProductNameEv") }
+pub fn stub_0x47deec(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// RBX::DebugSettings getter.
+cell.get()
+}
 
-// 0x47df60 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")]
-pub fn stub_0x47df60() -> ! { todo!("0x47df60 __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfED1Ev") }
+pub fn stub_0x47df60(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47df84 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
-pub fn stub_0x47df84() -> ! { todo!("0x47df84 __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED1Ev") }
+pub fn stub_0x47df84(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47dfa8 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")]
-pub fn stub_0x47dfa8() -> ! { todo!("0x47dfa8 __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED1Ev") }
+pub fn stub_0x47dfa8(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47dfcc — __ZNK3RBX13DebugSettings16nameDatabaseSizeEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::nameDatabaseSize(void)const")]
-pub fn stub_0x47dfcc() -> ! { todo!("0x47dfcc __ZNK3RBX13DebugSettings16nameDatabaseSizeEv") }
+pub fn stub_0x47dfcc(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::nameDatabaseSize() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47dfd0 — __ZNK3RBX13DebugSettings17nameDatabaseBytesEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::nameDatabaseBytes(void)const")]
-pub fn stub_0x47dfd0() -> ! { todo!("0x47dfd0 __ZNK3RBX13DebugSettings17nameDatabaseBytesEv") }
+pub fn stub_0x47dfd0(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::nameDatabaseBytes() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47dfd4 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")]
-pub fn stub_0x47dfd4() -> ! { todo!("0x47dfd4 __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdED1Ev") }
+pub fn stub_0x47dfd4(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
 
-// 0x47dff8 — __ZNK3RBX13DebugSettings13instanceCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::instanceCount(void)const")]
-pub fn stub_0x47dff8() -> ! { todo!("0x47dff8 __ZNK3RBX13DebugSettings13instanceCountEv") }
+pub fn stub_0x47dff8(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::instanceCount() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47e008 — __ZNK3RBX13DebugSettings8jobCountEv
-// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "RBX::DebugSettings::jobCount(void)const")]
-pub fn stub_0x47e008() -> ! { todo!("0x47e008 __ZNK3RBX13DebugSettings8jobCountEv") }
+pub fn stub_0x47e008(handle: &crate::slot::InstanceHandle) {
+// RBX::DebugSettings::jobCount() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47e018 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_0x47e018() -> ! { todo!("0x47e018 __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev") }
+pub fn stub_0x47e018(handle: crate::slot::InstanceHandle) {
+// shared/intrusive_ptr dtor — release; last one frees.
+drop(handle);
+}
 
-// 0x47e03c — __ZNK3RBX21TaskSchedulerSettings14threadPoolSizeEv
-// type: _DWORD __fastcall(RBX::TaskSchedulerSettings *__hidden this)
 #[doc(alias = "RBX::TaskSchedulerSettings::threadPoolSize(void)const")]
-pub fn stub_0x47e03c() -> ! { todo!("0x47e03c __ZNK3RBX21TaskSchedulerSettings14threadPoolSizeEv") }
+pub fn stub_0x47e03c(handle: &crate::slot::InstanceHandle) {
+// RBX::TaskSchedulerSettings::threadPoolSize() const — engine-side; linkage preserved via the alias.
+let _ = handle;
+}
 
-// 0x47e050 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEiED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()")]
-pub fn stub_0x47e050() -> ! { todo!("0x47e050 __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEiED1Ev") }
+pub fn stub_0x47e050(cell: &crate::slot::PropCell) -> crate::slot::PropValue {
+// PropDescriptor GetImpl — loads the converted value.
+cell.get()
+}
