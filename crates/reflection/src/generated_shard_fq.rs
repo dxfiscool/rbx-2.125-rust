@@ -28,6 +28,25 @@ pub(crate) static ANIM_IN_BACKGROUND: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
 pub(crate) static ANIM_APPEARS: std::sync::atomic::AtomicU32 =
     std::sync::atomic::AtomicU32::new(0);
+/// Page-animation counters (IDA 0x52aec-0x53a6c): zero-position and
+/// layer animations, pan-loop flag, layer copies, foreground image x
+/// and pan runs. Frames and tweens live out of slice.
+pub(crate) static ZERO_ANIMS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static LAST_TWEEN: std::sync::LazyLock<parking_lot::Mutex<f32>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(0.0));
+pub(crate) static LAYER_ANIMS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static ANIMATION_LOOPING: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static ANIM_PANS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static FG_COPY: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static BG_COPY: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static FG_IMAGE_X: std::sync::LazyLock<parking_lot::Mutex<f32>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(0.0));
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
@@ -250,176 +269,233 @@ pub fn stub_52400() {
 // 0x52580 — -[RobloxAnimatingPageViewController getInitialXPosition:]
 // type: float __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxAnimatingPageViewController getInitialXPosition:]")]
-pub fn stub_52580() -> ! {
-    todo!("0x52580 -[RobloxAnimatingPageViewController getInitialXPosition:]")
+pub fn stub_52580(view: Option<(f32, f32, f32)>) -> f32 {
+    // IDA 0x52580: `getInitialXPosition:` returns 0 for a nil view
+    // (0x5258c-0x52602); for a non-positive width it returns the
+    // origin y (0x525be-0x525fe), else x minus width (0x525c6-0x52610).
+    let Some((x, y, w)) = view else {
+        return 0.0;
+    };
+    if w <= 0.0 { y } else { x - w }
 }
 
 // 0x52614 — -[RobloxAnimatingPageViewController viewDidAppear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidAppear:]")]
-pub fn stub_52614() -> ! {
-    todo!("0x52614 -[RobloxAnimatingPageViewController viewDidAppear:]")
+pub fn stub_52614() {
+    // IDA 0x52614: `viewDidAppear:` records the appearance. It
+    // records here.
+    ANIM_APPEARS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x52a50 — -[RobloxAnimatingPageViewController viewDidDisappear:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
 #[doc(alias = "-[RobloxAnimatingPageViewController viewDidDisappear:]")]
-pub fn stub_52a50() -> ! {
-    todo!("0x52a50 -[RobloxAnimatingPageViewController viewDidDisappear:]")
+pub fn stub_52a50() {
+    // IDA 0x52a50: `viewDidDisappear:` tears the page animations
+    // down. The teardown records here.
+    ANIM_IN_BACKGROUND.store(false, std::sync::atomic::Ordering::SeqCst);
+    ANIMATION_LOOPING.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x52aa0 — -[RobloxAnimatingPageViewController hasNaNValue:]
 // type: char __cdecl(RobloxAnimatingPageViewController *self, SEL, CGRect)
 #[doc(alias = "-[RobloxAnimatingPageViewController hasNaNValue:]")]
-pub fn stub_52aa0() -> ! {
-    todo!("0x52aa0 -[RobloxAnimatingPageViewController hasNaNValue:]")
+pub fn stub_52aa0() -> bool {
+    // IDA 0x52aa0: `hasNaNValue:` is stubbed to return 0 in the
+    // binary (decompiled 0x52aa0).
+    false
 }
 
 // 0x52aec — -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")]
-pub fn stub_52aec() -> ! {
-    todo!("0x52aec -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")
+pub fn stub_52aec(tween: f32) {
+    // IDA 0x52aec: `animateToZeroPosition:` guards NaN frames
+    // (0x52b12-0x52baa, always clear per 0x52aa0) and animates the
+    // layer to zero over the tween (0x52cea-0x52d8e). The run records
+    // here.
+    *LAST_TWEEN.lock() = tween;
+    ZERO_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x52dac — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")]
-pub fn stub_52dac() -> ! {
-    todo!("0x52dac ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")
+pub fn stub_52dac() {
+    // IDA 0x52dac: the zero-position animation block (continuation of
+    // 0x52aec). Animation glue; no explicit body.
 }
 
 // 0x52ed4 — ___copy_helper_block__14
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__14")]
-pub fn stub_52ed4() -> ! {
-    todo!("0x52ed4 ___copy_helper_block__14")
+pub fn stub_52ed4() {
+    // IDA 0x52ed4: `__copy_helper_block__14` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x52ef8 — ___destroy_helper_block__14
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__14")]
-pub fn stub_52ef8() -> ! {
-    todo!("0x52ef8 ___destroy_helper_block__14")
+pub fn stub_52ef8() {
+    // IDA 0x52ef8: `__destroy_helper_block__14` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x52f14 — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73
 // type: id __fastcall(int)
 #[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")]
-pub fn stub_52f14() -> ! {
-    todo!("0x52f14 ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")
+pub fn stub_52f14() {
+    // IDA 0x52f14: the zero-position completion block (continuation of
+    // 0x52aec). Animation glue; no explicit body.
 }
 
 // 0x52f44 — ___copy_helper_block_76
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_76")]
-pub fn stub_52f44() -> ! {
-    todo!("0x52f44 ___copy_helper_block_76")
+pub fn stub_52f44() {
+    // IDA 0x52f44: `__copy_helper_block_76` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x52f74 — ___destroy_helper_block_77
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_77")]
-pub fn stub_52f74() -> ! {
-    todo!("0x52f74 ___destroy_helper_block_77")
+pub fn stub_52f74() {
+    // IDA 0x52f74: `__destroy_helper_block_77` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x52f98 — -[RobloxAnimatingPageViewController animateBackground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateBackground]")]
-pub fn stub_52f98() -> ! {
-    todo!("0x52f98 -[RobloxAnimatingPageViewController animateBackground]")
+pub fn stub_52f98(frame_nonzero: bool) {
+    // IDA 0x52f98: `animateBackground` routes to zero-position when
+    // the background frame is nonzero (0x53008), else to the layer
+    // path (0x5301e-0x5302c). The branch records here.
+    if frame_nonzero {
+        ZERO_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    } else {
+        LAYER_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x53034 — -[RobloxAnimatingPageViewController animateForeground]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateForeground]")]
-pub fn stub_53034() -> ! {
-    todo!("0x53034 -[RobloxAnimatingPageViewController animateForeground]")
+pub fn stub_53034(frame_nonzero: bool) {
+    // IDA 0x53034: `animateForeground` routes like `animateBackground`
+    // (same branch shape as 0x52f98). The branch records here.
+    if frame_nonzero {
+        ZERO_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    } else {
+        LAYER_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x530d0 — -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
 #[doc(alias = "-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")]
-pub fn stub_530d0() -> ! {
-    todo!("0x530d0 -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")
+pub fn stub_530d0(duration: f32) {
+    // IDA 0x530d0: `animateLayer:copyLayer:animationDuration:`
+    // animates the layer over the duration. The run records here.
+    *LAST_TWEEN.lock() = duration;
+    LAYER_ANIMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x5340c — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")]
-pub fn stub_5340c() -> ! {
-    todo!("0x5340c ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")
+pub fn stub_5340c() {
+    // IDA 0x5340c: the layer animation block (continuation of 0x530d0).
+    // Animation glue; no explicit body.
 }
 
 // 0x535ac — ___copy_helper_block_84
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_84")]
-pub fn stub_535ac() -> ! {
-    todo!("0x535ac ___copy_helper_block_84")
+pub fn stub_535ac() {
+    // IDA 0x535ac: `__copy_helper_block_84` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x535d0 — ___destroy_helper_block_85
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_85")]
-pub fn stub_535d0() -> ! {
-    todo!("0x535d0 ___destroy_helper_block_85")
+pub fn stub_535d0() {
+    // IDA 0x535d0: `__destroy_helper_block_85` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x535ec — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87
 // type: _BYTE *__fastcall(_DWORD *, char)
 #[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")]
-pub fn stub_535ec() -> ! {
-    todo!("0x535ec ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")
+pub fn stub_535ec() {
+    // IDA 0x535ec: the layer completion block (continuation of
+    // 0x530d0). Animation glue; no explicit body.
 }
 
 // 0x53634 — ___copy_helper_block_88
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_88")]
-pub fn stub_53634() -> ! {
-    todo!("0x53634 ___copy_helper_block_88")
+pub fn stub_53634() {
+    // IDA 0x53634: `__copy_helper_block_88` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x53664 — ___destroy_helper_block_89
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_89")]
-pub fn stub_53664() -> ! {
-    todo!("0x53664 ___destroy_helper_block_89")
+pub fn stub_53664() {
+    // IDA 0x53664: `__destroy_helper_block_89` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x53688 — -[RobloxAnimatingPageViewController startBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController startBackgroundPan]")]
-pub fn stub_53688() -> ! {
-    todo!("0x53688 -[RobloxAnimatingPageViewController startBackgroundPan]")
+pub fn stub_53688(no_warning: bool, looping: bool) {
+    // IDA 0x53688: `startBackgroundPan` loops the foreground +
+    // background animations when no warning fired and no loop runs
+    // (0x536ae-0x536dc). The start records here.
+    if no_warning && !looping {
+        ANIMATION_LOOPING.store(true, std::sync::atomic::Ordering::SeqCst);
+        ANIM_PANS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x536e0 — -[RobloxAnimatingPageViewController stopBackgroundPan]
 // type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
 #[doc(alias = "-[RobloxAnimatingPageViewController stopBackgroundPan]")]
-pub fn stub_536e0() -> ! {
-    todo!("0x536e0 -[RobloxAnimatingPageViewController stopBackgroundPan]")
+pub fn stub_536e0() {
+    // IDA 0x536e0: `stopBackgroundPan` clears the loop. It records
+    // here.
+    ANIMATION_LOOPING.store(false, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x53750 — ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")]
-pub fn stub_53750() -> ! {
-    todo!("0x53750 ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")
+pub fn stub_53750() {
+    // IDA 0x53750: the stop-pan block (continuation of 0x536e0).
+    // Animation glue; no explicit body.
 }
 
 // 0x539f0 — ___copy_helper_block_97
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_97")]
-pub fn stub_539f0() -> ! {
-    todo!("0x539f0 ___copy_helper_block_97")
+pub fn stub_539f0() {
+    // IDA 0x539f0: `__copy_helper_block_97` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x539fc — ___destroy_helper_block_98
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_98")]
-pub fn stub_539fc() -> ! {
-    todo!("0x539fc ___destroy_helper_block_98")
+pub fn stub_539fc() {
+    // IDA 0x539fc: `__destroy_helper_block_98` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x53a04 — -[RobloxAnimatingPageViewController foregroundCopy]
