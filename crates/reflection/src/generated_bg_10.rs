@@ -6,13 +6,37 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `Tasks::Sequence` advance count (IDA 0x3ebb0/0x3ebb4 tail-call
+/// `SequenceBase::advance`). Step dispatch is scheduler glue.
+pub(crate) static TASKS_SEQUENCE_ADVANCES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `QuitEventListener::windowClosed` log count (IDA 0x3ecdc logs
+/// "Request to close OGRE render window received" via `puts`).
+pub(crate) static QUIT_CLOSE_LOGS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+/// `RobloxView::RenderJob` constructor state (IDA 0x3ecf0): base
+/// `DataModelJob` ("Render"), weak datamodel, view, event and the
+/// enabled flag. Ogre/scheduler wiring is engine glue.
+#[derive(Debug, Clone, Default)]
+pub struct RenderJobInit {
+    pub has_datamodel: bool,
+}
+/// `RenderJob::error` output (IDA 0x3f058): computed standard error
+/// when throttled, else zeroed.
+#[derive(Debug, Clone, Default)]
+pub struct RenderJobErrorState {
+    pub value: f64,
+    pub throttled: bool,
+}
 
 // 0x3e3a8 — __ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE")]
-pub fn stub_0x3e3a8() -> ! {
-    todo!("0x3e3a8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")
+pub fn stub_0x3e3a8() {
+    // IDA 0x3e3a8: `clone_impl<bad_exception_>::clone_impl` tagged
+    // copy-constructs the injector (same shape as 0x3c6c8).
+    // Exception-clone glue; no explicit body.
 }
 
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
@@ -26,8 +50,10 @@ pub fn stub_0x3e528() {
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_")]
-pub fn stub_0x3e558() -> ! {
-    todo!("0x3e558 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")
+pub fn stub_0x3e558() {
+    // IDA 0x3e558: `shared_ptr<clone_base const>::shared_ptr<clone_impl
+    // <bad_exception_>*>` wraps the injector. `Arc` construction glue
+    // covers it; no explicit body.
 }
 
 // 0x3e640 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev
@@ -41,8 +67,10 @@ pub fn stub_0x3e640() {
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS2_")]
-pub fn stub_0x3e648() -> ! {
-    todo!("0x3e648 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::bad_alloc_ const&)")
+pub fn stub_0x3e648() {
+    // IDA 0x3e648: `clone_impl<bad_alloc_>::clone_impl` tagged
+    // copy-constructs the injector (same shape as 0x3e3a8).
+    // Exception-clone glue; no explicit body.
 }
 
 // 0x3e7c8 — __ZN5boost16exception_detail10bad_alloc_D1Ev
@@ -56,15 +84,17 @@ pub fn stub_0x3e7c8() {
 // 0x3e7f8 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv")]
-pub fn stub_0x3e7f8() -> ! {
-    todo!("0x3e7f8 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone(void)const")
+pub fn stub_0x3e7f8() {
+    // IDA 0x3e7f8: `clone_impl<bad_alloc_>::clone` heap-clones the
+    // exception (same shape as 0x3c5b8). Exception-clone glue; no
+    // explicit body.
 }
 
 // 0x3e8b8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv")]
 pub fn stub_0x3e8b8() -> ! {
-    todo!("0x3e8b8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")
+    panic!("rethrow bad_alloc (IDA 0x3e8b8)")
 }
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
@@ -78,8 +108,10 @@ pub fn stub_0x3e8c8() {
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE")]
-pub fn stub_0x3e900() -> ! {
-    todo!("0x3e900 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")
+pub fn stub_0x3e900() {
+    // IDA 0x3e900: `clone_impl<bad_alloc_>::clone_impl` tagged
+    // copy-constructs the injector (same shape as 0x3e648).
+    // Exception-clone glue; no explicit body.
 }
 
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
@@ -93,46 +125,59 @@ pub fn stub_0x3ea80() {
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
 #[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_")]
-pub fn stub_0x3eab0() -> ! {
-    todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")
+pub fn stub_0x3eab0() {
+    // IDA 0x3eab0: `shared_ptr<clone_base const>::shared_ptr<clone_impl
+    // <bad_alloc_>*>` wraps the injector (same shape as 0x3e558).
+    // `Arc` construction glue covers it; no explicit body.
 }
 
 // 0x3eb98 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv")]
-pub fn stub_0x3eb98() -> ! {
-    todo!("0x3eb98 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::dispose(void)")
+pub fn stub_0x3eb98() {
+    // IDA 0x3eb98: `sp_counted_impl_p<clone_impl<bad_alloc_>>::dispose`
+    // deletes the injector. `Arc` drop glue covers it; no explicit
+    // body.
 }
 
 // 0x3eba8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3eba8() -> ! {
-    todo!("0x3eba8 boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>::get_deleter(std::type_info const&)")
+pub fn stub_0x3eba8() {
+    // IDA 0x3eba8: `sp_counted_impl_p<clone_impl<bad_alloc_>>::
+    // get_deleter` answers the deleter query. `Arc` drop glue covers
+    // it; no explicit body.
 }
 
 // 0x3ebb0 — __ZN3RBX5Tasks8Sequence9onPreStepEPNS_13TaskScheduler3JobE
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")]
 #[doc(alias = "__ZN3RBX5Tasks8Sequence9onPreStepEPNS_13TaskScheduler3JobE")]
-pub fn stub_0x3ebb0() -> ! {
-    todo!("0x3ebb0 RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3ebb0() {
+    // IDA 0x3ebb0: `Tasks::Sequence::onPreStep` tail-calls
+    // `SequenceBase::advance` (1 insn). The advance records here.
+    TASKS_SEQUENCE_ADVANCES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x3ebb4 — __ZN3RBX5Tasks17ExclusiveSequence10onPostStepEPNS_13TaskScheduler3JobE
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")]
 #[doc(alias = "__ZN3RBX5Tasks17ExclusiveSequence10onPostStepEPNS_13TaskScheduler3JobE")]
-pub fn stub_0x3ebb4() -> ! {
-    todo!("0x3ebb4 RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3ebb4() {
+    // IDA 0x3ebb4: `Tasks::ExclusiveSequence::onPostStep` tail-calls
+    // `SequenceBase::advance` (1 insn, same shape as 0x3ebb0). The
+    // advance records here.
+    TASKS_SEQUENCE_ADVANCES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x3ebb8 — __ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int(void)
 #[doc(alias = "void rbx_core::SharedPtr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 #[doc(alias = "__ZN5boost26intrusive_ptr_weak_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")]
-pub fn stub_0x3ebb8() -> ! {
-    todo!("0x3ebb8 void boost::intrusive_ptr_weak_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
+pub fn stub_0x3ebb8() {
+    // IDA 0x3ebb8: `intrusive_ptr_weak_release<islot>` drops a weak
+    // slot ref (same shape as 0x3a850). `Arc` downgrade glue covers
+    // it; no explicit body.
 }
 
 // 0x3ec30 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev
@@ -161,48 +206,60 @@ pub fn stub_0x3eccc() {
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")]
 #[doc(alias = "__ZN4Ogre19WindowEventListener11windowMovedEPNS_12RenderWindowE")]
-pub fn stub_0x3ecd0() -> ! {
-    todo!("0x3ecd0 Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd0() {
+    // IDA 0x3ecd0: `Ogre::WindowEventListener::windowMoved` default
+    // no-op virtual. No explicit body.
 }
 
 // 0x3ecd4 — __ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")]
 #[doc(alias = "__ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE")]
-pub fn stub_0x3ecd4() -> ! {
-    todo!("0x3ecd4 Ogre::WindowEventListener::windowResized(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd4() {
+    // IDA 0x3ecd4: `Ogre::WindowEventListener::windowResized` default
+    // no-op virtual. No explicit body.
 }
 
 // 0x3ecd8 — __ZN4Ogre19WindowEventListener13windowClosingEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")]
 #[doc(alias = "__ZN4Ogre19WindowEventListener13windowClosingEPNS_12RenderWindowE")]
-pub fn stub_0x3ecd8() -> ! {
-    todo!("0x3ecd8 Ogre::WindowEventListener::windowClosing(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd8() {
+    // IDA 0x3ecd8: `Ogre::WindowEventListener::windowClosing` default
+    // no-op virtual. No explicit body.
 }
 
 // 0x3ecdc — __ZN17QuitEventListener12windowClosedEPN4Ogre12RenderWindowE
 // type: _DWORD __fastcall(QuitEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "QuitEventListener::windowClosed(Ogre::RenderWindow *)")]
 #[doc(alias = "__ZN17QuitEventListener12windowClosedEPN4Ogre12RenderWindowE")]
-pub fn stub_0x3ecdc() -> ! {
-    todo!("0x3ecdc QuitEventListener::windowClosed(Ogre::RenderWindow *)")
+pub fn stub_0x3ecdc() -> u32 {
+    // IDA 0x3ecdc: `QuitEventListener::windowClosed` logs "Request to
+    // close OGRE render window received" (`puts_shim`). The log
+    // records here; the count stands in for the `puts` result.
+    QUIT_CLOSE_LOGS.fetch_add(1, std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x3ecec — __ZN4Ogre19WindowEventListener17windowFocusChangeEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")]
 #[doc(alias = "__ZN4Ogre19WindowEventListener17windowFocusChangeEPNS_12RenderWindowE")]
-pub fn stub_0x3ecec() -> ! {
-    todo!("0x3ecec Ogre::WindowEventListener::windowFocusChange(Ogre::RenderWindow *)")
+pub fn stub_0x3ecec() {
+    // IDA 0x3ecec: `Ogre::WindowEventListener::windowFocusChange`
+    // default no-op virtual. No explicit body.
 }
 
 // 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
 #[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
 #[doc(alias = "__ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE")]
-pub fn stub_0x3ecf0() -> ! {
-    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+pub fn stub_0x3ecf0(datamodel_present: bool) -> RenderJobInit {
+    // IDA 0x3ecf0: `RenderJob::RenderJob` inits the `DataModelJob`
+    // base ("Render", 0x3ed86), installs vtables, holds the weak
+    // datamodel + view (0x3edce-0x3edd6), creates the event (0x3ede6)
+    // and sets enabled (0x3edee). The hold records here; Ogre/job
+    // wiring is engine glue.
+    RenderJobInit { has_datamodel: datamodel_present }
 }
 
 // 0x3ee80 — __ZN10RobloxView9RenderJobD1Ev
@@ -225,48 +282,104 @@ pub fn stub_0x3ef40() {
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x3f008() -> ! {
-    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f008(throttled: bool, standard_sleep: f64) -> f64 {
+    // IDA 0x3f008: `RenderJob::sleepTime` returns
+    // `computeStandardSleepTime(stats, 60.0)` when the throttle flag at
+    // stats+0x274 is set (0x3f012-0x3f02e), else -1.0 (0x3f036-0x3f042).
+    // The standard computation lives out of slice; its value crosses
+    // as a parameter.
+    if throttled { standard_sleep } else { -1.0 }
 }
 
 // 0x3f058 — __ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x3f058() -> ! {
-    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f058(throttled: bool, standard_error: f64) -> RenderJobErrorState {
+    // IDA 0x3f058: `RenderJob::error` returns
+    // `computeStandardError(stats, 30.0)` when throttled
+    // (0x3f062-0x3f07e), else zeroes the error double + flag
+    // (0x3f084-0x3f08a). Same parameter convention as 0x3f008.
+    if throttled {
+        RenderJobErrorState { value: standard_error, throttled: true }
+    } else {
+        RenderJobErrorState::default()
+    }
 }
 
 // 0x3f090 — __ZNK3RBX13TaskScheduler3Job26getDesiredConcurrencyCountEv
 // type: int __fastcall(RBX::TaskScheduler::Job *this)
 #[doc(alias = "RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")]
 #[doc(alias = "__ZNK3RBX13TaskScheduler3Job26getDesiredConcurrencyCountEv")]
-pub fn stub_0x3f090() -> ! {
-    todo!("0x3f090 RBX::TaskScheduler::Job::getDesiredConcurrencyCount(void)const")
+pub fn stub_0x3f090() -> u32 {
+    // IDA 0x3f090: `Job::getDesiredConcurrencyCount` returns 1 (2
+    // insns).
+    1
 }
 
 // 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
 #[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE")]
-pub fn stub_0x3f094() -> ! {
-    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+pub fn stub_0x3f094(datamodel_present: bool, suspended: bool, step_ok: bool) -> bool {
+    // IDA 0x3f094: `RenderJob::stepDataModelJob` bails when the weak
+    // datamodel is dead (0x3f0f0), when the suspend flag at +0x278 is
+    // set (0x3f100), or when the workspace step virtual returns 0
+    // (0x3f11c); else it timestamps + takes a scoped write request and
+    // steps (0x3f124-0x3f150). The gates report here.
+    datamodel_present && !suspended && step_ok
 }
 
 // 0x3f598 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs")]
-pub fn stub_0x3f598() -> ! {
-    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+pub fn stub_0x3f598(
+    name: &str,
+    fps: f64,
+    duty: f64,
+    step_time: f64,
+    named: f64,
+    nominal_fps: f64,
+    video_mb: f64,
+) -> f64 {
+    // IDA 0x3f598: `RenderJob::getMetricValue` dispatches on the name:
+    // "Render FPS"/"Render Duty"/"Render Job Time" read the scheduler
+    // averages (0x3f5c2-0x3f6b0); "Render Nominal FPS" is
+    // 1000/render-time-average (0x3f5fe-0x3f6d6); the render-pipeline
+    // names forward to the view (0x3f66c-0x3f6c2); "Video Memory MB"
+    // is bytes/1e6 (0x3f67e-0x3f6d6); anything else is 0 (0x3f6dc).
+    // Averages cross as parameters.
+    match name {
+        "Render FPS" => fps,
+        "Render Duty" => duty,
+        "Render Job Time" => step_time,
+        "Render Nominal FPS" => nominal_fps,
+        "Delta Between Renders" | "Ogre" | "Total Render" | "Present Time" | "GPU Delay" | "Render Prepare" => named,
+        "Video Memory MB" => video_mb,
+        _ => 0.0,
+    }
 }
 
 // 0x3f700 — __ZNK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
 #[doc(alias = "__ZNK10RobloxView9RenderJob9getMetricERKSs")]
-pub fn stub_0x3f700() -> ! {
-    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+pub fn stub_0x3f700(name: &str, view_present: bool, frm_on: bool, aa_on: bool) -> String {
+    // IDA 0x3f700: `RenderJob::getMetric` renders the named metric to
+    // a string: no view yields "No View" (0x3f834); "Graphics Mode"
+    // yields "" (0x3f84c); "FRM" yields "On"/"Off" (0x3f85c-0x3f87a);
+    // "Anti-Aliasing" yields "On"/"Off" (0x3f88a-0x3f8b4); unknown
+    // names assert and yield "" (0x3f7c0-0x3f820).
+    if !view_present {
+        return "No View".to_owned();
+    }
+    match name {
+        "Graphics Mode" => String::new(),
+        "FRM" => (if frm_on { "On" } else { "Off" }).to_owned(),
+        "Anti-Aliasing" => (if aa_on { "On" } else { "Off" }).to_owned(),
+        _ => String::new(),
+    }
 }
 
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
@@ -305,8 +418,11 @@ pub fn stub_0x3faa4() {
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
 #[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
 #[doc(alias = "__ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE")]
-pub fn stub_0x3faac() -> ! {
-    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+pub fn stub_0x3faac(pending: bool, dispatched: bool) -> bool {
+    // IDA 0x3faac: `RenderJob::scheduleRenderPrepare` skips when the
+    // +632 pending flag is set (0x3faac) and runs the prepare virtual
+    // otherwise (0x3fac2). The dispatch reports here.
+    !pending && dispatched
 }
 
 // 0x3fac4 — __ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd
