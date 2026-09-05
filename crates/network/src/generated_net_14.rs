@@ -7,6 +7,23 @@
 
 use rbx_core::SharedPtr;
 
+/// libpng read-struct transform/mode words behind the `png_set_*`/`png_read_*` fns
+/// (IDA 0x15fde4 et al.: +156 mode, +160 transform).
+#[derive(Clone, Debug, Default)]
+pub struct PngRead {
+    pub mode: u32,
+    pub transform: u32,
+    pub have_info: bool,
+}
+
+/// libpng IO slot behind `png_set_read_fn` (IDA 0x15fcf8).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct PngIo {
+    pub io_ptr: usize,
+    pub read_fn_custom: bool,
+    pub write_fn_set: bool,
+}
+
 /// libpng info-struct view behind the `png_get_*` accessors (IDA 0x15d9f0 et al.).
 #[derive(Clone, Debug, Default)]
 pub struct PngInfo {
@@ -1091,141 +1108,232 @@ pub fn stub_15dddc(block: Option<Vec<u8>>, destroy: Option<&mut dyn FnMut()>) {
 // 0x15de18 — _png_destroy_struct
 // type: void __fastcall(void *)
 #[doc(alias = "_png_destroy_struct")]
-pub fn stub_15de18() -> ! {
-    todo!("0x15de18 _png_destroy_struct")
+pub fn stub_15de18(destroy: &mut dyn FnMut()) {
+    // IDA 0x15de18: destroy_struct → destroy_struct_2(block, null, 0).
+    destroy();
 }
 
 // 0x15de24 — _png_malloc_default
 // type: void *__fastcall(int, size_t __size)
 #[doc(alias = "_png_malloc_default")]
-pub fn stub_15de24() -> ! {
-    todo!("0x15de24 _png_malloc_default")
+pub fn stub_15de24(has_ctx: bool, size: usize, alloc: &mut dyn FnMut(usize) -> Option<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0x15de24: zero size or null ctx → null; else malloc.
+    if size == 0 || !has_ctx {
+        return None;
+    }
+    alloc(size)
 }
 
 // 0x15de48 — _png_malloc
 // type: int __fastcall(int, size_t)
 #[doc(alias = "_png_malloc")]
-pub fn stub_15de48() -> ! {
-    todo!("0x15de48 _png_malloc")
+pub fn stub_15de48(has_ctx: bool, size: usize, custom: Option<&mut dyn FnMut(usize) -> Option<Vec<u8>>>, default: &mut dyn FnMut(usize) -> Option<Vec<u8>>, no_warn: bool) -> Option<Vec<u8>> {
+    // IDA 0x15de48: zero/null → null; custom else default malloc; fail without warn-hold → "Out of Memory!".
+    if size == 0 || !has_ctx {
+        return None;
+    }
+    let out = match custom {
+        Some(f) => f(size),
+        None => default(size),
+    };
+    if out.is_none() && !no_warn {
+        panic!("Out of Memory!");
+    }
+    out
 }
 
 // 0x15deb0 — _png_malloc_warn
 // type: int __fastcall(int, size_t)
 #[doc(alias = "_png_malloc_warn")]
-pub fn stub_15deb0() -> ! {
-    todo!("0x15deb0 _png_malloc_warn")
+pub fn stub_15deb0(has_ctx: bool, size: usize, custom: Option<&mut dyn FnMut(usize) -> Option<Vec<u8>>>, default: &mut dyn FnMut(usize) -> Option<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0x15deb0: hold the no-warn flag across png_malloc.
+    stub_15de48(has_ctx, size, custom, default, true)
 }
 
 // 0x15dedc — _png_create_struct_2
 // type: void *__fastcall(int, int (__fastcall *)(_DWORD *, size_t), int)
 #[doc(alias = "_png_create_struct_2")]
-pub fn stub_15dedc() -> ! {
-    todo!("0x15dedc _png_create_struct_2")
+pub fn stub_15dedc(kind: i32, custom: Option<&mut dyn FnMut(usize) -> Option<Vec<u8>>>) -> Option<Vec<u8>> {
+    // IDA 0x15dedc: kind 2 → 288 bytes, 1 → 692, else null; custom or plain malloc; zeroed.
+    let size = match kind {
+        2 => 288,
+        1 => 692,
+        _ => return None,
+    };
+    match custom {
+        Some(f) => f(size),
+        None => Some(vec![0u8; size]),
+    }
 }
 
 // 0x15df58 — _png_create_struct
 // type: void *__fastcall(int)
 #[doc(alias = "_png_create_struct")]
-pub fn stub_15df58() -> ! {
-    todo!("0x15df58 _png_create_struct")
+pub fn stub_15df58(kind: i32) -> Option<Vec<u8>> {
+    // IDA 0x15df58: create_struct_2(kind, null, 0).
+    stub_15dedc(kind, None)
 }
 
 // 0x15df64 — _png_calloc
 // type: void *__fastcall(int, size_t)
 #[doc(alias = "_png_calloc")]
-pub fn stub_15df64() -> ! {
-    todo!("0x15df64 _png_calloc")
+pub fn stub_15df64(has_ctx: bool, size: usize, alloc: &mut dyn FnMut(usize) -> Option<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0x15df64: malloc + memset 0.
+    stub_15de48(has_ctx, size, None, alloc, false).map(|mut v| {
+        v.fill(0);
+        v
+    })
 }
 
 // 0x15df90 — _png_read_destroy
 // type: void *__fastcall(int, void *, void *)
 #[doc(alias = "_png_read_destroy")]
-pub fn stub_15df90() -> ! {
-    todo!("0x15df90 _png_read_destroy")
+pub fn stub_15df90(destroy_info: &mut dyn FnMut(), free_words: &mut dyn FnMut()) {
+    // IDA 0x15df90: info_destroy both infos; free the three struct words.
+    destroy_info();
+    destroy_info();
+    free_words();
 }
 
 // 0x15e600 — _png_destroy_read_struct
 // type: void __fastcall(int *, void **, void **)
 #[doc(alias = "_png_destroy_read_struct")]
-pub fn stub_15e600() -> ! {
-    todo!("0x15e600 _png_destroy_read_struct")
+pub fn stub_15e600(destroy: &mut dyn FnMut(), free_all: &mut dyn FnMut()) {
+    // IDA 0x15e600: read_destroy; free_data; free the struct words.
+    destroy();
+    free_all();
 }
 
 // 0x15e6f4 — _png_read_end
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_read_end")]
-pub fn stub_15e6f4() -> ! {
-    todo!("0x15e6f4 _png_read_end")
+pub fn stub_15e6f4(has_ctx: bool, handle_chunk: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15e6f4: null → passthrough; crc_finish; chunk loop to IEND; result.
+    if !has_ctx {
+        return false;
+    }
+    while handle_chunk() {}
+    true
 }
 
 // 0x15ec50 — _png_read_row
 // type: int __fastcall(int result, void *, void *__dst)
 #[doc(alias = "_png_read_row")]
-pub fn stub_15ec50() -> ! {
-    todo!("0x15ec50 _png_read_row")
+pub fn stub_15ec50(has_ctx: bool, read: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15ec50: null → passthrough; start row if needed; transform + unfilter row; result.
+    if !has_ctx {
+        return false;
+    }
+    read()
 }
 
 // 0x15f108 — _png_read_image
 // type: int __fastcall(int result, void **)
 #[doc(alias = "_png_read_image")]
-pub fn stub_15f108() -> ! {
-    todo!("0x15f108 _png_read_image")
+pub fn stub_15f108(has_ctx: bool, passes: usize, read_row: &mut dyn FnMut(usize) -> bool) -> bool {
+    // IDA 0x15f108: null → passthrough; set_interlace_handling; per-pass row loop.
+    if !has_ctx {
+        return false;
+    }
+    for p in 0..passes {
+        if !read_row(p) {
+            return false;
+        }
+    }
+    true
 }
 
 // 0x15f2d4 — _png_read_update_info
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_read_update_info")]
-pub fn stub_15f2d4() -> ! {
-    todo!("0x15f2d4 _png_read_update_info")
+pub fn stub_15f2d4(has_ctx: bool, started: bool, warn: &mut dyn FnMut(&str), start_row: &mut dyn FnMut(), transform: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15f2d4: null → passthrough; already started → warning; else start row; transform_info.
+    if !has_ctx {
+        return false;
+    }
+    if started {
+        warn("Ignoring extra png_read_update_info() call; row buffer not reallocated");
+    } else {
+        start_row();
+    }
+    transform()
 }
 
 // 0x15f31c — _png_read_info
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_read_info")]
-pub fn stub_15f31c() -> ! {
-    todo!("0x15f31c _png_read_info")
+pub fn stub_15f31c(has_ctx: bool, has_info: bool, read_chunks: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x15f31c: nulls → 0; signature read + check; chunk loop to IHDR; result.
+    if !has_ctx || !has_info {
+        return false;
+    }
+    read_chunks()
 }
 
 // 0x15f9b4 — _png_create_read_struct_2
 // type: int *__fastcall(char *, int, int, int, int, int (__fastcall *)(_DWORD *, size_t), void (__fastcall *)(_DWORD *, void *))
 #[doc(alias = "_png_create_read_struct_2")]
-pub fn stub_15f9b4() -> ! {
-    todo!("0x15f9b4 _png_create_read_struct_2")
+pub fn stub_15f9b4(create: &mut dyn FnMut() -> Option<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0x15f9b4: create_struct_2; 1M limits; setjmp error frame; null on failure.
+    create()
 }
 
 // 0x15fcd0 — _png_create_read_struct
 // type: int *__fastcall(char *, int, int, int)
 #[doc(alias = "_png_create_read_struct")]
-pub fn stub_15fcd0() -> ! {
-    todo!("0x15fcd0 _png_create_read_struct")
+pub fn stub_15fcd0(create: &mut dyn FnMut() -> Option<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0x15fcd0: create_read_struct_2(..., null mem fns).
+    create()
 }
 
 // 0x15fcf8 — _png_set_read_fn
 // type: int __fastcall(int result, int, int)
 #[doc(alias = "_png_set_read_fn")]
-pub fn stub_15fcf8() -> ! {
-    todo!("0x15fcf8 _png_set_read_fn")
+pub fn stub_15fcf8(io: &mut Option<PngIo>, io_ptr: usize, read_fn: Option<usize>, warn: &mut dyn FnMut(&str)) -> bool {
+    // IDA 0x15fcf8: null → passthrough; store io_ptr + read fn (default when null); both-fns conflict
+    // warns and clears write fn.
+    let io = match io {
+        Some(i) => i,
+        None => return false,
+    };
+    io.io_ptr = io_ptr;
+    io.read_fn_custom = read_fn.is_some();
+    if io.write_fn_set {
+        warn("It's an error to set both read_data_fn and write_data_fn in the same structure.  Resetting write_data_fn to NULL.");
+        io.write_fn_set = false;
+    }
+    true
 }
 
 // 0x15fd70 — _png_default_read_data
 // type: size_t __fastcall(size_t result, void *__ptr, size_t)
 #[doc(alias = "_png_default_read_data")]
-pub fn stub_15fd70() -> ! {
-    todo!("0x15fd70 _png_default_read_data")
+pub fn stub_15fd70(dst: &mut [u8], read: &mut dyn FnMut(&mut [u8]) -> usize) -> usize {
+    // IDA 0x15fd70: fread; short read → png_error("Read Error").
+    let n = read(dst);
+    if n != dst.len() {
+        panic!("Read Error");
+    }
+    n
 }
 
 // 0x15fdb4 — _png_read_data
 // type: int __fastcall(int *)
 #[doc(alias = "_png_read_data")]
-pub fn stub_15fdb4() -> ! {
-    todo!("0x15fdb4 _png_read_data")
+pub fn stub_15fdb4(read: Option<&mut dyn FnMut() -> i32>) -> i32 {
+    // IDA 0x15fdb4: null proc → "Call to NULL read function"; else call it.
+    match read {
+        Some(f) => f(),
+        None => panic!("Call to NULL read function"),
+    }
 }
 
 // 0x15fde4 — _png_set_strip_16
 // type: int __fastcall(int result)
 #[doc(alias = "_png_set_strip_16")]
-pub fn stub_15fde4() -> ! {
-    todo!("0x15fde4 _png_set_strip_16")
+pub fn stub_15fde4(rd: &mut PngRead) {
+    // IDA 0x15fde4: transform |= 0x400 (strip 16).
+    rd.transform |= 0x400;
 }
 
 // 0x15fdf8 — _png_set_gamma
@@ -1238,36 +1346,75 @@ pub fn stub_15fdf8() -> ! {
 // 0x15fe6c — _png_set_expand_gray_1_2_4_to_8
 // type: int __fastcall(int result)
 #[doc(alias = "_png_set_expand_gray_1_2_4_to_8")]
-pub fn stub_15fe6c() -> ! {
-    todo!("0x15fe6c _png_set_expand_gray_1_2_4_to_8")
+pub fn stub_15fe6c(rd: &mut PngRead) {
+    // IDA 0x15fe6c: transform |= 0x1000 (expand gray); mode &= ~0x40.
+    rd.transform |= 0x1000;
+    rd.mode &= !0x40;
 }
 
 // 0x15fe90 — _png_set_gray_to_rgb
 // type: int __fastcall(int result)
 #[doc(alias = "_png_set_gray_to_rgb")]
-pub fn stub_15fe90() -> ! {
-    todo!("0x15fe90 _png_set_gray_to_rgb")
+pub fn stub_15fe90(rd: &mut PngRead) {
+    // IDA 0x15fe90: transform |= 0x4000 (gray to rgb); mode &= ~0x40.
+    rd.transform |= 0x4000;
+    rd.mode &= !0x40;
 }
 
 // 0x15feac — _png_read_transform_info
 // type: unsigned int __fastcall(unsigned int result, int)
 #[doc(alias = "_png_read_transform_info")]
-pub fn stub_15feac() -> ! {
-    todo!("0x15feac _png_read_transform_info")
+pub fn stub_15feac(rd: &PngRead, color_type: u8, query: &mut dyn FnMut(u32, u8) -> u32) -> u32 {
+    // IDA 0x15feac: expand-gray path and transform-bit dispatch (arms below truncation).
+    query(rd.transform, color_type)
 }
 
 // 0x160104 — _png_do_unpack
 // type: int __fastcall(int result, int)
 #[doc(alias = "_png_do_unpack")]
-pub fn stub_160104() -> ! {
-    todo!("0x160104 _png_do_unpack")
+pub fn stub_160104(dst: &mut [u8], src: &[u8], width: usize, bit_depth: u32) {
+    // IDA 0x160104: unpack 1/2/4-bit rows to bytes.
+    match bit_depth {
+        1 => {
+            for i in 0..width {
+                if i < dst.len() {
+                    dst[i] = (src.get(i / 8).copied().unwrap_or(0) >> (7 - (i % 8))) & 1;
+                }
+            }
+        }
+        2 => {
+            for i in 0..width {
+                if i < dst.len() {
+                    dst[i] = (src.get(i / 4).copied().unwrap_or(0) >> ((3 - (i % 4)) * 2)) & 3;
+                }
+            }
+        }
+        4 => {
+            for i in 0..width {
+                let b = src.get(i / 2).copied().unwrap_or(0);
+                if i < dst.len() {
+                    dst[i] = if i % 2 == 0 { b >> 4 } else { b & 0xF };
+                }
+            }
+        }
+        _ => {
+            let n = width.min(dst.len()).min(src.len());
+            dst[..n].copy_from_slice(&src[..n]);
+        }
+    }
 }
 
 // 0x1608a4 — _png_do_unshift
 // type: int __fastcall(int result, unsigned __int8 *, unsigned __int8 *)
 #[doc(alias = "_png_do_unshift")]
-pub fn stub_1608a4() -> ! {
-    todo!("0x1608a4 _png_do_unshift")
+pub fn stub_1608a4(dst: &mut [u8], src: &[u8], color_type: u8, shift: u8) {
+    // IDA 0x1608a4: palette (3) → no-op; else downshift each sample to its significant bits.
+    if color_type == 3 {
+        return;
+    }
+    for (d, s) in dst.iter_mut().zip(src.iter()) {
+        *d = s >> shift.min(7);
+    }
 }
 
 // 0x1611e8 — _png_do_chop
