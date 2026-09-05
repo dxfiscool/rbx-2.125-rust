@@ -23622,8 +23622,9 @@ pub fn stub_ab94c0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_ab9770() -> ! {
-    todo!("0xab9770 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_ab9770(destroy: &mut dyn FnMut()) {
+ // IDA 0xab9770: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xab984c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
@@ -23631,8 +23632,11 @@ pub fn stub_ab9770() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
 )]
-pub fn stub_ab984c() -> ! {
-    todo!("0xab984c RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_ab984c(conns: &mut Vec<ClientEventConn>) -> u64 {
+ // IDA 0xab984c: connectGeneric — new connection (below truncation).
+ let id = conns.len() as u64;
+ conns.push(ClientEventConn { id, live: true });
+ id
 }
 
 // 0xab9cd0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
@@ -23640,8 +23644,9 @@ pub fn stub_ab984c() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_ab9cd0() -> ! {
-    todo!("0xab9cd0 RBX::Reflection::EventDescImpl<1,RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_ab9cd0(fire: &mut dyn FnMut()) {
+ // IDA 0xab9cd0: fireEvent (below truncation).
+ fire();
 }
 
 // 0xaba024 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
@@ -23673,8 +23678,10 @@ pub fn stub_aba03c<T>(
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
 )]
-pub fn stub_aba210() -> ! {
-    todo!("0xaba210 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_aba210(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xaba210: EventDesc ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xaba5ac — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
@@ -23682,8 +23689,9 @@ pub fn stub_aba210() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
 )]
-pub fn stub_aba5ac() -> ! {
-    todo!("0xaba5ac RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+pub fn stub_aba5ac(destroy: &mut dyn FnMut()) {
+ // IDA 0xaba5ac: EventDesc dtor (list clears; below truncation).
+ destroy();
 }
 
 // 0xaba688 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
@@ -23691,8 +23699,11 @@ pub fn stub_aba5ac() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
 )]
-pub fn stub_aba688() -> ! {
-    todo!("0xaba688 RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_aba688(conns: &mut Vec<ClientEventConn>) -> u64 {
+ // IDA 0xaba688: connectGeneric — new connection (below truncation).
+ let id = conns.len() as u64;
+ conns.push(ClientEventConn { id, live: true });
+ id
 }
 
 // 0xabab0c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
@@ -23700,8 +23711,9 @@ pub fn stub_aba688() -> ! {
 #[doc(
     alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
 )]
-pub fn stub_abab0c() -> ! {
-    todo!("0xabab0c RBX::Reflection::EventDescImpl<2,RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_abab0c(fire: &mut dyn FnMut()) {
+ // IDA 0xabab0c: fireEvent (below truncation).
+ fire();
 }
 
 // 0xabaf7c — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
@@ -23734,8 +23746,10 @@ pub fn stub_abaf94<T>(
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::EnumPropDescriptor<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>(char const*,char const*,RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
 )]
-pub fn stub_abb168() -> ! {
-    todo!("0xabb168 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::EnumPropDescriptor<RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType)>(char const*,char const*,RBX::Network::Player::MembershipType (RBX::Network::Player::*)(void)const,void (RBX::Network::Player::*)(RBX::Network::Player::MembershipType),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_abb168(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+ // IDA 0xabb168: EnumPropDescriptor ctor (below truncation).
+ init(slot);
+ slot
 }
 
 // 0xabb468 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEED0Ev
@@ -23743,8 +23757,10 @@ pub fn stub_abb168() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()"
 )]
-pub fn stub_abb468() -> ! {
-    todo!("0xabb468 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()")
+pub fn stub_abb468(slot: usize, destroy: &mut dyn FnMut(usize), free: &mut dyn FnMut(usize)) {
+ // IDA 0xabb468: D0: dtor then operator delete.
+ destroy(slot);
+ free(slot);
 }
 
 // 0xabb490 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10isReadOnlyEv
@@ -23752,8 +23768,9 @@ pub fn stub_abb468() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::isReadOnly(void)const"
 )]
-pub fn stub_abb490() -> ! {
-    todo!("0xabb490 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::isReadOnly(void)const")
+pub fn stub_abb490(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xabb490: forwards to the impl at +44.
+ inner()
 }
 
 // 0xabb4a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE11isWriteOnlyEv
@@ -23761,8 +23778,9 @@ pub fn stub_abb490() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::isWriteOnly(void)const"
 )]
-pub fn stub_abb4a0() -> ! {
-    todo!("0xabb4a0 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::isWriteOnly(void)const")
+pub fn stub_abb4a0(inner: &mut dyn FnMut() -> bool) -> bool {
+ // IDA 0xabb4a0: forwards to the impl at +44.
+ inner()
 }
 
 // 0xabb4b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -23770,8 +23788,9 @@ pub fn stub_abb4a0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_abb4b0() -> ! {
-    todo!("0xabb4b0 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abb4b0(current: i32, candidate: i32) -> bool {
+ // IDA 0xabb4b0: compares the impl value against the candidate.
+ current == candidate
 }
 
 // 0xabb4d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -23779,8 +23798,9 @@ pub fn stub_abb4b0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
 )]
-pub fn stub_abb4d8() -> ! {
-    todo!("0xabb4d8 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_abb4d8(value: i32) -> (String, i32) {
+ // IDA 0xabb4d8: getVariant wraps the int with the int type singleton.
+ ("int".to_string(), value)
 }
 
 // 0xabb588 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -23788,8 +23808,9 @@ pub fn stub_abb4d8() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
 )]
-pub fn stub_abb588() -> ! {
-    todo!("0xabb588 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_abb588(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabb588: Variant::get<int> then setValue.
+ set(value);
 }
 
 // 0xabb5a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -23797,8 +23818,9 @@ pub fn stub_abb588() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
 )]
-pub fn stub_abb5a4() -> ! {
-    todo!("0xabb5a4 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_abb5a4(value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabb5a4: reads the impl value then writes it via the +12 slot.
+ set(value);
 }
 
 // 0xabb5c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE14hasStringValueEv
@@ -23806,8 +23828,9 @@ pub fn stub_abb5a4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::hasStringValue(void)const"
 )]
-pub fn stub_abb5c8() -> ! {
-    todo!("0xabb5c8 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::hasStringValue(void)const")
+pub fn stub_abb5c8() -> bool {
+ // IDA 0xabb5c8: hasStringValue returns 1.
+ true
 }
 
 // 0xabb5cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE14getStringValueEPKNS0_13DescribedBaseE
@@ -23815,8 +23838,9 @@ pub fn stub_abb5c8() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getStringValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_abb5cc() -> ! {
-    todo!("0xabb5cc RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abb5cc(value: i32, to_string: &mut dyn FnMut(i32) -> String) -> String {
+ // IDA 0xabb5cc: converts the enum value to its name (below truncation).
+ to_string(value)
 }
 
 // 0xabb5f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -23824,8 +23848,11 @@ pub fn stub_abb5cc() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
 )]
-pub fn stub_abb5f0() -> ! {
-    todo!("0xabb5f0 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_abb5f0(name: &str, lookup: &mut dyn FnMut(&str) -> Option<i32>, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabb5f0: Name::lookup then setValue (below truncation).
+ if let Some(v) = lookup(name) {
+ set(v);
+ }
 }
 
 // 0xabb694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -23833,8 +23860,10 @@ pub fn stub_abb5f0() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
 )]
-pub fn stub_abb694() -> ! {
-    todo!("0xabb694 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_abb694(value: i32, write: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0xabb694: clears the pair, writes type 5 + value; returns 5.
+ write(value);
+ 5
 }
 
 // 0xabb6b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -23842,8 +23871,9 @@ pub fn stub_abb694() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
 )]
-pub fn stub_abb6b4() -> ! {
-    todo!("0xabb6b4 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_abb6b4(parse: &mut dyn FnMut()) {
+ // IDA 0xabb6b4: readValue parses the pair (below truncation).
+ parse();
 }
 
 // 0xabb978 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -23851,8 +23881,10 @@ pub fn stub_abb6b4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_abb978() -> ! {
-    todo!("0xabb978 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abb978(value: i32) -> i32 {
+ // IDA 0xabb978: asserts the enum value > -1, returns it.
+ debug_assert!(value > -1);
+ value
 }
 
 // 0xabb9f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -23860,8 +23892,14 @@ pub fn stub_abb978() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
 )]
-pub fn stub_abb9f4() -> ! {
-    todo!("0xabb9f4 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_abb9f4(items: &[i32], index: usize, set: &mut dyn FnMut(i32)) -> i32 {
+ // IDA 0xabb9f4: in-range index -> set + return 1 else 0.
+ if items.len() > index {
+ set(items[index]);
+ 1
+ } else {
+ 0
+ }
 }
 
 // 0xabba28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -23869,8 +23907,9 @@ pub fn stub_abb9f4() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getEnumValue(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_abba28() -> ! {
-    todo!("0xabba28 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abba28(get: &mut dyn FnMut() -> i32) -> i32 {
+ // IDA 0xabba28: getEnumValue forwards to the impl.
+ get()
 }
 
 // 0xabba38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -23878,8 +23917,11 @@ pub fn stub_abba28() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const"
 )]
-pub fn stub_abba38() -> ! {
-    todo!("0xabba38 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_abba38(items: &[i32], value: i32, set: &mut dyn FnMut(i32)) {
+ // IDA 0xabba38: finds the value in the item list then sets it (below truncation).
+ if items.contains(&value) {
+ set(value);
+ }
 }
 
 // 0xabbb04 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -23887,8 +23929,9 @@ pub fn stub_abba38() -> ! {
 #[doc(
     alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getEnumItem(RBX::Reflection::DescribedBase const*)const"
 )]
-pub fn stub_abbb04() -> ! {
-    todo!("0xabbb04 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_abbb04(value: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+ // IDA 0xabbb04: EnumDesc::convertToItem on the impl value.
+ convert(value)
 }
 
 // 0xabbb24 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
