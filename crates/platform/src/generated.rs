@@ -2729,6 +2729,271 @@ impl CacheState {
 }
 static WEBCACHE: std::sync::LazyLock<CacheState> =
     std::sync::LazyLock::new(CacheState::default);
+/// Host id standing in for the `LoginManager` `self`.
+const LOGIN_ID: ControlId = 19;
+/// Minimal `LoginManager` counterpart (IDA 0x58f94..0x5ac78): notifier
+/// names, persisted credentials, user info and observable counters for the
+/// networking steps out of slice. Async completions run inline on the host.
+#[derive(Debug, Default)]
+pub struct LoginState {
+    initialized: AtomicBool,
+    remember_password: AtomicBool,
+    remember_persisted: AtomicBool,
+    failed_notification: parking_lot::Mutex<String>,
+    success_notification: parking_lot::Mutex<String>,
+    saved_username: parking_lot::Mutex<String>,
+    saved_password: parking_lot::Mutex<String>,
+    syncs: AtomicU32,
+    user_id: parking_lot::Mutex<String>,
+    username: parking_lot::Mutex<String>,
+    password: parking_lot::Mutex<String>,
+    robux: parking_lot::Mutex<String>,
+    tix: parking_lot::Mutex<String>,
+    logged_in: AtomicBool,
+    login_attempts: AtomicU32,
+    login_successes: AtomicU32,
+    login_failures: AtomicU32,
+    logout_calls: AtomicU32,
+    last_request: parking_lot::Mutex<(String, String)>,
+    last_result: parking_lot::Mutex<String>,
+    failed_posts: AtomicU32,
+    success_posts: AtomicU32,
+    analytics: AtomicU32,
+    releases: AtomicU32,
+}
+impl LoginState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-init` (IDA 0x59038): super init; the notifier names and
+    /// `rememberPassword` from the `rememberMyPassword` default.
+    pub fn init_login(&self, remember_stored: bool) -> Option<ControlId> {
+        *self.failed_notification.lock() = "RBXLoginFailedNotifier".to_owned();
+        *self.success_notification.lock() = "RBXLoginSuccessfulNotifier".to_owned();
+        self.remember_password.store(remember_stored, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(LOGIN_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x5913c): releases both notification strings.
+    pub fn dealloc(&self) {
+        *self.failed_notification.lock() = String::new();
+        *self.success_notification.lock() = String::new();
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `applicationWillTerminate` (IDA 0x591a0): persists the username,
+    /// conditionally the password, and syncs.
+    pub fn app_terminate(&self, username: &str, remember_set: bool, password: &str) {
+        *self.saved_username.lock() = username.to_owned();
+        if remember_set {
+            *self.saved_password.lock() = password.to_owned();
+        }
+        self.bump(&self.syncs);
+    }
+    pub fn saved_username(&self) -> String {
+        self.saved_username.lock().clone()
+    }
+    pub fn saved_password(&self) -> String {
+        self.saved_password.lock().clone()
+    }
+    /// `-getRememberPassword` (IDA 0x592a0).
+    pub fn get_remember(&self) -> bool {
+        self.remember_password.load(Ordering::SeqCst)
+    }
+    /// `-setRememberPassword:` (IDA 0x592b0): logs the flag, persists
+    /// `rememberMyPassword` and syncs.
+    pub fn set_remember(&self, remember: bool) {
+        self.remember_password.store(remember, Ordering::SeqCst);
+        self.remember_persisted.store(true, Ordering::SeqCst);
+        self.bump(&self.syncs);
+    }
+    pub fn remember_persisted(&self) -> bool {
+        self.remember_persisted.load(Ordering::SeqCst)
+    }
+    /// `-getLoginFailedNotification` (IDA 0x594e4).
+    pub fn failed_notification(&self) -> String {
+        self.failed_notification.lock().clone()
+    }
+    /// `-getLoginSuccessfulNotification` (IDA 0x594f4).
+    pub fn success_notification(&self) -> String {
+        self.success_notification.lock().clone()
+    }
+    /// `updateUserInfo:password:` (IDA 0x59504): pushes the UserInfo dict
+    /// fields (UserID/UserName/password/RobuxBalance/TicketsBalance).
+    pub fn update_user_info(&self, user_id: &str, username: &str, password: &str, robux: &str, tix: &str) {
+        *self.user_id.lock() = user_id.to_owned();
+        *self.username.lock() = username.to_owned();
+        *self.password.lock() = password.to_owned();
+        *self.robux.lock() = robux.to_owned();
+        *self.tix.lock() = tix.to_owned();
+    }
+    pub fn username(&self) -> String {
+        self.username.lock().clone()
+    }
+    /// `isConnectedToInternet` (IDA 0x59690): WAN/wifi log and return
+    /// true; unreachable posts the ConnectionError failure notification.
+    pub fn is_connected(&self, status: u32) -> bool {
+        match status {
+            2 | 1 => true,
+            _ => {
+                *self.last_result.lock() = "ConnectionError".to_owned();
+                self.bump(&self.failed_posts);
+                false
+            }
+        }
+    }
+    pub fn failed_post_count(&self) -> u32 {
+        self.failed_posts.load(Ordering::SeqCst)
+    }
+    /// `doLogout` (IDA 0x598e4): needs connectivity; POSTs
+    /// base+`mobileapi/logout` and fires the `__24…` completion inline.
+    /// Returns (url, method).
+    pub fn do_logout(&self, connected: bool, base: &str) -> Option<(String, String)> {
+        if !connected {
+            return None;
+        }
+        let url = format!("{}/mobileapi/logout", base.trim_end_matches('/'));
+        *self.last_request.lock() = (url.clone(), "POST".to_owned());
+        self.bump(&self.logout_calls);
+        Some((url, "POST".to_owned()))
+    }
+    pub fn logout_call_count(&self) -> u32 {
+        self.logout_calls.load(Ordering::SeqCst)
+    }
+    pub fn last_request(&self) -> (String, String) {
+        self.last_request.lock().clone()
+    }
+    /// `doLoginWithUsername:password:` (IDA 0x59ae8): needs connectivity;
+    /// POSTs base+`mobileapi/login` with the percent-escaped
+    /// `username=..&password=..` body and fires the `__45…` completion
+    /// inline. Returns (url, body).
+    pub fn do_login(
+        &self,
+        username: &str,
+        password: &str,
+        connected: bool,
+        base: &str,
+    ) -> Option<(String, String)> {
+        if !connected {
+            return None;
+        }
+        let url = format!("{}/mobileapi/login", base.trim_end_matches('/'));
+        let body = format!(
+            "username={}&password={}",
+            percent_escape(username),
+            percent_escape(password)
+        );
+        *self.last_request.lock() = (url.clone(), body.clone());
+        self.bump(&self.login_attempts);
+        Some((url, body))
+    }
+    pub fn login_attempt_count(&self) -> u32 {
+        self.login_attempts.load(Ordering::SeqCst)
+    }
+    /// `__45-doLogin_block_invoke` (IDA 0x59ecc): runs
+    /// `processLoginResponse:` over the userLoginInfo dict, then posts the
+    /// success notification on "" or the failure one with Error. Returns
+    /// the posted name.
+    pub fn login_completion(&self, enc_user: &str, enc_pass: &str, plain_pass: &str, login_ok: bool) -> String {
+        let _ = (enc_user, enc_pass, plain_pass);
+        if login_ok {
+            self.bump(&self.success_posts);
+            self.success_notification()
+        } else {
+            self.bump(&self.failed_posts);
+            self.failed_notification()
+        }
+    }
+    /// `processLoginResponse:...` (IDA 0x5a0e4): no response logs + 501;
+    /// an error logs + 502; status 200 succeeds, else the failure
+    /// response. Returns the result string.
+    pub fn process_login_response(&self, has_response: bool, has_error: bool, status: u16) -> String {
+        if !has_response {
+            self.logged_in.store(false, Ordering::SeqCst);
+            self.bump(&self.login_failures);
+            return "Status Code : 501".to_owned();
+        }
+        if has_error {
+            self.logged_in.store(false, Ordering::SeqCst);
+            self.bump(&self.login_failures);
+            return "Status Code : 502".to_owned();
+        }
+        if status == 200 {
+            self.successful_login(true, true, "", "")
+        } else {
+            self.bump(&self.login_failures);
+            "Failure".to_owned()
+        }
+    }
+    /// `processSuccessfulLoginResponse:...` (IDA 0x5a6a8): JSON failure
+    /// yields UnknownLoginError; Status OK tracks Login/Success, updates
+    /// user info and logs in; other statuses track Login/Failure. Returns
+    /// "" on success.
+    pub fn successful_login(&self, json_ok: bool, status_ok: bool, username: &str, password: &str) -> String {
+        if !json_ok {
+            self.logged_in.store(false, Ordering::SeqCst);
+            self.bump(&self.login_failures);
+            return "UnknownLoginError".to_owned();
+        }
+        if status_ok {
+            self.bump(&self.analytics);
+            *self.username.lock() = username.to_owned();
+            *self.password.lock() = password.to_owned();
+            self.logged_in.store(true, Ordering::SeqCst);
+            self.bump(&self.login_successes);
+            return String::new();
+        }
+        self.bump(&self.analytics);
+        self.bump(&self.login_failures);
+        "Failure".to_owned()
+    }
+    pub fn is_logged_in(&self) -> bool {
+        self.logged_in.load(Ordering::SeqCst)
+    }
+    pub fn login_success_count(&self) -> u32 {
+        self.login_successes.load(Ordering::SeqCst)
+    }
+    pub fn login_failure_count(&self) -> u32 {
+        self.login_failures.load(Ordering::SeqCst)
+    }
+    /// `processLogOutResponse:...` (IDA 0x5a42c): no response clears
+    /// cookies + "Logout failed"; an error clears + "Logout failed";
+    /// status 200 succeeds, else the failure logout.
+    pub fn process_logout_response(&self, has_response: bool, has_error: bool, status_ok: bool) -> String {
+        if !has_response || has_error {
+            self.logged_in.store(false, Ordering::SeqCst);
+            return "Logout failed".to_owned();
+        }
+        if status_ok {
+            return self.successful_logout();
+        }
+        self.logged_in.store(false, Ordering::SeqCst);
+        "Logout failed".to_owned()
+    }
+    /// `processSuccessfulLogoutResponse:` (IDA 0x5ac78): logs the 200 and
+    /// returns the parsed result ("OK" here).
+    pub fn successful_logout(&self) -> String {
+        "OK".to_owned()
+    }
+}
+static LOGIN: std::sync::LazyLock<LoginState> =
+    std::sync::LazyLock::new(LoginState::default);
+/// `+sharedInstance` cell (IDA 0x58f94, `dword_130C640`): the
+/// `dispatch_once` initializer lives with the cell.
+static LOGIN_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        LOGIN.init_login(false);
+        LOGIN_ID
+    });
+/// Host `+sharedInstance` (IDA 0x58f94).
+pub fn shared_login_id() -> Option<ControlId> {
+    Some(*LOGIN_SHARED)
+}
 impl CacheState {
     /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
     /// (tags 13/11/10/12/15) rebuilds the preload list.
@@ -14946,134 +15211,187 @@ pub fn stub_58f40(input: &str) -> String {
 // 0x58f94 — +[LoginManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[LoginManager sharedInstance]")]
-pub fn stub_58f94() -> ! {
-    todo!("0x58f94 +[LoginManager sharedInstance]")
+pub fn stub_58f94() -> Option<ControlId> {
+    // IDA 0x58f94 `+sharedInstance`: `dispatch_once` runs the `__30…`
+    // block (0x58fc0..0x58fea); the cell holds the singleton after.
+    shared_login_id()
 }
 
 // 0x58ff0 — ___30+[LoginManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___30+[LoginManager sharedInstance]_block_invoke")]
-pub fn stub_58ff0() -> ! {
-    todo!("0x58ff0 ___30+[LoginManager sharedInstance]_block_invoke")
+pub fn stub_58ff0() {
+    // IDA 0x58ff0 `__30-sharedInstance_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x59002..0x59020).
+    LOGIN.init_login(false);
 }
 
 // 0x59038 — -[LoginManager init]
 // type: LoginManager *__cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager init]")]
-pub fn stub_59038() -> ! {
-    todo!("0x59038 -[LoginManager init]")
+pub fn stub_59038(remember_stored: bool) -> Option<ControlId> {
+    // IDA 0x59038 `-init`: super init (0x59064); the notifier names
+    // (0x59086..0x590ee) and `rememberPassword` from the
+    // `rememberMyPassword` default (0x590f4..0x5912e).
+    LOGIN.init_login(remember_stored)
 }
 
 // 0x5913c — -[LoginManager dealloc]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager dealloc]")]
-pub fn stub_5913c() -> ! {
-    todo!("0x5913c -[LoginManager dealloc]")
+pub fn stub_5913c() {
+    // IDA 0x5913c `-dealloc`: releases both notification strings
+    // (0x59160..0x59174), then super (0x59196).
+    LOGIN.dealloc();
 }
 
 // 0x591a0 — -[LoginManager applicationWillTerminate]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager applicationWillTerminate]")]
-pub fn stub_591a0() -> ! {
-    todo!("0x591a0 -[LoginManager applicationWillTerminate]")
+pub fn stub_591a0(username: &str, remember_set: bool, password: &str) {
+    // IDA 0x591a0 `applicationWillTerminate`: persists the username,
+    // conditionally the password, and syncs (0x591c8..0x5929a).
+    LOGIN.app_terminate(username, remember_set, password);
 }
 
 // 0x592a0 — -[LoginManager getRememberPassword]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getRememberPassword]")]
-pub fn stub_592a0() -> ! {
-    todo!("0x592a0 -[LoginManager getRememberPassword]")
+pub fn stub_592a0() -> bool {
+    // IDA 0x592a0 `-getRememberPassword` (0x592ae).
+    LOGIN.get_remember()
 }
 
 // 0x592b0 — -[LoginManager setRememberPassword:]
 // type: void __cdecl(LoginManager *self, SEL, char)
 #[doc(alias = "-[LoginManager setRememberPassword:]")]
-pub fn stub_592b0() -> ! {
-    todo!("0x592b0 -[LoginManager setRememberPassword:]")
+pub fn stub_592b0(remember: bool) {
+    // IDA 0x592b0 `-setRememberPassword:`: logs the flag, persists
+    // `rememberMyPassword` and syncs (0x5930a..0x593e8+string dance).
+    LOGIN.set_remember(remember);
 }
 
 // 0x594e4 — -[LoginManager getLoginFailedNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginFailedNotification]")]
-pub fn stub_594e4() -> ! {
-    todo!("0x594e4 -[LoginManager getLoginFailedNotification]")
+pub fn stub_594e4() -> String {
+    // IDA 0x594e4 `-getLoginFailedNotification` (0x594f2).
+    LOGIN.failed_notification()
 }
 
 // 0x594f4 — -[LoginManager getLoginSuccessfulNotification]
 // type: id __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager getLoginSuccessfulNotification]")]
-pub fn stub_594f4() -> ! {
-    todo!("0x594f4 -[LoginManager getLoginSuccessfulNotification]")
+pub fn stub_594f4() -> String {
+    // IDA 0x594f4 `-getLoginSuccessfulNotification` (0x59502).
+    LOGIN.success_notification()
 }
 
 // 0x59504 — -[LoginManager updateUserInfo:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager updateUserInfo:password:]")]
-pub fn stub_59504() -> ! {
-    todo!("0x59504 -[LoginManager updateUserInfo:password:]")
+pub fn stub_59504(user_id: &str, username: &str, password: &str, robux: &str, tix: &str) {
+    // IDA 0x59504 `updateUserInfo:password:`: pushes the UserInfo dict
+    // fields (UserID/UserName/password/RobuxBalance/TicketsBalance,
+    // 0x5952c..0x5962c+).
+    LOGIN.update_user_info(user_id, username, password, robux, tix);
 }
 
 // 0x59690 — -[LoginManager isConnectedToInternet]
 // type: char __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager isConnectedToInternet]")]
-pub fn stub_59690() -> ! {
-    todo!("0x59690 -[LoginManager isConnectedToInternet]")
+pub fn stub_59690(status: u32) -> bool {
+    // IDA 0x59690 `isConnectedToInternet`: WAN (2) / wifi (1) log and
+    // return true (0x59706..0x5977a); unreachable (0) posts the
+    // ConnectionError failure notification and returns false
+    // (0x597c4..0x598ca).
+    LOGIN.is_connected(status)
 }
 
 // 0x598e4 — -[LoginManager doLogout]
 // type: void __cdecl(LoginManager *self, SEL)
 #[doc(alias = "-[LoginManager doLogout]")]
-pub fn stub_598e4() -> ! {
-    todo!("0x598e4 -[LoginManager doLogout]")
+pub fn stub_598e4(connected: bool, base: &str) -> Option<(String, String)> {
+    // IDA 0x598e4 `doLogout`: needs connectivity; POSTs
+    // base+`mobileapi/logout` with the UA header and fires the `__24…`
+    // completion async (0x598fe..0x59a5e). Returns (url, method).
+    LOGIN.do_logout(connected, base)
 }
 
 // 0x59a6c — ___24-[LoginManager doLogout]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___24-[LoginManager doLogout]_block_invoke")]
-pub fn stub_59a6c() -> ! {
-    todo!("0x59a6c ___24-[LoginManager doLogout]_block_invoke")
+pub fn stub_59a6c(has_response: bool, has_error: bool, status_ok: bool) -> String {
+    // IDA 0x59a6c `__24-doLogout_block_invoke` (via async, inline):
+    // `processLogOutResponse:...` plus the completion release
+    // (0x59a8a+shim).
+    LOGIN.process_logout_response(has_response, has_error, status_ok)
 }
 
 // 0x59ae8 — -[LoginManager doLoginWithUsername:password:]
 // type: void __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager doLoginWithUsername:password:]")]
-pub fn stub_59ae8() -> ! {
-    todo!("0x59ae8 -[LoginManager doLoginWithUsername:password:]")
+pub fn stub_59ae8(username: &str, password: &str, connected: bool, base: &str) -> Option<(String, String)> {
+    // IDA 0x59ae8 `doLoginWithUsername:password:`: needs connectivity;
+    // POSTs base+`mobileapi/login` with the percent-escaped
+    // `username=..&password=..` body (0x59b6e..0x59d6c) and fires the
+    // `__45…` completion async (0x59dd6..0x59e50+). Returns (url, body).
+    LOGIN.do_login(username, password, connected, base)
 }
 
 // 0x59ecc — ___45-[LoginManager doLoginWithUsername:password:]_block_invoke
 // type: id __fastcall(int, int, int, int)
 #[doc(alias = "___45-[LoginManager doLoginWithUsername:password:]_block_invoke")]
-pub fn stub_59ecc() -> ! {
-    todo!("0x59ecc ___45-[LoginManager doLoginWithUsername:password:]_block_invoke")
+pub fn stub_59ecc(enc_user: &str, enc_pass: &str, plain_pass: &str, login_ok: bool) -> String {
+    // IDA 0x59ecc `__45-doLogin_block_invoke`: builds the userLoginInfo
+    // dict (encodedUserName/encodedPassword/NonEncodedPassword,
+    // 0x59efa..0x59f58), runs `processLoginResponse:` (0x59f64), posts the
+    // success notification on "" or the failure one with Error
+    // (0x59f82..0x5a03e). Returns the posted name.
+    LOGIN.login_completion(enc_user, enc_pass, plain_pass, login_ok)
 }
 
 // 0x5a0e4 — -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id, id)
 #[doc(alias = "-[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")]
-pub fn stub_5a0e4() -> ! {
-    todo!("0x5a0e4 -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")
+pub fn stub_5a0e4(has_response: bool, has_error: bool, status: u16) -> String {
+    // IDA 0x5a0e4 `processLoginResponse:...`: no response logs + 501
+    // (0x5a24c..0x5a2f4); an error logs + 502 (0x5a170..0x5a31e); status
+    // 200 succeeds (0x5a342..0x5a384), else the failure response
+    // (0x5a398..0x5a3ae). Returns the result string.
+    LOGIN.process_login_response(has_response, has_error, status)
 }
 
 // 0x5a42c — -[LoginManager processLogOutResponse:logoutData:logoutError:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processLogOutResponse:logoutData:logoutError:]")]
-pub fn stub_5a42c() -> ! {
-    todo!("0x5a42c -[LoginManager processLogOutResponse:logoutData:logoutError:]")
+pub fn stub_5a42c(has_response: bool, has_error: bool, status_ok: bool) -> String {
+    // IDA 0x5a42c `processLogOutResponse:...`: no response clears cookies
+    // + "Logout failed" (0x5a522..0x5a572); an error clears + "Logout
+    // failed" (0x5a4a0..0x5a516); status 200 succeeds (0x5a598..0x5a5d6),
+    // else clears + failure logout (0x5a5f6..0x5a60c).
+    LOGIN.process_logout_response(has_response, has_error, status_ok)
 }
 
 // 0x5a6a8 — -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]
 // type: id __cdecl(LoginManager *self, SEL, id, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")]
-pub fn stub_5a6a8() -> ! {
-    todo!("0x5a6a8 -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")
+pub fn stub_5a6a8(json_ok: bool, status_ok: bool, username: &str, password: &str) -> String {
+    // IDA 0x5a6a8 `processSuccessfulLoginResponse:...`: JSON parse failure
+    // yields UnknownLoginError (0x5a7be..0x5a80c); Status OK tracks
+    // Login/Success, updates user info and logs in (0x5a832..0x5a92c);
+    // other statuses track Login/Failure with per-status text. Returns ""
+    // on success.
+    LOGIN.successful_login(json_ok, status_ok, username, password)
 }
 
 // 0x5ac78 — -[LoginManager processSuccessfulLogoutResponse:httpResponse:]
 // type: id __cdecl(LoginManager *self, SEL, id, id)
 #[doc(alias = "-[LoginManager processSuccessfulLogoutResponse:httpResponse:]")]
-pub fn stub_5ac78() -> ! {
-    todo!("0x5ac78 -[LoginManager processSuccessfulLogoutResponse:httpResponse:]")
+pub fn stub_5ac78() -> String {
+    // IDA 0x5ac78 `processSuccessfulLogoutResponse:`: logs the 200,
+    // parses the JSON body, returns the result object ("OK" here).
+    LOGIN.successful_logout()
 }
 
 // 0x5ae50 — -[LoginManager processFailureLoginResponse:]

@@ -434,43 +434,102 @@ pub fn init_global_a30_58bb0() {
 // 0x59024 — ___copy_helper_block__18
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__18")]
-pub fn stub_59024() -> ! {
-    todo!("0x59024 ___copy_helper_block__18")
+pub unsafe fn copy_block_capture_59024(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x59024: _Block_object_assign(dst+20, src+20, 3) (decompile) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x59030 — ___destroy_helper_block__18
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__18")]
-pub fn stub_59030() -> ! {
-    todo!("0x59030 ___destroy_helper_block__18")
+pub unsafe fn destroy_block_capture_59030(block: *mut core::ffi::c_void) {
+// IDA 0x59030: _Block_object_dispose(block+20, 3) (decompile) — same shape
+// as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x59aa8 — ___copy_helper_block_149
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_149")]
-pub fn stub_59aa8() -> ! {
-    todo!("0x59aa8 ___copy_helper_block_149")
+pub unsafe fn copy_block_captures_59aa8(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x59aa8: _Block_object_assign(dst+20, src+20, 3) then the +24 shim
+// assign (decompile) — same two-capture shape as the earlier pairs.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+        *(dst as *mut *const core::ffi::c_void).byte_add(24) =
+            *(src as *const *const core::ffi::c_void).byte_add(24);
+    }
 }
 
 // 0x59acc — ___destroy_helper_block_150
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_150")]
-pub fn stub_59acc() -> ! {
-    todo!("0x59acc ___destroy_helper_block_150")
+pub unsafe fn destroy_block_captures_59acc(block: *mut core::ffi::c_void) {
+// IDA 0x59acc: _Block_object_dispose(block+20, 3) then the +24 shim dispose
+// (decompile) — same two-capture shape as the earlier pairs.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5a068 — ___copy_helper_block_192
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_192")]
-pub fn stub_5a068() -> ! {
-    todo!("0x5a068 ___copy_helper_block_192")
+pub unsafe fn copy_block_captures5_5a068(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x5a068: five captures — slots +20/+24/+28/+32 then the +36 shim
+// (decompile). All flags are BLOCK_FIELD_IS_OBJECT; only the words move.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+        *(dst as *mut *const core::ffi::c_void).byte_add(24) =
+            *(src as *const *const core::ffi::c_void).byte_add(24);
+        *(dst as *mut *const core::ffi::c_void).byte_add(28) =
+            *(src as *const *const core::ffi::c_void).byte_add(28);
+        *(dst as *mut *const core::ffi::c_void).byte_add(32) =
+            *(src as *const *const core::ffi::c_void).byte_add(32);
+        *(dst as *mut *const core::ffi::c_void).byte_add(36) =
+            *(src as *const *const core::ffi::c_void).byte_add(36);
+    }
 }
 
 // 0x5a0b0 — ___destroy_helper_block_193
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_193")]
-pub fn stub_5a0b0() -> ! {
-    todo!("0x5a0b0 ___destroy_helper_block_193")
+pub unsafe fn destroy_block_captures5_5a0b0(block: *mut core::ffi::c_void) {
+// IDA 0x5a0b0: five disposes — slots +20/+24/+28/+32 then the +36 shim
+// (decompile); the runtime releases all five captured objects and the
+// words clear below.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(24)
+            .write(core::ptr::null());
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(28)
+            .write(core::ptr::null());
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(32)
+            .write(core::ptr::null());
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(36)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x5b3d8 — __GLOBAL__I_a_31
