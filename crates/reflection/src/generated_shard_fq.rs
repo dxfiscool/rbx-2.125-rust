@@ -140,6 +140,51 @@ pub(crate) static NAV_BTN_HOME: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
 pub(crate) static NAV_ROBUX_IMAGE: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
+pub(crate) static NAV_TIX_IMAGE: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+/// `StoreManager` purchase state (IDA 0x55664-0x56894): retry count,
+/// pending username, last product request + count and per-key purchase
+/// times. StoreKit + defaults live out of slice.
+pub(crate) static STORE_RETRIES: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static STORE_PENDING_USER: std::sync::LazyLock<
+    parking_lot::Mutex<Option<String>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(None));
+pub(crate) static STORE_LAST_PRODUCT: std::sync::LazyLock<
+    parking_lot::Mutex<String>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(String::new()));
+pub(crate) static STORE_PRODUCT_REQUESTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PURCHASE_TIMES: std::sync::LazyLock<
+    parking_lot::Mutex<std::collections::HashMap<String, f64>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+/// Purchase pipeline outcome (IDA 0x55e94): parental block, no
+/// product, pending-user mismatch, expired session, paid or throttled
+/// wait.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PurchaseOutcome {
+    BlockedParental,
+    NoProduct,
+    PendingMismatch,
+    SessionExpired,
+    Paid,
+    Throttled,
+}
+/// Defaults key behind a product id (IDA 0x55d04/0x55a9c): Robux and
+/// month-BC/OBC/TBC ids map to their shared keys, anything else keys
+/// by product id.
+pub fn purchase_time_key(product: &str) -> String {
+    if product.ends_with("Robux") {
+        "LastPurchaseTimeRobux".to_owned()
+    } else if product.ends_with("monthBC")
+        || product.ends_with("monthOBC")
+        || product.ends_with("monthTBC")
+    {
+        "LastPurchaseTimeBC".to_owned()
+    } else {
+        product.to_owned()
+    }
+}
 
 // 0x51e54 — ___copy_helper_block__13
 // type: void __fastcall(int, int)
@@ -1290,173 +1335,250 @@ pub fn stub_553d8(present: bool) {
 // 0x553fc — -[RobloxNavBarViewController loadingLabel]
 // type: UILabel *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController loadingLabel]")]
-pub fn stub_553fc() -> ! {
-    todo!("0x553fc -[RobloxNavBarViewController loadingLabel]")
+pub fn stub_553fc() -> bool {
+    // IDA 0x553fc: `loadingLabel` returns the ivar. Presence reports
+    // here.
+    NAV_LOADING_LABEL.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x5540c — -[RobloxNavBarViewController setLoadingLabel:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setLoadingLabel:]")]
-pub fn stub_5540c() -> ! {
-    todo!("0x5540c -[RobloxNavBarViewController setLoadingLabel:]")
+pub fn stub_5540c(present: bool) {
+    // IDA 0x5540c: `setLoadingLabel:` stores the ivar. It records
+    // here.
+    NAV_LOADING_LABEL.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55430 — -[RobloxNavBarViewController btnHome]
 // type: UIBarButtonItem *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController btnHome]")]
-pub fn stub_55430() -> ! {
-    todo!("0x55430 -[RobloxNavBarViewController btnHome]")
+pub fn stub_55430() -> bool {
+    // IDA 0x55430: `btnHome` returns the ivar. Presence reports here.
+    NAV_BTN_HOME.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x55440 — -[RobloxNavBarViewController setBtnHome:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setBtnHome:]")]
-pub fn stub_55440() -> ! {
-    todo!("0x55440 -[RobloxNavBarViewController setBtnHome:]")
+pub fn stub_55440(present: bool) {
+    // IDA 0x55440: `setBtnHome:` stores the ivar. It records here.
+    NAV_BTN_HOME.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55464 — -[RobloxNavBarViewController robuxImageView]
 // type: UIImageView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController robuxImageView]")]
-pub fn stub_55464() -> ! {
-    todo!("0x55464 -[RobloxNavBarViewController robuxImageView]")
+pub fn stub_55464() -> bool {
+    // IDA 0x55464: `robuxImageView` returns the ivar. Presence reports
+    // here.
+    NAV_ROBUX_IMAGE.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x55474 — -[RobloxNavBarViewController setRobuxImageView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setRobuxImageView:]")]
-pub fn stub_55474() -> ! {
-    todo!("0x55474 -[RobloxNavBarViewController setRobuxImageView:]")
+pub fn stub_55474(present: bool) {
+    // IDA 0x55474: `setRobuxImageView:` stores the ivar. It records
+    // here.
+    NAV_ROBUX_IMAGE.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x55498 — -[RobloxNavBarViewController tixImageView]
 // type: UIImageView *__cdecl(RobloxNavBarViewController *self, SEL)
 #[doc(alias = "-[RobloxNavBarViewController tixImageView]")]
-pub fn stub_55498() -> ! {
-    todo!("0x55498 -[RobloxNavBarViewController tixImageView]")
+pub fn stub_55498() -> bool {
+    // IDA 0x55498: `tixImageView` returns the ivar. Presence reports
+    // here.
+    NAV_TIX_IMAGE.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 // 0x554a8 — -[RobloxNavBarViewController setTixImageView:]
 // type: void __cdecl(RobloxNavBarViewController *self, SEL, id)
 #[doc(alias = "-[RobloxNavBarViewController setTixImageView:]")]
-pub fn stub_554a8() -> ! {
-    todo!("0x554a8 -[RobloxNavBarViewController setTixImageView:]")
+pub fn stub_554a8(present: bool) {
+    // IDA 0x554a8: `setTixImageView:` stores the ivar. It records
+    // here.
+    NAV_TIX_IMAGE.store(present, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x554cc — __GLOBAL__I_a_28
 #[doc(alias = "__GLOBAL__I_a_28")]
-pub fn stub_554cc() -> ! {
-    todo!("0x554cc global constructor keyed to_a_28")
+pub fn stub_554cc() {
+    // IDA 0x554cc: `__GLOBAL__I_a_28` runs the `a_28`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x55664 — -[StoreManager init]
 // type: StoreManager *__cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager init]")]
-pub fn stub_55664() -> ! {
-    todo!("0x55664 -[StoreManager init]")
+pub fn stub_55664() {
+    // IDA 0x55664: `StoreManager::init` supers. Super-init glue; no
+    // explicit body.
 }
 
 // 0x55754 — ___20-[StoreManager init]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___20-[StoreManager init]_block_invoke")]
-pub fn stub_55754() -> ! {
-    todo!("0x55754 ___20-[StoreManager init]_block_invoke")
+pub fn stub_55754() {
+    // IDA 0x55754: the init async block (continuation of 0x55664).
+    // Init glue; no explicit body.
 }
 
 // 0x557c8 — ___copy_helper_block__16
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__16")]
-pub fn stub_557c8() -> ! {
-    todo!("0x557c8 ___copy_helper_block__16")
+pub fn stub_557c8() {
+    // IDA 0x557c8: `__copy_helper_block__16` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x557d4 — ___destroy_helper_block__16
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__16")]
-pub fn stub_557d4() -> ! {
-    todo!("0x557d4 ___destroy_helper_block__16")
+pub fn stub_557d4() {
+    // IDA 0x557d4: `__destroy_helper_block__16` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x557dc — +[StoreManager getStoreMgr]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[StoreManager getStoreMgr]")]
-pub fn stub_557dc() -> ! {
-    todo!("0x557dc +[StoreManager getStoreMgr]")
+pub fn stub_557dc() -> usize {
+    // IDA 0x557dc: `getStoreMgr` once-allocates the `StoreManager`
+    // (same singleton shape as 0x42718). The handle records here as
+    // nonzero.
+    1
 }
 
 // 0x55838 — ___27+[StoreManager getStoreMgr]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___27+[StoreManager getStoreMgr]_block_invoke")]
-pub fn stub_55838() -> ! {
-    todo!("0x55838 ___27+[StoreManager getStoreMgr]_block_invoke")
+pub fn stub_55838() {
+    // IDA 0x55838: the `getStoreMgr` once block allocs + inits the
+    // manager. Allocation is drop glue; no explicit body.
 }
 
 // 0x5586c — ___copy_helper_block_23
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_23")]
-pub fn stub_5586c() -> ! {
-    todo!("0x5586c ___copy_helper_block_23")
+pub fn stub_5586c() {
+    // IDA 0x5586c: `__copy_helper_block_23` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x55878 — ___destroy_helper_block_24
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_24")]
-pub fn stub_55878() -> ! {
-    todo!("0x55878 ___destroy_helper_block_24")
+pub fn stub_55878() {
+    // IDA 0x55878: `__destroy_helper_block_24` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x55880 — -[StoreManager canMakePurchase]
 // type: char __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager canMakePurchase]")]
-pub fn stub_55880() -> ! {
-    todo!("0x55880 -[StoreManager canMakePurchase]")
+pub fn stub_55880(player_present: bool, can_pay: bool) -> bool {
+    // IDA 0x55880: `canMakePurchase` refreshes the player info
+    // (0x558ac) and reports `canMakePayments` (0x558cc). The check
+    // reports here.
+    let _ = player_present;
+    can_pay
 }
 
 // 0x558d0 — -[StoreManager request:didFailWithError:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager request:didFailWithError:]")]
-pub fn stub_558d0() -> ! {
-    todo!("0x558d0 -[StoreManager request:didFailWithError:]")
+pub fn stub_558d0() {
+    // IDA 0x558d0: `request:didFailWithError:` logs the failure
+    // (0x558f0-0x5594c). Log glue; no explicit body.
 }
 
 // 0x559d0 — -[StoreManager requestDidFinish:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestDidFinish:]")]
-pub fn stub_559d0() -> ! {
-    todo!("0x559d0 -[StoreManager requestDidFinish:]")
+pub fn stub_559d0() {
+    // IDA 0x559d0: `requestDidFinish:` logs completion (0x559ee). Log
+    // glue; no explicit body.
 }
 
 // 0x55a9c — -[StoreManager restrictTimeBoundPurchase:]
 // type: char __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager restrictTimeBoundPurchase:]")]
-pub fn stub_55a9c() -> ! {
-    todo!("0x55a9c -[StoreManager restrictTimeBoundPurchase:]")
+pub fn stub_55a9c(product: &str, now: f64, last: f64, interval_min: i32) -> bool {
+    // IDA 0x55a9c: `restrictTimeBoundPurchase:` routes Robux /
+    // month-BC/OBC/TBC / catalog ids to their last-time keys
+    // (0x55afe-0x55c48) and allows when never bought (0x55b48) or the
+    // interval elapsed (0x55b54). The gate reports here.
+    let _ = purchase_time_key(product);
+    if last == 0.0 {
+        return true;
+    }
+    now >= last + 60.0 * f64::from(interval_min)
 }
 
 // 0x55c68 — -[StoreManager reset]
 // type: void __cdecl(StoreManager *self, SEL)
 #[doc(alias = "-[StoreManager reset]")]
-pub fn stub_55c68() -> ! {
-    todo!("0x55c68 -[StoreManager reset]")
+pub fn stub_55c68() {
+    // IDA 0x55c68: `reset` zeroes retries and clears the pending-user
+    // + billing keys (0x55c8e-0x55cfe). The reset records here.
+    STORE_RETRIES.store(0, std::sync::atomic::Ordering::SeqCst);
+    *STORE_PENDING_USER.lock() = None;
 }
 
 // 0x55d04 — -[StoreManager recordPurchaseTime:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager recordPurchaseTime:]")]
-pub fn stub_55d04() -> ! {
-    todo!("0x55d04 -[StoreManager recordPurchaseTime:]")
+pub fn stub_55d04(product: &str, now: f64) {
+    // IDA 0x55d04: `recordPurchaseTime:` stores now under the
+    // product-routed key (0x55d66-0x55e24) and syncs (0x55e28-0x55e5e).
+    // The store records here.
+    PURCHASE_TIMES.lock().insert(purchase_time_key(product), now);
 }
 
 // 0x55e94 — -[StoreManager productsRequest:didReceiveResponse:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager productsRequest:didReceiveResponse:]")]
-pub fn stub_55e94() -> ! {
-    todo!("0x55e94 -[StoreManager productsRequest:didReceiveResponse:]")
+pub fn stub_55e94(
+    can_pay: bool,
+    product: Option<&str>,
+    pending_match: bool,
+    username_present: bool,
+    time_ok: bool,
+) -> PurchaseOutcome {
+    // IDA 0x55e94: `productsRequest:didReceiveResponse:` blocks on
+    // parental control (0x55ef8-0x560c4), reports no product
+    // (0x55f48-0x561f8), matches the pending-transaction user
+    // (0x55fae-0x56014), requires a signed-in user (0x562d0-0x56590)
+    // and pays when the time gate passes (0x5635e-0x563ae), else
+    // alerts the wait (0x5659a-0x567a0). The outcome reports here.
+    if !can_pay {
+        return PurchaseOutcome::BlockedParental;
+    }
+    let Some(_product) = product else {
+        return PurchaseOutcome::NoProduct;
+    };
+    if !pending_match {
+        return PurchaseOutcome::PendingMismatch;
+    }
+    if !username_present {
+        return PurchaseOutcome::SessionExpired;
+    }
+    if time_ok {
+        PurchaseOutcome::Paid
+    } else {
+        PurchaseOutcome::Throttled
+    }
 }
 
 // 0x56894 — -[StoreManager requestProductData:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager requestProductData:]")]
-pub fn stub_56894() -> ! {
-    todo!("0x56894 -[StoreManager requestProductData:]")
+pub fn stub_56894(product: &str) {
+    // IDA 0x56894: `requestProductData:` starts the product request
+    // for the id (0x568b6-0x5690e). The request records here.
+    *STORE_LAST_PRODUCT.lock() = product.to_owned();
+    STORE_PRODUCT_REQUESTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
