@@ -7,6 +7,51 @@
 
 use rbx_core::SharedPtr;
 
+/// `boost::_bi::bind_t` capture: target fn plus `(RobloxView, flag)` (IDA 0x33470).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct BindViewFlag {
+    pub target: usize,
+    pub view: usize,
+    pub flag: i8,
+}
+
+/// Teleporter request state (IDA 0x33550).
+#[derive(Clone, Debug, Default)]
+pub struct Teleporter {
+    pub place_id: i32,
+    pub url: String,
+}
+
+/// `boost::_bi::bind_t` capture: target fn plus `(launcher, string x3)` (IDA 0x33924).
+#[derive(Clone, Debug, Default)]
+pub struct BindLauncherStrings {
+    pub target: usize,
+    pub launcher: usize,
+    pub s0: String,
+    pub s1: String,
+    pub s2: String,
+}
+
+/// `boost::_bi::list4` head: launcher plus two strings (IDA 0x341ac).
+#[derive(Clone, Debug, Default)]
+pub struct List3LauncherStrings {
+    pub launcher: usize,
+    pub s0: String,
+    pub s1: String,
+}
+
+/// `boost::function0<void>` holding one launcher functor (IDA 0x342f4).
+#[derive(Clone, Debug, Default)]
+pub struct VoidLauncherCallback {
+    pub bound: Option<BindLauncherStrings>,
+}
+
+/// `RBX::Http` request state (IDA 0x33368).
+#[derive(Clone, Debug, Default)]
+pub struct Http {
+    pub url: String,
+}
+
 /// `rbx::signals` callable slot for `signal<void(std::string)>` (IDA 0x31fc0).
 #[derive(Clone, Debug, Default)]
 pub struct CallableSlot {
@@ -703,8 +748,10 @@ pub fn stub_32c48(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_32c64() -> ! {
-    todo!("0x32c64 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,bo")
+pub fn stub_32c64(bound: &BindViewGame, invoke: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x32c64: void_function_obj_invoker0::invoke: functor f from the buffer;
+    // list2::operator()<F(view, game), list0> calls f(view, game).
+    invoke(bound.view, bound.game.ptr);
 }
 
 // 0x32c78 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
@@ -712,8 +759,10 @@ pub fn stub_32c64() -> ! {
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<")]
-pub fn stub_32c78() -> ! {
-    todo!("0x32c78 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxV")
+pub fn stub_32c78(cb: &mut VoidViewCallback, bound: BindViewGame) -> bool {
+    // IDA 0x32c78: basic_vtable0::assign_to: functor + shared_count copied, stored vtable; true.
+    cb.bound = Some(bound);
+    true
 }
 
 // 0x32d60 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -721,8 +770,10 @@ pub fn stub_32c78() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<")]
-pub fn stub_32d60() -> ! {
-    todo!("0x32d60 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxV")
+pub fn stub_32d60(cb: &mut VoidViewCallback, bound: BindViewGame) -> bool {
+    // IDA 0x32d60: tagged assign_to overload: vetted functor stored directly; true.
+    cb.bound = Some(bound);
+    true
 }
 
 // 0x32e74 — __ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvS4_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -730,8 +781,9 @@ pub fn stub_32d60() -> ! {
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>::operator()<void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>) &,boost::_bi::list0 &,int)")]
-pub fn stub_32e74() -> ! {
-    todo!("0x32e74 void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::")
+pub fn stub_32e74(bound: &BindViewGame, invoke: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x32e74: F = stored target; shared_count copied for the call; F(view, game); temp released.
+    invoke(bound.view, bound.game.ptr);
 }
 
 // 0x32f4c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -739,8 +791,27 @@ pub fn stub_32e74() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,rbx_core::SharedPtr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
-pub fn stub_32f4c() -> ! {
-    todo!("0x32f4c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::v")
+pub fn stub_32f4c(op: i32, src: &mut Option<BindViewGame>, dst: &mut Option<BindViewGame>, release: &mut dyn FnMut(usize)) -> bool {
+    // IDA 0x32f4c: 0 clone (new 0x10, field + shared_count copy, store); 1 move; 2 destroy (release,
+    // delete, clear); 3 check type.
+    match op {
+        0 => {
+            *dst = src.clone();
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            if let Some(bound) = dst.take() {
+                release(bound.game.counted);
+            }
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x33080 — __ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperISiEENS4_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEENS1_26device_close_all_operationIS5_EENSD_ISB_EEEENS1_14execute_traitsIT_NS_9result_ofIFSH_vEE4typeEE11result_typeESH_T0_T1_
@@ -748,8 +819,16 @@ pub fn stub_32f4c() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,st")]
-pub fn stub_33080() -> ! {
-    todo!("0x33080 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std:")
+pub fn stub_33080(src: &[u8], chunk_size: usize, copy_chunk: &mut dyn FnMut(&[u8]) -> Vec<u8>, close: &mut dyn FnMut()) -> usize {
+    // IDA 0x33080: execute_all: copy istream→ostringstream in 4096 chunks, then device_close_all on
+    // both; total bytes.
+    let mut total = 0;
+    for piece in src.chunks(chunk_size.max(1)) {
+        total += copy_chunk(piece).len();
+    }
+    close();
+    close();
+    total
 }
 
 // 0x33188 — __ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperISiEENS4_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEENS1_26device_close_all_operationIS5_EEEENS1_14execute_traitsIT_NS_9result_ofIFSG_vEE4typeEE11result_typeESG_T0_
@@ -757,8 +836,14 @@ pub fn stub_33080() -> ! {
 // type: int __fastcall(int, int, int, int, void *, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,st")]
-pub fn stub_33188() -> ! {
-    todo!("0x33188 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std:")
+pub fn stub_33188(src: &[u8], chunk_size: usize, copy_chunk: &mut dyn FnMut(&[u8]) -> Vec<u8>, close: &mut dyn FnMut()) -> usize {
+    // IDA 0x33188: execute_all with a single close_all op: copy in chunks, close, total bytes.
+    let mut total = 0;
+    for piece in src.chunks(chunk_size.max(1)) {
+        total += copy_chunk(piece).len();
+    }
+    close();
+    total
 }
 
 // 0x33250 — __ZN5boost9iostreams6detail9copy_implINS_17reference_wrapperISiEENS3_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEEiRT_RT0_iN4mpl_5bool_ILb0EEESH_
@@ -766,16 +851,23 @@ pub fn stub_33188() -> ! {
 // type: int __fastcall(int, int, unsigned int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)")]
-pub fn stub_33250() -> ! {
-    todo!("0x33250 int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>")
+pub fn stub_33250(src: &[u8], buf_size: usize, write: &mut dyn FnMut(&[u8])) -> usize {
+    // IDA 0x33250: heap buffer of bufsize; read/write loop to EOF; total bytes.
+    let mut total = 0;
+    for piece in src.chunks(buf_size.max(1)) {
+        write(piece);
+        total += piece.len();
+    }
+    total
 }
 
 // 0x33368 — __ZN3RBX4HttpC2EPKc
 // demangled: RBX::Http::Http(char const*)
 // type: RBX::Http *__fastcall(RBX::Http *this, const char *)
 #[doc(alias = "RBX::Http::Http(char const*)")]
-pub fn stub_33368() -> ! {
-    todo!("0x33368 RBX::Http::Http(char const*)")
+pub fn stub_33368(url: &str) -> Http {
+    // IDA 0x33368: Http ctor stores the URL (below truncation).
+    Http { url: url.to_owned() }
 }
 
 // 0x33470 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
@@ -783,8 +875,24 @@ pub fn stub_33368() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
-pub fn stub_33470() -> ! {
-    todo!("0x33470 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>")
+pub fn stub_33470(op: i32, src: &mut Option<BindViewFlag>, dst: &mut Option<BindViewFlag>) -> bool {
+    // IDA 0x33470: 0 clone; 1 move; 2 destroy; 3 check type.
+    match op {
+        0 => {
+            *dst = *src;
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            *dst = None;
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x334d0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP10RobloxViewaENS3_5list2INS3_5valueIS6_EENSA_IaEEEEEEvE6invokeERNS1_15function_bufferE
@@ -792,8 +900,9 @@ pub fn stub_33470() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<signed char>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_334d0() -> ! {
-    todo!("0x334d0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView *,signed char),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<s")
+pub fn stub_334d0(bound: &BindViewFlag, invoke: &mut dyn FnMut(usize, i8)) {
+    // IDA 0x334d0: F = stored target; F(view, flag).
+    invoke(bound.view, bound.flag);
 }
 
 // 0x334dc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
@@ -801,8 +910,25 @@ pub fn stub_334d0() -> ! {
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object")]
-pub fn stub_334dc() -> ! {
-    todo!("0x334dc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_s")
+pub fn stub_334dc(op: i32, src: &mut Option<BindObjc>, dst: &mut Option<BindObjc>) -> bool {
+    // IDA 0x334dc: 4 → typeinfo; ≤1 → copy-or-move words; 2 → destroy; 3 → check type.
+    match op {
+        4 => true,
+        0 => {
+            *dst = *src;
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            *dst = None;
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x3353c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEvE6invokeERNS1_15function_bufferE
@@ -810,40 +936,44 @@ pub fn stub_334dc() -> ! {
 // type: int __fastcall(int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_3353c() -> ! {
-    todo!("0x3353c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::l")
+pub fn stub_3353c(bound: &BindObjc, invoke: &mut dyn FnMut(usize, usize)) {
+    // IDA 0x3353c: F = stored target; F(obj, sel).
+    invoke(bound.obj, bound.sel);
 }
 
 // 0x33548 — __ZN10TeleporterD1Ev
 // demangled: Teleporter::~Teleporter()
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
-pub fn stub_33548() -> ! {
-    todo!("0x33548 Teleporter::~Teleporter()")
+pub fn stub_33548() {
+    // IDA 0x33548: empty Teleporter dtor body.
 }
 
 // 0x3354c — __ZN10TeleporterD0Ev
 // demangled: Teleporter::~Teleporter()
 // type: void __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::~Teleporter()")]
-pub fn stub_3354c() -> ! {
-    todo!("0x3354c Teleporter::~Teleporter()")
+pub fn stub_3354c(_teleporter: Teleporter) {
+    // IDA 0x3354c: deleting dtor (drop on take).
+    let _ = _teleporter;
 }
 
 // 0x33550 — __ZN10Teleporter10doTeleportERKSsS1_S1_
 // demangled: Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)
 // type: _DWORD __fastcall(Teleporter *__hidden this, const std::string *, const std::string *, const std::string *)
 #[doc(alias = "Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")]
-pub fn stub_33550() -> ! {
-    todo!("0x33550 Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")
+pub fn stub_33550(t: &Teleporter, place: &str, ticket: &str, teleport: &mut dyn FnMut(&str, &str, &str)) {
+    // IDA 0x33550: build the teleport request from the three strings; dispatch (below truncation).
+    teleport(&t.url, place, ticket);
 }
 
 // 0x33920 — __ZNK10Teleporter17isTeleportEnabledEv
 // demangled: Teleporter::isTeleportEnabled(void)const
 // type: _DWORD __fastcall(Teleporter *__hidden this)
 #[doc(alias = "Teleporter::isTeleportEnabled(void)const")]
-pub fn stub_33920() -> ! {
-    todo!("0x33920 Teleporter::isTeleportEnabled(void)const")
+pub fn stub_33920() -> bool {
+    // IDA 0x33920: always enabled (MOVS-equivalent constant return).
+    true
 }
 
 // 0x33924 — __ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
@@ -851,16 +981,18 @@ pub fn stub_33920() -> ! {
 // type: int __fastcall(int, int, int, std::string *, std::string *, std::string *)
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::str")]
-pub fn stub_33924() -> ! {
-    todo!("0x33924 boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<")
+pub fn stub_33924(target: usize, launcher: usize, s0: &str, s1: &str, s2: &str) -> BindLauncherStrings {
+    // IDA 0x33924: three std::string copies into list4; bind_t pack; temps released.
+    BindLauncherStrings { target, launcher, s0: s0.to_owned(), s1: s1.to_owned(), s2: s2.to_owned() }
 }
 
 // 0x33d00 — __ZN10Teleporter12teleportImplEP13PlaceLauncherSsSsSs
 // demangled: Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)
 // type: 
 #[doc(alias = "Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)")]
-pub fn stub_33d00() -> ! {
-    todo!("0x33d00 Teleporter::teleportImpl(PlaceLauncher *,std::string,std::string,std::string)")
+pub fn stub_33d00(url: &str, place: &str, ticket: &str, open_url: &mut dyn FnMut(&str, &str, &str) -> usize) -> usize {
+    // IDA 0x33d00: NSString conversions (defaultCStringEncoding) then the teleport open call.
+    open_url(url, place, ticket)
 }
 
 // 0x33db0 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
@@ -868,8 +1000,9 @@ pub fn stub_33d00() -> ! {
 // type: int __fastcall(int, int, std::string *, int, std::string *)
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
-pub fn stub_33db0() -> ! {
-    todo!("0x33db0 boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLau")
+pub fn stub_33db0(launcher: usize, s0: &str, s1: &str, s2: &str) -> BindLauncherStrings {
+    // IDA 0x33db0: list4 ctor: launcher stored, three strings copied in.
+    BindLauncherStrings { target: 0, launcher, s0: s0.to_owned(), s1: s1.to_owned(), s2: s2.to_owned() }
 }
 
 // 0x33fe0 — __ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
@@ -877,8 +1010,9 @@ pub fn stub_33db0() -> ! {
 // type: int __fastcall(int, int, std::string *, int, std::string *)
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
-pub fn stub_33fe0() -> ! {
-    todo!("0x33fe0 boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<Pl")
+pub fn stub_33fe0(launcher: usize, s0: &str, s1: &str, s2: &str) -> BindLauncherStrings {
+    // IDA 0x33fe0: storage4 ctor: launcher + three strings stored.
+    stub_33db0(launcher, s0, s1, s2)
 }
 
 // 0x341ac — __ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_
@@ -886,24 +1020,29 @@ pub fn stub_33fe0() -> ! {
 // type: int __fastcall(int, int, std::string *)
 // was: boost::shared_ptr
 #[doc(alias = "boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
-pub fn stub_341ac() -> ! {
-    todo!("0x341ac boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::valu")
+pub fn stub_341ac(launcher: usize, s0: &str, s1: &str) -> List3LauncherStrings {
+    // IDA 0x341ac: storage3 ctor: launcher + two strings stored.
+    List3LauncherStrings { launcher, s0: s0.to_owned(), s1: s1.to_owned() }
 }
 
 // 0x342f4 — __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE
 // demangled: __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_342f4() -> ! {
-    todo!("0x342f4 __ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_inte")
+pub fn stub_342f4(bound: BindLauncherStrings) -> VoidLauncherCallback {
+    // IDA 0x342f4: function<void()> ctor: bind_t copied to temp, forwarded to function0 ctor.
+    VoidLauncherCallback { bound: Some(bound) }
 }
 
 // 0x345b0 — __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE
 // demangled: __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")]
-pub fn stub_345b0() -> ! {
-    todo!("0x345b0 __ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integr")
+pub fn stub_345b0(bound: BindLauncherStrings) -> VoidLauncherCallback {
+    // IDA 0x345b0: function0 ctor: *a1 = 0, then assign_to; temp released.
+    let mut cb = VoidLauncherCallback::default();
+    stub_34870(&mut cb, bound);
+    cb
 }
 
 // 0x34870 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEEvT_
@@ -911,8 +1050,9 @@ pub fn stub_345b0() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<Plac")]
-pub fn stub_34870() -> ! {
-    todo!("0x34870 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,bo")
+pub fn stub_34870(cb: &mut VoidLauncherCallback, bound: BindLauncherStrings) {
+    // IDA 0x34870: function0::assign_to: functor + strings copied, stored vtable.
+    cb.bound = Some(bound);
 }
 
 // 0x34b40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
