@@ -7,6 +7,7 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::sync::LazyLock;
 // ── IMPL batch (11 stubs 0x26b464..0x26df08) ─────────────────────────────────
 // LuaArguments getters + ArgumentPusher Instance/vector pushers. Grounded from
 // IDA decompile over MCP (this session): every getter computes the absolute
@@ -136,6 +137,98 @@ impl LuaArguments {
         self.base + n
     }
 }
+impl BridgeState {
+    pub fn push_str(&mut self, s: &[u8]) {
+        self.stack.push(BridgeVal::Str(s.to_vec()));
+    }
+    pub fn push_num(&mut self, v: f64) {
+        self.stack.push(BridgeVal::Num(v));
+    }
+    pub fn push_bool(&mut self, v: bool) {
+        self.stack.push(BridgeVal::Bool(v));
+    }
+    // Lua 5.1 value readers for the argument getters: tolstring
+    // (IDA 0x26b498), tonumber (0x26b696), toboolean (0x26b6dc). Typed-slot
+    // match, None on mismatch (false, no raise).
+    pub fn get_str(&self, idx: i32) -> Option<Vec<u8>> {
+        match self.slot(idx) {
+            BridgeVal::Str(v) => Some(v.clone()),
+            _ => None,
+        }
+    }
+    pub fn get_num(&self, idx: i32) -> Option<f64> {
+        match self.slot(idx) {
+            BridgeVal::Num(v) => Some(*v),
+            _ => None,
+        }
+    }
+    pub fn get_bool(&self, idx: i32) -> Option<bool> {
+        match self.slot(idx) {
+            BridgeVal::Bool(v) => Some(*v),
+            _ => None,
+        }
+    }
+}
+impl LuaArguments {
+    fn gated(&self, n: i32) -> Option<i32> {
+        // Absolute index plus the gettop bound shared by every getter
+        // (IDA 0x26b474..0x26b480 and kin); sub-1 indices fold OOB-UB into
+        // false.
+        let abs = self.abs(n);
+        if abs < 1 || abs > self.l.gettop() {
+            return None;
+        }
+        Some(abs)
+    }
+    /// `getString` (IDA 0x26b464): type-4 dispatch (0x26b48a..0x26b490).
+    pub fn get_string(&self, n: i32) -> Option<Vec<u8>> {
+        let abs = self.gated(n)?;
+        if self.l.lua_type(abs) != 4 {
+            return None;
+        }
+        self.l.get_str(abs)
+    }
+    /// `getDouble` (IDA 0x26b660): type-3 dispatch (0x26b684..0x26b68a).
+    pub fn get_double(&self, n: i32) -> Option<f64> {
+        let abs = self.gated(n)?;
+        if self.l.lua_type(abs) != 3 {
+            return None;
+        }
+        self.l.get_num(abs)
+    }
+    /// `getBool` (IDA 0x26b6a0): type-1 dispatch (0x26b6c4..0x26b6ca).
+    pub fn get_bool(&self, n: i32) -> Option<bool> {
+        let abs = self.gated(n)?;
+        if self.l.lua_type(abs) != 1 {
+            return None;
+        }
+        self.l.get_bool(abs)
+    }
+    /// Vector/region getters delegate to `Bridge<T,true>::getValue`
+    /// (IDA 0x26b4d0 and kin) after the shared bound check.
+    pub fn get_vector3int16(&self, n: i32) -> Option<Vector3int16> {
+        let abs = self.gated(n)?;
+        self.l.get_vec3i16(abs)
+    }
+    pub fn get_region3int16(&self, n: i32) -> Option<Region3int16> {
+        let abs = self.gated(n)?;
+        self.l.get_region3i16(abs)
+    }
+    pub fn get_vector3(&self, n: i32) -> Option<Vector3> {
+        let abs = self.gated(n)?;
+        self.l.get_vec3(abs)
+    }
+    pub fn get_region3(&self, n: i32) -> Option<Region3> {
+        let abs = self.gated(n)?;
+        self.l.get_region3(abs)
+    }
+}
+/// `Name::doDeclare<sStarterScript>` singleton (IDA 0x26a4fc: guarded
+/// once-init at 0x26a558..0x26a582 answering the static at 0x26a5b0).
+static STARTER_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "StarterScript");
+/// `Name::doDeclare<sCoreScript>` singleton (IDA 0x26a5e0: guarded once-init
+/// at 0x26a63c..0x26a666 answering the static at 0x26a694).
+static CORE_SCRIPT_NAME: LazyLock<&'static str> = LazyLock::new(|| "CoreScript");
 
 // Script bootstrap records (IDA 0x26990..0x2c046): URL fetch, signature
 // verification, and threaded execution fold into host services; the request
@@ -452,180 +545,220 @@ pub fn stub_0x26a378() {
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a380]")]
-pub fn stub_0x26a380() -> ! {
-    todo!("0x26a380 __ZThn32_N3RBX13StarterScriptD0Ev")
+pub fn stub_0x26a380() {
+    // IDA 0x26a380: thn32 D0 adjusts `this` by -32 (0x26a3aa), runs the base
+    // dtor (0x26a3d2), and deletes (0x26a3d8); all fold into drop glue —
+    // no-op.
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
 #[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")]
-pub fn stub_0x26a424() -> ! {
-    todo!("0x26a424 __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv")
+pub fn stub_0x26a424() -> &'static str {
+    // IDA 0x26a424: thn32 `getClassName` runs the same
+    // `declare<sStarterScript>` body as 0x26a1d8 runs for CoreScript
+    // (`this`-insensitive).
+    "StarterScript"
 }
 
 // 0x26a44c — __ZThn36_N3RBX13StarterScriptD1Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a44c]")]
-pub fn stub_0x26a44c() -> ! {
-    todo!("0x26a44c __ZThn36_N3RBX13StarterScriptD1Ev")
+pub fn stub_0x26a44c() {
+    // IDA 0x26a44c: thn36 D1 adjusts `this` by -36 and runs the base dtor
+    // (same shape as 0x26a200); both fold into drop glue — no-op.
 }
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::StarterScript::~StarterScript() [0x26a454]")]
-pub fn stub_0x26a454() -> ! {
-    todo!("0x26a454 __ZThn36_N3RBX13StarterScriptD0Ev")
+pub fn stub_0x26a454() {
+    // IDA 0x26a454: thn36 D0 (full body: adjust, base dtor, delete; same
+    // shape as 0x26a208); all fold into drop glue — no-op.
 }
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")]
-pub fn stub_0x26a4f8() -> ! {
-    todo!("0x26a4f8 __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv")
+pub fn stub_0x26a4f8() -> &'static str {
+    // IDA 0x26a4f8: thunk forwarding to the `doDeclare<sStarterScript>`
+    // shim (0x26a4f8).
+    stub_0x26a4fc()
 }
 
 // 0x26a4fc — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")]
-pub fn stub_0x26a4fc() -> ! {
-    todo!("0x26a4fc __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v")
+pub fn stub_0x26a4fc() -> &'static str {
+    // IDA 0x26a4fc: `doDeclare<sStarterScript>` — see `STARTER_SCRIPT_NAME`.
+    *STARTER_SCRIPT_NAME
 }
 
 // 0x26a5dc — __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")]
-pub fn stub_0x26a5dc() -> ! {
-    todo!("0x26a5dc __ZN3RBX4Name13callDoDeclareILZNS_11sCoreScriptEEEEvv")
+pub fn stub_0x26a5dc() -> &'static str {
+    // IDA 0x26a5dc: thunk forwarding to the `doDeclare<sCoreScript>` shim.
+    stub_0x26a5e0()
 }
 
 // 0x26a5e0 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v
 // type: int()
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")]
-pub fn stub_0x26a5e0() -> ! {
-    todo!("0x26a5e0 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v")
+pub fn stub_0x26a5e0() -> &'static str {
+    // IDA 0x26a5e0: `doDeclare<sCoreScript>` — see `CORE_SCRIPT_NAME`.
+    *CORE_SCRIPT_NAME
 }
 
 // 0x26ada0 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26ada0() -> ! {
-    todo!("0x26ada0 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26ada0() {
+    // IDA 0x26ada0: D1 thunk running `BaseScript::~BaseScript`; drop glue
+    // covers it — no-op.
 }
 
 // 0x26ada4 — __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(RBX::BaseScript *)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26ada4() -> ! {
-    todo!("0x26ada4 __ZN3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26ada4() {
+    // IDA 0x26ada4: D0 (base dtor plus delete, same shape as 0x26a2b0);
+    // both fold into drop glue — no-op.
 }
 
 // 0x26ae44 — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26ae44() -> ! {
-    todo!("0x26ae44 __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26ae44() {
+    // IDA 0x26ae44: thn32 D1 (adjust plus base dtor, same shape as
+    // 0x26a378); both fold into drop glue — no-op.
 }
 
 // 0x26ae4c — __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26ae4c() -> ! {
-    todo!("0x26ae4c __ZThn32_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26ae4c() {
+    // IDA 0x26ae4c: thn32 D0 (adjust, base dtor, delete; same shape as
+    // 0x26a134); all fold into drop glue — no-op.
 }
 
 // 0x26aef0 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")]
-pub fn stub_0x26aef0() -> ! {
-    todo!("0x26aef0 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED1Ev")
+pub fn stub_0x26aef0() {
+    // IDA 0x26aef0: thn36 D1 (adjust plus base D2, same shape as 0x26a200);
+    // both fold into drop glue — no-op.
 }
 
 // 0x26aef8 — __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev
 // type: void __fastcall(int)
 #[doc(alias = "__ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")]
-pub fn stub_0x26aef8() -> ! {
-    todo!("0x26aef8 __ZThn36_N3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEED0Ev")
+pub fn stub_0x26aef8() {
+    // IDA 0x26aef8: thn36 D0 (full body, same shape as 0x26a208); all fold
+    // into drop glue — no-op.
 }
 
 // 0x26aff4 — __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State
 // type: void()
 #[doc(alias = "RBX::BaseScript::extraErrorReporting(lua_State *)")]
-pub fn stub_0x26aff4() -> ! {
-    todo!("0x26aff4 __ZN3RBX10BaseScript19extraErrorReportingEP9lua_State")
+pub fn stub_0x26aff4() {
+    // IDA 0x26aff4: `BaseScript::extraErrorReporting` has an empty body —
+    // no-op.
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, std::string *)
 #[doc(alias = "RBX::Lua::LuaArguments::getString(int,std::string &)const")]
-pub fn stub_0x26b464() -> ! {
-    todo!("0x26b464 __ZNK3RBX3Lua12LuaArguments9getStringEiRSs")
+pub fn stub_0x26b464(args: &LuaArguments, n: i32) -> Option<Vec<u8>> {
+    // IDA 0x26b464: `getString` — see `LuaArguments::get_string`.
+    args.get_string(n)
 }
 
 // 0x26b4ac — __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3int16(int,G3D::Vector3int16 &)const")]
-pub fn stub_0x26b4ac() -> ! {
-    todo!("0x26b4ac __ZNK3RBX3Lua12LuaArguments15getVector3int16EiRN3G3D12Vector3int16E")
+pub fn stub_0x26b4ac(args: &LuaArguments, n: i32) -> Option<Vector3int16> {
+    // IDA 0x26b4ac: `getVector3int16` — bound check (0x26b4ba..0x26b4c6)
+    // then `Bridge<Vector3int16,true>::getValue` (0x26b4d0).
+    args.get_vector3int16(n)
 }
 
 // 0x26b4d8 — __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3int16 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3int16(int,RBX::Region3int16 &)const")]
-pub fn stub_0x26b4d8() -> ! {
-    todo!("0x26b4d8 __ZNK3RBX3Lua12LuaArguments15getRegion3int16EiRNS_12Region3int16E")
+pub fn stub_0x26b4d8(args: &LuaArguments, n: i32) -> Option<Region3int16> {
+    // IDA 0x26b4d8: `getRegion3int16` — same bound-check plus
+    // `Bridge<Region3int16,true>::getValue` shape as 0x26b4ac.
+    args.get_region3int16(n)
 }
 
 // 0x26b504 — __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, G3D::Vector3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getVector3(int,G3D::Vector3 &)const")]
-pub fn stub_0x26b504() -> ! {
-    todo!("0x26b504 __ZNK3RBX3Lua12LuaArguments10getVector3EiRN3G3D7Vector3E")
+pub fn stub_0x26b504(args: &LuaArguments, n: i32) -> Option<Vector3> {
+    // IDA 0x26b504: `getVector3` — same bound-check plus
+    // `Bridge<Vector3,true>::getValue` shape as 0x26b4ac.
+    args.get_vector3(n)
 }
 
 // 0x26b530 — __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, RBX::Region3 *)
 #[doc(alias = "RBX::Lua::LuaArguments::getRegion3(int,RBX::Region3 &)const")]
-pub fn stub_0x26b530() -> ! {
-    todo!("0x26b530 __ZNK3RBX3Lua12LuaArguments10getRegion3EiRNS_7Region3E")
+pub fn stub_0x26b530(args: &LuaArguments, n: i32) -> Option<Region3> {
+    // IDA 0x26b530: `getRegion3` — same bound-check plus
+    // `Bridge<Region3,true>::getValue` shape as 0x26b4ac.
+    args.get_region3(n)
 }
 
 // 0x26b660 — __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, double *)
 #[doc(alias = "RBX::Lua::LuaArguments::getDouble(int,double &)const")]
-pub fn stub_0x26b660() -> ! {
-    todo!("0x26b660 __ZNK3RBX3Lua12LuaArguments9getDoubleEiRd")
+pub fn stub_0x26b660(args: &LuaArguments, n: i32) -> Option<f64> {
+    // IDA 0x26b660: `getDouble` — see `LuaArguments::get_double`.
+    args.get_double(n)
 }
 
 // 0x26b6a0 — __ZNK3RBX3Lua12LuaArguments7getBoolEiRb
 // type: int __fastcall(RBX::Lua::LuaArguments *this, int, bool *)
 #[doc(alias = "RBX::Lua::LuaArguments::getBool(int,bool &)const")]
-pub fn stub_0x26b6a0() -> ! {
-    todo!("0x26b6a0 __ZNK3RBX3Lua12LuaArguments7getBoolEiRb")
+pub fn stub_0x26b6a0(args: &LuaArguments, n: i32) -> Option<bool> {
+    // IDA 0x26b6a0: `getBool` — see `LuaArguments::get_bool`.
+    args.get_bool(n)
 }
 
 // 0x26c140 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3int16,true>::getValue<G3D::Vector3int16>(lua_State *,unsigned int,G3D::Vector3int16 &)")]
-pub fn stub_0x26c140() -> ! {
-    todo!("0x26c140 __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0x26c140(state: &BridgeState, idx: i32) -> Option<Vector3int16> {
+    // IDA 0x26c140: `Bridge<Vector3int16,true>::getValue` reads the
+    // userdata (0x26c152..0x26c156), checks the metatable against the class
+    // (0x26c160..0x26c1a0), and copies the value (0x26c1a2..0x26c1aa).
+    // MODEL: the stack/metatable walk folds into the typed-slot match.
+    state.get_vec3i16(idx)
 }
 
 // 0x26c1b8 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3int16,true>::getValue<RBX::Region3int16>(lua_State *,unsigned int,RBX::Region3int16 &)")]
-pub fn stub_0x26c1b8() -> ! {
-    todo!("0x26c1b8 __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8getValueIS2_EEbP9lua_StatejRT_")
+pub fn stub_0x26c1b8(state: &BridgeState, idx: i32) -> Option<Region3int16> {
+    // IDA 0x26c1b8: `Bridge<Region3int16,true>::getValue` — same
+    // userdata/metatable/copy shape as 0x26c140.
+    state.get_region3i16(idx)
 }
 
 // 0x26c230 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector3,true>::getValue<G3D::Vector3>(lua_State *,unsigned int,G3D::Vector3 &)")]
-pub fn stub_0x26c230() -> ! {
-    todo!("0x26c230 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8getValueIS3_EEbP9lua_StatejRT_")
+pub fn stub_0x26c230(state: &BridgeState, idx: i32) -> Option<Vector3> {
+    // IDA 0x26c230: `Bridge<Vector3,true>::getValue` — same shape as
+    // 0x26c140 (copy at 0x26c292..0x26c29e).
+    state.get_vec3(idx)
 }
 
 // 0x26c2ac — __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 #[doc(alias = "bool RBX::Lua::Bridge<RBX::Region3,true>::getValue<RBX::Region3>(lua_State *,unsigned int,RBX::Region3 &)")]
-pub fn stub_0x26c2ac() -> ! {
-    todo!("0x26c2ac __ZN3RBX3Lua6BridgeINS_7Region3ELb1EE8getValueIS2_EEbP9lua_StatejRT_")
+pub fn stub_0x26c2ac(state: &BridgeState, idx: i32) -> Option<Region3> {
+    // IDA 0x26c2ac: `Bridge<Region3,true>::getValue` — same shape as
+    // 0x26c140.
+    state.get_region3(idx)
 }
 
 // 0x26dc28 — __ZNK3RBX3Lua12LuaArguments4sizeEv
@@ -1066,5 +1199,80 @@ mod script_bootstrap_batch_tests {
         assert_eq!(stub_0x26a104(), "CoreScript");
         assert_eq!(stub_0x26a1d8(), "CoreScript");
         assert_eq!(stub_0x26a350(), "StarterScript");
+    }
+}
+
+#[cfg(test)]
+mod lua_getter_batch_tests {
+    use super::*;
+
+    fn args_with(stack: Vec<BridgeVal>) -> LuaArguments {
+        let mut args = LuaArguments::new(0);
+        for v in stack {
+            args.l.stack.push(v);
+        }
+        args
+    }
+
+    #[test]
+    fn scalar_getters_dispatch() {
+        let args = args_with(vec![
+            BridgeVal::Str(b"hi".to_vec()),
+            BridgeVal::Num(2.5),
+            BridgeVal::Bool(true),
+        ]);
+        assert_eq!(stub_0x26b464(&args, 1), Some(b"hi".to_vec()));
+        assert_eq!(stub_0x26b660(&args, 2), Some(2.5));
+        assert_eq!(stub_0x26b6a0(&args, 3), Some(true));
+        assert_eq!(stub_0x26b464(&args, 2), None);
+        assert_eq!(stub_0x26b660(&args, 1), None);
+        assert_eq!(stub_0x26b6a0(&args, 2), None);
+        assert_eq!(stub_0x26b464(&args, 4), None);
+        assert_eq!(stub_0x26b464(&args, 0), None);
+    }
+
+    #[test]
+    fn userdata_getters_delegate() {
+        let v = Vector3 { x: 1.0, y: 2.0, z: 3.0 };
+        let args = args_with(vec![BridgeVal::Vec3(v), BridgeVal::Num(0.0)]);
+        assert_eq!(stub_0x26b504(&args, 1), Some(v));
+        assert_eq!(stub_0x26b504(&args, 2), None);
+        assert_eq!(stub_0x26c230(&args.l, 1), Some(v));
+        assert_eq!(stub_0x26c230(&args.l, 2), None);
+        let vi = Vector3int16 { x: 1, y: 2, z: 3 };
+        let args = args_with(vec![BridgeVal::Vec3i16(vi)]);
+        assert_eq!(stub_0x26b4ac(&args, 1), Some(vi));
+        assert_eq!(stub_0x26c140(&args.l, 1), Some(vi));
+        let r = Region3 { min: v, max: v };
+        let args = args_with(vec![BridgeVal::Region3(r)]);
+        assert_eq!(stub_0x26b530(&args, 1), Some(r));
+        assert_eq!(stub_0x26c2ac(&args.l, 1), Some(r));
+        let ri = Region3int16 { min: vi, max: vi };
+        let args = args_with(vec![BridgeVal::Region3i16(ri)]);
+        assert_eq!(stub_0x26b4d8(&args, 1), Some(ri));
+        assert_eq!(stub_0x26c1b8(&args.l, 1), Some(ri));
+    }
+
+    #[test]
+    fn declare_singletons_match_thunks() {
+        assert_eq!(stub_0x26a4fc(), "StarterScript");
+        assert_eq!(stub_0x26a4f8(), "StarterScript");
+        assert_eq!(stub_0x26a5e0(), "CoreScript");
+        assert_eq!(stub_0x26a5dc(), "CoreScript");
+        assert_eq!(stub_0x26a424(), "StarterScript");
+    }
+
+    #[test]
+    fn lifecycle_noops() {
+        stub_0x26a380();
+        stub_0x26a44c();
+        stub_0x26a454();
+        stub_0x26ada0();
+        stub_0x26ada4();
+        stub_0x26ae44();
+        stub_0x26ae4c();
+        stub_0x26aef0();
+        stub_0x26aef8();
+        stub_0x26aff4();
     }
 }
