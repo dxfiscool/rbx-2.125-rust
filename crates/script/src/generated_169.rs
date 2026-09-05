@@ -70,6 +70,35 @@ static SIGNAL_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
 /// Opaque void-signal slot static mutex handle (IDA 0x3d030: same shape as
 /// 0x3d938).
 static SLOT_VOID_MUTEX: LazyLock<u32> = LazyLock::new(|| 1);
+/// `intrusive_ptr_target` strong/weak counters (IDA 0x3d240: zeroed at
+/// 0x3d250/0x3d29c with alignment asserts, atomic.h:135, folding into the
+/// host).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct SlotCounts {
+    pub strong: u32,
+    pub weak: u32,
+}
+
+/// Task sequence step counter (IDA 0x3ebb0/0x3ebb4: thunks to
+/// `SequenceBase::advance`).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct TaskSequence {
+    pub steps: u32,
+}
+
+impl TaskSequence {
+    pub fn advance(&mut self) -> u32 {
+        self.steps += 1;
+        self.steps
+    }
+}
+
+/// Ogre `LogManager` scoped-slot latch (IDA 0x3ec30/0x3ec34: D1 forwards to
+/// the deleting D2).
+#[derive(Clone, Debug, Default, PartialEq, Eq)]
+pub struct LogManagerSlot {
+    pub live: bool,
+}
 
 /// Created service instance record (IDA 0x3a798/0x3b674: sized operator new
 /// plus ctor plus shared_ptr wrap fold into the host; liveness observed).
@@ -706,159 +735,189 @@ pub fn stub_0x3d190() {
 // 0x3d240 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EE6countsC2Ev
 // type: int __fastcall(_DWORD)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")]
-pub fn stub_0x3d240() -> ! {
-    todo!("0x3d240 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::counts::counts(void)")
+pub fn stub_0x3d240() -> SlotCounts {
+    // IDA 0x3d240: `counts` ctor — see `SlotCounts`.
+    SlotCounts::default()
 }
 
 // 0x3dc58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3dc58() -> ! {
-    todo!("0x3dc58 boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")
+pub fn stub_0x3dc58() -> u32 {
+    // IDA 0x3dc58: `get_deleter` answers null without an exact deleter
+    // match (same shape as 0x3aa18).
+    0
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
-pub fn stub_0x3dc60() -> ! {
-    todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
+pub fn stub_0x3dc60(slot: &mut OwnerSlot) {
+    // IDA 0x3dc60: `_internal_accept_owner` for RenderJob (same use-count
+    // gate shape as 0x3a930).
+    slot.has_owner = true;
 }
 
 // 0x3dd34 — __ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_0x3dd34() -> ! {
-    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_0x3dd34() {
+    // IDA 0x3dd34: `shared_count` ctor (same shape as 0x3b14c); `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
-pub fn stub_0x3de28() -> ! {
-    todo!("0x3de28 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_0x3de28() {
+    // IDA 0x3de28: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p() [0x3de2c]")]
-pub fn stub_0x3de2c() -> ! {
-    todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+pub fn stub_0x3de2c() {
+    // IDA 0x3de2c: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
-pub fn stub_0x3de30() -> ! {
-    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+pub fn stub_0x3de30() {
+    // IDA 0x3de30: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3de40() -> ! {
-    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+pub fn stub_0x3de40() -> u32 {
+    // IDA 0x3de40: `get_deleter` answers null (same shape as 0x3aa18).
+    0
 }
 
 // 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
-pub fn stub_0x3de44() -> ! {
-    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+pub fn stub_0x3de44() -> u32 {
+    // IDA 0x3de44: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(rbx_core::SharedPtr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
-pub fn stub_0x3de48() -> ! {
-    todo!("0x3de48 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(rbx_core::SharedPtr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")
+pub fn stub_0x3de48(slot: &mut OwnerSlot) {
+    // IDA 0x3de48: `_internal_accept_owner` for ViewUpdateJob (same shape
+    // as 0x3dc60).
+    slot.has_owner = true;
 }
 
 // 0x3df1c — __ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_0x3df1c() -> ! {
-    todo!("0x3df1c boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_0x3df1c() {
+    // IDA 0x3df1c: `shared_count` ctor (same shape as 0x3b14c); `Arc` glue
+    // covers it — no-op.
 }
 
 // 0x3e010 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
-pub fn stub_0x3e010() -> ! {
-    todo!("0x3e010 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_0x3e010() {
+    // IDA 0x3e010: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3e014 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p() [0x3e014]")]
-pub fn stub_0x3e014() -> ! {
-    todo!("0x3e014 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+pub fn stub_0x3e014() {
+    // IDA 0x3e014: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3e018 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")]
-pub fn stub_0x3e018() -> ! {
-    todo!("0x3e018 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")
+pub fn stub_0x3e018() {
+    // IDA 0x3e018: `dispose` (same shape as 0x3b278) — no-op.
 }
 
 // 0x3e028 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")]
-pub fn stub_0x3e028() -> ! {
-    todo!("0x3e028 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")
+pub fn stub_0x3e028() -> u32 {
+    // IDA 0x3e028: `get_deleter` answers null (same shape as 0x3aa18).
+    0
 }
 
 // 0x3e02c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")]
-pub fn stub_0x3e02c() -> ! {
-    todo!("0x3e02c boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")
+pub fn stub_0x3e02c() -> u32 {
+    // IDA 0x3e02c: `get_untyped_deleter` answers null (same shape as
+    // 0x3b330).
+    0
 }
 
 // 0x3e0b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
-pub fn stub_0x3e0b0() -> ! {
-    todo!("0x3e0b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")
+pub fn stub_0x3e0b0(slot: &mut OwnerSlot) {
+    // IDA 0x3e0b0: `_internal_accept_owner` for RenderSettingsItem (same
+    // shape as 0x3a930).
+    slot.has_owner = true;
 }
 
 // 0x3e190 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_0x3e190() -> ! {
-    todo!("0x3e190 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_0x3e190() {
+    // IDA 0x3e190: D0 dtor (teardown plus delete); drop glue covers it —
+    // no-op.
 }
 
 // 0x3e1e8 — __ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-pub fn stub_0x3e1e8() -> ! {
-    todo!("0x3e1e8 boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_0x3e1e8() -> u32 {
+    // IDA 0x3e1e8: `singleton_pool<OnDemandInstance,20>::get_pool` — same
+    // once-storage shape as 0x3e198 with block size 20 (0x3e21e).
+    20
 }
 
 // 0x3ebb0 — __ZN3RBX5Tasks8Sequence9onPreStepEPNS_13TaskScheduler3JobE
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_0x3ebb0() -> ! {
-    todo!("0x3ebb0 RBX::Tasks::Sequence::onPreStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3ebb0(seq: &mut TaskSequence) -> u32 {
+    // IDA 0x3ebb0: `Sequence::onPreStep` thunk to `advance` — see
+    // `TaskSequence::advance`.
+    seq.advance()
 }
 
 // 0x3ebb4 — __ZN3RBX5Tasks17ExclusiveSequence10onPostStepEPNS_13TaskScheduler3JobE
 // type: int __fastcall(RBX::Tasks::SequenceBase *this, RBX::TaskScheduler::Job *)
 #[doc(alias = "RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")]
-pub fn stub_0x3ebb4() -> ! {
-    todo!("0x3ebb4 RBX::Tasks::ExclusiveSequence::onPostStep(RBX::TaskScheduler::Job *)")
+pub fn stub_0x3ebb4(seq: &mut TaskSequence) -> u32 {
+    // IDA 0x3ebb4: `ExclusiveSequence::onPostStep` thunk to `advance` —
+    // same shape as 0x3ebb0.
+    seq.advance()
 }
 
 // 0x3ec30 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
-pub fn stub_0x3ec30() -> ! {
-    todo!("0x3ec30 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_0x3ec30(slot: &mut LogManagerSlot) {
+    // IDA 0x3ec30: D1 thunk forwarding to the deleting D2.
+    stub_0x3ec34(slot);
 }
 
 // 0x3ec34 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev
 #[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr() [0x3ec34]")]
-pub fn stub_0x3ec34() -> ! {
-    todo!("0x3ec34 boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")
+pub fn stub_0x3ec34(slot: &mut LogManagerSlot) {
+    // IDA 0x3ec34: D2 dtor deletes the manager; drop glue covers it and
+    // the slot is marked dead.
+    slot.live = false;
 }
 
 // 0x3eccc — __ZN17QuitEventListenerD0Ev
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener() [0x3eccc]")]
-pub fn stub_0x3eccc() -> ! {
-    todo!("0x3eccc QuitEventListener::~QuitEventListener()")
+pub fn stub_0x3eccc() {
+    // IDA 0x3eccc: D0 thunk deleting only (empty D1 at 0x3a1b8); drop glue
+    // covers it — no-op.
 }
 
 // 0x3ecd0 — __ZN4Ogre19WindowEventListener11windowMovedEPNS_12RenderWindowE
 // type: _DWORD __fastcall(Ogre::WindowEventListener *__hidden this, RenderWindow *)
 #[doc(alias = "Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")]
-pub fn stub_0x3ecd0() -> ! {
-    todo!("0x3ecd0 Ogre::WindowEventListener::windowMoved(Ogre::RenderWindow *)")
+pub fn stub_0x3ecd0() {
+    // IDA 0x3ecd0: `windowMoved` has an empty body — no-op.
 }
 
 // 0x3ecd4 — __ZN4Ogre19WindowEventListener13windowResizedEPNS_12RenderWindowE
@@ -1373,5 +1432,56 @@ mod void_signal_batch_tests {
         stub_0x3d038();
         assert_eq!(stub_0x3bb38(), 0);
         assert_eq!(stub_0x3bb50(), 0);
+    }
+}
+
+#[cfg(test)]
+mod step_count_batch_tests {
+    use super::*;
+
+    #[test]
+    fn counts_and_owners() {
+        assert_eq!(stub_0x3d240(), SlotCounts { strong: 0, weak: 0 });
+        let mut slot = OwnerSlot::default();
+        stub_0x3dc60(&mut slot);
+        stub_0x3de48(&mut slot);
+        stub_0x3e0b0(&mut slot);
+        assert!(slot.has_owner);
+        assert_eq!(stub_0x3dc58(), 0);
+        assert_eq!(stub_0x3de40(), 0);
+        assert_eq!(stub_0x3de44(), 0);
+        assert_eq!(stub_0x3e028(), 0);
+        assert_eq!(stub_0x3e02c(), 0);
+    }
+
+    #[test]
+    fn sequence_advances() {
+        let mut seq = TaskSequence::default();
+        assert_eq!(stub_0x3ebb0(&mut seq), 1);
+        assert_eq!(stub_0x3ebb4(&mut seq), 2);
+        assert_eq!(seq.steps, 2);
+        assert_eq!(stub_0x3e1e8(), 20);
+    }
+
+    #[test]
+    fn log_slot_dies() {
+        let mut slot = LogManagerSlot { live: true };
+        stub_0x3ec30(&mut slot);
+        assert!(!slot.live);
+    }
+
+    #[test]
+    fn glue_noops() {
+        stub_0x3dd34();
+        stub_0x3de28();
+        stub_0x3de2c();
+        stub_0x3de30();
+        stub_0x3df1c();
+        stub_0x3e010();
+        stub_0x3e014();
+        stub_0x3e018();
+        stub_0x3e190();
+        stub_0x3eccc();
+        stub_0x3ecd0();
     }
 }
