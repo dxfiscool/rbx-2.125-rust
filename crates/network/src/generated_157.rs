@@ -7,6 +7,17 @@
 
 use rbx_core::SharedPtr;
 
+/// ObjC block captured-object slot index for the +20 byte field (word 5).
+pub const BLOCK_CAPTURE_WORD: usize = 5;
+
+/// Apple reachability watcher state (IDA 0x3588c).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct Reachability {
+    pub handle: usize,
+    pub scheduled: bool,
+    pub is_wifi: bool,
+}
+
 /// `boost::_bi::bind_t` capture: target fn plus `(RobloxView, flag)` (IDA 0x33470).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct BindViewFlag {
@@ -1060,8 +1071,17 @@ pub fn stub_34870(cb: &mut VoidLauncherCallback, bound: BindLauncherStrings) {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::f")]
-pub fn stub_34b40() -> ! {
-    todo!("0x34b40 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,")
+pub fn stub_34b40(op: i32, out_type: &mut usize, out_flags: &mut u16) -> usize {
+    // IDA 0x34b40: op != 4: tail-call functor_manager::manager table; else store the
+    // bind_t<launcher> typeinfo, clear flags, return it.
+    const MANAGER_TABLE: usize = 0x34b44;
+    const BIND_T_TYPEINFO: usize = 0x34b56;
+    if op != 4 {
+        return MANAGER_TABLE;
+    }
+    *out_type = BIND_T_TYPEINFO;
+    *out_flags = 0;
+    BIND_T_TYPEINFO
 }
 
 // 0x34b5c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEvE6invokeERNS1_15function_bufferE
@@ -1069,8 +1089,10 @@ pub fn stub_34b40() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
-pub fn stub_34b5c() -> ! {
-    todo!("0x34b5c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceL")
+pub fn stub_34b5c(bound: &BindLauncherStrings, invoke: &mut dyn FnMut(usize, &str, &str, &str)) {
+    // IDA 0x34b5c: void_function_obj_invoker0::invoke: functor f from the buffer;
+    // list4::operator()<F, list0> calls f(launcher, s0, s1, s2).
+    invoke(bound.launcher, &bound.s0, &bound.s1, &bound.s2);
 }
 
 // 0x34b70 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE
@@ -1078,8 +1100,10 @@ pub fn stub_34b5c() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<")]
-pub fn stub_34b70() -> ! {
-    todo!("0x34b70 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::val")
+pub fn stub_34b70(cb: &mut VoidLauncherCallback, bound: BindLauncherStrings) -> bool {
+    // IDA 0x34b70: basic_vtable0::assign_to: functor + strings copied, stored vtable; true.
+    cb.bound = Some(bound);
+    true
 }
 
 // 0x34e30 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
@@ -1087,8 +1111,10 @@ pub fn stub_34b70() -> ! {
 // type: int __fastcall(int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<")]
-pub fn stub_34e30() -> ! {
-    todo!("0x34e30 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::val")
+pub fn stub_34e30(cb: &mut VoidLauncherCallback, bound: BindLauncherStrings) -> bool {
+    // IDA 0x34e30: tagged assign_to overload: vetted functor stored directly; true.
+    cb.bound = Some(bound);
+    true
 }
 
 // 0x350ec — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
@@ -1096,8 +1122,9 @@ pub fn stub_34e30() -> ! {
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::l")]
-pub fn stub_350ec() -> ! {
-    todo!("0x350ec void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi")
+pub fn stub_350ec(bound: &BindLauncherStrings) -> BindLauncherStrings {
+    // IDA 0x350ec: assign_functor: new 0x14 + field/string copies (heap clone).
+    bound.clone()
 }
 
 // 0x35200 — __ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -1105,8 +1132,9 @@ pub fn stub_350ec() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")]
-pub fn stub_35200() -> ! {
-    todo!("0x35200 void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLa")
+pub fn stub_35200(bound: &BindLauncherStrings, invoke: &mut dyn FnMut(usize, &str, &str, &str)) {
+    // IDA 0x35200: F = stored target; string copies; F(launcher, s0, s1, s2); temps released.
+    invoke(bound.launcher, &bound.s0.clone(), &bound.s1.clone(), &bound.s2.clone());
 }
 
 // 0x35438 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
@@ -1114,150 +1142,214 @@ pub fn stub_35200() -> ! {
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
 // was: boost::shared_ptr
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::")]
-pub fn stub_35438() -> ! {
-    todo!("0x35438 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,")
+pub fn stub_35438(op: i32, src: &mut Option<BindLauncherStrings>, dst: &mut Option<BindLauncherStrings>) -> bool {
+    // IDA 0x35438: 0 clone (new 0x14, fields + string copies); 1 move; 2 destroy; 3 check type.
+    match op {
+        0 => {
+            *dst = src.clone();
+            true
+        }
+        1 => {
+            *dst = src.take();
+            true
+        }
+        2 => {
+            dst.take();
+            true
+        }
+        3 => true,
+        _ => false,
+    }
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
 // demangled: global constructor keyed to_a_8
 // type: 
 #[doc(alias = "global constructor keyed to_a_8")]
-pub fn stub_355c8() -> ! {
-    todo!("0x355c8 global constructor keyed to_a_8")
+pub fn stub_355c8(init: &mut dyn FnMut()) {
+    // IDA 0x355c8: __GLOBAL__I_a_8 static initializer (boost system categories, ios_base::Init,
+    // atexit, exception guards).
+    init();
 }
 
 // 0x3588c — -[Reachability startNotifier]
 // demangled: -[Reachability startNotifier]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability startNotifier]")]
-pub fn stub_3588c() -> ! {
-    todo!("0x3588c -[Reachability startNotifier]")
+pub fn stub_3588c(r: &mut Reachability, set_callback: &mut dyn FnMut() -> bool, schedule: &mut dyn FnMut() -> bool) -> bool {
+    // IDA 0x3588c: SetCallback (fail → false); ScheduleWithRunLoop; result.
+    if !set_callback() {
+        return false;
+    }
+    let ok = schedule();
+    r.scheduled = ok;
+    ok
 }
 
 // 0x358ec — _ReachabilityCallback
 // demangled: _ReachabilityCallback
 // type: id __fastcall(int, int, int)
 #[doc(alias = "_ReachabilityCallback")]
-pub fn stub_358ec() -> ! {
-    todo!("0x358ec _ReachabilityCallback")
+pub fn stub_358ec(notify: &mut dyn FnMut(&str)) {
+    // IDA 0x358ec: autorelease pool; post kNetworkReachabilityChangedNotification; drain pool.
+    notify("kNetworkReachabilityChangedNotification");
 }
 
 // 0x35970 — -[Reachability stopNotifier]
 // demangled: -[Reachability stopNotifier]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability stopNotifier]")]
-pub fn stub_35970() -> ! {
-    todo!("0x35970 -[Reachability stopNotifier]")
+pub fn stub_35970(r: &mut Reachability, unschedule: &mut dyn FnMut()) {
+    // IDA 0x35970: ref set → unschedule from run loop.
+    if r.scheduled {
+        unschedule();
+        r.scheduled = false;
+    }
 }
 
 // 0x359a8 — -[Reachability dealloc]
 // demangled: -[Reachability dealloc]
 // type: void __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability dealloc]")]
-pub fn stub_359a8() -> ! {
-    todo!("0x359a8 -[Reachability dealloc]")
+pub fn stub_359a8(r: &mut Reachability, stop: &mut dyn FnMut(&mut Reachability), release: &mut dyn FnMut()) {
+    // IDA 0x359a8: stopNotifier; CFRelease the ref; super dealloc.
+    stop(r);
+    release();
 }
 
 // 0x35a00 — +[Reachability reachabilityWithHostName:]
 // demangled: +[Reachability reachabilityWithHostName:]
 // type: id __cdecl(id, SEL, id)
 #[doc(alias = "+[Reachability reachabilityWithHostName:]")]
-pub fn stub_35a00() -> ! {
-    todo!("0x35a00 +[Reachability reachabilityWithHostName:]")
+pub fn stub_35a00(host: &str, create: &mut dyn FnMut(&str) -> Option<usize>) -> Option<Reachability> {
+    // IDA 0x35a00: CreateWithName; null → null; else alloc/init/autorelease + store ref.
+    create(host).map(|h| Reachability { handle: h, scheduled: false, is_wifi: false })
 }
 
 // 0x35a80 — +[Reachability reachabilityWithAddress:]
 // demangled: +[Reachability reachabilityWithAddress:]
 // type: id __cdecl(id, SEL, const sockaddr_in *)
 #[doc(alias = "+[Reachability reachabilityWithAddress:]")]
-pub fn stub_35a80() -> ! {
-    todo!("0x35a80 +[Reachability reachabilityWithAddress:]")
+pub fn stub_35a80(ip: u32, create: &mut dyn FnMut(u32) -> Option<usize>) -> Option<Reachability> {
+    // IDA 0x35a80: CreateWithAddress; null → null; else alloc/init/autorelease + store ref.
+    create(ip).map(|h| Reachability { handle: h, scheduled: false, is_wifi: false })
 }
 
 // 0x35af8 — +[Reachability reachabilityForInternetConnection]
 // demangled: +[Reachability reachabilityForInternetConnection]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForInternetConnection]")]
-pub fn stub_35af8() -> ! {
-    todo!("0x35af8 +[Reachability reachabilityForInternetConnection]")
+pub fn stub_35af8(create: &mut dyn FnMut(u32) -> Option<usize>) -> Option<Reachability> {
+    // IDA 0x35af8: zero sockaddr (family/len word 528) + reachabilityWithAddress.
+    stub_35a80(0, create)
 }
 
 // 0x35b44 — +[Reachability reachabilityForLocalWiFi]
 // demangled: +[Reachability reachabilityForLocalWiFi]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[Reachability reachabilityForLocalWiFi]")]
-pub fn stub_35b44() -> ! {
-    todo!("0x35b44 +[Reachability reachabilityForLocalWiFi]")
+pub fn stub_35b44(create: &mut dyn FnMut(u32) -> Option<usize>) -> Option<Reachability> {
+    // IDA 0x35b44: link-local sockaddr (169.254.0.0) + reachabilityWithAddress; mark local-WiFi.
+    stub_35a80(0xA9FE0000, create).map(|mut r| {
+        r.is_wifi = true;
+        r
+    })
 }
 
 // 0x35ba8 — -[Reachability localWiFiStatusForFlags:]
 // demangled: -[Reachability localWiFiStatusForFlags:]
 // type: int __cdecl(Reachability *self, SEL, unsigned int)
 #[doc(alias = "-[Reachability localWiFiStatusForFlags:]")]
-pub fn stub_35ba8() -> ! {
-    todo!("0x35ba8 -[Reachability localWiFiStatusForFlags:]")
+pub fn stub_35ba8(flags: u32, print: &mut dyn FnMut(u32)) -> bool {
+    // IDA 0x35ba8: PrintReachabilityFlags; (flags & 0x20002) == 0x20002.
+    print(flags);
+    flags & 0x20002 == 0x20002
 }
 
 // 0x35bd0 — _PrintReachabilityFlags
 // demangled: _PrintReachabilityFlags
 // type: 
 #[doc(alias = "_PrintReachabilityFlags")]
-pub fn stub_35bd0() -> ! {
-    todo!("0x35bd0 _PrintReachabilityFlags")
+pub fn stub_35bd0(flags: u32) -> String {
+    // IDA 0x35bd0: flag letters d/l/D/i/C/c ('-' otherwise; two trailing chars below truncation).
+    let mut s = String::with_capacity(8);
+    s.push(if flags & 0x20000 != 0 { 'd' } else { '-' });
+    s.push(if flags & 0x10000 != 0 { 'l' } else { '-' });
+    s.push(if flags & 0x20 != 0 { 'D' } else { '-' });
+    s.push(if flags & 0x10 != 0 { 'i' } else { '-' });
+    s.push(if flags & 8 != 0 { 'C' } else { '-' });
+    s.push(if flags & 4 != 0 { 'c' } else { '-' });
+    s
 }
 
 // 0x35cb8 — -[Reachability connectionRequired]
 // demangled: -[Reachability connectionRequired]
 // type: char __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability connectionRequired]")]
-pub fn stub_35cb8() -> ! {
-    todo!("0x35cb8 -[Reachability connectionRequired]")
+pub fn stub_35cb8(get_flags: &mut dyn FnMut() -> Option<u32>) -> u32 {
+    // IDA 0x35cb8: GetFlags fail → 0; else flags & 4 (connection required).
+    match get_flags() {
+        Some(f) => f & 4,
+        None => 0,
+    }
 }
 
 // 0x35ce4 — -[Reachability currentReachabilityStatus]
 // demangled: -[Reachability currentReachabilityStatus]
 // type: int __cdecl(Reachability *self, SEL)
 #[doc(alias = "-[Reachability currentReachabilityStatus]")]
-pub fn stub_35ce4() -> ! {
-    todo!("0x35ce4 -[Reachability currentReachabilityStatus]")
+pub fn stub_35ce4(is_wifi: bool, get_flags: &mut dyn FnMut() -> Option<u32>, status_for_flags: &mut dyn FnMut(bool, u32) -> i32) -> i32 {
+    // IDA 0x35ce4: GetFlags fail → 0; else localWiFiStatusForFlags/networkStatusForFlags.
+    match get_flags() {
+        Some(f) => status_for_flags(is_wifi, f),
+        None => 0,
+    }
 }
 
 // 0x35d3c — +[RobloxAlert RobloxAlertWithMessage:]
 // demangled: +[RobloxAlert RobloxAlertWithMessage:]
 // type: void __cdecl(id, SEL, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessage:]")]
-pub fn stub_35d3c() -> ! {
-    todo!("0x35d3c +[RobloxAlert RobloxAlertWithMessage:]")
+pub fn stub_35d3c(message: &str, dispatch_main: &mut dyn FnMut(String)) {
+    // IDA 0x35d3c: completion block capturing the message; dispatch_async(main).
+    dispatch_main(message.to_owned());
 }
 
 // 0x35d8c — ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
 // demangled: ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke
 // type: 
 #[doc(alias = "___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")]
-pub fn stub_35d8c() -> ! {
-    todo!("0x35d8c ___38+[RobloxAlert RobloxAlertWithMessage:]_block_invoke")
+pub fn stub_35d8c(message: &str, title: &str, show_alert: &mut dyn FnMut(&str, &str)) {
+    // IDA 0x35d8c: UIAlertView with localized title/message; show.
+    show_alert(title, message);
 }
 
 // 0x35e7c — ___copy_helper_block__5
 // demangled: ___copy_helper_block__5
 // type: 
 #[doc(alias = "___copy_helper_block__5")]
-pub fn stub_35e7c() -> ! {
-    todo!("0x35e7c ___copy_helper_block__5")
+pub fn stub_35e7c(dst: &mut [usize], src: &[usize]) {
+    // IDA 0x35e7c: _Block_object_assign(dst + 20, src[20], BLOCK_FIELD_IS_OBJECT).
+    let retained = src.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0);
+    if let Some(slot) = dst.get_mut(BLOCK_CAPTURE_WORD) {
+        *slot = retained;
+    }
 }
 
 // 0x35e88 — ___destroy_helper_block__5
 // demangled: ___destroy_helper_block__5
 // type: 
 #[doc(alias = "___destroy_helper_block__5")]
-pub fn stub_35e88() -> ! {
-    todo!("0x35e88 ___destroy_helper_block__5")
+pub fn stub_35e88(block: &[usize], release: &mut dyn FnMut(usize)) {
+    // IDA 0x35e88: _Block_object_dispose(block[20], BLOCK_FIELD_IS_OBJECT).
+    release(block.get(BLOCK_CAPTURE_WORD).copied().unwrap_or(0));
 }
 
 // 0x35e90 — +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
 // demangled: +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]
 // type: void __cdecl(id, SEL, id, id)
 #[doc(alias = "+[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")]
-pub fn stub_35e90() -> ! {
-    todo!("0x35e90 +[RobloxAlert RobloxAlertWithMessageAndDelegate:Delegate:]")
+pub fn stub_35e90(message: &str, delegate: usize, dispatch_main: &mut dyn FnMut(String, usize)) {
+    // IDA 0x35e90: completion block capturing message + delegate; dispatch_async(main).
+    dispatch_main(message.to_owned(), delegate);
 }
