@@ -2033,236 +2033,906 @@ mod reliability_pump_batch_tests {
     }
 }
 
+/// One `RangeNode<uint24>` [min, max] pair (IDA 0xa7738c, 8-byte entries).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct RangeNode {
+    pub min: u32,
+    pub max: u32,
+}
+
+/// `DataStructures::RangeList<uint24>` sorted coalesced range set
+/// (IDA 0xa771e8..0xa77b3c). Bounds wrap at 24 bits in comparisons.
+#[derive(Debug, Default)]
+pub struct RangeList {
+    pub nodes: Vec<RangeNode>,
+}
+
+/// `RangeList::Insert` (IDA 0xa7738c): contained values are absorbed
+/// (0xa774aa); `value == max + 1` extends the range (0xa7744e..0xa77450,
+/// `& 0xffffff` wrap at 0xa77448); larger values take a sorted slot for a
+/// singleton (0xa7748c..0xa774c4); a following range starting at `value + 1`
+/// is absorbed with shift-down (0xa7755c..0xa775a0).
+pub fn range_insert(list: &mut RangeList, value: u32) {
+    let v = value & 0x00ff_ffff;
+    let contained = list.nodes.iter().any(|n| {
+        if n.min <= n.max {
+            v >= n.min && v <= n.max
+        } else {
+            // Wrapping range (cf. the `& 0xffffff` arithmetic at
+            // 0xa77448/0xa7756c): values past either end are inside.
+            v >= n.min || v <= n.max
+        }
+    });
+    if contained {
+        return;
+    }
+    for i in 0..list.nodes.len() {
+        if (list.nodes[i].max + 1) & 0x00ff_ffff == v {
+            list.nodes[i].max = v;
+            if list.nodes.get(i + 1).is_some_and(|next| next.min == (v + 1) & 0x00ff_ffff) {
+                let absorbed = list.nodes.remove(i + 1);
+                list.nodes[i].max = absorbed.max;
+            }
+            return;
+        }
+        if list.nodes[i].min == (v + 1) & 0x00ff_ffff {
+            list.nodes[i].min = v;
+            return;
+        }
+    }
+    let pos = list.nodes.iter().position(|n| v < n.min).unwrap_or(list.nodes.len());
+    list.nodes.insert(pos, RangeNode { min: v, max: v });
+}
+
+fn put_u24_le(out: &mut Vec<u8>, value: u32) {
+    out.extend_from_slice(&value.to_le_bytes()[..3]);
+}
+
+fn get_u24_le(wire: &[u8], off: &mut usize) -> Option<u32> {
+    let b = wire.get(*off..*off + 3)?;
+    *off += 3;
+    Some(u32::from_le_bytes([b[0], b[1], b[2], 0]))
+}
+
+/// `RangeList::Serialize` (IDA 0xa77b3c): packs ranges while `used + 81`
+/// stays within `max_bits` (0xa77bc8) as flag byte (min == max,
+/// 0xa77be2..0xa77bf2) plus uint24 min (0xa77c06) plus uint24 max unless
+/// singleton (0xa77c1a..0xa77c2a), prefixed by the u16 range count
+/// (0xa77c78). With `remove_written` the packed prefix drains from the list
+/// (0xa77c92..0xa77cd6). Returns the wire bytes (the original answers the
+/// bit count, 0xa77d18). MODEL: byte-aligned; the temp-stream fold is elided.
+pub fn serialize_ranges(list: &mut RangeList, max_bits: u32, remove_written: bool) -> Vec<u8> {
+    let mut body = Vec::new();
+    let mut used = 0u32;
+    let mut count = 0u16;
+    for node in &list.nodes {
+        if used + 81 > max_bits {
+            break;
+        }
+        let singleton = node.min == node.max;
+        body.push(u8::from(singleton));
+        put_u24_le(&mut body, node.min);
+        used += 8 + 24;
+        if !singleton {
+            put_u24_le(&mut body, node.max);
+            used += 24;
+        }
+        count += 1;
+    }
+    if remove_written {
+        list.nodes.drain(..count as usize);
+    }
+    let mut wire = Vec::with_capacity(2 + body.len());
+    wire.extend_from_slice(&count.to_le_bytes());
+    wire.extend_from_slice(&body);
+    wire
+}
+
+/// `RangeList::Deserialize` (IDA 0xa771e8): clears the list (0xa771f6..
+/// 0xa77214, the >0x200 trim folds into the host), reads the u16 count
+/// (0xa7722a), then per range a flag byte (0xa77254) plus uint24 min
+/// (0xa77260) plus uint24 max unless the flag marks a singleton
+/// (0xa7726c..0xa7728c, max below min fails at 0xa77286), appended raw
+/// (0xa77298). Answers false on short reads. MODEL: byte-aligned.
+pub fn deserialize_ranges(list: &mut RangeList, wire: &[u8]) -> bool {
+    list.nodes.clear();
+    if wire.len() < 2 {
+        return false;
+    }
+    let count = u16::from_le_bytes([wire[0], wire[1]]) as usize;
+    let mut off = 2usize;
+    for _ in 0..count {
+        let flag = match wire.get(off) {
+            Some(&b) => b,
+            None => return false,
+        };
+        off += 1;
+        let min = match get_u24_le(wire, &mut off) {
+            Some(v) => v,
+            None => return false,
+        };
+        let max = if flag != 0 {
+            min
+        } else {
+            match get_u24_le(wire, &mut off) {
+                Some(m) if m >= min => m,
+                _ => return false,
+            }
+        };
+        list.nodes.push(RangeNode { min, max });
+    }
+    true
+}
+
+/// Min-heap entry for `Heap<u64, InternalPacket*, false>` (IDA 0xa77784):
+/// 12-byte nodes of u64 key plus packet handle; `false` selects min order
+/// (sift breaks while the parent key is not greater, 0xa77a30..0xa77a36).
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct HeapEntry {
+    pub key: u64,
+    pub value: u32,
+}
+
+/// `DataStructures::Heap` array plus the bulk-append flag (IDA 0xa78196).
+#[derive(Debug, Default)]
+pub struct TimeHeap {
+    pub entries: Vec<HeapEntry>,
+    pub unordered: bool,
+}
+
+fn heap_sift_up(heap: &mut [HeapEntry], mut pos: usize) {
+    while pos > 0 {
+        let parent = (pos - 1) >> 1;
+        if heap[parent].key <= heap[pos].key {
+            break;
+        }
+        heap.swap(parent, pos);
+        pos = parent;
+    }
+}
+
+fn heap_sift_down(heap: &mut [HeapEntry], mut pos: usize) {
+    let len = heap.len();
+    loop {
+        let left = pos * 2 + 1;
+        if left >= len {
+            break;
+        }
+        let right = left + 1;
+        let mut smallest = left;
+        if right < len && heap[right].key < heap[left].key {
+            smallest = right;
+        }
+        if heap[pos].key <= heap[smallest].key {
+            break;
+        }
+        heap.swap(pos, smallest);
+        pos = smallest;
+    }
+}
+
+/// `Heap::Push` (IDA 0xa77950): appends with 16-minimum/double growth
+/// (0xa77978..0xa77984, folds into `Vec`) and sifts up (0xa77a02..0xa77a78),
+/// answering the new length (0xa779fa).
+pub fn heap_push(heap: &mut TimeHeap, key: u64, value: u32) -> u32 {
+    heap.entries.push(HeapEntry { key, value });
+    let last = heap.entries.len() - 1;
+    heap_sift_up(&mut heap.entries, last);
+    heap.entries.len() as u32
+}
+
+/// `Heap::Pop` (IDA 0xa77784): lifts the entry at `index`, moves the last
+/// node into the hole (0xa777ae..0xa777b8), restores order
+/// (0xa777e0..0xa77910), and answers the lifted packet handle
+/// (0xa777ac/0xa7794e). Bulk-appended arrays rebuild first (the unordered
+/// flag path at 0xa78000 folds into a sort). Out-of-range answers `None`
+/// (the original faults).
+pub fn heap_pop(heap: &mut TimeHeap, index: usize) -> Option<u32> {
+    if heap.unordered {
+        let mut ordered = std::mem::take(&mut heap.entries);
+        ordered.sort_by_key(|e| e.key);
+        heap.entries = ordered;
+        heap.unordered = false;
+    }
+    if index >= heap.entries.len() {
+        return None;
+    }
+    let value = heap.entries[index].value;
+    heap.entries.swap_remove(index);
+    if index < heap.entries.len() {
+        heap_sift_down(&mut heap.entries, index);
+        heap_sift_up(&mut heap.entries, index);
+    }
+    Some(value)
+}
+
+/// `Heap::PushSeries` (IDA 0xa77ff4): bulk-appends with 16-minimum/double
+/// growth and marks the array unordered (0xa78190..0xa78196), answering 1
+/// (0xa78194). Growth folds into `Vec`.
+pub fn heap_push_series(heap: &mut TimeHeap, key: u64, value: u32) -> u32 {
+    heap.entries.push(HeapEntry { key, value });
+    heap.unordered = true;
+    1
+}
+
+/// `RakNet::BitStream` bit cursor (IDA 0xa77d60/0xa77ea4): byte store plus
+/// bit position. The network-order guard folds into host little-endian
+/// (0xa77dda..0xa77e16 / 0xa77f22..0xa77f64).
+#[derive(Debug, Default)]
+pub struct BitCursor {
+    pub bytes: Vec<u8>,
+    pub bit_pos: usize,
+}
+
+impl BitCursor {
+    fn align(&mut self) {
+        self.bit_pos = (self.bit_pos + 7) & !7;
+    }
+
+    /// `Write<uint24>` (IDA 0xa77d60): aligns (0xa77d8e), reserves 24 bits
+    /// (0xa77d94), and stores the 3 bytes (0xa77e20..0xa77e5c).
+    pub fn write_u24(&mut self, value: u32) {
+        self.align();
+        let at = self.bit_pos / 8;
+        if self.bytes.len() < at + 3 {
+            self.bytes.resize(at + 3, 0);
+        }
+        self.bytes[at..at + 3].copy_from_slice(&value.to_le_bytes()[..3]);
+        self.bit_pos += 24;
+    }
+
+    /// `Read<uint24>` (IDA 0xa77ea4): aligns (0xa77ee0), needs 24 bits
+    /// (0xa77f0a), loads the 3 bytes (0xa77f5e..0xa77faa), and answers
+    /// `None` past the end.
+    pub fn read_u24(&mut self) -> Option<u32> {
+        self.align();
+        let at = self.bit_pos / 8;
+        let b = self.bytes.get(at..at + 3)?;
+        let v = u32::from_le_bytes([b[0], b[1], b[2], 0]);
+        self.bit_pos += 24;
+        Some(v)
+    }
+}
+
+/// `DatagramHeaderFormat` wire view (IDA 0xa77058/0xa77a84): the lead marker
+/// (+14, 0xa7708c), ack flag (+8, 0xa770ba/0xa77a92), float flag (+11,
+/// 0xa770fc/0xa77a9c) with the f32 payload at +4 (0xa77116..0xa7711c /
+/// 0xa77ade), short flag (+9, 0xa7713e/0xa77aaa) with the trailing 1
+/// (0xa77146..0xa7714e / 0xa77ab2..0xa77ab6), the three flag bits
+/// (+10/+12/+13, 0xa77174.. / 0xa77aea..0xa77b1c), and the uint24 datagram
+/// number at +0 (0xa77b34). MODEL: bits travel LSB-first in a `Vec<bool>`;
+/// byte alignment folds into the host.
+#[derive(Debug, Clone, Default, PartialEq)]
+pub struct DatagramHeader {
+    pub lead: bool,
+    pub is_ack: bool,
+    pub has_float: bool,
+    pub float_value: f32,
+    pub short: bool,
+    pub flag_a: bool,
+    pub flag_b: bool,
+    pub flag_c: bool,
+    pub number: u32,
+}
+
+fn push_aligned_bits(bits: &mut Vec<bool>, bytes: &[u8]) {
+    while bits.len() % 8 != 0 {
+        bits.push(false);
+    }
+    for byte in bytes {
+        for i in 0..8 {
+            bits.push((byte >> i) & 1 != 0);
+        }
+    }
+}
+
+/// `DatagramHeaderFormat::Serialize` (IDA 0xa77a84).
+pub fn serialize_header(h: &DatagramHeader) -> Vec<bool> {
+    let mut bits = vec![true];
+    if h.is_ack {
+        bits.push(true);
+        bits.push(h.has_float);
+        if h.has_float {
+            push_aligned_bits(&mut bits, &h.float_value.to_le_bytes());
+        }
+        return bits;
+    }
+    bits.push(false);
+    bits.push(h.short);
+    if h.short {
+        bits.push(true);
+        return bits;
+    }
+    bits.push(false);
+    bits.push(h.flag_a);
+    bits.push(h.flag_b);
+    bits.push(h.flag_c);
+    push_aligned_bits(&mut bits, &h.number.to_le_bytes()[..3]);
+    bits
+}
+
+struct BitReader<'a> {
+    bits: &'a [bool],
+    pos: usize,
+}
+
+impl BitReader<'_> {
+    fn next(&mut self) -> Option<bool> {
+        let b = *self.bits.get(self.pos)?;
+        self.pos += 1;
+        Some(b)
+    }
+
+    fn bytes(&mut self, n: usize) -> Option<Vec<u8>> {
+        while self.pos % 8 != 0 {
+            self.pos += 1;
+        }
+        if self.pos + 8 * n > self.bits.len() {
+            return None;
+        }
+        let mut out = vec![0u8; n];
+        for byte in &mut out {
+            let mut v = 0u8;
+            for i in 0..8 {
+                if self.bits[self.pos] {
+                    v |= 1 << i;
+                }
+                self.pos += 1;
+            }
+            *byte = v;
+        }
+        Some(out)
+    }
+}
+
+/// `DatagramHeaderFormat::Deserialize` (IDA 0xa77058): mirrors
+/// `serialize_header` bit for bit (lead at 0xa7708c, ack at 0xa770ba, float
+/// flag at 0xa770fc with the f32 at 0xa77116.., short at 0xa7713e with the
+/// trailing 1 at 0xa77146.., flag bits from 0xa77174 on). Answers `None`
+/// past the end (the original reads unconditionally).
+pub fn deserialize_header(bits: &[bool]) -> Option<(DatagramHeader, usize)> {
+    let mut r = BitReader { bits, pos: 0 };
+    let mut h = DatagramHeader::default();
+    h.lead = r.next()?;
+    h.is_ack = r.next()?;
+    if h.is_ack {
+        h.has_float = r.next()?;
+        if h.has_float {
+            let b = r.bytes(4)?;
+            h.float_value = f32::from_le_bytes([b[0], b[1], b[2], b[3]]);
+        }
+        return Some((h, r.pos));
+    }
+    h.short = r.next()?;
+    if h.short {
+        if !r.next()? {
+            return None;
+        }
+        return Some((h, r.pos));
+    }
+    if r.next()? {
+        return None;
+    }
+    h.flag_a = r.next()?;
+    h.flag_b = r.next()?;
+    h.flag_c = r.next()?;
+    let b = r.bytes(3)?;
+    h.number = u32::from_le_bytes([b[0], b[1], b[2], 0]);
+    Some((h, r.pos))
+}
+
+/// Ordered `SplitPacketChannel*` list keyed by split id (IDA 0xa781a4).
+#[derive(Debug, Default)]
+pub struct OrderedSplitList {
+    pub ids: Vec<u16>,
+    pub handles: Vec<u32>,
+}
+
+/// `OrderedList::Insert` (IDA 0xa781a4): binary-searches with
+/// `SplitPacketChannelComp` (0xa781da, via `stub_0xa7090c`); a miss inserts
+/// through `List::Insert` at the probed slot (0xa7820e, 16-minimum/double
+/// growth folds into `Vec`) and answers the slot (0xa78214); a hit answers
+/// the existing index with no insert (the `break` at 0xa781de falls out of
+/// the search).
+pub fn ordered_insert(list: &mut OrderedSplitList, key: u16, handle: u32) -> usize {
+    match list.ids.binary_search_by(|id| stub_0xa7090c(*id, key).cmp(&0)) {
+        Ok(pos) => pos,
+        Err(pos) => {
+            list.ids.insert(pos, key);
+            list.handles.insert(pos, handle);
+            pos
+        }
+    }
+}
+
+/// `RakNet::SignaledEvent` latch (IDA 0xa79900..0xa7999c): the mutex/cond
+/// plumbing folds into the host; only the signaled flag (+44, 0xa7990c) and
+/// the init latch are observed.
+#[derive(Debug, Default, PartialEq, Eq)]
+pub struct SignaledEvent {
+    pub signaled: bool,
+    pub inited: bool,
+}
+
 // 0xa77058 — __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
 // type: _DWORD __fastcall(DatagramHeaderFormat *__hidden this, RakNet::BitStream *)
 #[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
 #[doc(alias = "__ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE")]
-pub fn stub_0xa77058() -> ! {
-    todo!("0xa77058")
+pub fn stub_0xa77058(bits: &[bool]) -> Option<(DatagramHeader, usize)> {
+    // IDA 0xa77058: `DatagramHeaderFormat::Deserialize` — see
+    // `deserialize_header`.
+    deserialize_header(bits)
 }
 
 // 0xa771e8 — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
 // type: int __fastcall(_DWORD *, RakNet::BitStream *, int, int)
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")]
 #[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE")]
-pub fn stub_0xa771e8() -> ! {
-    todo!("0xa771e8")
+pub fn stub_0xa771e8(list: &mut RangeList, wire: &[u8]) -> bool {
+    // IDA 0xa771e8: `RangeList::Deserialize` — see `deserialize_ranges`.
+    deserialize_ranges(list, wire)
 }
 
 // 0xa772b8 — __ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
 // type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj")]
-pub fn stub_0xa772b8() -> ! {
-    todo!("0xa772b8")
+pub fn stub_0xa772b8(queue: &mut RakPtrQueue, value: u32) {
+    // IDA 0xa772b8: `Queue<InternalPacket*>::Push` — the same ring store,
+    // wrap, and double-on-full as 0xa6ccdc (0xa772c6..0xa7737e).
+    queue.push(value);
 }
 
 // 0xa7738c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
 // type: void __fastcall(int *, unsigned int *, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")]
 #[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_")]
-pub fn stub_0xa7738c() -> ! {
-    todo!("0xa7738c")
+pub fn stub_0xa7738c(list: &mut RangeList, value: u32) {
+    // IDA 0xa7738c: `RangeList::Insert` — see `range_insert`.
+    range_insert(list, value);
 }
 
 // 0xa77784 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
 // type: int __fastcall(int *, unsigned int)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj")]
-pub fn stub_0xa77784() -> ! {
-    todo!("0xa77784")
+pub fn stub_0xa77784(heap: &mut TimeHeap, index: usize) -> Option<u32> {
+    // IDA 0xa77784: `Heap::Pop` — see `heap_pop`.
+    heap_pop(heap, index)
 }
 
 // 0xa77950 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
 // type: unsigned int __fastcall(char **, int *, int *)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj")]
-pub fn stub_0xa77950() -> ! {
-    todo!("0xa77950")
+pub fn stub_0xa77950(heap: &mut TimeHeap, key: u64, value: u32) -> u32 {
+    // IDA 0xa77950: `Heap::Push` — see `heap_push`.
+    heap_push(heap, key, value)
 }
 
 // 0xa77a84 — __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
 // type: int __fastcall(DatagramHeaderFormat *this, RakNet::BitStream *)
 #[doc(alias = "DatagramHeaderFormat::Serialize(RakNet::BitStream *)")]
 #[doc(alias = "__ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE")]
-pub fn stub_0xa77a84() -> ! {
-    todo!("0xa77a84")
+pub fn stub_0xa77a84(header: &DatagramHeader) -> Vec<bool> {
+    // IDA 0xa77a84: `DatagramHeaderFormat::Serialize` — see
+    // `serialize_header`.
+    serialize_header(header)
 }
 
 // 0xa77b3c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
 // type: int __fastcall(int *, RakNet::BitStream *, unsigned int, int)
 #[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")]
 #[doc(alias = "__ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb")]
-pub fn stub_0xa77b3c() -> ! {
-    todo!("0xa77b3c")
+pub fn stub_0xa77b3c(list: &mut RangeList, max_bits: u32, remove_written: bool) -> Vec<u8> {
+    // IDA 0xa77b3c: `RangeList::Serialize` — see `serialize_ranges`.
+    serialize_ranges(list, max_bits, remove_written)
 }
 
 // 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
 // type: void __fastcall(RakNet::BitStream *this, _BYTE *, int, int, int)
 #[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
 #[doc(alias = "__ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_")]
-pub fn stub_0xa77d60() -> ! {
-    todo!("0xa77d60")
+pub fn stub_0xa77d60(cursor: &mut BitCursor, value: u32) {
+    // IDA 0xa77d60: `BitStream::Write<uint24>` — see
+    // `BitCursor::write_u24`.
+    cursor.write_u24(value);
 }
 
 // 0xa77ea4 — __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
 // type: int __fastcall(_DWORD *, _BYTE *)
 #[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
 #[doc(alias = "__ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_")]
-pub fn stub_0xa77ea4() -> ! {
-    todo!("0xa77ea4")
+pub fn stub_0xa77ea4(cursor: &mut BitCursor) -> Option<u32> {
+    // IDA 0xa77ea4: `BitStream::Read<uint24>` — see `BitCursor::read_u24`.
+    cursor.read_u24()
 }
 
 // 0xa77ff4 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
 // type: unsigned int __fastcall(int, int *, int *)
 #[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj")]
-pub fn stub_0xa77ff4() -> ! {
-    todo!("0xa77ff4")
+pub fn stub_0xa77ff4(heap: &mut TimeHeap, key: u64, value: u32) -> u32 {
+    // IDA 0xa77ff4: `Heap::PushSeries` — see `heap_push_series`.
+    heap_push_series(heap, key, value)
 }
 
 // 0xa781a4 — __ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
 // type: unsigned int __fastcall(int **, int, int *, int, int, int, int (__fastcall *)(int, int))
 #[doc(alias = "DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")]
 #[doc(alias = "__ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E")]
-pub fn stub_0xa781a4() -> ! {
-    todo!("0xa781a4")
+pub fn stub_0xa781a4(list: &mut OrderedSplitList, key: u16, handle: u32) -> usize {
+    // IDA 0xa781a4: `OrderedList::Insert` — see `ordered_insert`.
+    ordered_insert(list, key, handle)
 }
 
 // 0xa7828c — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj")]
-pub fn stub_0xa7828c() -> ! {
-    todo!("0xa7828c")
+pub fn stub_0xa7828c(pool: &mut RakMemPool) -> u32 {
+    // IDA 0xa7828c: `MemoryPool<InternalPacket>::Allocate` — same
+    // pop-or-grow shape as 0xa6c7d0.
+    pool.allocate()
 }
 
 // 0xa783b4 — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj")]
-pub fn stub_0xa783b4() -> ! {
-    todo!("0xa783b4")
+pub fn stub_0xa783b4(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa783b4: `MemoryPool<InternalPacket>::Release` — same recycle
+    // shape as 0xa6c8e4.
+    pool.release(slot);
 }
 
 // 0xa7848c — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj")]
-pub fn stub_0xa7848c() -> ! {
-    todo!("0xa7848c")
+pub fn stub_0xa7848c(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa7848c: `MemoryPool<MessageNumberNode>::Release` — same recycle
+    // shape as 0xa6c8e4.
+    pool.release(slot);
 }
 
 // 0xa78560 — __ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
 // type: void __fastcall(_DWORD *, __int64 *)
 #[doc(alias = "DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj")]
-pub fn stub_0xa78560() -> ! {
-    todo!("0xa78560")
+pub fn stub_0xa78560(queue: &mut RakPtrQueue, value: u32) {
+    // IDA 0xa78560: `Queue<DatagramHistoryNode>::Push` — the same ring
+    // store, wrap, and double-on-full as 0xa6ccdc.
+    queue.push(value);
 }
 
 // 0xa78670 — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj")]
-pub fn stub_0xa78670() -> ! {
-    todo!("0xa78670")
+pub fn stub_0xa78670(pool: &mut RakMemPool) -> u32 {
+    // IDA 0xa78670: `MemoryPool<MessageNumberNode>::Allocate` — same
+    // pop-or-grow shape as 0xa6c7d0.
+    pool.allocate()
 }
 
 // 0xa7879c — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
 // type: int __fastcall(_DWORD *, unsigned int, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj")]
-pub fn stub_0xa7879c() -> ! {
-    todo!("0xa7879c")
+pub fn stub_0xa7879c(pool: &mut RakMemPool) -> u32 {
+    // IDA 0xa7879c: `MemoryPool<InternalPacketRefCountedData>::Allocate` —
+    // same pop-or-grow shape as 0xa6c7d0.
+    pool.allocate()
 }
 
 // 0xa788c8 — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
 // type: _DWORD *__fastcall(_DWORD *result, int, void *, char *)
 #[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj")]
-pub fn stub_0xa788c8() -> ! {
-    todo!("0xa788c8")
+pub fn stub_0xa788c8(pool: &mut RakMemPool, slot: u32) {
+    // IDA 0xa788c8: `MemoryPool<InternalPacketRefCountedData>::Release` —
+    // same recycle shape as 0xa6c8e4.
+    pool.release(slot);
 }
 
 // 0xa7899c — __ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
 // type: unsigned int __fastcall(int, _DWORD *, int)
 #[doc(alias = "DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj")]
-pub fn stub_0xa7899c() -> ! {
-    todo!("0xa7899c")
+pub fn stub_0xa7899c(list: &mut RakList<u32>, value: u32) {
+    // IDA 0xa7899c: `List<SplitPacketChannel*>::Insert` — same 16/double
+    // growth and append as 0xa6ced8.
+    list.insert(value);
 }
 
 // 0xa78a2c — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
 // type: int __fastcall(_DWORD *, _DWORD *, int)
 #[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj")]
-pub fn stub_0xa78a2c() -> ! {
-    todo!("0xa78a2c")
+pub fn stub_0xa78a2c(list: &mut RakList<u64>, min: u32, max: u32) {
+    // IDA 0xa78a2c: `List<RangeNode<uint24>>::Insert` with an explicit slot —
+    // same 16/double growth and append as 0xa6ced8; the node packs into one
+    // `u64`. No coalescing (that lives in `range_insert`).
+    list.insert((u64::from(max) << 32) | u64::from(min));
 }
 
 // 0xa78b08 — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
 // type: int __fastcall(_DWORD *, _DWORD *)
 #[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj")]
-pub fn stub_0xa78b08() -> ! {
-    todo!("0xa78b08")
+pub fn stub_0xa78b08(list: &mut RakList<u64>, min: u32, max: u32) {
+    // IDA 0xa78b08: `List<RangeNode<uint24>>::Insert` — same raw append as
+    // 0xa78a2c.
+    list.insert((u64::from(max) << 32) | u64::from(min));
 }
 
 // 0xa78bbc — __ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
 // type: _QWORD *__fastcall(int *, _QWORD *)
 #[doc(alias = "DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj")]
-pub fn stub_0xa78bbc() -> ! {
-    todo!("0xa78bbc")
+pub fn stub_0xa78bbc(queue: &mut RakPtrQueue, value: u32) {
+    // IDA 0xa78bbc: `Queue<TimeAndValue2>::Push` — the same ring store,
+    // wrap, and double-on-full as 0xa6ccdc.
+    queue.push(value);
 }
 
 // 0xa79900 — __ZN6RakNet13SignaledEventC1Ev
 // type: RakNet::SignaledEvent *__fastcall(RakNet::SignaledEvent *this)
 #[doc(alias = "RakNet::SignaledEvent::SignaledEvent(void)")]
 #[doc(alias = "__ZN6RakNet13SignaledEventC1Ev")]
-pub fn stub_0xa79900() -> ! {
-    todo!("0xa79900")
+pub fn stub_0xa79900() -> SignaledEvent {
+    // IDA 0xa79900: ctor inits the mutex (0xa79906) and clears the signaled
+    // flag (0xa7990c).
+    SignaledEvent::default()
 }
 
 // 0xa79914 — __ZN6RakNet13SignaledEventD1Ev
 // type: void __fastcall(RakNet::SignaledEvent *__hidden this)
 #[doc(alias = "RakNet::SignaledEvent::~SignaledEvent()")]
 #[doc(alias = "__ZN6RakNet13SignaledEventD1Ev")]
-pub fn stub_0xa79914() -> ! {
-    todo!("0xa79914")
+pub fn stub_0xa79914(event: &mut SignaledEvent) {
+    // IDA 0xa79914: dtor destroys the mutex (0xa7991a); drop glue covers it
+    // and the handle is marked unusable.
+    event.inited = false;
 }
 
 // 0xa79924 — __ZN6RakNet13SignaledEvent9InitEventEv
 // type: int __fastcall(RakNet::SignaledEvent *this)
 #[doc(alias = "RakNet::SignaledEvent::InitEvent(void)")]
 #[doc(alias = "__ZN6RakNet13SignaledEvent9InitEventEv")]
-pub fn stub_0xa79924() -> ! {
-    todo!("0xa79924")
+pub fn stub_0xa79924(event: &mut SignaledEvent) -> i32 {
+    // IDA 0xa79924: `InitEvent` inits the cond/mutex attrs and objects
+    // (0xa79930..0xa79952, fold into the host) and answers success.
+    event.inited = true;
+    0
 }
 
 // 0xa79954 — __ZN6RakNet13SignaledEvent10CloseEventEv
 // type: int __fastcall(RakNet::SignaledEvent *this)
 #[doc(alias = "RakNet::SignaledEvent::CloseEvent(void)")]
 #[doc(alias = "__ZN6RakNet13SignaledEvent10CloseEventEv")]
-pub fn stub_0xa79954() -> ! {
-    todo!("0xa79954")
+pub fn stub_0xa79954(event: &mut SignaledEvent) -> i32 {
+    // IDA 0xa79954: `CloseEvent` destroys the cond/mutex objects and attrs
+    // (0xa7995e..0xa7997a, fold into the host) and answers success.
+    event.inited = false;
+    0
 }
 
 // 0xa7997c — __ZN6RakNet13SignaledEvent8SetEventEv
 // type: int __fastcall(pthread_cond_t *this)
 #[doc(alias = "RakNet::SignaledEvent::SetEvent(void)")]
 #[doc(alias = "__ZN6RakNet13SignaledEvent8SetEventEv")]
-pub fn stub_0xa7997c() -> ! {
-    todo!("0xa7997c")
+pub fn stub_0xa7997c(event: &mut SignaledEvent) -> i32 {
+    // IDA 0xa7997c: `SetEvent` locks (0xa79982), raises the flag (0xa79988),
+    // unlocks (0xa7998e), and broadcasts (0xa7999a, folds into the host).
+    event.signaled = true;
+    0
 }
 
 // 0xa7999c — __ZN6RakNet13SignaledEvent11WaitOnEventEi
 // type: int __fastcall(RakNet::SignaledEvent *this, int)
 #[doc(alias = "RakNet::SignaledEvent::WaitOnEvent(int)")]
 #[doc(alias = "__ZN6RakNet13SignaledEvent11WaitOnEventEi")]
-pub fn stub_0xa7999c() -> ! {
-    todo!("0xa7999c")
+pub fn stub_0xa7999c(event: &mut SignaledEvent, _timeout_ms: u32) -> i32 {
+    // IDA 0xa7999c: `WaitOnEvent` single-shots below 31 ms (0xa799d6..
+    // 0xa79a8e) and slices 30 ms at a time above (0xa799fe..0xa79a3c),
+    // auto-resets the flag (0xa79a8e), and answers the unlock status
+    // (0xa79a9e, success). MODEL: the blocking waits fold into the host;
+    // the latch and answer are observed.
+    if event.signaled {
+        event.signaled = false;
+    }
+    0
+}
+
+#[cfg(test)]
+mod history_heap_stream_batch_tests {
+    use super::*;
+
+    #[test]
+    fn range_insert_coalesces() {
+        let mut list = RangeList::default();
+        stub_0xa7738c(&mut list, 5);
+        stub_0xa7738c(&mut list, 6);
+        assert_eq!(list.nodes, vec![RangeNode { min: 5, max: 6 }]);
+        stub_0xa7738c(&mut list, 4);
+        assert_eq!(list.nodes, vec![RangeNode { min: 4, max: 6 }]);
+        stub_0xa7738c(&mut list, 3);
+        stub_0xa7738c(&mut list, 7);
+        assert_eq!(list.nodes, vec![RangeNode { min: 3, max: 7 }]);
+        stub_0xa7738c(&mut list, 5);
+        assert_eq!(list.nodes.len(), 1);
+        stub_0xa7738c(&mut list, 10);
+        assert_eq!(list.nodes.len(), 2);
+        stub_0xa7738c(&mut list, 8);
+        stub_0xa7738c(&mut list, 9);
+        assert_eq!(list.nodes, vec![RangeNode { min: 3, max: 10 }]);
+        let mut wrap = RangeList::default();
+        stub_0xa7738c(&mut wrap, 0x00ff_ffff);
+        stub_0xa7738c(&mut wrap, 0);
+        assert_eq!(wrap.nodes, vec![RangeNode { min: 0x00ff_ffff, max: 0 }]);
+        stub_0xa7738c(&mut wrap, 0x00ff_ffff);
+        assert_eq!(wrap.nodes.len(), 1);
+    }
+
+    #[test]
+    fn range_serde_round_trip() {
+        let mut list = RangeList::default();
+        stub_0xa7738c(&mut list, 1);
+        for v in 5..10u32 {
+            stub_0xa7738c(&mut list, v);
+        }
+        let mut wire = stub_0xa77b3c(&mut list, 10_000, false);
+        assert_eq!(&wire[..2], &[2, 0]);
+        let mut back = RangeList::default();
+        assert!(stub_0xa771e8(&mut back, &wire));
+        assert_eq!(back.nodes, vec![RangeNode { min: 1, max: 1 }, RangeNode { min: 5, max: 9 }]);
+        assert!(!stub_0xa771e8(&mut back, &[]));
+        assert!(!stub_0xa771e8(&mut back, &[1, 0]));
+        assert!(!stub_0xa771e8(&mut back, &[1, 0, 0, 5, 0]));
+        assert!(!stub_0xa771e8(&mut back, &[1, 0, 0, 9, 0, 0, 5, 0, 0]));
+    }
+
+    #[test]
+    fn serialize_budget_and_remove() {
+        let mut list = RangeList::default();
+        for v in [10u32, 20, 30] {
+            stub_0xa7738c(&mut list, v);
+        }
+        let wire = stub_0xa77b3c(&mut list, 100, false);
+        assert_eq!(&wire[..2], &[1, 0]);
+        assert_eq!(list.nodes.len(), 3);
+        let wire = stub_0xa77b3c(&mut list, 10_000, true);
+        assert_eq!(&wire[..2], &[3, 0]);
+        assert!(list.nodes.is_empty());
+    }
+
+    #[test]
+    fn heap_push_pop_min_order() {
+        let mut heap = TimeHeap::default();
+        assert_eq!(stub_0xa77950(&mut heap, 5, 50), 1);
+        assert_eq!(stub_0xa77950(&mut heap, 3, 30), 2);
+        assert_eq!(stub_0xa77950(&mut heap, 4, 40), 3);
+        assert_eq!(stub_0xa77784(&mut heap, 0), Some(30));
+        assert_eq!(stub_0xa77784(&mut heap, 0), Some(40));
+        assert_eq!(stub_0xa77784(&mut heap, 0), Some(50));
+        assert_eq!(stub_0xa77784(&mut heap, 0), None);
+    }
+
+    #[test]
+    fn heap_pop_index_and_series() {
+        let mut heap = TimeHeap::default();
+        stub_0xa77950(&mut heap, 1, 10);
+        stub_0xa77950(&mut heap, 2, 20);
+        stub_0xa77950(&mut heap, 3, 30);
+        assert_eq!(stub_0xa77784(&mut heap, 1), Some(20));
+        assert_eq!(heap.entries.len(), 2);
+        assert_eq!(stub_0xa77ff4(&mut heap, 0, 5), 1);
+        assert!(heap.unordered);
+        assert_eq!(stub_0xa77784(&mut heap, 0), Some(5));
+        assert!(!heap.unordered);
+        assert_eq!(stub_0xa77784(&mut heap, 9), None);
+    }
+
+    #[test]
+    fn bitcursor_u24_round_trip() {
+        let mut cursor = BitCursor::default();
+        stub_0xa77d60(&mut cursor, 0x00ab_cdef);
+        stub_0xa77d60(&mut cursor, 0x12);
+        assert_eq!(cursor.bytes.len(), 6);
+        let mut reader = BitCursor { bytes: cursor.bytes.clone(), bit_pos: 0 };
+        assert_eq!(stub_0xa77ea4(&mut reader), Some(0x00ab_cdef));
+        assert_eq!(stub_0xa77ea4(&mut reader), Some(0x12));
+        assert_eq!(stub_0xa77ea4(&mut reader), None);
+    }
+
+    #[test]
+    fn header_round_trips() {
+        let ack = DatagramHeader {
+            lead: true,
+            is_ack: true,
+            has_float: true,
+            float_value: 1.5,
+            ..DatagramHeader::default()
+        };
+        let bits = stub_0xa77a84(&ack);
+        let (back, used) = stub_0xa77058(&bits).expect("ack header");
+        assert_eq!(back, ack);
+        assert_eq!(used, bits.len());
+        let short = DatagramHeader { lead: true, short: true, ..DatagramHeader::default() };
+        let bits = stub_0xa77a84(&short);
+        assert_eq!(bits, vec![true, false, true, true]);
+        let (back, _) = stub_0xa77058(&bits).expect("short header");
+        assert_eq!(back, short);
+        let long = DatagramHeader {
+            lead: true,
+            flag_a: true,
+            flag_c: true,
+            number: 0x00ab_cdef,
+            ..DatagramHeader::default()
+        };
+        let bits = stub_0xa77a84(&long);
+        let (back, used) = stub_0xa77058(&bits).expect("long header");
+        assert_eq!(back, long);
+        assert_eq!(used, bits.len());
+        assert!(stub_0xa77058(&bits[..3]).is_none());
+        assert!(stub_0xa77058(&[]).is_none());
+    }
+
+    #[test]
+    fn ordered_insert_orders_and_dedups() {
+        let mut list = OrderedSplitList::default();
+        assert_eq!(stub_0xa781a4(&mut list, 9, 100), 0);
+        assert_eq!(stub_0xa781a4(&mut list, 3, 101), 0);
+        assert_eq!(list.ids, vec![3, 9]);
+        assert_eq!(stub_0xa781a4(&mut list, 9, 102), 1);
+        assert_eq!(list.handles, vec![101, 100]);
+    }
+
+    #[test]
+    fn pools_queues_lists_cover_variants() {
+        let mut pool = RakMemPool::default();
+        let a = stub_0xa7828c(&mut pool);
+        stub_0xa783b4(&mut pool, a);
+        let b = stub_0xa78670(&mut pool);
+        stub_0xa7848c(&mut pool, b);
+        let c = stub_0xa7879c(&mut pool);
+        stub_0xa788c8(&mut pool, c);
+        assert_eq!(pool.live, 0);
+        assert_eq!(pool.free.len(), 1);
+        let mut q = RakPtrQueue::default();
+        stub_0xa772b8(&mut q, 1);
+        stub_0xa78560(&mut q, 2);
+        stub_0xa78bbc(&mut q, 3);
+        assert_eq!(q.capacity, 16);
+        assert_eq!(q.len(), 3);
+        let mut channels = RakList::<u32>::default();
+        stub_0xa7899c(&mut channels, 0xabcd);
+        assert_eq!(channels.items, vec![0xabcd]);
+        let mut nodes = RakList::<u64>::default();
+        stub_0xa78a2c(&mut nodes, 5, 9);
+        stub_0xa78b08(&mut nodes, 1, 1);
+        assert_eq!(nodes.items, vec![(9u64 << 32) | 5, (1u64 << 32) | 1]);
+        assert_eq!(nodes.capacity, 16);
+    }
+
+    #[test]
+    fn signaled_event_latch() {
+        let mut event = stub_0xa79900();
+        assert!(!event.signaled && !event.inited);
+        assert_eq!(stub_0xa79924(&mut event), 0);
+        assert!(event.inited);
+        assert_eq!(stub_0xa7997c(&mut event), 0);
+        assert!(event.signaled);
+        assert_eq!(stub_0xa7999c(&mut event, 50), 0);
+        assert!(!event.signaled);
+        assert_eq!(stub_0xa7999c(&mut event, 5000), 0);
+        assert_eq!(stub_0xa79954(&mut event), 0);
+        assert!(!event.inited);
+        stub_0xa79914(&mut event);
+        assert!(!event.inited);
+    }
 }
 
 // 0xa7a0b4 — __ZN6RakNet11SimpleMutexC1Ev
