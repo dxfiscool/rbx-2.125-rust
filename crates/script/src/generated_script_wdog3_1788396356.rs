@@ -2935,202 +2935,583 @@ mod history_heap_stream_batch_tests {
     }
 }
 
+/// `RakNet::SimpleMutex` latch (IDA 0xa7a0b4..0xa7a0e0): `pthread_mutex_*`
+/// plumbing folds into the host; the locked latch is observed.
+#[derive(Debug, Default, PartialEq, Eq)]
+pub struct SimpleMutex {
+    pub locked: bool,
+}
+
+/// Bound-socket table (IDA 0xa7a78c..0xa7abe4): fd allocation, bound
+/// (port, ip) pairs, and the last TTL. The `slo` hook, printf diagnostics,
+/// and raw fd plumbing fold into the host.
+#[derive(Debug, Default)]
+pub struct SocketTable {
+    pub bound: Vec<(u16, u32)>,
+    pub fds: Vec<i32>,
+    pub next_fd: i32,
+    pub last_ttl: u8,
+}
+
+impl SocketTable {
+    /// `CreateBoundSocket_Old` (IDA 0xa7a78c): socket/setsockopt/bind fold
+    /// into the host; a taken port fails like the bind error at
+    /// 0xa7a864..0xa7a87a (printf folds too). Port 0 auto-assigns an
+    /// ephemeral port (bind semantics).
+    pub fn bind_socket(&mut self, port: u16, ip: u32) -> i32 {
+        let port = if port == 0 { 49152 + (self.next_fd as u16 % 1000) } else { port };
+        if self.bound.iter().any(|&(p, _)| p == port) {
+            return -1;
+        }
+        let fd = 100 + self.next_fd;
+        self.next_fd += 1;
+        self.bound.push((port, ip));
+        self.fds.push(fd);
+        fd
+    }
+
+    /// `GetSystemAddress` (IDA 0xa7abe4): answers the bound (port, ip) for a
+    /// live fd (getsockname at 0xa7ac0c folds into the table); unknown fds
+    /// answer the unassigned address (0xa7ac22).
+    pub fn system_address(&self, fd: i32) -> (u16, u32) {
+        self.fds.iter().position(|&f| f == fd).map(|i| self.bound[i]).unwrap_or((0, 0))
+    }
+}
+
+/// Collect up to 10 local IPv4 addresses (IDA 0xa7aae0): skips loopback
+/// (0xa7ab6c), pads short lists with the unassigned address (0xa7ab82..
+/// 0xa7abb2). The getifaddrs/getnameinfo walk folds into the input list.
+pub fn collect_local_ips(ips: &[&str]) -> [String; 10] {
+    let mut out = Vec::new();
+    for ip in ips {
+        if *ip != "127.0.0.1" && out.len() < 10 {
+            out.push((*ip).to_owned());
+        }
+    }
+    while out.len() < 10 {
+        out.push("0.0.0.0".to_owned());
+    }
+    std::array::from_fn(|i| out[i].clone())
+}
+
+/// Huffman codec latch for `RakNet::StringCompressor` (IDA 0xa7b268..
+/// 0xa7b764): the first reference builds the English-frequency tree plus
+/// the language map (0xa7b2be..0xa7b30a); the last tears them down
+/// (0xa7b3f0..0xa7b426, cf. the D2 teardown at 0xa7b4cc..0xa7b522);
+/// encode/decode travel through the trees. MODEL: the trees fold into the
+/// host codec; reference counting, readiness, and the length-prefixed byte
+/// framing are observed.
+#[derive(Debug, Default, PartialEq, Eq)]
+pub struct StringCompressor {
+    pub refs: usize,
+    pub english_ready: bool,
+}
+
+impl StringCompressor {
+    pub fn add_reference(&mut self) {
+        if self.refs == 0 {
+            self.english_ready = true;
+        }
+        self.refs += 1;
+    }
+
+    pub fn remove_reference(&mut self) {
+        if self.refs == 0 {
+            return;
+        }
+        self.refs -= 1;
+        if self.refs == 0 {
+            self.english_ready = false;
+        }
+    }
+
+    pub fn encode(&self, lang: u8, text: &str) -> Vec<u8> {
+        let mut wire = Vec::with_capacity(3 + text.len());
+        wire.push(lang);
+        wire.extend_from_slice(&(text.len() as u16).to_le_bytes());
+        wire.extend_from_slice(text.as_bytes());
+        wire
+    }
+
+    /// Decode requires a live tree (the miss path at 0xa7b77a..0xa7b7be
+    /// answers 0), a fitting buffer, and valid UTF-8.
+    pub fn decode(&self, wire: &[u8], max_len: usize) -> Option<String> {
+        if wire.len() < 3 || !self.english_ready || wire[0] != 0 {
+            return None;
+        }
+        let len = u16::from_le_bytes([wire[1], wire[2]]) as usize;
+        if len > max_len || wire.len() < 3 + len {
+            return None;
+        }
+        std::str::from_utf8(&wire[3..3 + len]).ok().map(str::to_owned)
+    }
+}
+
+/// Sorted `Map<int, tree>` entries (IDA 0xa7b854).
+#[derive(Debug, Default)]
+pub struct HuffmanMap {
+    pub entries: Vec<(i32, u32)>,
+}
+
+impl HuffmanMap {
+    /// `Map::Set` (IDA 0xa7b854): binary-searches by key (0xa7b86e..
+    /// 0xa7b8ae); a hit overwrites and answers the value (0xa7b894..
+    /// 0xa7b9a8); a miss inserts sorted (growth folds into `Vec`) and
+    /// answers the value.
+    pub fn set(&mut self, key: i32, value: u32) -> u32 {
+        match self.entries.binary_search_by_key(&key, |&(k, _)| k) {
+            Ok(pos) => {
+                self.entries[pos].1 = value;
+                value
+            }
+            Err(pos) => {
+                self.entries.insert(pos, (key, value));
+                value
+            }
+        }
+    }
+}
+
+/// `WriteCompressed<uint>` (IDA 0xa7b9b4): endian reversal folds into host
+/// LE (0xa7ba70); the 32-bit payload travels through the byte compressor
+/// (0xa7ba7e). MODEL: canonical leading-zero-byte prefix code — one 0 bit
+/// per leading zero byte, a 1 bit, then the significant bytes LSB-first.
+pub fn write_compressed_u32(value: u32) -> Vec<bool> {
+    let bytes = value.to_le_bytes();
+    let mut top = 4;
+    while top > 1 && bytes[top - 1] == 0 {
+        top -= 1;
+    }
+    let mut bits = Vec::new();
+    for _ in top..4 {
+        bits.push(false);
+    }
+    bits.push(true);
+    for byte in bytes.iter().take(top) {
+        for i in 0..8 {
+            bits.push((byte >> i) & 1 != 0);
+        }
+    }
+    bits
+}
+
+/// `ReadCompressed<uint>` (IDA 0xa7bac8): mirrors the writer (the
+/// network-order fast path at 0xa7bb66..0xa7bb7a folds into host LE);
+/// short reads fail (the original answers 0).
+pub fn read_compressed_u32(bits: &[bool], pos: &mut usize) -> Option<u32> {
+    let mut zeros = 0;
+    loop {
+        let bit = *bits.get(*pos)?;
+        *pos += 1;
+        if bit {
+            break;
+        }
+        zeros += 1;
+        if zeros > 3 {
+            return None;
+        }
+    }
+    let top = 4 - zeros;
+    let mut out = [0u8; 4];
+    for byte in out.iter_mut().take(top) {
+        let mut value = 0u8;
+        for i in 0..8 {
+            if *bits.get(*pos)? {
+                value |= 1 << i;
+            }
+            *pos += 1;
+        }
+        *byte = value;
+    }
+    Some(u32::from_le_bytes(out))
+}
+
 // 0xa7a0b4 — __ZN6RakNet11SimpleMutexC1Ev
 // type: pthread_mutex_t *__fastcall(pthread_mutex_t *this)
 #[doc(alias = "RakNet::SimpleMutex::SimpleMutex(void)")]
 #[doc(alias = "__ZN6RakNet11SimpleMutexC1Ev")]
-pub fn stub_0xa7a0b4() -> ! {
-    todo!("0xa7a0b4")
+pub fn stub_0xa7a0b4() -> SimpleMutex {
+    // IDA 0xa7a0b4: ctor inits the mutex (0xa7a0bc); the object folds into
+    // an unlocked latch.
+    SimpleMutex::default()
 }
 
 // 0xa7a0c4 — __ZN6RakNet11SimpleMutexD1Ev
 // type: void __fastcall(pthread_mutex_t *this)
 #[doc(alias = "RakNet::SimpleMutex::~SimpleMutex()")]
 #[doc(alias = "__ZN6RakNet11SimpleMutexD1Ev")]
-pub fn stub_0xa7a0c4() -> ! {
-    todo!("0xa7a0c4")
+pub fn stub_0xa7a0c4(_mutex: &mut SimpleMutex) {
+    // IDA 0xa7a0c4: dtor destroys the mutex (0xa7a0ca); drop glue covers it.
 }
 
 // 0xa7a0d4 — __ZN6RakNet11SimpleMutex4LockEv
 // type: int __fastcall(pthread_mutex_t *this)
 #[doc(alias = "RakNet::SimpleMutex::Lock(void)")]
 #[doc(alias = "__ZN6RakNet11SimpleMutex4LockEv")]
-pub fn stub_0xa7a0d4() -> ! {
-    todo!("0xa7a0d4")
+pub fn stub_0xa7a0d4(mutex: &mut SimpleMutex) -> i32 {
+    // IDA 0xa7a0d4: `Lock` (0xa7a0dc, folds into the host) latches locked
+    // and answers success.
+    mutex.locked = true;
+    0
 }
 
 // 0xa7a0e0 — __ZN6RakNet11SimpleMutex6UnlockEv
 // type: int __fastcall(pthread_mutex_t *this)
 #[doc(alias = "RakNet::SimpleMutex::Unlock(void)")]
 #[doc(alias = "__ZN6RakNet11SimpleMutex6UnlockEv")]
-pub fn stub_0xa7a0e0() -> ! {
-    todo!("0xa7a0e0")
+pub fn stub_0xa7a0e0(mutex: &mut SimpleMutex) -> i32 {
+    // IDA 0xa7a0e0: `Unlock` (0xa7a0e8, folds into the host) clears the
+    // latch and answers success.
+    mutex.locked = false;
+    0
 }
 
 // 0xa7a700 — __ZN6RakNet11SocketLayer11IsPortInUseEtPKct
 // type: int __fastcall(RakNet::SocketLayer *this, const char *, const char *, unsigned __int16)
 #[doc(alias = "RakNet::SocketLayer::IsPortInUse(unsigned short,char const*,unsigned short)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer11IsPortInUseEtPKct")]
-pub fn stub_0xa7a700() -> ! {
-    todo!("0xa7a700")
+pub fn stub_0xa7a700(used: &[u16], port: u16) -> bool {
+    // IDA 0xa7a700: `IsPortInUse` probes with socket/bind/close
+    // (0xa7a73a..0xa7a76c) and answers `bind >> 31` (0xa7a770) — true when
+    // the bind fails; a failed socket answers 1 (0xa7a73c..0xa7a780).
+    // MODEL: the probe folds into a membership test over bound ports.
+    used.contains(&port)
 }
 
 // 0xa7a788 — __ZN6RakNet11SocketLayer16SetDoNotFragmentEiii
 // type: void __fastcall(RakNet::SocketLayer *this, int, int, int)
 #[doc(alias = "RakNet::SocketLayer::SetDoNotFragment(int,int,int)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer16SetDoNotFragmentEiii")]
-pub fn stub_0xa7a788() -> ! {
-    todo!("0xa7a788")
+pub fn stub_0xa7a788() {
+    // IDA 0xa7a788: `SetDoNotFragment` has an empty body.
 }
 
 // 0xa7a78c — __ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj
 // type: int __fastcall(RakNet::SocketLayer *this, unsigned __int16, const char *, const char *, unsigned int, unsigned int)
 #[doc(alias = "RakNet::SocketLayer::CreateBoundSocket_Old(unsigned short,bool,char const*,unsigned int,unsigned int)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer21CreateBoundSocket_OldEtbPKcjj")]
-pub fn stub_0xa7a78c() -> ! {
-    todo!("0xa7a78c")
+pub fn stub_0xa7a78c(table: &mut SocketTable, port: u16, ip: u32) -> i32 {
+    // IDA 0xa7a78c: `CreateBoundSocket_Old` — see `SocketTable::bind_socket`
+    // (socket/setsockopt shape at 0xa7a7c2..0xa7a838, bind at 0xa7a864).
+    table.bind_socket(port, ip)
 }
 
 // 0xa7a898 — __ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt
 // type: int __fastcall(RakNet::SocketLayer *this, unsigned __int16, const char *, const char *, unsigned int, unsigned int, unsigned __int16)
 #[doc(alias = "RakNet::SocketLayer::CreateBoundSocket(unsigned short,bool,char const*,unsigned int,unsigned int,unsigned short)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer17CreateBoundSocketEtbPKcjjt")]
-pub fn stub_0xa7a898() -> ! {
-    todo!("0xa7a898")
+pub fn stub_0xa7a898(table: &mut SocketTable, ip: u32) -> i32 {
+    // IDA 0xa7a898: `CreateBoundSocket` forwards to the old ctor with an
+    // ephemeral port (0xa7a8aa).
+    table.bind_socket(0, ip)
 }
 
 // 0xa7a8ac — __ZN6RakNet11SocketLayer14DomainNameToIPEPKc
 // type: char *__fastcall(RakNet::SocketLayer *this, const char *)
 #[doc(alias = "RakNet::SocketLayer::DomainNameToIP(char const*)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer14DomainNameToIPEPKc")]
-pub fn stub_0xa7a8ac() -> ! {
-    todo!("0xa7a8ac")
+pub fn stub_0xa7a8ac(name: Option<&str>) -> Option<String> {
+    // IDA 0xa7a8ac: `DomainNameToIP` resolves via gethostbyname (0xa7a8b4);
+    // a miss answers null (0xa7a8ba..0xa7a8bc), an empty answer likewise
+    // (0xa7a8c6), else the dotted string (0xa7a8ca). MODEL: resolution folds
+    // into the host; loopback and numeric literals resolve locally.
+    match name {
+        None | Some("") => None,
+        Some("localhost") => Some("127.0.0.1".to_owned()),
+        Some(host)
+            if host.split('.').filter(|p| p.parse::<u8>().is_ok()).count() == 4
+                && host.split('.').count() == 4 =>
+        {
+            Some(host.to_owned())
+        }
+        Some(_) => None,
+    }
 }
 
 // 0xa7a8d0 — __ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy
 // type: int __fastcall(RakNet::SocketLayer *this, int, RakNet::RakPeer *, unsigned __int16, void *, char *, int *, RakNet::SystemAddress *, unsigned __int64 *)
 #[doc(alias = "RakNet::SocketLayer::RecvFromBlocking(int,RakNet::RakPeer *,unsigned short,unsigned int,char *,int *,RakNet::SystemAddress *,unsigned long long *)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer16RecvFromBlockingEiPNS_7RakPeerEtjPcPiPNS_13SystemAddressEPy")]
-pub fn stub_0xa7a8d0() -> ! {
-    todo!("0xa7a8d0")
+pub fn stub_0xa7a8d0(inbox: &mut VecDeque<Vec<u8>>) -> Option<Vec<u8>> {
+    // IDA 0xa7a8d0: `RecvFromBlocking` reads up to 0x5d4 bytes (0xa7a90e),
+    // stores the length (0xa7a916), and on success stamps time plus address
+    // (0xa7a922..0xa7a932). MODEL: the blocking read folds into a queue
+    // pop; empty inbox is `None`.
+    inbox.pop_front().map(|mut bytes| {
+        bytes.truncate(0x5d4);
+        bytes
+    })
 }
 
 // 0xa7a944 — __ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l
 // type: int __fastcall(RakNet::SocketLayer *this, char *, size_t, sockaddr *, RakNet::SystemAddress *, unsigned __int16, unsigned int, const char *, int)
 #[doc(alias = "RakNet::SocketLayer::SendTo(int,char const*,int,RakNet::SystemAddress &,unsigned short,unsigned int,char const*,long)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer6SendToEiPKciRNS_13SystemAddressEtjS2_l")]
-pub fn stub_0xa7a944() -> ! {
-    todo!("0xa7a944")
+pub fn stub_0xa7a944(outbox: &mut Vec<Vec<u8>>, data: &[u8], fd: i32) -> i32 {
+    // IDA 0xa7a944: `SendTo` takes the `slo` hook when set (0xa7a962..
+    // 0xa7a97e, folds into the host); fd -1 answers -1 (0xa7a982..0xa7a98a);
+    // otherwise the sendto loop runs (0xa7a996..0xa7a9bc, failure printf at
+    // 0xa7a9d0 folds too) answering 0 on success (0xa7a9d4..0xa7a9de).
+    if fd == -1 {
+        return -1;
+    }
+    outbox.push(data.to_vec());
+    0
 }
 
 // 0xa7a9ec — __ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi
 // type: int __fastcall(RakNet::SocketLayer *this, char *, const char *, RakNet::SystemAddress *, RakNet::SystemAddress *, int)
 #[doc(alias = "RakNet::SocketLayer::SendToTTL(int,char const*,int,RakNet::SystemAddress &,int)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer9SendToTTLEiPKciRNS_13SystemAddressEi")]
-pub fn stub_0xa7a9ec() -> ! {
-    todo!("0xa7a9ec")
+pub fn stub_0xa7a9ec(
+    table: &mut SocketTable,
+    outbox: &mut Vec<Vec<u8>>,
+    data: &[u8],
+    fd: i32,
+    ttl: u8,
+) -> i32 {
+    // IDA 0xa7a9ec: `SendToTTL` saves/restores the TTL around the send
+    // (getsockopt/setsockopt at 0xa7aa24..0xa7aa4c fold into the latch),
+    // then follows the `SendTo` path.
+    table.last_ttl = ttl;
+    stub_0xa7a944(outbox, data, fd)
 }
 
 // 0xa7aae0 — __Z13GetMyIP_LinuxPN6RakNet13SystemAddressE
 // type: int __fastcall(in_addr *)
 #[doc(alias = "GetMyIP_Linux(RakNet::SystemAddress *)")]
 #[doc(alias = "__Z13GetMyIP_LinuxPN6RakNet13SystemAddressE")]
-pub fn stub_0xa7aae0() -> ! {
-    todo!("0xa7aae0")
+pub fn stub_0xa7aae0(ips: &[&str]) -> [String; 10] {
+    // IDA 0xa7aae0: `GetMyIP_Linux` — see `collect_local_ips`.
+    collect_local_ips(ips)
 }
 
 // 0xa7abd8 — __ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE
 // type: int __fastcall(in_addr *this, RakNet::SystemAddress *)
 #[doc(alias = "RakNet::SocketLayer::GetMyIP(RakNet::SystemAddress *)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer7GetMyIPEPNS_13SystemAddressE")]
-pub fn stub_0xa7abd8() -> ! {
-    todo!("0xa7abd8")
+pub fn stub_0xa7abd8(ips: &[&str]) -> [String; 10] {
+    // IDA 0xa7abd8: `GetMyIP` forwards to the Linux walk (0xa7abe0).
+    collect_local_ips(ips)
 }
 
 // 0xa7abe4 — __ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE
 // type: int __fastcall(RakNet::SocketLayer *this, int, RakNet::SystemAddress *)
 #[doc(alias = "RakNet::SocketLayer::GetSystemAddress(int,RakNet::SystemAddress *)")]
 #[doc(alias = "__ZN6RakNet11SocketLayer16GetSystemAddressEiPNS_13SystemAddressE")]
-pub fn stub_0xa7abe4() -> ! {
-    todo!("0xa7abe4")
+pub fn stub_0xa7abe4(table: &SocketTable, fd: i32) -> (u16, u32) {
+    // IDA 0xa7abe4: `GetSystemAddress` — see `SocketTable::system_address`.
+    table.system_address(fd)
 }
 
 // 0xa7b268 — __ZN6RakNet16StringCompressor12AddReferenceEv
 // type: void __fastcall(RakNet::StringCompressor *this)
 #[doc(alias = "RakNet::StringCompressor::AddReference(void)")]
 #[doc(alias = "__ZN6RakNet16StringCompressor12AddReferenceEv")]
-pub fn stub_0xa7b268() -> ! {
-    todo!("0xa7b268")
+pub fn stub_0xa7b268(compressor: &mut StringCompressor) {
+    // IDA 0xa7b268: `AddReference` — see `StringCompressor::add_reference`.
+    compressor.add_reference();
 }
 
 // 0xa7b39c — __ZN6RakNet16StringCompressor15RemoveReferenceEv
 // type: void __fastcall(RakNet::StringCompressor *this)
 #[doc(alias = "RakNet::StringCompressor::RemoveReference(void)")]
 #[doc(alias = "__ZN6RakNet16StringCompressor15RemoveReferenceEv")]
-pub fn stub_0xa7b39c() -> ! {
-    todo!("0xa7b39c")
+pub fn stub_0xa7b39c(compressor: &mut StringCompressor) {
+    // IDA 0xa7b39c: `RemoveReference` — see
+    // `StringCompressor::remove_reference`.
+    compressor.remove_reference();
 }
 
 // 0xa7b480 — __ZN6RakNet16StringCompressorD2Ev
 // type: void __fastcall(RakNet::StringCompressor *__hidden this)
 #[doc(alias = "RakNet::StringCompressor::~StringCompressor()")]
 #[doc(alias = "__ZN6RakNet16StringCompressorD2Ev")]
-pub fn stub_0xa7b480() -> ! {
-    todo!("0xa7b480")
+pub fn stub_0xa7b480(compressor: &mut StringCompressor) {
+    // IDA 0xa7b480: D2 dtor destroys the trees and buffers (0xa7b4cc..
+    // 0xa7b522); drop glue covers the peers and the codec resets.
+    compressor.refs = 0;
+    compressor.english_ready = false;
 }
 
 // 0xa7b594 — __ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh
 // type: int __fastcall(RakNet::StringCompressor *this, char *, int, struct _Unwind_Exception *, int)
 #[doc(alias = "RakNet::StringCompressor::EncodeString(char const*,int,RakNet::BitStream *,unsigned char)")]
 #[doc(alias = "__ZN6RakNet16StringCompressor12EncodeStringEPKciPNS_9BitStreamEh")]
-pub fn stub_0xa7b594() -> ! {
-    todo!("0xa7b594")
+pub fn stub_0xa7b594(compressor: &StringCompressor, lang: u8, text: &str) -> Vec<u8> {
+    // IDA 0xa7b594: `EncodeString` — see `StringCompressor::encode` (Huffman
+    // bit writes fold into raw bytes).
+    compressor.encode(lang, text)
 }
 
 // 0xa7b764 — __ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh
 // type: int __fastcall(RakNet::StringCompressor *this, char *, int, RakNet::BitStream *, int)
 #[doc(alias = "RakNet::StringCompressor::DecodeString(char *,int,RakNet::BitStream *,unsigned char)")]
 #[doc(alias = "__ZN6RakNet16StringCompressor12DecodeStringEPciPNS_9BitStreamEh")]
-pub fn stub_0xa7b764() -> ! {
-    todo!("0xa7b764")
+pub fn stub_0xa7b764(compressor: &StringCompressor, wire: &[u8], max_len: usize) -> Option<String> {
+    // IDA 0xa7b764: `DecodeString` — see `StringCompressor::decode` (tree
+    // lookup at 0xa7b78c..0xa7b7be, Huffman bit reads fold into raw bytes).
+    compressor.decode(wire, max_len)
 }
 
 // 0xa7b854 — __ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
 // type: int __fastcall(_DWORD *, int *, int *)
 #[doc(alias = "DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")]
 #[doc(alias = "__ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_")]
-pub fn stub_0xa7b854() -> ! {
-    todo!("0xa7b854")
+pub fn stub_0xa7b854(map: &mut HuffmanMap, key: i32, value: u32) -> u32 {
+    // IDA 0xa7b854: `Map::Set` — see `HuffmanMap::set`.
+    map.set(key, value)
 }
 
 // 0xa7b9b4 — __ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
 // type: void __fastcall(RakNet::BitStream *, unsigned __int8 *, int, unsigned int, __guard *, int, int, int, int)
 #[doc(alias = "void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")]
 #[doc(alias = "__ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_")]
-pub fn stub_0xa7b9b4() -> ! {
-    todo!("0xa7b9b4")
+pub fn stub_0xa7b9b4(value: u32) -> Vec<bool> {
+    // IDA 0xa7b9b4: `WriteCompressed<uint>` — see `write_compressed_u32`.
+    write_compressed_u32(value)
 }
 
 // 0xa7bac8 — __ZN6RakNet9BitStream14ReadCompressedIjEEbRT_
 // type: int __fastcall(RakNet::BitStream *, unsigned __int8 *, int, int, __guard *, int, int, int, int)
 #[doc(alias = "bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")]
 #[doc(alias = "__ZN6RakNet9BitStream14ReadCompressedIjEEbRT_")]
-pub fn stub_0xa7bac8() -> ! {
-    todo!("0xa7bac8")
+pub fn stub_0xa7bac8(bits: &[bool]) -> Option<u32> {
+    // IDA 0xa7bac8: `ReadCompressed<uint>` — mirrors `write_compressed_u32`
+    // over the whole input.
+    let mut pos = 0;
+    read_compressed_u32(bits, &mut pos)
 }
 
 // 0xa7bbf0 — __ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
 // type: int __fastcall(char **, _DWORD *, char *)
 #[doc(alias = "DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj")]
-pub fn stub_0xa7bbf0() -> ! {
-    todo!("0xa7bbf0")
+pub fn stub_0xa7bbf0(list: &mut RakList<u64>, key: i32, value: u32) {
+    // IDA 0xa7bbf0: `List<MapNode>::Insert` — same 16/double growth and
+    // append as 0xa6ced8; the node packs into one `u64`.
+    list.insert((u64::from(value) << 32) | u64::from(key as u32));
 }
 
 // 0xa7d1d8 — __ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
 // type: void __fastcall(int **, int *)
 #[doc(alias = "DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")]
 #[doc(alias = "__ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj")]
-pub fn stub_0xa7d1d8() -> ! {
-    todo!("0xa7d1d8")
+pub fn stub_0xa7d1d8(queue: &mut RakPtrQueue, value: u32) {
+    // IDA 0xa7d1d8: `Queue<Packet*>::Push` — the same ring store, wrap, and
+    // double-on-full as 0xa6ccdc.
+    queue.push(value);
+}
+
+#[cfg(test)]
+mod socket_codec_batch_tests {
+    use super::*;
+
+    #[test]
+    fn mutex_latch() {
+        let mut m = stub_0xa7a0b4();
+        assert!(!m.locked);
+        assert_eq!(stub_0xa7a0d4(&mut m), 0);
+        assert!(m.locked);
+        assert_eq!(stub_0xa7a0e0(&mut m), 0);
+        assert!(!m.locked);
+        stub_0xa7a0c4(&mut m);
+        stub_0xa7a788();
+    }
+
+    #[test]
+    fn socket_bind_send_recv() {
+        let mut table = SocketTable::default();
+        let fd = stub_0xa7a78c(&mut table, 7777, 0x0100_007f);
+        assert!(fd >= 0);
+        assert!(stub_0xa7a700(&table.bound.iter().map(|&(p, _)| p).collect::<Vec<_>>(), 7777));
+        assert!(!stub_0xa7a700(&[], 7777));
+        assert_eq!(stub_0xa7a78c(&mut table, 7777, 0), -1);
+        assert_eq!(stub_0xa7abe4(&table, fd), (7777, 0x0100_007f));
+        assert_eq!(stub_0xa7abe4(&table, -1), (0, 0));
+        let efd = stub_0xa7a898(&mut table, 0);
+        assert!(efd >= 0 && efd != fd);
+        let mut outbox = Vec::new();
+        assert_eq!(stub_0xa7a944(&mut outbox, &[1, 2, 3], -1), -1);
+        assert!(outbox.is_empty());
+        assert_eq!(stub_0xa7a944(&mut outbox, &[1, 2, 3], fd), 0);
+        assert_eq!(stub_0xa7a9ec(&mut table, &mut outbox, &[4], fd, 5), 0);
+        assert_eq!(table.last_ttl, 5);
+        assert_eq!(outbox.len(), 2);
+        let mut inbox = VecDeque::new();
+        assert!(stub_0xa7a8d0(&mut inbox).is_none());
+        inbox.push_back(vec![9u8; 2000]);
+        assert_eq!(stub_0xa7a8d0(&mut inbox).expect("recv").len(), 0x5d4);
+    }
+
+    #[test]
+    fn domain_and_local_ips() {
+        assert_eq!(stub_0xa7a8ac(None), None);
+        assert_eq!(stub_0xa7a8ac(Some("")), None);
+        assert_eq!(stub_0xa7a8ac(Some("localhost")), Some("127.0.0.1".to_owned()));
+        assert_eq!(stub_0xa7a8ac(Some("10.0.0.5")), Some("10.0.0.5".to_owned()));
+        assert_eq!(stub_0xa7a8ac(Some("999.1.1.1")), None);
+        assert_eq!(stub_0xa7a8ac(Some("example.com")), None);
+        let ips = stub_0xa7aae0(&["127.0.0.1", "192.168.1.2"]);
+        assert_eq!(ips[0], "192.168.1.2");
+        assert_eq!(ips[9], "0.0.0.0");
+        assert_eq!(ips.len(), 10);
+        let same = stub_0xa7abd8(&["10.0.0.9"]);
+        assert_eq!(same[0], "10.0.0.9");
+        assert_eq!(same[9], "0.0.0.0");
+    }
+
+    #[test]
+    fn compressor_refcount_and_codec() {
+        let mut comp = StringCompressor::default();
+        assert!(comp.decode(&[0, 1, 0, b'a'], 16).is_none());
+        stub_0xa7b268(&mut comp);
+        stub_0xa7b268(&mut comp);
+        assert_eq!(comp.refs, 2);
+        assert!(comp.english_ready);
+        let wire = stub_0xa7b594(&comp, 0, "hi");
+        assert_eq!(&wire[..3], &[0, 2, 0]);
+        assert_eq!(stub_0xa7b764(&comp, &wire, 16).as_deref(), Some("hi"));
+        assert!(stub_0xa7b764(&comp, &wire, 1).is_none());
+        assert!(stub_0xa7b764(&comp, &[1, 2, 0, b'h', b'i'], 16).is_none());
+        assert!(stub_0xa7b764(&comp, &[0], 16).is_none());
+        stub_0xa7b39c(&mut comp);
+        assert_eq!(comp.refs, 1);
+        assert!(comp.english_ready);
+        stub_0xa7b39c(&mut comp);
+        assert_eq!(comp.refs, 0);
+        assert!(!comp.english_ready);
+        stub_0xa7b39c(&mut comp);
+        assert_eq!(comp.refs, 0);
+        stub_0xa7b480(&mut comp);
+        assert!(!comp.english_ready);
+    }
+
+    #[test]
+    fn huffman_map_upserts_sorted() {
+        let mut map = HuffmanMap::default();
+        assert_eq!(stub_0xa7b854(&mut map, 3, 30), 30);
+        assert_eq!(stub_0xa7b854(&mut map, 1, 10), 10);
+        assert_eq!(stub_0xa7b854(&mut map, 3, 33), 33);
+        assert_eq!(map.entries, vec![(1, 10), (3, 33)]);
+        let mut nodes = RakList::<u64>::default();
+        stub_0xa7bbf0(&mut nodes, 3, 33);
+        assert_eq!(nodes.items, vec![(33u64 << 32) | 3]);
+        let mut packets = RakPtrQueue::default();
+        stub_0xa7d1d8(&mut packets, 0xbeef);
+        assert_eq!(packets.len(), 1);
+        assert_eq!(packets.capacity, 16);
+    }
+
+    #[test]
+    fn compressed_u32_round_trip() {
+        for value in [0u32, 1, 15, 16, 255, 256, 0x00ab_cdef, 0xffff_ffff] {
+            let bits = stub_0xa7b9b4(value);
+            assert_eq!(stub_0xa7bac8(&bits), Some(value));
+        }
+        assert!(stub_0xa7b9b4(5).len() < 33);
+        assert!(stub_0xa7b9b4(0xffff_ffff).len() > stub_0xa7b9b4(5).len());
+        assert!(stub_0xa7bac8(&[]).is_none());
+        assert!(stub_0xa7bac8(&[false; 4]).is_none());
+    }
 }
