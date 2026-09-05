@@ -13,6 +13,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "void RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::fire2<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: void RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::fire2<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5cbf4() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cbf4 void RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::fire2<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -20,6 +21,7 @@ pub fn stub_0xf5cbf4() -> ! {
 #[doc(alias = "rbx::signals::connection RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")]
 // was: rbx::signals::connection RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)
 pub fn stub_0xf5cc04() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cc04 rbx::signals::connection RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")
 }
 
@@ -27,6 +29,7 @@ pub fn stub_0xf5cc04() -> ! {
 #[doc(alias = "void RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: void RBX::LatchedSignal<rbx::remote_signal,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator()<boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5cc14() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cc14 void RBX::LatchedSignal<rbx::remote_signal,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()<rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -52,6 +55,7 @@ pub fn stub_0xf5ccc4() -> SharedPtr<crate::instance::RemoteFunction> {
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::remote_signal(void)
 pub fn stub_0xf5cd04() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cd04 rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remote_signal(void)")
 }
 
@@ -59,6 +63,7 @@ pub fn stub_0xf5cd04() -> ! {
 #[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 // was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()
 pub fn stub_0xf5cd14() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cd14 rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")
 }
 
@@ -66,6 +71,7 @@ pub fn stub_0xf5cd14() -> ! {
 #[doc(alias = "rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remote_signal(void)")]
 // was: rbx::remote_signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::remote_signal(void)
 pub fn stub_0xf5cd44() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cd44 rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remote_signal(void)")
 }
 
@@ -73,6 +79,7 @@ pub fn stub_0xf5cd44() -> ! {
 #[doc(alias = "rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")]
 // was: rbx::remote_signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::~remote_signal()
 pub fn stub_0xf5cd54() -> ! {
+    // BLOCKED: core-owned `LatchedSignal`/`remote_signal` core (no native anywhere)
     todo!("0xf5cd54 rbx::remote_signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::~remote_signal()")
 }
 
@@ -80,6 +87,7 @@ pub fn stub_0xf5cd54() -> ! {
 #[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5cd94() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cd94 rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -87,6 +95,7 @@ pub fn stub_0xf5cd94() -> ! {
 #[doc(alias = "rbx::signals::signal_with_args<3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: rbx::signals::signal_with_args<3,void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5cdc4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cdc4 rbx::signals::signal_with_args<3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::operator()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -94,6 +103,7 @@ pub fn stub_0xf5cdc4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::disconnectAll(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::disconnectAll(void)
 pub fn stub_0xf5ce44() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5ce44 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::disconnectAll(void)")
 }
 
@@ -101,6 +111,7 @@ pub fn stub_0xf5ce44() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)
 pub fn stub_0xf5ce54() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5ce54 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")
 }
 
@@ -108,6 +119,7 @@ pub fn stub_0xf5ce54() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> &)
 pub fn stub_0xf5ce64() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5ce64 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")
 }
 
@@ -115,6 +127,7 @@ pub fn stub_0xf5ce64() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)
 pub fn stub_0xf5ce74() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5ce74 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)")
 }
 
@@ -122,6 +135,7 @@ pub fn stub_0xf5ce74() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot *)
 pub fn stub_0xf5ce84() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5ce84 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")
 }
 
@@ -129,6 +143,7 @@ pub fn stub_0xf5ce84() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot *)
 pub fn stub_0xf5ce94() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5ce94 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")
 }
 
@@ -136,6 +151,7 @@ pub fn stub_0xf5ce94() -> ! {
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)
 pub fn stub_0xf5cea4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5cea4 rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")
 }
 
@@ -143,6 +159,7 @@ pub fn stub_0xf5cea4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)
 pub fn stub_0xf5ceb4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5ceb4 rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)")
 }
 
@@ -150,6 +167,7 @@ pub fn stub_0xf5ceb4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::disconnectAll(void)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::disconnectAll(void)
 pub fn stub_0xf5cf54() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cf54 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::disconnectAll(void)")
 }
 
@@ -157,6 +175,7 @@ pub fn stub_0xf5cf54() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)
 pub fn stub_0xf5cf64() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cf64 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")
 }
 
@@ -164,6 +183,7 @@ pub fn stub_0xf5cf64() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> &)
 pub fn stub_0xf5cf74() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cf74 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")
 }
 
@@ -171,6 +191,7 @@ pub fn stub_0xf5cf74() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)
 pub fn stub_0xf5cf84() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cf84 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot::safe_static_do_get_mutex(void)")
 }
 
@@ -178,6 +199,7 @@ pub fn stub_0xf5cf84() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot *)
 pub fn stub_0xf5cf94() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5cf94 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::insert(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")
 }
 
@@ -185,6 +207,7 @@ pub fn stub_0xf5cf94() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot *)
 pub fn stub_0xf5cfa4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5cfa4 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::remove(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot *)")
 }
 
@@ -192,6 +215,7 @@ pub fn stub_0xf5cfa4() -> ! {
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)
 pub fn stub_0xf5cfb4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5cfb4 rbx::signals::connection rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::connect<boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>(boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&)")
 }
 
@@ -199,6 +223,7 @@ pub fn stub_0xf5cfb4() -> ! {
 #[doc(alias = "rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)")]
 // was: rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)
 pub fn stub_0xf5cfc4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5cfc4 rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::on_error(std::exception &)")
 }
 
@@ -206,6 +231,7 @@ pub fn stub_0xf5cfc4() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5d084() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5d084 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -213,6 +239,7 @@ pub fn stub_0xf5d084() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>*)
 pub fn stub_0xf5d094() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5d094 rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*)")
 }
 
@@ -220,6 +247,7 @@ pub fn stub_0xf5d094() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,3,void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)
 pub fn stub_0xf5d0c4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5d0c4 rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")
 }
 
@@ -227,6 +255,7 @@ pub fn stub_0xf5d0c4() -> ! {
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*)")]
 // was: rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,3,void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>*)
 pub fn stub_0xf5d0d4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` slot infra (no exact-EA native anywhere)
     todo!("0xf5d0d4 rbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,3,void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*>(boost::function<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)> const&,rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>*)")
 }
 
@@ -248,6 +277,7 @@ pub fn stub_0xf5d124() -> ! {
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)
 pub fn stub_0xf5d154() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5d154 boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
@@ -255,6 +285,7 @@ pub fn stub_0xf5d154() -> ! {
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)
 pub fn stub_0xf5d164() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5d164 boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")
 }
 
@@ -262,6 +293,7 @@ pub fn stub_0xf5d164() -> ! {
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)
 pub fn stub_0xf5d194() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5d194 boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
@@ -269,6 +301,7 @@ pub fn stub_0xf5d194() -> ! {
 #[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)
 pub fn stub_0xf5d1a4() -> ! {
+    // BLOCKED: core-owned `rbx::signals` dispatch infra (no exact-EA native anywhere)
     todo!("0xf5d1a4 boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")
 }
 
