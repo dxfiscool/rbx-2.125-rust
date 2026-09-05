@@ -3,10 +3,45 @@
 //! Range 0x67de5c..0x68364c | existing 37643 -> 37743 distinct
 //! Batch: 100 stubs | // 0xADDR — mangled + #[doc(alias = "demangled")] + todo!("0xADDR mangled")
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 use rbx_core::SharedPtr;
+use crate::generated_audio_wd_watchdog18::{TimerServiceState, ToolGrip};
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
+/// `G3D::Vector3` cross product (IDA `setGripRight/Up/Forward`
+/// rebuild its basis with two crosses each).
+fn cross3(a: [f32; 3], b: [f32; 3]) -> [f32; 3] {
+    [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+    ]
+}
+/// `G3D::Vector3::unitize` with the call-site epsilon (IDA
+/// 0x67ec6a/0x67ecc0: `0.000001`): normalizes longer vectors,
+/// leaves degenerate ones alone.
+fn unitize(v: [f32; 3]) -> [f32; 3] {
+    let len = (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    if len > 0.000001 {
+        [v[0] / len, v[1] / len, v[2] / len]
+    } else {
+        v
+    }
+}
+/// `RBX::Math::safeDirection` (IDA 0x357d88): the normalized input
+/// when its length exceeds 1e-12, else `Vector3::unitX` ([1, 0, 0];
+/// the `Math.cpp:814` assert folds away).
+fn safe_dir(v: [f32; 3]) -> [f32; 3] {
+    let len = (v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).sqrt();
+    if len > 1e-12 {
+        [v[0] / len, v[1] / len, v[2] / len]
+    } else {
+        [1.0, 0.0, 0.0]
+    }
+}
+/// Negated vector (the grip forward is the negated back column).
+fn neg3(v: [f32; 3]) -> [f32; 3] {
+    [-v[0], -v[1], -v[2]]
+}
 // 0x67de5c — __ZThn36_N3RBX12TimerServiceD1Ev
 // demangled: non-virtual thunk toRBX::TimerService::~TimerService()
 // type: void __fastcall(RBX::TimerService *__hidden this)
@@ -57,8 +92,11 @@ pub fn stub_67e2b4() {
 // type: void __fastcall(_DWORD **)
 #[doc(alias = "std::_List_base<RBX::TimerService::Item,std::allocator<RBX::TimerService::Item>>::_M_clear(void)")]
 #[doc(alias = "__ZNSt10_List_baseIN3RBX12TimerService4ItemESaIS2_EE8_M_clearEv")]
-pub fn stub_67e5a4() -> ! {
-    todo!("0x67e5a4 __ZNSt10_List_baseIN3RBX12TimerService4ItemESaIS2_EE8_M_clearEv")
+pub fn stub_67e5a4(state: &mut TimerServiceState) {
+    // IDA 0x67e5a4 (`std::_List_base<TimerService::Item>::_M_clear`):
+    // destroys every item in the +104 list. Host: clear the queue
+    // (the `Arc` drops run here).
+    state.items.clear();
 }
 
 // 0x67e7a0 — __ZN3RBX4Tool7setGripERKN3G3D15CoordinateFrameE
@@ -66,8 +104,22 @@ pub fn stub_67e5a4() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, const G3D::CoordinateFrame *)
 #[doc(alias = "RBX::Tool::setGrip(G3D::CoordinateFrame const&)")]
 #[doc(alias = "__ZN3RBX4Tool7setGripERKN3G3D15CoordinateFrameE")]
-pub fn stub_67e7a0() -> ! {
-    todo!("0x67e7a0 __ZN3RBX4Tool7setGripERKN3G3D15CoordinateFrameE")
+pub fn stub_67e7a0(state: &mut ToolGrip, frame: &ToolGrip) -> bool {
+    // IDA 0x67e7a0 (`RBX::Tool::setGrip`): compares the input
+    // translation (words 95-97) and the rotation via
+    // `Matrix3::operator==` (0x67e7c0-0x67e7ee); on difference
+    // stores the rotation words and the translation (0x67e80a-0x67e826),
+    // runs `cleanUpZeroColumn` + `orthonormalizeIfNecessary` on the
+    // member (folds: no-ops on orthonormal frames), raises (folds)
+    // and forwards to `JointInstance::setC1` (joint folds; the
+    // `backendProcessing` assert at 0x67e876 folds too). Host: the
+    // changed flag.
+    if state.rotation == frame.rotation && state.translation == frame.translation {
+        return false;
+    }
+    state.rotation = frame.rotation;
+    state.translation = frame.translation;
+    true
 }
 
 // 0x67e8c0 — __ZNK3RBX4Tool10getGripPosEv
@@ -75,8 +127,10 @@ pub fn stub_67e7a0() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getGripPos(void)const")]
 #[doc(alias = "__ZNK3RBX4Tool10getGripPosEv")]
-pub fn stub_67e8c0() -> ! {
-    todo!("0x67e8c0 __ZNK3RBX4Tool10getGripPosEv")
+pub fn stub_67e8c0(state: &ToolGrip) -> [f32; 3] {
+    // IDA 0x67e8c0 (`RBX::Tool::getGripPos`): copies words 95-97
+    // (+380..+388, 0x67e8c0-0x67e8ca). Host: the translation.
+    state.translation
 }
 
 // 0x67e8d0 — __ZN3RBX4Tool10setGripPosERKN3G3D7Vector3E
@@ -84,8 +138,13 @@ pub fn stub_67e8c0() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, const G3D::Vector3 *)
 #[doc(alias = "RBX::Tool::setGripPos(G3D::Vector3 const&)")]
 #[doc(alias = "__ZN3RBX4Tool10setGripPosERKN3G3D7Vector3E")]
-pub fn stub_67e8d0() -> ! {
-    todo!("0x67e8d0 __ZN3RBX4Tool10setGripPosERKN3G3D7Vector3E")
+pub fn stub_67e8d0(state: &mut ToolGrip, pos: [f32; 3]) -> bool {
+    // IDA 0x67e8d0 (`RBX::Tool::setGripPos`): copies the current
+    // rotation into a temp frame, swaps in the input translation
+    // (0x67e8e2-0x67e8f2) and delegates to `setGrip` (0x67e8fc,
+    // host: the 0x67e7a0 twin).
+    let frame = ToolGrip { rotation: state.rotation, translation: pos };
+    stub_67e7a0(state, &frame)
 }
 
 // 0x67e900 — __ZNK3RBX4Tool14getGripForwardEv
@@ -93,8 +152,12 @@ pub fn stub_67e8d0() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getGripForward(void)const")]
 #[doc(alias = "__ZNK3RBX4Tool14getGripForwardEv")]
-pub fn stub_67e900() -> ! {
-    todo!("0x67e900 __ZNK3RBX4Tool14getGripForwardEv")
+pub fn stub_67e900(state: &ToolGrip) -> [f32; 3] {
+    // IDA 0x67e900 (`RBX::Tool::getGripForward`): column 2 of the
+    // rotation (disasm: `MOVS R2, #2` at 0x67e90e), negated
+    // (0x67e920-0x67e934).
+    let column = state.column(2);
+    [-column[0], -column[1], -column[2]]
 }
 
 // 0x67e940 — __ZN3RBX4Tool14setGripForwardERKN3G3D7Vector3E
@@ -102,8 +165,20 @@ pub fn stub_67e900() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, const G3D::Vector3 *)
 #[doc(alias = "RBX::Tool::setGripForward(G3D::Vector3 const&)")]
 #[doc(alias = "__ZN3RBX4Tool14setGripForwardERKN3G3D7Vector3E")]
-pub fn stub_67e940() -> ! {
-    todo!("0x67e940 __ZN3RBX4Tool14setGripForwardERKN3G3D7Vector3E")
+pub fn stub_67e940(state: &mut ToolGrip, forward: [f32; 3]) -> bool {
+    // IDA 0x67e940 (`RBX::Tool::setGripForward`): the back direction
+    // is the negated safe input (0x67e98a-0x67e9be); the right
+    // column is rebuilt from the preserved up column (column 1,
+    // disasm: `MOVS R2, #1` at 0x67e978) via cross + unitize, then
+    // the up column from the back and right (0x67e9e6-0x67ea6a);
+    // columns land at 0/1/2 with the back stored raw (0x67ea56-0x67ea6a)
+    // and the whole frame delegates to `setGrip` (0x67ea8a). Host:
+    // the same basis rebuild over the `ToolGrip` columns.
+    let back = neg3(safe_dir(forward));
+    let right = unitize(cross3(state.column(1), back));
+    let up = unitize(cross3(back, right));
+    let frame = ToolGrip::from_columns(right, up, back, state.translation);
+    stub_67e7a0(state, &frame)
 }
 
 // 0x67ea8c — __ZNK3RBX4Tool9getGripUpEv
@@ -111,8 +186,10 @@ pub fn stub_67e940() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getGripUp(void)const")]
 #[doc(alias = "__ZNK3RBX4Tool9getGripUpEv")]
-pub fn stub_67ea8c() -> ! {
-    todo!("0x67ea8c __ZNK3RBX4Tool9getGripUpEv")
+pub fn stub_67ea8c(state: &ToolGrip) -> [f32; 3] {
+    // IDA 0x67ea8c (`RBX::Tool::getGripUp`): column 1 of the
+    // rotation (disasm: `MOVS R2, #1` at 0x67ea92).
+    state.column(1)
 }
 
 // 0x67ea9c — __ZN3RBX4Tool9setGripUpERKN3G3D7Vector3E
@@ -120,8 +197,20 @@ pub fn stub_67ea8c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, const G3D::Vector3 *)
 #[doc(alias = "RBX::Tool::setGripUp(G3D::Vector3 const&)")]
 #[doc(alias = "__ZN3RBX4Tool9setGripUpERKN3G3D7Vector3E")]
-pub fn stub_67ea9c() -> ! {
-    todo!("0x67ea9c __ZN3RBX4Tool9setGripUpERKN3G3D7Vector3E")
+pub fn stub_67ea9c(state: &mut ToolGrip, up: [f32; 3]) -> bool {
+    // IDA 0x67ea9c (`RBX::Tool::setGripUp`): the input runs through
+    // `safeDirection` (0x67ead6); the back column is rebuilt from
+    // the preserved right column (column 0, disasm: `MOVS R2, #0` at
+    // 0x67eac0) via cross + unitize — cross(preserved, new) lands on
+    // the back direction — then the right column from the up and
+    // back (0x67eb36-0x67eb80); columns land at 0/1/2
+    // (0x67eb96-0x67ebaa) and the frame delegates to `setGrip`
+    // (0x67ebbc). Host: the same basis rebuild.
+    let up = safe_dir(up);
+    let back = unitize(cross3(state.column(0), up));
+    let right = unitize(cross3(up, back));
+    let frame = ToolGrip::from_columns(right, up, back, state.translation);
+    stub_67e7a0(state, &frame)
 }
 
 // 0x67ebc0 — __ZNK3RBX4Tool12getGripRightEv
@@ -129,8 +218,10 @@ pub fn stub_67ea9c() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this)
 #[doc(alias = "RBX::Tool::getGripRight(void)const")]
 #[doc(alias = "__ZNK3RBX4Tool12getGripRightEv")]
-pub fn stub_67ebc0() -> ! {
-    todo!("0x67ebc0 __ZNK3RBX4Tool12getGripRightEv")
+pub fn stub_67ebc0(state: &ToolGrip) -> [f32; 3] {
+    // IDA 0x67ebc0 (`RBX::Tool::getGripRight`): column 0 of the
+    // rotation (disasm: `MOVS R2, #0` at 0x67ebc6).
+    state.column(0)
 }
 
 // 0x67ebd0 — __ZN3RBX4Tool12setGripRightERKN3G3D7Vector3E
@@ -138,8 +229,20 @@ pub fn stub_67ebc0() -> ! {
 // type: _DWORD __fastcall(RBX::Tool *__hidden this, const G3D::Vector3 *)
 #[doc(alias = "RBX::Tool::setGripRight(G3D::Vector3 const&)")]
 #[doc(alias = "__ZN3RBX4Tool12setGripRightERKN3G3D7Vector3E")]
-pub fn stub_67ebd0() -> ! {
-    todo!("0x67ebd0 __ZN3RBX4Tool12setGripRightERKN3G3D7Vector3E")
+pub fn stub_67ebd0(state: &mut ToolGrip, right: [f32; 3]) -> bool {
+    // IDA 0x67ebd0 (`RBX::Tool::setGripRight`): the input runs
+    // through `safeDirection` (0x67ec0a); the back column is rebuilt
+    // from the preserved up column (column 1, disasm: `MOVS R2, #1`
+    // at 0x67ebf4) via cross + unitize — cross(new, preserved) lands
+    // on the back direction — then the up column from the back and
+    // right (0x67ec44-0x67ecb8); columns land at 0/1/2
+    // (0x67ecca-0x67ecde) and the frame delegates to `setGrip`
+    // (0x67ecf0). Host: the same basis rebuild.
+    let right = safe_dir(right);
+    let back = unitize(cross3(right, state.column(1)));
+    let up = unitize(cross3(back, right));
+    let frame = ToolGrip::from_columns(right, up, back, state.translation);
+    stub_67e7a0(state, &frame)
 }
 
 // 0x67ecf4 — __ZN3RBX4Tool10setToolTipESs

@@ -10,9 +10,9 @@ use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
     FontSizeVariant, FontVariant, TextLabelBoolProp, TextLabelBoolSlot, TextLabelBrickProp,
     TextLabelColorProp, TextLabelColorSlot, TextLabelFloatProp, TextLabelFloatSlot, TextLabelFontProp,
-    TextLabelFontSizeProp, TextLabelState, FONTSIZE_ITEMS, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS,
-    FONT_ITEMS, font_name, fontsize_index, fontsize_name, xalignment_index, xalignment_name,
-    yalignment_index, yalignment_name,
+    TextLabelFontSizeProp, TextLabelState, TextLabelStringProp, TimerItem, TimerServiceState, ToolGrip,
+    FONTSIZE_ITEMS, XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, FONT_ITEMS, font_name, fontsize_index,
+    fontsize_name, xalignment_index, xalignment_name, yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -1185,8 +1185,13 @@ pub fn stub_67c68c() -> bool {
 // type: int __fastcall(int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67c690() -> ! {
-    todo!("0x67c690 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67c690(state: &TextLabelState) -> u32 {
+    // IDA 0x67c690 (`GetSetImpl<TextLabel FontSize>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +536 `Instance`-to-mixin adjust; virtual when the low bit
+    // is set) tail-calling the getter. The member is `getFontSize`;
+    // the pointer folds into the field.
+    state.font_size
 }
 
 // 0x67c6bc — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -1194,8 +1199,12 @@ pub fn stub_67c690() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::TextService::FontSize>::GetSetImpl<RBX::TextService::FontSize (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::FontSize)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextService::FontSize const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_67c6bc() -> ! {
-    todo!("0x67c6bc __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_11TextService8FontSizeEE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_67c6bc(state: &mut TextLabelState, value: u32) {
+    // IDA 0x67c6bc (`GetSetImpl<TextLabel FontSize>::setValue`): the
+    // member-pointer resolve over +12/+16 tail-calling the setter
+    // with the input word. The member is `setFontSize`; the pointer
+    // folds into the field (its raises fold into the store).
+    state.font_size = value;
 }
 
 // 0x67c6e0 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -1203,8 +1212,14 @@ pub fn stub_67c6bc() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::PropDescriptor<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>(char const*,char const*,std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_67c6e0() -> ! {
-    todo!("0x67c6e0 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsEC2IMNS_12GuiTextMixinEKFSsvEMS2_FvSsEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_67c6e0(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelStringProp {
+    // IDA 0x67c6e0 (`PropDescriptor<TextLabel,
+    // string>::PropDescriptor`): builds the `GetSetImpl` member-pair
+    // cell plus the typed descriptor identity with name/category/
+    // attributes/permissions. The pair folds into the `text` field
+    // (`getText`/`setText`). Host: the identity half. Same shape as
+    // the `TextBox` twin at 0x671804.
+    TextLabelStringProp::new(name, category, attributes, permissions)
 }
 
 // 0x67c7f4 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelESsED0Ev
@@ -1220,8 +1235,10 @@ pub fn stub_67c7f4() {
 // demangled: RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>::isReadOnly(void)const
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")]
-pub fn stub_67c820() -> ! {
-    todo!("0x67c820 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE10isReadOnlyEv")
+pub fn stub_67c820() -> bool {
+    // IDA 0x67c820 (`GetSetImpl<TextLabel string>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67c824 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv
@@ -1229,8 +1246,10 @@ pub fn stub_67c820() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")]
-pub fn stub_67c824() -> ! {
-    todo!("0x67c824 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE11isWriteOnlyEv")
+pub fn stub_67c824() -> bool {
+    // IDA 0x67c824 (`GetSetImpl<TextLabel string>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67c828 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
@@ -1238,8 +1257,11 @@ pub fn stub_67c824() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67c828() -> ! {
-    todo!("0x67c828 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67c828(state: &TextLabelState) -> String {
+    // IDA 0x67c828 (`GetSetImpl<TextLabel string>::getValue`): the
+    // member-pointer resolve (+536 adjust) tail-calling the getter.
+    // The member is `getText`; the pointer folds into the field.
+    state.text.clone()
 }
 
 // 0x67c860 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs
@@ -1247,8 +1269,12 @@ pub fn stub_67c828() -> ! {
 // type: void __fastcall(int, int, const std::string *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,std::string>::GetSetImpl<std::string (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_67c860() -> ! {
-    todo!("0x67c860 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelESsE10GetSetImplIMNS_12GuiTextMixinEKFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_67c860(state: &mut TextLabelState, text: &str, filter_pass: bool) {
+    // IDA 0x67c860 (`GetSetImpl<TextLabel string>::setValue`):
+    // copies the input and tail-calls the setter member-pointer.
+    // The member is `setText`; the pointer folds into the 0x6785c8
+    // twin with its filter seam.
+    crate::generated_audio_wdog_B::stub_0x6785c8(state, text, filter_pass);
 }
 
 // 0x67d4f4 — __ZN3RBX12TimerServiceC1Ev
@@ -1256,8 +1282,10 @@ pub fn stub_67c860() -> ! {
 // type: RBX::Instance *__fastcall(RBX::TimerService *this)
 #[doc(alias = "RBX::TimerService::TimerService(void)")]
 #[doc(alias = "__ZN3RBX12TimerServiceC1Ev")]
-pub fn stub_67d4f4() -> ! {
-    todo!("0x67d4f4 __ZN3RBX12TimerServiceC1Ev")
+pub fn stub_67d4f4() -> TimerServiceState {
+    // IDA 0x67d4f4 (`RBX::TimerService::TimerService`, C1): thunk
+    // forwarding to the C2 (host: the 0x67d4f8 twin).
+    stub_67d4f8()
 }
 
 // 0x67d4f8 — __ZN3RBX12TimerServiceC2Ev
@@ -1265,8 +1293,12 @@ pub fn stub_67d4f4() -> ! {
 // type: RBX::Instance *__fastcall(RBX::TimerService *this)
 #[doc(alias = "RBX::TimerService::TimerService(void)")]
 #[doc(alias = "__ZN3RBX12TimerServiceC2Ev")]
-pub fn stub_67d4f8() -> ! {
-    todo!("0x67d4f8 __ZN3RBX12TimerServiceC2Ev")
+pub fn stub_67d4f8() -> TimerServiceState {
+    // IDA 0x67d4f8 (`RBX::TimerService::TimerService`, C2): the
+    // `Instance` base, vtables, class descriptor and registrar fold
+    // away; the +92 cell is set (0x67d5b2) and the +104 item list is
+    // initialized empty (0x67d5ec-0x67d5f6). Host: the fresh state.
+    TimerServiceState { active: true, items: Vec::new() }
 }
 
 // 0x67d650 — __ZN3RBX12TimerService5delayEN5boost9function0IvEEd
@@ -1274,8 +1306,18 @@ pub fn stub_67d4f8() -> ! {
 // type: void __fastcall(int, int, unsigned int, unsigned int, int, struct _Unwind_Exception *lpuexcpt, int, int, char, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "RBX::TimerService::delay(boost::function0<void>,double)")]
 #[doc(alias = "__ZN3RBX12TimerService5delayEN5boost9function0IvEEd")]
-pub fn stub_67d650() -> ! {
-    todo!("0x67d650 __ZN3RBX12TimerService5delayEN5boost9function0IvEEd")
+pub fn stub_67d650(state: &mut TimerServiceState, now: f64, delay_secs: f64, action: impl Fn() + Send + Sync + 'static) {
+    // IDA 0x67d650 (`RBX::TimerService::delay`): the deadline is
+    // `now + delay` (0x67d6ac-0x67d6c2, host: the `now` seam for
+    // `Time::now`); the `{deadline, func}` item is inserted into the
+    // +104 list keeping ascending deadline order (0x67d6da-0x67d71c).
+    // Host: sorted insert of the `Arc` closure.
+    let item = TimerItem { deadline: now + delay_secs, action: std::sync::Arc::new(action) };
+    let position = state.items.iter().position(|existing| existing.deadline > item.deadline);
+    match position {
+        Some(index) => state.items.insert(index, item),
+        None => state.items.push(item),
+    }
 }
 
 // 0x67d788 — __ZN3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE
@@ -1283,8 +1325,16 @@ pub fn stub_67d650() -> ! {
 // type: void __fastcall(int)
 #[doc(alias = "RBX::TimerService::onHeartbeat(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZN3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE")]
-pub fn stub_67d788() -> ! {
-    todo!("0x67d788 __ZN3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE")
+pub fn stub_67d788(state: &mut TimerServiceState, now: f64) {
+    // IDA 0x67d788 (`RBX::TimerService::onHeartbeat`): while the
+    // head item's deadline has passed (0x67d7e8-0x67d80a), it fires
+    // the closure, unhooks and destroys it (0x67d814-0x67d8ac). The
+    // +104 list stays deadline-sorted, so head-pop-while-due is
+    // exact. Host: pop, drop the borrow, then call.
+    while state.items.first().map(|item| item.deadline <= now).unwrap_or(false) {
+        let item = state.items.remove(0);
+        (item.action)();
+    }
 }
 
 // 0x67d8f4 — __ZThn96_N3RBX12TimerService11onHeartbeatERKNS_9HeartbeatE
@@ -1301,8 +1351,10 @@ pub fn stub_67d8f4() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::function0<void>::operator=(boost::function0<void> const&)")]
 #[doc(alias = "__ZN5boost9function0IvEaSERKS1_")]
-pub fn stub_67d8fc() -> ! {
-    todo!("0x67d8fc __ZN5boost9function0IvEaSERKS1_")
+pub fn stub_67d8fc() {
+    // IDA 0x67d8fc (`boost::function0<void>::operator=`):
+    // clear-then-`assign_to_own` (0x67d94a-0x67d982). Host closures
+    // move directly (`Arc` assignment) — carrier no-op.
 }
 
 // 0x67d9d8 — __ZN3RBX12TimerServiceD1Ev
@@ -1328,8 +1380,10 @@ pub fn stub_67dae8() {
 // type: int __fastcall(RBX::TimerService *this, RBX::ServiceProvider *, RBX::ServiceProvider *)
 #[doc(alias = "RBX::TimerService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
 #[doc(alias = "__ZN3RBX12TimerService17onServiceProviderEPNS_15ServiceProviderES2_")]
-pub fn stub_67dc08() -> ! {
-    todo!("0x67dc08 __ZN3RBX12TimerService17onServiceProviderEPNS_15ServiceProviderES2_")
+pub fn stub_67dc08() {
+    // IDA 0x67dc08 (`RBX::TimerService::onServiceProvider`):
+    // forwards the +96 `HeartbeatInstance` cell (0x67dc08). The
+    // heartbeat wiring folds away. Carrier no-op.
 }
 
 // 0x67dc20 — __ZThn32_N3RBX12TimerServiceD1Ev

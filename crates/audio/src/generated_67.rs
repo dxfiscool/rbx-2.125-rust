@@ -29,15 +29,22 @@ pub fn stub_67ccf8() {
 // 0x67cd9c — __GLOBAL__I_a_272
 // type: int()
 #[doc(alias = "global constructor keyed to_a_272")]
-pub fn stub_67cd9c() -> ! {
-    todo!("0x67cd9c global constructor keyed to_a_272")
+pub fn stub_67cd9c() {
+    // IDA 0x67cd9c (`__GLOBAL__I_a_272`): static init constructing
+    // the `TextLabel` descriptor set — every `PropDescriptor` with
+    // its getter/setter member pointers, the enum descriptors and
+    // the sibling creators. All registry construction folds away.
+    // Carrier no-op.
 }
 
 // 0x67dc10 — __ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv
 // type: int()
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv")]
-pub fn stub_67dc10() -> ! {
-    todo!("0x67dc10 __ZNK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv")
+pub fn stub_67dc10() -> &'static str {
+    // IDA 0x67dc10 (`FactoryProduct<TimerService, ...>::getClassName`):
+    // resolves the static creator and returns its class name —
+    // "TimerService".
+    "TimerService"
 }
 
 // 0x67de4c — __ZThn32_NK3RBX14FactoryProductINS_12TimerServiceENS_8InstanceELZNS_13sTimerServiceEES2_E12getClassNameEv
@@ -90,8 +97,11 @@ pub fn stub_67e500() {
 
 // 0x67e5cc — __GLOBAL__I_a_273
 #[doc(alias = "global constructor keyed to_a_273")]
-pub fn stub_67e5cc() -> ! {
-    todo!("0x67e5cc global constructor keyed to_a_273")
+pub fn stub_67e5cc() {
+    // IDA 0x67e5cc (`__GLOBAL__I_a_273`): static init (decompile
+    // unavailable; same registry-construction shape as the
+    // neighboring global ctors). All registry construction folds
+    // away. Carrier no-op.
 }
 
 // 0x683010 — __ZNK3RBX14FactoryProductINS_4ToolENS_12BackpackItemELZNS_5sToolEENS_8InstanceEE12getClassNameEv

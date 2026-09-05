@@ -958,6 +958,16 @@ impl ToolGrip {
             self.rotation[2][index],
         ]
     }
+    pub fn from_columns(right: [f32; 3], up: [f32; 3], back: [f32; 3], translation: [f32; 3]) -> Self {
+        Self {
+            rotation: [
+                [right[0], up[0], back[0]],
+                [right[1], up[1], back[1]],
+                [right[2], up[2], back[2]],
+            ],
+            translation,
+        }
+    }
 }
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
