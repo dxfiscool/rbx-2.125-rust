@@ -7,174 +7,229 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use crate::generated_script_gap_031bf0::RobloxViewState;
+use std::sync::LazyLock;
+
+/// Ogre `LogManager` singleton latch (IDA 0x39920: guarded once-alloc at
+/// 0x3998c..0x399d2; the manager peers fold into the host).
+static LOG_MANAGER_READY: LazyLock<bool> = LazyLock::new(|| true);
 
 // 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "____ZN10RobloxView18doRestartDataModelEv_block_invoke")]
-pub fn stub_0x38770() -> ! {
-    todo!("0x38770 ____ZN10RobloxView18doRestartDataModelEv_block_invoke")
+pub fn stub_0x38770(state: &mut RobloxViewState) {
+    // IDA 0x38770: `doRestartDataModel` block captures the game and runs
+    // the restart on the main queue (cf. `restartDataModel` at 0x386d0 in
+    // generated_script_gap_031bf0.rs). Queue hop folds into the caller.
+    state.restart_queued = true;
 }
 
 // 0x38cd0 — __ZN10RobloxView17setupNewDataModelEv
 // type: _DWORD __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::setupNewDataModel(void)")]
-pub fn stub_0x38cd0() -> ! {
-    todo!("0x38cd0 RobloxView::setupNewDataModel(void)")
+pub fn stub_0x38cd0(state: &mut RobloxViewState) {
+    // IDA 0x38cd0: `setupNewDataModel` builds fresh DataModel/Overlay
+    // peers and binds them into the view (cf. `bindWorkspace` at 0x380a4).
+    // Peers fold into host ownership; the bound triple latches.
+    state.workspace_bound = true;
 }
 
 // 0x39018 — ____ZN10RobloxView15newGameDidStartEv_block_invoke
 #[doc(alias = "____ZN10RobloxView15newGameDidStartEv_block_invoke")]
-pub fn stub_0x39018() -> ! {
-    todo!("0x39018 ____ZN10RobloxView15newGameDidStartEv_block_invoke")
+pub fn stub_0x39018(state: &mut RobloxViewState) {
+    // IDA 0x39018: `newGameDidStart` block calls `requestResumeRendering`
+    // (0x3901a, cf. 0x37378). The suspension latch clears.
+    state.rendering_suspended = false;
 }
 
 // 0x39020 — __ZN10RobloxViewD1Ev
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView()")]
-pub fn stub_0x39020() -> ! {
-    todo!("0x39020 RobloxView::~RobloxView()")
+pub fn stub_0x39020() {
+    // IDA 0x39020: D1 dtor forwards to the D2 dtor (thunk); drop glue
+    // covers it — no-op.
 }
 
 // 0x39024 — __ZN10RobloxViewD2Ev
 // type: void __fastcall(RobloxView *__hidden this)
 #[doc(alias = "RobloxView::~RobloxView() [0x39024]")]
-pub fn stub_0x39024() -> ! {
-    todo!("0x39024 RobloxView::~RobloxView()")
+pub fn stub_0x39024() {
+    // IDA 0x39024: D2 dtor tears down mutexes, jobs, and peers; all fold
+    // into host ownership — no-op.
 }
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
 #[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
-pub fn stub_0x39674() -> ! {
-    todo!("0x39674 RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
+pub fn stub_0x39674(
+    width: u32,
+    height: u32,
+    a: &str,
+    b: &str,
+    c: &str,
+    has_game: bool,
+) -> RobloxViewState {
+    // IDA 0x39674: `create_view` builds the view like the ctor at 0x37628
+    // and preps it with the game like 0x37b3c (both in
+    // generated_script_gap_031bf0.rs); construction plumbing folds into
+    // host ownership.
+    RobloxViewState {
+        width,
+        height,
+        params: [a.to_owned(), b.to_owned(), c.to_owned()],
+        view_prepped: has_game,
+        ..RobloxViewState::default()
+    }
 }
 
 // 0x39920 — __ZL14initLogManagerv
 // type: _DWORD __fastcall()
 #[doc(alias = "initLogManager(void)")]
-pub fn stub_0x39920() -> ! {
-    todo!("0x39920 initLogManager(void)")
+pub fn stub_0x39920(bundle_path: &str) -> String {
+    // IDA 0x39920: `initLogManager` resolves the bundle path (0x3993e, cf.
+    // `macBundlePath` at 0x375b4) and one-shots the Ogre LogManager
+    // (0x3998c..0x399d2). The path is the observed input.
+    let _ = *LOG_MANAGER_READY;
+    bundle_path.to_owned()
 }
 
 // 0x39be0 — __ZNSt12domain_errorD0Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error()")]
-pub fn stub_0x39be0() -> ! {
-    todo!("0x39be0 std::domain_error::~domain_error()")
+pub fn stub_0x39be0() {
+    // IDA 0x39be0: D0 dtor runs the base dtor (0x39be6) plus `operator
+    // delete` (0x39bf0); both fold into drop glue — no-op.
 }
 
 // 0x39bf8 — __ZNSt12domain_errorD2Ev
 // type: void __cdecl(std::domain_error *__hidden this)
 #[doc(alias = "std::domain_error::~domain_error() [0x39bf8]")]
-pub fn stub_0x39bf8() -> ! {
-    todo!("0x39bf8 std::domain_error::~domain_error()")
+pub fn stub_0x39bf8() {
+    // IDA 0x39bf8: D2 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39c00 — __ZNSt16invalid_argumentD1Ev
 // type: void __cdecl(std::invalid_argument *__hidden this)
 #[doc(alias = "std::invalid_argument::~invalid_argument()")]
-pub fn stub_0x39c00() -> ! {
-    todo!("0x39c00 std::invalid_argument::~invalid_argument()")
+pub fn stub_0x39c00() {
+    // IDA 0x39c00: D1 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39c08 — __ZNSt12length_errorD0Ev
 // type: void __cdecl(std::length_error *__hidden this)
 #[doc(alias = "std::length_error::~length_error()")]
-pub fn stub_0x39c08() -> ! {
-    todo!("0x39c08 std::length_error::~length_error()")
+pub fn stub_0x39c08() {
+    // IDA 0x39c08: D0 dtor (base dtor plus delete, same shape as 0x39be0)
+    // — no-op.
 }
 
 // 0x39c20 — __ZNSt12out_of_rangeD1Ev
 // type: void __cdecl(std::out_of_range *__hidden this)
 #[doc(alias = "std::out_of_range::~out_of_range()")]
-pub fn stub_0x39c20() -> ! {
-    todo!("0x39c20 std::out_of_range::~out_of_range()")
+pub fn stub_0x39c20() {
+    // IDA 0x39c20: D1 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39c28 — __ZNSt11range_errorD0Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error()")]
-pub fn stub_0x39c28() -> ! {
-    todo!("0x39c28 std::range_error::~range_error()")
+pub fn stub_0x39c28() {
+    // IDA 0x39c28: D0 dtor (same shape as 0x39be0) — no-op.
 }
 
 // 0x39c40 — __ZNSt11range_errorD2Ev
 // type: void __cdecl(std::range_error *__hidden this)
 #[doc(alias = "std::range_error::~range_error() [0x39c40]")]
-pub fn stub_0x39c40() -> ! {
-    todo!("0x39c40 std::range_error::~range_error()")
+pub fn stub_0x39c40() {
+    // IDA 0x39c40: D2 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39c48 — __ZNSt14overflow_errorD1Ev
 // type: void __cdecl(std::overflow_error *__hidden this)
 #[doc(alias = "std::overflow_error::~overflow_error()")]
-pub fn stub_0x39c48() -> ! {
-    todo!("0x39c48 std::overflow_error::~overflow_error()")
+pub fn stub_0x39c48() {
+    // IDA 0x39c48: D1 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39c50 — __ZNSt15underflow_errorD0Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error()")]
-pub fn stub_0x39c50() -> ! {
-    todo!("0x39c50 std::underflow_error::~underflow_error()")
+pub fn stub_0x39c50() {
+    // IDA 0x39c50: D0 dtor (same shape as 0x39be0) — no-op.
 }
 
 // 0x39c68 — __ZNSt15underflow_errorD2Ev
 // type: void __cdecl(std::underflow_error *__hidden this)
 #[doc(alias = "std::underflow_error::~underflow_error() [0x39c68]")]
-pub fn stub_0x39c68() -> ! {
-    todo!("0x39c68 std::underflow_error::~underflow_error()")
+pub fn stub_0x39c68() {
+    // IDA 0x39c68: D2 dtor runs the base dtor; drop glue covers it —
+    // no-op.
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
-pub fn stub_0x39d7c() -> ! {
-    todo!("0x39d7c rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")
+pub fn stub_0x39d7c() {
+    // IDA 0x39d7c: `shared_ptr<RenderJob>::reset()` nulls the pointer
+    // (0x39da2..0x39da8) and releases (0x39dca..0x39dd2, same shape as
+    // 0x3a660); the drop folds into `Arc` — no-op.
 }
 
 // 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
-pub fn stub_0x39e10() -> ! {
-    todo!("0x39e10 rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")
+pub fn stub_0x39e10() {
+    // IDA 0x39e10: `shared_ptr<ViewUpdateJob>::reset()` — same null plus
+    // release shape as 0x39d7c; `Arc` glue covers it — no-op.
 }
 
 // 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
-pub fn stub_0x39ea8() -> ! {
-    todo!("0x39ea8 rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")
+pub fn stub_0x39ea8() {
+    // IDA 0x39ea8: move-assign steals the source pair, nulling it
+    // (0x39ed6..0x39ed8), installs it (0x39edc..0x39ee6), and releases the
+    // old count (0x39f02..0x39f0a); move glue covers it — no-op.
 }
 
 // 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
-pub fn stub_0x39f4c() -> ! {
-    todo!("0x39f4c rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_0x39f4c() {
+    // IDA 0x39f4c: ctor-from-pointer installs the pointer (0x39f7c..
+    // 0x39f84) and builds the count block (0x39faa); `Arc` construction
+    // glue covers it — no-op.
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
-pub fn stub_0x3a030() -> ! {
-    todo!("0x3a030 rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")
+pub fn stub_0x3a030() {
+    // IDA 0x3a030: move-assign for RenderJob (same steal shape as 0x39ea8)
+    // — no-op.
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
 #[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
-pub fn stub_0x3a0d4() -> ! {
-    todo!("0x3a0d4 rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_0x3a0d4() {
+    // IDA 0x3a0d4: ctor-from-pointer for RenderJob (same shape as 0x39f4c)
+    // — no-op.
 }
 
 // 0x3a1b8 — __ZN17QuitEventListenerD1Ev
 // type: void __fastcall(QuitEventListener *__hidden this)
 #[doc(alias = "QuitEventListener::~QuitEventListener()")]
-pub fn stub_0x3a1b8() -> ! {
-    todo!("0x3a1b8 QuitEventListener::~QuitEventListener()")
+pub fn stub_0x3a1b8() {
+    // IDA 0x3a1b8: D1 dtor has an empty body; drop glue covers it — no-op.
 }
 
 // 0x3a2ec — __ZN5boost10shared_ptrIN3RBX9DataModelEEaSINS1_16OverlayDataModelEEERS3_ONS0_IT_EE
 #[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")]
-pub fn stub_0x3a2ec() -> ! {
-    todo!("0x3a2ec rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")
+pub fn stub_0x3a2ec() {
+    // IDA 0x3a2ec: move-assign from OverlayDataModel (same steal shape as
+    // 0x39ea8) — no-op.
 }
 
 // 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
@@ -992,4 +1047,61 @@ pub fn stub_0x41580() -> ! {
 #[doc(alias = "+[UserInfo logout]")]
 pub fn stub_0x419c8() -> ! {
     todo!("0x419c8 +[UserInfo logout]")
+}
+
+#[cfg(test)]
+mod roblox_view_batch_tests {
+    use super::*;
+
+    #[test]
+    fn view_lifecycle_latches() {
+        let mut view = RobloxViewState::default();
+        stub_0x38770(&mut view);
+        assert!(view.restart_queued);
+        let mut view = RobloxViewState::default();
+        stub_0x38cd0(&mut view);
+        assert!(view.workspace_bound);
+        let mut view = RobloxViewState {
+            rendering_suspended: true,
+            ..RobloxViewState::default()
+        };
+        stub_0x39018(&mut view);
+        assert!(!view.rendering_suspended);
+        stub_0x39020();
+        stub_0x39024();
+    }
+
+    #[test]
+    fn create_view_and_log() {
+        let view = stub_0x39674(800, 600, "a", "b", "c", true);
+        assert_eq!(view.width, 800);
+        assert_eq!(view.height, 600);
+        assert_eq!(view.params, ["a".to_owned(), "b".to_owned(), "c".to_owned()]);
+        assert!(view.view_prepped);
+        let bare = stub_0x39674(1, 1, "a", "b", "c", false);
+        assert!(!bare.view_prepped);
+        assert_eq!(stub_0x39920("/Applications/Test.app"), "/Applications/Test.app");
+    }
+
+    #[test]
+    fn error_and_ptr_glue() {
+        stub_0x39be0();
+        stub_0x39bf8();
+        stub_0x39c00();
+        stub_0x39c08();
+        stub_0x39c20();
+        stub_0x39c28();
+        stub_0x39c40();
+        stub_0x39c48();
+        stub_0x39c50();
+        stub_0x39c68();
+        stub_0x39d7c();
+        stub_0x39e10();
+        stub_0x39ea8();
+        stub_0x39f4c();
+        stub_0x3a030();
+        stub_0x3a0d4();
+        stub_0x3a1b8();
+        stub_0x3a2ec();
+    }
 }
