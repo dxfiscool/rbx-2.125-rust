@@ -6,28 +6,51 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+
+/// `rbx::signals` slot connection (IDA 0x3be00 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct VoidSlot {
+ pub id: u64,
+ pub target: usize,
+ pub live: bool,
+}
 // 0x3b7e0 — __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v
 // demangled: __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v
 // type: int(void)
 #[doc(alias = "__ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_3b7e0() -> ! {
-    todo!("0x3b7e0 __ZN3RBX4Name7declareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_3b7e0(has_name: bool, null_name: usize, once: &mut dyn FnMut(), declared: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3b7e0: null sControllerService -> getNullName; else call_once(callDoDeclare) + doDeclare.
+    if !has_name {
+        return null_name;
+    }
+    once();
+    declared()
 }
 
 // 0x3b828 — __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v
 // demangled: __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v
 // type: 
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")]
-pub fn stub_3b828() -> ! {
-    todo!("0x3b828 __ZN3RBX4Name9doDeclareILZNS_18sControllerServiceEEEERKS0_v")
+pub fn stub_3b828(guard: &mut bool, cached: &mut usize, declare: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3b828: cxa_guard one-time Name::declare(sControllerService).
+    if !*guard {
+        *cached = declare();
+        *guard = true;
+    }
+    *cached
 }
 
 // 0x3b910 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_17ControllerServiceEEEmv
 // demangled: unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)
 // type: 
 #[doc(alias = "unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")]
-pub fn stub_3b910() -> ! {
-    todo!("0x3b910 unsigned long RBX::ServiceProvider::doGetClassIndex<RBX::ControllerService>(void)")
+pub fn stub_3b910(guard: &mut bool, index: &mut usize, alloc: &mut dyn FnMut() -> usize) -> usize {
+    // IDA 0x3b910: guarded one-time ServiceProvider::newIndex<ControllerService>.
+    if !*guard {
+        *index = alloc();
+        *guard = true;
+    }
+    *index
 }
 
 // 0x3b9e8 — __ZN5boost10shared_ptrIN3RBX17ControllerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
@@ -35,56 +58,80 @@ pub fn stub_3b910() -> ! {
 // type: int(void)
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3b9e8() -> ! {
-    todo!("0x3b9e8 boost::shared_ptr<RBX::ControllerService>::shared_ptr<RBX::ControllerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3b9e8(slot: &mut Option<usize>, ptr: usize, make_count: &mut dyn FnMut(usize), accept: &mut dyn FnMut(usize)) {
+    // IDA 0x3b9e8: px store; shared_count attach; _internal_accept_owner when px set.
+    *slot = Some(ptr);
+    make_count(ptr);
+    if ptr != 0 {
+        accept(ptr);
+    }
 }
 
 // 0x3ba10 — __ZN5boost6detail12shared_countC2IPN3RBX17ControllerServiceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
 // demangled: boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
-pub fn stub_3ba10() -> ! {
-    todo!("0x3ba10 boost::detail::shared_count::shared_count<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter)")
+pub fn stub_3ba10(alloc: &mut dyn FnMut(usize) -> usize, px: usize, init: &mut dyn FnMut(usize, usize)) -> usize {
+    // IDA 0x3ba10: operator new(0x14); use=weak=1; store px.
+    let block = alloc(0x14);
+    init(block, px);
+    block
 }
 
 // 0x3bb10 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 // demangled: boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_3bb10() -> ! {
-    todo!("0x3bb10 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_3bb10() {
+    // IDA 0x3bb10: empty sp_counted_impl_pd<ControllerService> D2 body.
 }
 
 // 0x3bb18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_3bb18() -> ! {
-    todo!("0x3bb18 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_3bb18(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x3bb18: predelete; null px -> result else virtual destroy.
+    let r = predelete(px);
+    if px != 0 {
+        destroy(px)
+    } else {
+        r
+    }
 }
 
 // 0x3bb38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 // demangled: boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_3bb38() -> ! {
-    todo!("0x3bb38 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_3bb38(block: usize, type_name: &str) -> usize {
+    // IDA 0x3bb38: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x3bb50 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17ControllerServiceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 // type: 
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_3bb50() -> ! {
-    todo!("0x3bb50 boost::detail::sp_counted_impl_pd<RBX::ControllerService *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_3bb50(block: usize) -> usize {
+    // IDA 0x3bb50: return block + 16.
+    block + 16
 }
 
 // 0x3bb58 — __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
 // demangled: __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv
 // type: int(void)
 #[doc(alias = "__ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")]
-pub fn stub_3bb58() -> ! {
-    todo!("0x3bb58 __ZN3RBX17NonFactoryProductINS_8InstanceELZNS_18sControllerServiceEEE15isNullClassNameEv")
+pub fn stub_3bb58(check_asserts: bool, is_null_name: bool, class_name_null: bool) -> bool {
+    // IDA 0x3bb58: ReleaseAssert(className().empty() == (sClassName==NULL)); return empty.
+    if check_asserts {
+        assert!(is_null_name == class_name_null, "className().empty() == (sClassName==NULL)");
+    }
+    is_null_name
 }
 
 // 0x3bbf8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSERKS3_
@@ -92,24 +139,36 @@ pub fn stub_3bb58() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::operator=(rbx_core::SharedPtr<RBX::Instance> const&)")]
-pub fn stub_3bbf8() -> ! {
-    todo!("0x3bbf8 boost::shared_ptr<RBX::Instance>::operator=(boost::shared_ptr<RBX::Instance> const&)")
+pub fn stub_3bbf8(dst: &mut Option<usize>, src: Option<usize>, retain: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) {
+    // IDA 0x3bbf8: shared_ptr<Instance> copy-assign — retain src; release old (below truncation).
+    if let Some(s) = src {
+        retain(s);
+    }
+    let old = std::mem::replace(dst, src);
+    if let Some(p) = old {
+        release(p);
+    }
 }
 
 // 0x3bcb8 — __ZN3rbx20intrusive_ptr_targetINS_7signals10connection5islotEiLi0ELi0EEdlEPv
 // demangled: rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)
 // type: void __fastcall(void *)
 #[doc(alias = "rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")]
-pub fn stub_3bcb8() -> ! {
-    todo!("0x3bcb8 rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0>::operator delete(void *)")
+pub fn stub_3bcb8(strong: u32, free: &mut dyn FnMut()) {
+    // IDA 0x3bcb8: ReleaseAssert(c->strong == 0); operator delete.
+    assert!(strong == 0, "c->strong == 0");
+    free();
 }
 
 // 0x3be00 — __ZN3rbx7signals6signalIFvvEE6insertEPNS3_4slotE
 // demangled: rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
 #[doc(alias = "rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")]
-pub fn stub_3be00() -> ! {
-    todo!("0x3be00 rbx::signals::signal<void ()(void)>::insert(rbx::signals::signal<void ()(void)>::slot *)")
+pub fn stub_3be00(slots: &mut Vec<VoidSlot>, target: usize) -> u64 {
+    // IDA 0x3be00: signal::insert — new islot; callable ctor; insert (below truncation).
+    let id = slots.len() as u64;
+    slots.push(VoidSlot { id, target, live: true });
+    id
 }
 
 // 0x3c010 — __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
@@ -117,8 +176,10 @@ pub fn stub_3be00() -> ! {
 // type: int __fastcall(_DWORD)
 // was: boost::shared_ptr
 #[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
-pub fn stub_3c010() -> ! {
-    todo!("0x3c010 void boost::intrusive_ptr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
+pub fn stub_3c010(strong: i32, weak: &mut u32) {
+    // IDA 0x3c010: ReleaseAssert(c->strong > 0); weak++.
+    assert!(strong > 0, "c->strong > 0");
+    *weak += 1;
 }
 
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
@@ -126,16 +187,27 @@ pub fn stub_3c010() -> ! {
 // type: 
 // was: boost::shared_ptr
 #[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
-pub fn stub_3c0c8() -> ! {
-    todo!("0x3c0c8 boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")
+pub fn stub_3c0c8(slot: &mut Option<usize>, value: Option<usize>, add_ref: &mut dyn FnMut(usize), release: &mut dyn FnMut(usize)) -> Option<usize> {
+    // IDA 0x3c0c8: add_ref(new); store; release(old).
+    if let Some(v) = value {
+        add_ref(v);
+    }
+    let old = std::mem::replace(slot, value);
+    if let Some(o) = old {
+        release(o);
+    }
+    *slot
 }
 
 // 0x3c170 — __ZN5boost5mutex6unlockEv
 // demangled: boost::mutex::unlock(void)
 // type: _DWORD __fastcall(boost::mutex *__hidden this)
 #[doc(alias = "boost::mutex::unlock(void)")]
-pub fn stub_3c170() -> ! {
-    todo!("0x3c170 boost::mutex::unlock(void)")
+pub fn stub_3c170(success: bool, on_error: &mut dyn FnMut()) {
+    // IDA 0x3c170: mutex::unlock — throw lock_error on failure (below truncation).
+    if !success {
+        on_error();
+    }
 }
 
 // 0x3c2a0 — __ZN5boost15throw_exceptionINS_10lock_errorEEEvRKT_
@@ -143,71 +215,85 @@ pub fn stub_3c170() -> ! {
 // type: int __fastcall(std::string *)
 #[doc(alias = "void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")]
 pub fn stub_3c2a0() -> ! {
-    todo!("0x3c2a0 void boost::throw_exception<boost::lock_error>(boost::lock_error const&)")
+    // IDA 0x3c2a0: throw lock_error (noreturn).
+    panic!("boost::lock_error");
 }
 
 // 0x3c470 — __ZN5boost10lock_errorD0Ev
 // demangled: boost::lock_error::~lock_error()
 // type: void __fastcall(boost::lock_error *__hidden this)
 #[doc(alias = "boost::lock_error::~lock_error()")]
-pub fn stub_3c470() -> ! {
-    todo!("0x3c470 boost::lock_error::~lock_error()")
+pub fn stub_3c470(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3c470: lock_error D0: vtable + member/base dtors + delete.
+    destroy();
+    free();
 }
 
 // 0x3c4a0 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev
 // demangled: boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 // type: int(void)
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
-pub fn stub_3c4a0() -> ! {
-    todo!("0x3c4a0 boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_3c4a0(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c4a0: error_info_injector dtor — refcount release + member/base dtors.
+    destroy();
 }
 
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
 // demangled: non-virtual thunk to boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 // type: 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
-pub fn stub_3c4e0() -> ! {
-    todo!("0x3c4e0 non-virtual thunk to boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_3c4e0(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c4e0: non-virtual thunk adjusts then runs the injector dtor.
+    destroy();
 }
 
 // 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
 // demangled: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 // type: 
 #[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
-pub fn stub_3c528() -> ! {
-    todo!("0x3c528 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_3c528(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c528: virtual thunk adjusts then runs the clone_impl dtor.
+    destroy();
 }
 
 // 0x3c570 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 // type: int(void)
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
-pub fn stub_3c570() -> ! {
-    todo!("0x3c570 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_3c570(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3c570: clone_impl dtor + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3c5b8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
 // demangled: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const
 // type: 
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
-pub fn stub_3c5b8() -> ! {
-    todo!("0x3c5b8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")
+pub fn stub_3c5b8(alloc: &mut dyn FnMut(usize) -> usize, clone_into: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x3c5b8: clone — new(0x2C) + copy construct.
+    let p = alloc(0x2C);
+    clone_into(p);
+    p
 }
 
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 // demangled: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 // type: 
 #[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
-pub fn stub_3c678() -> ! {
-    todo!("0x3c678 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+pub fn stub_3c678(destroy: &mut dyn FnMut()) {
+    // IDA 0x3c678: non-virtual thunk (a1 - 20) runs the clone_impl dtor.
+    destroy();
 }
 
 // 0x3c680 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 // demangled: boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 // type: 
 #[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
-pub fn stub_3c680() -> ! {
-    todo!("0x3c680 boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+pub fn stub_3c680(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x3c680: error_info_injector D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x3c698 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_
