@@ -244,6 +244,120 @@ fn jpeg_quantize(val: i32, q: i32) -> i16 {
         }
     }
 }
+/// Zigzag scan order (IJG `jpeg_natural_order`, IDA `jpeg_natural_order`).
+pub const JPEG_NATURAL_ORDER: [u8; 64] = [
+    0, 1, 8, 16, 9, 2, 3, 10, 17, 24, 32, 25, 18, 11, 4, 5,
+    12, 19, 26, 33, 40, 48, 41, 34, 27, 20, 13, 6, 7, 14, 21, 28,
+    35, 42, 49, 56, 57, 50, 43, 36, 29, 22, 15, 23, 30, 37, 44, 51,
+    58, 59, 52, 45, 38, 31, 39, 46, 53, 60, 61, 54, 47, 55, 62, 63,
+];
+
+/// Bit length of a non-negative magnitude (IDA 0x12914c category loop).
+fn huff_mag_size(mut mag: i32) -> u32 {
+    let mut n = 0;
+    while mag != 0 {
+        n += 1;
+        mag >>= 1;
+    }
+    n
+}
+
+/// DC difference category plus adjusted bits (IDA 0x12914c inner step).
+fn huff_dc_diff(diff: i32) -> (u32, u32) {
+    if diff < 0 {
+        ((diff - 1) as u32, huff_mag_size(-diff))
+    } else {
+        (diff as u32, huff_mag_size(diff))
+    }
+}
+
+/// Restart countdown shared by the huffman MCU passes (IDA 0x12914c prologue/epilogue).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct HuffRestart {
+    pub left: u32,
+    pub index: u32,
+    pub interval: u32,
+}
+
+/// Restart prologue: countdown hit zero → emit the restart marker (IDA 0x12914c).
+fn huff_restart_before(st: &mut HuffState, rst: &HuffRestart, ac: &HuffDerived, ac_stats: &mut [u32], refine: bool, refill: &mut dyn FnMut(&mut HuffState) -> bool) {
+    if rst.interval != 0 && rst.left == 0 {
+        stub_129088(st, rst.index as u8, ac, ac_stats, refine, refill);
+    }
+}
+
+/// Restart epilogue: reload the countdown at zero, then tick it (IDA 0x12914c).
+fn huff_restart_after(rst: &mut HuffRestart) {
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            rst.left = rst.interval;
+            rst.index = (rst.index + 1) & 7;
+        }
+        rst.left -= 1;
+    }
+}
+
+/// Huffman encoder control block installed by `jinit_huff_encoder` (IDA 0x12a364: 43 words).
+#[derive(Clone, Debug)]
+pub struct HuffEncoder {
+    pub words: [u32; 43],
+}
+
+impl Default for HuffEncoder {
+    fn default() -> Self {
+        HuffEncoder { words: [0; 43] }
+    }
+}
+
+/// Huffman MCU encoder selected by `start_pass_huff` (IDA 0x12b5fc).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum HuffMcuSel {
+    Huff,
+    Gather,
+    DcFirst,
+    AcFirst,
+    DcRefine,
+    AcRefine,
+}
+
+/// Pass handlers installed by `start_pass_huff` (IDA 0x12b5fc).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct HuffPassSel {
+    pub encode: HuffMcuSel,
+    pub gather_finish: bool,
+}
+
+/// Per-component Huffman table numbers for `start_pass_huff` (IDA 0x12b5fc).
+#[derive(Clone, Copy, Debug)]
+pub struct HuffCompSetup {
+    pub dc_tbl: u32,
+    pub ac_tbl: u32,
+}
+
+/// Gather-mode Huffman table slot (IDA 0x12b434).
+#[derive(Clone, Debug)]
+pub struct GatherComp {
+    pub dc_tbl: u32,
+    pub ac_tbl: u32,
+    pub dc_freq: [u32; 257],
+    pub ac_freq: [u32; 257],
+}
+
+/// Master-controller init steps in `jinit_compress_master` order (IDA 0x12b98c).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum MasterStep {
+    CMasterControl,
+    ColorConverter,
+    Downsampler,
+    CPrepController,
+    ForwardDct,
+    ArithEncoder,
+    HuffEncoder,
+    CCoefController,
+    CMainController,
+    MarkerWriter,
+    AllocAndPrepare,
+}
 
 /// Pixel lane for the SkewT resamplers (IDA 0x11f678 et al.).
 trait SkewPixel: Copy + Default {
@@ -1730,61 +1844,574 @@ pub fn stub_129088(st: &mut HuffState, marker: u8, ac: &HuffDerived, ac_stats: &
 
 // 0x12914c — _encode_mcu_DC_first_0
 #[doc(alias = "_encode_mcu_DC_first_0")]
-pub fn stub_12914c() -> ! { todo!("0x12914c _encode_mcu_DC_first_0") }
+pub fn stub_12914c(st: &mut HuffState, dc: &HuffDerived, ac: &HuffDerived, dc_stats: &mut [u32], ac_stats: &mut [u32], blocks: &[i16], al: u32, last_dc: &mut [i32], rst: &mut HuffRestart, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x12914c: restart prologue; per-block DC difference encode (size > 11 → error 6); restart epilogue; TRUE.
+    huff_restart_before(st, rst, ac, ac_stats, false, refill);
+    for (n, &coef) in blocks.iter().enumerate() {
+        let v = (coef >> al) as i32;
+        let (bits, size) = huff_dc_diff(v - last_dc[n]);
+        last_dc[n] = v;
+        if size > 11 {
+            panic!("encode_mcu_DC_first: bad DC size (6)");
+        }
+        if !stub_128e1c(st, dc, size as usize, dc_stats, refill) {
+            return false;
+        }
+        if size != 0 && !stub_128a24(st, bits, size as i32, refill) {
+            return false;
+        }
+    }
+    huff_restart_after(rst);
+    true
+}
 
 // 0x1292d0 — _encode_mcu_AC_first_0
 #[doc(alias = "_encode_mcu_AC_first_0")]
-pub fn stub_1292d0() -> ! { todo!("0x1292d0 _encode_mcu_AC_first_0") }
+pub fn stub_1292d0(st: &mut HuffState, ac: &HuffDerived, ac_stats: &mut [u32], block: &[i16; 64], ss: usize, se: usize, al: u32, rst: &mut HuffRestart, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x1292d0: zigzag AC first-scan encode with ZRL folding and EOB-run counting (size > 10 → error 6); restart prologue/epilogue; TRUE. IDA unrolls the ZRL residue Duff-style; the plain loop emits the same symbols.
+    huff_restart_before(st, rst, ac, ac_stats, false, refill);
+    let mut run = 0u32;
+    for k in ss..=se {
+        let v = block[JPEG_NATURAL_ORDER[k] as usize] as i32;
+        let mag = if v < 0 { -v } else { v } >> al;
+        if mag == 0 {
+            run += 1;
+            continue;
+        }
+        if st.eobrun != 0 && !stub_128ff0(st, ac, ac_stats, refill) {
+            return false;
+        }
+        while run > 15 {
+            if !stub_128e1c(st, ac, 0xF0, ac_stats, refill) {
+                return false;
+            }
+            run -= 16;
+        }
+        let size = huff_mag_size(mag);
+        if size > 10 {
+            panic!("encode_mcu_AC_first: bad AC size (6)");
+        }
+        let bits = if v >= 0 { mag as u32 } else { !(mag as u32) };
+        if !stub_128e1c(st, ac, (run * 16 + size) as usize, ac_stats, refill) {
+            return false;
+        }
+        if !stub_128a24(st, bits, size as i32, refill) {
+            return false;
+        }
+        run = 0;
+    }
+    if run > 0 {
+        st.eobrun += 1;
+        if st.eobrun == 32767 && !stub_128ff0(st, ac, ac_stats, refill) {
+            return false;
+        }
+    }
+    huff_restart_after(rst);
+    true
+}
 
 // 0x129648 — _encode_mcu_DC_refine_0
 #[doc(alias = "_encode_mcu_DC_refine_0")]
-pub fn stub_129648() -> ! { todo!("0x129648 _encode_mcu_DC_refine_0") }
+pub fn stub_129648(st: &mut HuffState, ac: &HuffDerived, ac_stats: &mut [u32], blocks: &[i16], al: u32, rst: &mut HuffRestart, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x129648: emit one refinement bit per DC coefficient; restart prologue/epilogue; TRUE.
+    huff_restart_before(st, rst, ac, ac_stats, true, refill);
+    for &coef in blocks {
+        if !stub_128a24(st, ((coef >> al) & 1) as u32, 1, refill) {
+            return false;
+        }
+    }
+    huff_restart_after(rst);
+    true
+}
 
 // 0x12972c — _encode_mcu_AC_refine_0
 #[doc(alias = "_encode_mcu_AC_refine_0")]
-pub fn stub_12972c() -> ! { todo!("0x12972c _encode_mcu_AC_refine_0") }
+pub fn stub_12972c(st: &mut HuffState, ac: &HuffDerived, ac_stats: &mut [u32], block: &[i16; 64], ss: usize, se: usize, al: u32, rst: &mut HuffRestart, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x12972c: AC refine pass with EOB-run and correction-bit buffering (flush at 32767 runs or 937/0x3A9 buffered bytes); restart prologue/epilogue; TRUE.
+    huff_restart_before(st, rst, ac, ac_stats, true, refill);
+    let n = se - ss + 1;
+    let mut absvals = vec![0i32; n];
+    let mut eobx = 0usize;
+    let mut has_new = false;
+    for (j, k) in (ss..=se).enumerate() {
+        let v = block[JPEG_NATURAL_ORDER[k] as usize] as i32;
+        let a = (if v < 0 { -v } else { v }) >> al;
+        if a == 1 {
+            eobx = k;
+            has_new = true;
+        }
+        absvals[j] = a;
+    }
+    let mut run = 0u32;
+    let mut staged_new = 0u32;
+    for (j, k) in (ss..=se).enumerate() {
+        let a = absvals[j];
+        if a == 0 {
+            run += 1;
+            continue;
+        }
+        while run > 15 && (!has_new || k <= eobx) {
+            if !stub_128ff0(st, ac, ac_stats, refill) {
+                return false;
+            }
+            run -= 16;
+            if !stub_128e1c(st, ac, 0xF0, ac_stats, refill) {
+                return false;
+            }
+            let staged = st.buf[..st.buf_count as usize].to_vec();
+            if !stub_128e68(st, &staged, refill) {
+                return false;
+            }
+            st.buf_count = 0;
+        }
+        if a <= 1 {
+            if !stub_128ff0(st, ac, ac_stats, refill) {
+                return false;
+            }
+            if !stub_128e1c(st, ac, (16 * run + 1) as usize, ac_stats, refill) {
+                return false;
+            }
+            let bit = if block[JPEG_NATURAL_ORDER[k] as usize] >= 0 { 1u32 } else { 0u32 };
+            if !stub_128a24(st, bit, 1, refill) {
+                return false;
+            }
+            run = 0;
+            let staged = st.buf[..st.buf_count as usize].to_vec();
+            if !stub_128e68(st, &staged, refill) {
+                return false;
+            }
+            st.buf_count = 0;
+        } else {
+            let idx = st.buf_count as usize;
+            if idx < st.buf.len() {
+                st.buf[idx] = (a & 1) as u8;
+            } else {
+                st.buf.push((a & 1) as u8);
+            }
+            st.buf_count += 1;
+            staged_new += 1;
+        }
+    }
+    if run > 0 || staged_new > 0 {
+        st.eobrun += 1;
+        if st.eobrun == 32767 || st.buf_count > 0x3A9 {
+            if !stub_128ff0(st, ac, ac_stats, refill) {
+                return false;
+            }
+        }
+    }
+    huff_restart_after(rst);
+    true
+}
 
 // 0x129a30 — _encode_mcu_huff
 #[doc(alias = "_encode_mcu_huff")]
-pub fn stub_129a30() -> ! { todo!("0x129a30 _encode_mcu_huff") }
+pub fn stub_129a30(st: &mut HuffState, dc: &HuffDerived, ac: &HuffDerived, dc_stats: &mut [u32], ac_stats: &mut [u32], blocks: &[&[i16; 64]], last_dc: &mut [i32], rst: &mut HuffRestart, refill: &mut dyn FnMut(&mut HuffState) -> bool) -> bool { // IDA 0x129a30: baseline restart prologue (flush + 0xFF/marker, DC predictions reset); per-block DC-diff + zigzag-AC encode (sizes > 11/10 → error 6); restart epilogue; FALSE on dest failure. Uses the shared entropy bit window for the _s byte stream (identical bytes).
+    huff_restart_before(st, rst, ac, ac_stats, false, refill);
+    for (n, block) in blocks.iter().enumerate() {
+        let (bits, size) = huff_dc_diff(block[0] as i32 - last_dc[n]);
+        last_dc[n] = block[0] as i32;
+        if size > 11 {
+            panic!("encode_mcu_huff: bad DC size (6)");
+        }
+        if !stub_128e1c(st, dc, size as usize, dc_stats, refill) {
+            return false;
+        }
+        if size != 0 && !stub_128a24(st, bits, size as i32, refill) {
+            return false;
+        }
+        let mut run = 0u32;
+        for k in 1..64 {
+            let v = block[JPEG_NATURAL_ORDER[k] as usize];
+            if v == 0 {
+                run += 1;
+                continue;
+            }
+            while run > 15 {
+                if !stub_128e1c(st, ac, 0xF0, ac_stats, refill) {
+                    return false;
+                }
+                run -= 16;
+            }
+            let mag = if v < 0 { -(v as i32) } else { v as i32 };
+            let size = huff_mag_size(mag);
+            if size > 10 {
+                panic!("encode_mcu_huff: bad AC size (6)");
+            }
+            let bits = if v >= 0 { mag as u32 } else { !(mag as u32) };
+            if !stub_128e1c(st, ac, (run * 16 + size) as usize, ac_stats, refill) {
+                return false;
+            }
+            if !stub_128a24(st, bits, size as i32, refill) {
+                return false;
+            }
+            run = 0;
+        }
+        if run > 0 && !stub_128e1c(st, ac, 0, ac_stats, refill) {
+            return false;
+        }
+    }
+    huff_restart_after(rst);
+    true
+}
 
 // 0x129f64 — _finish_pass_huff
 #[doc(alias = "_finish_pass_huff")]
-pub fn stub_129f64() -> ! { todo!("0x129f64 _finish_pass_huff") }
+pub fn stub_129f64(st: &mut HuffState, s: &mut HuffOut, progressive: bool, ac: &HuffDerived, ac_stats: &mut [u32], refill_e: &mut dyn FnMut(&mut HuffState) -> bool, refill_s: &mut dyn FnMut(&mut HuffOut) -> bool) -> bool { // IDA 0x129f64: progressive → EOBRUN flush + bit-buffer flush on the entropy dest; else flush the simple window (dry → error 25).
+    if progressive {
+        if !stub_128ff0(st, ac, ac_stats, refill_e) {
+            return false;
+        }
+        stub_128df4(st, refill_e);
+    } else if !stub_128dc4(s, refill_s) {
+        panic!("finish_pass_huff: error 25");
+    }
+    true
+}
 
 // 0x12a064 — _encode_mcu_gather
 #[doc(alias = "_encode_mcu_gather")]
-pub fn stub_12a064() -> ! { todo!("0x12a064 _encode_mcu_gather") }
+pub fn stub_12a064(dc_freq: &mut [u32], ac_freq: &mut [u32], blocks: &[&[i16; 64]], last_dc: &mut [i32], rst: &mut HuffRestart) -> bool { // IDA 0x12a064: gather DC/AC size histograms with ZRL folding and EOB counting (sizes > 11/10 → error 6); restart countdown without marker emission; TRUE.
+    if rst.interval != 0 {
+        if rst.left == 0 {
+            rst.left = rst.interval;
+            rst.index = (rst.index + 1) & 7;
+        }
+        rst.left -= 1;
+    }
+    for (n, block) in blocks.iter().enumerate() {
+        let diff = (block[0] as i32 - last_dc[n]).abs();
+        last_dc[n] = block[0] as i32;
+        let size = huff_mag_size(diff);
+        if size > 11 {
+            panic!("encode_mcu_gather: bad DC size (6)");
+        }
+        dc_freq[size as usize] += 1;
+        let mut run = 0u32;
+        for k in 1..64 {
+            let v = block[JPEG_NATURAL_ORDER[k] as usize];
+            if v == 0 {
+                run += 1;
+                continue;
+            }
+            while run > 15 {
+                run -= 16;
+                ac_freq[0xF0] += 1;
+            }
+            let mag = if v < 0 { -(v as i32) } else { v as i32 };
+            let size = huff_mag_size(mag);
+            if size > 10 {
+                panic!("encode_mcu_gather: bad AC size (6)");
+            }
+            ac_freq[(run * 16 + size) as usize] += 1;
+            run = 0;
+        }
+        if run > 0 {
+            ac_freq[0] += 1;
+        }
+    }
+    true
+}
 
 // 0x12a364 — _jinit_huff_encoder
 #[doc(alias = "_jinit_huff_encoder")]
-pub fn stub_12a364() -> ! { todo!("0x12a364 _jinit_huff_encoder") }
+pub fn stub_12a364(progressive: bool) -> HuffEncoder { // IDA 0x12a364: install start_pass_huff; progressive → zero words 34..42, else stamp words 11..26 with the (zero) flag byte.
+    let mut enc = HuffEncoder::default();
+    if !progressive {
+        for &i in &[15, 11, 23, 19, 16, 12, 24, 20, 17, 13, 25, 21, 18, 14, 26, 22] {
+            enc.words[i] = progressive as u32;
+        }
+    }
+    enc
+}
 
 // 0x12a418 — _jpeg_make_c_derived_tbl
 #[doc(alias = "_jpeg_make_c_derived_tbl")]
-pub fn stub_12a418() -> ! { todo!("0x12a418 _jpeg_make_c_derived_tbl") }
+pub fn stub_12a418(is_dc: bool, tbl_no: u32, bits: &[u8; 17], vals: &[u8]) -> HuffDerived { // IDA 0x12a418: tbl_no > 3 → error 52; oversubscribed/invalid codes or duplicate symbols → error 9; canonical code assignment.
+    if tbl_no > 3 {
+        panic!("jpeg_make_c_derived_tbl: bad table number (52)");
+    }
+    let mut huffsize = [0u8; 257];
+    let mut p = 0usize;
+    for len in 1..=16u8 {
+        for _ in 0..bits[len as usize] {
+            if p >= 256 {
+                panic!("jpeg_make_c_derived_tbl: bad Huffman table (9)");
+            }
+            huffsize[p] = len;
+            p += 1;
+        }
+    }
+    let mut huffcode = [0u32; 257];
+    let mut code = 0u32;
+    let mut size = huffsize[0];
+    let mut k = 0usize;
+    while huffsize[k] != 0 {
+        while k < 257 && huffsize[k] == size {
+            huffcode[k] = code;
+            code += 1;
+            k += 1;
+        }
+        if code >= (1 << size) {
+            panic!("jpeg_make_c_derived_tbl: bad Huffman table (9)");
+        }
+        code <<= 1;
+        size += 1;
+    }
+    let mut tbl = HuffDerived::default();
+    let max_symbol = if is_dc { 15 } else { 255 };
+    for i in 0..p {
+        let sym = vals[i] as usize;
+        if sym > max_symbol || tbl.sizes[sym] != 0 {
+            panic!("jpeg_make_c_derived_tbl: bad Huffman table (9)");
+        }
+        tbl.codes[sym] = huffcode[i];
+        tbl.sizes[sym] = huffsize[i];
+    }
+    tbl
+}
 
 // 0x12aab8 — _jpeg_gen_optimal_table
 #[doc(alias = "_jpeg_gen_optimal_table")]
-pub fn stub_12aab8() -> ! { todo!("0x12aab8 _jpeg_gen_optimal_table") }
+pub fn stub_12aab8(freqs: &[u32; 257]) -> ([u8; 17], Vec<u8>) { // IDA 0x12aab8: Huffman tree by repeated two-minimum combining (freq[256] sentinel); lengths over 32 → error 40, then folded to 16; canonical symbol order with terminator implied.
+    let mut freq = *freqs;
+    freq[256] = 1;
+    let mut codesize = [0u8; 257];
+    let mut others = [-1i32; 257];
+    loop {
+        let mut v1 = -1i32;
+        let mut f1 = u32::MAX;
+        for (i, &f) in freq.iter().enumerate() {
+            if f != 0 && f < f1 {
+                v1 = i as i32;
+                f1 = f;
+            }
+        }
+        let mut v2 = -1i32;
+        let mut f2 = u32::MAX;
+        for (i, &f) in freq.iter().enumerate() {
+            if i as i32 != v1 && f != 0 && f < f2 {
+                v2 = i as i32;
+                f2 = f;
+            }
+        }
+        if v2 < 0 {
+            break;
+        }
+        freq[v1 as usize] += freq[v2 as usize];
+        freq[v2 as usize] = 0;
+        codesize[v1 as usize] += 1;
+        let mut v = v1;
+        while others[v as usize] >= 0 {
+            v = others[v as usize];
+            codesize[v as usize] += 1;
+        }
+        others[v as usize] = v2;
+        codesize[v2 as usize] += 1;
+        let mut v = v2;
+        while others[v as usize] >= 0 {
+            v = others[v as usize];
+            codesize[v as usize] += 1;
+        }
+    }
+    let mut bits = [0u32; 33];
+    for &c in codesize.iter() {
+        if c != 0 {
+            if c > 32 {
+                panic!("jpeg_gen_optimal_table: code too long (40)");
+            }
+            bits[c as usize] += 1;
+        }
+    }
+    let mut i = 32usize;
+    while i > 16 {
+        while bits[i] > 0 {
+            let mut j = i - 2;
+            while bits[j] == 0 {
+                j -= 1;
+            }
+            bits[i] -= 2;
+            bits[i - 1] += 1;
+            bits[j + 1] += 2;
+            bits[j] -= 1;
+        }
+        i -= 1;
+    }
+    let mut len = 32usize;
+    while bits[len] == 0 {
+        len -= 1;
+    }
+    bits[len] -= 1;
+    let mut out_bits = [0u8; 17];
+    for l in 1..=16 {
+        out_bits[l] = bits[l] as u8;
+    }
+    let mut syms = Vec::new();
+    for l in 1..=32u8 {
+        for s in 0..256 {
+            if codesize[s] == l {
+                syms.push(s as u8);
+            }
+        }
+    }
+    (out_bits, syms)
+}
 
 // 0x12b434 — _finish_pass_gather
 #[doc(alias = "_finish_pass_gather")]
-pub fn stub_12b434() -> ! { todo!("0x12b434 _finish_pass_gather") }
+pub fn stub_12b434(progressive: bool, refine: bool, ac_scan: bool, comps: &mut [GatherComp], htbl: &mut dyn FnMut(u32, bool, &[u8; 17], &[u8]), gen: &mut dyn FnMut(&[u32; 257]) -> ([u8; 17], Vec<u8>), emit_eob: &mut dyn FnMut()) { // IDA 0x12b434: progressive → EOBRUN flush + optimal AC/DC table per scan component (refine passes reuse tables); baseline → optimal DC+AC tables per component (once per table number).
+    if progressive {
+        emit_eob();
+        if refine {
+            return;
+        }
+        let mut done = [false; 4];
+        for c in comps.iter() {
+            if ac_scan {
+                let t = c.ac_tbl as usize;
+                if !done[t] {
+                    let (bits, vals) = gen(&c.ac_freq);
+                    htbl(c.ac_tbl, false, &bits, &vals);
+                    done[t] = true;
+                }
+            } else {
+                let t = c.dc_tbl as usize;
+                if !done[t] {
+                    let (bits, vals) = gen(&c.dc_freq);
+                    htbl(c.dc_tbl, true, &bits, &vals);
+                    done[t] = true;
+                }
+            }
+        }
+        return;
+    }
+    let mut dc_done = [false; 4];
+    let mut ac_done = [false; 4];
+    for c in comps.iter() {
+        let dt = c.dc_tbl as usize;
+        if !dc_done[dt] {
+            let (bits, vals) = gen(&c.dc_freq);
+            htbl(c.dc_tbl, true, &bits, &vals);
+            dc_done[dt] = true;
+        }
+        let at = c.ac_tbl as usize;
+        if !ac_done[at] {
+            let (bits, vals) = gen(&c.ac_freq);
+            htbl(c.ac_tbl, false, &bits, &vals);
+            ac_done[at] = true;
+        }
+    }
+}
 
 // 0x12b5fc — _start_pass_huff
 #[doc(alias = "_start_pass_huff")]
-pub fn stub_12b5fc() -> ! { todo!("0x12b5fc _start_pass_huff") }
+pub fn stub_12b5fc(st: &mut HuffState, rst: &mut HuffRestart, interval: u32, gather: bool, progressive: bool, ss: u32, ah: u32, comps: &[HuffCompSetup], dc_stats: &mut [[u32; 257]; 4], ac_stats: &mut [[u32; 257]; 4], build: &mut dyn FnMut(bool, u32)) -> HuffPassSel { // IDA 0x12b5fc: install finish (gather ? gather : huff) + MCU encoder; gather → zero 257-word stat areas (bad table → error 52), else build derived tables; reset bit window, DC predictions, EOB state, restart rows.
+    let encode;
+    if progressive {
+        encode = if ah != 0 {
+            if ss != 0 {
+                if gather {
+                    st.buf.reserve(1000);
+                }
+                HuffMcuSel::AcRefine
+            } else {
+                HuffMcuSel::DcRefine
+            }
+        } else if ss != 0 {
+            HuffMcuSel::AcFirst
+        } else {
+            HuffMcuSel::DcFirst
+        };
+        for c in comps {
+            let is_dc = ss == 0;
+            let tbl = if is_dc { c.dc_tbl } else { c.ac_tbl };
+            if gather {
+                if tbl > 3 {
+                    panic!("start_pass_huff: bad table number (52)");
+                }
+                if is_dc {
+                    dc_stats[tbl as usize] = [0; 257];
+                } else {
+                    ac_stats[tbl as usize] = [0; 257];
+                }
+            } else {
+                build(is_dc, tbl);
+            }
+        }
+        st.eobrun = 0;
+        st.buf_count = 0;
+    } else {
+        encode = if gather { HuffMcuSel::Gather } else { HuffMcuSel::Huff };
+        for c in comps {
+            if c.dc_tbl > 3 || c.ac_tbl > 3 {
+                panic!("start_pass_huff: bad table number (52)");
+            }
+            if gather {
+                dc_stats[c.dc_tbl as usize] = [0; 257];
+                ac_stats[c.ac_tbl as usize] = [0; 257];
+            } else {
+                build(true, c.dc_tbl);
+                build(false, c.ac_tbl);
+            }
+        }
+        st.dc_pred = [0; 4];
+    }
+    st.bits = HuffBits::default();
+    rst.interval = interval;
+    rst.left = interval;
+    rst.index = 0;
+    HuffPassSel { encode, gather_finish: gather }
+}
 
 // 0x12b98c — _jinit_compress_master
 #[doc(alias = "_jinit_compress_master")]
-pub fn stub_12b98c() -> ! { todo!("0x12b98c _jinit_compress_master") }
+pub fn stub_12b98c(raw_data: bool, arith_code: bool, scans: u32, optimize: bool, step: &mut dyn FnMut(MasterStep, bool)) { // IDA 0x12b98c: controller chain in fixed order; the coef controller gathers iff scans > 1 or optimize is set (bool param = gather flag).
+    step(MasterStep::CMasterControl, false);
+    if !raw_data {
+        step(MasterStep::ColorConverter, false);
+        step(MasterStep::Downsampler, false);
+        step(MasterStep::CPrepController, false);
+    }
+    step(MasterStep::ForwardDct, false);
+    step(if arith_code { MasterStep::ArithEncoder } else { MasterStep::HuffEncoder }, false);
+    step(MasterStep::CCoefController, scans > 1 || optimize);
+    step(MasterStep::CMainController, false);
+    step(MasterStep::MarkerWriter, false);
+    step(MasterStep::AllocAndPrepare, false);
+}
 
 // 0x12ba4c — _start_pass_main
 #[doc(alias = "_start_pass_main")]
-pub fn stub_12ba4c() -> ! { todo!("0x12ba4c _start_pass_main") }
+pub fn stub_12ba4c(suspended: bool, full_buffer: bool) -> u32 { // IDA 0x12ba4c: suspended (raw) input → no-op; full-buffer request → error 3; else installs process_data_simple_main; returns 0x20.
+    if suspended {
+        return 0;
+    }
+    if full_buffer {
+        panic!("start_pass_main: full-buffer main pass unsupported (3)");
+    }
+    0x20
+}
 
 // 0x12baa0 — _process_data_simple_main
 #[doc(alias = "_process_data_simple_main")]
-pub fn stub_12baa0() -> ! { todo!("0x12baa0 _process_data_simple_main") }
+pub fn stub_12baa0(cur: &mut u32, total: u32, need: u32, avail: &mut u32, suspended: &mut bool, out_rows: &mut i32, fill: &mut dyn FnMut(), consume: &mut dyn FnMut() -> bool) -> bool { // IDA 0x12baa0: row pump; FALSE on suspension (out_rows adjusted, flag set), TRUE when input runs dry or all rows pass.
+    while *cur < total {
+        if *avail < need {
+            fill();
+        }
+        if *avail != need {
+            break;
+        }
+        if !consume() {
+            if !*suspended {
+                *out_rows -= 1;
+                *suspended = true;
+            }
+            return false;
+        }
+        if *suspended {
+            *out_rows += 1;
+        }
+        *suspended = false;
+        *avail = 0;
+        *cur += 1;
+    }
+    true
+}
 
