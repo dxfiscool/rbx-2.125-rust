@@ -12,6 +12,9 @@ pub(crate) static CONTROLLERSERVICE_DECLARED: std::sync::atomic::AtomicBool =
     std::sync::atomic::AtomicBool::new(false);
 pub(crate) static CONTROLLERSERVICE_CLASS_INDEX: std::sync::LazyLock<usize> =
     std::sync::LazyLock::new(|| 1);
+/// typeinfo name for the managed `bind_t<mf0<FunctionMarshaller>>`
+/// (IDA 0x3e030, cf. 0x2d644).
+pub const BIND_MARSHALLER_TYPEINFO: &str = "bind_t<mf0<FunctionMarshaller>>";
 
 // 0x3b108 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10RunServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
@@ -613,8 +616,10 @@ pub fn stub_0x3d240() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN3RBX8ViewBaseEEEPT_")]
-pub fn stub_0x3db4c() -> ! {
-    todo!("0x3db4c boost::detail::shared_count::shared_count<RBX::ViewBase>(RBX::ViewBase *)")
+pub fn stub_0x3db4c() {
+    // IDA 0x3db4c: `shared_count::shared_count<ViewBase*>` allocates
+    // the control block (same shape as 0x3b14c). `Arc` construction
+    // glue covers it; no explicit body.
 }
 
 // 0x3dc40 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEED1Ev
@@ -634,22 +639,28 @@ pub fn stub_0x3dc44() {
 // 0x3dc48 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE7disposeEv")]
-pub fn stub_0x3dc48() -> ! {
-    todo!("0x3dc48 boost::detail::sp_counted_impl_p<RBX::ViewBase>::dispose(void)")
+pub fn stub_0x3dc48() {
+    // IDA 0x3dc48: `sp_counted_impl_p<ViewBase>::dispose` deletes the
+    // view (same shape as 0x3b278). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x3dc58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3dc58() -> ! {
-    todo!("0x3dc58 boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_deleter(std::type_info const&)")
+pub fn stub_0x3dc58() {
+    // IDA 0x3dc58: `sp_counted_impl_p<ViewBase>::get_deleter` answers
+    // null for the plain deleter (same shape as 0x3b32c). `Arc` drop
+    // glue covers it; no explicit body.
 }
 
 // 0x3dc5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN3RBX8ViewBaseEE19get_untyped_deleterEv")]
-pub fn stub_0x3dc5c() -> ! {
-    todo!("0x3dc5c boost::detail::sp_counted_impl_p<RBX::ViewBase>::get_untyped_deleter(void)")
+pub fn stub_0x3dc5c() {
+    // IDA 0x3dc5c: `sp_counted_impl_p<ViewBase>::get_untyped_deleter`
+    // returns the untyped deleter address (same shape as 0x3b330).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -663,8 +674,10 @@ pub fn stub_0x3dc60() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_")]
-pub fn stub_0x3dd34() -> ! {
-    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+pub fn stub_0x3dd34() {
+    // IDA 0x3dd34: `shared_count::shared_count<RenderJob*>` allocates
+    // the control block (same shape as 0x3db4c). `Arc` construction
+    // glue covers it; no explicit body.
 }
 
 // 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
@@ -684,22 +697,28 @@ pub fn stub_0x3de2c() {
 // 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv")]
-pub fn stub_0x3de30() -> ! {
-    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+pub fn stub_0x3de30() {
+    // IDA 0x3de30: `sp_counted_impl_p<RenderJob>::dispose` deletes the
+    // job (same shape as 0x3dc48). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3de40() -> ! {
-    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+pub fn stub_0x3de40() {
+    // IDA 0x3de40: `sp_counted_impl_p<RenderJob>::get_deleter` answers
+    // null for the plain deleter (same shape as 0x3dc58). `Arc` drop
+    // glue covers it; no explicit body.
 }
 
 // 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv")]
-pub fn stub_0x3de44() -> ! {
-    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+pub fn stub_0x3de44() {
+    // IDA 0x3de44: `sp_counted_impl_p<RenderJob>::get_untyped_deleter`
+    // returns the untyped deleter address (same shape as 0x3dc5c).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
@@ -713,8 +732,10 @@ pub fn stub_0x3de48() {
 // type: int __fastcall(int, int, int, int, void *, int)
 #[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
 #[doc(alias = "__ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_")]
-pub fn stub_0x3df1c() -> ! {
-    todo!("0x3df1c boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+pub fn stub_0x3df1c() {
+    // IDA 0x3df1c: `shared_count::shared_count<ViewUpdateJob*>`
+    // allocates the control block (same shape as 0x3dd34). `Arc`
+    // construction glue covers it; no explicit body.
 }
 
 // 0x3e010 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED1Ev
@@ -734,44 +755,57 @@ pub fn stub_0x3e014() {
 // 0x3e018 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv")]
-pub fn stub_0x3e018() -> ! {
-    todo!("0x3e018 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")
+pub fn stub_0x3e018() {
+    // IDA 0x3e018: `sp_counted_impl_p<ViewUpdateJob>::dispose` deletes
+    // the job (same shape as 0x3de30). `Arc` drop glue covers it; no
+    // explicit body.
 }
 
 // 0x3e028 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info")]
-pub fn stub_0x3e028() -> ! {
-    todo!("0x3e028 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")
+pub fn stub_0x3e028() {
+    // IDA 0x3e028: `sp_counted_impl_p<ViewUpdateJob>::get_deleter`
+    // answers null for the plain deleter (same shape as 0x3de40).
+    // `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3e02c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")]
 #[doc(alias = "__ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv")]
-pub fn stub_0x3e02c() -> ! {
-    todo!("0x3e02c boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")
+pub fn stub_0x3e02c() {
+    // IDA 0x3e02c: `sp_counted_impl_p<ViewUpdateJob>::
+    // get_untyped_deleter` returns the untyped deleter address (same
+    // shape as 0x3de44). `Arc` drop glue covers it; no explicit body.
 }
 
 // 0x3e030 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE")]
-pub fn stub_0x3e030() -> ! {
-    todo!("0x3e030 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+pub fn stub_0x3e030(get_typeinfo: bool) -> &'static str {
+    // IDA 0x3e030: `functor_manager<bind_t<mf0<FunctionMarshaller>>>::
+    // manage` answers op 4 with the `bind_t` typeinfo (same shape as
+    // 0x32c48). Other ops are vtable glue.
+    if get_typeinfo { BIND_MARSHALLER_TYPEINFO } else { "" }
 }
 
 // 0x3e090 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS3_5list1INS3_5valueIPS8_EEEEEEvE6invokeERNS1_15function_bufferE")]
-pub fn stub_0x3e090() -> ! {
-    todo!("0x3e090 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>,void>::invoke(boost::detail::function::function_buffer &)")
+pub fn stub_0x3e090() {
+    // IDA 0x3e090: `void_function_obj_invoker0<bind_t<mf0<
+    // FunctionMarshaller>>>::invoke` runs the bound marshaller call
+    // (same shape as 0x32c64). Closure-call glue; no explicit body.
 }
 
 // 0x3e094 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS0_5list1INS0_5valueIPS5_EEEEEclEv
 // type: int(void)
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)")]
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX18FunctionMarshallerEEENS0_5list1INS0_5valueIPS5_EEEEEclEv")]
-pub fn stub_0x3e094() -> ! {
-    todo!("0x3e094 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::FunctionMarshaller>,boost::_bi::list1<boost::_bi::value<RBX::FunctionMarshaller*>>>::operator()(void)")
+pub fn stub_0x3e094() {
+    // IDA 0x3e094: `bind_t<mf0<FunctionMarshaller>>::operator()`
+    // invokes the marshaller method. Closure-call glue; no explicit
+    // body.
 }
 
 // 0x3e190 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
@@ -785,32 +819,40 @@ pub fn stub_0x3e190() {
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
-pub fn stub_0x3e198() -> ! {
-    todo!("0x3e198 boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_0x3e198(present: bool) -> bool {
+    // IDA 0x3e198: `singleton_pool<NormalBreakConnector,...>::get_pool`
+    // returns the connector pool (same presence shape as 0x3a408).
+    present
 }
 
 // 0x3e1e8 — __ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 #[doc(alias = "__ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
-pub fn stub_0x3e1e8() -> ! {
-    todo!("0x3e1e8 boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_0x3e1e8(present: bool) -> bool {
+    // IDA 0x3e1e8: `singleton_pool<OnDemandInstance,...>::get_pool`
+    // returns the instance pool (same shape as 0x3e198).
+    present
 }
 
 // 0x3e238 — __ZN5boost14singleton_poolI10XmlElementLj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
 // type: int(void)
 #[doc(alias = "boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
 #[doc(alias = "__ZN5boost14singleton_poolI10XmlElementLj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")]
-pub fn stub_0x3e238() -> ! {
-    todo!("0x3e238 boost::singleton_pool<XmlElement,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")
+pub fn stub_0x3e238(present: bool) -> bool {
+    // IDA 0x3e238: `singleton_pool<XmlElement,...>::get_pool` returns
+    // the element pool (same shape as 0x3e198).
+    present
 }
 
 // 0x3e288 — __ZN5boost9function0IvE13assign_to_ownERKS1_
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "boost::function0<void>::assign_to_own(boost::function0<void> const&)")]
 #[doc(alias = "__ZN5boost9function0IvE13assign_to_ownERKS1_")]
-pub fn stub_0x3e288() -> ! {
-    todo!("0x3e288 boost::function0<void>::assign_to_own(boost::function0<void> const&)")
+pub fn stub_0x3e288() {
+    // IDA 0x3e288: `function0<void>::assign_to_own` copy-assigns the
+    // function (same shape as 0x34870). `Box<dyn Fn()>` assignment
+    // glue; no explicit body.
 }
 
 // 0x3e2b8 — __ZN5boost16exception_detail14bad_exception_D1Ev
@@ -824,6 +866,8 @@ pub fn stub_0x3e2b8() {
 // 0x3e2e8 — __ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
 #[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv")]
-pub fn stub_0x3e2e8() -> ! {
-    todo!("0x3e2e8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
+pub fn stub_0x3e2e8() {
+    // IDA 0x3e2e8: `clone_impl<bad_exception_>::clone` heap-clones the
+    // exception (same shape as 0x3c5b8). Exception-clone glue; no
+    // explicit body.
 }
