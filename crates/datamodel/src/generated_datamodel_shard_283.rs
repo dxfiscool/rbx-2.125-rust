@@ -9,6 +9,86 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use std::collections::HashMap;
+use std::sync::OnceLock;
+use parking_lot::Mutex;
+use crate::generated_05::{GenericSlotWrapper, PropertyDescriptor};
+
+/// Rust model of one `MemberDescriptorContainer<T>::staticData` function-static
+/// container (IDA `0xf1f528`/`0xf1f558`/`0xf1f588`/`0xf1f5b8`/`0xf1f5d0`): the
+/// registered member-container list plus the `const char* -> descriptor*` name
+/// map. Bucket/node layout collapses into `Vec` + `HashMap`, mirroring the
+/// `instance::stub_0x3d8a48` unordered precedent.
+pub struct DescriptorStore {
+    pub members: Vec<*const ()>,
+    pub by_name: HashMap<String, *const ()>,
+}
+
+/// Pointers are model-space descriptor links owned by the static registry;
+/// same `Send`/`Sync` contract as `data_model::ObjcDmBind`.
+unsafe impl Send for DescriptorStore {}
+unsafe impl Sync for DescriptorStore {}
+
+impl DescriptorStore {
+    pub fn new() -> Self {
+        Self { members: Vec::new(), by_name: HashMap::new() }
+    }
+
+    pub fn register(&mut self, name: &str, member: *const ()) {
+        self.members.push(member);
+        self.by_name.insert(name.to_owned(), member);
+    }
+
+    pub fn find(&self, name: &str) -> Option<*const ()> {
+        self.by_name.get(name).copied()
+    }
+}
+
+/// Rust model of one `boost::unordered_map<const char*, Descriptor*, ...>`
+/// name table (IDA `0xf1f4ec`..`0xf1f624` family): key string plus descriptor
+/// pointer per entry; buckets collapse into the map itself.
+#[derive(Default)]
+pub struct DescriptorTable {
+    pub entries: HashMap<String, *const ()>,
+}
+
+impl DescriptorTable {
+    pub fn new() -> Self {
+        Self { entries: HashMap::new() }
+    }
+
+    /// `rehash_impl(n)` growth (IDA `0xf1f4ec` etc.): skips when capacity
+    /// already fits, else grows — `reserve` is the same growth, mirroring
+    /// `instance::stub_0x3d8c44`.
+    pub fn rehash_for_insert(&mut self, additional: usize) {
+        self.entries.reserve(additional);
+    }
+
+    /// `create_buckets(n)` (IDA `0xf1f4f8` etc.): lays out the bucket array;
+    /// over an existing table `reserve` is the same allocation without
+    /// dropping contents, mirroring `instance::stub_0x3d8c98`.
+    pub fn create_buckets(&mut self, buckets: usize) {
+        self.entries.reserve(buckets);
+    }
+
+    pub fn insert(&mut self, name: &str, desc: *const ()) {
+        self.entries.insert(name.to_owned(), desc);
+    }
+
+    pub fn find(&self, name: &str) -> Option<*const ()> {
+        self.entries.get(name).copied()
+    }
+}
+
+fn static_store(slot: &'static OnceLock<Mutex<DescriptorStore>>) -> &'static Mutex<DescriptorStore> {
+    slot.get_or_init(|| Mutex::new(DescriptorStore::new()))
+}
+
+static CALLBACK_MEMBER_STORE: OnceLock<Mutex<DescriptorStore>> = OnceLock::new();
+static YIELD_FUNCTION_MEMBER_STORE: OnceLock<Mutex<DescriptorStore>> = OnceLock::new();
+static EVENT_MEMBER_STORE: OnceLock<Mutex<DescriptorStore>> = OnceLock::new();
+static FUNCTION_MEMBER_STORE: OnceLock<Mutex<DescriptorStore>> = OnceLock::new();
+static PROPERTY_MEMBER_STORE: OnceLock<Mutex<DescriptorStore>> = OnceLock::new();
 
 // 0xf1f348 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
 #[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
@@ -44,8 +124,13 @@ pub use rbx_core::generated_core_shard_mo::stub_0xf1f384 as stub_f1f384;
 // 0xf1f390 — __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim
 #[doc(alias = "__ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim")]
 #[doc(alias = "__ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim")]
-pub fn stub_f1f390() -> ! {
-    todo!("0xf1f390 __ZNK5boost9function1IvPKN3RBX10Reflection18PropertyDescriptorEEclES5_$shim")
+pub fn stub_f1f390(slot: &GenericSlotWrapper, desc: *const PropertyDescriptor) {
+    // IDA 0xf1f390 (decompile: tail-calls `function1<void, PropertyDescriptor const*>::operator()`; disasm: LDR R12 / ADD PC / BX R12 PLT jump to the real operator()).
+    // `operator()` dispatches the stored callable (empty throws); presence collapses into `Option`.
+    // SAFETY: `desc` must point to a live PropertyDescriptor for the call.
+    if let Some(cb) = slot.on_prop {
+        cb(desc);
+    }
 }
 
 // 0xf1f39c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE24safe_static_do_get_mutexEv$shim
@@ -163,16 +248,18 @@ pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f4e0 as stub_f1f4e0;
 // type: int()
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
-pub fn stub_f1f4ec() -> ! {
-    todo!("0xf1f4ec __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+pub fn stub_f1f4ec(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f4ec (decompile: tail-calls `table_impl<map<const char*, FunctionDescriptor*>>::rehash_impl`; disasm: same 3-insn PLT shape as sampled 0xf1f4ec).
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f4f8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
-pub fn stub_f1f4f8() -> ! {
-    todo!("0xf1f4f8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+pub fn stub_f1f4f8(table: &mut DescriptorTable, buckets: usize) {
+    // IDA 0xf1f4f8 (decompile: tail-calls `table<map<const char*, FunctionDescriptor*>>::create_buckets(a1, a2)`; disasm: same 3-insn PLT shape).
+    table.create_buckets(buckets);
 }
 
 // 0xf1f504 — __ZNK5boost16exception_detail10clone_implINS0_10bad_alloc_EE5cloneEv$shim
@@ -191,128 +278,151 @@ pub use rbx_core::generated_core_shard_mo::stub_0xf1f510 as stub_f1f510;
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
-pub fn stub_f1f51c() -> ! {
-    todo!("0xf1f51c __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+pub fn stub_f1f51c(members: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f51c (decompile: tail-calls `vector<MemberDescriptorContainer<CallbackDescriptor>*>::_M_insert_aux`; disasm: LDR R12 / ADD PC / BX R12 PLT jump).
+    // `_M_insert_aux` makes room and shifts the tail; `Vec::insert` is the same.
+    // SAFETY: `value` must be a live CallbackDescriptor container pointer; `index` must be <= len.
+    members.insert(index, value);
 }
 
 // 0xf1f528 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv$shim")]
-pub fn stub_f1f528() -> ! {
-    todo!("0xf1f528 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv$shim")
+pub fn stub_f1f528() -> &'static Mutex<DescriptorStore> {
+    // IDA 0xf1f528 (decompile: tail-calls `MemberDescriptorContainer<CallbackDescriptor>::staticData()`; disasm: LDR R12 / ADD PC / BX R12 PLT jump).
+    // Function-static table becomes `OnceLock`; same treatment as the `LazyLock` singletons in generated_190.
+    static_store(&CALLBACK_MEMBER_STORE)
 }
 
 // 0xf1f534 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
-pub fn stub_f1f534() -> ! {
-    todo!("0xf1f534 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+pub fn stub_f1f534(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f534 (decompile: tail-calls `table_impl<map<const char*, CallbackDescriptor*>>::rehash_impl(a1, a2)`; disasm: same 3-insn PLT shape).
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f540 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
-pub fn stub_f1f540() -> ! {
-    todo!("0xf1f540 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+pub fn stub_f1f540(table: &mut DescriptorTable, buckets: usize) {
+    // IDA 0xf1f540 (decompile: tail-calls `table<map<const char*, CallbackDescriptor*>>::create_buckets` via `0xf1f546`; disasm: same 3-insn PLT shape).
+    table.create_buckets(buckets);
 }
 
 // 0xf1f54c — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
-pub fn stub_f1f54c() -> ! {
-    todo!("0xf1f54c __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+pub fn stub_f1f54c(members: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f54c (decompile: tail-calls `vector<MemberDescriptorContainer<YieldFunctionDescriptor>*>::_M_insert_aux`; disasm: same 3-insn PLT shape).
+    // SAFETY: `value` must be a live YieldFunctionDescriptor container pointer; `index` must be <= len.
+    members.insert(index, value);
 }
 
 // 0xf1f558 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim")]
-pub fn stub_f1f558() -> ! {
-    todo!("0xf1f558 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim")
+pub fn stub_f1f558() -> &'static Mutex<DescriptorStore> {
+    // IDA 0xf1f558 (decompile: tail-calls `MemberDescriptorContainer<YieldFunctionDescriptor>::staticData(a1)`; disasm: same 3-insn PLT shape).
+    static_store(&YIELD_FUNCTION_MEMBER_STORE)
 }
 
 // 0xf1f564 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
-pub fn stub_f1f564() -> ! {
-    todo!("0xf1f564 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+pub fn stub_f1f564(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f564 (decompile: tail-calls `table_impl<map<const char*, YieldFunctionDescriptor*>>::rehash_impl(a1, a2)`; disasm: same 3-insn PLT shape).
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f570 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
-pub fn stub_f1f570() -> ! {
-    todo!("0xf1f570 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+pub fn stub_f1f570(table: &mut DescriptorTable, buckets: usize) {
+    // IDA 0xf1f570 (decompile: tail-calls `table<map<const char*, YieldFunctionDescriptor*>>::create_buckets` via `0xf1f576`; disasm: same 3-insn PLT shape).
+    table.create_buckets(buckets);
 }
 
 // 0xf1f57c — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
-pub fn stub_f1f57c() -> ! {
-    todo!("0xf1f57c __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+pub fn stub_f1f57c(members: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f57c (decompile: tail-calls `vector<MemberDescriptorContainer<EventDescriptor>*>::_M_insert_aux`; disasm: same 3-insn PLT shape).
+    // SAFETY: `value` must be a live EventDescriptor container pointer; `index` must be <= len.
+    members.insert(index, value);
 }
 
 // 0xf1f588 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv$shim")]
-pub fn stub_f1f588() -> ! {
-    todo!("0xf1f588 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv$shim")
+pub fn stub_f1f588() -> &'static Mutex<DescriptorStore> {
+    // IDA 0xf1f588 (decompile: tail-calls `MemberDescriptorContainer<EventDescriptor>::staticData(a1)`; disasm: same 3-insn PLT shape).
+    static_store(&EVENT_MEMBER_STORE)
 }
 
 // 0xf1f594 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
-pub fn stub_f1f594() -> ! {
-    todo!("0xf1f594 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+pub fn stub_f1f594(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f594 (decompile: tail-calls `table_impl<map<const char*, EventDescriptor*>>::rehash_impl(a1, a2)`; disasm: same 3-insn PLT shape).
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f5a0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
-pub fn stub_f1f5a0() -> ! {
-    todo!("0xf1f5a0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+pub fn stub_f1f5a0(table: &mut DescriptorTable, buckets: usize) {
+    // IDA 0xf1f5a0 (decompile: tail-calls `table<map<const char*, EventDescriptor*>>::create_buckets` via `0xf1f5a6`; disasm: same 3-insn PLT shape).
+    table.create_buckets(buckets);
 }
 
 // 0xf1f5ac — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18FunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18FunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18FunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
-pub fn stub_f1f5ac() -> ! {
-    todo!("0xf1f5ac __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18FunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+pub fn stub_f1f5ac(members: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f5ac (decompile: tail-calls `vector<MemberDescriptorContainer<FunctionDescriptor>*>::_M_insert_aux`; disasm: same 3-insn PLT shape).
+    // SAFETY: `value` must be a live FunctionDescriptor container pointer; `index` must be <= len.
+    members.insert(index, value);
 }
 
 // 0xf1f5b8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10staticDataEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10staticDataEv$shim")]
-pub fn stub_f1f5b8() -> ! {
-    todo!("0xf1f5b8 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE10staticDataEv$shim")
+pub fn stub_f1f5b8() -> &'static Mutex<DescriptorStore> {
+    // IDA 0xf1f5b8 (decompile: tail-calls `MemberDescriptorContainer<FunctionDescriptor>::staticData(a1)`; disasm: same 3-insn PLT shape).
+    static_store(&FUNCTION_MEMBER_STORE)
 }
 
 // 0xf1f5c4 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18PropertyDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18PropertyDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
 #[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18PropertyDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
-pub fn stub_f1f5c4() -> ! {
-    todo!("0xf1f5c4 __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18PropertyDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+pub fn stub_f1f5c4(members: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f5c4 (decompile: tail-calls `vector<MemberDescriptorContainer<PropertyDescriptor>*>::_M_insert_aux`; disasm: same 3-insn PLT shape).
+    // SAFETY: `value` must be a live PropertyDescriptor container pointer; `index` must be <= len.
+    members.insert(index, value);
 }
 
 // 0xf1f5d0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10staticDataEv$shim
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10staticDataEv$shim")]
 #[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10staticDataEv$shim")]
-pub fn stub_f1f5d0() -> ! {
-    todo!("0xf1f5d0 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEE10staticDataEv$shim")
+pub fn stub_f1f5d0() -> &'static Mutex<DescriptorStore> {
+    // IDA 0xf1f5d0 (decompile: tail-calls `MemberDescriptorContainer<PropertyDescriptor>::staticData(a1)`; disasm: same 3-insn PLT shape).
+    static_store(&PROPERTY_MEMBER_STORE)
 }
 
 // 0xf1f5dc — __ZN5boost16exception_detail14bad_exception_D2Ev$shim
@@ -331,8 +441,10 @@ pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f5e8 as stub_f1f5e8;
 // type: int(void)
 #[doc(alias = "__ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")]
 #[doc(alias = "__ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")]
-pub fn stub_f1f5f4() -> ! {
-    todo!("0xf1f5f4 __ZNSt6vectorIPKN3RBX10Reflection14EnumDescriptorESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_$shim")
+pub fn stub_f1f5f4(descs: &mut Vec<*const ()>, index: usize, value: *const ()) {
+    // IDA 0xf1f5f4 (decompile: tail-calls `vector<EnumDescriptor const*>::_M_insert_aux(a1, a2)`; disasm: same 3-insn PLT shape).
+    // SAFETY: `value` must be a live EnumDescriptor pointer; `index` must be <= len.
+    descs.insert(index, value);
 }
 
 // 0xf1f600 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED2Ev$shim
@@ -345,24 +457,28 @@ pub use rbx_core::generated_watchdog_core_w5::stub_0xf1f600 as stub_f1f600;
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
-pub fn stub_f1f60c() -> ! {
-    todo!("0xf1f60c __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+pub fn stub_f1f60c(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f60c (decompile: tail-calls `table_impl<map<const char*, PropertyDescriptor*>>::rehash_impl(a1, a2)`; disasm: same 3-insn PLT shape).
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f618 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
-pub fn stub_f1f618() -> ! {
-    todo!("0xf1f618 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+pub fn stub_f1f618(table: &mut DescriptorTable, buckets: usize) {
+    // IDA 0xf1f618 (decompile: tail-calls `table<map<const char*, PropertyDescriptor*>>::create_buckets` via `0xf1f61e`; disasm: same 3-insn PLT shape).
+    table.create_buckets(buckets);
 }
 
 // 0xf1f624 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm$shim
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm$shim")]
 #[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm$shim")]
-pub fn stub_f1f624() -> ! {
-    todo!("0xf1f624 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm$shim")
+pub fn stub_f1f624(table: &mut DescriptorTable, additional: usize) {
+    // IDA 0xf1f624 (decompile: tail-calls `table_impl<map<type_info const*, EnumDescriptor const*, TypeHash, TypeEqual>>::rehash_impl(a1, a2)`; disasm: same 3-insn PLT shape).
+    // The `type_info*` key has no Rust form; the key string (type name) plays its role in `DescriptorTable`.
+    table.rehash_for_insert(additional);
 }
 
 // 0xf1f630 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14create_bucketsEm$shim
@@ -763,4 +879,226 @@ pub use rbx_core::generated_core_shard_mo::stub_0xf1fa50 as stub_f1fa50;
 #[doc(alias = "__ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim")]
 pub fn stub_f1fa5c() -> ! {
     todo!("0xf1fa5c __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE$shim")
+}
+
+#[cfg(test)]
+mod shard_283_half1_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    static PROP_CALLS: AtomicUsize = AtomicUsize::new(0);
+    fn record_prop(_desc: *const PropertyDescriptor) {
+        PROP_CALLS.fetch_add(1, Ordering::SeqCst);
+    }
+
+    fn ptr_of(v: &u32) -> *const () {
+        v as *const u32 as *const ()
+    }
+
+    #[test]
+    fn f1f390_calls_stored_prop_callback() {
+        PROP_CALLS.store(0, Ordering::SeqCst);
+        let desc = PropertyDescriptor { name: "x" };
+        let slot = GenericSlotWrapper {
+            on_prop: Some(record_prop),
+            on_pair: None,
+            on_single: None,
+            on_triple: None,
+            on_triple_isi: None,
+            on_chat: None,
+            on_prop2: None,
+            on_pair_if: None,
+            on_player_chat: None,
+            on_friend: None,
+            on_str_inst: None,
+        };
+        stub_f1f390(&slot, &desc as *const PropertyDescriptor);
+        assert_eq!(PROP_CALLS.load(Ordering::SeqCst), 1);
+        let empty = GenericSlotWrapper {
+            on_prop: None,
+            on_pair: None,
+            on_single: None,
+            on_triple: None,
+            on_triple_isi: None,
+            on_chat: None,
+            on_prop2: None,
+            on_pair_if: None,
+            on_player_chat: None,
+            on_friend: None,
+            on_str_inst: None,
+        };
+        stub_f1f390(&empty, &desc as *const PropertyDescriptor);
+        assert_eq!(PROP_CALLS.load(Ordering::SeqCst), 1);
+    }
+
+    #[test]
+    fn f1f4ec_rehash_grows_and_keeps_entries() {
+        let mut t = DescriptorTable::new();
+        t.insert("a", std::ptr::null());
+        stub_f1f4ec(&mut t, 64);
+        assert!(t.entries.capacity() >= 64);
+        assert!(t.find("a").is_some());
+    }
+
+    #[test]
+    fn f1f4f8_create_buckets_allocates() {
+        let mut t = DescriptorTable::new();
+        stub_f1f4f8(&mut t, 32);
+        assert!(t.entries.capacity() >= 32);
+        t.insert("f", 0x1 as *const ());
+        assert_eq!(t.find("f"), Some(0x1 as *const ()));
+        assert_eq!(t.find("missing"), None);
+    }
+
+    #[test]
+    fn f1f51c_inserts_callback_member_at_index() {
+        let (a, b, c) = (1u32, 2u32, 3u32);
+        let mut v = vec![ptr_of(&a), ptr_of(&c)];
+        stub_f1f51c(&mut v, 1, ptr_of(&b));
+        assert_eq!(v, vec![ptr_of(&a), ptr_of(&b), ptr_of(&c)]);
+    }
+
+    #[test]
+    fn f1f528_static_data_is_singleton() {
+        let s = stub_f1f528();
+        assert!(std::ptr::eq(s, stub_f1f528()));
+        assert!(s.lock().members.is_empty());
+    }
+
+    #[test]
+    fn f1f534_rehash_callback_table() {
+        let mut t = DescriptorTable::new();
+        stub_f1f534(&mut t, 16);
+        assert!(t.entries.capacity() >= 16);
+    }
+
+    #[test]
+    fn f1f540_create_callback_buckets() {
+        let mut t = DescriptorTable::new();
+        stub_f1f540(&mut t, 16);
+        assert!(t.entries.capacity() >= 16);
+    }
+
+    #[test]
+    fn f1f54c_inserts_yield_member_at_index() {
+        let (a, b) = (1u32, 2u32);
+        let mut v = vec![ptr_of(&a)];
+        stub_f1f54c(&mut v, 0, ptr_of(&b));
+        assert_eq!(v, vec![ptr_of(&b), ptr_of(&a)]);
+    }
+
+    #[test]
+    fn f1f558_static_data_is_singleton() {
+        assert!(std::ptr::eq(stub_f1f558(), stub_f1f558()));
+        assert!(!std::ptr::eq(stub_f1f558() as *const _ as *const (), stub_f1f528() as *const _ as *const ()));
+    }
+
+    #[test]
+    fn f1f564_rehash_yield_table() {
+        let mut t = DescriptorTable::new();
+        stub_f1f564(&mut t, 8);
+        assert!(t.entries.capacity() >= 8);
+    }
+
+    #[test]
+    fn f1f570_create_yield_buckets() {
+        let mut t = DescriptorTable::new();
+        stub_f1f570(&mut t, 8);
+        assert!(t.entries.capacity() >= 8);
+    }
+
+    #[test]
+    fn f1f57c_inserts_event_member_at_end() {
+        let (a, b) = (1u32, 2u32);
+        let mut v = vec![ptr_of(&a)];
+        stub_f1f57c(&mut v, 1, ptr_of(&b));
+        assert_eq!(v, vec![ptr_of(&a), ptr_of(&b)]);
+    }
+
+    #[test]
+    fn f1f588_static_data_registers_and_finds() {
+        let store = stub_f1f588();
+        let sentinel = 0x777 as *const ();
+        {
+            let mut g = store.lock();
+            g.register("OnTouched", sentinel);
+        }
+        assert_eq!(store.lock().find("OnTouched"), Some(sentinel));
+        assert_eq!(store.lock().find("Nope"), None);
+    }
+
+    #[test]
+    fn f1f594_rehash_event_table() {
+        let mut t = DescriptorTable::new();
+        stub_f1f594(&mut t, 24);
+        assert!(t.entries.capacity() >= 24);
+    }
+
+    #[test]
+    fn f1f5a0_create_event_buckets() {
+        let mut t = DescriptorTable::new();
+        stub_f1f5a0(&mut t, 24);
+        assert!(t.entries.capacity() >= 24);
+    }
+
+    #[test]
+    fn f1f5ac_inserts_function_member() {
+        let (a, b, c) = (1u32, 2u32, 3u32);
+        let mut v = vec![ptr_of(&a), ptr_of(&b), ptr_of(&c)];
+        let d = 4u32;
+        stub_f1f5ac(&mut v, 3, ptr_of(&d));
+        assert_eq!(v.len(), 4);
+        assert_eq!(v[3], ptr_of(&d));
+    }
+
+    #[test]
+    fn f1f5b8_static_data_is_singleton() {
+        assert!(std::ptr::eq(stub_f1f5b8(), stub_f1f5b8()));
+    }
+
+    #[test]
+    fn f1f5c4_inserts_property_member() {
+        let (a, b) = (1u32, 2u32);
+        let mut v: Vec<*const ()> = Vec::new();
+        stub_f1f5c4(&mut v, 0, ptr_of(&a));
+        stub_f1f5c4(&mut v, 0, ptr_of(&b));
+        assert_eq!(v, vec![ptr_of(&b), ptr_of(&a)]);
+    }
+
+    #[test]
+    fn f1f5d0_static_data_is_singleton() {
+        assert!(std::ptr::eq(stub_f1f5d0(), stub_f1f5d0()));
+    }
+
+    #[test]
+    fn f1f5f4_inserts_enum_descriptor() {
+        let (a, b) = (1u32, 2u32);
+        let mut v: Vec<*const ()> = Vec::new();
+        stub_f1f5f4(&mut v, 0, ptr_of(&a));
+        stub_f1f5f4(&mut v, 1, ptr_of(&b));
+        assert_eq!(v, vec![ptr_of(&a), ptr_of(&b)]);
+    }
+
+    #[test]
+    fn f1f60c_rehash_property_table() {
+        let mut t = DescriptorTable::new();
+        stub_f1f60c(&mut t, 48);
+        assert!(t.entries.capacity() >= 48);
+    }
+
+    #[test]
+    fn f1f618_create_property_buckets() {
+        let mut t = DescriptorTable::new();
+        stub_f1f618(&mut t, 48);
+        assert!(t.entries.capacity() >= 48);
+    }
+
+    #[test]
+    fn f1f624_rehash_type_keyed_table() {
+        let mut t = DescriptorTable::new();
+        t.insert("NormalId", 0x5 as *const ());
+        stub_f1f624(&mut t, 40);
+        assert!(t.entries.capacity() >= 40);
+        assert_eq!(t.find("NormalId"), Some(0x5 as *const ()));
+    }
 }
