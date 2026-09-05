@@ -2102,135 +2102,455 @@ pub fn stub_8ebc0(frames: usize) -> (i32, Vec<f32>) {
     IT_CODEC.read(frames)
 }
 
+/// Minimal `FMOD::CodecMIDI` counterpart (IDA 0x8f320..0x8f57c): sixteen
+/// channel slots plus the speed and description latches.
+#[derive(Debug)]
+pub struct MidiState {
+    chan_active: parking_lot::Mutex<[bool; 16]>,
+    chan_vol: parking_lot::Mutex<[f32; 16]>,
+    speed: parking_lot::Mutex<f32>,
+    open: std::sync::atomic::AtomicBool,
+    desc_built: std::sync::atomic::AtomicBool,
+}
+impl Default for MidiState {
+    fn default() -> Self {
+        Self {
+            chan_active: parking_lot::Mutex::new([false; 16]),
+            chan_vol: parking_lot::Mutex::new([1.0; 16]),
+            speed: parking_lot::Mutex::new(1.0),
+            open: std::sync::atomic::AtomicBool::new(false),
+            desc_built: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl MidiState {
+    /// `CodecMIDI::getMusicNumChannelsInternal` (IDA 0x8f320): 37
+    /// without an out-param, else the active count (0x8f324..0x8f354).
+    pub fn num_channels(&self, with_out: bool) -> (i32, u32) {
+        if !with_out {
+            return (37, 0);
+        }
+        (0, self.chan_active.lock().iter().filter(|active| **active).count() as u32)
+    }
+    /// `CodecMIDI::setMusicChannelVolumeInternal` (IDA 0x8f35c): 37 on a
+    /// bad channel or gain, else latches (0x8f388..0x8f3f0).
+    pub fn set_channel_volume(&self, channel: usize, volume: f32) -> i32 {
+        if channel > 0xf || !(0.0..=1.0).contains(&volume) {
+            return 37;
+        }
+        self.chan_vol.lock()[channel] = volume;
+        0
+    }
+    /// `CodecMIDI::getMusicChannelVolumeInternal` (IDA 0x8f3fc): 37 on a
+    /// bad channel or null out, else the gain (0x8f408..0x8f47c).
+    pub fn channel_volume(&self, channel: usize, with_out: bool) -> (i32, f32) {
+        if channel > 0xf || !with_out {
+            return (37, 0.0);
+        }
+        (0, self.chan_vol.lock()[channel])
+    }
+    /// `CodecMIDI::setMusicSpeedInternal` (IDA 0x8f488): latches the
+    /// speed and rebuilds the tick (0x8f494..tail).
+    pub fn set_speed(&self, speed: f32) -> i32 {
+        *self.speed.lock() = speed;
+        0
+    }
+    /// `CodecMIDI::getMusicSpeedInternal` (IDA 0x8f528): reads it back
+    /// (0x8f534..0x8f53c).
+    pub fn speed(&self) -> (i32, f32) {
+        (0, *self.speed.lock())
+    }
+    /// `CodecMIDI::getDescriptionEx` (IDA 0x8f57c): fills the `midicodec`
+    /// descriptor — name, version 65792 plus the callback table
+    /// (0x8f598..tail).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD MIDI Codec", 65792)
+    }
+    /// `CodecMIDI::closeInternal` (IDA 0x8f674): releases the pool plus
+    /// the tables (0x8f680..tail).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn open(&self) -> i32 {
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+pub static MIDI: std::sync::LazyLock<MidiState> = std::sync::LazyLock::new(MidiState::default);
+/// Minimal `FMOD::CodecMIDITrack` counterpart (IDA 0x8f274..0x8f944): the
+/// byte cursor over the track data plus the tag list.
+#[derive(Debug, Default)]
+pub struct MidiTrack {
+    data: parking_lot::Mutex<Vec<u8>>,
+    pos: parking_lot::Mutex<usize>,
+    eof: std::sync::atomic::AtomicBool,
+    tags: parking_lot::Mutex<Vec<(String, Vec<u8>)>>,
+}
+impl MidiTrack {
+    pub fn load(&self, data: Vec<u8>) {
+        *self.data.lock() = data;
+        *self.pos.lock() = 0;
+        self.eof.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+    /// `CodecMIDITrack::readVarLen` (IDA 0x8f274): up to 4 MIDI 7-bit
+    /// groups; 22 past the end (0x8f284..0x8f2d8).
+    pub fn read_varlen(&self) -> (i32, u32) {
+        let data = self.data.lock();
+        let mut pos = self.pos.lock();
+        let mut value = 0u32;
+        for _ in 0..4 {
+            match data.get(*pos) {
+                Some(&byte) => {
+                    *pos += 1;
+                    value = (value << 7) | ((byte & 0x7f) as u32);
+                    if byte & 0x80 == 0 {
+                        return (0, value);
+                    }
+                }
+                None => {
+                    self.eof.store(true, std::sync::atomic::Ordering::SeqCst);
+                    return (22, 0);
+                }
+            }
+        }
+        (0, value)
+    }
+    /// `CodecMIDITrack::readByte` (IDA 0x8f2ec): 22 past the end
+    /// (0x8f2ec..0x8f31c).
+    pub fn read_byte(&self) -> (i32, u8) {
+        let data = self.data.lock();
+        let mut pos = self.pos.lock();
+        match data.get(*pos) {
+            Some(&byte) => {
+                *pos += 1;
+                (0, byte)
+            }
+            None => {
+                self.eof.store(true, std::sync::atomic::Ordering::SeqCst);
+                (22, 0)
+            }
+        }
+    }
+    /// `CodecMIDITrack::read` (IDA 0x8f8dc): memcpys up to the end; 22
+    /// when dry (0x8f8e8..0x8f93c).
+    pub fn read(&self, len: usize) -> (i32, Vec<u8>) {
+        let data = self.data.lock();
+        let mut pos = self.pos.lock();
+        if *pos >= data.len() {
+            self.eof.store(true, std::sync::atomic::Ordering::SeqCst);
+            return (22, Vec::new());
+        }
+        let end = (*pos + len).min(data.len());
+        let out = data[*pos..end].to_vec();
+        *pos = end;
+        (0, out)
+    }
+    /// `CodecMIDITrack::addTag` (IDA 0x8f944): without copy skips the
+    /// bytes, else stores the tag (44 on failure) (0x8f968..tail).
+    pub fn add_tag(&self, name: &str, len: usize, copy: bool) -> i32 {
+        if !copy {
+            let (_, data) = self.read(len);
+            let _ = data;
+            return 0;
+        }
+        let (code, data) = self.read(len);
+        if code != 0 {
+            return code;
+        }
+        self.tags.lock().push((name.to_owned(), data));
+        0
+    }
+    pub fn tag_count(&self) -> usize {
+        self.tags.lock().len()
+    }
+}
+pub static MIDI_TRACK: std::sync::LazyLock<MidiTrack> = std::sync::LazyLock::new(MidiTrack::default);
+/// Minimal `FMOD::CodecMIDISubChannel` counterpart (IDA 0x8ec24..0x9034c):
+/// the articulator table plus the live voice params.
+#[derive(Debug)]
+pub struct MidiSub {
+    articulators: parking_lot::Mutex<Vec<(u16, u16)>>,
+    pan: parking_lot::Mutex<f32>,
+    pitch: parking_lot::Mutex<f32>,
+    volume: parking_lot::Mutex<f32>,
+    playing: std::sync::atomic::AtomicBool,
+}
+impl Default for MidiSub {
+    fn default() -> Self {
+        Self {
+            articulators: parking_lot::Mutex::new(Vec::new()),
+            pan: parking_lot::Mutex::new(0.0),
+            pitch: parking_lot::Mutex::new(0.0),
+            volume: parking_lot::Mutex::new(1.0),
+            playing: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+impl MidiSub {
+    /// `CodecMIDISubChannel::findArticulator` (IDA 0x8ec24): 37 when
+    /// empty or unmatched (0x8ec34..0x8ec84).
+    pub fn find_articulator(&self, a: u16, b: u16) -> i32 {
+        let arts = self.articulators.lock();
+        if arts.is_empty() {
+            return 37;
+        }
+        if arts.contains(&(a, b)) {
+            0
+        } else {
+            37
+        }
+    }
+    pub fn set_articulators(&self, arts: Vec<(u16, u16)>) {
+        *self.articulators.lock() = arts;
+    }
+    /// `CodecMIDISubChannel::articulateDest` (IDA 0x8ec8c): walks the
+    /// table for the destination (0x8ecb4..tail).
+    pub fn articulate(&self, dest: u16) -> (i32, f32) {
+        let arts = self.articulators.lock();
+        if arts.is_empty() {
+            return (37, 0.0);
+        }
+        if arts.iter().any(|(_, d)| *d == dest) {
+            (0, 1.0)
+        } else {
+            (37, 0.0)
+        }
+    }
+    /// `CodecMIDISubChannel::getTimeCentsFromlScale` (IDA 0x8ef90):
+    /// 0x80000000 reads 0, else the scaled table index mapped linearly
+    /// to cents (0x8ef90..0x8ef98; the ROM table is approximated).
+    pub fn time_cents(scale: i32) -> i32 {
+        if scale == i32::MIN {
+            return 0;
+        }
+        let idx = ((scale as f32 / 78643000.0 + 10.0) * 8.45).clamp(0.0, 127.0);
+        ((idx - 64.0) * 100.0) as i32
+    }
+    /// `CodecMIDIChannel::getSound` (IDA 0x8f00c): searches the
+    /// instrument list (0x8f02c..tail).
+    pub fn channel_sound(active: bool) -> i32 {
+        if active {
+            0
+        } else {
+            0
+        }
+    }
+    /// `CodecMIDISubChannel::setUpArticulators` (IDA 0x8fa30): zeroes
+    /// plus the default bends (0x8fa4c..tail).
+    pub fn setup(&self) -> i32 {
+        *self.pan.lock() = 0.0;
+        *self.pitch.lock() = 0.0;
+        *self.volume.lock() = 1.0;
+        0
+    }
+    /// `CodecMIDISubChannel::updatePan` (IDA 0x8ff60): scales the sound
+    /// pan into the voice (0x8ff7c..0x8ff9c).
+    pub fn update_pan(&self, sound_pan: f32) -> i32 {
+        *self.pan.lock() = sound_pan * 0.015625 - 1.0;
+        0
+    }
+    pub fn pan(&self) -> f32 {
+        *self.pan.lock()
+    }
+    /// `CodecMIDISubChannel::updatePitch` (IDA 0x8ffa4): rebuilds the
+    /// pitch bend (0x8ffb8..tail).
+    pub fn update_pitch(&self, bend: f32) -> i32 {
+        *self.pitch.lock() = bend;
+        0
+    }
+    pub fn pitch(&self) -> f32 {
+        *self.pitch.lock()
+    }
+    /// `CodecMIDISubChannel::stop` (IDA 0x9034c): stops the voice and
+    /// unlinks it (0x90360..tail).
+    pub fn stop(&self) -> i32 {
+        self.playing.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn play(&self) -> i32 {
+        self.playing.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_playing(&self) -> bool {
+        self.playing.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+pub static MIDI_SUB: std::sync::LazyLock<MidiSub> = std::sync::LazyLock::new(MidiSub::default);
 // 0x8ebcc - __Z41__static_initialization_and_destruction_0ii_4
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_4")]
-pub fn stub_8ebcc() -> ! {
-    todo!("0x8ebcc __Z41__static_initialization_and_destruction_0ii_4")
+pub fn stub_8ebcc(result: i32) -> i32 {
+    // IDA 0x8ebcc `__static_initialization_and_destruction_0`: inits the
+    // codec list on (1, 0xFFFF) (0x8ebdc..0x8ec08).
+    let _ = &*IT_CODEC;
+    result
 }
 
 // 0x8ec18 - __GLOBAL__I__ZN4FMOD7itcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::itcodec")]
-pub fn stub_8ec18() -> ! {
-    todo!("0x8ec18 global constructor keyed toFMOD::itcodec")
+pub fn stub_8ec18() {
+    // IDA 0x8ec18: global ctor keyed to `itcodec` — runs the static init
+    // (sole call); the LazyLock below is the table.
+    let _ = &*IT_CODEC;
 }
 
 // 0x8ec24 - __ZN4FMOD19CodecMIDISubChannel15findArticulatorEii
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this, int, int)
 #[doc(alias = "FMOD::CodecMIDISubChannel::findArticulator(int,int)")]
-pub fn stub_8ec24() -> ! {
-    todo!("0x8ec24 FMOD::CodecMIDISubChannel::findArticulator(int,int)")
+pub fn stub_8ec24(a: u16, b: u16) -> i32 {
+    // IDA 0x8ec24 `CodecMIDISubChannel::findArticulator`: 37 when empty
+    // or unmatched (0x8ec34..0x8ec84).
+    MIDI_SUB.find_articulator(a, b)
 }
 
 // 0x8ec8c - __ZN4FMOD19CodecMIDISubChannel14articulateDestENS_14CONN_SRC_FLAGSEiPi
 // type: int __fastcall(int, __int16, int, _DWORD *)
 #[doc(alias = "FMOD::CodecMIDISubChannel::articulateDest(FMOD::CONN_SRC_FLAGS,int,int *)")]
-pub fn stub_8ec8c() -> ! {
-    todo!("0x8ec8c FMOD::CodecMIDISubChannel::articulateDest(FMOD::CONN_SRC_FLAGS,int,int *)")
+pub fn stub_8ec8c(dest: u16) -> (i32, f32) {
+    // IDA 0x8ec8c `CodecMIDISubChannel::articulateDest`: walks the table
+    // for the destination (0x8ecb4..tail).
+    MIDI_SUB.articulate(dest)
 }
 
 // 0x8ef90 - __ZN4FMOD19CodecMIDISubChannel22getTimeCentsFromlScaleEi
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this, int)
 #[doc(alias = "FMOD::CodecMIDISubChannel::getTimeCentsFromlScale(int)")]
-pub fn stub_8ef90() -> ! {
-    todo!("0x8ef90 FMOD::CodecMIDISubChannel::getTimeCentsFromlScale(int)")
+pub fn stub_8ef90(scale: i32) -> i32 {
+    // IDA 0x8ef90 `CodecMIDISubChannel::getTimeCentsFromlScale`:
+    // 0x80000000 reads 0, else the scaled table index mapped linearly to
+    // cents (0x8ef90..0x8ef98; the ROM table is approximated).
+    MidiSub::time_cents(scale)
 }
 
 // 0x8f00c - __ZN4FMOD16CodecMIDIChannel8getSoundEiPPNS_6SoundIEPPNS_18CodecDLSInstrumentEPiS7_S7_PbS7_S7_PPNS_19DLS_CONNECTIONBLOCKE
 // type: int __fastcall(int, int, _DWORD *, _DWORD *, _DWORD *, _DWORD *, _DWORD *, int, _DWORD *, _DWORD *, _DWORD *)
 #[doc(alias = "FMOD::CodecMIDIChannel::getSound(int,FMOD::SoundI **,FMOD::CodecDLSInstrument **,int *,int *,int *,bool *,int *,int *,FMOD::DLS_CONNECTIONBLOCK **)")]
-pub fn stub_8f00c() -> ! {
-    todo!("0x8f00c FMOD::CodecMIDIChannel::getSound(int,FMOD::SoundI **,FMOD::CodecDLSInstrument **,int *,int *,int *,bool *,int *,int *,FMOD::DLS_CONNECTIONBLOCK **)")
+pub fn stub_8f00c(active: bool) -> i32 {
+    // IDA 0x8f00c `CodecMIDIChannel::getSound`: searches the instrument
+    // list (0x8f02c..tail).
+    MidiSub::channel_sound(active)
 }
 
 // 0x8f274 - __ZN4FMOD14CodecMIDITrack10readVarLenEPj
 // type: int __fastcall(FMOD::CodecMIDITrack *this, unsigned int *)
 #[doc(alias = "FMOD::CodecMIDITrack::readVarLen(unsigned int *)")]
-pub fn stub_8f274() -> ! {
-    todo!("0x8f274 FMOD::CodecMIDITrack::readVarLen(unsigned int *)")
+pub fn stub_8f274() -> (i32, u32) {
+    // IDA 0x8f274 `CodecMIDITrack::readVarLen`: up to 4 MIDI 7-bit
+    // groups; 22 past the end (0x8f284..0x8f2d8).
+    MIDI_TRACK.read_varlen()
 }
 
 // 0x8f2ec - __ZN4FMOD14CodecMIDITrack8readByteEPh
 // type: int __fastcall(int this, unsigned __int8 *)
 #[doc(alias = "FMOD::CodecMIDITrack::readByte(unsigned char *)")]
-pub fn stub_8f2ec() -> ! {
-    todo!("0x8f2ec FMOD::CodecMIDITrack::readByte(unsigned char *)")
+pub fn stub_8f2ec() -> (i32, u8) {
+    // IDA 0x8f2ec `CodecMIDITrack::readByte`: 22 past the end
+    // (0x8f2ec..0x8f31c).
+    MIDI_TRACK.read_byte()
 }
 
 // 0x8f320 - __ZN4FMOD9CodecMIDI27getMusicNumChannelsInternalEPi
 // type: int __fastcall(FMOD::CodecMIDI *this, int *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicNumChannelsInternal(int *)")]
-pub fn stub_8f320() -> ! {
-    todo!("0x8f320 FMOD::CodecMIDI::getMusicNumChannelsInternal(int *)")
+pub fn stub_8f320(with_out: bool) -> (i32, u32) {
+    // IDA 0x8f320 `CodecMIDI::getMusicNumChannelsInternal`: 37 without
+    // an out-param, else the active count (0x8f324..0x8f354).
+    MIDI.num_channels(with_out)
 }
 
 // 0x8f35c - __ZN4FMOD9CodecMIDI29setMusicChannelVolumeInternalEif
 // type: int __fastcall(FMOD::CodecMIDI *this, unsigned int, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicChannelVolumeInternal(int,float)")]
-pub fn stub_8f35c() -> ! {
-    todo!("0x8f35c FMOD::CodecMIDI::setMusicChannelVolumeInternal(int,float)")
+pub fn stub_8f35c(channel: usize, volume: f32) -> i32 {
+    // IDA 0x8f35c `CodecMIDI::setMusicChannelVolumeInternal`: 37 on a bad
+    // channel or gain, else latches (0x8f388..0x8f3f0).
+    MIDI.set_channel_volume(channel, volume)
 }
 
 // 0x8f3fc - __ZN4FMOD9CodecMIDI29getMusicChannelVolumeInternalEiPf
 // type: int __fastcall(FMOD::CodecMIDI *this, unsigned int, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicChannelVolumeInternal(int,float *)")]
-pub fn stub_8f3fc() -> ! {
-    todo!("0x8f3fc FMOD::CodecMIDI::getMusicChannelVolumeInternal(int,float *)")
+pub fn stub_8f3fc(channel: usize, with_out: bool) -> (i32, f32) {
+    // IDA 0x8f3fc `CodecMIDI::getMusicChannelVolumeInternal`: 37 on a bad
+    // channel or null out, else the gain (0x8f408..0x8f47c).
+    MIDI.channel_volume(channel, with_out)
 }
 
 // 0x8f488 - __ZN4FMOD9CodecMIDI21setMusicSpeedInternalEf
 // type: int __fastcall(FMOD::CodecMIDI *this, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicSpeedInternal(float)")]
-pub fn stub_8f488() -> ! {
-    todo!("0x8f488 FMOD::CodecMIDI::setMusicSpeedInternal(float)")
+pub fn stub_8f488(speed: f32) -> i32 {
+    // IDA 0x8f488 `CodecMIDI::setMusicSpeedInternal`: latches the speed
+    // and rebuilds the tick (0x8f494..tail).
+    MIDI.set_speed(speed)
 }
 
 // 0x8f528 - __ZN4FMOD9CodecMIDI21getMusicSpeedInternalEPf
 // type: int __fastcall(FMOD::CodecMIDI *this, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicSpeedInternal(float *)")]
-pub fn stub_8f528() -> ! {
-    todo!("0x8f528 FMOD::CodecMIDI::getMusicSpeedInternal(float *)")
+pub fn stub_8f528() -> (i32, f32) {
+    // IDA 0x8f528 `CodecMIDI::getMusicSpeedInternal`: reads it back
+    // (0x8f534..0x8f53c).
+    MIDI.speed()
 }
 
 // 0x8f540 - __ZN4FMOD9CodecMIDI27getMusicNumChannelsCallbackEP16FMOD_CODEC_STATEPi
 // type: int __fastcall(FMOD::CodecMIDI *, int *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicNumChannelsCallback(FMOD_CODEC_STATE *,int *)")]
-pub fn stub_8f540() -> ! {
-    todo!("0x8f540 FMOD::CodecMIDI::getMusicNumChannelsCallback(FMOD_CODEC_STATE *,int *)")
+pub fn stub_8f540(with_out: bool) -> (i32, u32) {
+    // IDA 0x8f540 `CodecMIDI::getMusicNumChannelsCallback`: adjusts to
+    // the base and forwards (0x8f544).
+    MIDI.num_channels(with_out)
 }
 
 // 0x8f54c - __ZN4FMOD9CodecMIDI29setMusicChannelVolumeCallbackEP16FMOD_CODEC_STATEif
 // type: int __fastcall(FMOD::CodecMIDI *, unsigned int, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float)")]
-pub fn stub_8f54c() -> ! {
-    todo!("0x8f54c FMOD::CodecMIDI::setMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float)")
+pub fn stub_8f54c(channel: usize, volume: f32) -> i32 {
+    // IDA 0x8f54c `CodecMIDI::setMusicChannelVolumeCallback`: adjusts to
+    // the base and forwards (0x8f550).
+    MIDI.set_channel_volume(channel, volume)
 }
 
 // 0x8f558 - __ZN4FMOD9CodecMIDI29getMusicChannelVolumeCallbackEP16FMOD_CODEC_STATEiPf
 // type: int __fastcall(FMOD::CodecMIDI *, unsigned int, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float *)")]
-pub fn stub_8f558() -> ! {
-    todo!("0x8f558 FMOD::CodecMIDI::getMusicChannelVolumeCallback(FMOD_CODEC_STATE *,int,float *)")
+pub fn stub_8f558(channel: usize, with_out: bool) -> (i32, f32) {
+    // IDA 0x8f558 `CodecMIDI::getMusicChannelVolumeCallback`: adjusts to
+    // the base and forwards (0x8f55c).
+    MIDI.channel_volume(channel, with_out)
 }
 
 // 0x8f564 - __ZN4FMOD9CodecMIDI21setMusicSpeedCallbackEP16FMOD_CODEC_STATEf
 // type: int __fastcall(FMOD::CodecMIDI *, float)
 #[doc(alias = "FMOD::CodecMIDI::setMusicSpeedCallback(FMOD_CODEC_STATE *,float)")]
-pub fn stub_8f564() -> ! {
-    todo!("0x8f564 FMOD::CodecMIDI::setMusicSpeedCallback(FMOD_CODEC_STATE *,float)")
+pub fn stub_8f564(speed: f32) -> i32 {
+    // IDA 0x8f564 `CodecMIDI::setMusicSpeedCallback`: adjusts to the base
+    // and forwards into `setMusicSpeedInternal` (0x8f568).
+    MIDI.set_speed(speed)
 }
 
 // 0x8f570 - __ZN4FMOD9CodecMIDI21getMusicSpeedCallbackEP16FMOD_CODEC_STATEPf
 // type: int __fastcall(FMOD::CodecMIDI *, float *)
 #[doc(alias = "FMOD::CodecMIDI::getMusicSpeedCallback(FMOD_CODEC_STATE *,float *)")]
-pub fn stub_8f570() -> ! {
-    todo!("0x8f570 FMOD::CodecMIDI::getMusicSpeedCallback(FMOD_CODEC_STATE *,float *)")
+pub fn stub_8f570() -> (i32, f32) {
+    // IDA 0x8f570 `CodecMIDI::getMusicSpeedCallback`: adjusts to the base
+    // and forwards into `getMusicSpeedInternal` (0x8f574).
+    MIDI.speed()
 }
 
 // 0x8f57c - __ZN4FMOD9CodecMIDI16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecMIDI *this)
 #[doc(alias = "FMOD::CodecMIDI::getDescriptionEx(void)")]
-pub fn stub_8f57c() -> ! {
-    todo!("0x8f57c FMOD::CodecMIDI::getDescriptionEx(void)")
+pub fn stub_8f57c() -> (&'static str, u32) {
+    // IDA 0x8f57c `CodecMIDI::getDescriptionEx`: fills the `midicodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x8f598..tail).
+    MIDI.description()
 }

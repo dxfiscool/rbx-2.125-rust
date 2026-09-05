@@ -14,57 +14,73 @@ const _: () = {
 // 0x8f674 - __ZN4FMOD9CodecMIDI13closeInternalEv
 // type: int __fastcall(FMOD::CodecMIDI *this)
 #[doc(alias = "FMOD::CodecMIDI::closeInternal(void)")]
-pub fn stub_8f674() -> ! {
-    todo!("0x8f674 FMOD::CodecMIDI::closeInternal(void)")
+pub fn stub_8f674() -> i32 {
+    // IDA 0x8f674 `CodecMIDI::closeInternal`: releases the pool plus the
+    // tables (0x8f680..tail).
+    crate::generated_next_x::MIDI.close()
 }
 
 // 0x8f8d0 - __ZN4FMOD9CodecMIDI13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecMIDI *)
 #[doc(alias = "FMOD::CodecMIDI::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_8f8d0() -> ! {
-    todo!("0x8f8d0 FMOD::CodecMIDI::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_8f8d0() -> i32 {
+    // IDA 0x8f8d0 `CodecMIDI::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x8f8d4).
+    crate::generated_next_x::MIDI.close()
 }
 
 // 0x8f8dc - __ZN4FMOD14CodecMIDITrack4readEPvi
 // type: int __fastcall(FMOD::CodecMIDITrack *this, void *, size_t)
 #[doc(alias = "FMOD::CodecMIDITrack::read(void *,int)")]
-pub fn stub_8f8dc() -> ! {
-    todo!("0x8f8dc FMOD::CodecMIDITrack::read(void *,int)")
+pub fn stub_8f8dc(len: usize) -> (i32, Vec<u8>) {
+    // IDA 0x8f8dc `CodecMIDITrack::read`: memcpys up to the end; 22 when
+    // dry (0x8f8e8..0x8f93c).
+    crate::generated_next_x::MIDI_TRACK.read(len)
 }
 
 // 0x8f944 - __ZN4FMOD14CodecMIDITrack6addTagEPKcib
 // type: int __fastcall(FMOD::CodecMIDITrack *this, const char *, size_t, bool)
 #[doc(alias = "FMOD::CodecMIDITrack::addTag(char const*,int,bool)")]
-pub fn stub_8f944() -> ! {
-    todo!("0x8f944 FMOD::CodecMIDITrack::addTag(char const*,int,bool)")
+pub fn stub_8f944(name: &str, len: usize, copy: bool) -> i32 {
+    // IDA 0x8f944 `CodecMIDITrack::addTag`: without copy skips the bytes,
+    // else stores the tag (44 on failure) (0x8f968..tail).
+    crate::generated_next_x::MIDI_TRACK.add_tag(name, len, copy)
 }
 
 // 0x8fa30 - __ZN4FMOD19CodecMIDISubChannel17setUpArticulatorsEv
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this)
 #[doc(alias = "FMOD::CodecMIDISubChannel::setUpArticulators(void)")]
-pub fn stub_8fa30() -> ! {
-    todo!("0x8fa30 FMOD::CodecMIDISubChannel::setUpArticulators(void)")
+pub fn stub_8fa30() -> i32 {
+    // IDA 0x8fa30 `CodecMIDISubChannel::setUpArticulators`: zeroes plus
+    // the default bends (0x8fa4c..tail).
+    crate::generated_next_x::MIDI_SUB.setup()
 }
 
 // 0x8ff60 - __ZN4FMOD19CodecMIDISubChannel9updatePanEv
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this)
 #[doc(alias = "FMOD::CodecMIDISubChannel::updatePan(void)")]
-pub fn stub_8ff60() -> ! {
-    todo!("0x8ff60 FMOD::CodecMIDISubChannel::updatePan(void)")
+pub fn stub_8ff60(sound_pan: f32) -> i32 {
+    // IDA 0x8ff60 `CodecMIDISubChannel::updatePan`: scales the sound pan
+    // into the voice (0x8ff7c..0x8ff9c).
+    crate::generated_next_x::MIDI_SUB.update_pan(sound_pan)
 }
 
 // 0x8ffa4 - __ZN4FMOD19CodecMIDISubChannel11updatePitchEv
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this)
 #[doc(alias = "FMOD::CodecMIDISubChannel::updatePitch(void)")]
-pub fn stub_8ffa4() -> ! {
-    todo!("0x8ffa4 FMOD::CodecMIDISubChannel::updatePitch(void)")
+pub fn stub_8ffa4(bend: f32) -> i32 {
+    // IDA 0x8ffa4 `CodecMIDISubChannel::updatePitch`: rebuilds the pitch
+    // bend (0x8ffb8..tail).
+    crate::generated_next_x::MIDI_SUB.update_pitch(bend)
 }
 
 // 0x9034c - __ZN4FMOD19CodecMIDISubChannel4stopEv
 // type: int __fastcall(FMOD::CodecMIDISubChannel *this)
 #[doc(alias = "FMOD::CodecMIDISubChannel::stop(void)")]
-pub fn stub_9034c() -> ! {
-    todo!("0x9034c FMOD::CodecMIDISubChannel::stop(void)")
+pub fn stub_9034c() -> i32 {
+    // IDA 0x9034c `CodecMIDISubChannel::stop`: stops the voice and
+    // unlinks it (0x90360..tail).
+    crate::generated_next_x::MIDI_SUB.stop()
 }
 
 // 0x903bc - __ZN4FMOD9CodecMIDI4playEb
