@@ -59,6 +59,22 @@ pub enum EndTxOutcome {
  RetryCapped,
  GaveUp,
 }
+/// `UIWebViewCacheManager` page/webview state (IDA 0x58334-0x58d4c):
+/// preload button tags, cached webview urls, reload + background
+/// dispatch counts. Web views live out of slice.
+pub(crate) static CACHE_PAGES: parking_lot::Mutex<Vec<u32>> =
+ parking_lot::Mutex::new(Vec::new());
+pub(crate) static CACHE_WEBVIEWS: std::sync::LazyLock<
+ parking_lot::Mutex<std::collections::HashMap<String, bool>>,
+> = std::sync::LazyLock::new(|| parking_lot::Mutex::new(std::collections::HashMap::new()));
+pub(crate) static BG_DISPATCHES: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+pub(crate) static CACHE_RELOADS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
+/// `RobloxPageViewController` UserAgent default registrations (IDA
+/// 0x58d7c). Defaults live out of slice.
+pub(crate) static PAGE_UA_REGISTRATIONS: std::sync::atomic::AtomicU32 =
+ std::sync::atomic::AtomicU32::new(0);
 
 // 0x56914 — -[StoreManager purchaseProduct:]
 // type: void __cdecl(StoreManager *self, SEL, id)
@@ -392,176 +408,246 @@ pub fn stub_582f8() {
 // 0x58334 — ___copy_helper_block__17
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__17")]
-pub fn stub_58334() -> ! {
-    todo!("0x58334 ___copy_helper_block__17")
+pub fn stub_58334() {
+    // IDA 0x58334: `__copy_helper_block__17` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x58340 — ___destroy_helper_block__17
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__17")]
-pub fn stub_58340() -> ! {
-    todo!("0x58340 ___destroy_helper_block__17")
+pub fn stub_58340() {
+    // IDA 0x58340: `__destroy_helper_block__17` releases the
+    // captures. Release is drop glue; no explicit body.
 }
 
 // 0x58348 — -[UIWebViewCacheManager dealloc]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager dealloc]")]
-pub fn stub_58348() -> ! {
-    todo!("0x58348 -[UIWebViewCacheManager dealloc]")
+pub fn stub_58348() {
+    // IDA 0x58348: `UIWebViewCacheManager::dealloc` removes the
+    // base-url + leave-game observers. The removal records here.
+    CACHE_OBSERVERS.store(0, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x583a8 — -[UIWebViewCacheManager baseUrlDidChange:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager baseUrlDidChange:]")]
-pub fn stub_583a8() -> ! {
-    todo!("0x583a8 -[UIWebViewCacheManager baseUrlDidChange:]")
+pub fn stub_583a8() {
+    // IDA 0x583a8: `baseUrlDidChange:` rebuilds the preload pages
+    // (0x583b4). The rebuild records here.
+    stub_583f0();
 }
 
 // 0x583b8 — -[UIWebViewCacheManager gotDidLeaveGameNotification:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager gotDidLeaveGameNotification:]")]
-pub fn stub_583b8() -> ! {
-    todo!("0x583b8 -[UIWebViewCacheManager gotDidLeaveGameNotification:]")
+pub fn stub_583b8() -> bool {
+    // IDA 0x583b8: `gotDidLeaveGameNotification:` preloads when the
+    // cache accepts it (0x583d0), else sends the webviews home
+    // (0x583ea). The branch reports here.
+    let precaching = CACHE_PRECACHING.load(std::sync::atomic::Ordering::SeqCst);
+    let initialized = CACHE_INITIALIZED.load(std::sync::atomic::Ordering::SeqCst);
+    if stub_585dc(precaching, initialized) {
+        true
+    } else {
+        stub_58858(precaching);
+        false
+    }
 }
 
 // 0x583f0 — -[UIWebViewCacheManager setPagesToPreload]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager setPagesToPreload]")]
-pub fn stub_583f0() -> ! {
-    todo!("0x583f0 -[UIWebViewCacheManager setPagesToPreload]")
+pub fn stub_583f0() {
+    // IDA 0x583f0: `setPagesToPreload` builds the six home-button page
+    // urls (tags 13/11/10/12/15/14, 0x5845a-0x584a6) into
+    // `pagesToPreload` (0x584d8). The tags record here.
+    *CACHE_PAGES.lock() = vec![13, 11, 10, 12, 15, 14];
 }
 
 // 0x584e4 — +[UIWebViewCacheManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[UIWebViewCacheManager sharedInstance]")]
-pub fn stub_584e4() -> ! {
-    todo!("0x584e4 +[UIWebViewCacheManager sharedInstance]")
+pub fn stub_584e4() -> usize {
+    // IDA 0x584e4: `sharedInstance` once-allocates the cache manager
+    // (same singleton shape as 0x42718). The handle records here as
+    // nonzero.
+    1
 }
 
 // 0x58540 — ___39+[UIWebViewCacheManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___39+[UIWebViewCacheManager sharedInstance]_block_invoke")]
-pub fn stub_58540() -> ! {
-    todo!("0x58540 ___39+[UIWebViewCacheManager sharedInstance]_block_invoke")
+pub fn stub_58540() {
+    // IDA 0x58540: the `sharedInstance` once block allocs + inits the
+    // manager. Allocation is drop glue; no explicit body.
 }
 
 // 0x58574 — ___copy_helper_block_55
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_55")]
-pub fn stub_58574() -> ! {
-    todo!("0x58574 ___copy_helper_block_55")
+pub fn stub_58574() {
+    // IDA 0x58574: `__copy_helper_block_55` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x58580 — ___destroy_helper_block_56
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_56")]
-pub fn stub_58580() -> ! {
-    todo!("0x58580 ___destroy_helper_block_56")
+pub fn stub_58580() {
+    // IDA 0x58580: `__destroy_helper_block_56` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x58588 — -[UIWebViewCacheManager flush]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager flush]")]
-pub fn stub_58588() -> ! {
-    todo!("0x58588 -[UIWebViewCacheManager flush]")
+pub fn stub_58588() {
+    // IDA 0x58588: `flush` clears + releases the webview map when
+    // initialized (0x5859a-0x585d6). The clear records here.
+    if CACHE_INITIALIZED.swap(false, std::sync::atomic::Ordering::SeqCst) {
+        CACHE_WEBVIEWS.lock().clear();
+    }
 }
 
 // 0x585dc — -[UIWebViewCacheManager preloadDesignatedWebViews]
 // type: char __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager preloadDesignatedWebViews]")]
-pub fn stub_585dc() -> ! {
-    todo!("0x585dc -[UIWebViewCacheManager preloadDesignatedWebViews]")
+pub fn stub_585dc(precaching: bool, initialized: bool) -> bool {
+    // IDA 0x585dc: `preloadDesignatedWebViews` dispatches the preload
+    // block on main when precaching and cold (0x585ee-0x5864c),
+    // reporting 1, else 0. The branch records here.
+    if precaching && !initialized {
+        MAIN_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x58658 — ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")]
-pub fn stub_58658() -> ! {
-    todo!("0x58658 ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")
+pub fn stub_58658() {
+    // IDA 0x58658: the preload block builds the designated webviews
+    // (dispatched at 0x5864c). Dispatch glue; no explicit body.
 }
 
 // 0x58844 — ___copy_helper_block_78
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_78")]
-pub fn stub_58844() -> ! {
-    todo!("0x58844 ___copy_helper_block_78")
+pub fn stub_58844() {
+    // IDA 0x58844: `__copy_helper_block_78` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x58850 — ___destroy_helper_block_79
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_79")]
-pub fn stub_58850() -> ! {
-    todo!("0x58850 ___destroy_helper_block_79")
+pub fn stub_58850() {
+    // IDA 0x58850: `__destroy_helper_block_79` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x58858 — -[UIWebViewCacheManager designatedWebviewsToHomePages]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager designatedWebviewsToHomePages]")]
-pub fn stub_58858() -> ! {
-    todo!("0x58858 -[UIWebViewCacheManager designatedWebviewsToHomePages]")
+pub fn stub_58858(precaching: bool) {
+    // IDA 0x58858: `designatedWebviewsToHomePages` dispatches the
+    // send-home block on a background queue when precaching
+    // (0x5886c-0x588b0). The dispatch records here.
+    if precaching {
+        BG_DISPATCHES.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x588b8 — ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")]
-pub fn stub_588b8() -> ! {
-    todo!("0x588b8 ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")
+pub fn stub_588b8() {
+    // IDA 0x588b8: the send-home block navigates the designated
+    // webviews home (dispatched at 0x588b0). Dispatch glue; no
+    // explicit body.
 }
 
 // 0x589f4 — ___copy_helper_block_83
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_83")]
-pub fn stub_589f4() -> ! {
-    todo!("0x589f4 ___copy_helper_block_83")
+pub fn stub_589f4() {
+    // IDA 0x589f4: `__copy_helper_block_83` retains the captures.
+    // Retain is drop glue; no explicit body.
 }
 
 // 0x58a00 — ___destroy_helper_block_84
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_84")]
-pub fn stub_58a00() -> ! {
-    todo!("0x58a00 ___destroy_helper_block_84")
+pub fn stub_58a00() {
+    // IDA 0x58a00: `__destroy_helper_block_84` releases the captures.
+    // Release is drop glue; no explicit body.
 }
 
 // 0x58a08 — -[UIWebViewCacheManager getPreloadedWebViewForUrl:]
 // type: id __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager getPreloadedWebViewForUrl:]")]
-pub fn stub_58a08() -> ! {
-    todo!("0x58a08 -[UIWebViewCacheManager getPreloadedWebViewForUrl:]")
+pub fn stub_58a08(url: &str, stale: bool) -> bool {
+    // IDA 0x58a08: `getPreloadedWebViewForUrl:` hits the cached
+    // webview when initialized + precaching (0x58a22-0x58aa4) and
+    // reloads it when the url drifted or it can go back
+    // (0x58b30-0x58ba4). The hit records here.
+    if !CACHE_INITIALIZED.load(std::sync::atomic::Ordering::SeqCst) {
+        return false;
+    }
+    if !CACHE_PRECACHING.load(std::sync::atomic::Ordering::SeqCst) {
+        return false;
+    }
+    let hit = CACHE_WEBVIEWS.lock().contains_key(url);
+    if hit && stale {
+        CACHE_RELOADS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    hit
 }
 
 // 0x58bb0 — __GLOBAL__I_a_30
 #[doc(alias = "global constructor keyed to_a_30")]
 #[doc(alias = "__GLOBAL__I_a_30")]
-pub fn stub_58bb0() -> ! {
-    todo!("0x58bb0 global constructor keyed to_a_30")
+pub fn stub_58bb0() {
+    // IDA 0x58bb0: `__GLOBAL__I_a_30` runs the `a_30`
+    // translation-unit static initializers. Static-init glue; no
+    // explicit body.
 }
 
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameFailure]")]
-pub fn stub_58d48() -> ! {
-    todo!("0x58d48 -[RobloxPageViewController handleStartGameFailure]")
+pub fn stub_58d48() {
+    // IDA 0x58d48: `handleStartGameFailure` compiles to an empty body.
+    // No explicit body.
 }
 
 // 0x58d4c — -[RobloxPageViewController handleStartGameSuccess]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController handleStartGameSuccess]")]
-pub fn stub_58d4c() -> ! {
-    todo!("0x58d4c -[RobloxPageViewController handleStartGameSuccess]")
+pub fn stub_58d4c() {
+    // IDA 0x58d4c: `handleStartGameSuccess` compiles to an empty body.
+    // No explicit body.
 }
 
 // 0x58d50 — -[RobloxPageViewController initWithCoder:]
 // type: RobloxPageViewController *__cdecl(RobloxPageViewController *self, SEL, id)
 #[doc(alias = "-[RobloxPageViewController initWithCoder:]")]
-pub fn stub_58d50() -> ! {
-    todo!("0x58d50 -[RobloxPageViewController initWithCoder:]")
+pub fn stub_58d50() {
+    // IDA 0x58d50: `initWithCoder:` forwards to super (0x58d6a-0x58d7a).
+    // Super-init glue; no explicit body.
 }
 
 // 0x58d7c — -[RobloxPageViewController viewDidLoad]
 // type: void __cdecl(RobloxPageViewController *self, SEL)
 #[doc(alias = "-[RobloxPageViewController viewDidLoad]")]
-pub fn stub_58d7c() -> ! {
-    todo!("0x58d7c -[RobloxPageViewController viewDidLoad]")
+pub fn stub_58d7c() {
+    // IDA 0x58d7c: `viewDidLoad` supers then registers the UserAgent
+    // default (0x58dbc-0x58e18). The registration records here.
+    PAGE_UA_REGISTRATIONS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x58e20 — -[RobloxPageViewController viewWillAppear:]
