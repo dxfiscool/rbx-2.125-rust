@@ -12,22 +12,21 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x57f9c0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_0x57f9c0() -> ! {
-    todo!("0x57f9c0 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
-}
+// Canonical body lives in `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57f9c0 as stub_0x57f9c0;
 
 // 0x57fbbc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE9copyValueEPKNS0_13DescribedBaseEPS4_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE9copyValueEPKNS0_13DescribedBaseEPS4_")]
-pub fn stub_0x57fbbc() -> ! {
-    todo!("0x57fbbc RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
-}
+// Canonical body lives in `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57fbbc as stub_0x57fbbc;
 
 // 0x57fce4 — __ZN3rbx8any_castIRKN3RBX9TextureIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int(void)
 #[doc(alias = "RBX::TextureId const& rbx::any_cast<RBX::TextureId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "__ZN3rbx8any_castIRKN3RBX9TextureIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
 pub fn stub_0x57fce4() -> ! {
+    // BLOCKED: core-owned `rbx::placement_any<RBX::Region3>` holder infra (no exact-EA native in core)
     todo!("0x57fce4 RBX::TextureId const& rbx::any_cast<RBX::TextureId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
 }
 
@@ -36,6 +35,7 @@ pub fn stub_0x57fce4() -> ! {
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextureId>(RBX::TextureId const&)")]
 #[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_9TextureIdEEERS3_RKT_")]
 pub fn stub_0x57fdd4() -> ! {
+    // BLOCKED: core-owned `rbx::placement_any<RBX::Region3>` holder infra (no exact-EA native in core)
     todo!("0x57fdd4 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::TextureId>(RBX::TextureId const&)")
 }
 
@@ -44,6 +44,7 @@ pub fn stub_0x57fdd4() -> ! {
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextureId>::singleton(void)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9TextureIdEE9singletonEv")]
 pub fn stub_0x57fe34() -> ! {
+    // BLOCKED: core-owned `rbx::implementation::typed_holder` infra (no exact-EA native in core)
     todo!("0x57fe34 rbx::implementation::typed_holder<RBX::TextureId>::singleton(void)")
 }
 
@@ -51,6 +52,7 @@ pub fn stub_0x57fe34() -> ! {
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextureId>::construct_func(char const*,char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9TextureIdEE14construct_funcEPKcPc")]
 pub fn stub_0x57fea0() -> ! {
+    // BLOCKED: core-owned `rbx::implementation::typed_holder` infra (no exact-EA native in core)
     todo!("0x57fea0 rbx::implementation::typed_holder<RBX::TextureId>::construct_func(char const*,char *)")
 }
 
@@ -58,99 +60,105 @@ pub fn stub_0x57fea0() -> ! {
 #[doc(alias = "rbx::implementation::typed_holder<RBX::TextureId>::destruct_func(char *)")]
 #[doc(alias = "__ZN3rbx14implementation12typed_holderIN3RBX9TextureIdEE13destruct_funcEPc")]
 pub fn stub_0x57febc() -> ! {
+    // BLOCKED: core-owned `rbx::implementation::typed_holder` infra (no exact-EA native in core)
     todo!("0x57febc rbx::implementation::typed_holder<RBX::TextureId>::destruct_func(char *)")
 }
 
 // 0x57fec0 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED1Ev")]
-pub fn stub_0x57fec0() -> ! {
-    todo!("0x57fec0 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57fec0 as stub_0x57fec0;
 
 // 0x57fee4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED0Ev
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor()")]
 #[doc(alias = "__ZN3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEED0Ev")]
-pub fn stub_0x57fee4() -> ! {
-    todo!("0x57fee4 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::~TypedPropertyDescriptor()")
-}
+// Canonical body lives in `rbx_reflection::generated` (drop glue); re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57fee4 as stub_0x57fee4;
 
 // 0x57ff10 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_0x57ff10() -> ! {
-    todo!("0x57ff10 RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::isReadOnly(void)const")
-}
+// Canonical body lives in `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57ff10 as stub_0x57ff10;
 
 // 0x57ff14 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_0x57ff14() -> ! {
-    todo!("0x57ff14 RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::isWriteOnly(void)const")
-}
+// Canonical body lives in `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57ff14 as stub_0x57ff14;
 
 // 0x57ff18 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x57ff18() -> ! {
-    todo!("0x57ff18 RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::getValue(RBX::Reflection::DescribedBase const*)const")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57ff18 as stub_0x57ff18;
 
 // 0x57ff50 — __ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEE10GetSetImplIMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_0x57ff50() -> ! {
-    todo!("0x57ff50 RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
-}
+// Canonical home is `rbx_reflection::generated`; re-exported so the two crates cannot drift.
+pub use rbx_reflection::generated::stub_0x57ff50 as stub_0x57ff50;
 
 // 0x580708 — __ZN3RBX13InsertService14setBaseSetsUrlESs
 #[doc(alias = "RBX::InsertService::setBaseSetsUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService14setBaseSetsUrlESs")]
-pub fn stub_0x580708() -> ! {
-    todo!("0x580708 RBX::InsertService::setBaseSetsUrl(std::string)")
+pub fn stub_0x580708(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580708 (decompiled): `InsertService::setBaseSetsUrl` — assigns
+    // the string at `+144` (`std::string::assign`).
+    svc.base_sets_url = url.to_string();
 }
-
 // 0x580710 — __ZN3RBX13InsertService14setUserSetsUrlESs
 #[doc(alias = "RBX::InsertService::setUserSetsUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService14setUserSetsUrlESs")]
-pub fn stub_0x580710() -> ! {
-    todo!("0x580710 RBX::InsertService::setUserSetsUrl(std::string)")
+pub fn stub_0x580710(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580710 (decompiled): `InsertService::setUserSetsUrl` — assigns
+    // the string at `+148` (`std::string::assign`).
+    svc.user_sets_url = url.to_string();
 }
-
 // 0x580718 — __ZN3RBX13InsertService13setTrustLevelEf
 // type: _DWORD __fastcall(RBX::InsertService *__hidden this, float)
 #[doc(alias = "RBX::InsertService::setTrustLevel(float)")]
 #[doc(alias = "__ZN3RBX13InsertService13setTrustLevelEf")]
-pub fn stub_0x580718() -> ! {
-    todo!("0x580718 RBX::InsertService::setTrustLevel(float)")
+pub fn stub_0x580718(svc: &mut crate::instance::InsertService, level: f32) {
+    // IDA 0x580718 (decompiled): `InsertService::setTrustLevel` — stores the
+    // float at `+164` (0x580718), returning `this` (0x58071c).
+    svc.trust_level = level;
 }
-
 // 0x580728 — __ZN3RBX13InsertService15setFreeDecalUrlESs
 #[doc(alias = "RBX::InsertService::setFreeDecalUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService15setFreeDecalUrlESs")]
-pub fn stub_0x580728() -> ! {
-    todo!("0x580728 RBX::InsertService::setFreeDecalUrl(std::string)")
+pub fn stub_0x580728(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580728 (decompiled): `InsertService::setFreeDecalUrl` — assigns
+    // the string at `+140` (`std::string::assign`).
+    svc.free_decal_url = url.to_string();
 }
 
 // 0x580730 — __ZN3RBX13InsertService16setCollectionUrlESs
 #[doc(alias = "RBX::InsertService::setCollectionUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService16setCollectionUrlESs")]
-pub fn stub_0x580730() -> ! {
-    todo!("0x580730 RBX::InsertService::setCollectionUrl(std::string)")
+pub fn stub_0x580730(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580730 (decompiled): `InsertService::setCollectionUrl` — assigns
+    // the string at `+152` (`std::string::assign`).
+    svc.collection_url = url.to_string();
 }
 
 // 0x580738 — __ZN3RBX13InsertService11setAssetUrlESs
 #[doc(alias = "RBX::InsertService::setAssetUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService11setAssetUrlESs")]
-pub fn stub_0x580738() -> ! {
-    todo!("0x580738 RBX::InsertService::setAssetUrl(std::string)")
+pub fn stub_0x580738(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580738 (decompiled): `InsertService::setAssetUrl` — assigns the
+    // string at `+156` (`std::string::assign`).
+    svc.asset_url = url.to_string();
 }
 
 // 0x580740 — __ZN3RBX13InsertService18setAssetVersionUrlESs
 #[doc(alias = "RBX::InsertService::setAssetVersionUrl(std::string)")]
 #[doc(alias = "__ZN3RBX13InsertService18setAssetVersionUrlESs")]
-pub fn stub_0x580740() -> ! {
-    todo!("0x580740 RBX::InsertService::setAssetVersionUrl(std::string)")
+pub fn stub_0x580740(svc: &mut crate::instance::InsertService, url: &str) {
+    // IDA 0x580740 (decompiled): `InsertService::setAssetVersionUrl` —
+    // assigns the string at `+160` (`std::string::assign`).
+    svc.asset_version_url = url.to_string();
 }
 
 // 0x580748 — __ZN3RBX13InsertService21backendApproveAssetIdEi
@@ -763,4 +771,43 @@ pub fn stub_0x58bda4() -> ! {
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvNS2_13InsertServiceESsS3_EENS8_5list3INS8_5valueIPSC_EENS7_3argILi1EEENSI_ILi2EEEEEEEED0Ev")]
 pub fn stub_0x58bdd0() -> ! {
     todo!("0x58bdd0 rbx::signals::signal<void ()(std::string,RBX::ContentId)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,RBX::ContentId>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+}
+
+#[cfg(test)]
+mod batch_a_tests {
+    use super::*;
+    use crate::instance::InsertService;
+
+    #[test]
+    fn url_setters_store_members() {
+        let mut svc = InsertService::default();
+        stub_0x580708(&mut svc, "https://base.sets/");
+        stub_0x580710(&mut svc, "https://user.sets/");
+        stub_0x580728(&mut svc, "https://free.decals/");
+        stub_0x580730(&mut svc, "https://collection/");
+        stub_0x580738(&mut svc, "https://asset/");
+        stub_0x580740(&mut svc, "https://asset.version/");
+        assert_eq!(svc.base_sets_url, "https://base.sets/");
+        assert_eq!(svc.user_sets_url, "https://user.sets/");
+        assert_eq!(svc.free_decal_url, "https://free.decals/");
+        assert_eq!(svc.collection_url, "https://collection/");
+        assert_eq!(svc.asset_url, "https://asset/");
+        assert_eq!(svc.asset_version_url, "https://asset.version/");
+    }
+
+    #[test]
+    fn trust_level_stores_float() {
+        let mut svc = InsertService::default();
+        assert_eq!(svc.trust_level, 0.0);
+        stub_0x580718(&mut svc, 2.5);
+        assert_eq!(svc.trust_level, 2.5);
+    }
+
+    #[test]
+    fn reflection_reexports_resolve() {
+        stub_0x57fec0();
+        stub_0x57fee4();
+        assert!(!stub_0x57ff10());
+        assert!(!stub_0x57ff14());
+    }
 }

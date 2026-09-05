@@ -1336,10 +1336,18 @@ pub struct SocialService {
 }
 
 /// Rust model of `RBX::InsertService` (IDA `0x44def4`): the insert service;
-/// members land with the service batch.
+/// URL strings at `+140`..`+160` behind the `set*Url` setters (IDA
+/// `0x580708`-`0x580740`) with the trust level at `+164` behind
+/// `setTrustLevel` (IDA `0x580718`).
 #[derive(Default)]
 pub struct InsertService {
-    _opaque: (),
+    pub free_decal_url: String,
+    pub base_sets_url: String,
+    pub user_sets_url: String,
+    pub collection_url: String,
+    pub asset_url: String,
+    pub asset_version_url: String,
+    pub trust_level: f32,
 }
 
 /// Rust model of `RBX::RenderHooksService` (IDA `0x44e308`): the render-hooks
