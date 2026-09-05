@@ -789,38 +789,60 @@ pub fn stub_0x56eca0() -> ! {
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "RBX::Handles::~Handles()")]
 #[doc(alias = "__ZN3RBX7HandlesD2Ev")]
-pub fn stub_0x56ecc4() -> ! {
-    todo!("0x56ecc4 RBX::Handles::~Handles()")
+pub fn stub_0x56ecc4(_handles: &mut crate::instance::Handles) {
+    // IDA 0x56ecc4 `Handles::D2`: vtable resets (`off_11DE428` et al.,
+    // 0x56ecf2-0x56ed28), member teardown of the five `EventReplicatorBase`
+    // halves (0x56ed50-0x56ed84), the five `remote_signal` members
+    // (0x56ed90-0x56edc0), then `HandlesBase::D2` (0x56edcc). The modeled
+    // members (`int_value`, `faces`) are plain words; the replicator
+    // connections live in core. Drop glue — no-op.
 }
 
 // 0x56eef8 — __ZN3rbx13remote_signalIFvN3RBX8NormalIdEfEED2Ev
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "rbx::remote_signal<void ()(RBX::NormalId,float)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX8NormalIdEfEED2Ev")]
-pub fn stub_0x56eef8() -> ! {
-    todo!("0x56eef8 rbx::remote_signal<void ()(RBX::NormalId,float)>::~remote_signal()")
+pub fn stub_0x56eef8(desc: &HandlesEvent2Desc) {
+    // IDA 0x56eef8 `remote_signal<void(NormalId, float)>::D2`:
+    // `signal<void()>::disconnectAll` on the trigger half (0x56ef4e) +
+    // intrusive release (0x56ef54-0x56ef5c), then `signal<void(NormalId,
+    // float)>::disconnectAll` (0x56ef66) + release (0x56ef6c-0x56ef74).
+    // Disconnecting both halves is the same release.
+    desc.signal.disconnect_all();
+    desc.remote.disconnect_all();
 }
 
 // 0x56f044 — __ZN3rbx13remote_signalIFvN3RBX8NormalIdEEED2Ev
 // type: int __fastcall(int, int, int, int, char, int)
 #[doc(alias = "rbx::remote_signal<void ()(RBX::NormalId)>::~remote_signal()")]
 #[doc(alias = "__ZN3rbx13remote_signalIFvN3RBX8NormalIdEEED2Ev")]
-pub fn stub_0x56f044() -> ! {
-    todo!("0x56f044 rbx::remote_signal<void ()(RBX::NormalId)>::~remote_signal()")
+pub fn stub_0x56f044(desc: &HandlesEvent1Desc) {
+    // IDA 0x56f044 `remote_signal<void(NormalId)>::D2`: same trigger-half +
+    // member-half `disconnectAll`/release shape as 0x56eef8
+    // (0x56f09a-0x56f0c0); 1-arg twin.
+    desc.signal.disconnect_all();
+    desc.remote.disconnect_all();
 }
 
 // 0x56f190 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEfEED2Ev")]
-pub fn stub_0x56f190() -> ! {
-    todo!("0x56f190 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>::~EventReplicatorBase()")
+pub fn stub_0x56f190(_desc: &HandlesEvent2Desc) {
+    // IDA 0x56f190 `EventReplicatorBase<Handles, void(NormalId,
+    // float)>::D2`: vtable reset (`off_12637B0`, 0x56f1c8), disconnects both
+    // stored connections when connected (0x56f1fe-0x56f222), weak-releases
+    // both (0x56f228-0x56f240). The connections live in core
+    // (`connectSignalListener` family); nothing retained here. Drop glue —
+    // no-op.
 }
 
 // 0x56f2c0 — __ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev
 #[doc(alias = "RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")]
 #[doc(alias = "__ZN3RBX19EventReplicatorBaseINS_7HandlesEFvNS_8NormalIdEEED2Ev")]
-pub fn stub_0x56f2c0() -> ! {
-    todo!("0x56f2c0 RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>::~EventReplicatorBase()")
+pub fn stub_0x56f2c0(_desc: &HandlesEvent1Desc) {
+    // IDA 0x56f2c0 `EventReplicatorBase<Handles, void(NormalId)>::D2`: same
+    // vtable-reset + disconnect + weak-release shape as 0x56f190
+    // (0x56f2f8-0x56f370); 1-arg twin. Drop glue — no-op.
 }
 
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
@@ -1395,5 +1417,38 @@ mod handles_faces_tests {
         stub_0x56e428(&desc, &mut handles, Faces(0b101));
         assert_eq!(stub_0x56e408(&desc, &handles), Faces(0b101));
         stub_0x56e3d4(Box::into_raw(Box::new(desc)));
+    }
+}
+
+#[cfg(test)]
+mod handles_dtor_tests {
+    use super::*;
+    use crate::instance::Handles;
+
+    #[test]
+    fn handles_and_replicator_dtors() {
+        stub_0x56ecc4(&mut Handles::default());
+        let desc2 = HandlesEvent2Desc::default();
+        stub_0x56f190(&desc2);
+        let desc1 = HandlesEvent1Desc::default();
+        stub_0x56f2c0(&desc1);
+    }
+
+    #[test]
+    fn remote_signal_dtors_disconnect() {
+        use std::sync::atomic::{AtomicI32, Ordering};
+        let desc2 = HandlesEvent2Desc::default();
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        desc2.remote.connect(Arc::new(move |_: u32, _: f32| {
+            probe.store(1, Ordering::Relaxed);
+        }));
+        stub_0x56eef8(&desc2);
+        assert_eq!(desc2.signal.len(), 0);
+        assert_eq!(desc2.remote.len(), 0);
+        let desc1 = HandlesEvent1Desc::default();
+        stub_0x56f044(&desc1);
+        assert_eq!(desc1.signal.len(), 0);
+        assert_eq!(desc1.remote.len(), 0);
     }
 }
