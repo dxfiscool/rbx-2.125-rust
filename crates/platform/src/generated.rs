@@ -2250,6 +2250,8 @@ pub struct StoreState {
     delayed_alerts: AtomicU32,
     retries_scheduled: AtomicU32,
     resets: AtomicU32,
+    last_retry_delay: parking_lot::Mutex<u32>,
+    verifies: AtomicU32,
     releases: AtomicU32,
 }
 impl StoreState {
@@ -2523,9 +2525,195 @@ impl StoreState {
     pub fn delayed_alert_count(&self) -> u32 {
         self.delayed_alerts.load(Ordering::SeqCst)
     }
+    /// `__63-endTransaction_block_invoke215` (IDA 0x573c4): re-runs
+    /// `completeTransaction:` after 10*retries seconds.
+    pub fn retry_block(&self, retries: u32) {
+        *self.last_retry_delay.lock() = 10 * retries;
+        self.bump(&self.retries_scheduled);
+    }
+    pub fn last_retry_delay(&self) -> u32 {
+        *self.last_retry_delay.lock()
+    }
+    /// `__63-endTransaction_block_invoke219` (IDA 0x57450): the
+    /// TransactionFailedBody alert plus TooManyRetries analytics.
+    pub fn failed_block(&self) {
+        self.alert("TransactionFailedBody");
+        self.bump(&self.analytics);
+    }
+    /// `failedTransaction:` (IDA 0x57530): finishes + resets always; a
+    /// failed state logs, and code 2 tracks the cancel/auth analytics.
+    pub fn failed_transaction(&self, state: u32, cancelled: bool) {
+        self.bump(&self.finishes);
+        self.reset_state();
+        if state == 2 {
+            self.bump(&self.warns);
+            if cancelled {
+                self.bump(&self.analytics);
+            }
+        }
+    }
+    /// `restoreTransaction:` (IDA 0x5763c): logs, then finishes.
+    pub fn restore_transaction(&self) {
+        self.bump(&self.warns);
+        self.bump(&self.finishes);
+    }
+    /// `paymentQueue:updatedTransactions:` (IDA 0x57740): state 3
+    /// restores, 2 fails, 1 completes. Returns transactions handled.
+    pub fn updated_transactions(&self, states: &[u32], reachable: bool, logged_in: bool) -> usize {
+        for state in states {
+            match state {
+                3 => self.restore_transaction(),
+                2 => self.failed_transaction(2, false),
+                1 => {
+                    self.complete_transaction(reachable, 2, logged_in, true);
+                }
+                _ => {}
+            }
+        }
+        states.len()
+    }
+    /// `verifyReceipt:...` (IDA 0x5796c): POST to base +
+    /// `mobileapi/apple-purchase[?isRetry=true]` over https, UA + form
+    /// headers, the base64 receipt with `+`→`%2B` in a
+    /// `receipt=..&productId=..` body. Returns (url, body).
+    pub fn verify_receipt(&self, base: &str, receipt: &str, product: &str, is_retry: bool) -> (String, String) {
+        let mut url = format!("{}/mobileapi/apple-purchase", base.trim_end_matches('/'));
+        if is_retry {
+            url.push_str("?isRetry=true");
+        }
+        let url = url.replacen("http:", "https:", 1);
+        let body = format!(
+            "receipt={}&productId={}",
+            receipt.replace('+', "%2B"),
+            product
+        );
+        *self.last_product.lock() = product.to_owned();
+        self.bump(&self.requests);
+        (url, body)
+    }
+    /// `__75-verifyReceipt_block_invoke` (IDA 0x57da0): a nil response logs
+    /// login failure; status 200 + "OK" runs the global_6 block inline
+    /// ([INFERENCE] body referenced only symbolically in export.json — only
+    /// the endTransaction effect is modeled) and both paths close via
+    /// `endTransaction:`.
+    pub fn verify_completion(&self, status: u16, body_is_ok: bool) -> bool {
+        self.bump(&self.verifies);
+        let ok = status == 200 && body_is_ok;
+        if !ok {
+            self.bump(&self.warns);
+        }
+        self.end_transaction(ok, self.stored_retries.load(Ordering::SeqCst), true)
+    }
+    pub fn verify_count(&self) -> u32 {
+        self.verifies.load(Ordering::SeqCst)
+    }
+    /// `__75-verifyReceipt_block_invoke_2` (IDA 0x57f28): the
+    /// "PurchaseSuccessful" alert.
+    pub fn success_block(&self) {
+        self.alert("PurchaseSuccessful");
+    }
 }
 static STORE: std::sync::LazyLock<StoreState> =
     std::sync::LazyLock::new(StoreState::default);
+/// `encode:length:` base64 alphabet (IDA 0x578d2..0x5790e: 6-bit groups,
+/// `=` pad).
+const STORE_B64: &[u8; 64] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+/// `-[StoreManager encode:length:]` (IDA 0x5784c): base64 over 3-byte
+/// groups with `=` padding; the `+`→`%2B` escape happens in the caller
+/// (0x57b98).
+pub fn store_base64(data: &[u8]) -> String {
+    let mut out = String::with_capacity(4 * ((data.len() + 2) / 3));
+    for chunk in data.chunks(3) {
+        let b0 = chunk[0] as u32;
+        let b1 = *chunk.get(1).unwrap_or(&0) as u32;
+        let b2 = *chunk.get(2).unwrap_or(&0) as u32;
+        let n = (b0 << 16) | (b1 << 8) | b2;
+        out.push(STORE_B64[((n >> 18) & 63) as usize] as char);
+        out.push(STORE_B64[((n >> 12) & 63) as usize] as char);
+        out.push(if chunk.len() > 1 { STORE_B64[((n >> 6) & 63) as usize] as char } else { '=' });
+        out.push(if chunk.len() > 2 { STORE_B64[(n & 63) as usize] as char } else { '=' });
+    }
+    out
+}
+/// Host id standing in for the `UIWebViewCacheManager` `self`.
+const WEBCACHE_ID: ControlId = 15;
+/// Minimal `UIWebViewCacheManager` counterpart (IDA 0x58184..0x583b8):
+/// precaching flags, the preload-list version and observable counters for
+/// the web-view steps out of slice.
+#[derive(Debug, Default)]
+pub struct CacheState {
+    initialized: AtomicBool,
+    precaching: AtomicBool,
+    cache_initialized: AtomicBool,
+    pages_version: AtomicU32,
+    pages_built: AtomicU32,
+    flushed: AtomicBool,
+    home_pages: AtomicBool,
+    observer_regs: AtomicU32,
+    releases: AtomicU32,
+}
+impl CacheState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-init` (IDA 0x58184): super init; precaching/cache flags clear,
+    /// the async settings block (inline), the preload list, and the
+    /// base-url/leave-game observers.
+    pub fn init_cache(&self, precaching: bool) -> Option<ControlId> {
+        self.precaching.store(precaching, Ordering::SeqCst);
+        self.cache_initialized.store(false, Ordering::SeqCst);
+        self.build_pages();
+        self.observer_regs.store(2, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(WEBCACHE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn uses_precaching(&self) -> bool {
+        self.precaching.load(Ordering::SeqCst)
+    }
+    /// `__29-init_block_invoke` (IDA 0x582f8): the settings-service +140
+    /// flag lands in usePrecaching.
+    pub fn apply_precaching(&self, precaching: bool) {
+        self.precaching.store(precaching, Ordering::SeqCst);
+    }
+    /// `-setPagesToPreload` (IDA 0x583f0, via init/baseUrlDidChange):
+    /// rebuilds the preload list.
+    pub fn build_pages(&self) {
+        self.bump(&self.pages_built);
+        self.pages_version.fetch_add(1, Ordering::SeqCst);
+    }
+    pub fn pages_version(&self) -> u32 {
+        self.pages_version.load(Ordering::SeqCst)
+    }
+    /// `-dealloc` (IDA 0x58348): flushes the cache, releases the preload
+    /// list, then super.
+    pub fn dealloc(&self) {
+        self.flushed.store(true, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    pub fn was_flushed(&self) -> bool {
+        self.flushed.load(Ordering::SeqCst)
+    }
+    /// `baseUrlDidChange:` (IDA 0x583a8): rebuilds the preload list.
+    pub fn base_url_changed(&self) {
+        self.build_pages();
+    }
+    /// `gotDidLeaveGameNotification:` (IDA 0x583b8): preloaded designated
+    /// views stay; otherwise they reset to home pages.
+    pub fn did_leave(&self, preloaded: bool) {
+        self.home_pages.store(!preloaded, Ordering::SeqCst);
+    }
+    pub fn reset_to_home_pages(&self) -> bool {
+        self.home_pages.load(Ordering::SeqCst)
+    }
+}
+static WEBCACHE: std::sync::LazyLock<CacheState> =
+    std::sync::LazyLock::new(CacheState::default);
 /// `+getStoreMgr` cell (IDA 0x557dc, `dword_130C600`): the `dispatch_once`
 /// initializer lives with the cell.
 static STORE_SHARED: std::sync::LazyLock<ControlId> =
@@ -14249,99 +14437,139 @@ pub fn stub_572e4() {
 // 0x573c4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")]
-pub fn stub_573c4() -> ! {
-    todo!("0x573c4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")
+pub fn stub_573c4(retries: u32) {
+    // IDA 0x573c4 `__63-endTransaction_block_invoke215`: re-runs
+    // `completeTransaction:` after 10*retries seconds (0x5740c).
+    STORE.retry_block(retries);
 }
 
 // 0x57450 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219
 // type: id __fastcall(int)
 #[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")]
-pub fn stub_57450() -> ! {
-    todo!("0x57450 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")
+pub fn stub_57450() {
+    // IDA 0x57450 `__63-endTransaction_block_invoke219`: the
+    // "TransactionFailedBody" alert plus the
+    // FailureBillingServiceTooManyRetries analytics (0x5747c..0x5751a).
+    STORE.failed_block();
 }
 
 // 0x57530 — -[StoreManager failedTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager failedTransaction:]")]
-pub fn stub_57530() -> ! {
-    todo!("0x57530 -[StoreManager failedTransaction:]")
+pub fn stub_57530(state: u32, cancelled: bool) {
+    // IDA 0x57530 `failedTransaction:`: finishes + resets always
+    // (0x57556..0x5757a); a failed state logs (0x57592..0x575c0), and code
+    // 2 tracks the cancel/auth analytics (0x575d8..0x57630).
+    STORE.failed_transaction(state, cancelled);
 }
 
 // 0x5763c — -[StoreManager restoreTransaction:]
 // type: void __cdecl(StoreManager *self, SEL, id)
 #[doc(alias = "-[StoreManager restoreTransaction:]")]
-pub fn stub_5763c() -> ! {
-    todo!("0x5763c -[StoreManager restoreTransaction:]")
+pub fn stub_5763c() {
+    // IDA 0x5763c `restoreTransaction:`: logs, then finishes the
+    // transaction (0x5765c..0x576e0).
+    STORE.restore_transaction();
 }
 
 // 0x57740 — -[StoreManager paymentQueue:updatedTransactions:]
 // type: void __cdecl(StoreManager *self, SEL, id, id)
 #[doc(alias = "-[StoreManager paymentQueue:updatedTransactions:]")]
-pub fn stub_57740() -> ! {
-    todo!("0x57740 -[StoreManager paymentQueue:updatedTransactions:]")
+pub fn stub_57740(states: &[u32], reachable: bool, logged_in: bool) -> usize {
+    // IDA 0x57740 `paymentQueue:updatedTransactions:`: state 3 restores
+    // (0x577f6..0x57806), state 2 fails (0x577fa..0x57800), state 1
+    // completes (0x5780a..0x57812). Returns transactions handled.
+    STORE.updated_transactions(states, reachable, logged_in)
 }
 
 // 0x5784c — -[StoreManager encode:length:]
 // type: id __cdecl(StoreManager *self, SEL, const char *, int)
 #[doc(alias = "-[StoreManager encode:length:]")]
-pub fn stub_5784c() -> ! {
-    todo!("0x5784c -[StoreManager encode:length:]")
+pub fn stub_5784c(data: &[u8]) -> String {
+    // IDA 0x5784c `encode:length:`: base64 over 3-byte groups with `=`
+    // padding (0x57888..0x57920+); the `+`→`%2B` escape happens in the
+    // caller (0x57b98).
+    store_base64(data)
 }
 
 // 0x5796c — -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]
 // type: void __cdecl(StoreManager *self, SEL, id, id, id, id)
 #[doc(alias = "-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")]
-pub fn stub_5796c() -> ! {
-    todo!("0x5796c -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")
+pub fn stub_5796c(base: &str, receipt: &str, product: &str, is_retry: bool) -> (String, String) {
+    // IDA 0x5796c `verifyReceipt:...`: POST to base +
+    // `mobileapi/apple-purchase[?isRetry=true]` over https (0x579ac..0x57a8c),
+    // UA + form headers (0x57af8..0x57b34), the base64 receipt with
+    // `+`→`%2B` in a `receipt=..&productId=..` body (0x57b4c..0x57c92),
+    // sent async with the `__75…` completion (0x57cfc..0x57d42). Returns
+    // (url, body).
+    STORE.verify_receipt(base, receipt, product, is_retry)
 }
 
 // 0x57da0 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke
 // type: void __fastcall(int, void *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")]
-pub fn stub_57da0() -> ! {
-    todo!("0x57da0 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")
+pub fn stub_57da0(status: u16, body_is_ok: bool) -> bool {
+    // IDA 0x57da0 `__75-verifyReceipt_block_invoke`: a nil response logs
+    // login failure (0x57dfa); status 200 + "OK" body runs the global_6
+    // block inline (0x57eae; body referenced only symbolically in
+    // export.json, so only its endTransaction effect is modeled) and both
+    // paths close via `endTransaction:` (0x57eca).
+    STORE.verify_completion(status, body_is_ok)
 }
 
 // 0x57f28 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2
 // type: void __cdecl(id)
 #[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")]
-pub fn stub_57f28() -> ! {
-    todo!("0x57f28 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")
+pub fn stub_57f28() {
+    // IDA 0x57f28 `__75-verifyReceipt_block_invoke_2`: the
+    // "PurchaseSuccessful" alert (0x57f52..0x57f94).
+    STORE.success_block();
 }
 
 // 0x58184 — -[UIWebViewCacheManager init]
 // type: UIWebViewCacheManager *__cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager init]")]
-pub fn stub_58184() -> ! {
-    todo!("0x58184 -[UIWebViewCacheManager init]")
+pub fn stub_58184(precaching: bool) -> Option<ControlId> {
+    // IDA 0x58184 `-init`: super init (0x581ac); precaching/cache flags
+    // clear (0x581d2..0x581d8), the async settings block (0x581de..0x58214,
+    // inline), the preload list (0x58226), and the base-url/leave-game
+    // observers (0x5824a..tail).
+    WEBCACHE.init_cache(precaching)
 }
 
 // 0x582f8 — ___29-[UIWebViewCacheManager init]_block_invoke
 // type: int __fastcall(int)
 #[doc(alias = "___29-[UIWebViewCacheManager init]_block_invoke")]
-pub fn stub_582f8() -> ! {
-    todo!("0x582f8 ___29-[UIWebViewCacheManager init]_block_invoke")
+pub fn stub_582f8(precaching: bool) {
+    // IDA 0x582f8 `__29-init_block_invoke` (via `dispatch_async`, inline):
+    // the settings-service +140 flag lands in usePrecaching (0x58328..0x58330).
+    WEBCACHE.apply_precaching(precaching);
 }
 
 // 0x58348 — -[UIWebViewCacheManager dealloc]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL)
 #[doc(alias = "-[UIWebViewCacheManager dealloc]")]
-pub fn stub_58348() -> ! {
-    todo!("0x58348 -[UIWebViewCacheManager dealloc]")
+pub fn stub_58348() {
+    // IDA 0x58348 `-dealloc`: flushes the cache, releases the preload list
+    // (0x5835e..0x5837c), then super (0x5839e).
+    WEBCACHE.dealloc();
 }
 
 // 0x583a8 — -[UIWebViewCacheManager baseUrlDidChange:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager baseUrlDidChange:]")]
-pub fn stub_583a8() -> ! {
-    todo!("0x583a8 -[UIWebViewCacheManager baseUrlDidChange:]")
+pub fn stub_583a8() {
+    // IDA 0x583a8 `baseUrlDidChange:`: rebuilds the preload list (0x583b4).
+    WEBCACHE.base_url_changed();
 }
 
 // 0x583b8 — -[UIWebViewCacheManager gotDidLeaveGameNotification:]
 // type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
 #[doc(alias = "-[UIWebViewCacheManager gotDidLeaveGameNotification:]")]
-pub fn stub_583b8() -> ! {
-    todo!("0x583b8 -[UIWebViewCacheManager gotDidLeaveGameNotification:]")
+pub fn stub_583b8(preloaded: bool) {
+    // IDA 0x583b8 `gotDidLeaveGameNotification:`: preloaded designated
+    // views stay; otherwise they reset to home pages (0x583d0..0x583ea).
+    WEBCACHE.did_leave(preloaded);
 }
 
 // 0x583f0 — -[UIWebViewCacheManager setPagesToPreload]
