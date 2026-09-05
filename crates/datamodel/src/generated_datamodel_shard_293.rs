@@ -685,61 +685,93 @@ pub fn stub_0x57e380() -> ImageLabel {
 
 // 0x57e5c8 — __ZN3RBX10ImageLabel8setImageENS_9TextureIdE
 #[doc(alias = "RBX::ImageLabel::setImage(RBX::TextureId)")]
-pub fn stub_0x57e5c8() -> ! {
-    todo!("0x57e5c8 RBX::ImageLabel::setImage(RBX::TextureId)")
+pub fn stub_0x57e5c8(label: &mut ImageLabel, texture: &GuiImageTextureId) -> bool {
+    // IDA 0x57e5c8 (decompiled): same change-check/store shape as
+    // `GuiImageButton::setImage` (0x57caf4), over the id at `+135`
+    // (0x57e5d6-0x57e5e4) plus the tag word at `+136` (0x57e5f4) with the
+    // property change (0x57e602, collapsed here).
+    if label.image_id == texture.id {
+        return false;
+    }
+    label.image_id = texture.id.clone();
+    label.image_tag = texture.tag;
+    true
 }
 
 // 0x57e608 — __ZThn536_N3RBX10ImageLabel8setImageENS_9TextureIdE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)")]
-pub fn stub_0x57e608() -> ! {
-    todo!("0x57e608 non-virtual thunk toRBX::ImageLabel::setImage(RBX::TextureId)")
+pub fn stub_0x57e608(label: &mut ImageLabel, texture: &GuiImageTextureId) -> bool {
+    // IDA 0x57e608, disasm `SUB.W R0,#0x218; B.W setImage`: adjusts
+    // `this - 0x218` (the `GuiImageMixin` subobject at `+134`) then
+    // tail-calls `setImage`. The mixin offset collapses (single struct).
+    stub_0x57e5c8(label, texture)
 }
 
 // 0x57e610 — __ZN3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
-pub fn stub_0x57e610() -> ! {
-    todo!("0x57e610 RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+pub fn stub_0x57e610(label: &mut ImageLabel, offset: &[f32; 2]) {
+    // IDA 0x57e610 (decompiled): same match/no-op/store shape as
+    // `GuiImageButton::setImageRectOffset` (0x57cb3c), over the words at
+    // `+137`/`+138` (0x57e620-0x57e64c) with `prop_ImageRectOffset`
+    // (0x57e654-0x57e656, collapsed here).
+    if label.image_rect_offset != *offset {
+        label.image_rect_offset = *offset;
+    }
 }
 
 // 0x57e65c — __ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
-pub fn stub_0x57e65c() -> ! {
-    todo!("0x57e65c non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+pub fn stub_0x57e65c(label: &mut ImageLabel, offset: &[f32; 2]) {
+    // IDA 0x57e65c: `Thn536` to `setImageRectOffset` — same `this - 0x218`
+    // adjust + tail-call shape as 0x57e608.
+    stub_0x57e610(label, offset)
 }
 
 // 0x57e664 — __ZN3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "RBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
-pub fn stub_0x57e664() -> ! {
-    todo!("0x57e664 RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+pub fn stub_0x57e664(label: &mut ImageLabel, size: &[f32; 2]) {
+    // IDA 0x57e664 (decompiled): same match/no-op/store shape as
+    // `GuiImageButton::setImageRectSize` (0x57cb90), over the words at
+    // `+139`/`+140` (0x57e674-0x57e6a0) with `prop_ImageRectSize`
+    // (0x57e6a8-0x57e6aa, collapsed here).
+    if label.image_rect_size != *size {
+        label.image_rect_size = *size;
+    }
 }
 
 // 0x57e6b0 — __ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
-pub fn stub_0x57e6b0() -> ! {
-    todo!("0x57e6b0 non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+pub fn stub_0x57e6b0(label: &mut ImageLabel, size: &[f32; 2]) {
+    // IDA 0x57e6b0: `Thn536` to `setImageRectSize` — same `this - 0x218`
+    // adjust + tail-call shape as 0x57e608.
+    stub_0x57e664(label, size)
 }
 
 // 0x57e6b8 — __ZN3RBX10ImageLabel8render2dEPNS_5AdornE
 #[doc(alias = "RBX::ImageLabel::render2d(RBX::Adorn *)")]
 pub fn stub_0x57e6b8() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x57e6b8 RBX::ImageLabel::render2d(RBX::Adorn *)")
 }
 
 // 0x57e7b4 — __ZThn96_N3RBX10ImageLabel8render2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)")]
 pub fn stub_0x57e7b4() -> ! {
+    // BLOCKED: needs Adorn render infra (thunk to render2d)
     todo!("0x57e7b4 non-virtual thunk toRBX::ImageLabel::render2d(RBX::Adorn *)")
 }
 
 // 0x57e7bc — __ZN3RBX10ImageLabel18renderBackground2dEPNS_5AdornE
 #[doc(alias = "RBX::ImageLabel::renderBackground2d(RBX::Adorn *)")]
 pub fn stub_0x57e7bc() -> ! {
+    // BLOCKED: needs Adorn render infra
     todo!("0x57e7bc RBX::ImageLabel::renderBackground2d(RBX::Adorn *)")
 }
 
 // 0x57e7f0 — __ZThn96_N3RBX10ImageLabel18renderBackground2dEPNS_5AdornE
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)")]
 pub fn stub_0x57e7f0() -> ! {
+    // BLOCKED: needs Adorn render infra (thunk to renderBackground2d)
     todo!("0x57e7f0 non-virtual thunk toRBX::ImageLabel::renderBackground2d(RBX::Adorn *)")
 }
 
@@ -755,98 +787,120 @@ pub fn stub_0x57e7f8(btn: &crate::instance::GuiImageButton) -> GuiImageTextureId
 
 // 0x57e80c — __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED1Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_0x57e80c() -> ! {
-    todo!("0x57e80c RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor()")
-}
+pub use rbx_reflection::generated::stub_0x57e80c as stub_0x57e80c;
 
 // 0x57e830 — __ZN3RBX10ImageLabelD1Ev
 #[doc(alias = "RBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57e830() -> ! {
-    todo!("0x57e830 RBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57e830(_label: &mut ImageLabel) {
+    // IDA 0x57e830 (disassembled): `ImageLabel::D1` — resets the
+    // `GuiImageMixin` vtable at `+0x218` (0x57e866-0x57e86e), destroys the
+    // `GuiDrawImage` at `+0x234` (0x57e892-0x57e896), the image string at
+    // `+0x21c` (0x57e8a0-0x57e8a4), then runs `GuiObject::D2` (0x57e8b0).
+    // Same shape as `GuiImageButton::D1` (0x57cd64) over the smaller
+    // `GuiLabel` base. Member drops collapse into field drops. Drop glue —
+    // no-op.
 }
 
 // 0x57e928 — __ZN3RBX10ImageLabelD0Ev
 #[doc(alias = "RBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57e928() -> ! {
-    todo!("0x57e928 RBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57e928(_label: &mut ImageLabel) {
+    // IDA 0x57e928: `ImageLabel::D0` — same member teardown as `D1`
+    // (0x57e830), plus `operator delete`, as in `GuiImageButton::D0`
+    // (0x57ce5c). The delete collapses into box free. Drop glue — no-op.
 }
 
 // 0x57ea40 — __ZNK3RBX8GuiLabel9isGuiLeafEv
 #[doc(alias = "RBX::GuiLabel::isGuiLeaf(void)const")]
-pub fn stub_0x57ea40() -> ! {
-    todo!("0x57ea40 RBX::GuiLabel::isGuiLeaf(void)const")
+pub fn stub_0x57ea40() -> bool {
+    // IDA 0x57ea40 (decompiled): `GuiLabel::isGuiLeaf` — hardcoded
+    // `return 1` (0x57ea42); the receiver is ignored.
+    true
 }
 
 // 0x57ea44 — __ZThn32_N3RBX10ImageLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57ea44() -> ! {
-    todo!("0x57ea44 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57ea44(label: &mut ImageLabel) {
+    // IDA 0x57ea44: `Thn32` to `D1` — same `this - 32` adjust + `D1`-body
+    // shape as the `GuiImageButton` thunks (0x57cf74); the secondary-base
+    // adjust collapses (single struct); drop glue delegates to `D1`.
+    stub_0x57e830(label)
 }
 
 // 0x57eb3c — __ZThn32_N3RBX10ImageLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57eb3c() -> ! {
-    todo!("0x57eb3c non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57eb3c(label: &mut ImageLabel) {
+    // IDA 0x57eb3c: `Thn32` to `D0` — same `this - 32` adjust + `D0`-body
+    // shape; drop glue delegates to `D0`.
+    stub_0x57e928(label)
 }
 
 // 0x57ec58 — __ZThn36_N3RBX10ImageLabelD1Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57ec58() -> ! {
-    todo!("0x57ec58 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57ec58(label: &mut ImageLabel) {
+    // IDA 0x57ec58: `Thn36` to `D1` — same `this - 36` adjust + `D1`-body
+    // shape as 0x57d188; drop glue delegates to `D1`.
+    stub_0x57e830(label)
 }
 
 // 0x57ed50 — __ZThn36_N3RBX10ImageLabelD0Ev
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::~ImageLabel()")]
-pub fn stub_0x57ed50() -> ! {
-    todo!("0x57ed50 non-virtual thunk toRBX::ImageLabel::~ImageLabel()")
+pub fn stub_0x57ed50(label: &mut ImageLabel) {
+    // IDA 0x57ed50: `Thn36` to `D0` — same `this - 36` adjust + `D0`-body
+    // shape; drop glue delegates to `D0`.
+    stub_0x57e928(label)
 }
 
 // 0x57f0c8 — __ZN3RBX4Name13callDoDeclareILZNS_11sImageLabelEEEEvv
 #[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_11sImageLabelEEEEvv")]
-pub fn stub_0x57f0c8() -> ! {
-    todo!("0x57f0c8 __ZN3RBX4Name13callDoDeclareILZNS_11sImageLabelEEEEvv")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x57f0c8 as stub_0x57f0c8;
 
 // 0x57f0cc — __ZN3RBX4Name9doDeclareILZNS_11sImageLabelEEEERKS0_v
 #[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sImageLabelEEEERKS0_v")]
-pub fn stub_0x57f0cc() -> ! {
-    todo!("0x57f0cc __ZN3RBX4Name9doDeclareILZNS_11sImageLabelEEEERKS0_v")
-}
+pub use rbx_core::generated_core_shard_iu::stub_0x57f0cc as stub_0x57f0cc;
 
 // 0x57f464 — __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEEC2IMNS_13GuiImageMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>(char const*,char const*,RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x57f464() -> ! {
-    todo!("0x57f464 RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId)>(char const*,char const*,RBX::TextureId (RBX::GuiImageMixin::*)(void)const,void (RBX::ImageLabel::*)(RBX::TextureId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x57f464(name: &str, category: &str) -> ImageLabelTextureProp {
+    // IDA 0x57f464 `PropDescriptor<ImageLabel, TextureId>::C2`: stores the
+    // name/category words with the `getImage`/`setImage` member pointers,
+    // as in `GuiImageButton` 0x57da48. The member pointers collapse into
+    // direct image access.
+    ImageLabelTextureProp { name: name.to_owned(), category: category.to_owned() }
 }
 
 // 0x57f69c — __ZN3RBX10Reflection14PropDescriptorINS_10ImageLabelENS_9TextureIdEED0Ev
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor()")]
-pub fn stub_0x57f69c() -> ! {
-    todo!("0x57f69c RBX::Reflection::PropDescriptor<RBX::ImageLabel,RBX::TextureId>::~PropDescriptor()")
-}
+pub use rbx_reflection::generated::stub_0x57f69c as stub_0x57f69c;
 
 // 0x57f6c8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::isReadOnly(void)const")]
-pub fn stub_0x57f6c8() -> ! {
-    todo!("0x57f6c8 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::isReadOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x57f6c8 as stub_0x57f6c8;
 
 // 0x57f6d8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE11isWriteOnlyEv
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::isWriteOnly(void)const")]
-pub fn stub_0x57f6d8() -> ! {
-    todo!("0x57f6d8 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::isWriteOnly(void)const")
-}
+pub use rbx_reflection::generated::stub_0x57f6d8 as stub_0x57f6d8;
 
 // 0x57f6e8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE11equalValuesEPKNS0_13DescribedBaseES6_
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x57f6e8() -> ! {
-    todo!("0x57f6e8 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x57f6e8(a: &GuiImageTextureId, b: &GuiImageTextureId) -> bool {
+    // IDA 0x57f6e8 (decompiled): `TypedPropertyDescriptor<TextureId>::
+    // equalValues` — reads both images through the bound `GetSet`
+    // (0x57f712-0x57f74e) and compares with `TextureId::operator==`
+    // (0x57f75c). The member dispatch collapses into direct comparison,
+    // as in `EnumPropDescriptor::equalValues` (0x5788b0).
+    a == b
 }
 
 // 0x57f894 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9TextureIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x57f894() -> ! {
-    todo!("0x57f894 RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x57f894(texture: &GuiImageTextureId) -> Variant {
+    // IDA 0x57f894 (decompiled): `TypedPropertyDescriptor<TextureId>::
+    // getVariant` — reads the image through the bound `GetSet` (0x57f8bc)
+    // and stores it in the out `Variant` under the `TextureId` singleton
+    // (0x57f8f2-0x57f8fe). The Rust `Variant` has no `TextureId` case, so
+    // the id crosses as `Variant::Text`, as in string `Call0Helper`
+    // (0xf1f798); the tag word has no variant carrier.
+    Variant::Text(texture.id.clone())
 }
 
 #[cfg(test)]
@@ -1015,5 +1069,76 @@ mod batch_c_tests {
         assert_eq!(label.image_rect_size, [0.0, 0.0]);
         let again = stub_0x57e37c();
         assert!(again.image_id.is_empty());
+    }
+}
+
+#[cfg(test)]
+mod batch_d_tests {
+    use super::*;
+    use crate::generated_05::Variant;
+
+    #[test]
+    fn image_label_set_image_and_thunk() {
+        let mut label = stub_0x57e380();
+        let tex = GuiImageTextureId { id: "rbxasset://Textures/label.png".to_string(), tag: 4 };
+        assert!(stub_0x57e5c8(&mut label, &tex));
+        assert_eq!(label.image_id, tex.id);
+        assert_eq!(label.image_tag, 4);
+        assert!(!stub_0x57e5c8(&mut label, &tex));
+        let tex2 = GuiImageTextureId { id: "rbxasset://Textures/other.png".to_string(), tag: 6 };
+        assert!(stub_0x57e608(&mut label, &tex2));
+        assert_eq!(label.image_id, tex2.id);
+        assert_eq!(label.image_tag, 6);
+    }
+
+    #[test]
+    fn image_label_rect_match_is_noop() {
+        let mut label = stub_0x57e37c();
+        stub_0x57e610(&mut label, &[3.0, 5.0]);
+        assert_eq!(label.image_rect_offset, [3.0, 5.0]);
+        stub_0x57e65c(&mut label, &[3.0, 5.0]);
+        assert_eq!(label.image_rect_offset, [3.0, 5.0]);
+        stub_0x57e664(&mut label, &[9.0, 12.0]);
+        assert_eq!(label.image_rect_size, [9.0, 12.0]);
+        stub_0x57e6b0(&mut label, &[9.0, 12.0]);
+        assert_eq!(label.image_rect_size, [9.0, 12.0]);
+    }
+
+    #[test]
+    fn image_label_dtors_and_leaf() {
+        let mut label = stub_0x57e380();
+        label.image_id = "y".to_string();
+        stub_0x57ea44(&mut label);
+        stub_0x57ec58(&mut label);
+        assert_eq!(label.image_id, "y");
+        stub_0x57e830(&mut label);
+        stub_0x57e928(&mut label);
+        stub_0x57eb3c(&mut label);
+        stub_0x57ed50(&mut label);
+        assert_eq!(label.image_id, "y");
+        assert!(stub_0x57ea40());
+        stub_0x57e80c();
+        stub_0x57f0c8();
+        stub_0x57f0cc();
+    }
+
+    #[test]
+    fn image_label_texture_prop_and_variants() {
+        let prop = stub_0x57f464("Image", "Appearance");
+        assert_eq!(prop.name, "Image");
+        assert_eq!(prop.category, "Appearance");
+        let a = GuiImageTextureId { id: "rbxasset://Textures/a.png".to_string(), tag: 1 };
+        let b = GuiImageTextureId { id: "rbxasset://Textures/a.png".to_string(), tag: 1 };
+        let c = GuiImageTextureId { id: "rbxasset://Textures/a.png".to_string(), tag: 2 };
+        assert!(stub_0x57f6e8(&a, &b));
+        assert!(!stub_0x57f6e8(&a, &c));
+        match stub_0x57f894(&a) {
+            Variant::Text(id) => assert_eq!(id, "rbxasset://Textures/a.png"),
+            _ => panic!("0x57f894: TextureId crosses as Variant::Text"),
+        }
+        stub_0x57f6c8();
+        stub_0x57f6d8();
+        stub_0x57f69c();
+        drop(prop);
     }
 }
