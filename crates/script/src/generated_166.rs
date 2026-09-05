@@ -75,6 +75,9 @@ pub struct PlaceLauncherState {
     /// `placeDidFinishLoading` (IDA 0x253e0).
     pub finished_notification_posted: bool,
     pub finished_notification: Option<String>,
+    /// Last posted `startLeaveGame`/`didLeaveGame` notification name
+    /// (IDA 0x295c0/0x29684).
+    pub posted_notification: Option<String>,
     /// `stopFreeMemoryChecker` ran via `deleteRobloxView` (IDA 0x25440).
     pub memory_checker_stopped: bool,
     /// Last non-game controller (via `MainViewController`, IDA 0x24a58).
@@ -97,6 +100,18 @@ pub struct PlaceLauncherRegistry {
     pub launcher: PlaceLauncherState,
 }
 
+/// Host `shared_ptr<RBX::Game>` built by
+/// `setupGame:unsecuredGame:isApp:` (IDA 0x26558): `SecurePlayerGame`
+/// vs `UnsecuredStudioGame` (`GetBaseURL()`, `isApp` normalized to 0/1)
+/// with `ClientAppSettings` initialized, the settings fetch done, the
+/// idle timer disabled, and `isCurrentlyPlayingGame` latched.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct GameToken {
+    /// `UnsecuredStudioGame` (`a5`) vs `SecurePlayerGame`.
+    pub unsecured: bool,
+    /// Normalized `isApp` flag.
+    pub is_app: bool,
+}
 // 0x24204 — __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
 // type: int __fastcall(iOSSettingsService *this, const char *)
 #[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
@@ -400,111 +415,352 @@ pub fn stub_0x25440(state: &mut PlaceLauncherState) {
 // 0x25498 — -[PlaceLauncher finishGameSetup:gameViewController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, id)
 #[doc(alias = "-[PlaceLauncher finishGameSetup:gameViewController:]")]
-pub fn stub_0x25498() -> ! {
-    todo!("0x25498 -[PlaceLauncher finishGameSetup:gameViewController:]")
+pub fn stub_0x25498(
+    state: &mut PlaceLauncherState,
+    game: &GameToken,
+    view_token: u32,
+    screen_size: Option<[u32; 2]>,
+    place_finished: bool,
+    has_overlay_datamodel: bool,
+    create_view: &mut dyn FnMut(&GameToken, u32, Option<[u32; 2]>) -> u32,
+    finish_now: &mut dyn FnMut(&mut PlaceLauncherState),
+    defer_finish: &mut dyn FnMut(),
+    setup_connections: &mut dyn FnMut(bool),
+) {
+    // IDA 0x25498: stringstreams the window/view ids, sizes from
+    // `mainScreen bounds` (zeroed when headless), then
+    // `RobloxView::create_view` into `rbxView`. When the datamodel link
+    // (`+3108`) is already finished it runs `placeDidFinishLoading`
+    // immediately, else connects it to the finish signal; then wires the
+    // main datamodel and, when present, the overlay datamodel.
+    state.rbx_view = Some(create_view(game, view_token, screen_size));
+    if place_finished {
+        finish_now(state);
+    } else {
+        defer_finish();
+    }
+    setup_connections(false);
+    if has_overlay_datamodel {
+        setup_connections(true);
+    }
 }
 
 // 0x25e00 — -[PlaceLauncher setupDatamodelConnections:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[PlaceLauncher setupDatamodelConnections:]")]
-pub fn stub_0x25e00() -> ! {
-    todo!("0x25e00 -[PlaceLauncher setupDatamodelConnections:]")
+pub fn stub_0x25e00(
+    gui_present: bool,
+    login_created: bool,
+    connect_open_url: &mut dyn FnMut(),
+    dispatch_main: &mut dyn FnMut(),
+    connect_child_added: &mut dyn FnMut(),
+    connect_login_prompt: &mut dyn FnMut(),
+) {
+    // IDA 0x25e00: with a `GuiService`, connects the ogre controller's
+    // `openUrlWindow:` to its open-URL signal; `dispatch_async`s the main
+    // block; connects `childAdded:` on the players link; with a fresh
+    // `LoginService`, connects `handlePromptLoginSignal`.
+    if gui_present {
+        connect_open_url();
+    }
+    dispatch_main();
+    connect_child_added();
+    if login_created {
+        connect_login_prompt();
+    }
 }
 
 // 0x2613c — ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke
 // type: void __cdecl(id)
 #[doc(alias = "___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")]
-pub fn stub_0x2613c() -> ! {
-    todo!("0x2613c ___43-[PlaceLauncher setupDatamodelConnections:]_block_invoke")
+pub fn stub_0x2613c(start_checker: &mut dyn FnMut()) {
+    // IDA 0x2613c: `RobloxMemoryManager startFreeMemoryChecker`.
+    start_checker();
 }
 
 // 0x26170 — -[PlaceLauncher setLastNonGameController:]
 // type: void __cdecl(PlaceLauncher *self, SEL, id)
 #[doc(alias = "-[PlaceLauncher setLastNonGameController:]")]
-pub fn stub_0x26170() -> ! {
-    todo!("0x26170 -[PlaceLauncher setLastNonGameController:]")
+pub fn stub_0x26170(
+    state: &mut PlaceLauncherState,
+    controller: Option<u32>,
+    prepare_game: &mut dyn FnMut() -> bool,
+    set_platform_controller: &mut dyn FnMut(Option<u32>),
+) {
+    // IDA 0x26170: `MainViewController setLastNonGameController:` first;
+    // with a non-null controller, `prepareGame` (0x24ab0) runs and failure
+    // routes to `handleStartGameFailure` (0x24a58, `failure_forwarded` +
+    // playing cleared — mirrored here through the shared latches).
+    set_platform_controller(controller);
+    state.last_non_game_controller = controller;
+    if controller.is_some() && !prepare_game() {
+        state.failure_forwarded = true;
+        state.currently_playing = false;
+    }
 }
 
 // 0x261d8 — -[PlaceLauncher createGame:presentGameAutomatically:]
 // type: void __cdecl(PlaceLauncher *self, SEL, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher createGame:presentGameAutomatically:]")]
-pub fn stub_0x261d8() -> ! {
-    todo!("0x261d8 -[PlaceLauncher createGame:presentGameAutomatically:]")
+pub fn stub_0x261d8(
+    state: &mut PlaceLauncherState,
+    game: &GameToken,
+    present_automatically: bool,
+    has_last_non_game_controller: bool,
+    alloc_controllers: &mut dyn FnMut(),
+    finish_setup: &mut dyn FnMut(&mut PlaceLauncherState, &GameToken),
+    submit_control_view: &mut dyn FnMut(),
+) {
+    // IDA 0x261d8: clears `hasReceivedMemoryWarning`, `deleteRobloxView`
+    // (0x25440); with a last non-game controller it allocs/inits the
+    // `GameViewController`, installs it as the ogre controller, runs
+    // `finishGameSetup:gameViewController:`, then `GetWindow` +
+    // `DataModel::submitTask` with the `initControlView` bind. The
+    // `presentGameAutomatically` flag has no observable use in the body.
+    let _ = present_automatically;
+    state.memory_warning = false;
+    stub_0x25440(state);
+    if has_last_non_game_controller {
+        alloc_controllers();
+        finish_setup(state, game);
+        submit_control_view();
+    }
 }
 
 // 0x2643c — __ZL15initControlViewP10RobloxViewaPN3RBX18FunctionMarshallerE
 // type: _DWORD __fastcall(RobloxView *, signed __int8, RBX::FunctionMarshaller *)
 #[doc(alias = "initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")]
-pub fn stub_0x2643c() -> ! {
-    todo!("0x2643c initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")
+pub fn stub_0x2643c(view: u32, flag: bool, execute: &mut dyn FnMut(u32, bool)) {
+    // IDA 0x2643c: binds `initControlViewHelper(view, flag)`
+    // (`boost::bind` → closure) into `FunctionMarshaller::Execute`, then
+    // clears the functor.
+    execute(view, flag);
 }
 
 // 0x26520 — -[PlaceLauncher setupGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupGame:isApp:]")]
-pub fn stub_0x26520() -> ! {
-    todo!("0x26520 -[PlaceLauncher setupGame:isApp:]")
+pub fn stub_0x26520(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    controller: Option<u32>,
+    is_app: bool,
+    init_settings: &mut dyn FnMut(),
+    set_idle_timer: &mut dyn FnMut(bool),
+    set_controller: &mut dyn FnMut(Option<u32>),
+    prepare_game: &mut dyn FnMut() -> bool,
+) -> Option<GameToken> {
+    // IDA 0x26520: nil self returns the null game; otherwise forwards to
+    // `setupGame:unsecuredGame:isApp:` with `unsecured = 0`.
+    if !launcher_present {
+        return None;
+    }
+    stub_0x26558(state, controller, false, is_app, init_settings, set_idle_timer, set_controller, prepare_game)
 }
 
 // 0x26558 — -[PlaceLauncher setupGame:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupGame:unsecuredGame:isApp:]")]
-pub fn stub_0x26558() -> ! {
-    todo!("0x26558 -[PlaceLauncher setupGame:unsecuredGame:isApp:]")
+pub fn stub_0x26558(
+    state: &mut PlaceLauncherState,
+    controller: Option<u32>,
+    unsecured: bool,
+    is_app: bool,
+    init_settings: &mut dyn FnMut(),
+    set_idle_timer: &mut dyn FnMut(bool),
+    set_controller: &mut dyn FnMut(Option<u32>),
+    prepare_game: &mut dyn FnMut() -> bool,
+) -> Option<GameToken> {
+    // IDA 0x26558: with a game already playing, returns null; otherwise
+    // initializes `ClientAppSettings`, fetches `iOSAppSettings`, refreshes
+    // the settings service, disables the idle timer, latches
+    // `isCurrentlyPlayingGame`, records the non-game controller
+    // (`setLastNonGameController:`, 0x26170), and builds the
+    // `UnsecuredStudioGame`/`SecurePlayerGame` (`isApp` normalized to 0/1).
+    if state.currently_playing {
+        return None;
+    }
+    init_settings();
+    set_idle_timer(true);
+    state.currently_playing = true;
+    stub_0x26170(state, controller, prepare_game, set_controller);
+    Some(GameToken { unsecured, is_app })
 }
 
 // 0x26768 — -[PlaceLauncher presentGameViewController]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher presentGameViewController]")]
-pub fn stub_0x26768() -> ! {
-    todo!("0x26768 -[PlaceLauncher presentGameViewController]")
+pub fn stub_0x26768(dispatch_main: &mut dyn FnMut()) {
+    // IDA 0x26768: `dispatch_async`s the presentation block on the main
+    // queue (synchronous here).
+    dispatch_main();
 }
 
 // 0x26784 — -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")]
-pub fn stub_0x26784() -> ! {
-    todo!("0x26784 -[PlaceLauncher setupPreloadedGameWithNonGameController:unsecuredGame:isApp:]")
+pub fn stub_0x26784(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    controller: Option<u32>,
+    unsecured: bool,
+    is_app: bool,
+    init_settings: &mut dyn FnMut(),
+    set_idle_timer: &mut dyn FnMut(bool),
+    set_controller: &mut dyn FnMut(Option<u32>),
+    prepare_game: &mut dyn FnMut() -> bool,
+) -> Option<GameToken> {
+    // IDA 0x26784: nil self returns the null game; otherwise forwards to
+    // `setupGame:unsecuredGame:isApp:`.
+    if !launcher_present {
+        return None;
+    }
+    stub_0x26558(state, controller, unsecured, is_app, init_settings, set_idle_timer, set_controller, prepare_game)
 }
 
 // 0x267bc — -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, PlaceLauncher *self, SEL, id, char)
 #[doc(alias = "-[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")]
-pub fn stub_0x267bc() -> ! {
-    todo!("0x267bc -[PlaceLauncher setupPreloadedGameWithNonGameController:isApp:]")
+pub fn stub_0x267bc(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    controller: Option<u32>,
+    is_app: bool,
+    init_settings: &mut dyn FnMut(),
+    set_idle_timer: &mut dyn FnMut(bool),
+    set_controller: &mut dyn FnMut(Option<u32>),
+    prepare_game: &mut dyn FnMut() -> bool,
+) -> Option<GameToken> {
+    // IDA 0x267bc: nil self returns the null game; otherwise forwards to
+    // `setupGame:isApp:` (0x26520).
+    if !launcher_present {
+        return None;
+    }
+    stub_0x26520(state, true, controller, is_app, init_settings, set_idle_timer, set_controller, prepare_game)
 }
 
 // 0x26bb8 — -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, id, char)
 #[doc(alias = "-[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")]
-pub fn stub_0x26bb8() -> ! {
-    todo!("0x26bb8 -[PlaceLauncher startGameLocal:ipAddress:controller:presentGameAutomatically:]")
+pub fn stub_0x26bb8(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    port: i32,
+    ip_address: &str,
+    controller: Option<u32>,
+    present_automatically: bool,
+    setup_game: &mut dyn FnMut(&mut PlaceLauncherState, Option<u32>) -> Option<GameToken>,
+    join_script: &mut dyn FnMut(i32, &str, &GameToken),
+    start_preloaded: &mut dyn FnMut(&mut dyn FnMut(), Option<u32>, &GameToken, bool) -> bool,
+) -> bool {
+    // IDA 0x26bb8: nil self returns 0; otherwise
+    // `setupPreloadedGameWithNonGameController:unsecuredGame:isApp:`
+    // (unsecured path), and with a game, binds `joinLocalGame(port, ip,
+    // game)` (`boost::bind` → `join_script` closure) into
+    // `startGame:controller:preloadedGame:presentGameAutomatically:`.
+    // `a3` is the `serverPort` consumed by `joinLocalGame` (IDA 0x26dd4).
+    if !launcher_present {
+        return false;
+    }
+    let Some(game) = setup_game(state, controller) else {
+        return false;
+    };
+    let mut script = || join_script(port, ip_address, &game);
+    start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x26dd4() -> ! {
-    todo!("0x26dd4 joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_0x26dd4(
+    port: i32,
+    server: &str,
+    game: &GameToken,
+    base_url: &str,
+    execute_url_script: &mut dyn FnMut(&str, &GameToken),
+) {
+    // IDA 0x26dd4: formats
+    // `"%sGame/Join.ashx?userID=0&serverPort=%i&server=%s"` from
+    // `RobloxInfo getBaseUrl` and runs `executeUrlScript`.
+    execute_url_script(
+        &format!("{base_url}Game/Join.ashx?userID=0&serverPort={port}&server={server}"),
+        game,
+    );
 }
 
 // 0x27054 — -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, id, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")]
-pub fn stub_0x27054() -> ! {
-    todo!("0x27054 -[PlaceLauncher startAppWithFile:controller:presentGameAutomatically:]")
+pub fn stub_0x27054(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    file_path: &str,
+    controller: Option<u32>,
+    present_automatically: bool,
+    setup_game: &mut dyn FnMut(&mut PlaceLauncherState, Option<u32>) -> Option<GameToken>,
+    load_script: &mut dyn FnMut(&str, &GameToken),
+    start_preloaded: &mut dyn FnMut(&mut dyn FnMut(), Option<u32>, &GameToken, bool) -> bool,
+) -> bool {
+    // IDA 0x27054: nil self returns 0; otherwise the preloaded setup, and
+    // with a game, binds `loadLocalApp(path, game)` into
+    // `startGame:controller:preloadedGame:presentGameAutomatically:`.
+    if !launcher_present {
+        return false;
+    }
+    let Some(game) = setup_game(state, controller) else {
+        return false;
+    };
+    let mut script = || load_script(file_path, &game);
+    start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x27268() -> ! {
-    todo!("0x27268 loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_0x27268(
+    path: &str,
+    game: &GameToken,
+    has_datamodel: bool,
+    local_player_id: Option<i32>,
+    execute_script: &mut dyn FnMut(&str, &GameToken),
+    create_local_player: &mut dyn FnMut(i32),
+) {
+    // IDA 0x27268: `Game:Load('rbxasset://%s')` runs `executeScript` while
+    // the datamodel link is live; with a live players link it enters
+    // impersonation level 7, creates `Network::Players`, resolves
+    // `CurrentPlayer userinfo intValue`, and creates the local player
+    // (the `Security::Context` reset folds into host ownership).
+    if has_datamodel {
+        execute_script(&format!("Game:Load('rbxasset://{path}')"), game);
+    }
+    if let Some(player_id) = local_player_id {
+        create_local_player(player_id);
+    }
 }
 
 // 0x276b0 — -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")]
-pub fn stub_0x276b0() -> ! {
-    todo!("0x276b0 -[PlaceLauncher startAppWithId:controller:presentGameAutomatically:]")
+pub fn stub_0x276b0(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    place_id: i32,
+    controller: Option<u32>,
+    present_automatically: bool,
+    setup_game: &mut dyn FnMut(&mut PlaceLauncherState, Option<u32>) -> Option<GameToken>,
+    join_script: &mut dyn FnMut(i32, &GameToken, i32),
+    start_preloaded: &mut dyn FnMut(&mut dyn FnMut(), Option<u32>, &GameToken, bool) -> bool,
+) -> bool {
+    // IDA 0x276b0: nil self returns 0; otherwise
+    // `setupPreloadedGameWithNonGameController:isApp:` (`isApp = 1`), and
+    // with a game, binds `joinGamePlaceId(placeId, game, request = 2)`
+    // into `startGame:controller:preloadedGame:presentGameAutomatically:`.
+    if !launcher_present {
+        return false;
+    }
+    let Some(game) = setup_game(state, controller) else {
+        return false;
+    };
+    let mut script = || join_script(place_id, &game, 2);
+    start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
@@ -516,53 +772,396 @@ pub fn stub_0x278a8() -> ! {
 // 0x289a8 — -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, int, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")]
-pub fn stub_0x289a8() -> ! {
-    todo!("0x289a8 -[PlaceLauncher startGame:controller:request:presentGameAutomatically:]")
+pub fn stub_0x289a8(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    place_id: i32,
+    controller: Option<u32>,
+    request: i32,
+    present_automatically: bool,
+    setup_game: &mut dyn FnMut(&mut PlaceLauncherState, Option<u32>) -> Option<GameToken>,
+    join_script: &mut dyn FnMut(i32, &GameToken, i32),
+    start_preloaded: &mut dyn FnMut(&mut dyn FnMut(), Option<u32>, &GameToken, bool) -> bool,
+) -> bool {
+    // IDA 0x289a8: nil self returns 0; otherwise
+    // `setupPreloadedGameWithNonGameController:isApp:` (`isApp` is
+    // `request == 2`), and with a game, binds
+    // `joinGamePlaceId(placeId, game, request)` into
+    // `startGame:controller:preloadedGame:presentGameAutomatically:`.
+    if !launcher_present {
+        return false;
+    }
+    let Some(game) = setup_game(state, controller) else {
+        return false;
+    };
+    let mut script = || join_script(place_id, &game, request);
+    start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
 // 0x28ba8 — -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, int, id, char)
 #[doc(alias = "-[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")]
-pub fn stub_0x28ba8() -> ! {
-    todo!("0x28ba8 -[PlaceLauncher startGameSolo:controller:presentGameAutomatically:]")
+pub fn stub_0x28ba8(
+    state: &mut PlaceLauncherState,
+    launcher_present: bool,
+    place_id: i32,
+    controller: Option<u32>,
+    present_automatically: bool,
+    setup_game: &mut dyn FnMut(&mut PlaceLauncherState, Option<u32>) -> Option<GameToken>,
+    join_script: &mut dyn FnMut(i32, &GameToken),
+    start_preloaded: &mut dyn FnMut(&mut dyn FnMut(), Option<u32>, &GameToken, bool) -> bool,
+) -> bool {
+    // IDA 0x28ba8: nil self returns 0; otherwise the preloaded setup, and
+    // with a game, binds `joinGamePlaceIdSolo(placeId, game)` into
+    // `startGame:controller:preloadedGame:presentGameAutomatically:`.
+    if !launcher_present {
+        return false;
+    }
+    let Some(game) = setup_game(state, controller) else {
+        return false;
+    };
+    let mut script = || join_script(place_id, &game);
+    start_preloaded(&mut script, controller, &game, present_automatically)
 }
 
 // 0x28d98 — __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE
 #[doc(alias = "joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")]
-pub fn stub_0x28d98() -> ! {
-    todo!("0x28d98 joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")
+pub fn stub_0x28d98(
+    place_id: i32,
+    game: &GameToken,
+    base_url: &str,
+    register_user_agent: &mut dyn FnMut(),
+    execute_script: &mut dyn FnMut(&str, &GameToken),
+    set_last_place_id: &mut dyn FnMut(i32),
+    track_page: &mut dyn FnMut(&str),
+) {
+    // IDA 0x28d98: registers the `UserAgent` default, then for
+    // `placeId < 1` runs
+    // `game:Load('rbxasset://places/workshop/workshopStartPlace.rbxl')
+    // loadfile('%sgame/visit.ashx')()`, else
+    // `loadfile('%sgame/visit.ashx?placeid=%d')()`; then records the place
+    // id (`setLastPlaceId:`, 0x25080) and tracks `VisitSolo/Success/Join`.
+    register_user_agent();
+    if place_id < 1 {
+        execute_script(
+            &format!("game:Load('rbxasset://places/workshop/workshopStartPlace.rbxl') loadfile('{base_url}game/visit.ashx')()"),
+            game,
+        );
+    } else {
+        execute_script(
+            &format!("loadfile('{base_url}game/visit.ashx?placeid={place_id}')()"),
+            game,
+        );
+    }
+    set_last_place_id(place_id);
+    track_page("VisitSolo/Success/Join");
 }
 
 // 0x29490 — -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]
 // type: char __cdecl(PlaceLauncher *self, SEL, function0<void>, id, shared_ptr<RBX::Game>, char)
 #[doc(alias = "-[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")]
-pub fn stub_0x29490() -> ! {
-    todo!("0x29490 -[PlaceLauncher startGame:controller:preloadedGame:presentGameAutomatically:]")
+pub fn stub_0x29490(
+    start_script: &mut dyn FnMut(),
+    controller: Option<u32>,
+    game: &GameToken,
+    present_automatically: bool,
+    spawn_thread: &mut dyn FnMut(&str, &mut dyn FnMut()),
+    create_game: &mut dyn FnMut(&GameToken, bool),
+) -> bool {
+    // IDA 0x29490: wraps the join closure (`thread_wrapper`,
+    // `boost::thread` → `spawn_thread`, detached) as `GameStartScript`,
+    // then `createGame:presentGameAutomatically:`; always returns 1.
+    // The controller rides the thread cookie; the host keeps it explicit.
+    let _ = controller;
+    spawn_thread("GameStartScript", start_script);
+    create_game(game, present_automatically);
+    true
 }
 
 // 0x295c0 — -[PlaceLauncher leaveGameShutdown]
 // type: void __cdecl(PlaceLauncher *self, SEL)
 #[doc(alias = "-[PlaceLauncher leaveGameShutdown]")]
-pub fn stub_0x295c0() -> ! {
-    todo!("0x295c0 -[PlaceLauncher leaveGameShutdown]")
+pub fn stub_0x295c0(
+    state: &mut PlaceLauncherState,
+    dismiss: &mut dyn FnMut(&mut dyn FnMut()),
+    completion: &mut dyn FnMut(),
+) {
+    // IDA 0x295c0: posts `startLeaveGameNotification` on the default
+    // center, then dismisses the ogre controller with the
+    // `leaveGameShutdown` completion block (0x29684, supplied by the caller
+    // and invoked by `dismiss` on completion).
+    state.posted_notification = Some(state.start_leave_game_notification.clone());
+    dismiss(completion);
 }
 
 // 0x29684 — ___34-[PlaceLauncher leaveGameShutdown]_block_invoke
 #[doc(alias = "___34-[PlaceLauncher leaveGameShutdown]_block_invoke")]
-pub fn stub_0x29684() -> ! {
-    todo!("0x29684 ___34-[PlaceLauncher leaveGameShutdown]_block_invoke")
+pub fn stub_0x29684(
+    state: &mut PlaceLauncherState,
+    release_controllers: &mut dyn FnMut(),
+    post_notification: &mut dyn FnMut(&str),
+    clear_game_state: &mut dyn FnMut(),
+    end_background_task: &mut dyn FnMut(),
+) {
+    // IDA 0x29684: releases the ogre controller/view/window,
+    // `deleteRobloxView` (0x25440), clears the playing/memory latches
+    // (`self+20`/`self+8`), posts the did-leave notification (`self+24`),
+    // logs, drops the `RobloxGameState` default (+ synchronize), clears the
+    // teleport callback latch (`self+9` [INFERENCE: adjacent flag slot]),
+    // and ends the background task.
+    release_controllers();
+    stub_0x25440(state);
+    state.currently_playing = false;
+    state.memory_warning = false;
+    let notification = state.did_leave_game_notification.clone();
+    post_notification(&notification);
+    state.posted_notification = Some(notification);
+    clear_game_state();
+    state.teleport_callback_set = false;
+    end_background_task();
 }
 
 // 0x298a0 — ___copy_helper_block_191
 #[doc(alias = "___copy_helper_block_191")]
-pub fn stub_0x298a0() -> ! {
-    todo!("0x298a0 ___copy_helper_block_191")
+pub fn stub_0x298a0(dst: &mut BlockCapture, src: &BlockCapture) {
+    // IDA 0x298a0 `__copy_helper_block_191`: two `_Block_object_assign`
+    // retains (+20/+24, cf. 0x1f660); the host retains the whole capture.
+    *dst = src.clone();
 }
 
 // 0x298c4 — ___destroy_helper_block_192
 #[doc(alias = "___destroy_helper_block_192")]
-pub fn stub_0x298c4() -> ! {
-    todo!("0x298c4 ___destroy_helper_block_192")
+pub fn stub_0x298c4(slot: &mut BlockCapture) {
+    // IDA 0x298c4 `__destroy_helper_block_192`: two
+    // `_Block_object_dispose` releases (+20/+24, cf. 0x1f4a0).
+    *slot = BlockCapture::default();
+}
+#[cfg(test)]
+mod launcher_setup_tests {
+    use super::*;
+    use std::cell::{Cell, RefCell};
+    fn setup_callbacks() -> (
+        impl FnMut(),
+        impl FnMut(bool),
+        impl FnMut(Option<u32>),
+        impl FnMut() -> bool,
+    ) {
+        let init = || {};
+        let idle = |_: bool| {};
+        let controller = |_: Option<u32>| {};
+        let prepare = || true;
+        (init, idle, controller, prepare)
+    }
+
+    #[test]
+    fn setup_game_builds_token_and_latches() {
+        let mut state = PlaceLauncherState::default();
+        let (mut init, mut idle, mut set_controller, mut prepare) = setup_callbacks();
+        let token = stub_0x26558(&mut state, Some(3), true, true, &mut init, &mut idle, &mut set_controller, &mut prepare);
+        assert_eq!(token, Some(GameToken { unsecured: true, is_app: true }));
+        assert!(state.currently_playing);
+        assert_eq!(state.last_non_game_controller, Some(3));
+        // Playing again returns null without touching anything.
+        let (mut init2, mut idle2, mut set2, mut prep2) = setup_callbacks();
+        assert_eq!(stub_0x26558(&mut state, Some(3), false, false, &mut init2, &mut idle2, &mut set2, &mut prep2), None);
+        // Forwarders thread through; nil launcher returns null.
+        let (mut a, mut b, mut c, mut d) = setup_callbacks();
+        assert!(stub_0x26520(&mut state, false, None, false, &mut a, &mut b, &mut c, &mut d).is_none());
+        assert!(stub_0x26784(&mut PlaceLauncherState::default(), false, None, false, false, &mut a, &mut b, &mut c, &mut d).is_none());
+        assert!(stub_0x267bc(&mut PlaceLauncherState::default(), false, None, false, &mut a, &mut b, &mut c, &mut d).is_none());
+    }
+
+    #[test]
+    fn failed_prepare_forwards_failure() {
+        let mut state = PlaceLauncherState::default();
+        state.currently_playing = true;
+        let mut set = |_: Option<u32>| {};
+        let mut prepare = || false;
+        stub_0x26170(&mut state, Some(9), &mut prepare, &mut set);
+        assert!(state.failure_forwarded);
+        assert!(!state.currently_playing);
+        assert_eq!(state.last_non_game_controller, Some(9));
+    }
+
+    #[test]
+    fn start_variants_bind_and_launch() {
+        let mut state = PlaceLauncherState::default();
+        let token = GameToken { unsecured: true, is_app: false };
+        let mut setup = |_: &mut PlaceLauncherState, _: Option<u32>| Some(token);
+        let joined = RefCell::new(Vec::new());
+        let mut join_local = |port: i32, ip: &str, game: &GameToken| {
+            joined.borrow_mut().push((port, ip.to_owned(), *game));
+        };
+        let launched = RefCell::new(Vec::new());
+        let mut start = |script: &mut dyn FnMut(), controller: Option<u32>, game: &GameToken, present: bool| {
+            script();
+            launched.borrow_mut().push((controller, *game, present));
+            true
+        };
+        assert!(stub_0x26bb8(&mut state, true, 5362, "127.0.0.1", Some(4), true, &mut setup, &mut join_local, &mut start));
+        assert_eq!(*joined.borrow(), [(5362, "127.0.0.1".to_owned(), token)]);
+        assert_eq!(*launched.borrow(), [(Some(4), token, true)]);
+        assert!(!stub_0x26bb8(&mut state, false, 5362, "127.0.0.1", Some(4), true, &mut setup, &mut join_local, &mut start));
+        // Preloaded start spawns the GameStartScript thread then creates.
+        let spawned = RefCell::new(Vec::new());
+        let mut spawn = |name: &str, script: &mut dyn FnMut()| {
+            spawned.borrow_mut().push(name.to_owned());
+            script();
+        };
+        let created = RefCell::new(Vec::new());
+        let mut create = |game: &GameToken, present: bool| created.borrow_mut().push((*game, present));
+        let ran = Cell::new(0);
+        let mut script = || ran.set(ran.get() + 1);
+        assert!(stub_0x29490(&mut script, Some(4), &token, false, &mut spawn, &mut create));
+        assert_eq!(*spawned.borrow(), ["GameStartScript"]);
+        assert_eq!(ran.get(), 1);
+        assert_eq!(*created.borrow(), [(token, false)]);
+    }
+
+    #[test]
+    fn url_script_shapes_match_binary() {
+        let token = GameToken::default();
+        let seen = RefCell::new(Vec::new());
+        let mut exec = |url: &str, _: &GameToken| seen.borrow_mut().push(url.to_owned());
+        stub_0x26dd4(5362, "127.0.0.1", &token, "http://base/", &mut exec);
+        assert_eq!(*seen.borrow(), ["http://base/Game/Join.ashx?userID=0&serverPort=5362&server=127.0.0.1"]);
+        let loaded = RefCell::new(Vec::new());
+        let mut load = |script: &str, _: &GameToken| loaded.borrow_mut().push(script.to_owned());
+        let players = RefCell::new(Vec::new());
+        let mut mk_player = |id: i32| players.borrow_mut().push(id);
+        stub_0x27268("my place", &token, true, Some(42), &mut load, &mut mk_player);
+        assert_eq!(*loaded.borrow(), ["Game:Load('rbxasset://my place')"]);
+        assert_eq!(*players.borrow(), [42]);
+        stub_0x27268("my place", &token, false, None, &mut load, &mut mk_player);
+        assert_eq!(loaded.borrow().len(), 1);
+        assert!(players.borrow().len() == 1);
+    }
+
+    #[test]
+    fn solo_join_branches_on_place_id() {
+        let token = GameToken::default();
+        let scripts = RefCell::new(Vec::new());
+        let mut exec = |script: &str, _: &GameToken| scripts.borrow_mut().push(script.to_owned());
+        let last = RefCell::new(Vec::new());
+        let mut set_id = |id: i32| last.borrow_mut().push(id);
+        let pages = RefCell::new(Vec::new());
+        let mut track = |page: &str| pages.borrow_mut().push(page.to_owned());
+        let agent = Cell::new(0);
+        let mut register = || agent.set(agent.get() + 1);
+        stub_0x28d98(0, &token, "http://base/", &mut register, &mut exec, &mut set_id, &mut track);
+        assert_eq!(*scripts.borrow(), ["game:Load('rbxasset://places/workshop/workshopStartPlace.rbxl') loadfile('http://base/game/visit.ashx')()"]);
+        stub_0x28d98(1818, &token, "http://base/", &mut register, &mut exec, &mut set_id, &mut track);
+        assert_eq!(scripts.borrow()[1], "loadfile('http://base/game/visit.ashx?placeid=1818')()");
+        assert_eq!(*last.borrow(), [0, 1818]);
+        assert_eq!(*pages.borrow(), ["VisitSolo/Success/Join", "VisitSolo/Success/Join"]);
+        assert_eq!(agent.get(), 2);
+    }
+
+    #[test]
+    fn finish_setup_creates_view_and_wires() {
+        let mut state = PlaceLauncherState::default();
+        let token = GameToken { unsecured: false, is_app: true };
+        let created = RefCell::new(Vec::new());
+        let mut create = |game: &GameToken, view: u32, size: Option<[u32; 2]>| {
+            created.borrow_mut().push((*game, view, size));
+            77u32
+        };
+        let finished = Cell::new(0);
+        let mut finish_now = |_: &mut PlaceLauncherState| finished.set(finished.get() + 1);
+        let deferred = Cell::new(0);
+        let mut defer = || deferred.set(deferred.get() + 1);
+        let wired = RefCell::new(Vec::new());
+        let mut wire = |overlay: bool| wired.borrow_mut().push(overlay);
+        stub_0x25498(&mut state, &token, 5, Some([320, 480]), true, true, &mut create, &mut finish_now, &mut defer, &mut wire);
+        assert_eq!(state.rbx_view, Some(77));
+        assert_eq!(finished.get(), 1);
+        assert_eq!(deferred.get(), 0);
+        assert_eq!(*wired.borrow(), [false, true]);
+        assert_eq!(*created.borrow(), [(token, 5, Some([320, 480]))]);
+    }
+
+    #[test]
+    fn create_game_gates_on_controller() {
+        let mut state = PlaceLauncherState::default();
+        state.rbx_view = Some(1);
+        let token = GameToken::default();
+        let steps = RefCell::new(Vec::new());
+        let mut alloc = || steps.borrow_mut().push("alloc");
+        let mut finish = |_: &mut PlaceLauncherState, _: &GameToken| steps.borrow_mut().push("finish");
+        let mut submit = || steps.borrow_mut().push("submit");
+        stub_0x261d8(&mut state, &token, true, false, &mut alloc, &mut finish, &mut submit);
+        assert!(state.rbx_view.is_none());
+        assert!(steps.borrow().is_empty());
+        stub_0x261d8(&mut state, &token, true, true, &mut alloc, &mut finish, &mut submit);
+        assert_eq!(*steps.borrow(), ["alloc", "finish", "submit"]);
+    }
+
+    #[test]
+    fn shutdown_posts_and_tears_down() {
+        let mut state = PlaceLauncherState::default();
+        state.start_leave_game_notification = "START".to_string();
+        state.did_leave_game_notification = "DID".to_string();
+        state.currently_playing = true;
+        state.teleport_callback_set = true;
+        let dismissed = Cell::new(0);
+        {
+            let mut dismiss = |completion: &mut dyn FnMut()| {
+                dismissed.set(dismissed.get() + 1);
+                completion();
+            };
+            let mut completion = || {};
+            stub_0x295c0(&mut state, &mut dismiss, &mut completion);
+        }
+        assert_eq!(dismissed.get(), 1);
+        let released = Cell::new(0);
+        let mut release = || released.set(released.get() + 1);
+        let posted = RefCell::new(Vec::new());
+        let mut post = |name: &str| posted.borrow_mut().push(name.to_owned());
+        let cleared = Cell::new(0);
+        let mut clear = || cleared.set(cleared.get() + 1);
+        let bg = Cell::new(0);
+        let mut end_bg = || bg.set(bg.get() + 1);
+        stub_0x29684(&mut state, &mut release, &mut post, &mut clear, &mut end_bg);
+        assert_eq!((released.get(), cleared.get(), bg.get()), (1, 1, 1));
+        assert_eq!(*posted.borrow(), ["DID"]);
+    }
+
+    #[test]
+    fn datamodel_connections_gate_each_signal() {
+        let opened = Cell::new(0);
+        let mut open = || opened.set(opened.get() + 1);
+        let main = Cell::new(0);
+        let mut dispatch = || main.set(main.get() + 1);
+        let added = Cell::new(0);
+        let mut child = || added.set(added.get() + 1);
+        let login = Cell::new(0);
+        let mut prompt = || login.set(login.get() + 1);
+        stub_0x25e00(true, true, &mut open, &mut dispatch, &mut child, &mut prompt);
+        assert_eq!((opened.get(), main.get(), added.get(), login.get()), (1, 1, 1, 1));
+        stub_0x25e00(false, false, &mut open, &mut dispatch, &mut child, &mut prompt);
+        assert_eq!((opened.get(), main.get(), added.get(), login.get()), (1, 2, 2, 1));
+    }
+
+    #[test]
+    fn block_helpers_round_trip() {
+        let view = Cell::new(0);
+        let mut init_view = |v: u32, f: bool| view.set(if f { v } else { 0 });
+        stub_0x2643c(9, true, &mut init_view);
+        assert_eq!(view.get(), 9);
+        let main = Cell::new(0);
+        let mut dispatch = || main.set(main.get() + 1);
+        stub_0x26768(&mut dispatch);
+        let checks = Cell::new(0);
+        let mut checker = || checks.set(checks.get() + 1);
+        stub_0x2613c(&mut checker);
+        assert_eq!((main.get(), checks.get()), (1, 1));
+        let src = BlockCapture { target: Some(5) };
+        let mut dst = BlockCapture::default();
+        stub_0x298a0(&mut dst, &src);
+        assert_eq!(dst.target, Some(5));
+        stub_0x298c4(&mut dst);
+        assert_eq!(dst.target, None);
+    }
 }
 
 // 0x298e0 — -[PlaceLauncher leaveGame]
