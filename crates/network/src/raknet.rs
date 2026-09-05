@@ -8704,154 +8704,175 @@ pub fn stub_958170(guard: &mut bool, init: &mut dyn FnMut()) {
 
 // 0x958254 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
-pub fn stub_958254() -> ! {
-    todo!("0x958254 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+pub fn stub_958254(destroy: &mut dyn FnMut()) {
+    // IDA 0x958254: D1 thunk tail-calls D2.
+    destroy();
 }
 
 // 0x958260 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
-pub fn stub_958260() -> ! {
-    todo!("0x958260 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+pub fn stub_958260(destroy: &mut dyn FnMut()) {
+    // IDA 0x958260: EnumDesc D2 (below truncation).
+    destroy();
 }
-
 // 0x9584dc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
-pub fn stub_9584dc() -> ! {
-    todo!("0x9584dc RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+pub fn stub_9584dc(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x9584dc: EnumDesc D0 + operator delete.
+    destroy();
+    free();
 }
-
 // 0x95857c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(char const*)const")]
-pub fn stub_95857c() -> ! {
-    todo!("0x95857c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(char const*)const")
+pub fn stub_95857c(pairs: &[(String, i32)], name: &str) -> Option<i32> {
+    // IDA 0x95857c: Name::lookup + pair scan (below truncation).
+    pairs.iter().find(|(n, _)| n == name).map(|(_, v)| *v)
 }
-
 // 0x95860c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_95860c() -> ! {
-    todo!("0x95860c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_95860c(pairs: &[(i32, String)], value: i32) -> Option<String> {
+    // IDA 0x95860c: value -> name lookup (below truncation).
+    pairs.iter().find(|(v, _)| *v == value).map(|(_, n)| n.clone())
 }
-
 // 0x958710 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_958710() -> ! {
-    todo!("0x958710 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_958710(table: &[i32], index: usize, store: &mut dyn FnMut(i32)) -> bool {
+    // IDA 0x958710: index < count ? store table[index], true : false.
+    if let Some(&v) = table.get(index) {
+        store(v);
+        true
+    } else {
+        false
+    }
 }
-
 // 0x958738 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_958738() -> ! {
-    todo!("0x958738 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(unsigned long,std::string &)const")
+pub fn stub_958738(pairs: &[(i32, String)], value: i32, fallback: &str) -> String {
+    // IDA 0x958738: convertToString via pair scan (below truncation).
+    pairs.iter().find(|(v, _)| *v == value).map(|(_, n)| n.clone()).unwrap_or_else(|| fallback.to_string())
 }
-
 // 0x95887c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
-pub fn stub_95887c() -> ! {
-    todo!("0x95887c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_95887c(out: &mut String, value: &str) {
+    // IDA 0x95887c: convertToString append (below truncation).
+    out.push_str(value);
 }
-
 // 0x958a1c — __ZN3RBX10Reflection7VariantaSINS_15NetworkSettings17PhysicsSendMethodEEERS1_RKT_
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")]
-pub fn stub_958a1c() -> ! {
-    todo!("0x958a1c RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")
+pub fn stub_958a1c(slot: &mut Option<i32>, value: i32, init: &mut dyn FnMut()) -> Option<i32> {
+    // IDA 0x958a1c: call_once singleton; store enum (below truncation).
+    init();
+    *slot = Some(value);
+    *slot
 }
-
 // 0x958bd0 — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings17PhysicsSendMethodEE14construct_funcEPKcPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::construct_func(char const*,char *)")]
-pub fn stub_958bd0() -> ! {
-    todo!("0x958bd0 rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::construct_func(char const*,char *)")
+pub fn stub_958bd0(slot: &mut Option<usize>, value: usize) -> usize {
+    // IDA 0x958bd0: construct_func — store into slot.
+    *slot = Some(value);
+    value
 }
-
 // 0x958bdc — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings17PhysicsSendMethodEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::destruct_func(char *)")]
-pub fn stub_958bdc() -> ! {
-    todo!("0x958bdc rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::destruct_func(char *)")
+pub fn stub_958bdc() {
+    // IDA 0x958bdc: empty destruct_func body.
 }
-
 // 0x958be0 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
-pub fn stub_958be0() -> ! {
-    todo!("0x958be0 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+pub fn stub_958be0(index: i32, convert: &mut dyn FnMut(i32) -> i32) -> i32 {
+    // IDA 0x958be0: assert index >= 0; convert (below truncation).
+    assert!(index >= 0);
+    convert(index)
 }
-
 // 0x958cac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")]
-pub fn stub_958cac() -> ! {
-    todo!("0x958cac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")
+pub fn stub_958cac(map: &mut HashMap<String, i32>) {
+    // IDA 0x958cac: _Rb_tree erase all.
+    map.clear();
 }
-
 // 0x958cd4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player8ChatModeEEEE13initSingletonEv
 #[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")]
-pub fn stub_958cd4() -> ! {
-    todo!("0x958cd4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")
+pub fn stub_958cd4(guard: &mut bool, init: &mut dyn FnMut()) {
+    // IDA 0x958cd4: guarded EnumDesc<ChatMode> init.
+    if !*guard {
+        init();
+        *guard = true;
+    }
 }
-
 // 0x958db8 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED1Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
-pub fn stub_958db8() -> ! {
-    todo!("0x958db8 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+pub fn stub_958db8(destroy: &mut dyn FnMut()) {
+    // IDA 0x958db8: D1 thunk tail-calls D2.
+    destroy();
 }
-
 // 0x958dc4 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
-pub fn stub_958dc4() -> ! {
-    todo!("0x958dc4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+pub fn stub_958dc4(destroy: &mut dyn FnMut()) {
+    // IDA 0x958dc4: EnumDesc D2 (below truncation).
+    destroy();
 }
-
 // 0x959040 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED0Ev
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
-pub fn stub_959040() -> ! {
-    todo!("0x959040 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+pub fn stub_959040(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x959040: EnumDesc D0 + operator delete.
+    destroy();
+    free();
 }
-
 // 0x9590e0 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(char const*)const")]
-pub fn stub_9590e0() -> ! {
-    todo!("0x9590e0 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(char const*)const")
+pub fn stub_9590e0(pairs: &[(String, i32)], name: &str) -> Option<i32> {
+    // IDA 0x9590e0: Name::lookup + pair scan (below truncation).
+    pairs.iter().find(|(n, _)| n == name).map(|(_, v)| *v)
 }
-
 // 0x959170 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE6lookupERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_959170() -> ! {
-    todo!("0x959170 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(RBX::Reflection::Variant const&)const")
+pub fn stub_959170(pairs: &[(i32, String)], value: i32) -> Option<String> {
+    // IDA 0x959170: value -> name lookup (below truncation).
+    pairs.iter().find(|(v, _)| *v == value).map(|(_, n)| n.clone())
 }
-
 // 0x959274 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE14convertToValueEmRNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_959274() -> ! {
-    todo!("0x959274 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+pub fn stub_959274(table: &[i32], index: usize, store: &mut dyn FnMut(i32)) -> bool {
+    // IDA 0x959274: index < count ? store table[index], true : false.
+    if let Some(&v) = table.get(index) {
+        store(v);
+        true
+    } else {
+        false
+    }
 }
-
 // 0x95929c — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringEmRSs
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_95929c() -> ! {
-    todo!("0x95929c RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(unsigned long,std::string &)const")
+pub fn stub_95929c(pairs: &[(i32, String)], value: i32, fallback: &str) -> String {
+    // IDA 0x95929c: convertToString via pair scan (below truncation).
+    pairs.iter().find(|(v, _)| *v == value).map(|(_, n)| n.clone()).unwrap_or_else(|| fallback.to_string())
 }
-
 // 0x9593e0 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")]
-pub fn stub_9593e0() -> ! {
-    todo!("0x9593e0 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")
+pub fn stub_9593e0(out: &mut String, value: &str) {
+    // IDA 0x9593e0: convertToString append (below truncation).
+    out.push_str(value);
 }
-
 // 0x959580 — __ZN3RBX10Reflection7VariantaSINS_7Network6Player8ChatModeEEERS1_RKT_
 #[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")]
-pub fn stub_959580() -> ! {
-    todo!("0x959580 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")
+pub fn stub_959580(slot: &mut Option<i32>, value: i32, init: &mut dyn FnMut()) -> Option<i32> {
+    // IDA 0x959580: call_once singleton; store enum (below truncation).
+    init();
+    *slot = Some(value);
+    *slot
 }
-
 // 0x959734 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player8ChatModeEE14construct_funcEPKcPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::construct_func(char const*,char *)")]
-pub fn stub_959734() -> ! {
-    todo!("0x959734 rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::construct_func(char const*,char *)")
+pub fn stub_959734(slot: &mut Option<usize>, value: usize) -> usize {
+    // IDA 0x959734: construct_func — store into slot.
+    *slot = Some(value);
+    value
 }
-
 // 0x959740 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player8ChatModeEE13destruct_funcEPc
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::destruct_func(char *)")]
-pub fn stub_959740() -> ! {
-    todo!("0x959740 rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::destruct_func(char *)")
+pub fn stub_959740() {
+    // IDA 0x959740: empty destruct_func body.
 }
-
 // 0x959744 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")]
 pub fn stub_959744() -> ! {
