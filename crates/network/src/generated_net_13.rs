@@ -253,6 +253,37 @@ pub const VALS_AC_CHROMINANCE: [u8; 162] = [
     0xf9, 0xfa,
 ];
 
+/// Prep-controller start state (IDA 0x130150: rows available, row cursor, rows per group).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct PrepState {
+    pub rows_avail: u32,
+    pub row_ctr: u32,
+    pub rows_per_group: u32,
+}
+
+/// Prep-controller method (IDA 0x1301a4).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PrepMethod {
+    Context,
+    Data,
+}
+
+/// Prep-controller buffers (IDA 0x1301a4: per-component sample-row groups).
+#[derive(Clone, Debug)]
+pub struct PrepController {
+    pub method: PrepMethod,
+    pub bufs: Vec<Vec<i16>>,
+}
+
+/// Context-row pump state (IDA 0x1306ec: rows available/filled/cursor per group).
+#[derive(Clone, Debug, Default)]
+pub struct PrepContext {
+    pub rows_avail: u32,
+    pub row_ctr: u32,
+    pub rows_filled: u32,
+    pub rows_per_group: u32,
+    pub topped: bool,
+}
 // 0x12bba0 — _jinit_c_main_controller
 #[doc(alias = "_jinit_c_main_controller")]
 pub fn stub_12bba0(raw_data: bool, need_full_buffer: bool, comp_dims: &[(usize, usize)], alloc: &mut dyn FnMut(usize, usize) -> Vec<i16>) -> Vec<Vec<i16>> { // IDA 0x12bba0: install start_pass_main; raw input → no buffers; full-buffer request → error 3; else one sample-row buffer per component.
@@ -792,106 +823,418 @@ pub fn stub_12f2bc() -> QuantTable { // IDA 0x12f2bc: alloc 130 bytes; sent flag
 
 // 0x12f2e4 — _jpeg_alloc_huff_table
 #[doc(alias = "_jpeg_alloc_huff_table")]
-pub fn stub_12f2e4() -> ! { todo!("0x12f2e4 _jpeg_alloc_huff_table") }
+pub fn stub_12f2e4() -> HuffTableSpec { // IDA 0x12f2e4: alloc 274 bytes; sent flag clear.
+    HuffTableSpec::default()
+}
 
 // 0x12f30c — _jpeg_quality_scaling
 #[doc(alias = "_jpeg_quality_scaling")]
-pub fn stub_12f30c() -> ! { todo!("0x12f30c _jpeg_quality_scaling") }
+pub fn stub_12f30c(quality: i32) -> i32 { // IDA 0x12f30c: clamp to 1..100; 49 and below → 5000/q, else 200 - 2q.
+    if quality <= 0 {
+        return 5000;
+    }
+    let mut q = quality;
+    if q > 100 {
+        q = 100;
+    }
+    if q <= 49 {
+        5000 / q
+    } else {
+        200 - 2 * q
+    }
+}
 
 // 0x12f34c — _jpeg_set_colorspace
 #[doc(alias = "_jpeg_set_colorspace")]
-pub fn stub_12f34c() -> ! { todo!("0x12f34c _jpeg_set_colorspace") }
+pub fn stub_12f34c(state_ok: bool, in_comps: u32, space: i32) -> ColorspaceSetup { // IDA 0x12f34c: state != 100 → error 21; per-colorspace component ids, sampling, tables and JFIF/Adobe flags; unknown space → error 11.
+    if !state_ok {
+        panic!("jpeg_set_colorspace: bad state (21)");
+    }
+    match space {
+        0 => {
+            if in_comps < 1 || in_comps > 10 {
+                panic!("jpeg_set_colorspace: too many components (27)");
+            }
+            let comps = (0..in_comps as u8).map(|i| CompSetup { id: i, h: 1, v: 1, q: 0, dc_tbl: 0, ac_tbl: 0 }).collect();
+            ColorspaceSetup { num_comps: in_comps, comps, jfif: false, adobe: false }
+        }
+        1 => ColorspaceSetup {
+            num_comps: 1,
+            comps: vec![CompSetup { id: 1, h: 1, v: 1, q: 0, dc_tbl: 0, ac_tbl: 0 }],
+            jfif: true,
+            adobe: false,
+        },
+        2 => ColorspaceSetup {
+            num_comps: 3,
+            comps: vec![
+                CompSetup { id: 82, h: 1, v: 1, q: 0, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 71, h: 1, v: 1, q: 1, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 66, h: 1, v: 1, q: 1, dc_tbl: 0, ac_tbl: 0 },
+            ],
+            jfif: false,
+            adobe: true,
+        },
+        3 => ColorspaceSetup {
+            num_comps: 3,
+            comps: vec![
+                CompSetup { id: 1, h: 2, v: 2, q: 0, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 2, h: 1, v: 1, q: 1, dc_tbl: 1, ac_tbl: 1 },
+                CompSetup { id: 3, h: 1, v: 1, q: 1, dc_tbl: 1, ac_tbl: 1 },
+            ],
+            jfif: true,
+            adobe: false,
+        },
+        4 => ColorspaceSetup {
+            num_comps: 4,
+            comps: vec![
+                CompSetup { id: 67, h: 1, v: 1, q: 0, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 77, h: 1, v: 1, q: 1, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 89, h: 1, v: 1, q: 1, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 75, h: 1, v: 1, q: 1, dc_tbl: 0, ac_tbl: 0 },
+            ],
+            jfif: false,
+            adobe: true,
+        },
+        5 => ColorspaceSetup {
+            num_comps: 4,
+            comps: vec![
+                CompSetup { id: 1, h: 2, v: 2, q: 0, dc_tbl: 0, ac_tbl: 0 },
+                CompSetup { id: 2, h: 1, v: 1, q: 1, dc_tbl: 1, ac_tbl: 1 },
+                CompSetup { id: 3, h: 1, v: 1, q: 1, dc_tbl: 1, ac_tbl: 1 },
+                CompSetup { id: 4, h: 2, v: 2, q: 1, dc_tbl: 0, ac_tbl: 0 },
+            ],
+            jfif: false,
+            adobe: true,
+        },
+        _ => panic!("jpeg_set_colorspace: bad colorspace (11)"),
+    }
+}
 
 // 0x12f6c0 — _jpeg_default_colorspace
 #[doc(alias = "_jpeg_default_colorspace")]
-pub fn stub_12f6c0() -> ! { todo!("0x12f6c0 _jpeg_default_colorspace") }
+pub fn stub_12f6c0(in_comps: u32, set: &mut dyn FnMut(i32)) { // IDA 0x12f6c0: component count → colorspace (unknown → error 10), then the colorspace hook.
+    let space = match in_comps {
+        0 => 0,
+        1 => 1,
+        2 | 3 => 3,
+        4 => 4,
+        5 => 5,
+        _ => panic!("jpeg_default_colorspace: bad components (10)"),
+    };
+    set(space);
+}
 
 // 0x12f728 — _fill_a_scan
 #[doc(alias = "_fill_a_scan")]
-pub fn stub_12f728() -> ! { todo!("0x12f728 _fill_a_scan") }
+pub fn stub_12f728(comp: usize, ss: u32, se: u32, ah: u32, al: u32) -> ScanScript { // IDA 0x12f728: one single-component scan entry.
+    ScanScript { comps: vec![comp], ss, se, ah, al }
+}
 
 // 0x12f754 — _fill_scans
 #[doc(alias = "_fill_scans")]
-pub fn stub_12f754() -> ! { todo!("0x12f754 _fill_scans") }
+pub fn stub_12f754(num_comps: usize, ss: u32, se: u32, ah: u32, al: u32) -> Vec<ScanScript> { // IDA 0x12f754: one single-component scan per component; IDA packs the (n&3) head Duff-style and the body 4-wide.
+    (0..num_comps).map(|i| ScanScript { comps: vec![i], ss, se, ah, al }).collect()
+}
 
 // 0x12f88c — _fill_dc_scans
 #[doc(alias = "_fill_dc_scans")]
-pub fn stub_12f88c() -> ! { todo!("0x12f88c _fill_dc_scans") }
+pub fn stub_12f88c(num_comps: usize, ah: u32, al: u32) -> Vec<ScanScript> { // IDA 0x12f88c: over 4 components → interleaved full scans; else one DC scan covering all components.
+    if num_comps > 4 {
+        stub_12f754(num_comps, 0, 0, ah, al)
+    } else {
+        vec![ScanScript { comps: (0..num_comps).collect(), ss: 0, se: 0, ah, al }]
+    }
+}
 
 // 0x12f9b4 — _jpeg_simple_progression
 #[doc(alias = "_jpeg_simple_progression")]
-pub fn stub_12f9b4() -> ! { todo!("0x12f9b4 _jpeg_simple_progression") }
+pub fn stub_12f9b4(state_ok: bool, num_comps: usize, max_samp: u32) -> Vec<ScanScript> { // IDA 0x12f9b4: state != 100 → error 21; 3-component 4:4:4 → the 10-scan luma/chroma script, else DC + AC-first/refine/DC-refine scan groups. IDA sizes the script pool 4n+2/6n/10; the Vec grows as needed.
+    if !state_ok {
+        panic!("jpeg_simple_progression: bad state (21)");
+    }
+    let mut out = Vec::new();
+    if num_comps == 3 && max_samp == 3 {
+        out.extend(stub_12f88c(num_comps, 0, max_samp - 2));
+        out.push(stub_12f728(0, 1, 5, 0, 2));
+        out.push(stub_12f728(2, 1, 63, 0, 1));
+        out.push(stub_12f728(1, 1, 63, 0, 1));
+        out.push(stub_12f728(0, 6, 63, 0, 2));
+        out.push(stub_12f728(0, 1, 63, 2, 1));
+        out.extend(stub_12f88c(num_comps, 1, 0));
+        out.push(stub_12f728(2, 1, 63, 1, 0));
+        out.push(stub_12f728(1, 1, 63, 1, 0));
+        out.push(stub_12f728(0, 1, 63, 1, 0));
+    } else {
+        out.extend(stub_12f88c(num_comps, 0, 1));
+        out.extend(stub_12f754(num_comps, 1, 5, 0, 2));
+        out.extend(stub_12f754(num_comps, 6, 63, 0, 2));
+        out.extend(stub_12f754(num_comps, 1, 63, 2, 1));
+        out.extend(stub_12f88c(num_comps, 1, 0));
+        out.extend(stub_12f754(num_comps, 1, 63, 1, 0));
+    }
+    out
+}
 
 // 0x12fc08 — _add_huff_table
 // type: int __fastcall(int, int, void *__src)
 #[doc(alias = "_add_huff_table")]
-pub fn stub_12fc08() -> ! { todo!("0x12fc08 _add_huff_table") }
+pub fn stub_12fc08(bits: &[u8; 17], vals: &[u8]) -> HuffTableSpec { // IDA 0x12fc08: copy the 17 count bytes; over 256 symbols → error 9; copy the symbols; sent = false.
+    let total: usize = bits[1..=16].iter().map(|&b| b as usize).sum();
+    if total > 256 {
+        panic!("add_huff_table: bad Huffman table (9)");
+    }
+    let mut t = HuffTableSpec { bits: *bits, vals: [0; 256], sent: false };
+    t.vals[..total].copy_from_slice(&vals[..total]);
+    t
+}
 
 // 0x12fd18 — _jpeg_add_quant_table
 // type: int __fastcall(_DWORD *, unsigned int, int, int, char)
 #[doc(alias = "_jpeg_add_quant_table")]
-pub fn stub_12fd18() -> ! { todo!("0x12fd18 _jpeg_add_quant_table") }
+pub fn stub_12fd18(state_ok: bool, tbl_no: u32, base: &[u32; 64], scale: u32, force_baseline: bool) -> QuantTable { // IDA 0x12fd18: state != 100 → error 21; table > 3 → error 32; scale (base * scale + 50) / 100 clamped to 1..0x7FFF (255 cap for 8-bit); sent = false. IDA unrolls the loop 2-wide.
+    if !state_ok {
+        panic!("jpeg_add_quant_table: bad state (21)");
+    }
+    if tbl_no > 3 {
+        panic!("jpeg_add_quant_table: bad table number (32)");
+    }
+    let mut q = [0u16; 64];
+    for i in 0..64 {
+        let mut v = (base[i] * scale + 50) / 100;
+        if v == 0 {
+            v = 1;
+        } else if v >= 0x7FFF {
+            v = 0x7FFF;
+        }
+        if force_baseline && v > 255 {
+            v = 255;
+        }
+        q[i] = v as u16;
+    }
+    QuantTable { q, sent: false }
+}
 
 // 0x12fe94 — _jpeg_set_linear_quality
 #[doc(alias = "_jpeg_set_linear_quality")]
-pub fn stub_12fe94() -> ! { todo!("0x12fe94 _jpeg_set_linear_quality") }
+pub fn stub_12fe94(scale: u32, force_baseline: bool, add: &mut dyn FnMut(u32, &[u32; 64], u32, bool) -> QuantTable) -> (QuantTable, QuantTable) { // IDA 0x12fe94: scale both standard tables (luminance 0, chrominance 1).
+    (add(0, &STD_LUMINANCE_QT, scale, force_baseline), add(1, &STD_CHROMINANCE_QT, scale, force_baseline))
+}
 
 // 0x12fef0 — _jpeg_set_quality
 #[doc(alias = "_jpeg_set_quality")]
-pub fn stub_12fef0() -> ! { todo!("0x12fef0 _jpeg_set_quality") }
+pub fn stub_12fef0(quality: i32, force_baseline: bool, set_linear: &mut dyn FnMut(u32, bool)) { // IDA 0x12fef0: quality → scaling factor → linear table setup.
+    set_linear(stub_12f30c(quality) as u32, force_baseline);
+}
 
 // 0x12ff1c — _jpeg_set_defaults
 #[doc(alias = "_jpeg_set_defaults")]
-pub fn stub_12ff1c() -> ! { todo!("0x12ff1c _jpeg_set_defaults") }
+pub fn stub_12ff1c(state_ok: bool, precision: u8, alloc_comps: &mut dyn FnMut(), set_quality: &mut dyn FnMut(u32, bool), add_htbl: &mut dyn FnMut(&[u8; 17], &[u8]), set_colorspace: &mut dyn FnMut()) -> JpegDefaults { // IDA 0x12ff1c: state != 100 → error 21; alloc components; quality 75 baseline; the 4 standard Huffman tables; default tables/JFIF/restart state; arith iff precision > 8.
+    if !state_ok {
+        panic!("jpeg_set_defaults: bad state (21)");
+    }
+    alloc_comps();
+    set_quality(75, true);
+    add_htbl(&BITS_DC_LUMINANCE, &VALS_DC_LUMINANCE);
+    add_htbl(&BITS_AC_LUMINANCE, &VALS_AC_LUMINANCE);
+    add_htbl(&BITS_DC_CHROMINANCE, &VALS_DC_CHROMINANCE);
+    add_htbl(&BITS_AC_CHROMINANCE, &VALS_AC_CHROMINANCE);
+    set_colorspace();
+    JpegDefaults {
+        arith_code: precision > 8,
+        dc_tables: [0; 16],
+        ac_tables: [1; 16],
+        q_tables: [5; 16],
+        jfif: JfifHeader { major: 1, minor: 1, units: 0, x_density: 1, y_density: 1 },
+    }
+}
 
 // 0x130150 — _start_pass_prep
 #[doc(alias = "_start_pass_prep")]
-pub fn stub_130150() -> ! { todo!("0x130150 _start_pass_prep") }
+pub fn stub_130150(full_buffer: bool, input_rows: u32, v_max: u32) -> PrepState { // IDA 0x130150: full-buffer request → error 3; latch input rows, clear cursors, rows per group = 2 * v_max; returns the group size.
+    if full_buffer {
+        panic!("start_pass_prep: full-buffer prep unsupported (3)");
+    }
+    PrepState { rows_avail: input_rows, row_ctr: 0, rows_per_group: 2 * v_max }
+}
 
 // 0x1301a4 — _jinit_c_prep_controller
 #[doc(alias = "_jinit_c_prep_controller")]
-pub fn stub_1301a4() -> ! { todo!("0x1301a4 _jinit_c_prep_controller") }
+pub fn stub_1301a4(full_buffer: bool, need_context: bool, comp_widths: &[usize], group_rows: usize, alloc: &mut dyn FnMut(usize) -> Vec<i16>) -> PrepController { // IDA 0x1301a4: full-buffer request → error 3; context mode → pre_process_context plus color buffers, else pre_process_data plus per-component buffers (IDA pre-splits the color buffer with a Duff interleave).
+    if full_buffer {
+        panic!("jinit_c_prep_controller: full-buffer prep unsupported (3)");
+    }
+    let bufs = comp_widths.iter().map(|&w| alloc(w * group_rows)).collect();
+    PrepController { method: if need_context { PrepMethod::Context } else { PrepMethod::Data }, bufs }
+}
 
 // 0x130594 — _expand_bottom_edge
 // type: int __fastcall(int, size_t __n, int)
 #[doc(alias = "_expand_bottom_edge")]
-pub fn stub_130594() -> ! { todo!("0x130594 _expand_bottom_edge") }
+pub fn stub_130594(rows: &mut Vec<Vec<u8>>, first: usize) { // IDA 0x130594: replicate rows[first - 1] over rows[first..]; (count&3) Duff head + 4-wide body.
+    if first >= rows.len() {
+        return;
+    }
+    let fill = rows[first - 1].clone();
+    for r in rows.iter_mut().skip(first) {
+        r.clone_from(&fill);
+    }
+}
 
 // 0x1306ec — _pre_process_context
 #[doc(alias = "_pre_process_context")]
-pub fn stub_1306ec() -> ! { todo!("0x1306ec _pre_process_context") }
+pub fn stub_1306ec(st: &mut PrepContext, v_max: u32, num_comps: u32, in_row: &mut u32, in_max: u32, out_row: &mut u32, out_max: u32, color_convert: &mut dyn FnMut(u32), expand_top: &mut dyn FnMut(), expand_bottom: &mut dyn FnMut(), downsample: &mut dyn FnMut()) -> u32 { // IDA 0x1306ec: context-row pump; top-edge expand on the first fill, bottom-edge expand at the end, downsample on full groups with 3*v_max window wrap; returns output rows done.
+    let window = 3 * v_max;
+    while *out_row < out_max {
+        if *in_row < in_max {
+            let room = st.rows_per_group - st.row_ctr;
+            let n = (*in_row + room).min(in_max) - *in_row;
+            color_convert(n);
+            if !st.topped {
+                for _ in 0..num_comps {
+                    expand_top();
+                }
+                st.topped = true;
+            }
+            *in_row += n;
+            st.rows_avail -= n;
+            st.row_ctr += n;
+        } else if st.rows_avail != 0 {
+            return *out_row;
+        } else if st.row_ctr < st.rows_per_group {
+            expand_bottom();
+            st.row_ctr = st.rows_per_group;
+        }
+        if st.row_ctr == st.rows_per_group {
+            downsample();
+            *out_row += 1;
+            st.rows_filled += v_max;
+            if st.rows_filled >= window {
+                st.rows_filled = 0;
+            }
+            if st.row_ctr >= window {
+                st.row_ctr = 0;
+            }
+            st.rows_per_group = v_max + st.row_ctr;
+        }
+    }
+    *out_row
+}
 
 // 0x130910 — _pre_process_data
 #[doc(alias = "_pre_process_data")]
-pub fn stub_130910() -> ! { todo!("0x130910 _pre_process_data") }
+pub fn stub_130910(in_row: &mut u32, in_max: u32, out_row: &mut u32, out_max: u32, remaining: &mut u32, filled: &mut u32, group: u32, num_comps: u32, color_convert: &mut dyn FnMut(u32), expand_bottom: &mut dyn FnMut(), downsample: &mut dyn FnMut(), finish_bottom: &mut dyn FnMut(usize)) -> u32 { // IDA 0x130910: data-row pump; bottom-edge expand at the end, downsample on full groups, downstream bottom expand when input runs dry; returns output rows done.
+    while *in_row < in_max && *out_row < out_max {
+        let n = (*in_row + (group - *filled)).min(in_max) - *in_row;
+        color_convert(n);
+        *in_row += n;
+        *remaining -= n;
+        *filled += n;
+        if *remaining == 0 {
+            if *filled < group {
+                expand_bottom();
+                *filled = group;
+            }
+            if *filled == group {
+                downsample();
+                *filled = 0;
+                *out_row += 1;
+            }
+        }
+        if *remaining == 0 {
+            if *out_row < out_max {
+                for i in 0..num_comps as usize {
+                    finish_bottom(i);
+                }
+                *out_row = out_max;
+            }
+            return *out_row;
+        }
+    }
+    *out_row
+}
 
 // 0x130ae8 — _start_pass_downsample
 #[doc(alias = "_start_pass_downsample")]
-pub fn stub_130ae8() -> ! { todo!("0x130ae8 _start_pass_downsample") }
+pub fn stub_130ae8() { // IDA 0x130ae8: empty start-pass body.
+}
 
 // 0x130aec — _expand_right_edge
 #[doc(alias = "_expand_right_edge")]
-pub fn stub_130aec() -> ! { todo!("0x130aec _expand_right_edge") }
+pub fn stub_130aec(rows: &mut [Vec<u8>], first: usize) { // IDA 0x130aec: replicate the last valid sample across each row's padding; IDA Duff-unrolls by (count&7).
+    for r in rows.iter_mut() {
+        if first == 0 || first > r.len() {
+            continue;
+        }
+        let v = r[first - 1];
+        for o in r.iter_mut().skip(first) {
+            *o = v;
+        }
+    }
+}
 
 // 0x130bec — _sep_downsample
 #[doc(alias = "_sep_downsample")]
-pub fn stub_130bec() -> ! { todo!("0x130bec _sep_downsample") }
+pub fn stub_130bec(num_comps: usize, downsample: &mut dyn FnMut(usize) -> bool) -> bool { // IDA 0x130bec: call each component's downsample method in order; returns the last result (no early exit).
+    let mut ok = true;
+    for i in 0..num_comps {
+        ok = downsample(i);
+    }
+    ok
+}
 
 // 0x130c78 — _int_downsample
 #[doc(alias = "_int_downsample")]
-pub fn stub_130c78() -> ! { todo!("0x130c78 _int_downsample") }
+pub fn stub_130c78(input: &[Vec<u8>], h: usize, v: usize, out: &mut [u8], expand: &mut dyn FnMut()) { // IDA 0x130c78: expand the right edge, then box-average each h×v cell with half-up rounding; IDA Duff-unrolls the row sum by (h&7).
+    expand();
+    let n = (h * v) as u32;
+    for (x, o) in out.iter_mut().enumerate() {
+        let mut sum = 0u32;
+        for r in input.iter().take(v) {
+            for k in 0..h {
+                sum += r[x * h + k] as u32;
+            }
+        }
+        *o = ((sum + (n >> 1)) / n) as u8;
+    }
+}
 
 // 0x130ea8 — _h2v1_downsample
 #[doc(alias = "_h2v1_downsample")]
-pub fn stub_130ea8() -> ! { todo!("0x130ea8 _h2v1_downsample") }
+pub fn stub_130ea8(input: &[u8], out: &mut [u8], expand: &mut dyn FnMut()) { // IDA 0x130ea8: 2:1 horizontal average with alternating rounding bias starting at 0; IDA unrolls 8-wide with a (w&7) bias-carry prologue (folded here).
+    expand();
+    let mut bias = 0u16;
+    for (i, o) in out.iter_mut().enumerate() {
+        *o = ((input[2 * i] as u16 + input[2 * i + 1] as u16 + bias) >> 1) as u8;
+        bias ^= 1;
+    }
+}
 
 // 0x13114c — _h2v2_downsample
 #[doc(alias = "_h2v2_downsample")]
-pub fn stub_13114c() -> ! { todo!("0x13114c _h2v2_downsample") }
+pub fn stub_13114c(top: &[u8], bottom: &[u8], out: &mut [u8]) { // IDA 0x13114c: 2×2 average with alternating rounding bias (1, 2); (w&3) prologue folded to a bias start of 1.
+    let mut bias = 1u16;
+    for (i, o) in out.iter_mut().enumerate() {
+        *o = ((top[2 * i] as u16 + top[2 * i + 1] as u16 + bottom[2 * i] as u16 + bottom[2 * i + 1] as u16 + bias) >> 2) as u8;
+        bias ^= 3;
+    }
+}
 
 // 0x13136c — _h2v2_smooth_downsample
 #[doc(alias = "_h2v2_smooth_downsample")]
-pub fn stub_13136c() -> ! { todo!("0x13136c _h2v2_smooth_downsample") }
+pub fn stub_13136c(smooth: u16, rm1: &[u8], r0: &[u8], r1: &[u8], rp1: &[u8], out: &mut [u8]) { // IDA 0x13136c: 2×2 smooth (box-weighted) downsample; weights 0x4000 - 80*smooth on the 4 center taps and 16*smooth on the 20 surround taps; edge taps clamped (IDA special-cases the first/last outputs and odd widths with the same weights).
+    let w6 = 16 * smooth as u32;
+    let w8 = 0x4000 - 80 * smooth as u32;
+    let at = |row: &[u8], i: isize| row[i.clamp(0, row.len() as isize - 1) as usize] as u32;
+    for (j, o) in out.iter_mut().enumerate() {
+        let x = 2 * j as isize;
+        let center = at(r0, x) + at(r0, x + 1) + at(r1, x) + at(r1, x + 1);
+        let surround = at(rm1, x) + at(rm1, x + 1) + at(rp1, x) + at(rp1, x + 1)
+            + at(rm1, x - 1) + at(r0, x - 1) + at(r1, x - 1) + at(rp1, x - 1)
+            + at(rm1, x + 2) + at(r0, x + 2) + at(r1, x + 2) + at(rp1, x + 2)
+            + 2 * (at(rm1, x - 2) + at(r0, x - 2) + at(r1, x - 2) + at(rp1, x - 2));
+        *o = ((w8 * center + 0x8000 + w6 * surround) >> 16) as u8;
+    }
+}
 
 // 0x13179c — _fullsize_smooth_downsample
 #[doc(alias = "_fullsize_smooth_downsample")]
