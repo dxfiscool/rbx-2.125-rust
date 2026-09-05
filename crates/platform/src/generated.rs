@@ -852,6 +852,9 @@ pub struct ThumbStickState {
     begin_calls: AtomicU32,
     move_calls: AtomicU32,
     releases: AtomicU32,
+    anim_passes: AtomicU32,
+    cancel_calls: AtomicU32,
+    view_alpha: parking_lot::Mutex<f32>,
 }
 impl ThumbStickState {
     fn bump(&self, c: &AtomicU32) {
@@ -1019,7 +1022,189 @@ impl ThumbStickState {
     pub fn begin_call_count(&self) -> u32 {
         self.begin_calls.load(Ordering::SeqCst)
     }
+    /// `-[ThumbStickControl touchesMoved:withEvent:]` follow-up (IDA
+    /// 0x507fe..0x50864): subview animations clear with alpha 1.0.
+    pub fn touches_moved(&self, touches: &[ControlTouch]) -> bool {
+        let tracked = *self.thumbstick_touch.lock();
+        let Some(id) = tracked else { return false };
+        let Some(touch) = touches.iter().find(|t| Some(t.id) == Some(id)) else { return false };
+        let loc = (touch.x, touch.y);
+        if self.style.load(Ordering::SeqCst) == 1 {
+            self.follow_move(loc);
+        } else if self.style.load(Ordering::SeqCst) == 0 {
+            self.stationary_move(loc);
+        }
+        self.bump(&self.anim_passes);
+        true
+    }
+    pub fn anim_pass_count(&self) -> u32 {
+        self.anim_passes.load(Ordering::SeqCst)
+    }
+    /// `-[ThumbStickControl cancelMovement]` (IDA 0x508b0): clears
+    /// `thumbstickTouch` (0x508f0), then the fade runs inline — animations
+    /// to alpha 0 (0x50960), completion back to `thumbstickInactiveAlpha`
+    /// (0x50c18); the second completion is empty (0x50c80).
+    pub fn cancel_movement(&self) {
+        *self.thumbstick_touch.lock() = None;
+        *self.view_alpha.lock() = 0.0;
+        *self.view_alpha.lock() = *self.inactive_alpha.lock();
+        self.bump(&self.cancel_calls);
+    }
+    pub fn cancel_call_count(&self) -> u32 {
+        self.cancel_calls.load(Ordering::SeqCst)
+    }
+    pub fn set_view_alpha(&self, alpha: f32) {
+        *self.view_alpha.lock() = alpha;
+    }
+    pub fn view_alpha(&self) -> f32 {
+        *self.view_alpha.lock()
+    }
+    pub fn inactive_alpha(&self) -> f32 {
+        *self.inactive_alpha.lock()
+    }
 }
+/// Host id standing in for the `GameMenu` `self`.
+const GAME_MENU_ID: ControlId = 8;
+/// `GameMenu` window size from `-[GameMenu init:]` (IDA 0x50f1a..0x50f24).
+const GAME_MENU_SIZE: (f32, f32) = (400.0, 256.0);
+/// Minimal `GameMenu` counterpart (IDA 0x50eb0..0x51738): the `shown` flag,
+/// hidden state, centered/offscreen frames and the leave-request counter.
+/// `animateWithDuration:` blocks run inline on the host.
+#[derive(Debug, Default)]
+pub struct GameMenuState {
+    initialized: AtomicBool,
+    shown: AtomicBool,
+    hidden: AtomicBool,
+    has_views: AtomicBool,
+    menu_button: parking_lot::Mutex<Option<ControlId>>,
+    menu_button_enabled: AtomicBool,
+    frame: parking_lot::Mutex<(f32, f32, f32, f32)>,
+    parent: parking_lot::Mutex<Option<ControlId>>,
+    last_screen: parking_lot::Mutex<(f32, f32)>,
+    leave_calls: AtomicU32,
+    anim_runs: AtomicU32,
+    releases: AtomicU32,
+}
+impl GameMenuState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[GameMenu init:]` (IDA 0x50eb0): super `ControlComponent init`,
+    /// 400x256 window, the menu button, hidden 1, background image, then
+    /// the leave label + accept/decline buttons.
+    pub fn init_menu(&self, menu_button: Option<ControlId>) -> Option<ControlId> {
+        *self.menu_button.lock() = menu_button;
+        self.menu_button_enabled.store(true, Ordering::SeqCst);
+        self.shown.store(false, Ordering::SeqCst);
+        self.hidden.store(true, Ordering::SeqCst);
+        self.has_views.store(true, Ordering::SeqCst);
+        *self.frame.lock() = (0.0, 0.0, GAME_MENU_SIZE.0, GAME_MENU_SIZE.1);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(GAME_MENU_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `-[GameMenu dealloc]` (IDA 0x512f8): the three subview `release`s,
+    /// then super.
+    pub fn dealloc(&self) {
+        self.has_views.store(false, Ordering::SeqCst);
+        self.bump(&self.releases);
+    }
+    pub fn release_count(&self) -> u32 {
+        self.releases.load(Ordering::SeqCst)
+    }
+    /// `-[GameMenu isShown]` (IDA 0x51370).
+    pub fn is_shown(&self) -> bool {
+        self.shown.load(Ordering::SeqCst)
+    }
+    pub fn is_hidden(&self) -> bool {
+        self.hidden.load(Ordering::SeqCst)
+    }
+    pub fn frame(&self) -> (f32, f32, f32, f32) {
+        *self.frame.lock()
+    }
+    /// `-[GameMenu acceptButtonPressed:]` (IDA 0x51380): `leaveGame` on the
+    /// shared `PlaceLauncher`; counted here.
+    pub fn accept(&self) {
+        self.bump(&self.leave_calls);
+    }
+    pub fn leave_call_count(&self) -> u32 {
+        self.leave_calls.load(Ordering::SeqCst)
+    }
+    /// `-[GameMenu declineButtonPressed:]` (IDA 0x513b4): `hideMenu` over
+    /// the last seen screen.
+    pub fn decline(&self) {
+        let screen = *self.last_screen.lock();
+        self.hide_menu(screen);
+    }
+    /// `-[GameMenu inverseMenuState:]` (IDA 0x513c4): shown hides over the
+    /// last seen screen, hidden shows centered on the menu size.
+    pub fn inverse(&self) {
+        if self.is_shown() {
+            let screen = *self.last_screen.lock();
+            self.hide_menu(screen);
+        } else {
+            self.show_menu(None, (GAME_MENU_SIZE.0, GAME_MENU_SIZE.1));
+        }
+    }
+    /// `__21-[GameMenu showMenu:]_block_invoke` (IDA 0x51570): the menu
+    /// frame centers on the screen.
+    pub fn apply_show_frame(&self, screen: (f32, f32)) {
+        *self.last_screen.lock() = screen;
+        *self.frame.lock() = (
+            (screen.0 - GAME_MENU_SIZE.0) / 2.0,
+            (screen.1 - GAME_MENU_SIZE.1) / 2.0,
+            GAME_MENU_SIZE.0,
+            GAME_MENU_SIZE.1,
+        );
+    }
+    /// `-[GameMenu showMenu:]` (IDA 0x513f8): `shown` 1, the frame starts
+    /// centered-x at the screen bottom, unhide, `[parent addSubview:]`,
+    /// then the centering animation runs inline (nil completion).
+    pub fn show_menu(&self, parent: Option<ControlId>, screen: (f32, f32)) {
+        self.shown.store(true, Ordering::SeqCst);
+        *self.frame.lock() = (
+            (screen.0 - GAME_MENU_SIZE.0) / 2.0,
+            screen.1,
+            GAME_MENU_SIZE.0,
+            GAME_MENU_SIZE.1,
+        );
+        self.hidden.store(false, Ordering::SeqCst);
+        *self.parent.lock() = parent;
+        self.apply_show_frame(screen);
+        self.bump(&self.anim_runs);
+    }
+    /// `__20-[GameMenu hideMenu]_block_invoke` (IDA 0x51738): the menu
+    /// frame slides offscreen-bottom: x centers, y sits at the screen height.
+    pub fn apply_hide_frame(&self, screen: (f32, f32)) {
+        *self.last_screen.lock() = screen;
+        *self.frame.lock() = (
+            (screen.0 - GAME_MENU_SIZE.0) / 2.0,
+            screen.1,
+            GAME_MENU_SIZE.0,
+            GAME_MENU_SIZE.1,
+        );
+    }
+    /// `-[GameMenu hideMenu]` (IDA 0x515f0): `shown` 0, the menu button
+    /// re-enabled, then the slide-off animation runs inline and the
+    /// completion hides the menu.
+    pub fn hide_menu(&self, screen: (f32, f32)) {
+        self.shown.store(false, Ordering::SeqCst);
+        self.menu_button_enabled.store(true, Ordering::SeqCst);
+        self.apply_hide_frame(screen);
+        self.hidden.store(true, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    pub fn is_menu_button_enabled(&self) -> bool {
+        self.menu_button_enabled.load(Ordering::SeqCst)
+    }
+    pub fn anim_run_count(&self) -> u32 {
+        self.anim_runs.load(Ordering::SeqCst)
+    }
+}
+static GAME_MENU: std::sync::LazyLock<GameMenuState> =
+    std::sync::LazyLock::new(GameMenuState::default);
 static THUMB_STICK: std::sync::LazyLock<ThumbStickState> =
     std::sync::LazyLock::new(ThumbStickState::default);
 /// Host id standing in for the `GameInputViewController` `self`.
@@ -11995,105 +12180,144 @@ pub fn stub_50338(loc: (f32, f32)) -> (f32, f32) {
 // 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
 // type: void __cdecl(ThumbStickControl *self, SEL, id, id)
 #[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
-pub fn stub_506cc() -> ! {
-    todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
+pub fn stub_506cc(touches: &[ControlTouch]) -> bool {
+    // IDA 0x506cc `-[ThumbStickControl touchesMoved:withEvent:]`: enumerate
+    // for the tracked `thumbstickTouch` (0x50726..0x507ca); style 1 runs
+    // `followThumbstickTouchMove` (0x507da), style 0 runs
+    // `stationaryThumbstickTouchMove` (0x507e2), then subview animations
+    // clear with alpha 1.0 (0x507fe..0x50864).
+    THUMB_STICK.touches_moved(touches)
 }
 // 0x508b0 — -[ThumbStickControl cancelMovement]
 // type: void __cdecl(ThumbStickControl *self, SEL)
 #[doc(alias = "-[ThumbStickControl cancelMovement]")]
-pub fn stub_508b0() -> ! {
-    todo!("0x508b0 -[ThumbStickControl cancelMovement]")
+pub fn stub_508b0() {
+    // IDA 0x508b0 `-[ThumbStickControl cancelMovement]`: clears
+    // `thumbstickTouch` (0x508f0), then the fade-out animation with the
+    // `__35…` pair via `animateWithDuration:0.4` (0x50900..0x5094a, inline;
+    // the second completion is empty).
+    THUMB_STICK.cancel_movement();
 }
 
 // 0x50960 — ___35-[ThumbStickControl cancelMovement]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke")]
-pub fn stub_50960() -> ! {
-    todo!("0x50960 ___35-[ThumbStickControl cancelMovement]_block_invoke")
+pub fn stub_50960() {
+    // IDA 0x50960 `__35-[ThumbStickControl cancelMovement:]_block_invoke`
+    // (animations): both image-view alphas to 0 (0x50986).
+    THUMB_STICK.set_view_alpha(0.0);
 }
 
 // 0x50c18 — ___35-[ThumbStickControl cancelMovement]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke_2")]
-pub fn stub_50c18() -> ! {
-    todo!("0x50c18 ___35-[ThumbStickControl cancelMovement]_block_invoke_2")
+pub fn stub_50c18() {
+    // IDA 0x50c18 `__35-[ThumbStickControl cancelMovement:]_block_invoke_2`
+    // (completion): both alphas back to `thumbstickInactiveAlpha` (0x50c4a).
+    THUMB_STICK.set_view_alpha(THUMB_STICK.inactive_alpha());
 }
 
 // 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
 // type: void __cdecl(id, char)
 #[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
-pub fn stub_50c80() -> ! {
-    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+pub fn stub_50c80() {
+    // IDA 0x50c80 `__35-[ThumbStickControl cancelMovement:]_block_invoke84`
+    // (completion): empty body.
 }
 
 // 0x50eb0 — -[GameMenu init:]
 // type: id __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu init:]")]
-pub fn stub_50eb0() -> ! {
-    todo!("0x50eb0 -[GameMenu init:]")
+pub fn stub_50eb0(menu_button: Option<ControlId>) -> Option<ControlId> {
+    // IDA 0x50eb0 `-[GameMenu init:]`: super `ControlComponent init`
+    // (0x50ee8); window 400x256 at origin (0x50f1a..0x50f24), the menu
+    // button (0x50f2a), `setFrame:` (0x50f44), `shown` 0, background image,
+    // hidden 1 (0x50f6c..0x50fa2), then the leave label + accept/decline
+    // buttons (0x50fc2..tail).
+    GAME_MENU.init_menu(menu_button)
 }
 
 // 0x512f8 — -[GameMenu dealloc]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu dealloc]")]
-pub fn stub_512f8() -> ! {
-    todo!("0x512f8 -[GameMenu dealloc]")
+pub fn stub_512f8() {
+    // IDA 0x512f8 `-[GameMenu dealloc]`: accept/decline/label `release`
+    // (0x5131c..0x51344), then super `dealloc` (0x51366).
+    GAME_MENU.dealloc();
 }
 
 // 0x51370 — -[GameMenu isShown]
 // type: char __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu isShown]")]
-pub fn stub_51370() -> ! {
-    todo!("0x51370 -[GameMenu isShown]")
+pub fn stub_51370() -> bool {
+    // IDA 0x51370 `-[GameMenu isShown]`: the `shown` flag (0x5137e).
+    GAME_MENU.is_shown()
 }
 
 // 0x51380 — -[GameMenu acceptButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu acceptButtonPressed:]")]
-pub fn stub_51380() -> ! {
-    todo!("0x51380 -[GameMenu acceptButtonPressed:]")
+pub fn stub_51380() {
+    // IDA 0x51380 `-[GameMenu acceptButtonPressed:]`: `leaveGame` on the
+    // shared `PlaceLauncher` (0x5139c..0x513b0).
+    GAME_MENU.accept();
 }
 
 // 0x513b4 — -[GameMenu declineButtonPressed:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu declineButtonPressed:]")]
-pub fn stub_513b4() -> ! {
-    todo!("0x513b4 -[GameMenu declineButtonPressed:]")
+pub fn stub_513b4() {
+    // IDA 0x513b4 `-[GameMenu declineButtonPressed:]`: `hideMenu` (0x513c0).
+    GAME_MENU.decline();
 }
 
 // 0x513c4 — -[GameMenu inverseMenuState:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu inverseMenuState:]")]
-pub fn stub_513c4() -> ! {
-    todo!("0x513c4 -[GameMenu inverseMenuState:]")
+pub fn stub_513c4() {
+    // IDA 0x513c4 `-[GameMenu inverseMenuState:]`: shown hides (0x513f0),
+    // hidden shows (0x513e0).
+    GAME_MENU.inverse();
 }
 
 // 0x513f8 — -[GameMenu showMenu:]
 // type: void __cdecl(GameMenu *self, SEL, id)
 #[doc(alias = "-[GameMenu showMenu:]")]
-pub fn stub_513f8() -> ! {
-    todo!("0x513f8 -[GameMenu showMenu:]")
+pub fn stub_513f8(parent: Option<ControlId>, screen: (f32, f32)) {
+    // IDA 0x513f8 `-[GameMenu showMenu:]`: `shown` 1 (0x51428), the frame
+    // starts centered-x at the screen bottom (0x51432..0x514c2), unhide
+    // (0x514d6), `[parent addSubview:]` (0x514ea), then the centering
+    // animation (0x51528..0x51556, inline; the completion is nil).
+    GAME_MENU.show_menu(parent, screen);
 }
 
 // 0x51570 — ___21-[GameMenu showMenu:]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___21-[GameMenu showMenu:]_block_invoke")]
-pub fn stub_51570() -> ! {
-    todo!("0x51570 ___21-[GameMenu showMenu:]_block_invoke")
+pub fn stub_51570(screen: (f32, f32)) {
+    // IDA 0x51570 `__21-[GameMenu showMenu:]_block_invoke` (animations):
+    // the menu frame centers on the screen (0x51580..0x515da).
+    GAME_MENU.apply_show_frame(screen);
 }
 
 // 0x515f0 — -[GameMenu hideMenu]
 // type: void __cdecl(GameMenu *self, SEL)
 #[doc(alias = "-[GameMenu hideMenu]")]
-pub fn stub_515f0() -> ! {
-    todo!("0x515f0 -[GameMenu hideMenu]")
+pub fn stub_515f0(screen: (f32, f32)) {
+    // IDA 0x515f0 `-[GameMenu hideMenu]`: `shown` 0 (0x5161e), the menu
+    // button re-enabled (0x5167c..0x51692), then the slide-off animation
+    // with the `__20…` pair via `animateWithDuration:` (0x516ca..0x51722,
+    // inline on the host; the completion hides the menu).
+    GAME_MENU.hide_menu(screen);
 }
 
 // 0x51738 — ___20-[GameMenu hideMenu]_block_invoke
 // type: id __fastcall(_DWORD *)
 #[doc(alias = "___20-[GameMenu hideMenu]_block_invoke")]
-pub fn stub_51738() -> ! {
-    todo!("0x51738 ___20-[GameMenu hideMenu]_block_invoke")
+pub fn stub_51738(screen: (f32, f32)) {
+    // IDA 0x51738 `__20-[GameMenu hideMenu]_block_invoke` (animations):
+    // the menu frame slides offscreen-bottom (0x51748..0x51792).
+    GAME_MENU.apply_hide_frame(screen);
 }
 
 // 0x517a8 — ___20-[GameMenu hideMenu]_block_invoke99
