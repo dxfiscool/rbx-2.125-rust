@@ -8,11 +8,12 @@
 
 use rbx_core::SharedPtr;
 use rbx_core::WeakPtr;
+use rbx_core::signal::Signal;
 use crate::data_model::{DataModel, FunctorOp};
-use crate::generated_05::SignatureItem;
+use crate::generated_05::{Instance, PairConnection, SignatureItem, instance_is_a};
 use crate::generated_b::BoundMethod;
 use std::collections::BTreeMap;
-use crate::instance::LegacyPartType;
+use crate::instance::{EnumSlot, LegacyPartType};
 
 /// Rust model of `G3D::Vector2` bound by the `0xf59db4` callback: the plain
 /// float pair.
@@ -1261,110 +1262,513 @@ pub fn stub_0xf3a914(map: &mut BTreeMap<String, LegacyPartType>, key: &str, valu
     map.insert(key.to_owned(), value);
 }
 
-// 0xf3c564 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17BasicPartInstance14LegacyPartTypeEEERS3_RKT_
+/// Rust model of `rbx::implementation::typed_holder<LegacyPartType>` (IDA
+/// `0x4c9868`, target of the `0xf3c8b4` jump stub): the empty per-type
+/// holder whose singleton is a function-local static.
+#[derive(Clone, Copy, Default)]
+pub struct LegacyPartTypeHolder {
+    _opaque: (),
+}
+/// Singleton holder behind `typed_holder<LegacyPartType>::singleton`.
+static LEGACY_PART_TYPE_HOLDER: LegacyPartTypeHolder = LegacyPartTypeHolder { _opaque: () };
+
+/// Rust model of `RBX::SeatImpl<BasicPartInstance>` (IDA `0x615bdc` ff.,
+/// via the `0xf46974`-`0xf46a34` jump stubs): the seat part link, the
+/// disabled flag behind `setDisabled`, the cached seat-weld link behind
+/// `findSeatWeld`, and the notify connection torn down by `~SeatImpl`.
+pub struct SeatImpl {
+    pub part: *const Instance,
+    pub disabled: bool,
+    pub weld: *const Instance,
+    pub conn: Option<PairConnection>,
+}
+
+/// Rust model of `boost::_bi::bind_t<void, mf0<void, SeatImpl>, ...>` (IDA
+/// `0x616788`, via `0xf46a34`): the bound seat plus the nullary member.
+#[derive(Clone, Copy)]
+pub struct SeatNotifyBind {
+    pub func: fn(*const SeatImpl),
+    pub target: *const SeatImpl,
+}
+// The bound target travels inside signal slots; sound under the
+// slot-lifetime contract like `AnimatorBind` (instance.rs).
+unsafe impl Send for SeatNotifyBind {}
+unsafe impl Sync for SeatNotifyBind {}
+
+/// Rust model of `RBX::PlatformImpl<BasicPartInstance>` (IDA `0x62a0e4`
+/// ff., via the `0xf470e4`-`0xf47364` jump stubs): same shape as
+/// `SeatImpl` over the platform motor, plus the provider link behind
+/// `onServiceProvider`.
+pub struct PlatformImpl {
+    pub part: *const Instance,
+    pub motor: *const Instance,
+    pub provider: *const Instance,
+    pub conn: Option<PairConnection>,
+}
+
+/// Rust model of `boost::_bi::bind_t<void, mf0<void, PlatformImpl>, ...>`
+/// (IDA `0x62b93c`, via `0xf47364`).
+#[derive(Clone, Copy)]
+pub struct PlatformNotifyBind {
+    pub func: fn(*const PlatformImpl),
+    pub target: *const PlatformImpl,
+}
+// Same slot-lifetime contract as `SeatNotifyBind`.
+unsafe impl Send for PlatformNotifyBind {}
+unsafe impl Sync for PlatformNotifyBind {}
+
+/// Rust model of `RBX::ActionStation<BasicPartInstance>` (IDA `0x62eda8`,
+/// via `0xf47144`): the part link installed by the ctor.
+pub struct ActionStation {
+    pub part: *const Instance,
+}
+
+// 0xf3c564 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17BasicPartInstance14LegacyPartTypeEEERS3_RKT_
 #[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BasicPartInstance::LegacyPartType>(RBX::BasicPartInstance::LegacyPartType const&)")]
-pub fn stub_0xf3c564() -> ! {
-    todo!("0xf3c564 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::BasicPartInstance::LegacyPartType>(RBX::BasicPartInstance::LegacyPartType const&)")
-}
+#[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17BasicPartInstance14LegacyPartTypeEEERS3_RKT_")]
+// Jump thunk (`j__` import stub); canonical body lives in `crate::instance::stub_0x4c9818`;
+// re-exported so the two addresses cannot drift.
+pub use crate::instance::stub_0x4c9818 as stub_0xf3c564;
 
-// 0xf3c8b4 — j___ZN3rbx14implementation12typed_holderIN3RBX17BasicPartInstance14LegacyPartTypeEE9singletonEv
+// 0xf3c8b4 — __ZN3rbx14implementation12typed_holderIN3RBX17BasicPartInstance14LegacyPartTypeEE9singletonEv
 #[doc(alias = "rbx::implementation::typed_holder<RBX::BasicPartInstance::LegacyPartType>::singleton(void)")]
-pub fn stub_0xf3c8b4() -> ! {
-    todo!("0xf3c8b4 rbx::implementation::typed_holder<RBX::BasicPartInstance::LegacyPartType>::singleton(void)")
+pub fn stub_0xf3c8b4() -> &'static LegacyPartTypeHolder {
+    // IDA 0xf3c8b4: jump stub into `typed_holder<LegacyPartType>::singleton`
+    // (IDA 0x4c9868, export `_DWORD *()`): returns the function-local static
+    // holder.
+    &LEGACY_PART_TYPE_HOLDER
 }
 
-// 0xf3cc74 — j___ZN3rbx8any_castIRKN3RBX17BasicPartInstance14LegacyPartTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+// 0xf3cc74 — __ZN3rbx8any_castIRKN3RBX17BasicPartInstance14LegacyPartTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
 #[doc(alias = "RBX::BasicPartInstance::LegacyPartType const& rbx::any_cast<RBX::BasicPartInstance::LegacyPartType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_0xf3cc74() -> ! {
-    todo!("0xf3cc74 RBX::BasicPartInstance::LegacyPartType const& rbx::any_cast<RBX::BasicPartInstance::LegacyPartType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+pub fn stub_0xf3cc74(slot: &EnumSlot) -> LegacyPartType {
+    // IDA 0xf3cc74: jump stub into the `LegacyPartType` any_cast (IDA
+    // 0x4c99b0): type check against the stored holder, then the payload
+    // past the tag. The word model collapses the check into the
+    // discriminant range; mismatch is `bad_placement_any_cast` (cf.
+    // `instance::stub_0x26ee14`).
+    match slot.word {
+        0 => LegacyPartType::Ball,
+        1 => LegacyPartType::Block,
+        2 => LegacyPartType::Cylinder,
+        _ => panic!("0xf3cc74: bad_placement_any_cast"),
+    }
 }
 
-// 0xf3dd24 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17BasicPartInstance14LegacyPartTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+// 0xf3dd24 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17BasicPartInstance14LegacyPartTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 #[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>> *)")]
-pub fn stub_0xf3dd24() -> ! {
-    todo!("0xf3dd24 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::BasicPartInstance::LegacyPartType>> *)")
+pub fn stub_0xf3dd24(map: &mut BTreeMap<String, LegacyPartType>, key: &str) {
+    // IDA 0xf3dd24: jump stub into `_M_erase` by node (IDA 0x4c9b1c):
+    // unlinks and frees the node holding the key; `remove` is the same
+    // keyed erase (cf. `instance::stub_0x3df534`).
+    let _ = map.remove(key);
 }
 
-// 0xf46974 — j___ZN3RBX8SeatImplINS_17BasicPartInstanceEE11setDisabledERKb
+
+// 0xf46974 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE11setDisabledERKb
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::setDisabled(bool const&)")]
-pub fn stub_0xf46974() -> ! {
-    todo!("0xf46974 RBX::SeatImpl<RBX::BasicPartInstance>::setDisabled(bool const&)")
+pub fn stub_0xf46974(seat: *mut SeatImpl, value: &bool) {
+    // IDA 0xf46974: jump stub into `SeatImpl::setDisabled` (IDA 0x615bdc):
+    // stores the flag word.
+    // SAFETY: `seat` must point to a valid `SeatImpl`.
+    unsafe {
+        (*seat).disabled = *value;
+    }
 }
 
-// 0xf46984 — j___ZN3RBX8SeatImplINS_17BasicPartInstanceEE12findSeatWeldEv
+// 0xf46984 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE12findSeatWeldEv
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::findSeatWeld(void)")]
-pub fn stub_0xf46984() -> ! {
-    todo!("0xf46984 RBX::SeatImpl<RBX::BasicPartInstance>::findSeatWeld(void)")
+pub fn stub_0xf46984(seat: *mut SeatImpl) -> *const Instance {
+    // IDA 0xf46984: jump stub into `SeatImpl::findSeatWeld` (IDA 0x616644,
+    // export `(Instance*) -> ptr`): scans the seat part's children for the
+    // seat weld; null when absent. The match is the `Weld` class check
+    // (`instance_is_a`, cf. `instance::stub_0x3e11f4`); the cache mirrors
+    // the stored link the lookup refreshes.
+    // SAFETY: `seat` must point to a valid `SeatImpl` whose part is null or
+    // a valid `Instance` outliving the result.
+    unsafe {
+        let part = (*seat).part;
+        if part.is_null() {
+            (*seat).weld = core::ptr::null();
+            return core::ptr::null();
+        }
+        for child in &(*part).children {
+            let ptr: *const Instance = SharedPtr::as_ptr(child);
+            if instance_is_a(ptr, "Weld") {
+                (*seat).weld = ptr;
+                return ptr;
+            }
+        }
+        (*seat).weld = core::ptr::null();
+        core::ptr::null()
+    }
 }
 
-// 0xf469b4 — j___ZN3RBX8SeatImplINS_17BasicPartInstanceEE16humanoidFromWeldEPNS_4WeldE
+// 0xf469b4 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEE16humanoidFromWeldEPNS_4WeldE
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::humanoidFromWeld(RBX::Weld *)")]
-pub fn stub_0xf469b4() -> ! {
-    todo!("0xf469b4 RBX::SeatImpl<RBX::BasicPartInstance>::humanoidFromWeld(RBX::Weld *)")
+pub fn stub_0xf469b4(weld: *const Instance) -> *const Instance {
+    // IDA 0xf469b4: jump stub into `SeatImpl::humanoidFromWeld` (IDA
+    // 0x616598, export `(int, JointInstance*) -> ptr`): the weld's part
+    // climbs to the parent model, whose first `Humanoid` child is the
+    // occupant; null when any link is missing. The joint Part0/Part1 read
+    // rides `JointInstance` (instance.rs); the tree walk here is over the
+    // modeled parent/children links.
+    // SAFETY: `weld` must be null or point to a valid `Instance`.
+    humanoid_in_parent_model(weld)
 }
 
-// 0xf469c4 — j___ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev
+// 0xf469c4 — __ZN3RBX8SeatImplINS_17BasicPartInstanceEED2Ev
 #[doc(alias = "RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")]
-pub fn stub_0xf469c4() -> ! {
-    todo!("0xf469c4 RBX::SeatImpl<RBX::BasicPartInstance>::~SeatImpl()")
+pub fn stub_0xf469c4(seat: *mut SeatImpl) {
+    // IDA 0xf469c4: jump stub into `~SeatImpl` (IDA 0x617ebc, export shows
+    // the `connection` teardown): disconnects the notify connection;
+    // dropping the handle expires the weak slot (see `PairConnection`).
+    // SAFETY: `seat` must point to a valid `SeatImpl`.
+    unsafe {
+        (*seat).conn = None;
+    }
 }
 
-// 0xf469f4 — j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
+// 0xf469f4 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX8SeatImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>> const&)")]
-pub fn stub_0xf469f4() -> ! {
-    todo!("0xf469f4 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>> const&)")
+pub fn stub_0xf469f4(sig: &Signal<()>, bind: &SeatNotifyBind) -> PairConnection {
+    // IDA 0xf469f4: jump stub into the `SeatImpl` nullary `connect` (IDA
+    // 0x6165b0): callable slot retaining the bind, slot insert, connection
+    // return (cf. `generated_05::stub_0x708c08`).
+    let retained = *bind;
+    // Whole-struct capture: field-precise capture would grab the raw
+    // `target` directly (bypassing the `Send`/`Sync` impls on the bind
+    // type); cf. `instance::stub_0x323238`.
+    let cb = SharedPtr::new(move |_: ()| {
+        let bound = retained;
+        (bound.func)(bound.target)
+    });
+    sig.connect(cb.clone());
+    PairConnection { keep: cb }
 }
-
-// 0xf46a34 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8SeatImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
+// 0xf46a34 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX8SeatImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>::operator()(void)")]
-pub fn stub_0xf46a34() -> ! {
-    todo!("0xf46a34 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::BasicPartInstance>*>>>::operator()(void)")
+pub fn stub_0xf46a34(bind: &SeatNotifyBind) {
+    // IDA 0xf46a34: jump stub into the `SeatImpl` bind call (IDA 0x616788):
+    // applies the stored mf0 to the bound target (cf.
+    // `instance::stub_0x3a5cd4`, nullary here).
+    (bind.func)(bind.target);
 }
 
-// 0xf470e4 — j___ZN3RBX12PlatformImplINS_17BasicPartInstanceEE17onServiceProviderEPNS_15ServiceProviderES4_
+// 0xf470e4 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE17onServiceProviderEPNS_15ServiceProviderES4_
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_0xf470e4() -> ! {
-    todo!("0xf470e4 RBX::PlatformImpl<RBX::BasicPartInstance>::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_0xf470e4(this: *mut PlatformImpl, _old: *const Instance, new: *const Instance) {
+    // IDA 0xf470e4: jump stub into `PlatformImpl::onServiceProvider` (IDA
+    // 0x62a0e4): on a provider switch the motor listener is dropped and the
+    // new provider recorded; re-subscribe rides the signal batch.
+    // SAFETY: `this` must point to a valid `PlatformImpl`.
+    unsafe {
+        if (*this).provider != new {
+            (*this).conn = None;
+            (*this).provider = new;
+        }
+    }
 }
 
-// 0xf470f4 — j___ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19findPlatformMotor6DEv
+// 0xf470f4 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19findPlatformMotor6DEv
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::findPlatformMotor6D(void)")]
-pub fn stub_0xf470f4() -> ! {
-    todo!("0xf470f4 RBX::PlatformImpl<RBX::BasicPartInstance>::findPlatformMotor6D(void)")
+pub fn stub_0xf470f4(this: *mut PlatformImpl) -> *const Instance {
+    // IDA 0xf470f4: jump stub into `findPlatformMotor6D` (IDA 0x62a238,
+    // export `(Instance*) -> ptr`): scans the platform part's children for
+    // the motor joint; null when absent — the `Motor6D` twin of
+    // `stub_0xf46984`.
+    // SAFETY: `this` must point to a valid `PlatformImpl` whose part is null
+    // or a valid `Instance` outliving the result.
+    unsafe {
+        let part = (*this).part;
+        if part.is_null() {
+            (*this).motor = core::ptr::null();
+            return core::ptr::null();
+        }
+        for child in &(*part).children {
+            let ptr: *const Instance = SharedPtr::as_ptr(child);
+            if instance_is_a(ptr, "Motor6D") {
+                (*this).motor = ptr;
+                return ptr;
+            }
+        }
+        (*this).motor = core::ptr::null();
+        core::ptr::null()
+    }
 }
 
-// 0xf47104 — j___ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19humanoidFromMotor6DEPNS_7Motor6DE
+// 0xf47104 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19humanoidFromMotor6DEPNS_7Motor6DE
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::humanoidFromMotor6D(RBX::Motor6D *)")]
-pub fn stub_0xf47104() -> ! {
-    todo!("0xf47104 RBX::PlatformImpl<RBX::BasicPartInstance>::humanoidFromMotor6D(RBX::Motor6D *)")
+pub fn stub_0xf47104(motor: *const Instance) -> *const Instance {
+    // IDA 0xf47104: jump stub into `humanoidFromMotor6D` (IDA 0x62a26c,
+    // export `(int, JointInstance*) -> ptr`): same parent-model Humanoid
+    // walk as `stub_0xf469b4`.
+    // SAFETY: `motor` must be null or point to a valid `Instance`.
+    humanoid_in_parent_model(motor)
 }
 
-// 0xf47134 — j___ZN3RBX12PlatformImplINS_17BasicPartInstanceEED2Ev
+// 0xf47134 — __ZN3RBX12PlatformImplINS_17BasicPartInstanceEED2Ev
 #[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
-pub fn stub_0xf47134() -> ! {
-    todo!("0xf47134 RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+pub fn stub_0xf47134(this: *mut PlatformImpl) {
+    // IDA 0xf47134: jump stub into `~PlatformImpl` (IDA 0x62e324, export
+    // shows the `connection` teardown): disconnects the motor listener.
+    // SAFETY: `this` must point to a valid `PlatformImpl`.
+    unsafe {
+        (*this).conn = None;
+    }
 }
 
-// 0xf47144 — j___ZN3RBX13ActionStationINS_17BasicPartInstanceEEC2Ev
+// 0xf47144 — __ZN3RBX13ActionStationINS_17BasicPartInstanceEEC2Ev
 #[doc(alias = "RBX::ActionStation<RBX::BasicPartInstance>::ActionStation(void)")]
-pub fn stub_0xf47144() -> ! {
-    todo!("0xf47144 RBX::ActionStation<RBX::BasicPartInstance>::ActionStation(void)")
+pub fn stub_0xf47144(part: *const Instance) -> ActionStation {
+    // IDA 0xf47144: jump stub into the `ActionStation` ctor (IDA 0x62eda8,
+    // export shows the `BasicPartInstance*` param): installs the part link.
+    ActionStation { part }
 }
 
-// 0xf47154 — j___ZN3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
+// 0xf47154 — __ZN3RBX13ActionStationINS_17BasicPartInstanceEED0Ev
 #[doc(alias = "RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")]
-pub fn stub_0xf47154() -> ! {
-    todo!("0xf47154 RBX::ActionStation<RBX::BasicPartInstance>::~ActionStation()")
+pub fn stub_0xf47154(station: ActionStation) {
+    // IDA 0xf47154: jump stub into the `ActionStation` deleting dtor (IDA
+    // 0x62accd): D2 teardown (no members beyond the part link) plus free
+    // collapse into drop.
+    drop(station);
 }
 
-// 0xf472a4 — j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
+// 0xf472a4 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
 #[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")]
-pub fn stub_0xf472a4() -> ! {
-    todo!("0xf472a4 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")
+pub fn stub_0xf472a4(sig: &Signal<()>, bind: &PlatformNotifyBind) -> PairConnection {
+    // IDA 0xf472a4: jump stub into the `PlatformImpl` nullary `connect`
+    // (IDA 0x62b798): same slot-retain + insert + connection shape as
+    // `stub_0xf469f4`.
+    let retained = *bind;
+    // Whole-struct capture (cf. `instance::stub_0x323238`).
+    let cb = SharedPtr::new(move |_: ()| {
+        let bound = retained;
+        (bound.func)(bound.target)
+    });
+    sig.connect(cb.clone());
+    PairConnection { keep: cb }
+}
+// 0xf47364 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX12PlatformImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")]
+pub fn stub_0xf47364(bind: &PlatformNotifyBind) {
+    // IDA 0xf47364: jump stub into the `PlatformImpl` bind call (IDA
+    // 0x62b93c): applies the stored mf0 to the bound target.
+    (bind.func)(bind.target);
 }
 
-// 0xf47364 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX12PlatformImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")]
-pub fn stub_0xf47364() -> ! {
-    todo!("0xf47364 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")
+/// Shared walk behind `humanoidFromWeld` (IDA `0x616598`) and
+/// `humanoidFromMotor6D` (IDA `0x62a26c`): the joint node climbs to the
+/// parent model, whose first `Humanoid` child is returned; null when any
+/// link is missing.
+/// SAFETY: `joint` must be null or point to a valid `Instance`.
+fn humanoid_in_parent_model(joint: *const Instance) -> *const Instance {
+    unsafe {
+        if joint.is_null() {
+            return core::ptr::null();
+        }
+        let model = (*joint).parent;
+        if model.is_null() {
+            return core::ptr::null();
+        }
+        for child in &(*model).children {
+            let ptr: *const Instance = SharedPtr::as_ptr(child);
+            if instance_is_a(ptr, "Humanoid") {
+                return ptr;
+            }
+        }
+        core::ptr::null()
+    }
+}
+
+#[cfg(test)]
+mod seat_platform_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    static HITS: AtomicUsize = AtomicUsize::new(0);
+
+    fn hit_seat(_: *const SeatImpl) {
+        HITS.fetch_add(1, Ordering::SeqCst);
+    }
+
+    fn hit_platform(_: *const PlatformImpl) {
+        HITS.fetch_add(1, Ordering::SeqCst);
+    }
+
+    fn tree_node(class: &'static str, children: Vec<SharedPtr<Instance>>) -> SharedPtr<Instance> {
+        SharedPtr::new(Instance { class_name: class, children, ..Default::default() })
+    }
+
+    #[test]
+    fn placement_any_reexport_stores_word() {
+        let mut slot = EnumSlot::default();
+        stub_0xf3c564(&mut slot, crate::instance::LegacyPartTypeTag(2));
+        assert_eq!(slot.word, 2);
+    }
+
+    #[test]
+    fn holder_singleton_is_stable() {
+        let a = stub_0xf3c8b4() as *const LegacyPartTypeHolder;
+        let b = stub_0xf3c8b4() as *const LegacyPartTypeHolder;
+        assert!(!a.is_null());
+        assert_eq!(a, b);
+    }
+
+    #[test]
+    fn any_cast_maps_discriminants() {
+        for (word, want) in [
+            (0, LegacyPartType::Ball),
+            (1, LegacyPartType::Block),
+            (2, LegacyPartType::Cylinder),
+        ] {
+            assert_eq!(stub_0xf3cc74(&EnumSlot { word }), want);
+        }
+    }
+
+    #[test]
+    #[should_panic(expected = "bad_placement_any_cast")]
+    fn any_cast_bad_word_panics() {
+        let _ = stub_0xf3cc74(&EnumSlot { word: 9 });
+    }
+
+    #[test]
+    fn erase_removes_inserted_key() {
+        let mut map = BTreeMap::new();
+        assert!(stub_0xf3a904(&mut map, "Ball", LegacyPartType::Ball));
+        stub_0xf3dd24(&mut map, "Ball");
+        assert!(!map.contains_key("Ball"));
+    }
+
+    #[test]
+    fn seat_disabled_stores_flag() {
+        let mut seat = SeatImpl {
+            part: core::ptr::null(),
+            disabled: false,
+            weld: core::ptr::null(),
+            conn: None,
+        };
+        stub_0xf46974(&mut seat, &true);
+        assert!(seat.disabled);
+    }
+
+    #[test]
+    fn find_seat_weld_caches_link() {
+        let weld = tree_node("Weld", Vec::new());
+        let part = tree_node("Seat", vec![SharedPtr::clone(&weld)]);
+        let mut seat = SeatImpl {
+            part: SharedPtr::as_ptr(&part),
+            disabled: false,
+            weld: core::ptr::null(),
+            conn: None,
+        };
+        let found = stub_0xf46984(&mut seat);
+        assert_eq!(found, SharedPtr::as_ptr(&weld));
+        assert_eq!(seat.weld, found);
+        let _ = (part, weld);
+    }
+
+    #[test]
+    fn find_seat_weld_null_part_is_null() {
+        let mut seat = SeatImpl {
+            part: core::ptr::null(),
+            disabled: false,
+            weld: core::ptr::null(),
+            conn: None,
+        };
+        assert!(stub_0xf46984(&mut seat).is_null());
+    }
+
+    #[test]
+    fn humanoid_from_weld_walks_to_model() {
+        let humanoid = tree_node("Humanoid", Vec::new());
+        let model = tree_node("Model", vec![SharedPtr::clone(&humanoid)]);
+        let mut weld_node = Instance { class_name: "Weld", ..Default::default() };
+        weld_node.parent = SharedPtr::as_ptr(&model);
+        let weld = SharedPtr::new(weld_node);
+        assert_eq!(
+            stub_0xf469b4(SharedPtr::as_ptr(&weld)),
+            SharedPtr::as_ptr(&humanoid)
+        );
+        assert!(stub_0xf469b4(core::ptr::null()).is_null());
+        let _ = (model, humanoid, weld);
+    }
+
+    #[test]
+    fn seat_connect_fires_and_dtor_clears() {
+        HITS.store(0, Ordering::SeqCst);
+        let sig = Signal::<()>::new();
+        let seat = SeatImpl {
+            part: core::ptr::null(),
+            disabled: false,
+            weld: core::ptr::null(),
+            conn: None,
+        };
+        let seat_ptr: *const SeatImpl = &seat;
+        let bind = SeatNotifyBind { func: hit_seat, target: seat_ptr };
+        let mut owned = seat;
+        owned.conn = Some(stub_0xf469f4(&sig, &bind));
+        sig.fire(());
+        assert_eq!(HITS.load(Ordering::SeqCst), 1);
+        stub_0xf469c4(&mut owned);
+        assert!(owned.conn.is_none());
+        stub_0xf46a34(&bind);
+        assert_eq!(HITS.load(Ordering::SeqCst), 2);
+    }
+
+    #[test]
+    fn platform_motor_and_humanoid_walks() {
+        let humanoid = tree_node("Humanoid", Vec::new());
+        let model = tree_node("Model", vec![SharedPtr::clone(&humanoid)]);
+        let mut motor_node = Instance { class_name: "Motor6D", ..Default::default() };
+        motor_node.parent = SharedPtr::as_ptr(&model);
+        let motor = SharedPtr::new(motor_node);
+        let part = tree_node("Part", vec![SharedPtr::clone(&motor)]);
+        let mut plat = PlatformImpl {
+            part: SharedPtr::as_ptr(&part),
+            motor: core::ptr::null(),
+            provider: core::ptr::null(),
+            conn: None,
+        };
+        assert_eq!(stub_0xf470f4(&mut plat), SharedPtr::as_ptr(&motor));
+        assert_eq!(
+            stub_0xf47104(SharedPtr::as_ptr(&motor)),
+            SharedPtr::as_ptr(&humanoid)
+        );
+        let _ = (model, humanoid, motor, part);
+    }
+
+    #[test]
+    fn platform_provider_switch_clears_and_records() {
+        HITS.store(0, Ordering::SeqCst);
+        let sig = Signal::<()>::new();
+        let plat = PlatformImpl {
+            part: core::ptr::null(),
+            motor: core::ptr::null(),
+            provider: core::ptr::null(),
+            conn: None,
+        };
+        let plat_ptr: *const PlatformImpl = &plat;
+        let bind = PlatformNotifyBind { func: hit_platform, target: plat_ptr };
+        let mut owned = plat;
+        owned.conn = Some(stub_0xf472a4(&sig, &bind));
+        let next = tree_node("ServiceProvider", Vec::new());
+        stub_0xf470e4(&mut owned, core::ptr::null(), SharedPtr::as_ptr(&next));
+        assert!(owned.conn.is_none());
+        assert_eq!(owned.provider, SharedPtr::as_ptr(&next));
+        stub_0xf47134(&mut owned);
+        stub_0xf47364(&bind);
+        assert_eq!(HITS.load(Ordering::SeqCst), 1);
+        let _ = next;
+    }
+
+    #[test]
+    fn action_station_ctor_stores_part() {
+        let part = tree_node("Part", Vec::new());
+        let station = stub_0xf47144(SharedPtr::as_ptr(&part));
+        assert_eq!(station.part, SharedPtr::as_ptr(&part));
+        stub_0xf47154(station);
+        let _ = part;
+    }
 }
