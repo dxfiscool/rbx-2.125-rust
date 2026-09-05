@@ -7,6 +7,21 @@
 use rbx_core::SharedPtr;
 use std::collections::HashMap;
 
+/// `signal<void()>` void slot (IDA 0x970304 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct SigSlot {
+ pub id: u64,
+ pub target: usize,
+ pub live: bool,
+}
+
+/// `EventDesc` connection (IDA 0x971418 et al.).
+#[derive(Clone, Debug, Default)]
+pub struct ClientEventConn {
+ pub id: u64,
+ pub live: bool,
+}
+
 /// Nugget map for TopNErrorsPhysicsSender (IDA 0x955268).
 #[derive(Clone, Debug, Default)]
 pub struct NuggetMap {
@@ -9253,19 +9268,30 @@ pub fn stub_965a2c(dst: &mut Vec<crate::id_serializer::WaitItem>, src: &[crate::
 
 // 0x965c54 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
-pub fn stub_965c54() -> ! {
-    todo!("0x965c54 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+pub fn stub_965c54(map: &mut HashMap<crate::id_serializer::GuidData, Vec<crate::id_serializer::WaitItem>>, key: crate::id_serializer::GuidData, value: Vec<crate::id_serializer::WaitItem>) -> bool {
+    // IDA 0x965c54: hinted unique insert; false when present.
+    if map.contains_key(&key) {
+        return false;
+    }
+    map.insert(key, value);
+    true
 }
 // 0x965d3c — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSB_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
-pub fn stub_965d3c() -> ! {
-    todo!("0x965d3c std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+pub fn stub_965d3c(map: &mut HashMap<crate::id_serializer::GuidData, Vec<crate::id_serializer::WaitItem>>, key: crate::id_serializer::GuidData, value: Vec<crate::id_serializer::WaitItem>) {
+    // IDA 0x965d3c: hinted insert.
+    map.insert(key, value);
 }
 
 // 0x965e7c — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE16_M_insert_uniqueERKSB_
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
-pub fn stub_965e7c() -> ! {
-    todo!("0x965e7c std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+pub fn stub_965e7c(map: &mut HashMap<crate::id_serializer::GuidData, Vec<crate::id_serializer::WaitItem>>, key: crate::id_serializer::GuidData, value: Vec<crate::id_serializer::WaitItem>) -> bool {
+    // IDA 0x965e7c: unique insert; false when present.
+    if map.contains_key(&key) {
+        return false;
+    }
+    map.insert(key, value);
+    true
 }
 
 // 0x966d78 — __ZN3RBX7Network6Client13playerConnectEiSsiii
@@ -9294,140 +9320,174 @@ pub fn stub_967744() -> crate::player::ClientLink {
 
 // 0x967e28 — __ZN3RBX7Network6ClientD0Ev
 #[doc(alias = "RBX::Network::Client::~Client()")]
-pub fn stub_967e28() -> ! {
-    todo!("0x967e28 RBX::Network::Client::~Client()")
+pub fn stub_967e28(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x967e28: Client D0 + operator delete.
+    destroy();
+    free();
 }
 
 // 0x967ec8 — __ZN3RBX7Network6ClientD1Ev
 #[doc(alias = "RBX::Network::Client::~Client()")]
-pub fn stub_967ec8() -> ! {
-    todo!("0x967ec8 RBX::Network::Client::~Client()")
+pub fn stub_967ec8(destroy: &mut dyn FnMut()) {
+    // IDA 0x967ec8: Client D2 (below truncation).
+    destroy();
 }
 
 // 0x967ed4 — __ZThn32_N3RBX7Network6ClientD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_967ed4() -> ! {
-    todo!("0x967ed4 non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_967ed4(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x967ed4: thunk adjusts (-32) then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x967f78 — __ZThn36_N3RBX7Network6ClientD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_967f78() -> ! {
-    todo!("0x967f78 non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_967f78(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x967f78: thunk adjusts (-36) then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x96801c — __ZThn92_N3RBX7Network6ClientD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_96801c() -> ! {
-    todo!("0x96801c non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_96801c(destroy: &mut dyn FnMut(), free: &mut dyn FnMut()) {
+    // IDA 0x96801c: thunk adjusts (-92) then dtor + delete.
+    destroy();
+    free();
 }
 
 // 0x9680c0 — __ZN3RBX7Network6ClientD2Ev
 #[doc(alias = "RBX::Network::Client::~Client()")]
-pub fn stub_9680c0() -> ! {
-    todo!("0x9680c0 RBX::Network::Client::~Client()")
+pub fn stub_9680c0(destroy: &mut dyn FnMut()) {
+    // IDA 0x9680c0: Client D2 body (below truncation).
+    destroy();
 }
 
 // 0x9686ac — __ZThn32_N3RBX7Network6ClientD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_9686ac() -> ! {
-    todo!("0x9686ac non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_9686ac(destroy: &mut dyn FnMut()) {
+    // IDA 0x9686ac: thunk adjusts (-32) then dtor.
+    destroy();
 }
 
 // 0x9686b8 — __ZThn36_N3RBX7Network6ClientD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_9686b8() -> ! {
-    todo!("0x9686b8 non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_9686b8(destroy: &mut dyn FnMut()) {
+    // IDA 0x9686b8: thunk adjusts (-36) then dtor.
+    destroy();
 }
 
 // 0x9686c4 — __ZThn92_N3RBX7Network6ClientD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
-pub fn stub_9686c4() -> ! {
-    todo!("0x9686c4 non-virtual thunk toRBX::Network::Client::~Client()")
+pub fn stub_9686c4(destroy: &mut dyn FnMut()) {
+    // IDA 0x9686c4: thunk adjusts (-92) then dtor.
+    destroy();
 }
 
 // 0x9686d0 — __ZN3RBX7Network6Client10findClientEPKNS_8InstanceEb
 #[doc(alias = "RBX::Network::Client::findClient(RBX::Instance const*,bool)")]
-pub fn stub_9686d0() -> ! {
-    todo!("0x9686d0 RBX::Network::Client::findClient(RBX::Instance const*,bool)")
+pub fn stub_9686d0(find: &mut dyn FnMut() -> Option<usize>) -> Option<usize> {
+    // IDA 0x9686d0: Client::findClient (below truncation).
+    find()
 }
 
 // 0x9688a4 — __ZN3RBX7Network6Client15clientIsPresentEPKNS_8InstanceEb
 #[doc(alias = "RBX::Network::Client::clientIsPresent(RBX::Instance const*,bool)")]
-pub fn stub_9688a4() -> ! {
-    todo!("0x9688a4 RBX::Network::Client::clientIsPresent(RBX::Instance const*,bool)")
+pub fn stub_9688a4(find: &mut dyn FnMut() -> Option<usize>) -> bool {
+    // IDA 0x9688a4: clientIsPresent = findClient != 0.
+    find().is_some()
 }
 
 // 0x9688b4 — __ZN3RBX7Network6Client27physicsOutBandwidthExceededEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Client::physicsOutBandwidthExceeded(RBX::Instance const*)")]
-pub fn stub_9688b4() -> ! {
-    todo!("0x9688b4 RBX::Network::Client::physicsOutBandwidthExceeded(RBX::Instance const*)")
+pub fn stub_9688b4(found: bool, has_replicator: bool, limited: bool) -> bool {
+    // IDA 0x9688b4: default true; client+replicator found -> isLimitedByOutgoingBandwidthLimit.
+    if found && has_replicator {
+        limited
+    } else {
+        true
+    }
 }
 
 // 0x9688d8 — __ZN3RBX7Network6Client22getNetworkBufferHealthEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Client::getNetworkBufferHealth(RBX::Instance const*)")]
-pub fn stub_9688d8() -> ! {
-    todo!("0x9688d8 RBX::Network::Client::getNetworkBufferHealth(RBX::Instance const*)")
+pub fn stub_9688d8(find: &mut dyn FnMut() -> Option<usize>, health: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x9688d8: client ? GetBufferHealth : 0.
+    match find() {
+        Some(c) => health(c),
+        None => 0,
+    }
 }
 
 // 0x968910 — __ZN3RBX7Network6Client25findLocalSimulatorAddressEPKNS_8InstanceE
 #[doc(alias = "RBX::Network::Client::findLocalSimulatorAddress(RBX::Instance const*)")]
-pub fn stub_968910() -> ! {
-    todo!("0x968910 RBX::Network::Client::findLocalSimulatorAddress(RBX::Instance const*)")
+pub fn stub_968910(find: &mut dyn FnMut() -> Option<usize>) -> Option<usize> {
+    // IDA 0x968910: findClient + replicator simulator address (below truncation).
+    find()
 }
 
 // 0x968970 — __ZN3RBX7Network6Client17onServiceProviderEPNS_15ServiceProviderES3_
 #[doc(alias = "RBX::Network::Client::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
-pub fn stub_968970() -> ! {
-    todo!("0x968970 RBX::Network::Client::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+pub fn stub_968970(setup: &mut dyn FnMut()) {
+    // IDA 0x968970: onServiceProvider (below truncation).
+    setup();
 }
 
 // 0x968c18 — __ZN3RBX7Network6Client10sendTicketEv
 #[doc(alias = "RBX::Network::Client::sendTicket(void)")]
-pub fn stub_968c18() -> ! {
-    todo!("0x968c18 RBX::Network::Client::sendTicket(void)")
+pub fn stub_968c18(send: &mut dyn FnMut() -> i32) -> i32 {
+    // IDA 0x968c18: sendTicket (below truncation).
+    send()
 }
 
 // 0x9694c0 — __ZNK3RBX7Network6Client21sendPreferedSpawnNameEv
 #[doc(alias = "RBX::Network::Client::sendPreferedSpawnName(void)const")]
-pub fn stub_9694c0() -> ! {
-    todo!("0x9694c0 RBX::Network::Client::sendPreferedSpawnName(void)const")
+pub fn stub_9694c0(send: &mut dyn FnMut()) {
+    // IDA 0x9694c0: sendPreferedSpawnName (below truncation).
+    send();
 }
 
 // 0x96c484 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
-pub fn stub_96c484() -> ! {
-    todo!("0x96c484 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+pub fn stub_96c484(destroy: &mut dyn FnMut()) {
+    // IDA 0x96c484: BoundFuncDesc dtor self-thunk.
+    destroy();
 }
 
 // 0x96c490 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EED1Ev
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")]
-pub fn stub_96c490() -> ! {
-    todo!("0x96c490 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")
+pub fn stub_96c490(destroy: &mut dyn FnMut()) {
+    // IDA 0x96c490: BoundFuncDesc dtor — list clears (below truncation).
+    destroy();
 }
 
 // 0x96c4f8 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_96c4f8() -> ! {
-    todo!("0x96c4f8 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_96c4f8(destroy: &mut dyn FnMut()) {
+    // IDA 0x96c4f8: EventDesc dtor — list clears (below truncation).
+    destroy();
 }
 
 // 0x96c540 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_96c540() -> ! {
-    todo!("0x96c540 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_96c540(destroy: &mut dyn FnMut()) {
+    // IDA 0x96c540: EventDesc dtor — list clears (below truncation).
+    destroy();
 }
 
 // 0x96c588 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_96c588() -> ! {
-    todo!("0x96c588 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_96c588(destroy: &mut dyn FnMut()) {
+    // IDA 0x96c588: EventDesc dtor — list clears (below truncation).
+    destroy();
 }
 
 // 0x96c5d0 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_7Network16ClientReplicatorEEEPKT_v
 #[doc(alias = "RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")]
-pub fn stub_96c5d0() -> ! {
-    todo!("0x96c5d0 RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")
+pub fn stub_96c5d0(children: &[usize], is_match: &mut dyn FnMut(usize) -> bool) -> Option<usize> {
+    // IDA 0x96c5d0: findConstFirstChildOfType<ClientReplicator> (below truncation).
+    children.iter().copied().find(|&c| is_match(c))
 }
 
 // 0x96ca10 — __ZN3RBX7Network6Client10disconnectEv
@@ -9439,110 +9499,157 @@ pub fn stub_96ca10(link: &mut crate::player::ClientLink) {
 
 // 0x96fd88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(rbx_core::SharedPtr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")]
-pub fn stub_96fd88() -> ! {
-    todo!("0x96fd88 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")
+pub fn stub_96fd88(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x96fd88: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x970044 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_970044() -> ! {
-    todo!("0x970044 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_970044() {
+    // IDA 0x970044: empty sp_counted_impl_pd<ClientReplicator> D2 body.
 }
 
 // 0x970048 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_970048() -> ! {
-    todo!("0x970048 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_970048(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x970048: D0: operator delete.
+    free(block);
 }
 
 // 0x970054 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
-pub fn stub_970054() -> ! {
-    todo!("0x970054 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+pub fn stub_970054(px: usize, predelete: &mut dyn FnMut(usize) -> i32, destroy: &mut dyn FnMut(usize) -> i32) -> i32 {
+    // IDA 0x970054: predelete; null px -> result else virtual destroy.
+    let r = predelete(px);
+    if px != 0 {
+        destroy(px)
+    } else {
+        r
+    }
 }
 
 // 0x970070 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_970070() -> ! {
-    todo!("0x970070 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_970070(block: usize, type_name: &str) -> usize {
+    // IDA 0x970070: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x970088 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_970088() -> ! {
-    todo!("0x970088 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_970088(block: usize) -> usize {
+    // IDA 0x970088: return block + 16.
+    block + 16
 }
 
 // 0x970304 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX7Network6ClientEEENS6_5list1INS6_5valueIPSC_EEEEEEED1Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")]
-pub fn stub_970304() -> ! {
-    todo!("0x970304 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")
+pub fn stub_970304(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x970304: D1: vtable resets; intrusive release (no delete).
+    if let Some(s) = slots.iter_mut().find(|s| s.id == id) {
+        s.live = false;
+        release(s.id);
+    }
 }
 
 // 0x970360 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX7Network6ClientEEENS6_5list1INS6_5valueIPSC_EEEEEEED0Ev
 #[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")]
-pub fn stub_970360() -> ! {
-    todo!("0x970360 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")
+pub fn stub_970360(slots: &mut Vec<SigSlot>, id: u64, release: &mut dyn FnMut(u64)) {
+    // IDA 0x970360: D0: vtable resets; intrusive release; operator delete.
+    if let Some(pos) = slots.iter().position(|s| s.id == id) {
+        let s = slots.remove(pos);
+        release(s.id);
+    }
 }
 
 // 0x970468 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX7Network6ClientEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_970468() -> ! {
-    todo!("0x970468 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
+pub fn stub_970468(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x970468: mf0 inline dispatch (virtual adjust); obj->method().
+    call(obj, is_virtual);
 }
 
 // 0x970484 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX7Network6ClientEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv
 #[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")]
-pub fn stub_970484() -> ! {
-    todo!("0x970484 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
+pub fn stub_970484(obj: usize, is_virtual: bool, call: &mut dyn FnMut(usize, bool)) {
+    // IDA 0x970484: non-virtual thunk adjusts inward then tail-calls the operator().
+    call(obj, is_virtual);
 }
 
 // 0x9709b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(rbx_core::SharedPtr<RBX::Network::Client> const*,RBX::Network::Client *)const")]
-pub fn stub_9709b0() -> ! {
-    todo!("0x9709b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const")
+pub fn stub_9709b0(use_count: u32, adopt: &mut dyn FnMut(), share: &mut dyn FnMut()) {
+    // IDA 0x9709b0: weak_count::use_count gates the weak_this store (below truncation).
+    if use_count == 0 {
+        adopt();
+    } else {
+        share();
+    }
 }
 
 // 0x970c70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
-pub fn stub_970c70() -> ! {
-    todo!("0x970c70 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+pub fn stub_970c70(block: usize, free: &mut dyn FnMut(usize)) {
+    // IDA 0x970c70: D0: operator delete.
+    free(block);
 }
 
 // 0x970c80 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
-pub fn stub_970c80() -> ! {
-    todo!("0x970c80 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+pub fn stub_970c80(block: usize, type_name: &str) -> usize {
+    // IDA 0x970c80: match "N3RBX9CreatableINS_8InstanceEE7DeleterE" -> block + 16, else 0.
+    if type_name == "N3RBX9CreatableINS_8InstanceEE7DeleterE" {
+        block + 16
+    } else {
+        0
+    }
 }
 
 // 0x970c98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_970c98() -> ! {
-    todo!("0x970c98 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_970c98(block: usize) -> usize {
+    // IDA 0x970c98: return block + 16.
+    block + 16
 }
 
 // 0x970f5c — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_970f5c() -> ! {
-    todo!("0x970f5c RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_970f5c(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x970f5c: EventDesc ctor (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x97133c — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_97133c() -> ! {
-    todo!("0x97133c RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_97133c(destroy: &mut dyn FnMut()) {
+    // IDA 0x97133c: EventDesc dtor (below truncation).
+    destroy();
 }
 
 // 0x971418 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_971418() -> ! {
-    todo!("0x971418 RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_971418(conns: &mut Vec<ClientEventConn>) -> u64 {
+    // IDA 0x971418: connectGeneric — new connection (below truncation).
+    let id = conns.len() as u64;
+    conns.push(ClientEventConn { id, live: true });
+    id
 }
 
 // 0x97189c — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_97189c() -> ! {
-    todo!("0x97189c RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_97189c(fire: &mut dyn FnMut()) {
+    // IDA 0x97189c: fireEvent (below truncation).
+    fire();
 }
 
 // 0x971bec — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
@@ -9566,26 +9673,33 @@ pub fn stub_971db4<T>(
 
 // 0x9744e0 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::Network::Client::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_9744e0() -> ! {
-    todo!("0x9744e0 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::Network::Client::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_9744e0(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x9744e0: EventDesc ctor (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x9746ec — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_9746ec() -> ! {
-    todo!("0x9746ec RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_9746ec(destroy: &mut dyn FnMut()) {
+    // IDA 0x9746ec: EventDesc dtor (below truncation).
+    destroy();
 }
 
 // 0x9747c8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
-pub fn stub_9747c8() -> ! {
-    todo!("0x9747c8 RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+pub fn stub_9747c8(conns: &mut Vec<ClientEventConn>) -> u64 {
+    // IDA 0x9747c8: connectGeneric — new connection (below truncation).
+    let id = conns.len() as u64;
+    conns.push(ClientEventConn { id, live: true });
+    id
 }
 
 // 0x974c4c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
-pub fn stub_974c4c() -> ! {
-    todo!("0x974c4c RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_974c4c(fire: &mut dyn FnMut()) {
+    // IDA 0x974c4c: fireEvent (below truncation).
+    fire();
 }
 
 // 0x974e54 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
@@ -9609,14 +9723,17 @@ pub fn stub_974e70<T>(
 
 // 0x975238 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
-pub fn stub_975238() -> ! {
-    todo!("0x975238 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_975238(slot: usize, init: &mut dyn FnMut(usize)) -> usize {
+    // IDA 0x975238: EventDesc ctor (below truncation).
+    init(slot);
+    slot
 }
 
 // 0x975530 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
-pub fn stub_975530() -> ! {
-    todo!("0x975530 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
+pub fn stub_975530(destroy: &mut dyn FnMut()) {
+    // IDA 0x975530: EventDesc dtor (below truncation).
+    destroy();
 }
 
 // 0x97560c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
