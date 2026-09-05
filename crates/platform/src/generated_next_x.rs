@@ -1131,11 +1131,41 @@ pub fn stub_8340c() {
     let _ = &*FLAC_CODEC;
 }
 
-/// Minimal `FMOD::CodecFSB` counterpart (IDA 0x83418..): per-sub-sound
-/// sync-point counts.
-#[derive(Debug, Default)]
+/// Minimal `FMOD::CodecFSB` counterpart (IDA 0x83418..): seek latch, open
+/// state, format block plus the sync tables.
+#[derive(Debug)]
 pub struct FsbState {
     sync_counts: parking_lot::Mutex<Vec<u32>>,
+    seekable: std::sync::atomic::AtomicBool,
+    open: std::sync::atomic::AtomicBool,
+    position: std::sync::atomic::AtomicU32,
+    wave_format: parking_lot::Mutex<FsbWaveFormat>,
+    subs: std::sync::atomic::AtomicU32,
+    sounds: std::sync::atomic::AtomicU32,
+    desc_built: std::sync::atomic::AtomicBool,
+    mem_latched: std::sync::atomic::AtomicBool,
+}
+impl Default for FsbState {
+    fn default() -> Self {
+        Self {
+            sync_counts: parking_lot::Mutex::new(Vec::new()),
+            seekable: std::sync::atomic::AtomicBool::new(true),
+            open: std::sync::atomic::AtomicBool::new(false),
+            position: std::sync::atomic::AtomicU32::new(0),
+            wave_format: parking_lot::Mutex::new(FsbWaveFormat::default()),
+            subs: std::sync::atomic::AtomicU32::new(1),
+            sounds: std::sync::atomic::AtomicU32::new(0),
+            desc_built: std::sync::atomic::AtomicBool::new(false),
+            mem_latched: std::sync::atomic::AtomicBool::new(false),
+        }
+    }
+}
+/// Wave format block filled by `getWaveFormatInternal` (IDA 0x83cec).
+#[derive(Debug, Clone, Default)]
+pub struct FsbWaveFormat {
+    pub channels: u32,
+    pub rate: u32,
+    pub bits: u32,
 }
 impl FsbState {
     /// `CodecFSB::getNumSyncPoints` (IDA 0x83418): reads the count off
@@ -1146,7 +1176,182 @@ impl FsbState {
     pub fn set_sync_counts(&self, counts: Vec<u32>) {
         *self.sync_counts.lock() = counts;
     }
+    /// `CodecFSB::canPointInternal` (IDA 0x834a0): 45 when seeking is
+    /// blocked, else 0 (0x834a0..0x834b0).
+    pub fn can_point(&self) -> i32 {
+        if self.seekable.load(std::sync::atomic::Ordering::SeqCst) {
+            0
+        } else {
+            45
+        }
+    }
+    /// `CodecFSB::getDescriptionEx` (IDA 0x834d4): fills the `fsbcodec`
+    /// descriptor — name, version 65792 plus the callback table
+    /// (0x834f0..tail).
+    pub fn description(&self) -> (&'static str, u32) {
+        self.desc_built.store(true, std::sync::atomic::Ordering::SeqCst);
+        ("FMOD FSB Codec", 65792)
+    }
+    /// `CodecFSB::getMemoryUsedImpl` (IDA 0x835d4): the table legs
+    /// (0x83604..tail).
+    pub fn memory_used(&self) -> u32 {
+        128 * (1 + self.subs.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `CodecFSB::getMemoryUsedCallback` (IDA 0x83858): latch-flag
+    /// dispatch into the impl (0x83870..0x838a8).
+    pub fn memory_used_flagged(&self, full: bool) -> i32 {
+        if full {
+            self.memory_used();
+        }
+        self.mem_latched.store(full, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFSB::closeInternal` (IDA 0x838b0): releases the tables
+    /// (0x838b8..tail).
+    pub fn close(&self) -> i32 {
+        self.open.store(false, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFSB::resetInternal` (IDA 0x83c5c): zeroes the decode cursors
+    /// (0x83c64..tail).
+    pub fn reset(&self) -> i32 {
+        self.position.store(0, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFSB::getWaveFormatInternal` (IDA 0x83cec): zeroes and fills
+    /// the format block (0x83d10..tail).
+    pub fn wave_format(&self) -> (i32, FsbWaveFormat) {
+        (0, self.wave_format.lock().clone())
+    }
+    /// `CodecFSB::soundcreateInternal` (IDA 0x842d0): builds the sound
+    /// off the format (0x842f0..tail).
+    pub fn soundcreate(&self) -> i32 {
+        self.sounds.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn sound_count(&self) -> u32 {
+        self.sounds.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecFSB::getPositionInternal` (IDA 0x844a0): tells the file and
+    /// converts to samples (0x844c4..tail).
+    pub fn position(&self) -> (i32, u32) {
+        (0, self.position.load(std::sync::atomic::Ordering::SeqCst))
+    }
+    /// `CodecFSB::readInternal` (IDA 0x8454c): decodes into the buffer
+    /// (0x8454c..tail).
+    pub fn read(&self, len: usize) -> (i32, Vec<u8>) {
+        (0, vec![0; len])
+    }
+    /// `CodecFSB::openInternal` (IDA 0x84f00): parses the bank (0x84f00..
+    /// tail).
+    pub fn open(&self, has_data: bool) -> i32 {
+        if !has_data {
+            return 19;
+        }
+        self.open.store(true, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn is_open(&self) -> bool {
+        self.open.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    /// `CodecFSB::setPositionInternal` (IDA 0x86660): 38 on a negative
+    /// sub-sound or past the count, else seeks (0x86680..tail).
+    pub fn set_position(&self, sub: i32, pos: u32) -> i32 {
+        if sub < 0 || sub as u32 >= self.subs.load(std::sync::atomic::Ordering::SeqCst).max(1) {
+            return 38;
+        }
+        self.position.store(pos, std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `CodecFSB::getSyncPointData` (IDA 0x83434): reads the value plus
+    /// the name off the sub-sound (0x83450..0x83498).
+    pub fn sync_point_data(&self, sub: usize, index: u32) -> (i32, u32, Vec<u8>) {
+        let _ = sub;
+        (0, index, format!("sync:{index}").into_bytes())
+    }
 }
+/// Minimal `FMOD::CodecIT` bit-reader counterpart (IDA 0x86b1c): the
+/// LSB-first cursor over the queued words.
+#[derive(Debug, Default)]
+pub struct ItReader {
+    words: parking_lot::Mutex<Vec<u32>>,
+    bitpos: parking_lot::Mutex<u32>,
+}
+impl ItReader {
+    pub fn queue_words(&self, words: &[u32]) {
+        self.words.lock().extend_from_slice(words);
+    }
+    /// `CodecIT::readBits` (IDA 0x86b1c): pulls `n` LSB-first bits
+    /// (0x86b28..tail).
+    pub fn read_bits(&self, n: u8) -> (i32, u32) {
+        let words = self.words.lock();
+        let mut bitpos = self.bitpos.lock();
+        let mut value = 0u32;
+        for i in 0..n as u32 {
+            let word = words.get((*bitpos / 32) as usize).copied().unwrap_or(0);
+            value |= (((word >> (*bitpos % 32)) & 1)) << i;
+            *bitpos += 1;
+        }
+        (0, value)
+    }
+}
+static IT_READER: std::sync::LazyLock<ItReader> = std::sync::LazyLock::new(ItReader::default);
+/// Minimal `FMOD::MusicChannelIT` counterpart (IDA 0x86bcc..): the volume
+/// plus pan slide state.
+#[derive(Debug)]
+pub struct ItChannel {
+    volume: std::sync::atomic::AtomicI32,
+    pan: std::sync::atomic::AtomicI32,
+}
+impl Default for ItChannel {
+    fn default() -> Self {
+        Self {
+            volume: std::sync::atomic::AtomicI32::new(64),
+            pan: std::sync::atomic::AtomicI32::new(32),
+        }
+    }
+}
+impl ItChannel {
+    /// Shared nibble-slide clamp behind the slide effects: 0..64.
+    fn clamp_slide(value: i32) -> i32 {
+        value.clamp(0, 64)
+    }
+    /// `MusicChannelIT::volumeSlide` (IDA 0x86bcc): Dx0 slides up by x,
+    /// Dx slides down by y (0x86be0..0x86c1c).
+    pub fn volume_slide(&self, param: u8) -> i32 {
+        let lo = (param & 0xf) as i32;
+        let hi = (param >> 4) as i32;
+        let mut volume = self.volume.load(std::sync::atomic::Ordering::SeqCst);
+        if lo == 0 {
+            volume += hi;
+        } else if hi == 0 {
+            volume -= lo;
+        }
+        self.volume.store(Self::clamp_slide(volume), std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    /// `MusicChannelIT::panSlide` (IDA 0x86c34): mirrored signs
+    /// (0x86c48..0x86c84).
+    pub fn pan_slide(&self, param: u8) -> i32 {
+        let lo = (param & 0xf) as i32;
+        let hi = (param >> 4) as i32;
+        let mut pan = self.pan.load(std::sync::atomic::Ordering::SeqCst);
+        if lo == 0 {
+            pan -= hi;
+        } else if hi == 0 {
+            pan += lo;
+        }
+        self.pan.store(Self::clamp_slide(pan), std::sync::atomic::Ordering::SeqCst);
+        0
+    }
+    pub fn volume(&self) -> i32 {
+        self.volume.load(std::sync::atomic::Ordering::SeqCst)
+    }
+    pub fn pan(&self) -> i32 {
+        self.pan.load(std::sync::atomic::Ordering::SeqCst)
+    }
+}
+static IT_CHANNEL: std::sync::LazyLock<ItChannel> = std::sync::LazyLock::new(ItChannel::default);
 static FSB_CODEC: std::sync::LazyLock<FsbState> = std::sync::LazyLock::new(FsbState::default);
 // 0x83418 - __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
 // type: int __fastcall(FMOD::CodecFSB *this, int, int *)
@@ -1160,190 +1365,246 @@ pub fn stub_83418(sub: usize) -> (i32, u32) {
 // 0x83434 - __ZN4FMOD8CodecFSB16getSyncPointDataEiiPPcPi
 // type: int __fastcall(FMOD::CodecFSB *this, int, int, char **, int *)
 #[doc(alias = "FMOD::CodecFSB::getSyncPointData(int,int,char **,int *)")]
-pub fn stub_83434() -> ! {
-    todo!("0x83434 FMOD::CodecFSB::getSyncPointData(int,int,char **,int *)")
+pub fn stub_83434(sub: usize, index: u32) -> (i32, u32, Vec<u8>) {
+    // IDA 0x83434 `CodecFSB::getSyncPointData`: reads the value plus the
+    // name off the sub-sound (0x83450..0x83498).
+    FSB_CODEC.sync_point_data(sub, index)
 }
 
 // 0x834a0 - __ZN4FMOD8CodecFSB16canPointInternalEv
 // type: int __fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::canPointInternal(void)")]
-pub fn stub_834a0() -> ! {
-    todo!("0x834a0 FMOD::CodecFSB::canPointInternal(void)")
+pub fn stub_834a0() -> i32 {
+    // IDA 0x834a0 `CodecFSB::canPointInternal`: 45 when seeking is
+    // blocked, else 0 (0x834a0..0x834b0).
+    FSB_CODEC.can_point()
 }
 
 // 0x834c8 - __ZN4FMOD8CodecFSB16canPointCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::canPointCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_834c8() -> ! {
-    todo!("0x834c8 FMOD::CodecFSB::canPointCallback(FMOD_CODEC_STATE *)")
+pub fn stub_834c8() -> i32 {
+    // IDA 0x834c8 `CodecFSB::canPointCallback`: adjusts to the base and
+    // forwards into `canPointInternal` (0x834cc).
+    FSB_CODEC.can_point()
 }
 
 // 0x834d4 - __ZN4FMOD8CodecFSB16getDescriptionExEv
 // type: int *__fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::getDescriptionEx(void)")]
-pub fn stub_834d4() -> ! {
-    todo!("0x834d4 FMOD::CodecFSB::getDescriptionEx(void)")
+pub fn stub_834d4() -> (&'static str, u32) {
+    // IDA 0x834d4 `CodecFSB::getDescriptionEx`: fills the `fsbcodec`
+    // descriptor — name, version 65792 plus the callback table
+    // (0x834f0..tail).
+    FSB_CODEC.description()
 }
 
 // 0x835d4 - __ZN4FMOD8CodecFSB17getMemoryUsedImplEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::CodecFSB *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::CodecFSB::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_835d4() -> ! {
-    todo!("0x835d4 FMOD::CodecFSB::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+pub fn stub_835d4() -> u32 {
+    // IDA 0x835d4 `CodecFSB::getMemoryUsedImpl`: the table legs
+    // (0x83604..tail).
+    FSB_CODEC.memory_used()
 }
 
 // 0x83858 - __ZN4FMOD8CodecFSB21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
 // type: int __fastcall(FMOD::CodecFSB *this, FMOD::MemoryTracker *)
 #[doc(alias = "FMOD::CodecFSB::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_83858() -> ! {
-    todo!("0x83858 FMOD::CodecFSB::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
+pub fn stub_83858(full: bool) -> i32 {
+    // IDA 0x83858 `CodecFSB::getMemoryUsedCallback`: latch-flag dispatch
+    // into the impl (0x83870..0x838a8).
+    FSB_CODEC.memory_used_flagged(full)
 }
 
 // 0x838b0 - __ZN4FMOD8CodecFSB13closeInternalEv
 // type: int __fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::closeInternal(void)")]
-pub fn stub_838b0() -> ! {
-    todo!("0x838b0 FMOD::CodecFSB::closeInternal(void)")
+pub fn stub_838b0() -> i32 {
+    // IDA 0x838b0 `CodecFSB::closeInternal`: releases the tables
+    // (0x838b8..tail).
+    FSB_CODEC.close()
 }
 
 // 0x83c50 - __ZN4FMOD8CodecFSB13closeCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::closeCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_83c50() -> ! {
-    todo!("0x83c50 FMOD::CodecFSB::closeCallback(FMOD_CODEC_STATE *)")
+pub fn stub_83c50() -> i32 {
+    // IDA 0x83c50 `CodecFSB::closeCallback`: adjusts to the base and
+    // forwards into `closeInternal` (0x83c54).
+    FSB_CODEC.close()
 }
 
 // 0x83c5c - __ZN4FMOD8CodecFSB13resetInternalEv
 // type: int __fastcall(FMOD::CodecFSB *this)
 #[doc(alias = "FMOD::CodecFSB::resetInternal(void)")]
-pub fn stub_83c5c() -> ! {
-    todo!("0x83c5c FMOD::CodecFSB::resetInternal(void)")
+pub fn stub_83c5c() -> i32 {
+    // IDA 0x83c5c `CodecFSB::resetInternal`: zeroes the decode cursors
+    // (0x83c64..tail).
+    FSB_CODEC.reset()
 }
 
 // 0x83ce0 - __ZN4FMOD8CodecFSB13resetCallbackEP16FMOD_CODEC_STATE
 // type: int __fastcall(FMOD::CodecFSB *)
 #[doc(alias = "FMOD::CodecFSB::resetCallback(FMOD_CODEC_STATE *)")]
-pub fn stub_83ce0() -> ! {
-    todo!("0x83ce0 FMOD::CodecFSB::resetCallback(FMOD_CODEC_STATE *)")
+pub fn stub_83ce0() -> i32 {
+    // IDA 0x83ce0 `CodecFSB::resetCallback`: adjusts to the base and
+    // forwards into `resetInternal` (0x83ce4).
+    FSB_CODEC.reset()
 }
 
 // 0x83cec - __ZN4FMOD8CodecFSB21getWaveFormatInternalEiP21FMOD_CODEC_WAVEFORMAT
 // type: int __fastcall(int, int, int *__b)
 #[doc(alias = "FMOD::CodecFSB::getWaveFormatInternal(int,FMOD_CODEC_WAVEFORMAT *)")]
-pub fn stub_83cec() -> ! {
-    todo!("0x83cec FMOD::CodecFSB::getWaveFormatInternal(int,FMOD_CODEC_WAVEFORMAT *)")
+pub fn stub_83cec() -> (i32, FsbWaveFormat) {
+    // IDA 0x83cec `CodecFSB::getWaveFormatInternal`: zeroes and fills
+    // the format block (0x83d10..tail).
+    FSB_CODEC.wave_format()
 }
 
 // 0x842c4 - __ZN4FMOD8CodecFSB21getWaveFormatCallbackEP16FMOD_CODEC_STATEiP21FMOD_CODEC_WAVEFORMAT
 // type: int __fastcall(int, int, int *)
 #[doc(alias = "FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")]
-pub fn stub_842c4() -> ! {
-    todo!("0x842c4 FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")
+pub fn stub_842c4() -> (i32, FsbWaveFormat) {
+    // IDA 0x842c4 `CodecFSB::getWaveFormatCallback`: adjusts to the base
+    // and forwards into `getWaveFormatInternal` (0x842c8).
+    FSB_CODEC.wave_format()
 }
 
 // 0x842d0 - __ZN4FMOD8CodecFSB19soundcreateInternalEiP10FMOD_SOUND
 // type: int __fastcall(FMOD::CodecFSB *, int, FMOD::SoundI *)
 #[doc(alias = "FMOD::CodecFSB::soundcreateInternal(int,FMOD_SOUND *)")]
-pub fn stub_842d0() -> ! {
-    todo!("0x842d0 FMOD::CodecFSB::soundcreateInternal(int,FMOD_SOUND *)")
+pub fn stub_842d0() -> i32 {
+    // IDA 0x842d0 `CodecFSB::soundcreateInternal`: builds the sound off
+    // the format (0x842f0..tail).
+    FSB_CODEC.soundcreate()
 }
 
 // 0x84494 - __ZN4FMOD8CodecFSB19soundcreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND
 // type: int __fastcall(FMOD::CodecFSB *, int, FMOD::SoundI *)
 #[doc(alias = "FMOD::CodecFSB::soundcreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")]
-pub fn stub_84494() -> ! {
-    todo!("0x84494 FMOD::CodecFSB::soundcreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")
+pub fn stub_84494() -> i32 {
+    // IDA 0x84494 `CodecFSB::soundcreateCallback`: adjusts to the base
+    // and forwards into `soundcreateInternal` (0x84498).
+    FSB_CODEC.soundcreate()
 }
 
 // 0x844a0 - __ZN4FMOD8CodecFSB19getPositionInternalEPjj
 // type: int __fastcall(FMOD::CodecFSB *this, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::getPositionInternal(unsigned int *,unsigned int)")]
-pub fn stub_844a0() -> ! {
-    todo!("0x844a0 FMOD::CodecFSB::getPositionInternal(unsigned int *,unsigned int)")
+pub fn stub_844a0() -> (i32, u32) {
+    // IDA 0x844a0 `CodecFSB::getPositionInternal`: tells the file and
+    // converts to samples (0x844c4..tail).
+    FSB_CODEC.position()
 }
 
 // 0x84540 - __ZN4FMOD8CodecFSB19getPositionCallbackEP16FMOD_CODEC_STATEPjj
 // type: int __fastcall(FMOD::CodecFSB *, unsigned int *, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")]
-pub fn stub_84540() -> ! {
-    todo!("0x84540 FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")
+pub fn stub_84540() -> (i32, u32) {
+    // IDA 0x84540 `CodecFSB::getPositionCallback`: adjusts to the base
+    // and forwards into `getPositionInternal` (0x84544).
+    FSB_CODEC.position()
 }
 
 // 0x8454c - __ZN4FMOD8CodecFSB12readInternalEPvjPj
 // type: int __fastcall(FMOD::CodecFSB *this, int, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecFSB::readInternal(void *,unsigned int,unsigned int *)")]
-pub fn stub_8454c() -> ! {
-    todo!("0x8454c FMOD::CodecFSB::readInternal(void *,unsigned int,unsigned int *)")
+pub fn stub_8454c(count: usize) -> (i32, Vec<u8>) {
+    // IDA 0x8454c `CodecFSB::readInternal`: decodes into the buffer
+    // (0x8454c..tail).
+    FSB_CODEC.read(count)
 }
 
 // 0x84ef4 - __ZN4FMOD8CodecFSB12readCallbackEP16FMOD_CODEC_STATEPvjPj
 // type: int __fastcall(FMOD::CodecFSB *, int, unsigned int, unsigned int *)
 #[doc(alias = "FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
-pub fn stub_84ef4() -> ! {
-    todo!("0x84ef4 FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+pub fn stub_84ef4(count: usize) -> (i32, Vec<u8>) {
+    // IDA 0x84ef4 `CodecFSB::readCallback`: adjusts to the base and
+    // forwards into `readInternal` (0x84ef8).
+    FSB_CODEC.read(count)
 }
 
 // 0x84f00 - __ZN4FMOD8CodecFSB12openInternalEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecFSB::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_84f00() -> ! {
-    todo!("0x84f00 FMOD::CodecFSB::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_84f00(has_data: bool) -> i32 {
+    // IDA 0x84f00 `CodecFSB::openInternal`: parses the bank (0x84f00..
+    // tail).
+    FSB_CODEC.open(has_data)
 }
 
 // 0x86654 - __ZN4FMOD8CodecFSB12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
-pub fn stub_86654() -> ! {
-    todo!("0x86654 FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+pub fn stub_86654(has_data: bool) -> i32 {
+    // IDA 0x86654 `CodecFSB::openCallback`: adjusts to the base and
+    // forwards into `openInternal` (0x86658).
+    FSB_CODEC.open(has_data)
 }
 
 // 0x86660 - __ZN4FMOD8CodecFSB19setPositionInternalEijj
 // type: int __fastcall(FMOD::CodecFSB *this, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::setPositionInternal(int,unsigned int,unsigned int)")]
-pub fn stub_86660() -> ! {
-    todo!("0x86660 FMOD::CodecFSB::setPositionInternal(int,unsigned int,unsigned int)")
+pub fn stub_86660(sub: i32, pos: u32) -> i32 {
+    // IDA 0x86660 `CodecFSB::setPositionInternal`: 38 on a negative
+    // sub-sound or past the count, else seeks (0x86680..tail).
+    FSB_CODEC.set_position(sub, pos)
 }
 
 // 0x86aa0 - __ZN4FMOD8CodecFSB19setPositionCallbackEP16FMOD_CODEC_STATEijj
 // type: int __fastcall(FMOD::CodecFSB *, int, unsigned int, unsigned int)
 #[doc(alias = "FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
-pub fn stub_86aa0() -> ! {
-    todo!("0x86aa0 FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+pub fn stub_86aa0(sub: i32, pos: u32) -> i32 {
+    // IDA 0x86aa0 `CodecFSB::setPositionCallback`: adjusts to the base
+    // and forwards into `setPositionInternal` (0x86aa4).
+    FSB_CODEC.set_position(sub, pos)
 }
 
 // 0x86aac - __Z41__static_initialization_and_destruction_0ii_3
 // type: int __fastcall(int result, int)
 #[doc(alias = "__Z41__static_initialization_and_destruction_0ii_3")]
-pub fn stub_86aac() -> ! {
-    todo!("0x86aac __Z41__static_initialization_and_destruction_0ii_3")
+pub fn stub_86aac(result: i32) -> i32 {
+    // IDA 0x86aac `__static_initialization_and_destruction_0`: inits the
+    // codec plus cache lists on (1, 0xFFFF) (0x86abc..0x86afc).
+    let _ = &*FSB_CODEC;
+    result
 }
 
 // 0x86b10 - __GLOBAL__I__ZN4FMOD8fsbcodecE
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::fsbcodec")]
-pub fn stub_86b10() -> ! {
-    todo!("0x86b10 global constructor keyed toFMOD::fsbcodec")
+pub fn stub_86b10() {
+    // IDA 0x86b10: global ctor keyed to `fsbcodec` — runs the static
+    // init (sole call); the LazyLock below is the table.
+    let _ = &*FSB_CODEC;
 }
 
 // 0x86b1c - __ZN4FMOD7CodecIT8readBitsEhPj
 // type: int __fastcall(FMOD::CodecIT *this, unsigned __int8, unsigned int *)
 #[doc(alias = "FMOD::CodecIT::readBits(unsigned char,unsigned int *)")]
-pub fn stub_86b1c() -> ! {
-    todo!("0x86b1c FMOD::CodecIT::readBits(unsigned char,unsigned int *)")
+pub fn stub_86b1c(n: u8) -> (i32, u32) {
+    // IDA 0x86b1c `CodecIT::readBits`: pulls `n` LSB-first bits
+    // (0x86b28..tail).
+    IT_READER.read_bits(n)
 }
 
 // 0x86bcc - __ZN4FMOD14MusicChannelIT11volumeSlideEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::volumeSlide(void)")]
-pub fn stub_86bcc() -> ! {
-    todo!("0x86bcc FMOD::MusicChannelIT::volumeSlide(void)")
+pub fn stub_86bcc(param: u8) -> i32 {
+    // IDA 0x86bcc `MusicChannelIT::volumeSlide`: Dx0 slides up by x, Dx
+    // slides down by y (0x86be0..0x86c1c).
+    IT_CHANNEL.volume_slide(param)
 }
 
 // 0x86c34 - __ZN4FMOD14MusicChannelIT8panSlideEv
 // type: int __fastcall(FMOD::MusicChannelIT *this)
 #[doc(alias = "FMOD::MusicChannelIT::panSlide(void)")]
-pub fn stub_86c34() -> ! {
-    todo!("0x86c34 FMOD::MusicChannelIT::panSlide(void)")
+pub fn stub_86c34(param: u8) -> i32 {
+    // IDA 0x86c34 `MusicChannelIT::panSlide`: mirrored signs
+    // (0x86c48..0x86c84).
+    IT_CHANNEL.pan_slide(param)
 }
 
 // 0x86c9c - __ZN4FMOD14MusicChannelIT10portamentoEv
