@@ -8,8 +8,10 @@ use rbx_core::SharedPtr;
 use crate::generated::flog_asserts;
 use crate::generated_134::{XmlIntSlot, XmlReadValue};
 use crate::generated_audio_wd_watchdog18::{
-    TextLabelBoolProp, TextLabelBoolSlot, TextLabelColorProp, TextLabelColorSlot, TextLabelFloatProp,
-    TextLabelFloatSlot, TextLabelState, XALIGNMENT_ITEMS, xalignment_index, xalignment_name,
+    FontVariant, TextLabelBoolProp, TextLabelBoolSlot, TextLabelBrickProp, TextLabelColorProp,
+    TextLabelColorSlot, TextLabelFloatProp, TextLabelFloatSlot, TextLabelFontProp, TextLabelState,
+    XALIGNMENT_ITEMS, YALIGNMENT_ITEMS, FONT_ITEMS, font_name, xalignment_index, xalignment_name,
+    yalignment_index, yalignment_name,
 };
 const _: () = { let _ = core::marker::PhantomData::<SharedPtr<u8>>; };
 
@@ -360,8 +362,10 @@ pub fn stub_67b498() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(G3D::Color3)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")]
-pub fn stub_67b49c() -> ! {
-    todo!("0x67b49c __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+pub fn stub_67b49c() -> bool {
+    // IDA 0x67b49c (`GetSetImpl<TextLabel Color3>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67b4a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
@@ -369,8 +373,13 @@ pub fn stub_67b49c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67b4a0() -> ! {
-    todo!("0x67b4a0 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67b4a0(state: &TextLabelState, slot: TextLabelColorSlot) -> [f32; 3] {
+    // IDA 0x67b4a0 (`GetSetImpl<TextLabel Color3>::getValue`): the
+    // member-pointer resolve (null described reads at offset 0 with
+    // the +536 `Instance`-to-mixin adjust; virtual when the low bit
+    // is set) tail-calling the getter. Host: the `slot` selects the
+    // `TextLabelState` color.
+    state.color_slot(slot)
 }
 
 // 0x67b4d8 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
@@ -378,8 +387,16 @@ pub fn stub_67b4a0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")]
-pub fn stub_67b4d8() -> ! {
-    todo!("0x67b4d8 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelEN3G3D6Color3EE10GetSetImplIMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+pub fn stub_67b4d8(state: &mut TextLabelState, slot: TextLabelColorSlot, value: [f32; 3]) -> bool {
+    // IDA 0x67b4d8 (`GetSetImpl<TextLabel Color3>::setValue`): copies
+    // the input and tail-calls the setter member-pointer (host: the
+    // `slot` selects the member setter twin —
+    // `setTextColor3`/`setTextStrokeColor3` at 0x678814/0x678d0c,
+    // whose raises fold into the changed flag).
+    match slot {
+        TextLabelColorSlot::TextColor3 => crate::generated_audio_wdog_B::stub_0x678814(state, value),
+        TextLabelColorSlot::TextStrokeColor3 => crate::generated_audio_wdog_B::stub_0x678d0c(state, value),
+    }
 }
 
 // 0x67b514 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -387,8 +404,13 @@ pub fn stub_67b4d8() -> ! {
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_67b514() -> ! {
-    todo!("0x67b514 __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEEC2IMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_67b514(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelBrickProp {
+    // IDA 0x67b514 (`PropDescriptor<TextLabel,
+    // BrickColor>::PropDescriptor`): builds the `GetSetImpl`
+    // member-pair cell plus the typed descriptor identity with
+    // name/category/attributes/permissions. The pair folds into the
+    // `text_color` id cache. Host: the identity half.
+    TextLabelBrickProp::new(name, category, attributes, permissions)
 }
 
 // 0x67b628 — __ZN3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEED0Ev
@@ -405,8 +427,10 @@ pub fn stub_67b628() {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor)>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")]
-pub fn stub_67b654() -> ! {
-    todo!("0x67b654 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+pub fn stub_67b654() -> bool {
+    // IDA 0x67b654 (`GetSetImpl<TextLabel BrickColor>::isReadOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67b658 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv
@@ -414,8 +438,10 @@ pub fn stub_67b654() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")]
-pub fn stub_67b658() -> ! {
-    todo!("0x67b658 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+pub fn stub_67b658() -> bool {
+    // IDA 0x67b658 (`GetSetImpl<TextLabel BrickColor>::isWriteOnly`):
+    // returns constant 0.
+    false
 }
 
 // 0x67b65c — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
@@ -423,8 +449,12 @@ pub fn stub_67b658() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67b65c() -> ! {
-    todo!("0x67b65c __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+pub fn stub_67b65c(state: &TextLabelState) -> u32 {
+    // IDA 0x67b65c (`GetSetImpl<TextLabel BrickColor>::getValue`):
+    // dispatches the stored getter member-pointer (the member is
+    // `getTextColor`, which recomputes via `closest`; same palette
+    // gap as the mixin twin). Host: the cached `TextColor` id.
+    state.text_color
 }
 
 // 0x67b694 — __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
@@ -432,8 +462,12 @@ pub fn stub_67b65c() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TextLabel,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")]
-pub fn stub_67b694() -> ! {
-    todo!("0x67b694 __ZNK3RBX10Reflection14PropDescriptorINS_9TextLabelENS_10BrickColorEE10GetSetImplIMNS_12GuiTextMixinEKFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+pub fn stub_67b694(state: &mut TextLabelState, value: u32) {
+    // IDA 0x67b694 (`GetSetImpl<TextLabel BrickColor>::setValue`):
+    // dispatches the stored setter member-pointer (the member is
+    // `setTextColor`; its palette conversion is ungrounded).
+    // Host: the id cache half (host: the 0x6787f4 twin).
+    crate::generated_audio_wdog_B::stub_0x6787f4(state, value);
 }
 
 // 0x67b6b8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -441,8 +475,15 @@ pub fn stub_67b694() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::EnumPropDescriptor<RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font)>(char const*,char const*,RBX::TextService::Font (RBX::GuiTextMixin::*)(void)const,void (RBX::TextLabel::*)(RBX::TextService::Font),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_67b6b8() -> ! {
-    todo!("0x67b6b8 __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEEC2IMNS_12GuiTextMixinEKFS4_vEMS2_FvS4_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+pub fn stub_67b6b8(name: &str, category: &str, attributes: u32, permissions: u32) -> TextLabelFontProp {
+    // IDA 0x67b6b8 (`EnumPropDescriptor<TextLabel, Font>` ctor): the
+    // `TextLabel` `classDescriptor` call, the `EnumDesc<Font>`
+    // singleton once-init and the `PropertyDescriptor` base init
+    // with name/category/attributes/permissions plus the impl
+    // holding the getter/setter member-pointer pair. The pair folds
+    // into the `font` field. Same shape as the `TextBox` twin at
+    // 0x66f2fc.
+    TextLabelFontProp::new(name, category, attributes, permissions)
 }
 
 // 0x67b86c — __ZN3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEED0Ev
@@ -459,8 +500,11 @@ pub fn stub_67b86c() {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::isReadOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10isReadOnlyEv")]
-pub fn stub_67b898() -> ! {
-    todo!("0x67b898 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10isReadOnlyEv")
+pub fn stub_67b898() -> bool {
+    // IDA 0x67b898 (`EnumPropDescriptor<TextLabel,
+    // Font>::isReadOnly`): delegates to the inner `GetSet` at +44 —
+    // always readable.
+    false
 }
 
 // 0x67b8a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11isWriteOnlyEv
@@ -468,8 +512,11 @@ pub fn stub_67b898() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::isWriteOnly(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11isWriteOnlyEv")]
-pub fn stub_67b8a8() -> ! {
-    todo!("0x67b8a8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11isWriteOnlyEv")
+pub fn stub_67b8a8() -> bool {
+    // IDA 0x67b8a8 (`EnumPropDescriptor<TextLabel,
+    // Font>::isWriteOnly`): delegates to the inner `GetSet` at +44 —
+    // always writable.
+    false
 }
 
 // 0x67b8b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_
@@ -477,8 +524,12 @@ pub fn stub_67b8a8() -> ! {
 // type: bool __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_")]
-pub fn stub_67b8b8() -> ! {
-    todo!("0x67b8b8 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11equalValuesEPKNS0_13DescribedBaseES8_")
+pub fn stub_67b8b8(first: &TextLabelState, second: &TextLabelState) -> bool {
+    // IDA 0x67b8b8 (`EnumPropDescriptor<TextLabel,
+    // Font>::equalValues`): reads the inner value for both
+    // instances via the +44 `GetSet` and compares. Host: compare
+    // the fonts.
+    first.font == second.font
 }
 
 // 0x67b8e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
@@ -486,8 +537,12 @@ pub fn stub_67b8b8() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
-pub fn stub_67b8e0() -> ! {
-    todo!("0x67b8e0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+pub fn stub_67b8e0(state: &TextLabelState) -> FontVariant {
+    // IDA 0x67b8e0 (`EnumPropDescriptor<TextLabel,
+    // Font>::getVariant`): reads the inner value, tags it with the
+    // plain-`int` singleton and placement-moves it in. Host: the
+    // `Font` tag.
+    FontVariant::Font(state.font)
 }
 
 // 0x67b904 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
@@ -495,8 +550,17 @@ pub fn stub_67b8e0() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
-pub fn stub_67b904() -> ! {
-    todo!("0x67b904 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+pub fn stub_67b904(state: &mut TextLabelState, variant: &FontVariant) {
+    // IDA 0x67b904 (`EnumPropDescriptor<TextLabel,
+    // Font>::setVariant`): an int-typed variant runs `any_cast<int>`;
+    // anything else runs `Variant::convert<int>` (throws on
+    // failure); then the +72 setter. Host: convert-or-throw, then
+    // store.
+    let value = match *variant {
+        FontVariant::Font(value) => value,
+        _ => panic!("Unable to convert variant to int (IDA 0x67b904)"),
+    };
+    state.font = value;
 }
 
 // 0x67ba50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_
@@ -504,8 +568,11 @@ pub fn stub_67b904() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_")]
-pub fn stub_67ba50() -> ! {
-    todo!("0x67ba50 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9copyValueEPKNS0_13DescribedBaseEPS6_")
+pub fn stub_67ba50(first: &TextLabelState, second: &mut TextLabelState) {
+    // IDA 0x67ba50 (`EnumPropDescriptor<TextLabel,
+    // Font>::copyValue`): inner `getValue` on the source then inner
+    // `setValue` on the target. Host: copy the font.
+    second.font = first.font;
 }
 
 // 0x67ba74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14hasStringValueEv
@@ -513,8 +580,10 @@ pub fn stub_67ba50() -> ! {
 // type: int()
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::hasStringValue(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14hasStringValueEv")]
-pub fn stub_67ba74() -> ! {
-    todo!("0x67ba74 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14hasStringValueEv")
+pub fn stub_67ba74() -> bool {
+    // IDA 0x67ba74 (`EnumPropDescriptor<TextLabel,
+    // Font>::hasStringValue`): returns 1 — always stringable.
+    true
 }
 
 // 0x67ba78 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE
@@ -522,8 +591,12 @@ pub fn stub_67ba74() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67ba78() -> ! {
-    todo!("0x67ba78 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14getStringValueEPKNS0_13DescribedBaseE")
+pub fn stub_67ba78(state: &TextLabelState) -> String {
+    // IDA 0x67ba78 (`EnumPropDescriptor<TextLabel,
+    // Font>::getStringValue`): inner value via the +44 `GetSet`
+    // plus `EnumDesc::convertToString`. Host: the grounded item
+    // name.
+    font_name(state.font).to_owned()
 }
 
 // 0x67ba9c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs
@@ -531,8 +604,18 @@ pub fn stub_67ba78() -> ! {
 // type: int __fastcall(int, const char *const *, int *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs")]
-pub fn stub_67ba9c() -> ! {
-    todo!("0x67ba9c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKSs")
+pub fn stub_67ba9c(state: &mut TextLabelState, name: &str) -> bool {
+    // IDA 0x67ba9c (`EnumPropDescriptor<TextLabel,
+    // Font>::setStringValue`): `Name::lookup` +
+    // `EnumDesc::convertToValue`; on a hit the inner `setValue`
+    // runs and 1 returns, else 0. Host: table position decides.
+    match FONT_ITEMS.iter().position(|(n, _)| *n == name) {
+        Some(index) => {
+            state.font = FONT_ITEMS[index].1;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67badc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
@@ -540,8 +623,13 @@ pub fn stub_67ba9c() -> ! {
 // type: int __fastcall(int, int, _DWORD *)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")]
-pub fn stub_67badc() -> ! {
-    todo!("0x67badc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+pub fn stub_67badc(state: &TextLabelState, out: &mut XmlIntSlot) -> i32 {
+    // IDA 0x67badc (`EnumPropDescriptor<TextLabel,
+    // Font>::writeValue`): inner `getValue`, `clearValue`, int tag
+    // `5` at +16, value at +20, returns 5.
+    out.value_type = 5;
+    out.int_value = state.font as i32;
+    5
 }
 
 // 0x67bafc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
@@ -549,8 +637,42 @@ pub fn stub_67badc() -> ! {
 // type: void __fastcall(int, int, XmlElement *this)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")]
-pub fn stub_67bafc() -> ! {
-    todo!("0x67bafc __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+pub fn stub_67bafc(state: &mut TextLabelState, xml: &XmlReadValue) {
+    // IDA 0x67bafc (`EnumPropDescriptor<TextLabel,
+    // Font>::readValue`): xsi:nil early-out; an int pair runs
+    // `setIntValue` (index→value with -1 rejection) and returns on
+    // success; a string pair runs lookup + convert + inner set, a
+    // miss running the +64 reset hook before asserting (folds away);
+    // anything else hits `ReleaseAssert(false)`
+    // (Reflection.h:359, host seam). The `enumToItem` map is dense
+    // identity, so the int path reads the table.
+    match xml {
+        XmlReadValue::Nil => {}
+        XmlReadValue::Int(value) => {
+            if *value >= 0 {
+                if let Some((_, font)) = FONT_ITEMS.get(*value as usize) {
+                    state.font = *font;
+                    return;
+                }
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67bafc)");
+            }
+        }
+        XmlReadValue::Text(text) => {
+            if stub_67ba9c(state, text) {
+                return;
+            }
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67bafc)");
+            }
+        }
+        XmlReadValue::Other => {
+            if flog_asserts() {
+                panic!("false file: include/Reflection/Reflection.h line: 359 (IDA 0x67bafc)");
+            }
+        }
+    }
 }
 
 // 0x67bd3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE
@@ -558,8 +680,16 @@ pub fn stub_67bafc() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67bd3c() -> ! {
-    todo!("0x67bd3c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13getIndexValueEPKNS0_13DescribedBaseE")
+pub fn stub_67bd3c(state: &TextLabelState) -> i32 {
+    // IDA 0x67bd3c (`EnumPropDescriptor<TextLabel,
+    // Font>::getIndexValue`): inner `getValue` +
+    // `EnumDesc::convertToIndex`. Host: the item index of the live
+    // value.
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x67bd58 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm
@@ -567,8 +697,18 @@ pub fn stub_67bd3c() -> ! {
 // type: int __fastcall(int, int, unsigned int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm")]
-pub fn stub_67bd58() -> ! {
-    todo!("0x67bd58 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE13setIndexValueEPNS0_13DescribedBaseEm")
+pub fn stub_67bd58(state: &mut TextLabelState, index: u32) -> bool {
+    // IDA 0x67bd58 (`EnumPropDescriptor<TextLabel,
+    // Font>::setIndexValue`): bounds-checks the index against the
+    // item count, stores `items[index]` through the inner `setValue`
+    // and returns 1, else 0.
+    match FONT_ITEMS.get(index as usize) {
+        Some((_, font)) => {
+            state.font = *font;
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x67bd8c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE
@@ -576,8 +716,10 @@ pub fn stub_67bd58() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE")]
-pub fn stub_67bd8c() -> ! {
-    todo!("0x67bd8c __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12getEnumValueEPKNS0_13DescribedBaseE")
+pub fn stub_67bd8c(state: &TextLabelState) -> u32 {
+    // IDA 0x67bd8c (`EnumPropDescriptor<TextLabel,
+    // Font>::getEnumValue`): the inner `getValue` straight through.
+    state.font
 }
 
 // 0x67bd94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi
@@ -585,8 +727,17 @@ pub fn stub_67bd8c() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi")]
-pub fn stub_67bd94() -> ! {
-    todo!("0x67bd94 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE12setEnumValueEPNS0_13DescribedBaseEi")
+pub fn stub_67bd94(state: &mut TextLabelState, value: u32) -> bool {
+    // IDA 0x67bd94 (`EnumPropDescriptor<TextLabel,
+    // Font>::setEnumValue`): `find_if` with `equalValue` over the
+    // items; on a hit the inner `setValue` runs and 1 returns, else
+    // 0. Host: membership decides.
+    if FONT_ITEMS.iter().any(|(_, v)| *v == value) {
+        state.font = value;
+        true
+    } else {
+        false
+    }
 }
 
 // 0x67bde0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE
@@ -594,8 +745,16 @@ pub fn stub_67bd94() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE")]
-pub fn stub_67bde0() -> ! {
-    todo!("0x67bde0 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11getEnumItemEPKNS0_13DescribedBaseE")
+pub fn stub_67bde0(state: &TextLabelState) -> i32 {
+    // IDA 0x67bde0 (`EnumPropDescriptor<TextLabel,
+    // Font>::getEnumItem`): inner `getValue` +
+    // `EnumDesc::convertToItem`. Host: the item position of the
+    // live value (-1 when missing).
+    FONT_ITEMS
+        .iter()
+        .position(|(_, v)| *v == state.font)
+        .map(|i| i as i32)
+        .unwrap_or(-1)
 }
 
 // 0x67be00 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
@@ -603,8 +762,13 @@ pub fn stub_67bde0() -> ! {
 // type: int __fastcall(int, int, int)
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::TextLabel,RBX::TextService::Font>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")]
-pub fn stub_67be00() -> ! {
-    todo!("0x67be00 __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE")
+pub fn stub_67be00(state: &mut TextLabelState, name: &str) -> bool {
+    // IDA 0x67be00 (`EnumPropDescriptor<TextLabel,
+    // Font>::setStringValue` over `Name`): `convertToValue` on the
+    // name; on a hit the inner `setValue` runs and 1 returns, else
+    // 0. Same string edge as 0x67ba9c — host forwards into that
+    // twin (`Name` folds into `&str`).
+    stub_67ba9c(state, name)
 }
 
 // 0x67be34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9TextLabelENS_11TextService4FontEE11setIntValueEPNS0_13DescribedBaseEi

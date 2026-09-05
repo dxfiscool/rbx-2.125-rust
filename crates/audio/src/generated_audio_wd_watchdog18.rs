@@ -838,6 +838,47 @@ impl TextLabelColorProp {
         }
     }
 }
+/// `RBX::Reflection::PropDescriptor<TextLabel, BrickColor>` cutover
+/// (IDA 0x67b514): name/category/attributes/permissions. The
+/// getter/setter member-pointer pair folds into the `text_color` id
+/// cache.
+#[derive(Debug, Clone)]
+pub struct TextLabelBrickProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelBrickProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
+/// `RBX::Reflection::EnumPropDescriptor<TextLabel, Font>` cutover
+/// (IDA 0x67b6b8): name/category/attributes/permissions. The member
+/// pair folds into the `font` field.
+#[derive(Debug, Clone)]
+pub struct TextLabelFontProp {
+    pub name: String,
+    pub category: String,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+impl TextLabelFontProp {
+    pub fn new(name: &str, category: &str, attributes: u32, permissions: u32) -> Self {
+        Self {
+            name: name.to_owned(),
+            category: category.to_owned(),
+            attributes,
+            permissions,
+        }
+    }
+}
 /// `EnumDesc<TextService::FontSize>` items in `addPair` order (IDA
 /// 0x7d80c4: the `MOVS R1, #N` ahead of each call grounds dense
 /// values 0..=9).
