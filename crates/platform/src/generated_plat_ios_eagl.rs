@@ -610,6 +610,8 @@ pub struct Eagl2Window {
     pub fullscreen_request: bool,
     /// Last framebuffer bound by `_beginUpdate` (0x8D40 target).
     pub bound_framebuffer: u32,
+    /// Presents recorded by `swapBuffers` (IDA 0xe89c80) [INFERENCE].
+    pub presented_frames: u32,
     pub viewports: Vec<ViewportDims>,
 }
 
@@ -637,6 +639,7 @@ impl Eagl2Window {
             external_view: false,
             fullscreen_request: false,
             bound_framebuffer: 0,
+            presented_frames: 0,
             viewports: Vec::new(),
         }
     }
@@ -715,6 +718,152 @@ impl Eagl2Window {
             self.bound_framebuffer = fbo;
         }
     }
+    /// `setFullscreen` (IDA 0xe886f8) [INFERENCE — IDA wedged this wave;
+    /// grounded in export.json signature + Ogre iOS behavior]: fullscreen is
+    /// fixed on iOS, so a size change falls through to `resize`.
+    pub fn set_fullscreen(&mut self, _fullscreen: bool, width: u32, height: u32) {
+        self.resize(width, height);
+    }
+    /// `reposition` (IDA 0xe886fc) [INFERENCE]: no-op on iOS; records the
+    /// requested origin.
+    pub fn reposition(&mut self, left: i32, top: i32) {
+        self.view_x = left;
+        self.view_bottom = top;
+    }
+    /// `windowMovedOrResized` (IDA 0xe88800) [INFERENCE]: refreshes every
+    /// viewport from the current size (same tail as `resize` 0xe887d4..0xe887ea).
+    pub fn window_moved_or_resized(&mut self) {
+        for vp in &mut self.viewports {
+            vp.w = self.width;
+            vp.h = self.height;
+        }
+    }
+    /// `initNativeCreatedWindow` (IDA 0xe888bc) [INFERENCE]: adopts an
+    /// externally created window — geometry stored, ownership flags set.
+    pub fn init_native_created_window(&mut self, width: u32, height: u32) {
+        self.width = width;
+        self.height = height;
+        self.external_window = true;
+        self.external_context = true;
+        self.external_view = true;
+        self.closed = false;
+        self.active = true;
+    }
+    /// `create` (IDA 0xe89488) [INFERENCE]: stores name/geometry and clears
+    /// the external-ownership flags (we own what `create` makes).
+    pub fn create(&mut self, name: &str, width: u32, height: u32, fullscreen: bool) {
+        self.name = name.into();
+        self.width = width;
+        self.height = height;
+        self.fullscreen_request = fullscreen;
+        self.external_window = false;
+        self.external_context = false;
+        self.external_view = false;
+        self.closed = false;
+        self.active = true;
+    }
+    /// `swapBuffers` (IDA 0xe89c80) [INFERENCE]: no host GL — records the
+    /// present. `wait_vsync` is accepted; nothing blocks on the host.
+    pub fn swap_buffers(&mut self, _wait_vsync: bool) {
+        self.presented_frames = self.presented_frames.wrapping_add(1);
+    }
+    /// `getCustomAttribute` (IDA 0xe89f88) [INFERENCE]: known Ogre names —
+    /// `EAGLLayer` maps to the layer, `EAGLContext`/`GLContext` to the
+    /// render layer; anything else is `None`.
+    pub fn get_custom_attribute(&self, name: &str) -> Option<usize> {
+        match name {
+            "EAGLLayer" => Some(self.layer),
+            "EAGLContext" | "GLContext" => Some(self.render_layer),
+            _ => None,
+        }
+    }
+    /// `copyContentsToMemory` (IDA 0xe8a038) [INFERENCE]: no host pixels —
+    /// returns a zeroed RGBA buffer of the requested size.
+    pub fn copy_contents_to_memory(&self, width: u32, height: u32) -> Vec<u8> {
+        vec![0u8; (width as usize).saturating_mul(height as usize).saturating_mul(4)]
+    }
+    /// `requiresTextureFlipping` (IDA 0xe8a554) [INFERENCE]: GLES flip quirk —
+    /// constant true in Ogre's EAGL2 backend.
+    pub fn requires_texture_flipping(&self) -> bool {
+        true
+    }
+    /// `isVisible` (IDA 0xe8a568) [INFERENCE]: active and not closed.
+    pub fn is_visible(&self) -> bool {
+        self.active && !self.closed
+    }
+    /// `setVisible` (IDA 0xe8a570) [INFERENCE]: drives the active flag.
+    pub fn set_visible(&mut self, visible: bool) {
+        self.active = visible;
+    }
+    /// `isClosed` (IDA 0xe8a590): the +148 closed flag (0xe88686..0xe88690).
+    pub fn is_closed(&self) -> bool {
+        self.closed
+    }
+}
+
+/// Host model of `Ogre::EAGLES2Context` (IDA 0xe8a698..0xe8b490) [INFERENCE —
+/// IDA wedged this wave; grounded in export.json signatures + Ogre EAGL
+/// behavior]: ObjC layer/sharegroup handles plus GL state. No host GL
+/// exists, so the framebuffer is a placeholder handle (0/1) and `context`
+/// is an opaque stand-in zeroed on destroy.
+#[derive(Debug, Clone, Copy, Default)]
+pub struct Eagles2Context {
+    pub layer: usize,
+    pub sharegroup: usize,
+    pub context: usize,
+    pub gl: GlContextState,
+    pub valid: bool,
+}
+
+impl Eagles2Context {
+    /// C1/C2 (IDA 0xe8a698/0xe8a6a4) [INFERENCE].
+    pub fn new(layer: usize, sharegroup: usize) -> Self {
+        Self {
+            layer,
+            sharegroup,
+            context: layer,
+            gl: GlContextState::default(),
+            valid: true,
+        }
+    }
+    /// D1 (IDA 0xe8aab4) [INFERENCE]: release framebuffer + null the context.
+    pub fn destroy(&mut self) {
+        self.gl.framebuffer = 0;
+        self.gl.active = false;
+        self.context = 0;
+        self.valid = false;
+    }
+    /// `destroyFramebuffer` (IDA 0xe8abf8) [INFERENCE].
+    pub fn destroy_framebuffer(&mut self) {
+        self.gl.framebuffer = 0;
+    }
+    /// `createFramebuffer` (IDA 0xe8ac58) [INFERENCE]: placeholder handle.
+    pub fn create_framebuffer(&mut self) {
+        self.gl.framebuffer = 1;
+    }
+    /// `setCurrent` (IDA 0xe8b298) [INFERENCE].
+    pub fn set_current(&mut self) {
+        self.gl.active = true;
+    }
+    /// `endCurrent` (IDA 0xe8b488) [INFERENCE].
+    pub fn end_current(&mut self) {
+        self.gl.active = false;
+    }
+    /// `clone` (IDA 0xe8b48c) [INFERENCE]: fresh inactive context on the
+    /// same layer/sharegroup.
+    pub fn clone_context(&self) -> Self {
+        Self {
+            layer: self.layer,
+            sharegroup: self.sharegroup,
+            context: self.layer,
+            gl: GlContextState::default(),
+            valid: self.valid,
+        }
+    }
+    /// `getContext` (IDA 0xe8b490) [INFERENCE]: opaque context handle.
+    pub fn get_context(&self) -> usize {
+        self.context
+    }
 }
 
 /// Destructor body shared by the deleting (0xe884e4) and plain (0xe885b8)
@@ -756,173 +905,198 @@ pub fn stub_0xe885b8(window: &mut Eagl2Window) {
 // 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZN4Ogre11EAGL2Window7destroyEv")]
-pub fn stub_0xe88680() -> ! {
-    todo!("0xe88680 __ZN4Ogre11EAGL2Window7destroyEv")
+pub fn stub_0xe88680(window: &mut Eagl2Window) -> usize {
+    // IDA 0xe88680
+    window.destroy()
 }
 
 // 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool, unsigned int, unsigned int)
 #[doc(alias = "__ZN4Ogre11EAGL2Window13setFullscreenEbjj")]
-pub fn stub_0xe886f8() -> ! {
-    todo!("0xe886f8 __ZN4Ogre11EAGL2Window13setFullscreenEbjj")
+pub fn stub_0xe886f8(window: &mut Eagl2Window, fullscreen: bool, width: u32, height: u32) {
+    // IDA 0xe886f8
+    window.set_fullscreen(fullscreen, width, height);
 }
 
 // 0xe886fc — __ZN4Ogre11EAGL2Window10repositionEii
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, int, int)
 #[doc(alias = "__ZN4Ogre11EAGL2Window10repositionEii")]
-pub fn stub_0xe886fc() -> ! {
-    todo!("0xe886fc __ZN4Ogre11EAGL2Window10repositionEii")
+pub fn stub_0xe886fc(window: &mut Eagl2Window, left: i32, top: i32) {
+    // IDA 0xe886fc
+    window.reposition(left, top);
 }
 
 // 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, unsigned int, unsigned int)
 #[doc(alias = "__ZN4Ogre11EAGL2Window6resizeEjj")]
-pub fn stub_0xe88700() -> ! {
-    todo!("0xe88700 __ZN4Ogre11EAGL2Window6resizeEjj")
+pub fn stub_0xe88700(window: &mut Eagl2Window, width: u32, height: u32) {
+    // IDA 0xe88700
+    window.resize(width, height);
 }
 
 // 0xe88800 — __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZN4Ogre11EAGL2Window20windowMovedOrResizedEv")]
-pub fn stub_0xe88800() -> ! {
-    todo!("0xe88800 __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv")
+pub fn stub_0xe88800(window: &mut Eagl2Window) {
+    // IDA 0xe88800
+    window.window_moved_or_resized();
 }
 
 // 0xe88894 — __ZN4Ogre11EAGL2Window12_beginUpdateEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZN4Ogre11EAGL2Window12_beginUpdateEv")]
-pub fn stub_0xe88894() -> ! {
-    todo!("0xe88894 __ZN4Ogre11EAGL2Window12_beginUpdateEv")
+pub fn stub_0xe88894(window: &mut Eagl2Window) {
+    // IDA 0xe88894
+    window.begin_update();
 }
 
 // 0xe888bc — __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "__ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
-pub fn stub_0xe888bc() -> ! {
-    todo!("0xe888bc __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")
+pub fn stub_0xe888bc(window: &mut Eagl2Window, width: u32, height: u32) {
+    // IDA 0xe888bc: native window + options map (no host map — geometry only).
+    window.init_native_created_window(width, height);
 }
 
 // 0xe89488 — __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "__ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")]
-pub fn stub_0xe89488() -> ! {
-    todo!("0xe89488 __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE")
+pub fn stub_0xe89488(window: &mut Eagl2Window, name: &str, width: u32, height: u32, fullscreen: bool) {
+    // IDA 0xe89488: name/dims/fullscreen + misc params map (geometry kept).
+    window.create(name, width, height, fullscreen);
 }
 
 // 0xe89c80 — __ZN4Ogre11EAGL2Window11swapBuffersEb
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
 #[doc(alias = "__ZN4Ogre11EAGL2Window11swapBuffersEb")]
-pub fn stub_0xe89c80() -> ! {
-    todo!("0xe89c80 __ZN4Ogre11EAGL2Window11swapBuffersEb")
+pub fn stub_0xe89c80(window: &mut Eagl2Window, wait_vsync: bool) {
+    // IDA 0xe89c80
+    window.swap_buffers(wait_vsync);
 }
 
 // 0xe89f88 — __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, const std::string *, void *)
 #[doc(alias = "__ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv")]
-pub fn stub_0xe89f88() -> ! {
-    todo!("0xe89f88 __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv")
+pub fn stub_0xe89f88(window: &Eagl2Window, name: &str) -> Option<usize> {
+    // IDA 0xe89f88
+    window.get_custom_attribute(name)
 }
 
 // 0xe8a038 — __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE
 #[doc(alias = "__ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE")]
-pub fn stub_0xe8a038() -> ! {
-    todo!("0xe8a038 __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE")
+pub fn stub_0xe8a038(window: &Eagl2Window, width: u32, height: u32) -> Vec<u8> {
+    // IDA 0xe8a038: PixelBox + FrameBuffer args (dims + bytes kept).
+    window.copy_contents_to_memory(width, height)
 }
 
 // 0xe8a554 — __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv")]
-pub fn stub_0xe8a554() -> ! {
-    todo!("0xe8a554 __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv")
+pub fn stub_0xe8a554(window: &Eagl2Window) -> bool {
+    // IDA 0xe8a554
+    window.requires_texture_flipping()
 }
 
 // 0xe8a568 — __ZNK4Ogre11EAGL2Window9isVisibleEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZNK4Ogre11EAGL2Window9isVisibleEv")]
-pub fn stub_0xe8a568() -> ! {
-    todo!("0xe8a568 __ZNK4Ogre11EAGL2Window9isVisibleEv")
+pub fn stub_0xe8a568(window: &Eagl2Window) -> bool {
+    // IDA 0xe8a568
+    window.is_visible()
 }
 
 // 0xe8a570 — __ZN4Ogre11EAGL2Window10setVisibleEb
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
 #[doc(alias = "__ZN4Ogre11EAGL2Window10setVisibleEb")]
-pub fn stub_0xe8a570() -> ! {
-    todo!("0xe8a570 __ZN4Ogre11EAGL2Window10setVisibleEb")
+pub fn stub_0xe8a570(window: &mut Eagl2Window, visible: bool) {
+    // IDA 0xe8a570
+    window.set_visible(visible);
 }
 
 // 0xe8a590 — __ZNK4Ogre11EAGL2Window8isClosedEv
 // type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
 #[doc(alias = "__ZNK4Ogre11EAGL2Window8isClosedEv")]
-pub fn stub_0xe8a590() -> ! {
-    todo!("0xe8a590 __ZNK4Ogre11EAGL2Window8isClosedEv")
+pub fn stub_0xe8a590(window: &Eagl2Window) -> bool {
+    // IDA 0xe8a590
+    window.is_closed()
 }
 
 // 0xe8a698 — __ZN4Ogre14EAGLES2ContextC1EP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "__ZN4Ogre14EAGLES2ContextC1EP11CAEAGLLayerP14EAGLSharegroup")]
-pub fn stub_0xe8a698() -> ! {
-    todo!("0xe8a698 __ZN4Ogre14EAGLES2ContextC1EP11CAEAGLLayerP14EAGLSharegroup")
+pub fn stub_0xe8a698(layer: usize, sharegroup: usize) -> Eagles2Context {
+    // IDA 0xe8a698
+    Eagles2Context::new(layer, sharegroup)
 }
 
 // 0xe8a6a4 — __ZN4Ogre14EAGLES2ContextC2EP11CAEAGLLayerP14EAGLSharegroup
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this, CAEAGLLayer *, EAGLSharegroup *)
 #[doc(alias = "__ZN4Ogre14EAGLES2ContextC2EP11CAEAGLLayerP14EAGLSharegroup")]
-pub fn stub_0xe8a6a4() -> ! {
-    todo!("0xe8a6a4 __ZN4Ogre14EAGLES2ContextC2EP11CAEAGLLayerP14EAGLSharegroup")
+pub fn stub_0xe8a6a4(layer: usize, sharegroup: usize) -> Eagles2Context {
+    // IDA 0xe8a6a4
+    Eagles2Context::new(layer, sharegroup)
 }
 
 // 0xe8a970 — __ZN4Ogre14EAGLES2ContextD0Ev
 // type: void __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2ContextD0Ev")]
-pub fn stub_0xe8a970() -> ! {
-    todo!("0xe8a970 __ZN4Ogre14EAGLES2ContextD0Ev")
+pub fn stub_0xe8a970(mut ctx: Box<Eagles2Context>) {
+    // IDA 0xe8a970: D1 body plus `operator delete` — the `Box` drop deletes.
+    ctx.destroy();
 }
 
 // 0xe8aab4 — __ZN4Ogre14EAGLES2ContextD1Ev
 // type: void __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2ContextD1Ev")]
-pub fn stub_0xe8aab4() -> ! {
-    todo!("0xe8aab4 __ZN4Ogre14EAGLES2ContextD1Ev")
+pub fn stub_0xe8aab4(ctx: &mut Eagles2Context) {
+    // IDA 0xe8aab4
+    ctx.destroy();
 }
 
 // 0xe8abf8 — __ZN4Ogre14EAGLES2Context18destroyFramebufferEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2Context18destroyFramebufferEv")]
-pub fn stub_0xe8abf8() -> ! {
-    todo!("0xe8abf8 __ZN4Ogre14EAGLES2Context18destroyFramebufferEv")
+pub fn stub_0xe8abf8(ctx: &mut Eagles2Context) {
+    // IDA 0xe8abf8
+    ctx.destroy_framebuffer();
 }
 
 // 0xe8ac58 — __ZN4Ogre14EAGLES2Context17createFramebufferEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2Context17createFramebufferEv")]
-pub fn stub_0xe8ac58() -> ! {
-    todo!("0xe8ac58 __ZN4Ogre14EAGLES2Context17createFramebufferEv")
+pub fn stub_0xe8ac58(ctx: &mut Eagles2Context) {
+    // IDA 0xe8ac58
+    ctx.create_framebuffer();
 }
 
 // 0xe8b298 — __ZN4Ogre14EAGLES2Context10setCurrentEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2Context10setCurrentEv")]
-pub fn stub_0xe8b298() -> ! {
-    todo!("0xe8b298 __ZN4Ogre14EAGLES2Context10setCurrentEv")
+pub fn stub_0xe8b298(ctx: &mut Eagles2Context) {
+    // IDA 0xe8b298
+    ctx.set_current();
 }
 
 // 0xe8b488 — __ZN4Ogre14EAGLES2Context10endCurrentEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZN4Ogre14EAGLES2Context10endCurrentEv")]
-pub fn stub_0xe8b488() -> ! {
-    todo!("0xe8b488 __ZN4Ogre14EAGLES2Context10endCurrentEv")
+pub fn stub_0xe8b488(ctx: &mut Eagles2Context) {
+    // IDA 0xe8b488
+    ctx.end_current();
 }
 
 // 0xe8b48c — __ZNK4Ogre14EAGLES2Context5cloneEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZNK4Ogre14EAGLES2Context5cloneEv")]
-pub fn stub_0xe8b48c() -> ! {
-    todo!("0xe8b48c __ZNK4Ogre14EAGLES2Context5cloneEv")
+pub fn stub_0xe8b48c(ctx: &Eagles2Context) -> Eagles2Context {
+    // IDA 0xe8b48c
+    ctx.clone_context()
 }
 
 // 0xe8b490 — __ZNK4Ogre14EAGLES2Context10getContextEv
 // type: _DWORD __fastcall(Ogre::EAGLES2Context *__hidden this)
 #[doc(alias = "__ZNK4Ogre14EAGLES2Context10getContextEv")]
-pub fn stub_0xe8b490() -> ! {
-    todo!("0xe8b490 __ZNK4Ogre14EAGLES2Context10getContextEv")
+pub fn stub_0xe8b490(ctx: &Eagles2Context) -> usize {
+    // IDA 0xe8b490
+    ctx.get_context()
 }
 
 // 0xf1f1c8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim

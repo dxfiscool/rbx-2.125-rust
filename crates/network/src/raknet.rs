@@ -5214,8 +5214,18 @@ pub fn stub_b009cc() -> ! {
 
 // 0xb00e44 — __ZN3RBX7Network10Replicator12readDataPingERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::readDataPing(RakNet::BitStream &)")]
-pub fn stub_b00e44() -> ! {
-    todo!("0xb00e44 RBX::Network::Replicator::readDataPing(RakNet::BitStream &)")
+pub fn stub_b00e44(
+    stream: &mut crate::bitstream::BitStream,
+    now_ms: u32,
+    stamp: &mut crate::replicator::PingStamp,
+    on_action: &mut dyn FnMut(crate::replicator::DataPingAction),
+) {
+    // IDA 0xb00e44: wire reads (0xb00e68..0xb00e78), RTT/queue branch
+    // (0xb00eb6..0xb00f78), stamp write (0xb00f7c..0xb00f8c); the virtual
+    // at +308 and the stats increment stay engine-side.
+    let ping = crate::replicator::read_data_ping(stream);
+    on_action(crate::replicator::data_ping_action(&ping, now_ms));
+    crate::replicator::stamp_data_ping(stamp, now_ms);
 }
 
 // 0xb0107c — __ZN3RBX7Network10Replicator19readEventInvocationERN6RakNet9BitStreamE
@@ -5747,50 +5757,61 @@ pub fn stub_b0c3b4() -> ! {
 
 // 0xb0ceb4 — __ZN3RBX7Network10Replicator16serializeSFFlagsERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::serializeSFFlags(RakNet::BitStream &)")]
-pub fn stub_b0ceb4() -> ! {
-    todo!("0xb0ceb4 RBX::Network::Replicator::serializeSFFlags(RakNet::BitStream &)")
+pub fn stub_b0ceb4(
+    stream: &mut crate::bitstream::BitStream,
+    flags: &[crate::replicator::SynchronizedFlag<'_>],
+) {
+    // IDA 0xb0ceb4 [INFERENCE — IDA saturated, unverified]: count + per-flag string pairs.
+    crate::replicator::serialize_sf_flags(stream, flags);
 }
 
 // 0xb0ceb8 — __ZN3RBX7Network10Replicator18deserializeSFFlagsERN6RakNet9BitStreamE
 #[doc(alias = "RBX::Network::Replicator::deserializeSFFlags(RakNet::BitStream &)")]
-pub fn stub_b0ceb8() -> ! {
-    todo!("0xb0ceb8 RBX::Network::Replicator::deserializeSFFlags(RakNet::BitStream &)")
+pub fn stub_b0ceb8(stream: &mut crate::bitstream::BitStream, apply: &mut dyn FnMut()) {
+    // IDA 0xb0ceb8 [INFERENCE]: u16 count + per-flag apply.
+    crate::replicator::deserialize_sf_flags(stream, apply);
 }
 
 // 0xb0ced0 — __ZN6RakNet16PluginInterface28OnAttachEv
 #[doc(alias = "RakNet::PluginInterface2::OnAttach(void)")]
-pub fn stub_b0ced0() -> ! {
-    todo!("0xb0ced0 RakNet::PluginInterface2::OnAttach(void)")
+pub fn stub_b0ced0(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0ced0 [INFERENCE]: default hook is empty (cf. verified 0xad5300 hooks).
+    plugin.on_attach();
 }
 
 // 0xb0ced8 — __ZN6RakNet16PluginInterface26UpdateEv
 #[doc(alias = "RakNet::PluginInterface2::Update(void)")]
-pub fn stub_b0ced8() -> ! {
-    todo!("0xb0ced8 RakNet::PluginInterface2::Update(void)")
+pub fn stub_b0ced8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0ced8 [INFERENCE]: default hook is empty.
+    plugin.update();
 }
 
 // 0xb0cee0 — __ZN6RakNet16PluginInterface217OnRakPeerShutdownEv
 #[doc(alias = "RakNet::PluginInterface2::OnRakPeerShutdown(void)")]
-pub fn stub_b0cee0() -> ! {
-    todo!("0xb0cee0 RakNet::PluginInterface2::OnRakPeerShutdown(void)")
+pub fn stub_b0cee0(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cee0 [INFERENCE]: default hook is empty.
+    plugin.on_rak_peer_shutdown();
 }
 
 // 0xb0cee8 — __ZN6RakNet16PluginInterface215OnNewConnectionERKNS_13SystemAddressENS_10RakNetGUIDEb
 #[doc(alias = "RakNet::PluginInterface2::OnNewConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,bool)")]
-pub fn stub_b0cee8() -> ! {
-    todo!("0xb0cee8 RakNet::PluginInterface2::OnNewConnection(RakNet::SystemAddress const&,RakNet::RakNetGUID,bool)")
+pub fn stub_b0cee8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cee8 [INFERENCE]: default hook is empty.
+    plugin.on_new_connection();
 }
 
 // 0xb0cef8 — __ZN6RakNet16PluginInterface221OnDirectSocketReceiveEPKcjNS_13SystemAddressE
 #[doc(alias = "RakNet::PluginInterface2::OnDirectSocketReceive(char const*,unsigned int,RakNet::SystemAddress)")]
-pub fn stub_b0cef8() -> ! {
-    todo!("0xb0cef8 RakNet::PluginInterface2::OnDirectSocketReceive(char const*,unsigned int,RakNet::SystemAddress)")
+pub fn stub_b0cef8(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cef8 [INFERENCE]: default hook is empty.
+    plugin.on_direct_socket_receive();
 }
 
 // 0xb0cf00 — __ZN6RakNet16PluginInterface25OnAckEjNS_13SystemAddressEj
 #[doc(alias = "RakNet::PluginInterface2::OnAck(unsigned int,RakNet::SystemAddress,unsigned int)")]
-pub fn stub_b0cf00() -> ! {
-    todo!("0xb0cf00 RakNet::PluginInterface2::OnAck(unsigned int,RakNet::SystemAddress,unsigned int)")
+pub fn stub_b0cf00(plugin: &crate::socket::PluginInterface2) {
+    // IDA 0xb0cf00 [INFERENCE]: default hook is empty.
+    plugin.on_ack();
 }
 
 // 0xb15f50 — __ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
@@ -6329,86 +6350,100 @@ pub fn stub_f5e5a4() -> ! {
 
 // 0xf5e5b4 — j___ZN6RakNet9BitStream4ReadIdEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<double>(double &)")]
-pub fn stub_f5e5b4() -> ! {
-    todo!("0xf5e5b4 bool RakNet::BitStream::Read<double>(double &)")
+pub fn stub_f5e5b4(stream: &mut crate::bitstream::BitStream) -> Option<f64> {
+    // Thunk (IDA 0xf5e5b4) [INFERENCE — IDA saturated, unverified]: tail-jumps to `Read<double>`.
+    stream.read_f64()
 }
 
 // 0xf5e5c4 — j___ZN6RakNet9BitStream4ReadIiEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<int>(int &)")]
-pub fn stub_f5e5c4() -> ! {
-    todo!("0xf5e5c4 bool RakNet::BitStream::Read<int>(int &)")
+pub fn stub_f5e5c4(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+    // Thunk (IDA 0xf5e5c4) [INFERENCE]: tail-jumps to `Read<int>`.
+    stream.read_i32()
 }
 
 // 0xf5e5d4 — j___ZN6RakNet9BitStream4ReadIjEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")]
-pub fn stub_f5e5d4() -> ! {
-    todo!("0xf5e5d4 bool RakNet::BitStream::Read<unsigned int>(unsigned int &)")
+pub fn stub_f5e5d4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // Thunk (IDA 0xf5e5d4) [INFERENCE]: tail-jumps to `Read<unsigned int>`.
+    stream.read_u32()
 }
 
 // 0xf5e5e4 — j___ZN6RakNet9BitStream4ReadIlEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<long>(long &)")]
-pub fn stub_f5e5e4() -> ! {
-    todo!("0xf5e5e4 bool RakNet::BitStream::Read<long>(long &)")
+pub fn stub_f5e5e4(stream: &mut crate::bitstream::BitStream) -> Option<i32> {
+    // Thunk (IDA 0xf5e5e4) [INFERENCE]: tail-jumps to `Read<long>`; armv7 `long` is 32-bit.
+    stream.read_i32()
 }
 
 // 0xf5e5f4 — j___ZN6RakNet9BitStream4ReadImEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")]
-pub fn stub_f5e5f4() -> ! {
-    todo!("0xf5e5f4 bool RakNet::BitStream::Read<unsigned long>(unsigned long &)")
+pub fn stub_f5e5f4(stream: &mut crate::bitstream::BitStream) -> Option<u32> {
+    // Thunk (IDA 0xf5e5f4) [INFERENCE]: tail-jumps to `Read<unsigned long>`; armv7 `long` is 32-bit.
+    stream.read_u32()
 }
 
 // 0xf5e604 — j___ZN6RakNet9BitStream4ReadIsEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<short>(short &)")]
-pub fn stub_f5e604() -> ! {
-    todo!("0xf5e604 bool RakNet::BitStream::Read<short>(short &)")
+pub fn stub_f5e604(stream: &mut crate::bitstream::BitStream) -> Option<i16> {
+    // Thunk (IDA 0xf5e604) [INFERENCE]: tail-jumps to `Read<short>`.
+    stream.read_i16()
 }
 
 // 0xf5e614 — j___ZN6RakNet9BitStream4ReadIyEEbRT_
 #[doc(alias = "bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")]
-pub fn stub_f5e614() -> ! {
-    todo!("0xf5e614 bool RakNet::BitStream::Read<unsigned long long>(unsigned long long &)")
+pub fn stub_f5e614(stream: &mut crate::bitstream::BitStream) -> Option<u64> {
+    // Thunk (IDA 0xf5e614) [INFERENCE]: tail-jumps to `Read<unsigned long long>`.
+    stream.read_u64()
 }
 
 // 0xf5e624 — j___ZN6RakNet9BitStream5WriteIdEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<double>(double const&)")]
-pub fn stub_f5e624() -> ! {
-    todo!("0xf5e624 void RakNet::BitStream::Write<double>(double const&)")
+pub fn stub_f5e624(stream: &mut crate::bitstream::BitStream, value: f64) {
+    // Thunk (IDA 0xf5e624) [INFERENCE]: tail-jumps to `Write<double>`.
+    stream.write_f64(value);
 }
 
 // 0xf5e634 — j___ZN6RakNet9BitStream5WriteIiEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<int>(int const&)")]
-pub fn stub_f5e634() -> ! {
-    todo!("0xf5e634 void RakNet::BitStream::Write<int>(int const&)")
+pub fn stub_f5e634(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // Thunk (IDA 0xf5e634) [INFERENCE]: tail-jumps to `Write<int>`.
+    stream.write_i32(value);
 }
 
 // 0xf5e644 — j___ZN6RakNet9BitStream5WriteIjEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")]
-pub fn stub_f5e644() -> ! {
-    todo!("0xf5e644 void RakNet::BitStream::Write<unsigned int>(unsigned int const&)")
+pub fn stub_f5e644(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // Thunk (IDA 0xf5e644) [INFERENCE]: tail-jumps to `Write<unsigned int>`.
+    stream.write_u32(value);
 }
 
 // 0xf5e654 — j___ZN6RakNet9BitStream5WriteIlEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<long>(long const&)")]
-pub fn stub_f5e654() -> ! {
-    todo!("0xf5e654 void RakNet::BitStream::Write<long>(long const&)")
+pub fn stub_f5e654(stream: &mut crate::bitstream::BitStream, value: i32) {
+    // Thunk (IDA 0xf5e654) [INFERENCE]: tail-jumps to `Write<long>`; armv7 `long` is 32-bit.
+    stream.write_i32(value);
 }
 
 // 0xf5e664 — j___ZN6RakNet9BitStream5WriteImEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")]
-pub fn stub_f5e664() -> ! {
-    todo!("0xf5e664 void RakNet::BitStream::Write<unsigned long>(unsigned long const&)")
+pub fn stub_f5e664(stream: &mut crate::bitstream::BitStream, value: u32) {
+    // Thunk (IDA 0xf5e664) [INFERENCE]: tail-jumps to `Write<unsigned long>`; armv7 `long` is 32-bit.
+    stream.write_u32(value);
 }
 
 // 0xf5e674 — j___ZN6RakNet9BitStream5WriteIsEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<short>(short const&)")]
-pub fn stub_f5e674() -> ! {
-    todo!("0xf5e674 void RakNet::BitStream::Write<short>(short const&)")
+pub fn stub_f5e674(stream: &mut crate::bitstream::BitStream, value: i16) {
+    // Thunk (IDA 0xf5e674) [INFERENCE]: tail-jumps to `Write<short>`.
+    stream.write_i16(value);
 }
 
 // 0xf5e684 — j___ZN6RakNet9BitStream5WriteIyEEvRKT_
 #[doc(alias = "void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")]
-pub fn stub_f5e684() -> ! {
-    todo!("0xf5e684 void RakNet::BitStream::Write<unsigned long long>(unsigned long long const&)")
+pub fn stub_f5e684(stream: &mut crate::bitstream::BitStream, value: u64) {
+    // Thunk (IDA 0xf5e684) [INFERENCE]: tail-jumps to `Write<unsigned long long>`.
+    stream.write_u64(value);
 }
 
 // 0xf5ec44 — j___ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE
@@ -25835,15 +25870,18 @@ pub fn stub_ace664() -> ! {
 // 0xad0f88 — __ZN3RBX7Network6MarkerC1Ev
 // type: int __fastcall(RBX::Network::Marker *this)
 #[doc(alias = "RBX::Network::Marker::Marker(void)")]
-pub fn stub_ad0f88() -> ! {
-    todo!("0xad0f88 RBX::Network::Marker::Marker(void)")
+pub fn stub_ad0f88() -> crate::replicator::Marker {
+    // IDA 0xad0f88 [INFERENCE — IDA saturated, unverified]: complete-object
+    // ctor of the engine-side marker node; only the unit marker crosses here.
+    crate::replicator::Marker
 }
 
 // 0xad0f94 — __ZN3RBX7Network6MarkerC2Ev
 // type: RBX::Instance *__fastcall(RBX::Network::Marker *this)
 #[doc(alias = "RBX::Network::Marker::Marker(void)")]
-pub fn stub_ad0f94() -> ! {
-    todo!("0xad0f94 RBX::Network::Marker::Marker(void)")
+pub fn stub_ad0f94() -> crate::replicator::Marker {
+    // IDA 0xad0f94 [INFERENCE]: base-object ctor; same unit marker.
+    crate::replicator::Marker
 }
 
 // 0xad12d0 — __ZN3RBX7Network6Marker12fireReturnedEv

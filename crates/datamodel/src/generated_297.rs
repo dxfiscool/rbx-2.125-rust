@@ -7,6 +7,8 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+use std::collections::BTreeMap;
+use crate::instance::EnumSlot;
 
 // 0xf236e0 — __ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim
 #[doc(alias = "__ZNK3RBX14FactoryProductINS_18HumanoidControllerENS_10ControllerELZNS_19sHumanoidControllerEENS_8InstanceEE7Creator12getClassNameEv$shim")]
@@ -242,100 +244,220 @@ pub fn stub_0xf35424() -> ! {
     todo!("0xf35424 j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
 
-// 0xf3c494 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_
+/// Rust model of `RBX::GameSettings::VideoQuality` bound by the
+/// `0xf3c494`/`0xf3cba4` glue: enumerants land with the reflection crate.
+/// // BUG: the enumerant table is unrecovered [INFERENCE: IDA wedged, from
+/// // export.json mangled name + `generated_296::CameraPanMode` precedent];
+/// // the word travels as-is.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct VideoQuality(pub u32);
+/// Rust model of `RBX::GameSettings::UploadSetting` (`0xf3c4a4`/`0xf3cbb4`).
+/// // BUG: enumerants unrecovered [INFERENCE]; word travels as-is.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct UploadSetting(pub u32);
+/// Rust model of `RBX::GameBasicSettings::ControlMode` (`0xf3c574`/`0xf3cc84`).
+/// // BUG: enumerants unrecovered [INFERENCE]; word travels as-is.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct ControlMode(pub u32);
+/// Rust model of `RBX::GameBasicSettings::RenderQualitySetting`
+/// (`0xf3c584`/`0xf3cc94`).
+/// // BUG: enumerants unrecovered [INFERENCE]; word travels as-is.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct RenderQualitySetting(pub u32);
+
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::GameSettings::VideoQuality>(RBX::GameSettings::VideoQuality const&)")]
 #[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_")]
-pub fn stub_0xf3c494() -> ! {
-    todo!("0xf3c494 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings12VideoQualityEEERS3_RKT_")
+// IDA 0xf3c494: jump thunk into `placement_any<Region3>::operator=(VideoQuality)`
+// [INFERENCE: export.json `j__` prefix + `generated_296::stub_0xf3c564` precedent]:
+// destroys any mismatched holder, then copy-constructs the enum payload in
+// place. The Region3 holder union is unmodeled: the discriminant word is kept
+pub fn stub_0xf3c494(dst: &mut EnumSlot, src: VideoQuality) {
+    dst.word = src.0 as i32;
 }
 
-// 0xf3c4a4 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::GameSettings::UploadSetting>(RBX::GameSettings::UploadSetting const&)")]
 #[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_")]
-pub fn stub_0xf3c4a4() -> ! {
-    todo!("0xf3c4a4 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_12GameSettings13UploadSettingEEERS3_RKT_")
+// IDA 0xf3c4a4: jump thunk into `placement_any<Region3>::operator=(UploadSetting)`
+// [INFERENCE: same shape as 0xf3c494]: the discriminant word is kept
+// (cf. `crate::instance::stub_0x4c9818`).
+pub fn stub_0xf3c4a4(dst: &mut EnumSlot, src: UploadSetting) {
+    dst.word = src.0 as i32;
 }
 
 // 0xf3c574 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::GameBasicSettings::ControlMode>(RBX::GameBasicSettings::ControlMode const&)")]
 #[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_")]
-pub fn stub_0xf3c574() -> ! {
-    todo!("0xf3c574 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings11ControlModeEEERS3_RKT_")
+// IDA 0xf3c574: jump thunk into `placement_any<Region3>::operator=(ControlMode)`
+// [INFERENCE: same shape as 0xf3c494]: the discriminant word is kept
+// (cf. `crate::instance::stub_0x4c9818`).
+pub fn stub_0xf3c574(dst: &mut EnumSlot, src: ControlMode) {
+    dst.word = src.0 as i32;
 }
 
 // 0xf3c584 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::GameBasicSettings::RenderQualitySetting>(RBX::GameBasicSettings::RenderQualitySetting const&)")]
 #[doc(alias = "j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_")]
-pub fn stub_0xf3c584() -> ! {
-    todo!("0xf3c584 j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_17GameBasicSettings20RenderQualitySettingEEERS3_RKT_")
+// IDA 0xf3c584: jump thunk into
+// `placement_any<Region3>::operator=(RenderQualitySetting)`
+// [INFERENCE: same shape as 0xf3c494]: the discriminant word is kept
+// (cf. `crate::instance::stub_0x4c9818`).
+pub fn stub_0xf3c584(dst: &mut EnumSlot, src: RenderQualitySetting) {
+    dst.word = src.0 as i32;
 }
 
+/// Rust model of `rbx::implementation::typed_holder<VideoQuality>` (target of
+/// the `0xf3c7e4` jump stub): the empty per-type holder whose singleton is a
+/// function-local static.
+#[derive(Clone, Copy, Default)]
+pub struct VideoQualityHolder {
+    _opaque: (),
+}
+/// Singleton holder behind `typed_holder<VideoQuality>::singleton`.
+static VIDEO_QUALITY_HOLDER: VideoQualityHolder = VideoQualityHolder { _opaque: () };
+/// Rust model of `rbx::implementation::typed_holder<UploadSetting>` (target of
+/// the `0xf3c7f4` jump stub).
+#[derive(Clone, Copy, Default)]
+pub struct UploadSettingHolder {
+    _opaque: (),
+}
+/// Singleton holder behind `typed_holder<UploadSetting>::singleton`.
+static UPLOAD_SETTING_HOLDER: UploadSettingHolder = UploadSettingHolder { _opaque: () };
+/// Rust model of `rbx::implementation::typed_holder<ControlMode>` (target of
+/// the `0xf3c8c4` jump stub).
+#[derive(Clone, Copy, Default)]
+pub struct ControlModeHolder {
+    _opaque: (),
+}
+/// Singleton holder behind `typed_holder<ControlMode>::singleton`.
+static CONTROL_MODE_HOLDER: ControlModeHolder = ControlModeHolder { _opaque: () };
+/// Rust model of `rbx::implementation::typed_holder<RenderQualitySetting>`
+/// (target of the `0xf3c8d4` jump stub).
+#[derive(Clone, Copy, Default)]
+pub struct RenderQualitySettingHolder {
+    _opaque: (),
+}
+/// Singleton holder behind `typed_holder<RenderQualitySetting>::singleton`.
+static RENDER_QUALITY_SETTING_HOLDER: RenderQualitySettingHolder =
+    RenderQualitySettingHolder { _opaque: () };
+
 // 0xf3c7e4 — j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv
+#[doc(alias = "rbx::implementation::typed_holder<RBX::GameSettings::VideoQuality>::singleton(void)")]
 #[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv")]
-pub fn stub_0xf3c7e4() -> ! {
-    todo!("0xf3c7e4 j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings12VideoQualityEE9singletonEv")
+// IDA 0xf3c7e4: jump stub into `typed_holder<VideoQuality>::singleton`
+// [INFERENCE: export.json `j__` prefix + `generated_296::stub_0xf3c8b4`
+// precedent]: returns the function-local static holder.
+pub fn stub_0xf3c7e4() -> &'static VideoQualityHolder {
+    &VIDEO_QUALITY_HOLDER
 }
 
 // 0xf3c7f4 — j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv
+#[doc(alias = "rbx::implementation::typed_holder<RBX::GameSettings::UploadSetting>::singleton(void)")]
 #[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv")]
-pub fn stub_0xf3c7f4() -> ! {
-    todo!("0xf3c7f4 j___ZN3rbx14implementation12typed_holderIN3RBX12GameSettings13UploadSettingEE9singletonEv")
+// IDA 0xf3c7f4: jump stub into `typed_holder<UploadSetting>::singleton`
+// [INFERENCE: same shape as 0xf3c7e4]: returns the function-local static holder.
+pub fn stub_0xf3c7f4() -> &'static UploadSettingHolder {
+    &UPLOAD_SETTING_HOLDER
 }
 
 // 0xf3c8c4 — j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv
+#[doc(alias = "rbx::implementation::typed_holder<RBX::GameBasicSettings::ControlMode>::singleton(void)")]
 #[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv")]
-pub fn stub_0xf3c8c4() -> ! {
-    todo!("0xf3c8c4 j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings11ControlModeEE9singletonEv")
+// IDA 0xf3c8c4: jump stub into `typed_holder<ControlMode>::singleton`
+// [INFERENCE: same shape as 0xf3c7e4]: returns the function-local static holder.
+pub fn stub_0xf3c8c4() -> &'static ControlModeHolder {
+    &CONTROL_MODE_HOLDER
 }
 
 // 0xf3c8d4 — j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv
+#[doc(alias = "rbx::implementation::typed_holder<RBX::GameBasicSettings::RenderQualitySetting>::singleton(void)")]
 #[doc(alias = "j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv")]
-pub fn stub_0xf3c8d4() -> ! {
-    todo!("0xf3c8d4 j___ZN3rbx14implementation12typed_holderIN3RBX17GameBasicSettings20RenderQualitySettingEE9singletonEv")
+// IDA 0xf3c8d4: jump stub into `typed_holder<RenderQualitySetting>::singleton`
+// [INFERENCE: same shape as 0xf3c7e4]: returns the function-local static holder.
+pub fn stub_0xf3c8d4() -> &'static RenderQualitySettingHolder {
+    &RENDER_QUALITY_SETTING_HOLDER
 }
 
 // 0xf3cba4 — j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::GameSettings::VideoQuality const& rbx::any_cast<RBX::GameSettings::VideoQuality const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0xf3cba4() -> ! {
-    todo!("0xf3cba4 j___ZN3rbx8any_castIRKN3RBX12GameSettings12VideoQualityENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+// IDA 0xf3cba4: jump stub into the `VideoQuality` any_cast [INFERENCE:
+// export.json `j__` prefix + `generated_296::stub_0xf3cc74` precedent]: type
+// check against the stored holder, then the payload past the tag. The holder
+// identity collapses (one word per slot); mismatch is `bad_placement_any_cast`
+// (cf. `crate::instance::stub_0x26ee14`).
+// // BUG: without the stored holder the check is vacuous; the word travels
+// as-is until the holder union is modeled.
+pub fn stub_0xf3cba4(slot: &EnumSlot) -> VideoQuality {
+    VideoQuality(slot.word as u32)
 }
 
 // 0xf3cbb4 — j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::GameSettings::UploadSetting const& rbx::any_cast<RBX::GameSettings::UploadSetting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0xf3cbb4() -> ! {
-    todo!("0xf3cbb4 j___ZN3rbx8any_castIRKN3RBX12GameSettings13UploadSettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+// IDA 0xf3cbb4: jump stub into the `UploadSetting` any_cast [INFERENCE: same
+// shape as 0xf3cba4]: holder check, then the payload past the tag.
+// // BUG: holder check vacuous until the holder union is modeled.
+pub fn stub_0xf3cbb4(slot: &EnumSlot) -> UploadSetting {
+    UploadSetting(slot.word as u32)
 }
 
 // 0xf3cc84 — j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::GameBasicSettings::ControlMode const& rbx::any_cast<RBX::GameBasicSettings::ControlMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0xf3cc84() -> ! {
-    todo!("0xf3cc84 j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings11ControlModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+// IDA 0xf3cc84: jump stub into the `ControlMode` any_cast [INFERENCE: same
+// shape as 0xf3cba4]: holder check, then the payload past the tag.
+// // BUG: holder check vacuous until the holder union is modeled.
+pub fn stub_0xf3cc84(slot: &EnumSlot) -> ControlMode {
+    ControlMode(slot.word as u32)
 }
 
 // 0xf3cc94 — j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::GameBasicSettings::RenderQualitySetting const& rbx::any_cast<RBX::GameBasicSettings::RenderQualitySetting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 #[doc(alias = "j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")]
-pub fn stub_0xf3cc94() -> ! {
-    todo!("0xf3cc94 j___ZN3rbx8any_castIRKN3RBX17GameBasicSettings20RenderQualitySettingENS1_7Region3EEET_RNS_13placement_anyIT0_EE")
+// IDA 0xf3cc94: jump stub into the `RenderQualitySetting` any_cast
+// [INFERENCE: same shape as 0xf3cba4]: holder check, then the payload past
+// the tag.
+// // BUG: holder check vacuous until the holder union is modeled.
+pub fn stub_0xf3cc94(slot: &EnumSlot) -> RenderQualitySetting {
+    RenderQualitySetting(slot.word as u32)
 }
 
 // 0xf3dc54 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf3dc54() -> ! {
-    todo!("0xf3dc54 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+// IDA 0xf3dc54: jump stub into `_M_erase` by node [INFERENCE: export.json
+// `j__` prefix + `generated_296::stub_0xf3dd24` precedent]: unlinks and frees
+// the node holding the key; `remove` is the same keyed erase
+// (cf. `crate::instance::stub_0x3df534`).
+pub fn stub_0xf3dc54(map: &mut BTreeMap<String, VideoQuality>, key: &str) {
+    let _ = map.remove(key);
 }
 
 // 0xf3dc64 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf3dc64() -> ! {
-    todo!("0xf3dc64 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings13UploadSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+// IDA 0xf3dc64: jump stub into `_M_erase` by node [INFERENCE: same shape as
+// 0xf3dc54]: unlinks and frees the node holding the key.
+pub fn stub_0xf3dc64(map: &mut BTreeMap<String, UploadSetting>, key: &str) {
+    let _ = map.remove(key);
 }
 
 // 0xf3dd34 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::ControlMode>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf3dd34() -> ! {
-    todo!("0xf3dd34 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings11ControlModeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+// IDA 0xf3dd34: jump stub into `_M_erase` by node [INFERENCE: same shape as
+// 0xf3dc54]: unlinks and frees the node holding the key.
+pub fn stub_0xf3dd34(map: &mut BTreeMap<String, ControlMode>, key: &str) {
+    let _ = map.remove(key);
 }
 
 // 0xf3dd44 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::GameBasicSettings::RenderQualitySetting>> *)")]
 #[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
-pub fn stub_0xf3dd44() -> ! {
-    todo!("0xf3dd44 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_17GameBasicSettings20RenderQualitySettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+// IDA 0xf3dd44: jump stub into `_M_erase` by node [INFERENCE: same shape as
+// 0xf3dc54]: unlinks and frees the node holding the key.
+pub fn stub_0xf3dd44(map: &mut BTreeMap<String, RenderQualitySetting>, key: &str) {
+    let _ = map.remove(key);
 }
 
 // 0xf3eb14 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX4GameEEENS2_ISsEEEC2ES6_S7_
@@ -387,15 +509,29 @@ pub fn stub_0xf3ed74() -> ! {
 }
 
 // 0xf3ed84 — j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "std::map<RBX::Name const*,RBX::GameSettings::VideoQuality,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::VideoQuality>>>::operator[](RBX::Name const*&)")]
 #[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0xf3ed84() -> ! {
-    todo!("0xf3ed84 j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings12VideoQualityESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+// IDA 0xf3ed84 (`map<Name const*,VideoQuality>::operator[]`) [INFERENCE:
+// export.json `j__` prefix + mangled `ix` (operator[]) + 296 `_M_erase` map
+// precedent]: search, then default-insert on miss and return the mapped slot.
+pub fn stub_0xf3ed84<'a>(
+    map: &'a mut BTreeMap<String, VideoQuality>,
+    key: &str,
+) -> &'a mut VideoQuality {
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0xf3ed94 — j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+#[doc(alias = "std::map<RBX::Name const*,RBX::GameSettings::UploadSetting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::GameSettings::UploadSetting>>>::operator[](RBX::Name const*&)")]
 #[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
-pub fn stub_0xf3ed94() -> ! {
-    todo!("0xf3ed94 j___ZNSt3mapIPKN3RBX4NameENS0_12GameSettings13UploadSettingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+// IDA 0xf3ed94 (`map<Name const*,UploadSetting>::operator[]`) [INFERENCE:
+// same shape as 0xf3ed84]: search, then default-insert on miss and return the
+// mapped slot.
+pub fn stub_0xf3ed94<'a>(
+    map: &'a mut BTreeMap<String, UploadSetting>,
+    key: &str,
+) -> &'a mut UploadSetting {
+    map.entry(key.to_owned()).or_default()
 }
 
 // 0xf3eda4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -417,9 +553,13 @@ pub fn stub_0xf3edc4() -> ! {
 }
 
 // 0xf3edd4 — j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_
+#[doc(alias = "std::vector<RBX::GameSettings::VideoQuality,std::allocator<RBX::GameSettings::VideoQuality>>::push_back(RBX::GameSettings::VideoQuality const&)")]
 #[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_")]
-pub fn stub_0xf3edd4() -> ! {
-    todo!("0xf3edd4 j___ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE9push_backERKS2_")
+// IDA 0xf3edd4 (`vector<VideoQuality>::push_back`) [INFERENCE: export.json
+// `j__` prefix + `generated_296::stub_0xf3a7c4` precedent]: copies the value
+// into the tail; `push` is the same append.
+pub fn stub_0xf3edd4(items: &mut Vec<VideoQuality>, value: VideoQuality) {
+    items.push(value);
 }
 
 // 0xf3ede4 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
@@ -441,9 +581,12 @@ pub fn stub_0xf3ee04() -> ! {
 }
 
 // 0xf3ee14 — j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_
+#[doc(alias = "std::vector<RBX::GameSettings::UploadSetting,std::allocator<RBX::GameSettings::UploadSetting>>::push_back(RBX::GameSettings::UploadSetting const&)")]
 #[doc(alias = "j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_")]
-pub fn stub_0xf3ee14() -> ! {
-    todo!("0xf3ee14 j___ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE9push_backERKS2_")
+// IDA 0xf3ee14 (`vector<UploadSetting>::push_back`) [INFERENCE: same shape as
+// 0xf3edd4]: copies the value into the tail; `push` is the same append.
+pub fn stub_0xf3ee14(items: &mut Vec<UploadSetting>, value: UploadSetting) {
+    items.push(value);
 }
 
 // 0xf3ee24 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_12GameSettings12VideoQualityEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
@@ -606,4 +749,66 @@ pub fn stub_0xf532f4() -> ! {
 #[doc(alias = "j___ZNK3RBX5HUMAN13HumanoidState9usesFloorEv")]
 pub fn stub_0xf53304() -> ! {
     todo!("0xf53304 j___ZNK3RBX5HUMAN13HumanoidState9usesFloorEv")
+}
+
+#[cfg(test)]
+mod settings_enum_glue_tests {
+    use super::*;
+    use crate::instance::EnumSlot;
+    use std::collections::BTreeMap;
+
+    #[test]
+    fn placement_any_round_trips_words() {
+        let mut slot = EnumSlot::default();
+        stub_0xf3c494(&mut slot, VideoQuality(3));
+        assert_eq!(slot.word, 3);
+        assert_eq!(stub_0xf3cba4(&slot), VideoQuality(3));
+        stub_0xf3c4a4(&mut slot, UploadSetting(1));
+        assert_eq!(stub_0xf3cbb4(&slot), UploadSetting(1));
+        stub_0xf3c574(&mut slot, ControlMode(2));
+        assert_eq!(stub_0xf3cc84(&slot), ControlMode(2));
+        stub_0xf3c584(&mut slot, RenderQualitySetting(5));
+        assert_eq!(stub_0xf3cc94(&slot), RenderQualitySetting(5));
+    }
+
+    #[test]
+    fn singletons_are_stable() {
+        assert!(std::ptr::eq(stub_0xf3c7e4(), stub_0xf3c7e4()));
+        assert!(std::ptr::eq(stub_0xf3c7f4(), stub_0xf3c7f4()));
+        assert!(std::ptr::eq(stub_0xf3c8c4(), stub_0xf3c8c4()));
+        assert!(std::ptr::eq(stub_0xf3c8d4(), stub_0xf3c8d4()));
+    }
+
+    #[test]
+    fn maps_erase_and_index() {
+        let mut vq: BTreeMap<String, VideoQuality> = BTreeMap::new();
+        *stub_0xf3ed84(&mut vq, "q") = VideoQuality(7);
+        assert_eq!(vq["q"], VideoQuality(7));
+        stub_0xf3dc54(&mut vq, "q");
+        assert!(!vq.contains_key("q"));
+        stub_0xf3dc54(&mut vq, "missing");
+        let mut up: BTreeMap<String, UploadSetting> = BTreeMap::new();
+        *stub_0xf3ed94(&mut up, "u") = UploadSetting(2);
+        stub_0xf3dc64(&mut up, "u");
+        assert!(up.is_empty());
+        let mut cm: BTreeMap<String, ControlMode> = BTreeMap::new();
+        cm.insert("c".to_owned(), ControlMode(1));
+        stub_0xf3dd34(&mut cm, "c");
+        assert!(cm.is_empty());
+        let mut rq: BTreeMap<String, RenderQualitySetting> = BTreeMap::new();
+        rq.insert("r".to_owned(), RenderQualitySetting(4));
+        stub_0xf3dd44(&mut rq, "r");
+        assert!(rq.is_empty());
+    }
+
+    #[test]
+    fn vectors_push_back() {
+        let mut vq = Vec::new();
+        stub_0xf3edd4(&mut vq, VideoQuality(1));
+        stub_0xf3edd4(&mut vq, VideoQuality(2));
+        assert_eq!(vq, vec![VideoQuality(1), VideoQuality(2)]);
+        let mut up = Vec::new();
+        stub_0xf3ee14(&mut up, UploadSetting(9));
+        assert_eq!(up, vec![UploadSetting(9)]);
+    }
 }

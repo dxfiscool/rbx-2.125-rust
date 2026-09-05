@@ -18,20 +18,23 @@ pub fn stub_0x326bfc() {
 
 #[doc(alias = "RBX::LegacyContentTable::LegacyContentTable(void)")]
 // 0x326e54 — __ZN3RBX18LegacyContentTableC1Ev
-pub fn stub_0x326e54() {
-    // IDA 0x326e54: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x326e54() -> content_table::LegacyContentTable {
+    // IDA 0x326e54: default ctor; delegates to the port below.
+    content_table::LegacyContentTable::new()
 }
 
 #[doc(alias = "RBX::LegacyContentTable::LegacyContentTable(void)")]
 // 0x326e58 — __ZN3RBX18LegacyContentTableC2Ev
-pub fn stub_0x326e58() {
-    // IDA 0x326e58: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x326e58() -> content_table::LegacyContentTable {
+    // IDA 0x326e58: default ctor; delegates to the port below.
+    content_table::LegacyContentTable::new()
 }
 
 #[doc(alias = "RBX::LegacyContentTable::AddEntry(std::string const&,std::string const&)")]
 // 0x34581c — __ZN3RBX18LegacyContentTable8AddEntryERKSsS2_
-pub fn stub_0x34581c() {
-    // IDA 0x34581c: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x34581c(table: &mut content_table::LegacyContentTable, key: &str, value: &str) {
+    // IDA 0x34581c: AddEntry; delegates to the port below.
+    table.add_entry(key, value)
 }
 
 #[doc(alias = "anonymous namespace::normalizeUrl(std::string &)")]
@@ -42,8 +45,9 @@ pub fn stub_0x345950() {
 
 #[doc(alias = "RBX::LegacyContentTable::FindEntry(std::string const&)")]
 // 0x3459d4 — __ZN3RBX18LegacyContentTable9FindEntryERKSs
-pub fn stub_0x3459d4() {
-    // IDA 0x3459d4: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x3459d4(table: &content_table::LegacyContentTable, key: &str) -> Option<String> {
+    // IDA 0x3459d4: FindEntry; delegates to the port below.
+    table.find_entry(key)
 }
 
 #[doc(alias = "RBX::findLocalFile(std::string const&,std::string *)")]
@@ -252,32 +256,37 @@ pub fn stub_0x35b88c() {
 
 #[doc(alias = "RBX::Name::Name(char const* const&)")]
 // 0x35ba98 — __ZN3RBX4NameC2ERKPKc
-pub fn stub_0x35ba98() {
-    // IDA 0x35ba98: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x35ba98(text: &str) -> name::Name {
+    // IDA 0x35ba98: Name(const char*&) ctor; interns via the port below.
+    name::Name::declare(text)
 }
 
 #[doc(alias = "RBX::Name::setOrderIndex(void)")]
 // 0x35bbbc — __ZN3RBX4Name13setOrderIndexEv
-pub fn stub_0x35bbbc() {
-    // IDA 0x35bbbc: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x35bbbc(obj: &mut name::Name) {
+    // IDA 0x35bbbc: setOrderIndex; delegates to the port below.
+    obj.set_order_index()
 }
 
 #[doc(alias = "RBX::Name::lookup(char const* const&)")]
 // 0x35bd48 — __ZN3RBX4Name6lookupERKPKc
-pub fn stub_0x35bd48() {
-    // IDA 0x35bd48: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x35bd48(text: &str) -> name::Name {
+    // IDA 0x35bd48: lookup(const char*&); null Name on miss ([INFERENCE]).
+    name::Name::lookup(text).unwrap_or_else(name::Name::null)
 }
 
 #[doc(alias = "RBX::Name::getNullName(void)")]
 // 0x35be98 — __ZN3RBX4Name11getNullNameEv
-pub fn stub_0x35be98() {
-    // IDA 0x35be98: erased holder via typed_holder singleton (IDA 0xc90c family). Box<dyn Any>-style store — carrier no-op.
+pub fn stub_0x35be98() -> name::Name {
+    // IDA 0x35be98: getNullName; delegates to the port below.
+    name::Name::null()
 }
 
 #[doc(alias = "RBX::Name::lookup(std::string const&)")]
 // 0x35bebc — __ZN3RBX4Name6lookupERKSs
-pub fn stub_0x35bebc() {
-    // IDA 0x35bebc: libstdc++ container/algorithm internals. Vec/BTreeMap/VecDeque/Iterator — monomorph artifact, no-op carrier.
+pub fn stub_0x35bebc(text: &str) -> name::Name {
+    // IDA 0x35bebc: lookup(std::string const&); null Name on miss ([INFERENCE]).
+    name::Name::lookup(text).unwrap_or_else(name::Name::null)
 }
 
 #[doc(alias = "RBX::Name::NameMap::~NameMap()")]
@@ -294,26 +303,30 @@ pub fn stub_0x35bfec() {
 
 #[doc(alias = "RBX::Name::map(void)")]
 // 0x35c10c — __ZN3RBX4Name3mapEv
-pub fn stub_0x35c10c() {
-    // IDA 0x35c10c: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x35c10c() -> Vec<(u32, String)> {
+    // IDA 0x35c10c: map(); pool snapshot ([INFERENCE] — original returns NameMap*).
+    name::map_snapshot()
 }
 
 #[doc(alias = "RBX::Name::approximateMemoryUsage(void)")]
 // 0x35c200 — __ZN3RBX4Name22approximateMemoryUsageEv
-pub fn stub_0x35c200() {
-    // IDA 0x35c200: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x35c200() -> usize {
+    // IDA 0x35c200: approximateMemoryUsage; delegates to the port below.
+    name::approximate_memory_usage()
 }
 
 #[doc(alias = "RBX::Name::size(void)")]
 // 0x35c218 — __ZN3RBX4Name4sizeEv
-pub fn stub_0x35c218() {
-    // IDA 0x35c218: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x35c218() -> usize {
+    // IDA 0x35c218: size(); delegates to the port below.
+    name::pool_size()
 }
 
 #[doc(alias = "RBX::Name::declare(char const* const&)")]
 // 0x35c258 — __ZN3RBX4Name7declareERKPKc
-pub fn stub_0x35c258() {
-    // IDA 0x35c258: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+pub fn stub_0x35c258(text: &str) -> name::Name {
+    // IDA 0x35c258: declare(const char*&); delegates to the port below.
+    name::Name::declare(text)
 }
 
 #[doc(alias = "std::vector<RBX::Name *,std::allocator<RBX::Name *>>::~vector()")]
@@ -402,20 +415,23 @@ pub fn stub_0x35d5f4() {
 
 #[doc(alias = "RBX::Profiling::init(bool)")]
 // 0x35db90 — __ZN3RBX9Profiling4initEb
-pub fn stub_0x35db90() {
-    // IDA 0x35db90: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
+pub fn stub_0x35db90(enabled: bool) {
+    // IDA 0x35db90: Profiling::init; delegates to the port below.
+    profiling::init(enabled)
 }
 
 #[doc(alias = "RBX::Profiling::setEnabled(bool)")]
 // 0x35dbc0 — __ZN3RBX9Profiling10setEnabledEb
-pub fn stub_0x35dbc0() {
-    // IDA 0x35dbc0: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
+pub fn stub_0x35dbc0(enabled: bool) {
+    // IDA 0x35dbc0: Profiling::setEnabled; delegates to the port below.
+    profiling::set_enabled(enabled)
 }
 
 #[doc(alias = "RBX::Profiling::isEnabled(void)")]
 // 0x35dbd0 — __ZN3RBX9Profiling9isEnabledEv
-pub fn stub_0x35dbd0() {
-    // IDA 0x35dbd0: physics-engine collision/contact helper (Body/Primitive/Contact graph). Owned by higher crates — carrier no-op in core.
+pub fn stub_0x35dbd0() -> bool {
+    // IDA 0x35dbd0: Profiling::isEnabled; delegates to the port below.
+    profiling::is_enabled()
 }
 
 #[doc(alias = "RBX::Profiling::Profiler::Profiler(char const*)")]
@@ -722,6 +738,294 @@ pub fn stub_0x3612a0() {
 // 0x3616a8 — __ZThn32_N3RBX10RunServiceD1Ev
 pub fn stub_0x3616a8() {
     // IDA 0x3616a8: C++ dtor/thunk (deleting dtors adjust this, run member dtors, release). Drop glue — no-op.
+}
+// ============================================================
+// Offline ports — RBX::LegacyContentTable (0x326e54..0x3459d4),
+// RBX::Name intern pool (0x35ba98..0x35c258) and RBX::Profiling
+// enable flag (0x35db90..0x35dbd0). Grounded in ida/export.json
+// demangled names + IDA EA types; every behavior the binary alone
+// pins down is marked [INFERENCE] and MUST be re-verified against
+// decompile output once the IDA MCP is responsive again.
+// `boost::unordered_map` -> HashMap, globals -> statics per AGENTS.md.
+// ============================================================
+
+/// was: `RBX::LegacyContentTable` (legacy content lookup table).
+/// [INFERENCE] storage model: key/value string map. The four ported
+/// entry points (ctor x2, AddEntry, FindEntry) only constrain a
+/// map-like container; HashMap preserves that observable contract.
+pub mod content_table {
+    use std::collections::HashMap;
+
+    /// was: `RBX::LegacyContentTable`
+    // IDA 0x326e54 / 0x326e58 (`__ZN3RBX18LegacyContentTableC1Ev/C2Ev`,
+    // export.json type: `_DWORD __fastcall(RBX::LegacyContentTable *)`).
+    #[derive(Debug, Default, Clone)]
+    pub struct LegacyContentTable {
+        map: HashMap<String, String>,
+    }
+
+    impl LegacyContentTable {
+        pub fn new() -> Self {
+            Self::default()
+        }
+
+        #[doc(alias = "RBX::LegacyContentTable::AddEntry")]
+        // 0x34581c — __ZN3RBX18LegacyContentTable8AddEntryERKSsS2_
+        // IDA 0x34581c (export.json: `(LegacyContentTable *, const std::string *,
+        // const std::string *)`): inserts/overwrites the entry.
+        pub fn add_entry(&mut self, key: &str, value: &str) {
+            self.map.insert(key.to_owned(), value.to_owned());
+        }
+
+        #[doc(alias = "RBX::LegacyContentTable::FindEntry")]
+        // 0x3459d4 — __ZN3RBX18LegacyContentTable9FindEntryERKSs
+        // IDA 0x3459d4 (export.json: `(LegacyContentTable *, const std::string *)`):
+        // entry value on hit; [INFERENCE] miss returns None (original
+        // likely returns an empty/static string — re-verify on decompile).
+        pub fn find_entry(&self, key: &str) -> Option<String> {
+            self.map.get(key).cloned()
+        }
+
+        pub fn len(&self) -> usize {
+            self.map.len()
+        }
+
+        pub fn is_empty(&self) -> bool {
+            self.map.is_empty()
+        }
+    }
+}
+
+/// was: `RBX::Profiling` global enable flag.
+/// [INFERENCE] storage model: a single process-wide bool. The three
+/// ported entry points (init/setEnabled/isEnabled) only constrain a
+/// readable/writable flag; an AtomicBool preserves that contract.
+/// (ke.rs `FLOG_ASSERTS` precedent.)
+pub mod profiling {
+    use std::sync::atomic::{AtomicBool, Ordering};
+
+    static ENABLED: AtomicBool = AtomicBool::new(false);
+
+    #[doc(alias = "RBX::Profiling::init")]
+    // 0x35db90 — __ZN3RBX9Profiling4initEb
+    // IDA 0x35db90 (export.json: `(RBX::Profiling *, bool)`).
+    pub fn init(enabled: bool) {
+        ENABLED.store(enabled, Ordering::Relaxed);
+    }
+
+    #[doc(alias = "RBX::Profiling::setEnabled")]
+    // 0x35dbc0 — __ZN3RBX9Profiling10setEnabledEb
+    // IDA 0x35dbc0 (export.json: `(RBX::Profiling *, bool)`).
+    pub fn set_enabled(enabled: bool) {
+        ENABLED.store(enabled, Ordering::Relaxed);
+    }
+
+    #[doc(alias = "RBX::Profiling::isEnabled")]
+    // 0x35dbd0 — __ZN3RBX9Profiling9isEnabledEv
+    // IDA 0x35dbd0 (export.json: `(RBX::Profiling *)`).
+    pub fn is_enabled() -> bool {
+        ENABLED.load(Ordering::Relaxed)
+    }
+}
+
+/// was: `RBX::Name` (interned instance/class name pool) + `RBX::Name::NameMap`.
+/// [INFERENCE] storage model: a process-wide pool mapping text -> dense
+/// index, guarded by a mutex. The ported entry points (ctor/declare/
+/// lookup/getNullName/map/size/approximateMemoryUsage/setOrderIndex)
+/// only constrain intern-on-declare, lookup-by-text and pool metrics;
+/// exact original layout (NameMap node shape, null representation,
+/// order-index assignment) MUST be re-verified on decompile.
+pub mod name {
+    use std::collections::HashMap;
+    use parking_lot::Mutex;
+    use std::sync::LazyLock;
+
+    struct Pool {
+        entries: Vec<PoolEntry>,
+        by_text: HashMap<String, u32>,
+        order_counter: u32,
+    }
+
+    struct PoolEntry {
+        text: String,
+        order: u32,
+    }
+
+    static POOL: LazyLock<Mutex<Pool>> = LazyLock::new(|| {
+        Mutex::new(Pool { entries: Vec::new(), by_text: HashMap::new(), order_counter: 0 })
+    });
+
+    fn pool() -> &'static Mutex<Pool> {
+        &POOL
+    }
+
+    /// was: `RBX::Name` — dense index into the intern pool.
+    /// [INFERENCE] null representation: `u32::MAX` sentinel (original
+    /// null encoding re-verify on decompile).
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct Name {
+        index: u32,
+    }
+
+    impl Name {
+        pub const NULL_INDEX: u32 = u32::MAX;
+
+        #[doc(alias = "RBX::Name::getNullName")]
+        // 0x35be98 — __ZN3RBX4Name11getNullNameEv
+        // IDA 0x35be98.
+        pub fn null() -> Self {
+            Self { index: Self::NULL_INDEX }
+        }
+
+        pub fn is_null(&self) -> bool {
+            self.index == Self::NULL_INDEX
+        }
+
+        #[doc(alias = "RBX::Name::declare")]
+        // 0x35c258 — __ZN3RBX4Name7declareERKPKc
+        // IDA 0x35c258 (export.json: `(RBX::Name *, const char *const *)`):
+        // intern-or-return-existing ([INFERENCE] — re-verify on decompile).
+        pub fn declare(text: &str) -> Self {
+            let guard = &mut *pool().lock();
+            if let Some(&index) = guard.by_text.get(text) {
+                return Self { index };
+            }
+            let index = guard.entries.len() as u32;
+            let order = guard.order_counter;
+            guard.order_counter += 1;
+            guard.entries.push(PoolEntry { text: text.to_owned(), order });
+            guard.by_text.insert(text.to_owned(), index);
+            Self { index }
+        }
+
+        #[doc(alias = "RBX::Name::lookup")]
+        // 0x35bd48 — __ZN3RBX4Name6lookupERKPKc
+        // 0x35bebc — __ZN3RBX4Name6lookupERKSs
+        // IDA 0x35bd48/0x35bebc: pool hit or miss ([INFERENCE] miss
+        // encoding is the null Name — re-verify on decompile).
+        pub fn lookup(text: &str) -> Option<Self> {
+            pool().lock().by_text.get(text).map(|&index| Self { index })
+        }
+
+        #[doc(alias = "RBX::Name::setOrderIndex")]
+        // 0x35bbbc — __ZN3RBX4Name13setOrderIndexEv
+        // IDA 0x35bbbc: re-stamps this name with the next pool order
+        // counter ([INFERENCE] — re-verify on decompile).
+        pub fn set_order_index(&mut self) {
+            let guard = &mut *pool().lock();
+            if let Some(entry) = guard.entries.get_mut(self.index as usize) {
+                entry.order = guard.order_counter;
+                guard.order_counter += 1;
+            }
+        }
+
+        pub fn text(&self) -> String {
+            if self.is_null() {
+                return String::new();
+            }
+            pool().lock().entries.get(self.index as usize).map(|e| e.text.clone()).unwrap_or_default()
+        }
+
+        pub fn order(&self) -> Option<u32> {
+            if self.is_null() {
+                return None;
+            }
+            pool().lock().entries.get(self.index as usize).map(|e| e.order)
+        }
+    }
+
+    #[doc(alias = "RBX::Name::map")]
+    // 0x35c10c — __ZN3RBX4Name3mapEv
+    // IDA 0x35c10c: exposes the NameMap ([INFERENCE] snapshot of
+    // (index, text) pairs — original returns NameMap*, re-verify).
+    pub fn map_snapshot() -> Vec<(u32, String)> {
+        pool()
+            .lock()
+            .entries
+            .iter()
+            .enumerate()
+            .map(|(i, e)| (i as u32, e.text.clone()))
+            .collect()
+    }
+
+    #[doc(alias = "RBX::Name::size")]
+    // 0x35c218 — __ZN3RBX4Name4sizeEv
+    // IDA 0x35c218 (export.json returns int): interned entry count
+    // ([INFERENCE] null-name inclusion re-verify on decompile).
+    pub fn pool_size() -> usize {
+        pool().lock().entries.len()
+    }
+
+    #[doc(alias = "RBX::Name::approximateMemoryUsage")]
+    // 0x35c200 — __ZN3RBX4Name22approximateMemoryUsageEv
+    // IDA 0x35c200: summed text bytes + per-entry struct overhead
+    // ([INFERENCE] exact accounting re-verify on decompile).
+    pub fn approximate_memory_usage() -> usize {
+        let guard = pool().lock();
+        guard
+            .entries
+            .iter()
+            .map(|e| e.text.len() + core::mem::size_of::<PoolEntry>() + core::mem::size_of::<u32>())
+            .sum()
+    }
+}
+
+#[cfg(test)]
+mod aq_offline_ports_tests {
+    use super::content_table::LegacyContentTable;
+    use super::name;
+    use super::profiling;
+
+    #[test]
+    fn content_table_add_find_miss() {
+        let mut t = LegacyContentTable::new();
+        assert!(t.is_empty());
+        // IDA 0x34581c/0x3459d4: hit returns the stored value.
+        t.add_entry("k1", "v1");
+        assert_eq!(t.find_entry("k1"), Some("v1".to_owned()));
+        // [INFERENCE] miss path (re-verify on decompile).
+        assert_eq!(t.find_entry("nope"), None);
+        t.add_entry("k1", "v2");
+        assert_eq!(t.find_entry("k1"), Some("v2".to_owned()));
+        assert_eq!(t.len(), 1);
+    }
+
+    #[test]
+    fn profiling_flag_toggle() {
+        // IDA 0x35db90/0x35dbc0/0x35dbd0: readable/writable flag.
+        profiling::init(true);
+        assert!(profiling::is_enabled());
+        profiling::set_enabled(false);
+        assert!(!profiling::is_enabled());
+        profiling::set_enabled(true);
+        assert!(profiling::is_enabled());
+        profiling::init(false);
+        assert!(!profiling::is_enabled());
+    }
+
+    #[test]
+    fn name_intern_roundtrip() {
+        // IDA 0x35c258/0x35bd48/0x35bebc: declare then lookup hits.
+        let a = name::Name::declare("AqOfflineUniqueNameA");
+        let b = name::Name::declare("AqOfflineUniqueNameA");
+        assert_eq!(a, b);
+        assert_eq!(name::Name::lookup("AqOfflineUniqueNameA"), Some(a));
+        assert_eq!(a.text(), "AqOfflineUniqueNameA");
+        // [INFERENCE] miss path (re-verify on decompile).
+        assert_eq!(name::Name::lookup("AqOfflineMissingName"), None);
+        assert!(name::Name::null().is_null());
+        assert_eq!(name::Name::null().text(), "");
+        // Order index re-stamp is observable via order().
+        let mut c = name::Name::declare("AqOfflineUniqueNameC");
+        let before = c.order().unwrap();
+        name::Name::declare("AqOfflineUniqueNameD");
+        c.set_order_index();
+        assert!(c.order().unwrap() > before);
+        // Pool metrics grow monotonically here (unique names above).
+        assert!(name::pool_size() >= 3);
+        assert!(name::approximate_memory_usage() > 0);
+        assert!(name::map_snapshot().iter().any(|(_, t)| t == "AqOfflineUniqueNameA"));
+    }
 }
 // ============================================================
 // IDA-grounded implementations — RBX::Math rotation/ray helpers

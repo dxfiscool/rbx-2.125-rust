@@ -3,6 +3,7 @@
 // Format: // 0xADDR — mangled, #[doc(alias = "RBX::...")] with rbx_core::SharedPtr, todo!("0xADDR")
 #![allow(clippy::type_complexity)]
 use crate::descriptor::{Color3, GenericSlotWrapper, Variant, Vector3};
+use crate::enum_desc::EnumItem;
 use parking_lot::Mutex;
 use rbx_core::SharedPtr;
 use rbx_core::signal::Signal;
@@ -224,6 +225,70 @@ impl LightingEventSource {
         self.holders.lock().clear();
         self.signal.disconnect_all();
     }
+}
+/// Minimal `RBX::Mouse` state visible to its reflection bindings
+/// (IDA 0x5d1e98+). Each field stands in for one bound getter/setter pair
+/// (PropDescriptor) or enum pair (EnumPropDescriptor); the member
+/// offsets/adjusts are member-pointer mechanics with no Rust equivalent.
+#[derive(Debug, Clone, PartialEq, Default)]
+pub struct MouseState {
+    pub normal_id: i32,
+    pub int_value: i32,
+    pub texture_id: String,
+}
+
+/// Get/set pair behind `EnumPropDescriptor<Mouse, NormalId>` (IDA 0x5d22ac
+/// ctor). The setter takes a plain `int` (unlike the FaceInstance twin at
+/// 0x4a9de0 whose setter takes `NormalId`); both fold to `i32` here.
+pub struct MouseNormalAccess {
+    pub get: Box<dyn Fn(&MouseState) -> i32 + Send + Sync>,
+    pub set: Box<dyn Fn(&mut MouseState, i32) + Send + Sync>,
+}
+
+/// `RBX::Reflection::EnumPropDescriptor<Mouse, NormalId>` (IDA 0x5d22ac).
+pub struct MouseNormalPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: MouseNormalAccess,
+    /// Singleton link stored at +40/+48 (same layout as the FaceInstance twin
+    /// at 0x4a9de0, which shares the `NormalId` singleton).
+    pub enum_desc: &'static crate::enum_desc::EnumDesc,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Getter behind `PropDescriptor<Mouse, int>::GetImpl` (IDA 0x5d202c ctor).
+pub struct MouseIntAccess {
+    pub get: Box<dyn Fn(&MouseState) -> i32 + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<Mouse, int>` (IDA 0x5d202c): getter-only
+/// `GetImpl<int (Mouse::*)(void)const>`; the trailing ctor `int` is kept as an
+/// opaque tag (read-only int props bind no setter member-pointer).
+pub struct MouseIntPropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: MouseIntAccess,
+    pub tag: i32,
+    pub attributes: u32,
+    pub permissions: u32,
+}
+
+/// Get/set pair behind `PropDescriptor<Mouse, TextureId>` (IDA 0x5d1e98 ctor).
+/// `RBX::TextureId` is a string-like value type; the cutover uses `String`
+/// (same fold as the `std::string` Lighting twin at 0x5c48e0).
+pub struct MouseTextureAccess {
+    pub get: Box<dyn Fn(&MouseState) -> String + Send + Sync>,
+    pub set: Box<dyn Fn(&mut MouseState, String) + Send + Sync>,
+}
+
+/// `RBX::Reflection::PropDescriptor<Mouse, TextureId>` (IDA 0x5d1e98).
+pub struct MouseTexturePropDesc {
+    pub name: String,
+    pub category: String,
+    pub access: MouseTextureAccess,
+    pub attributes: u32,
+    pub permissions: u32,
 }
 
 // 0x5c16f0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEEC1Ev
@@ -1483,8 +1548,25 @@ pub fn stub_0x5d1c28() {
 
 // 0x5d1e98 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>(char const*,char const*,RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5d1e98() -> ! {
-    todo!("0x5d1e98 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::PropDescriptor<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>(char const*,char const*,RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5d1e98(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&MouseState) -> String + Send + Sync>,
+    set: Box<dyn Fn(&mut MouseState, String) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> MouseTexturePropDesc {
+    // IDA 0x5d1e98: base `PropertyDescriptor` init, vtable installs,
+    // getter/setter member-pointer pair stored into the `GetSetImpl` (same
+    // shape as the Lighting string twin at 0x5c48e0). [INFERENCE: IDA wedged
+    // this wave; ctor shape per demangled signature + twin pattern.]
+    MouseTexturePropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: MouseTextureAccess { get, set },
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5d1fac — __ZN3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEED0Ev
@@ -1509,20 +1591,46 @@ pub fn stub_0x5d1fdc() -> bool {
 
 // 0x5d1fe0 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d1fe0() -> ! {
-    todo!("0x5d1fe0 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d1fe0(access: &MouseTextureAccess, obj: &MouseState) -> String {
+    // IDA 0x5d1fe0: member-pointer dispatch out of the +4/+8 pair with the
+    // base adjust (same dispatch shape as the Lighting string twin at
+    // 0x5c4a28); the observable effect is the get. [INFERENCE: per twin.]
+    (access.get)(obj)
 }
 
 // 0x5d2008 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_9TextureIdEE10GetSetImplIMS2_KFS3_vEMS2_FvRKS3_EE8setValueEPNS0_13DescribedBaseES9_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
-pub fn stub_0x5d2008() -> ! {
-    todo!("0x5d2008 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::TextureId>::GetSetImpl<RBX::TextureId (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::TextureId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")
+pub fn stub_0x5d2008(access: &MouseTextureAccess, obj: &mut MouseState, value: &str) {
+    // IDA 0x5d2008: same member-pointer dispatch as the getValue twin at
+    // 0x5d1fe0, forwarding the TextureId payload through the setter at
+    // +12/+16 (same shape as the Lighting string twin at 0x5c4a50). `&str`
+    // folds the `TextureId const&` parameter. [INFERENCE: per twin.]
+    (access.set)(obj, value.to_owned());
 }
 
 // 0x5d202c — __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,int>::PropDescriptor<int (RBX::Mouse::*)(void)const,int>(char const*,char const*,int (RBX::Mouse::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5d202c() -> ! {
-    todo!("0x5d202c RBX::Reflection::PropDescriptor<RBX::Mouse,int>::PropDescriptor<int (RBX::Mouse::*)(void)const,int>(char const*,char const*,int (RBX::Mouse::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5d202c(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&MouseState) -> i32 + Send + Sync>,
+    tag: i32,
+    attributes: u32,
+    permissions: u32,
+) -> MouseIntPropDesc {
+    // IDA 0x5d202c: base `PropertyDescriptor` init with the getter-only
+    // `GetImpl<int (Mouse::*)(void)const>` member desc; the trailing ctor
+    // `int` is stored opaquely as `tag` (read-only int props such as the
+    // Mouse position components bind no setter member-pointer).
+    // [INFERENCE: IDA wedged this wave; ctor shape per demangled signature.]
+    MouseIntPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: MouseIntAccess { get },
+        tag,
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5d2138 — __ZN3RBX10Reflection14PropDescriptorINS_5MouseEiED0Ev
@@ -1545,20 +1653,48 @@ pub fn stub_0x5d2168() {
 
 // 0x5d216c — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,int>::GetImpl<int (RBX::Mouse::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d216c() -> ! {
-    todo!("0x5d216c RBX::Reflection::PropDescriptor<RBX::Mouse,int>::GetImpl<int (RBX::Mouse::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d216c(access: &MouseIntAccess, obj: &MouseState) -> i32 {
+    // IDA 0x5d216c: base-adjusted member-pointer dispatch through the getter
+    // (same shape as the GetSetImpl getValue twins, minus the setter pair);
+    // the observable effect is the get. [INFERENCE: per twin pattern.]
+    (access.get)(obj)
 }
 
 // 0x5d218c — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEiE7GetImplIMS2_KFivEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,int>::GetImpl<int (RBX::Mouse::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
-pub fn stub_0x5d218c() -> ! {
-    todo!("0x5d218c RBX::Reflection::PropDescriptor<RBX::Mouse,int>::GetImpl<int (RBX::Mouse::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0x5d218c(_access: &MouseIntAccess, _obj: &mut MouseState, _value: i32) {
+    // IDA 0x5d218c: `GetImpl` binds only the getter member-pointer, so there
+    // is no setter dispatch; the prop routes read-only through the member
+    // desc (cf. 0x5d2164). Cutover no-op.
+    // [INFERENCE: IDA wedged this wave; no-op per getter-only shape.]
 }
 
 // 0x5d22ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEEC2IMS2_KFS3_vEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::Mouse::*)(void)const,int>(char const*,char const*,RBX::NormalId (RBX::Mouse::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
-pub fn stub_0x5d22ac() -> ! {
-    todo!("0x5d22ac RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::Mouse::*)(void)const,int>(char const*,char const*,RBX::NormalId (RBX::Mouse::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x5d22ac(
+    name: &str,
+    category: &str,
+    get: Box<dyn Fn(&MouseState) -> i32 + Send + Sync>,
+    set: Box<dyn Fn(&mut MouseState, i32) + Send + Sync>,
+    attributes: u32,
+    permissions: u32,
+) -> MouseNormalPropDesc {
+    // IDA 0x5d22ac: same EnumPropDescriptor ctor shape as the FaceInstance
+    // twin at 0x4a9de0 — singleton link at +40/+48, `new(0x14)` member desc
+    // at +44 holding (getter, setter); the read-only/write-only attribute
+    // masks query a GetImpl that forwards to the member desc, so the model
+    // keeps `attributes` as passed. The setter takes a plain `int` here (vs
+    // `NormalId` in the FaceInstance twin); both fold to `i32`.
+    // [INFERENCE: IDA wedged this wave; ctor shape per demangled signature +
+    // twin pattern.]
+    MouseNormalPropDesc {
+        name: name.to_owned(),
+        category: category.to_owned(),
+        access: MouseNormalAccess { get, set },
+        enum_desc: crate::descriptor::normal_id_enum_desc(),
+        attributes,
+        permissions,
+    }
 }
 
 // 0x5d2458 — __ZN3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEED0Ev
@@ -1581,26 +1717,43 @@ pub fn stub_0x5d2494() {
 
 // 0x5d24a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d24a4() -> ! {
-    todo!("0x5d24a4 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d24a4(desc: &MouseNormalPropDesc, a: &MouseState, b: &MouseState) -> bool {
+    // IDA 0x5d24a4: `v = member(+44)->get(a)` (vf+8), `return v ==
+    // member->get(b)`. Same shape as the truss twin at 0x4a8af0 and the
+    // Explosion twin at 0x4a5a34. [INFERENCE: IDA wedged; per twins.]
+    (desc.access.get)(a) == (desc.access.get)(b)
 }
 
 // 0x5d24cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
-pub fn stub_0x5d24cc() -> ! {
-    todo!("0x5d24cc RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+pub fn stub_0x5d24cc(desc: &MouseNormalPropDesc, obj: &MouseState) -> Variant {
+    // IDA 0x5d24cc: `v = getEnumValue(obj)` (vf+68); out = `Variant(int, v)`
+    // via the int singleton + placement copy. Same shape as the truss twin
+    // at 0x4a8b18. [INFERENCE: IDA wedged; per twin.]
+    Variant::Int((desc.access.get)(obj))
 }
 
 // 0x5d24f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
-pub fn stub_0x5d24f0() -> ! {
-    todo!("0x5d24f0 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+pub fn stub_0x5d24f0(desc: &MouseNormalPropDesc, obj: &mut MouseState, value: &Variant) {
+    // IDA 0x5d24f0: same shape as the truss twin at 0x4a8b3c — int payloads
+    // via `any_cast<int>`, anything else through `Variant::convert<int>`,
+    // then setEnumValue. [INFERENCE: IDA wedged; per twin.]
+    let v = match value {
+        Variant::Int(v) => *v,
+        other => other.convert_to_int(),
+    };
+    (desc.access.set)(obj, v);
 }
 
 // 0x5d263c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
-pub fn stub_0x5d263c() -> ! {
-    todo!("0x5d263c RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+pub fn stub_0x5d263c(desc: &MouseNormalPropDesc, src: &MouseState, dst: &mut MouseState) {
+    // IDA 0x5d263c: `v = member(+44)->get(src)`, then `member->set(dst, v)`.
+    // Same shape as the truss twin at 0x4a8c88. [INFERENCE: IDA wedged; per
+    // twin.]
+    let v = (desc.access.get)(src);
+    (desc.access.set)(dst, v);
 }
 
 // 0x5d2660 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14hasStringValueEv
@@ -1612,68 +1765,148 @@ pub fn stub_0x5d2660() -> bool {
 
 // 0x5d2664 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d2664() -> ! {
-    todo!("0x5d2664 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d2664(desc: &MouseNormalPropDesc, obj: &MouseState) -> String {
+    // IDA 0x5d2664: `v = member(+44)->get(obj)`, then
+    // `EnumDesc<NormalId>::convertToString`. Same shape as the truss twin at
+    // 0x4a8cb0. [INFERENCE: IDA wedged; per twin.]
+    desc.enum_desc.lookup_name((desc.access.get)(obj)).unwrap_or_default().to_owned()
 }
 
 // 0x5d2688 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
-pub fn stub_0x5d2688() -> ! {
-    todo!("0x5d2688 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+pub fn stub_0x5d2688(desc: &MouseNormalPropDesc, obj: &mut MouseState, name: &str) -> bool {
+    // IDA 0x5d2688: `Name::lookup`, `convertToValue(enumdesc@+48, ...)`; on 1
+    // set + return 1, else 0. Same shape as the truss twin at 0x4a8cd4.
+    // [INFERENCE: IDA wedged; per twin.]
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5d26c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
-pub fn stub_0x5d26c8() -> ! {
-    todo!("0x5d26c8 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+pub fn stub_0x5d26c8(desc: &MouseNormalPropDesc, obj: &MouseState) -> i32 {
+    // IDA 0x5d26c8: `v = member(+44)->get(obj)` (vf+8), `clearValue(pair)`,
+    // store int tag 5 + value, return 5. Same shape as the truss twin at
+    // 0x4a8d14. [INFERENCE: IDA wedged; per twin.]
+    (desc.access.get)(obj)
 }
 
 // 0x5d26e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
-pub fn stub_0x5d26e8() -> ! {
-    todo!("0x5d26e8 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+pub fn stub_0x5d26e8(desc: &MouseNormalPropDesc, obj: &mut MouseState, text: &str) -> bool {
+    // IDA 0x5d26e8: element-text extract, `Name::lookup`, `convertToValue`;
+    // on success set. Same shape as the truss twin at 0x4a8d34. The
+    // `XmlElement const*` + `IReferenceBinder &` parameters fold to the
+    // element text, which is the only observable input.
+    // [INFERENCE: IDA wedged; per twin.]
+    match desc.enum_desc.lookup_value(text) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5d2928 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d2928() -> ! {
-    todo!("0x5d2928 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d2928(desc: &MouseNormalPropDesc, obj: &MouseState) -> i32 {
+    // IDA 0x5d2928: `v = member(+44)->get(obj)`, return
+    // `EnumDesc<NormalId>::convertToIndex` — ReleaseAssert(value>=0)
+    // (enumconverter.h:350), `value_ordinals[value]` or -1. Same shape as the
+    // FaceInstance path at 0x4aa464/0x4aa47c and the truss twin at 0x4a8f74.
+    // [INFERENCE: IDA wedged; per twins.]
+    let value = (desc.access.get)(obj);
+    assert!(value >= 0, "value>=0 ../App/include/reflection/enumconverter.h:350");
+    usize::try_from(value).ok().and_then(|s| desc.enum_desc.value_ordinals.get(s).copied()).unwrap_or(-1)
 }
 
 // 0x5d2944 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
-pub fn stub_0x5d2944() -> ! {
-    todo!("0x5d2944 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+pub fn stub_0x5d2944(desc: &MouseNormalPropDesc, obj: &mut MouseState, index: usize) -> bool {
+    // IDA 0x5d2944: bounds-check against the enum count, load
+    // `values[index]`, set, return 1; else 0. Same shape as the truss twin
+    // at 0x4a8f90. [INFERENCE: IDA wedged; per twin.]
+    match desc.enum_desc.values.get(index) {
+        Some(&v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5d2978 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d2978() -> ! {
-    todo!("0x5d2978 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d2978(desc: &MouseNormalPropDesc, obj: &MouseState) -> i32 {
+    // IDA 0x5d2978: tail-jump to `member(+44)->get(obj)` (vf+8). Same shape
+    // as the truss twin at 0x4a8fc4. [INFERENCE: IDA wedged; per twin.]
+    (desc.access.get)(obj)
 }
 
 // 0x5d2980 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x5d2980() -> ! {
-    todo!("0x5d2980 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x5d2980(desc: &MouseNormalPropDesc, obj: &mut MouseState, value: i32) -> bool {
+    // IDA 0x5d2980: `find_if(items, bind(equalValue, _1, value))`; hit sets +
+    // returns 1, miss 0. Same shape as the truss twin at 0x4a8fcc.
+    // [INFERENCE: IDA wedged; per twin.]
+    if desc.enum_desc.items.iter().any(|it| it.value == value) {
+        (desc.access.set)(obj, value);
+        true
+    } else {
+        false
+    }
 }
 
 // 0x5d29cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d29cc() -> ! {
-    todo!("0x5d29cc RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d29cc(desc: &MouseNormalPropDesc, obj: &MouseState) -> Option<EnumItem> {
+    // IDA 0x5d29cc: `v = member(+44)->get(obj)`, return
+    // `convertToItem(enumdesc@+48, &v)`. Same shape as the truss twin at
+    // 0x4a9018. [INFERENCE: IDA wedged; per twin.]
+    let v = (desc.access.get)(obj);
+    usize::try_from(v)
+        .ok()
+        .and_then(|slot| desc.enum_desc.items_by_value.get(slot).copied().flatten())
+        .and_then(|idx| desc.enum_desc.items.get(idx).cloned())
 }
 
 // 0x5d29ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
-pub fn stub_0x5d29ec() -> ! {
-    todo!("0x5d29ec RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+pub fn stub_0x5d29ec(desc: &MouseNormalPropDesc, obj: &mut MouseState, name: &str) -> bool {
+    // IDA 0x5d29ec (`Name` overload): `convertToValue` then conditional set.
+    // Same shape as the truss twin at 0x4a9038. [INFERENCE: IDA wedged; per
+    // twin.]
+    match desc.enum_desc.lookup_value(name) {
+        Some(v) => {
+            (desc.access.set)(obj, v);
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x5d2a20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5MouseENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
 #[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
-pub fn stub_0x5d2a20() -> ! {
-    todo!("0x5d2a20 RBX::Reflection::EnumPropDescriptor<RBX::Mouse,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+pub fn stub_0x5d2a20(desc: &MouseNormalPropDesc, obj: &mut MouseState, value: i32) -> bool {
+    // IDA 0x5d2a20: `value >= 0` + bounds check, `mapped =
+    // value_to_value[value]`; `-1` returns 0, else set + return 1. Same shape
+    // as the truss twin at 0x4a90dc. [INFERENCE: IDA wedged; per twin.]
+    match usize::try_from(value)
+        .ok()
+        .and_then(|slot| desc.enum_desc.value_to_value.get(slot).copied())
+    {
+        Some(mapped) if mapped != -1 => {
+            (desc.access.set)(obj, mapped);
+            true
+        }
+        _ => false,
+    }
 }
 
 // 0x5d2a60 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE10isReadOnlyEv
@@ -1690,14 +1923,20 @@ pub fn stub_0x5d2a64() {
 
 // 0x5d2a68 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
-pub fn stub_0x5d2a68() -> ! {
-    todo!("0x5d2a68 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x5d2a68(access: &MouseNormalAccess, obj: &MouseState) -> i32 {
+    // IDA 0x5d2a68: `GetImpl` member-pointer dispatch through the getter
+    // (same shape as the GetSetImpl getValue twins, minus the setter pair).
+    // [INFERENCE: IDA wedged; per twin pattern.]
+    (access.get)(obj)
 }
 
 // 0x5d2a88 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseENS_8NormalIdEE7GetImplIMS2_KFS3_vEE8setValueEPNS0_13DescribedBaseERKS3_
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
-pub fn stub_0x5d2a88() -> ! {
-    todo!("0x5d2a88 RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::NormalId>::GetImpl<RBX::NormalId (RBX::Mouse::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+pub fn stub_0x5d2a88(_access: &MouseNormalAccess, _obj: &mut MouseState, _value: i32) {
+    // IDA 0x5d2a88: `GetImpl` binds only the getter member-pointer, so there
+    // is no setter dispatch; the prop routes read-only through the member
+    // desc (cf. 0x5d2a60). Cutover no-op.
+    // [INFERENCE: IDA wedged this wave; no-op per getter-only shape.]
 }
 
 // 0x5d2ba8 — __ZN3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5644,5 +5883,97 @@ mod lighting_batch_tests {
         stub_0x5c4e00(&source, &[Variant::Bool(false)]);
         // Disconnected: no further delivery.
         assert_eq!(*seen.lock(), vec![true]);
+    }
+
+    fn mouse_normal_desc() -> MouseNormalPropDesc {
+        stub_0x5d22ac(
+            "TargetSurface",
+            "Mouse",
+            Box::new(|s: &MouseState| s.normal_id),
+            Box::new(|s: &mut MouseState, v: i32| s.normal_id = v),
+            0,
+            0,
+        )
+    }
+
+    #[test]
+    fn mouse_enum_ctor_links_normal_id_singleton() {
+        let d = mouse_normal_desc();
+        assert_eq!(d.name, "TargetSurface");
+        assert_eq!(d.enum_desc.enum_name, "NormalId");
+        assert_eq!(d.enum_desc.lookup_value("Top"), Some(1));
+    }
+
+    #[test]
+    fn mouse_enum_get_set_variant_roundtrip() {
+        let d = mouse_normal_desc();
+        let mut a = MouseState::default();
+        let mut b = MouseState::default();
+        assert!(stub_0x5d24a4(&d, &a, &b));
+        stub_0x5d24f0(&d, &mut a, &Variant::Int(1));
+        assert!(!stub_0x5d24a4(&d, &a, &b));
+        assert!(matches!(stub_0x5d24cc(&d, &a), Variant::Int(1)));
+        stub_0x5d263c(&d, &a, &mut b);
+        assert!(stub_0x5d24a4(&d, &a, &b));
+        assert_eq!(stub_0x5d2978(&d, &a), 1);
+    }
+
+    #[test]
+    fn mouse_enum_string_index_int_paths() {
+        let d = mouse_normal_desc();
+        let mut s = MouseState::default();
+        assert!(stub_0x5d2688(&d, &mut s, "Front"));
+        assert_eq!(s.normal_id, 5);
+        assert_eq!(stub_0x5d2664(&d, &s), "Front");
+        assert!(!stub_0x5d2688(&d, &mut s, "Nope"));
+        assert!(stub_0x5d2980(&d, &mut s, 0));
+        assert!(!stub_0x5d2980(&d, &mut s, 6));
+        assert_eq!(stub_0x5d2928(&d, &s), d.enum_desc.value_ordinals[0]);
+        assert!(stub_0x5d2944(&d, &mut s, 0));
+        assert!(!stub_0x5d2944(&d, &mut s, usize::MAX));
+        assert!(stub_0x5d2a20(&d, &mut s, 4));
+        assert_eq!(s.normal_id, 4);
+        assert!(!stub_0x5d2a20(&d, &mut s, -1));
+        assert!(stub_0x5d29ec(&d, &mut s, "Left"));
+        assert_eq!(s.normal_id, 3);
+        let item = stub_0x5d29cc(&d, &s).expect("Left maps to an item");
+        assert_eq!((item.name.as_str(), item.value), ("Left", 3));
+        assert_eq!(stub_0x5d26c8(&d, &s), 3);
+        assert!(stub_0x5d26e8(&d, &mut s, "Right"));
+        assert_eq!(s.normal_id, 0);
+        assert!(!stub_0x5d26e8(&d, &mut s, "Nope"));
+    }
+
+    #[test]
+    fn mouse_int_texture_getset_impls() {
+        let ip = stub_0x5d202c(
+            "X",
+            "Mouse",
+            Box::new(|s: &MouseState| s.int_value),
+            0,
+            0,
+            0,
+        );
+        let mut s = MouseState { int_value: 7, ..MouseState::default() };
+        assert_eq!(stub_0x5d216c(&ip.access, &s), 7);
+        stub_0x5d218c(&ip.access, &mut s, 9);
+        assert_eq!(s.int_value, 7);
+        let tp = stub_0x5d1e98(
+            "Icon",
+            "Mouse",
+            Box::new(|s: &MouseState| s.texture_id.clone()),
+            Box::new(|s: &mut MouseState, v: String| s.texture_id = v),
+            0,
+            0,
+        );
+        let mut t = MouseState::default();
+        stub_0x5d2008(&tp.access, &mut t, "rbxasset://icon");
+        assert_eq!(stub_0x5d1fe0(&tp.access, &t), "rbxasset://icon");
+        let np = mouse_normal_desc();
+        let mut n = MouseState::default();
+        n.normal_id = 2;
+        assert_eq!(stub_0x5d2a68(&np.access, &n), 2);
+        stub_0x5d2a88(&np.access, &mut n, 4);
+        assert_eq!(n.normal_id, 2);
     }
 }

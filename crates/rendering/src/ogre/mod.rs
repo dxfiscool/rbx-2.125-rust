@@ -4,7 +4,11 @@
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
-use rbx_core::SharedPtr;
+// IDA-grounded Ogre mirror types live in `crate::movable`; re-export the
+// canonical `Ogre::` names here per AGENTS.md section 3 (`Ogre::Entity`
+// -> `rbx_rendering::ogre::Entity`, each with `#[doc(alias = "Ogre::...")]`
+// at its definition).
+pub use crate::movable::{AxisAlignedBox, Entity, MovableObject, SubEntity};
 
 // 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
 #[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]

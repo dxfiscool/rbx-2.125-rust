@@ -6393,10 +6393,16 @@ pub fn stub_76a80(soft: &[u32; 200], occlusion_l: f32, occlusion_r: f32, mix_lev
 
 // 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 #[doc(alias = "FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
-pub fn stub_76b3c() -> ! {
-    todo!(
-        "0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)"
-    )
+pub fn stub_76b3c(soft: &[u32; 200], props: u32, set_base: impl FnOnce(u32) -> i32, propagate: impl FnOnce()) -> i32 {
+    // IDA 0x76b3c FMOD::ChannelSoftware::setReverbProperties:
+    //   v3 = ChannelReal::setReverbProperties(this, a2) (seam); !v3 && word 186 ->
+    //   push the properties into the resampler object (caller seam).
+    //   [INFERENCE: base-then-propagate shape per the 0x74bd0 setMode twin — IDA offline.]
+    let code = set_base(props);
+    if code == 0 && soft[186] != 0 {
+        propagate();
+    }
+    code
 }
 
 // 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb
@@ -6535,8 +6541,21 @@ pub fn stub_77574(stream: &[u32], mode: i32, update: impl FnMut(u32, i32) -> i32
 
 // 0x775d0 — __ZN4FMOD13ChannelStream9setVolumeEf
 #[doc(alias = "FMOD::ChannelStream::setVolume(float)")]
-pub fn stub_775d0() -> ! {
-    todo!("0x775d0 FMOD::ChannelStream::setVolume(float)")
+pub fn stub_775d0(stream: &[u32], volume: f32, set_volume: impl FnMut(u32, f32) -> i32) -> i32 {
+    // IDA 0x775d0 FMOD::ChannelStream::setVolume: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = setVolume(sub, a2); } while (...); return result.
+    //   [INFERENCE: vtable slot unverified — IDA offline; fan-out shape per the
+    //   0x77718/0x77774/0x77868 sibling tribe.]
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut set_volume = set_volume;
+    for i in 0..count as usize {
+        result = set_volume(stream[32 + i], volume);
+    }
+    result
 }
 
 // 0x77718 — __ZN4FMOD13ChannelStream12setFrequencyEf
@@ -6813,14 +6832,34 @@ pub fn stub_77bc0(stream: &[u32; 64], loop_start: u32, loop_end: u32, set_base: 
 
 // 0x77c14 — __ZN4FMOD13ChannelStream11getPositionEPjj
 #[doc(alias = "FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")]
-pub fn stub_77c14() -> ! {
-    todo!("0x77c14 FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")
+pub fn stub_77c14(stream: &[u32], out: &mut u32, mode: u32, get_position: impl FnOnce(u32, &mut u32, u32) -> i32) -> i32 {
+    // IDA 0x77c14 FMOD::ChannelStream::getPosition: delegate to the head sub
+    //   link at this[32] (getter tribe per 0x77b5c/0x77b6c/0x77b7c).
+    //   [INFERENCE: vtable slot unverified — IDA offline.]
+    // Host: a null head link reports 36 (host guard; the original would fault).
+    let head = stream[32];
+    if head == 0 {
+        return 36;
+    }
+    get_position(head, out, mode)
 }
 
 // 0x77f74 — __ZN4FMOD13ChannelStream4stopEv
 #[doc(alias = "FMOD::ChannelStream::stop(void)")]
-pub fn stub_77f74() -> ! {
-    todo!("0x77f74 FMOD::ChannelStream::stop(void)")
+pub fn stub_77f74(stream: &[u32], stop_sub: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x77f74 FMOD::ChannelStream::stop: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = stop(sub); } while (...); return result.
+    //   [INFERENCE: fan-out shape per the 0x77718 sibling tribe — IDA offline.]
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut stop_sub = stop_sub;
+    for i in 0..count as usize {
+        result = stop_sub(stream[32 + i]);
+    }
+    result
 }
 
 // 0x78168 — __ZN4FMOD13ChannelStream7setModeEj
@@ -6884,14 +6923,32 @@ pub fn stub_7826c(channel: &mut [u32; 64], base: impl FnOnce(&mut [u32; 64]) -> 
 
 // 0x78270 — __ZN4FMOD13ChannelStream5allocEv
 #[doc(alias = "FMOD::ChannelStream::alloc(void)")]
-pub fn stub_78270() -> ! {
-    todo!("0x78270 FMOD::ChannelStream::alloc(void)")
+pub fn stub_78270(stream: &[u32], a2: i32, a3: i32, alloc_sub: impl FnMut(u32, i32, i32) -> i32) -> i32 {
+    // IDA 0x78270 FMOD::ChannelStream::alloc: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = alloc(sub, a2, a3); } while (...); return result.
+    //   (Export type is (this, int, int); demangled arg names are unrecorded.)
+    //   [INFERENCE: fan-out shape per the 0x77718 sibling tribe — IDA offline.]
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut alloc_sub = alloc_sub;
+    for i in 0..count as usize {
+        result = alloc_sub(stream[32 + i], a2, a3);
+    }
+    result
 }
 
 // 0x78540 — __ZN4FMOD13ChannelStream13setPositionExEjjb
 #[doc(alias = "FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")]
-pub fn stub_78540() -> ! {
-    todo!("0x78540 FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")
+pub fn stub_78540(channel_link: u32, position: u32, mode: u32, flush: bool, set_position: impl FnOnce(u32, u32, u32, u32) -> i32) -> i32 {
+    // IDA 0x78540 FMOD::ChannelStream::setPositionEx: the extended form of the
+    //   0x78fb4 setPosition twin, which passes a trailing 0 where this passes
+    //   the flush flag through: return setPosition(link, a2, a3, a4).
+    //   [INFERENCE: trailing-word passthrough per the 0x78fb4 twin — IDA offline.]
+    // Host: the vtable call arrives as a seam (bool widens to u32, as on the twin path).
+    set_position(channel_link, position, mode, flush as u32)
 }
 
 // 0x78af0 — __ZN4FMOD13ChannelStream9setPausedEb
@@ -6920,8 +6977,20 @@ pub fn stub_78af0(stream: &[u32], paused: bool, set_paused: impl FnMut(u32, bool
 
 // 0x78b80 — __ZN4FMOD13ChannelStream12updateStreamEv
 #[doc(alias = "FMOD::ChannelStream::updateStream(void)")]
-pub fn stub_78b80() -> ! {
-    todo!("0x78b80 FMOD::ChannelStream::updateStream(void)")
+pub fn stub_78b80(stream: &[u32], update_sub: impl FnMut(u32) -> i32) -> i32 {
+    // IDA 0x78b80 FMOD::ChannelStream::updateStream: count = this[31]; <= 0 -> 0;
+    //   do { sub = this[32+i]; result = updateStream(sub); } while (...); return result.
+    //   [INFERENCE: fan-out shape per the 0x77718 sibling tribe — IDA offline.]
+    let count = stream[31] as i32;
+    if count <= 0 {
+        return 0;
+    }
+    let mut result = 0;
+    let mut update_sub = update_sub;
+    for i in 0..count as usize {
+        result = update_sub(stream[32 + i]);
+    }
+    result
 }
 
 // 0x78fac — __ZN4FMOD13ChannelStream8isStreamEv
@@ -6956,20 +7025,42 @@ pub fn stub_78fe8() {
 
 // 0x79000 — __ZN4FMOD12ChannelGroup9setVolumeEf
 #[doc(alias = "FMOD::ChannelGroup::setVolume(float)")]
-pub fn stub_79000() -> ! {
-    todo!("0x79000 FMOD::ChannelGroup::setVolume(float)")
+pub unsafe fn stub_79000(group: *const u8, volume: f32, validate: impl FnOnce(*const u8, *mut *mut u8) -> i32, set_volume: impl FnOnce(*mut u8, f32) -> i32) -> i32 {
+    // IDA 0x79000 FMOD::ChannelGroup::setVolume: validate (twin 0x79034); nonzero ->
+    //   return the code; else forward to ChannelGroupI::setVolume (twin 0x796a4).
+    //   [INFERENCE: validate-forward shape per the 0x71224 Channel twin — IDA offline.]
+    // SAFETY: `group` must be a valid ChannelGroup handle for the caller validate seam.
+    let mut inner: *mut u8 = core::ptr::null_mut();
+    let rc = validate(group, &mut inner);
+    if rc != 0 {
+        return rc;
+    }
+    set_volume(inner, volume)
 }
 
 // 0x79034 — __ZN4FMOD13ChannelGroupI8validateEPNS_12ChannelGroupEPPS0_
 #[doc(alias = "FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")]
-pub fn stub_79034() -> ! {
-    todo!("0x79034 FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")
+pub unsafe fn stub_79034(group: *const u8, out: *mut *mut u8) -> i32 {
+    // IDA 0x79034 FMOD::ChannelGroupI::validate: null handle or null out ->
+    //   FMOD_ERR_INVALID_PARAM; else *out = the ChannelGroupI twin link, FMOD_OK.
+    //   [INFERENCE: null-guard + link-write shape per the ChannelInner::validate
+    //   family (cf. its 0x71224/0x712a4 callers) — IDA offline.]
+    // SAFETY: caller must guarantee `out` writable when non-null.
+    if group.is_null() || out.is_null() {
+        return crate::FMOD_ERR_INVALID_PARAM;
+    }
+    *out = group as *mut u8;
+    crate::FMOD_OK
 }
 
 // 0x79054 — __ZN4FMOD13ChannelGroupI9getPausedEPb
 #[doc(alias = "FMOD::ChannelGroupI::getPaused(bool *)")]
-pub fn stub_79054() -> ! {
-    todo!("0x79054 FMOD::ChannelGroupI::getPaused(bool *)")
+pub fn stub_79054(paused: bool, out: &mut bool) -> i32 {
+    // IDA 0x79054 FMOD::ChannelGroupI::getPaused: *a2 = the paused flag; return 0.
+    //   [INFERENCE: flag source arrives caller-bound; the null-out 37 path is
+    //   borrow-enforced through &mut — IDA offline.]
+    *out = paused;
+    crate::FMOD_OK
 }
 
 // 0x7906c — __ZN4FMOD13ChannelGroupI17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -6998,14 +7089,22 @@ pub fn stub_79280() -> ! {
 
 // 0x79334 — __ZN4FMOD13ChannelGroupI16setPitchInternalEv
 #[doc(alias = "FMOD::ChannelGroupI::setPitchInternal(void)")]
-pub fn stub_79334() -> ! {
-    todo!("0x79334 FMOD::ChannelGroupI::setPitchInternal(void)")
+pub fn stub_79334(recompute: impl FnOnce() -> i32) -> i32 {
+    // IDA 0x79334 FMOD::ChannelGroupI::setPitchInternal: push the cached pitch into
+    //   the DSP chain (no-arg internal refresh, cf. the 0x793e4 volume twin); the
+    //   DSP propagation arrives as a seam.
+    //   [INFERENCE: refresh-delegation shape — IDA offline.]
+    recompute()
 }
 
 // 0x793e4 — __ZN4FMOD13ChannelGroupI17setVolumeInternalEv
 #[doc(alias = "FMOD::ChannelGroupI::setVolumeInternal(void)")]
-pub fn stub_793e4() -> ! {
-    todo!("0x793e4 FMOD::ChannelGroupI::setVolumeInternal(void)")
+pub fn stub_793e4(recompute: impl FnOnce() -> i32) -> i32 {
+    // IDA 0x793e4 FMOD::ChannelGroupI::setVolumeInternal: push the cached volume into
+    //   the DSP chain (no-arg internal refresh, cf. the 0x79334 pitch twin); the
+    //   DSP propagation arrives as a seam.
+    //   [INFERENCE: refresh-delegation shape — IDA offline.]
+    recompute()
 }
 
 // 0x794c4 — __ZN4FMOD13ChannelGroupI8addGroupEPS0_
@@ -7016,8 +7115,13 @@ pub fn stub_794c4() -> ! {
 
 // 0x796a4 — __ZN4FMOD13ChannelGroupI9setVolumeEf
 #[doc(alias = "FMOD::ChannelGroupI::setVolume(float)")]
-pub fn stub_796a4() -> ! {
-    todo!("0x796a4 FMOD::ChannelGroupI::setVolume(float)")
+pub fn stub_796a4(volume: f32, store: impl FnOnce(f32), propagate: impl FnOnce()) -> i32 {
+    // IDA 0x796a4 FMOD::ChannelGroupI::setVolume: store the volume, push it into
+    //   the DSP chain (caller seams), return 0.
+    //   [INFERENCE: store-then-propagate shape — IDA offline.]
+    store(volume);
+    propagate();
+    crate::FMOD_OK
 }
 
 // 0x796d4 — __ZN4FMOD13ChannelGroupI15releaseInternalEb
@@ -7028,8 +7132,11 @@ pub fn stub_796d4() -> ! {
 
 // 0x7995c — __ZN4FMOD13ChannelGroupI7releaseEv
 #[doc(alias = "FMOD::ChannelGroupI::release(void)")]
-pub fn stub_7995c() -> ! {
-    todo!("0x7995c FMOD::ChannelGroupI::release(void)")
+pub fn stub_7995c(release_inner: impl FnOnce() -> i32) -> i32 {
+    // IDA 0x7995c FMOD::ChannelGroupI::release: release the group object; the
+    //   teardown arrives as a seam.
+    //   [INFERENCE: release-delegation shape — IDA offline.]
+    release_inner()
 }
 
 // 0x79980 — __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE
