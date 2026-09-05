@@ -3631,6 +3631,16 @@ pub struct SignupViewState {
     email: parking_lot::Mutex<String>,
     birth_string: parking_lot::Mutex<String>,
     signing_up_visible: AtomicBool,
+    accessory_set: AtomicBool,
+    keyboard_avoided: AtomicBool,
+    gender_options: parking_lot::Mutex<Vec<String>>,
+    error_string: parking_lot::Mutex<String>,
+    popover_active: AtomicBool,
+    segues: AtomicU32,
+    last_segue: parking_lot::Mutex<String>,
+    signup_alert: parking_lot::Mutex<String>,
+    finished_posts: AtomicU32,
+    last_finished_pair: parking_lot::Mutex<(String, String)>,
 }
 /// Status-button presentation behind the signup verify flow (IDA
 /// 0x5f890..0x602b8): the badge image, its hidden latch and whether it
@@ -3670,6 +3680,7 @@ impl SignupViewState {
         *self.birth_date.lock() = String::new();
         self.signup_enabled.store(false, Ordering::SeqCst);
         *self.window.lock() = if is_pad { (0.0, 0.0, 540.0, 508.0) } else { (0.0, 0.0, 0.0, 0.0) };
+        *self.gender_options.lock() = vec!["".to_owned(), "Male".to_owned(), "Female".to_owned()];
         self.has_verifier.store(true, Ordering::SeqCst);
         self.observer_regs.store(5, Ordering::SeqCst);
         self.initialized.store(true, Ordering::SeqCst);
@@ -4036,6 +4047,237 @@ impl SignupViewState {
     }
     pub fn signing_up_visible(&self) -> bool {
         self.signing_up_visible.load(Ordering::SeqCst)
+    }
+    /// `respondToSignUp:` (IDA 0x605e0): retains the userInfo, reads the
+    /// Response value (possibly nil), and fires the `__40…` block inline.
+    pub fn respond_to_signup(&self, response: Option<String>) {
+        *self.last_finished_pair.lock() = (response.clone().unwrap_or_default(), String::new());
+        self.respond_block_1(&response.unwrap_or_default());
+    }
+    /// `__40-respondToSignUp_block_invoke` (IDA 0x60688): a response hides
+    /// signing-up, enables cancel/signup and alerts it; empty sets the
+    /// UserInfo pair, dismisses and chains block_2.
+    pub fn respond_block_1(&self, response: &str) {
+        if !response.is_empty() {
+            self.signing_up_visible.store(false, Ordering::SeqCst);
+            *self.signup_alert.lock() = response.to_owned();
+        } else {
+            *self.username.lock() = self.username.lock().clone();
+            self.presented.store(false, Ordering::SeqCst);
+            self.bump(&self.dismisses);
+            let (user, pass) = (self.username.lock().clone(), self.password.lock().clone());
+            self.respond_block_2(&user, &pass);
+        }
+    }
+    pub fn signup_alert(&self) -> String {
+        self.signup_alert.lock().clone()
+    }
+    /// `__40-respondToSignUp_block_invoke_2` (IDA 0x607d8, via dismiss
+    /// completion, inline): posts the signup-finished notification with
+    /// the username/password pair.
+    pub fn respond_block_2(&self, username: &str, password: &str) {
+        *self.last_finished_pair.lock() = (username.to_owned(), password.to_owned());
+        self.bump(&self.finished_posts);
+    }
+    pub fn finished_post_count(&self) -> u32 {
+        self.finished_posts.load(Ordering::SeqCst)
+    }
+    /// `textFieldBeginEdit:` (IDA 0x60954): the matching status button
+    /// image clears and disables; other fields ignore (0=user, 1=pass,
+    /// 2=verify).
+    pub fn text_begin_edit(&self, field: u8) {
+        let slot = match field {
+            0 => Some(&self.username_status),
+            1 => Some(&self.password_status),
+            2 => Some(&self.verify_status),
+            _ => None,
+        };
+        if let Some(slot) = slot {
+            let mut status = slot.lock();
+            status.image.clear();
+            status.enabled = false;
+        }
+    }
+    /// `emailDoneEdit:` (IDA 0x60a0c): the email field takes the text; an
+    /// invalid address clears it.
+    pub fn email_done(&self, email: &str) {
+        *self.email.lock() = email.to_owned();
+        if !SIGNUP.is_valid_email(email) {
+            *self.email.lock() = String::new();
+        }
+    }
+    pub fn email(&self) -> String {
+        self.email.lock().clone()
+    }
+    /// `numberOfComponentsInPickerView:` (IDA 0x60af4): always 1.
+    pub fn picker_components(&self) -> i32 {
+        1
+    }
+    /// `pickerView:numberOfRowsInComponent:` (IDA 0x60af8): the gender
+    /// array count.
+    pub fn picker_rows(&self) -> usize {
+        self.gender_options.lock().len()
+    }
+    /// `pickerView:titleForRow:...` (IDA 0x60b18): the gender option at
+    /// the row.
+    pub fn picker_title(&self, row: usize) -> String {
+        self.gender_options.lock().get(row).cloned().unwrap_or_default()
+    }
+    /// `pickerView:viewForRow:...` (IDA 0x60b38): a bold label with the
+    /// padded row text.
+    pub fn picker_row_label(&self, row: usize) -> String {
+        format!("     {}", self.picker_title(row))
+    }
+    /// `disablesAutomaticKeyboardDismissal` (IDA 0x60c80): always false.
+    pub fn keeps_keyboard(&self) -> bool {
+        false
+    }
+    /// `prepareForSegue:sender:` (IDA 0x60c84): FinePrintSegue forwards
+    /// the URL; ShowErrorSegue forwards message/username/controller and,
+    /// on pad, latches the popover with self as delegate. Returns the
+    /// matched segue.
+    pub fn prepare_segue(&self, ident: &str, is_pad: bool) -> String {
+        if ident == "FinePrintSegue" {
+            self.bump(&self.segues);
+            return "fineprint".to_owned();
+        }
+        if ident == "ShowErrorSegue" {
+            self.bump(&self.segues);
+            *self.last_segue.lock() = ident.to_owned();
+            if is_pad {
+                self.popover_active.store(true, Ordering::SeqCst);
+            }
+            return "showerror".to_owned();
+        }
+        String::new()
+    }
+    pub fn segue_count(&self) -> u32 {
+        self.segues.load(Ordering::SeqCst)
+    }
+    pub fn last_segue(&self) -> String {
+        self.last_segue.lock().clone()
+    }
+    /// `dismissErrorPopover` (IDA 0x60e10): dismisses a live popover.
+    pub fn dismiss_error_popover(&self) {
+        if self.popover_active.load(Ordering::SeqCst) {
+            self.popover_active.store(false, Ordering::SeqCst);
+            self.bump(&self.dismisses);
+        }
+    }
+    pub fn popover_active(&self) -> bool {
+        self.popover_active.load(Ordering::SeqCst)
+    }
+    /// `dismissErrorPopoverWithNewUsername:` (IDA 0x60e38): a nonempty
+    /// name fills the username field and re-runs usernameDoneEdit, then
+    /// the popover dismisses.
+    pub fn dismiss_with_username(&self, name: &str) {
+        if !name.is_empty() {
+            *self.username.lock() = name.to_owned();
+            self.username_done(name);
+        }
+        self.dismiss_error_popover();
+    }
+    /// `usernameCheckTouchUp:` (IDA 0x60ea0): recommended ? UsernameTaken
+    /// : UsernameTooShort; pad with a visible status anchors +
+    /// ShowErrorSegue, phone with a red label alerts.
+    pub fn username_check_touch(&self, is_pad: bool, status_visible: bool) {
+        *self.error_string.lock() = if self.recommended_username.lock().is_empty() {
+            "UsernameTooShort".to_owned()
+        } else {
+            "UsernameTaken".to_owned()
+        };
+        if is_pad {
+            if status_visible {
+                self.prepare_segue("ShowErrorSegue", true);
+            }
+        } else if self.username_status.lock().image == "xmark" {
+            *self.signup_alert.lock() = self.error_string.lock().clone();
+        }
+    }
+    pub fn error_string(&self) -> String {
+        self.error_string.lock().clone()
+    }
+    /// `passwordCheckTouchUp:` (IDA 0x610d4): error PasswordWrong; pad
+    /// with a visible status anchors + ShowErrorSegue, phone with a red
+    /// label alerts.
+    pub fn password_check_touch(&self, is_pad: bool, status_visible: bool) {
+        *self.error_string.lock() = "PasswordWrong".to_owned();
+        if is_pad {
+            if status_visible {
+                self.prepare_segue("ShowErrorSegue", true);
+            }
+        } else if self.password_status.lock().image == "xmark" {
+            *self.signup_alert.lock() = self.error_string.lock().clone();
+        }
+    }
+    /// `verifyCheckTouchUp:` (IDA 0x612a8): error VerifyPasswordWrong;
+    /// pad with an xmark status anchors + ShowErrorSegue, phone with a red
+    /// label alerts.
+    pub fn verify_check_touch(&self, is_pad: bool) {
+        *self.error_string.lock() = "VerifyPasswordWrong".to_owned();
+        if is_pad {
+            if self.verify_status.lock().image == "xmark" {
+                self.prepare_segue("ShowErrorSegue", true);
+            }
+        } else if self.verify_status.lock().image == "xmark" {
+            *self.signup_alert.lock() = self.error_string.lock().clone();
+        }
+    }
+    /// `popoverControllerDidDismissPopover:` (IDA 0x614cc): clears the
+    /// popover.
+    pub fn popover_did_dismiss(&self) {
+        self.popover_active.store(false, Ordering::SeqCst);
+    }
+    /// `resignTextFieldResponder:` (IDA 0x614e0): the view ends editing.
+    pub fn resign_responder(&self) {
+        self.release_focus();
+    }
+    /// `textField:shouldChangeCharactersInRange:...` (IDA 0x6150c): empty
+    /// replacement allows; whitespace rejects; the username field (0)
+    /// additionally needs ASCII lossy round-trip equality, an
+    /// alphanumeric and no dot.
+    pub fn should_change(&self, field: u8, replacement: &str) -> bool {
+        if replacement.is_empty() {
+            return true;
+        }
+        if replacement.chars().any(char::is_whitespace) {
+            return false;
+        }
+        if field != 0 {
+            return true;
+        }
+        if !replacement.is_ascii() {
+            return false;
+        }
+        if !replacement.bytes().any(|b| b.is_ascii_alphanumeric()) {
+            return false;
+        }
+        !replacement.contains('.')
+    }
+    /// `textFieldShouldBeginEditing:` (IDA 0x616c8): phone (or no-idiom)
+    /// sets the input accessory; the email field also runs the `__52…`
+    /// avoidance animation; always returns true.
+    pub fn should_begin_editing(&self, is_phone: bool, is_email_field: bool) -> bool {
+        if is_phone {
+            self.accessory_set.store(true, Ordering::SeqCst);
+            if is_email_field {
+                self.apply_begin_frame();
+            }
+        }
+        true
+    }
+    pub fn accessory_set(&self) -> bool {
+        self.accessory_set.load(Ordering::SeqCst)
+    }
+    /// `__52-textFieldShouldBeginEditing_block_invoke` (IDA 0x617d0, via
+    /// `animateWithDuration:0.4`, inline): repositions the form above the
+    /// keyboard.
+    pub fn apply_begin_frame(&self) {
+        self.keyboard_avoided.store(true, Ordering::SeqCst);
+        self.bump(&self.anim_runs);
+    }
+    pub fn keyboard_avoided(&self) -> bool {
+        self.keyboard_avoided.load(Ordering::SeqCst)
     }
 }
 static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
@@ -10549,168 +10791,224 @@ pub fn stub_604f8() -> String {
 // 0x605e0 — -[SignupViewController respondToSignUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController respondToSignUp:]")]
-pub fn stub_605e0() -> ! {
-    todo!("0x605e0 -[SignupViewController respondToSignUp:]")
+pub fn stub_605e0(response: Option<String>) {
+    // IDA 0x605e0 `respondToSignUp:`: retains the userInfo, reads Response
+    // (possibly nil), and fires the `__40…` block via `dispatch_async`
+    // (0x605fe..0x6067c, inline on the host).
+    SIGNUPVC.respond_to_signup(response);
 }
 
 
 // 0x60688 — ___40-[SignupViewController respondToSignUp:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___40-[SignupViewController respondToSignUp:]_block_invoke")]
-pub fn stub_60688() -> ! {
-    todo!("0x60688 ___40-[SignupViewController respondToSignUp:]_block_invoke")
+pub fn stub_60688(response: &str) {
+    // IDA 0x60688 `__40-respondToSignUp_block_invoke` (via `dispatch_async`,
+    // inline): a response hides signing-up, enables cancel/signup and
+    // alerts it (0x60690..0x6070e); empty sets the UserInfo pair, dismisses
+    // and chains block_2 (0x6072e..0x607bc).
+    SIGNUPVC.respond_block_1(response);
 }
 
 
 // 0x607d8 — ___40-[SignupViewController respondToSignUp:]_block_invoke_2
 // type: id __fastcall(int)
 #[doc(alias = "___40-[SignupViewController respondToSignUp:]_block_invoke_2")]
-pub fn stub_607d8() -> ! {
-    todo!("0x607d8 ___40-[SignupViewController respondToSignUp:]_block_invoke_2")
+pub fn stub_607d8(username: &str, password: &str) {
+    // IDA 0x607d8 `__40-respondToSignUp_block_invoke_2` (via dismiss
+    // completion, inline): posts the signup-finished notification with
+    // the username/password pair (0x60800..0x608ca+release).
+    SIGNUPVC.respond_block_2(username, password);
 }
 
 
 // 0x60954 — -[SignupViewController textFieldBeginEdit:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController textFieldBeginEdit:]")]
-pub fn stub_60954() -> ! {
-    todo!("0x60954 -[SignupViewController textFieldBeginEdit:]")
+pub fn stub_60954(field: u8) {
+    // IDA 0x60954 `textFieldBeginEdit:`: the matching status button image
+    // clears and disables (0x6096a..0x60a08); other fields ignore.
+    SIGNUPVC.text_begin_edit(field);
 }
 
 
 // 0x60a0c — -[SignupViewController emailDoneEdit:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController emailDoneEdit:]")]
-pub fn stub_60a0c() -> ! {
-    todo!("0x60a0c -[SignupViewController emailDoneEdit:]")
+pub fn stub_60a0c(email: &str) {
+    // IDA 0x60a0c `emailDoneEdit:`: the email field takes the text; an
+    // invalid address clears it (0x60a2a..0x60aee).
+    SIGNUPVC.email_done(email);
 }
 
 
 // 0x60af4 — -[SignupViewController numberOfComponentsInPickerView:]
 // type: int __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController numberOfComponentsInPickerView:]")]
-pub fn stub_60af4() -> ! {
-    todo!("0x60af4 -[SignupViewController numberOfComponentsInPickerView:]")
+pub fn stub_60af4() -> i32 {
+    // IDA 0x60af4 `numberOfComponentsInPickerView:`: always 1 (0x60af6).
+    SIGNUPVC.picker_components()
 }
 
 
 // 0x60af8 — -[SignupViewController pickerView:numberOfRowsInComponent:]
 // type: int __cdecl(SignupViewController *self, SEL, id, int)
 #[doc(alias = "-[SignupViewController pickerView:numberOfRowsInComponent:]")]
-pub fn stub_60af8() -> ! {
-    todo!("0x60af8 -[SignupViewController pickerView:numberOfRowsInComponent:]")
+pub fn stub_60af8() -> usize {
+    // IDA 0x60af8 `pickerView:numberOfRowsInComponent:`: the gender array
+    // count.
+    SIGNUPVC.picker_rows()
 }
 
 
 // 0x60b18 — -[SignupViewController pickerView:titleForRow:forComponent:]
 // type: id __cdecl(SignupViewController *self, SEL, id, int, int)
 #[doc(alias = "-[SignupViewController pickerView:titleForRow:forComponent:]")]
-pub fn stub_60b18() -> ! {
-    todo!("0x60b18 -[SignupViewController pickerView:titleForRow:forComponent:]")
+pub fn stub_60b18(row: usize) -> String {
+    // IDA 0x60b18 `pickerView:titleForRow:...`: the gender option at the
+    // row (0x60c40).
+    SIGNUPVC.picker_title(row)
 }
 
 
 // 0x60b38 — -[SignupViewController pickerView:viewForRow:forComponent:reusingView:]
 // type: id __cdecl(SignupViewController *self, SEL, id, int, int, id)
 #[doc(alias = "-[SignupViewController pickerView:viewForRow:forComponent:reusingView:]")]
-pub fn stub_60b38() -> ! {
-    todo!("0x60b38 -[SignupViewController pickerView:viewForRow:forComponent:reusingView:]")
+pub fn stub_60b38(row: usize) -> String {
+    // IDA 0x60b38 `pickerView:viewForRow:...`: a bold label sized from the
+    // picker bounds with the padded row text (0x60b64..tail).
+    SIGNUPVC.picker_row_label(row)
 }
 
 
 // 0x60c80 — -[SignupViewController disablesAutomaticKeyboardDismissal]
 // type: char __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController disablesAutomaticKeyboardDismissal]")]
-pub fn stub_60c80() -> ! {
-    todo!("0x60c80 -[SignupViewController disablesAutomaticKeyboardDismissal]")
+pub fn stub_60c80() -> bool {
+    // IDA 0x60c80 `disablesAutomaticKeyboardDismissal`: always 0 (0x60c82).
+    SIGNUPVC.keeps_keyboard()
 }
 
 
 // 0x60c84 — -[SignupViewController prepareForSegue:sender:]
 // type: void __cdecl(SignupViewController *self, SEL, id, id)
 #[doc(alias = "-[SignupViewController prepareForSegue:sender:]")]
-pub fn stub_60c84() -> ! {
-    todo!("0x60c84 -[SignupViewController prepareForSegue:sender:]")
+pub fn stub_60c84(ident: &str, is_pad: bool) -> String {
+    // IDA 0x60c84 `prepareForSegue:sender:`: FinePrintSegue forwards the
+    // URL (0x60cc2..0x60cf0); ShowErrorSegue forwards message/username/
+    // controller and, on pad, latches the popover with self as delegate
+    // (0x60cf8..0x60e06). Returns the matched segue.
+    SIGNUPVC.prepare_segue(ident, is_pad)
 }
 
 
 // 0x60e10 — -[SignupViewController dismissErrorPopover]
 // type: void __cdecl(SignupViewController *self, SEL)
 #[doc(alias = "-[SignupViewController dismissErrorPopover]")]
-pub fn stub_60e10() -> ! {
-    todo!("0x60e10 -[SignupViewController dismissErrorPopover]")
+pub fn stub_60e10() {
+    // IDA 0x60e10 `dismissErrorPopover`: dismisses a live popover
+    // (0x60e1c..0x60e32).
+    SIGNUPVC.dismiss_error_popover();
 }
 
 
 // 0x60e38 — -[SignupViewController dismissErrorPopoverWithNewUsername:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController dismissErrorPopoverWithNewUsername:]")]
-pub fn stub_60e38() -> ! {
-    todo!("0x60e38 -[SignupViewController dismissErrorPopoverWithNewUsername:]")
+pub fn stub_60e38(name: &str) {
+    // IDA 0x60e38 `dismissErrorPopoverWithNewUsername:`: a nonempty name
+    // fills the username field and re-runs usernameDoneEdit (0x60e40..0x60e84),
+    // then the popover dismisses (0x60e9a).
+    SIGNUPVC.dismiss_with_username(name);
 }
 
 
 // 0x60ea0 — -[SignupViewController usernameCheckTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController usernameCheckTouchUp:]")]
-pub fn stub_60ea0() -> ! {
-    todo!("0x60ea0 -[SignupViewController usernameCheckTouchUp:]")
+pub fn stub_60ea0(is_pad: bool, status_visible: bool) {
+    // IDA 0x60ea0 `usernameCheckTouchUp:`: recommended ? UsernameTaken :
+    // UsernameTooShort (0x60ed0..0x60f5c); pad with a visible status
+    // anchors + ShowErrorSegue (0x60fae..0x610c8), phone with a red label
+    // alerts (0x61028..0x61084).
+    SIGNUPVC.username_check_touch(is_pad, status_visible);
 }
 
 
 // 0x610d4 — -[SignupViewController passwordCheckTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController passwordCheckTouchUp:]")]
-pub fn stub_610d4() -> ! {
-    todo!("0x610d4 -[SignupViewController passwordCheckTouchUp:]")
+pub fn stub_610d4(is_pad: bool, status_visible: bool) {
+    // IDA 0x610d4 `passwordCheckTouchUp:`: error PasswordWrong; pad with
+    // a visible status anchors + ShowErrorSegue (0x61152..0x6129a), phone
+    // with a red label alerts (0x61200..0x61252).
+    SIGNUPVC.password_check_touch(is_pad, status_visible);
 }
 
 
 // 0x612a8 — -[SignupViewController verifyCheckTouchUp:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController verifyCheckTouchUp:]")]
-pub fn stub_612a8() -> ! {
-    todo!("0x612a8 -[SignupViewController verifyCheckTouchUp:]")
+pub fn stub_612a8(is_pad: bool) {
+    // IDA 0x612a8 `verifyCheckTouchUp:`: error VerifyPasswordWrong; pad
+    // with an xmark status anchors + ShowErrorSegue (0x61326..0x614be),
+    // phone with a red label alerts (0x61424..0x61476).
+    SIGNUPVC.verify_check_touch(is_pad);
 }
 
 
 // 0x614cc — -[SignupViewController popoverControllerDidDismissPopover:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController popoverControllerDidDismissPopover:]")]
-pub fn stub_614cc() -> ! {
-    todo!("0x614cc -[SignupViewController popoverControllerDidDismissPopover:]")
+pub fn stub_614cc() {
+    // IDA 0x614cc `popoverControllerDidDismissPopover`: clears the
+    // popover (0x614da).
+    SIGNUPVC.popover_did_dismiss();
 }
 
 
 // 0x614e0 — -[SignupViewController resignTextFieldResponder:]
 // type: void __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController resignTextFieldResponder:]")]
-pub fn stub_614e0() -> ! {
-    todo!("0x614e0 -[SignupViewController resignTextFieldResponder:]")
+pub fn stub_614e0() {
+    // IDA 0x614e0 `resignTextFieldResponder`: the view ends editing
+    // (0x614f0..0x61506).
+    SIGNUPVC.resign_responder();
 }
 
 
 // 0x6150c — -[SignupViewController textField:shouldChangeCharactersInRange:replacementString:]
 // type: char __cdecl(SignupViewController *self, SEL, id, _NSRange, id)
 #[doc(alias = "-[SignupViewController textField:shouldChangeCharactersInRange:replacementString:]")]
-pub fn stub_6150c() -> ! {
-    todo!("0x6150c -[SignupViewController textField:shouldChangeCharactersInRange:replacementString:]")
+pub fn stub_6150c(field: u8, replacement: &str) -> bool {
+    // IDA 0x6150c `textField:shouldChangeCharactersInRange:...`: empty
+    // replacement allows (0x61530); whitespace rejects (0x61552..0x61580);
+    // the username field additionally needs ASCII lossy round-trip
+    // equality, an alphanumeric and no dot (0x61592..0x615c2).
+    SIGNUPVC.should_change(field, replacement)
 }
 
 
 // 0x616c8 — -[SignupViewController textFieldShouldBeginEditing:]
 // type: char __cdecl(SignupViewController *self, SEL, id)
 #[doc(alias = "-[SignupViewController textFieldShouldBeginEditing:]")]
-pub fn stub_616c8() -> ! {
-    todo!("0x616c8 -[SignupViewController textFieldShouldBeginEditing:]")
+pub fn stub_616c8(is_phone: bool, is_email_field: bool) -> bool {
+    // IDA 0x616c8 `textFieldShouldBeginEditing:`: phone (or no-idiom)
+    // sets the input accessory (0x61726..0x6174a); the email field also
+    // runs the `__52…` avoidance animation (0x6175e..0x617b8, inline);
+    // always returns 1.
+    SIGNUPVC.should_begin_editing(is_phone, is_email_field)
 }
 
 
 // 0x617d0 — ___52-[SignupViewController textFieldShouldBeginEditing:]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___52-[SignupViewController textFieldShouldBeginEditing:]_block_invoke")]
-pub fn stub_617d0() -> ! {
-    todo!("0x617d0 ___52-[SignupViewController textFieldShouldBeginEditing:]_block_invoke")
+pub fn stub_617d0() {
+    // IDA 0x617d0 `__52-textFieldShouldBeginEditing_block_invoke` (via
+    // `animateWithDuration:0.4`, inline): repositions the form above the
+    // keyboard from the screen bounds (0x617fc..tail).
+    SIGNUPVC.apply_begin_frame();
 }
 
 

@@ -905,29 +905,51 @@ pub unsafe fn destroy_block_capture_602b0(block: *mut core::ffi::c_void) {
 // 0x608ec — ___copy_helper_block_386
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block_386")]
-pub fn stub_608ec() -> ! {
-    todo!("0x608ec ___copy_helper_block_386")
+pub unsafe fn copy_block_capture_608ec(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x608ec: _Block_object_assign(dst+20, src+20, 3) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x608f8 — ___destroy_helper_block_387
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block_387")]
-pub fn stub_608f8() -> ! {
-    todo!("0x608f8 ___destroy_helper_block_387")
+pub unsafe fn destroy_block_capture_608f8(block: *mut core::ffi::c_void) {
+// IDA 0x608f8: _Block_object_dispose(block+20, 3) — same single-capture
+// shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x60900 — ___copy_helper_block_389
 // type: void __fastcall(int, const void **)
 #[doc(alias = "___copy_helper_block_389")]
-pub fn stub_60900() -> ! {
-    todo!("0x60900 ___copy_helper_block_389")
+pub unsafe fn copy_block_capture_60900(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x60900: _Block_object_assign(dst+20, src+20, 3) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x60930 — ___destroy_helper_block_390
 // type: void __fastcall(const void **)
 #[doc(alias = "___destroy_helper_block_390")]
-pub fn stub_60930() -> ! {
-    todo!("0x60930 ___destroy_helper_block_390")
+pub unsafe fn destroy_block_capture_60930(block: *mut core::ffi::c_void) {
+// IDA 0x60930: _Block_object_dispose(block+20, 3) — same single-capture
+// shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x61a98 — ___copy_helper_block_487
