@@ -863,107 +863,196 @@ pub fn stub_111e98() -> &'static [u8] { // IDA 0x111e98: return "^\\xFF\\xD8\\xF
 // 0x111ea8 — __ZL8MimeTypev
 // type: _DWORD __fastcall()
 #[doc(alias = "MimeType(void)")]
-pub fn stub_111ea8() -> ! { todo!("0x111ea8 MimeType(void)") }
+pub fn stub_111ea8() -> &'static str { // IDA 0x111ea8: return "image/jpeg".
+    "image/jpeg"
+}
 
 // 0x111eb8 — __ZL19SupportsExportDepthi
 // type: _DWORD __fastcall(int)
 #[doc(alias = "SupportsExportDepth(int)")]
-pub fn stub_111eb8() -> ! { todo!("0x111eb8 SupportsExportDepth(int)") }
+pub fn stub_111eb8(bpp: i32) -> bool { // IDA 0x111eb8: bpp == 24 || bpp == 8.
+    bpp == 24 || bpp == 8
+}
 
 // 0x111ecc — __ZL18SupportsExportType15FREE_IMAGE_TYPE
 #[doc(alias = "SupportsExportType(FREE_IMAGE_TYPE)")]
-pub fn stub_111ecc() -> ! { todo!("0x111ecc SupportsExportType(FREE_IMAGE_TYPE)") }
+pub fn stub_111ecc(image_type: i32) -> bool { // IDA 0x111ecc: type == 1 (bitmap).
+    image_type == 1
+}
 
 // 0x111edc — __ZL19SupportsICCProfilesv
 // type: _DWORD __fastcall()
 #[doc(alias = "SupportsICCProfiles(void)")]
-pub fn stub_111edc() -> ! { todo!("0x111edc SupportsICCProfiles(void)") }
+pub fn stub_111edc() -> i32 { // IDA 0x111edc: return 1.
+    1
+}
 
 // 0x111ee4 — __Z8InitJPEGP6Plugini
 #[doc(alias = "InitJPEG(Plugin *,int)")]
-pub fn stub_111ee4() -> ! { todo!("0x111ee4 InitJPEG(Plugin *,int)") }
+pub fn stub_111ee4(fif: i32, format_id: &mut i32) -> PluginNode { // IDA 0x111ee4: s_format_id = fif; install Format/Extension/Description/Load/Save/Validate/MimeType/Export/ICC procs; null the 4 reserved slots.
+    *format_id = fif;
+    PluginNode { fif, format: "JPEG".to_owned(), procs: [0; 15] }
+}
 
 // 0x111fb8 — __ZL8ValidateP11FreeImageIOPv
 #[doc(alias = "Validate(FreeImageIO *,void *)")]
-pub fn stub_111fb8() -> ! { todo!("0x111fb8 Validate(FreeImageIO *,void *)") }
+pub fn stub_111fb8(read_two: &mut dyn FnMut() -> [u8; 2]) -> bool { // IDA 0x111fb8: read 2 bytes through the IO read proc; match the JPEG SOI marker (FF D8).
+    read_two() == [0xFF, 0xD8]
+}
 
 // 0x11204c — __ZL13marker_is_iccP18jpeg_marker_struct
 #[doc(alias = "marker_is_icc(jpeg_marker_struct *)")]
-pub fn stub_11204c() -> ! { todo!("0x11204c marker_is_icc(jpeg_marker_struct *)") }
+pub fn stub_11204c(marker_kind: u8, data_len: usize, tag: &str) -> bool { // IDA 0x11204c: APPn id 226 (0xE2), length > 13, tag "ICC_PROFILE".
+    marker_kind == 226 && data_len > 13 && tag == "ICC_PROFILE"
+}
 
 // 0x11209c — __ZL17fill_input_bufferP22jpeg_decompress_struct
 #[doc(alias = "fill_input_buffer(jpeg_decompress_struct *)")]
-pub fn stub_11209c() -> ! { todo!("0x11209c fill_input_buffer(jpeg_decompress_struct *)") }
+pub fn stub_11209c(read: &mut dyn FnMut(&mut [u8]) -> usize, started: bool) -> Result<Vec<u8>, i32> { // IDA 0x11209c: read up to 4096; empty before start → throw J_MESSAGE_CODE 43; empty after start → fake EOI (empty).
+    let mut buf = vec![0u8; 4096];
+    let n = read(&mut buf);
+    buf.truncate(n);
+    if n == 0 && started {
+        return Err(43);
+    }
+    Ok(buf)
+}
 
 // 0x112174 — __ZL15skip_input_dataP22jpeg_decompress_structl
 #[doc(alias = "skip_input_data(jpeg_decompress_struct *,long)")]
-pub fn stub_112174() -> ! { todo!("0x112174 skip_input_data(jpeg_decompress_struct *,long)") }
+pub fn stub_112174(pos: &mut usize, avail: &mut usize, mut count: usize, fill: &mut dyn FnMut() -> usize) { // IDA 0x112174: count > 0: consume across buffer refills via fill_input_buffer; advance pointer, shrink available.
+    while count > *avail {
+        count -= *avail;
+        *avail = fill();
+    }
+    *pos += count;
+    *avail -= count;
+}
 
 // 0x1121c0 — __ZL16term_destinationP20jpeg_compress_struct
 #[doc(alias = "term_destination(jpeg_compress_struct *)")]
-pub fn stub_1121c0() -> ! { todo!("0x1121c0 term_destination(jpeg_compress_struct *)") }
+pub fn stub_1121c0(used: usize, write: &mut dyn FnMut(&[u8]) -> usize, pending: &[u8]) -> Result<(), i32> { // IDA 0x1121c0: write the 4096 - used tail through IO; short write → throw J_MESSAGE_CODE 38.
+    if used != 4096 {
+        let want = 4096 - used;
+        if write(&pending[..want.min(pending.len())]) != want {
+            return Err(38);
+        }
+    }
+    Ok(())
+}
 
 // 0x112238 — __ZL19empty_output_bufferP20jpeg_compress_struct
 #[doc(alias = "empty_output_buffer(jpeg_compress_struct *)")]
-pub fn stub_112238() -> ! { todo!("0x112238 empty_output_buffer(jpeg_compress_struct *)") }
+pub fn stub_112238(write: &mut dyn FnMut(&[u8]) -> usize, full: &[u8]) -> Result<bool, i32> { // IDA 0x112238: flush 4096 through IO (short → throw 38); reset to a fresh buffer; true.
+    if write(full) != 4096 {
+        return Err(38);
+    }
+    Ok(true)
+}
 
 // 0x1122b8 — __ZL19jpeg_output_messageP18jpeg_common_struct
 #[doc(alias = "jpeg_output_message(jpeg_common_struct *)")]
-pub fn stub_1122b8() -> ! { todo!("0x1122b8 jpeg_output_message(jpeg_common_struct *)") }
+pub fn stub_1122b8(format_msg: &str, format_id: i32, notify: &mut dyn FnMut(i32, &str)) { // IDA 0x1122b8: format the libjpeg message into 200 bytes; OutputMessageProc(s_format_id, msg).
+    notify(format_id, format_msg);
+}
 
 // 0x1122f0 — __ZL22jpeg_write_icc_profileP20jpeg_compress_structP8FIBITMAP
 #[doc(alias = "jpeg_write_icc_profile(jpeg_compress_struct *,FIBITMAP *)")]
-pub fn stub_1122f0() -> ! { todo!("0x1122f0 jpeg_write_icc_profile(jpeg_compress_struct *,FIBITMAP *)") }
+pub fn stub_1122f0(profile: Option<&[u8]>, write_marker: &mut dyn FnMut(u8, u8, &[u8]) -> bool) -> i32 { // IDA 0x1122f0: no profile/size → 0; else "ICC_PROFILE" header + 65519-byte APP chunks (index/total); 1.
+    let profile = match profile {
+        Some(p) if !p.is_empty() => p,
+        _ => return 0,
+    };
+    let total = profile.chunks(65519).len() as u8;
+    for (i, chunk) in profile.chunks(65519).enumerate() {
+        if !write_marker(i as u8 + 1, total, chunk) {
+            return 0;
+        }
+    }
+    1
+}
 
 // 0x11240c — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3_
 #[doc(alias = "Save(FreeImageIO *,FIBITMAP *,void *,int,int,void *)")]
-pub fn stub_11240c() -> ! { todo!("0x11240c Save(FreeImageIO *,FIBITMAP *,void *,int,int,void *)") }
+pub fn stub_11240c(dib: Option<&crate::generated_net_08::FreeImageInfo>, save: &mut dyn FnMut(&crate::generated_net_08::FreeImageInfo) -> i32) -> i32 { // IDA 0x11240c: null → 0; dispatch on color type/bpp to the JPEG row path; result.
+    match dib {
+        Some(d) => save(d),
+        None => 0,
+    }
+}
 
 // 0x112f64 — __ZL15jpeg_error_exitP18jpeg_common_struct
 #[doc(alias = "jpeg_error_exit(jpeg_common_struct *)")]
-pub fn stub_112f64() -> ! { todo!("0x112f64 jpeg_error_exit(jpeg_common_struct *)") }
+pub fn stub_112f64(emit_message: &mut dyn FnMut(), code: i32, destroy: &mut dyn FnMut(), fif: i32) -> Result<i32, i32> { // IDA 0x112f64: output the message; marker word != 13 → destroy + throw fif; else the code.
+    emit_message();
+    if code != 13 {
+        destroy();
+        return Err(fif);
+    }
+    Ok(code)
+}
 
 // 0x112fc0 — __Z22jpeg_read_iptc_profileP8FIBITMAPPKhj
 #[doc(alias = "jpeg_read_iptc_profile(FIBITMAP *,unsigned char const*,unsigned int)")]
-pub fn stub_112fc0() -> ! { todo!("0x112fc0 jpeg_read_iptc_profile(FIBITMAP *,unsigned char const*,unsigned int)") }
+pub fn stub_112fc0(read: &mut dyn FnMut() -> i32) -> i32 { // IDA 0x112fc0: tail-call read_iptc_profile.
+    read()
+}
 
 // 0x112fd0 — __ZL4LoadP11FreeImageIOPviiS1_
 #[doc(alias = "Load(FreeImageIO *,void *,int,int,void *)")]
-pub fn stub_112fd0() -> ! { todo!("0x112fd0 Load(FreeImageIO *,void *,int,int,void *)") }
+pub fn stub_112fd0(load: &mut dyn FnMut() -> Option<crate::generated_net_08::FreeImageInfo>) -> Option<crate::generated_net_08::FreeImageInfo> { // IDA 0x112fd0: JPEG header/ICC/palette/scanline decode into a fresh dib; null on failure.
+    load()
+}
 
 // 0x114260 — __Z11INPLACESWAPIhEvRT_S1_
 #[doc(alias = "void INPLACESWAP<unsigned char>(unsigned char &,unsigned char &)")]
-pub fn stub_114260() -> ! { todo!("0x114260 void INPLACESWAP<unsigned char>(unsigned char &,unsigned char &)") }
+pub fn stub_114260(a: &mut u8, b: &mut u8) { // IDA 0x114260: in-place xor swap of two bytes.
+    *a ^= *b;
+    *b ^= *a;
+    *a ^= *b;
+}
 
 // 0x11428c — __ZL10_FlushProcP14png_struct_def
 #[doc(alias = "_FlushProc(png_struct_def *)")]
-pub fn stub_11428c() -> ! { todo!("0x11428c _FlushProc(png_struct_def *)") }
+pub fn stub_11428c() { // IDA 0x11428c: empty _FlushProc body.
+}
 
 // 0x114290 — __ZL15warning_handlerP14png_struct_defPKc
 #[doc(alias = "warning_handler(png_struct_def *,char const*)")]
-pub fn stub_114290() -> ! { todo!("0x114290 warning_handler(png_struct_def *,char const*)") }
+pub fn stub_114290() { // IDA 0x114290: empty warning_handler body.
+}
 
 // 0x114294 — __ZL6Formatv_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL6Formatv_0")]
-pub fn stub_114294() -> ! { todo!("0x114294 __ZL6Formatv_0") }
+pub fn stub_114294() -> &'static str { // IDA 0x114294: return "PNG".
+    "PNG"
+}
 
 // 0x1142a4 — __ZL11Descriptionv_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL11Descriptionv_0")]
-pub fn stub_1142a4() -> ! { todo!("0x1142a4 __ZL11Descriptionv_0") }
+pub fn stub_1142a4() -> &'static str { // IDA 0x1142a4: return "Portable Network Graphics".
+    "Portable Network Graphics"
+}
 
 // 0x1142b4 — __ZL9Extensionv_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL9Extensionv_0")]
-pub fn stub_1142b4() -> ! { todo!("0x1142b4 __ZL9Extensionv_0") }
+pub fn stub_1142b4() -> &'static str { // IDA 0x1142b4: return "png".
+    "png"
+}
 
 // 0x1142c4 — __ZL7RegExprv_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL7RegExprv_0")]
-pub fn stub_1142c4() -> ! { todo!("0x1142c4 __ZL7RegExprv_0") }
+pub fn stub_1142c4() -> &'static [u8] { // IDA 0x1142c4: return "^.PNG\r".
+    b"^.PNG\r"
+}
 
 // 0x1142d4 — __ZL8MimeTypev_0
 // type: _DWORD __fastcall()
 #[doc(alias = "__ZL8MimeTypev_0")]
-pub fn stub_1142d4() -> ! { todo!("0x1142d4 __ZL8MimeTypev_0") }
+pub fn stub_1142d4() -> &'static str { // IDA 0x1142d4: return "image/png".
+    "image/png"
+}
