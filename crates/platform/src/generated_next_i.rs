@@ -1035,70 +1035,110 @@ pub unsafe fn destroy_block_capture_61df0(block: *mut core::ffi::c_void) {
 // 0x626b8 — __Z10usedMemoryv
 // type: integer_t __fastcall()
 #[doc(alias = "usedMemory(void)")]
-pub fn stub_626b8() -> ! {
-    todo!("0x626b8 usedMemory(void)")
+pub fn used_memory_626b8() -> u32 {
+// IDA 0x626b8 `usedMemory`: the resident size from `task_info` (0x626cc..);
+// no Mach host here, so the failure-path 0 is returned (0x626dc..0x626e6).
+    0
 }
 
 // 0x626e8 — __Z10freeMemoryv
 // type: vm_size_t __fastcall()
 #[doc(alias = "freeMemory(void)")]
-pub fn stub_626e8() -> ! {
-    todo!("0x626e8 freeMemory(void)")
+pub fn free_memory_626e8() -> u64 {
+// IDA 0x626e8 `freeMemory`: free pages times the page size from
+// `host_statistics` (0x626f2..0x62714); no Mach host here, so the
+// failure-path 0 is returned.
+    0
 }
 
 // 0x62718 — __Z17print_free_memoryv
 // type: void __fastcall()
 #[doc(alias = "print_free_memory(void)")]
-pub fn stub_62718() -> ! {
-    todo!("0x62718 print_free_memory(void)")
+pub fn print_free_memory_62718(used_bytes: u64, free_bytes: u64, total_bytes: u64) {
+// IDA 0x62718 `print_free_memory`: logs Used/Free/Total from
+// `host_statistics` (0x62722..0x6276c); the Mach calls stay out of slice
+// and the computed triple is dropped on the host.
+    let _ = (used_bytes, free_bytes, total_bytes);
 }
 
 // 0x62808 — ___copy_helper_block__21
 // type: void __fastcall(int, int)
 #[doc(alias = "___copy_helper_block__21")]
-pub fn stub_62808() -> ! {
-    todo!("0x62808 ___copy_helper_block__21")
+pub unsafe fn copy_block_capture_62808(dst: *mut core::ffi::c_void, src: *const core::ffi::c_void) {
+// IDA 0x62808: _Block_object_assign(dst+20, src+20, 3) (149B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        *(dst as *mut *const core::ffi::c_void).byte_add(20) =
+            *(src as *const *const core::ffi::c_void).byte_add(20);
+    }
 }
 
 // 0x62814 — ___destroy_helper_block__21
 // type: void __fastcall(int)
 #[doc(alias = "___destroy_helper_block__21")]
-pub fn stub_62814() -> ! {
-    todo!("0x62814 ___destroy_helper_block__21")
+pub unsafe fn destroy_block_capture_62814(block: *mut core::ffi::c_void) {
+// IDA 0x62814: _Block_object_dispose(block+20, 3) (126B) — same
+// single-capture shape as the earlier singles.
+    unsafe {
+        (block as *mut *const core::ffi::c_void)
+            .byte_add(20)
+            .write(core::ptr::null());
+    }
 }
 
 // 0x62f08 — __ZNSt6vectorIPvSaIS0_EED1Ev
 // type: void **__fastcall(void **)
 #[doc(alias = "std::vector<void *,std::allocator<void *>>::~vector()")]
-pub fn stub_62f08() -> ! {
-    todo!("0x62f08 std::vector<void *,std::allocator<void *>>::~vector()")
+pub fn drop_ptr_vec_62f08(vec: Vec<*mut core::ffi::c_void>) {
+// IDA 0x62f08 `vector<void*>::~vector`: `operator delete` on the buffer
+// when live (0x62f0e..0x62f14); the host `Vec` drop frees it.
+    drop(vec);
 }
 
 // 0x62f1c — __ZNSt6vectorIPvSaIS0_EE9push_backERKS0_
 // type: int __fastcall(int result, _DWORD *)
 #[doc(alias = "std::vector<void *,std::allocator<void *>>::push_back(void * const&)")]
-pub fn stub_62f1c() -> ! {
-    todo!("0x62f1c std::vector<void *,std::allocator<void *>>::push_back(void * const&)")
+pub fn push_ptr_vec_62f1c(vec: &mut Vec<*mut core::ffi::c_void>, item: *mut core::ffi::c_void) {
+// IDA 0x62f1c `vector<void*>::push_back`: fast path stores at finish and
+// bumps it (0x62f2a..0x62f38); a full buffer falls into `_M_insert_aux`
+// (0x62f42); `Vec` owns the growth here.
+    vec.push(item);
 }
 
 // 0x62f48 — __ZNSt6vectorIPvSaIS0_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS0_S2_EERKS0_
 // type: char *__fastcall(int, char *__src, _DWORD *)
 #[doc(alias = "std::vector<void *,std::allocator<void *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<void **,std::vector<void *,std::allocator<void *>>>,void * const&)")]
-pub fn stub_62f48() -> ! {
-    todo!("0x62f48 std::vector<void *,std::allocator<void *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<void **,std::vector<void *,std::allocator<void *>>>,void * const&)")
+pub fn insert_ptr_vec_62f48(vec: &mut Vec<*mut core::ffi::c_void>, index: usize, item: *mut core::ffi::c_void) {
+// IDA 0x62f48 `vector<void*>::_M_insert_aux`: grows (doubling, capped —
+// `length_error` at the max, 0x62f8a..0x63022) via `_M_allocate`,
+// `memmove`s the tail and stores the item (0x62fac..0x63010+); `Vec`
+// owns the growth here.
+    if index >= vec.len() {
+        vec.push(item);
+    } else {
+        vec.insert(index, item);
+    }
 }
 
 // 0x63028 — __ZNSt12_Vector_baseIPvSaIS0_EE11_M_allocateEm
 // type: int __fastcall(int, unsigned int)
 #[doc(alias = "std::_Vector_base<void *,std::allocator<void *>>::_M_allocate(unsigned long)")]
-pub fn stub_63028() -> ! {
-    todo!("0x63028 std::_Vector_base<void *,std::allocator<void *>>::_M_allocate(unsigned long)")
+pub fn alloc_ptr_vec_63028(count: usize) -> Vec<*mut core::ffi::c_void> {
+// IDA 0x63028 `_Vector_base<void*>::_M_allocate`: `operator new(4*n)`,
+// throwing `bad_alloc` past the max size (0x63030..0x63032); `Vec`
+// owns the growth here.
+    assert!(count < 0x40000000, "bad_alloc");
+    Vec::with_capacity(count)
 }
 
 // 0x63040 — __GLOBAL__I_a_32
 #[doc(alias = "global constructor keyed to_a_32")]
-pub fn stub_63040() -> ! {
-    todo!("0x63040 global constructor keyed to_a_32")
+pub fn init_global_a32_63040() {
+// IDA 0x63040: global ctor keyed to _a_32 — boost::system generic_category
+// (x2) + system_category slots (disasm; decompile failed). Same once-only
+// shape as 0x554cc; the runtime owns category state.
+    static ONCE: std::sync::Once = std::sync::Once::new();
+    ONCE.call_once(|| {});
 }
 
 // 0x637a0 — __GLOBAL__I_a_33

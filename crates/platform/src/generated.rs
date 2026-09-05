@@ -652,6 +652,80 @@ impl CharacterMoveState {
 }
 static CHARACTER_MOVE: std::sync::LazyLock<CharacterMoveState> =
     std::sync::LazyLock::new(CharacterMoveState::default);
+/// Host id standing in for the `CameraMove` `self`.
+const CAMERA_MOVE_ID: ControlId = 25;
+/// Minimal `CameraMove` counterpart (`Client/iOS/CameraMove.*`,
+/// `ThumbStickControl` subclass, IDA 0x631f8..0x633c0): the tracked touch,
+/// the jump-button image latch, the move-begin timestamp and the cancel
+/// counter.
+#[derive(Debug, Default)]
+pub struct CameraMoveState {
+    initialized: AtomicBool,
+    image_set: AtomicBool,
+    thumbstick_touch: parking_lot::Mutex<Option<ControlId>>,
+    move_begin: parking_lot::Mutex<f64>,
+    begin_calls: AtomicU32,
+    cancel_calls: AtomicU32,
+}
+impl CameraMoveState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `-[CameraMove init:]` (IDA 0x631f8): super `-[ThumbStickControl
+    /// init:]` plus the jumpButton.png image on the inner view.
+    pub fn init_camera(&self) -> Option<ControlId> {
+        self.image_set.store(true, Ordering::SeqCst);
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(CAMERA_MOVE_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    pub fn image_set(&self) -> bool {
+        self.image_set.load(Ordering::SeqCst)
+    }
+    /// `-[CameraMove touchesBegan:withEvent:]` (IDA 0x63280): super
+    /// `touchesBegan:` first; a single touch that tracks stamps
+    /// `moveBeginTime`.
+    pub fn touches_began(&self, touches: &[ControlTouch], inside_outer: bool, now: f64) -> bool {
+        if touches.len() != 1 || !inside_outer {
+            return false;
+        }
+        let touch = touches[0];
+        *self.thumbstick_touch.lock() = Some(touch.id);
+        *self.move_begin.lock() = now;
+        self.bump(&self.begin_calls);
+        true
+    }
+    pub fn move_begin(&self) -> f64 {
+        *self.move_begin.lock()
+    }
+    pub fn begin_call_count(&self) -> u32 {
+        self.begin_calls.load(Ordering::SeqCst)
+    }
+    /// `-[CameraMove touchesEnded:withEvent:]` (0x632f0) /
+    /// `touchesCancelled:` (0x633c0): the tracked touch runs
+    /// `cancelMovement`.
+    pub fn end_touches(&self, touches: &[ControlTouch]) -> bool {
+        let tracked = *self.thumbstick_touch.lock();
+        if tracked.is_some() && touches.iter().any(|t| Some(t.id) == tracked) {
+            self.cancel_movement();
+            return true;
+        }
+        false
+    }
+    /// `-[CameraMove cancelMovement]` (0x63490, next in slice): clears
+    /// the tracked touch.
+    pub fn cancel_movement(&self) {
+        *self.thumbstick_touch.lock() = None;
+        self.bump(&self.cancel_calls);
+    }
+    pub fn cancel_call_count(&self) -> u32 {
+        self.cancel_calls.load(Ordering::SeqCst)
+    }
+}
+static CAMERA_MOVE: std::sync::LazyLock<CameraMoveState> =
+    std::sync::LazyLock::new(CameraMoveState::default);
 /// `-[ControlComponent init]` (IDA 0x47178): super init (0x4719c, nil stays
 /// nil) then `setUserInteractionEnabled:1` (0x471b4).
 pub fn control_component_init(super_ok: bool) -> Option<ControlId> {
@@ -3634,7 +3708,6 @@ pub struct SignupViewState {
     accessory_set: AtomicBool,
     keyboard_avoided: AtomicBool,
     gender_options: parking_lot::Mutex<Vec<String>>,
-    error_string: parking_lot::Mutex<String>,
     popover_active: AtomicBool,
     segues: AtomicU32,
     last_segue: parking_lot::Mutex<String>,
@@ -4398,6 +4471,169 @@ impl SignupViewState {
 }
 static SIGNUPVC: std::sync::LazyLock<SignupViewState> =
     std::sync::LazyLock::new(SignupViewState::default);
+/// Host id standing in for the `RobloxMemoryManager` `self`.
+const MEM_ID: ControlId = 24;
+/// Minimal `RobloxMemoryManager` counterpart (IDA 0x62778..0x62e5c): the
+/// bouncer/checker flags, thresholds and observable counters for the Mach
+/// calls out of slice (`task_info`/`host_statistics` have no host
+/// counterpart; the failure paths read 0).
+#[derive(Debug, Default)]
+pub struct MemManagerState {
+    initialized: AtomicBool,
+    bouncer_active: AtomicBool,
+    stops: AtomicU32,
+    enforce_rate: AtomicI32,
+    threshold_kb: parking_lot::Mutex<u64>,
+    limit_mb: parking_lot::Mutex<u64>,
+    has_timer: AtomicBool,
+    balloon_bytes: parking_lot::Mutex<Option<u64>>,
+    checker_active: AtomicBool,
+    checker_rate: AtomicI32,
+    checker_threshold: parking_lot::Mutex<u64>,
+    has_checker_timer: AtomicBool,
+    last_used: parking_lot::Mutex<u64>,
+    logs: AtomicU32,
+    analytics: AtomicU32,
+    mem_warnings: AtomicU32,
+    releases: AtomicU32,
+}
+impl MemManagerState {
+    fn bump(&self, c: &AtomicU32) {
+        c.fetch_add(1, Ordering::SeqCst);
+    }
+    /// `+sharedInstance` block (IDA 0x627d4, via `dispatch_once`, inline):
+    /// alloc + init.
+    pub fn init_manager(&self) -> Option<ControlId> {
+        self.initialized.store(true, Ordering::SeqCst);
+        Some(MEM_ID)
+    }
+    pub fn is_initialized(&self) -> bool {
+        self.initialized.load(Ordering::SeqCst)
+    }
+    /// `startMemoryBouncer` (IDA 0x62820): no-op when active; else
+    /// stopCount 0 with the settings-service flags and the legacy
+    /// iPod4/iPad1/iPhone2 limit override.
+    pub fn start_bouncer(
+        &self,
+        active: bool,
+        rate: i32,
+        threshold_kb: u64,
+        limit_mb: u64,
+        legacy_limit_mb: u64,
+        legacy_device: bool,
+    ) {
+        if self.bouncer_active.load(Ordering::SeqCst) {
+            return;
+        }
+        self.stops.store(0, Ordering::SeqCst);
+        self.bouncer_active.store(active, Ordering::SeqCst);
+        self.enforce_rate.store(rate, Ordering::SeqCst);
+        *self.threshold_kb.lock() = threshold_kb;
+        *self.limit_mb.lock() = if legacy_device { legacy_limit_mb } else { limit_mb };
+    }
+    pub fn is_bouncer_active(&self) -> bool {
+        self.bouncer_active.load(Ordering::SeqCst)
+    }
+    pub fn limit_mb(&self) -> u64 {
+        *self.limit_mb.lock()
+    }
+    /// `stopMemoryBouncer:` (IDA 0x62a40): stopCount+1; a live timer with
+    /// invalidate stops it and returns true; the balloon always pops.
+    pub fn stop_bouncer(&self, invalidate: bool) -> bool {
+        self.stops.fetch_add(1, Ordering::SeqCst);
+        let stopped = self.has_timer.load(Ordering::SeqCst) && invalidate;
+        if stopped {
+            self.has_timer.store(false, Ordering::SeqCst);
+        }
+        self.pop_balloon();
+        stopped
+    }
+    pub fn stop_count(&self) -> u32 {
+        self.stops.load(Ordering::SeqCst)
+    }
+    /// `balloonMemory` (IDA 0x62ac0): pops first; free MB at/above the
+    /// limit stops the bouncer; else the free span balloons.
+    pub fn balloon(&self, free_bytes: u64) {
+        self.pop_balloon();
+        if free_bytes / 0x100000 >= *self.limit_mb.lock() {
+            self.stop_bouncer(true);
+            return;
+        }
+        *self.balloon_bytes.lock() = Some(free_bytes);
+    }
+    pub fn balloon_size(&self) -> Option<u64> {
+        *self.balloon_bytes.lock()
+    }
+    /// `popBalloon` (IDA 0x62b64): frees a live block.
+    pub fn pop_balloon(&self) {
+        *self.balloon_bytes.lock() = None;
+    }
+    /// `bounceFreeMemory:` (IDA 0x62b88): free KB past the threshold
+    /// balloons.
+    pub fn bounce_free(&self, free_bytes: u64) {
+        if free_bytes / 1024 > *self.threshold_kb.lock() {
+            self.balloon(free_bytes);
+        }
+    }
+    /// `startFreeMemoryChecker` (IDA 0x62be8): logs, prints memory, stops
+    /// the bouncer, takes the settings flags and schedules the timer at
+    /// rate/1000 s when active.
+    pub fn start_checker(&self, active: bool, rate: i32, threshold_kb: u64) {
+        self.stop_bouncer(true);
+        self.checker_active.store(active, Ordering::SeqCst);
+        self.checker_rate.store(rate, Ordering::SeqCst);
+        *self.checker_threshold.lock() = threshold_kb;
+        self.has_checker_timer.store(active, Ordering::SeqCst);
+    }
+    pub fn checker_active(&self) -> bool {
+        self.checker_active.load(Ordering::SeqCst)
+    }
+    /// `stopFreeMemoryChecker` (IDA 0x62d08): invalidates the timer.
+    pub fn stop_checker(&self) {
+        self.has_checker_timer.store(false, Ordering::SeqCst);
+    }
+    /// `checkFreeMemory:` (IDA 0x62d48): free KB at/above threshold only
+    /// logs usage; below tracks the OutOfMemory_EarlyExit event and warns
+    /// the game.
+    pub fn check_free(&self, free_bytes: u64) -> bool {
+        if free_bytes / 1024 >= *self.checker_threshold.lock() {
+            self.log_mem_usage(*self.last_used.lock(), false);
+            return true;
+        }
+        self.bump(&self.analytics);
+        self.bump(&self.mem_warnings);
+        false
+    }
+    pub fn mem_warning_count(&self) -> u32 {
+        self.mem_warnings.load(Ordering::SeqCst)
+    }
+    /// `logMemUsage:` (IDA 0x62e5c): when used moved 100000+ since the
+    /// last report, re-records and logs.
+    pub fn log_mem_usage(&self, used: u64, _verbose: bool) -> bool {
+        if used.wrapping_sub(*self.last_used.lock()).wrapping_add(100000) >= 200000 {
+            *self.last_used.lock() = used;
+            self.bump(&self.logs);
+            return true;
+        }
+        false
+    }
+    pub fn log_count(&self) -> u32 {
+        self.logs.load(Ordering::SeqCst)
+    }
+}
+static MEMMANAGER: std::sync::LazyLock<MemManagerState> =
+    std::sync::LazyLock::new(MemManagerState::default);
+/// `+sharedInstance` cell (IDA 0x62778, `dword_130C660`): the
+/// `dispatch_once` initializer lives with the cell.
+static MEM_SHARED: std::sync::LazyLock<ControlId> =
+    std::sync::LazyLock::new(|| {
+        MEMMANAGER.init_manager();
+        MEM_ID
+    });
+/// Host `+sharedInstance` (IDA 0x62778).
+pub fn shared_mem_id() -> Option<ControlId> {
+    Some(*MEM_SHARED)
+}
 impl CacheState {
     /// `-setPagesToPreload` (IDA 0x583f0): the button-tag URL array
     /// (tags 13/11/10/12/15) rebuilds the preload list.
@@ -17521,106 +17757,146 @@ pub fn stub_5d3a0(value: &str) {
 // 0x62778 — +[RobloxMemoryManager sharedInstance]
 // type: id __cdecl(id, SEL)
 #[doc(alias = "+[RobloxMemoryManager sharedInstance]")]
-pub fn stub_62778() -> ! {
-    todo!("0x62778 +[RobloxMemoryManager sharedInstance]")
+pub fn stub_62778() -> Option<ControlId> {
+    // IDA 0x62778 `+sharedInstance`: `dispatch_once` runs the `__37…`
+    // block (0x627a4..0x627ce); the cell holds the singleton after.
+    shared_mem_id()
 }
 
 // 0x627d4 — ___37+[RobloxMemoryManager sharedInstance]_block_invoke
 // type: id __fastcall(int)
 #[doc(alias = "___37+[RobloxMemoryManager sharedInstance]_block_invoke")]
-pub fn stub_627d4() -> ! {
-    todo!("0x627d4 ___37+[RobloxMemoryManager sharedInstance]_block_invoke")
+pub fn stub_627d4() {
+    // IDA 0x627d4 `__37-sharedInstance_block_invoke` (via `dispatch_once`,
+    // inline): alloc + init into the singleton slot (0x627e6..0x62804).
+    MEMMANAGER.init_manager();
 }
 
 // 0x62820 — -[RobloxMemoryManager startMemoryBouncer]
 // type: void __cdecl(RobloxMemoryManager *self, SEL)
 #[doc(alias = "-[RobloxMemoryManager startMemoryBouncer]")]
-pub fn stub_62820() -> ! {
-    todo!("0x62820 -[RobloxMemoryManager startMemoryBouncer]")
+pub fn stub_62820(active: bool, rate: i32, threshold_kb: u64, limit_mb: u64, legacy_limit_mb: u64, legacy_device: bool) {
+    // IDA 0x62820 `startMemoryBouncer`: no-op when active; else stopCount
+    // 0 with the settings-service flags (0x62858..0x628d4), the legacy
+    // iPod4/iPad1/iPhone2 limit override (0x628e2..0x6293c), and a used/free
+    // log line (0x62944..tail).
+    MEMMANAGER.start_bouncer(active, rate, threshold_kb, limit_mb, legacy_limit_mb, legacy_device);
 }
 
 // 0x62a40 — -[RobloxMemoryManager stopMemoryBouncer:]
 // type: char __cdecl(RobloxMemoryManager *self, SEL, char)
 #[doc(alias = "-[RobloxMemoryManager stopMemoryBouncer:]")]
-pub fn stub_62a40() -> ! {
-    todo!("0x62a40 -[RobloxMemoryManager stopMemoryBouncer:]")
+pub fn stub_62a40(invalidate: bool) -> bool {
+    // IDA 0x62a40 `stopMemoryBouncer:`: stopCount+1; a live timer with
+    // invalidate stops it and returns true (0x62a6a..0x62a90); the balloon
+    // always pops (0x62aa0).
+    MEMMANAGER.stop_bouncer(invalidate)
 }
 
 // 0x62ac0 — -[RobloxMemoryManager balloonMemory]
 // type: void __cdecl(RobloxMemoryManager *self, SEL)
 #[doc(alias = "-[RobloxMemoryManager balloonMemory]")]
-pub fn stub_62ac0() -> ! {
-    todo!("0x62ac0 -[RobloxMemoryManager balloonMemory]")
+pub fn stub_62ac0(free_bytes: u64) {
+    // IDA 0x62ac0 `balloonMemory`: pops first (0x62ad4); free MB at/above
+    // the limit stops the bouncer (0x62b08..0x62b4c); else mallocs the
+    // free span and touches a byte per KB (0x62b0c..0x62b3a).
+    MEMMANAGER.balloon(free_bytes);
 }
 
 // 0x62b64 — -[RobloxMemoryManager popBalloon]
 // type: void __cdecl(RobloxMemoryManager *self, SEL)
 #[doc(alias = "-[RobloxMemoryManager popBalloon]")]
-pub fn stub_62b64() -> ! {
-    todo!("0x62b64 -[RobloxMemoryManager popBalloon]")
+pub fn stub_62b64() {
+    // IDA 0x62b64 `popBalloon`: frees a live block (0x62b76..0x62b84).
+    MEMMANAGER.pop_balloon();
 }
 
 // 0x62b88 — -[RobloxMemoryManager bounceFreeMemory:]
 // type: void __cdecl(RobloxMemoryManager *self, SEL, id)
 #[doc(alias = "-[RobloxMemoryManager bounceFreeMemory:]")]
-pub fn stub_62b88() -> ! {
-    todo!("0x62b88 -[RobloxMemoryManager bounceFreeMemory:]")
+pub fn stub_62b88(free_bytes: u64) {
+    // IDA 0x62b88 `bounceFreeMemory:`: free KB past the threshold
+    // balloons (0x62b92..0x62be0).
+    MEMMANAGER.bounce_free(free_bytes);
 }
 
 // 0x62be8 — -[RobloxMemoryManager startFreeMemoryChecker]
 // type: void __cdecl(RobloxMemoryManager *self, SEL)
 #[doc(alias = "-[RobloxMemoryManager startFreeMemoryChecker]")]
-pub fn stub_62be8() -> ! {
-    todo!("0x62be8 -[RobloxMemoryManager startFreeMemoryChecker]")
+pub fn stub_62be8(active: bool, rate: i32, threshold_kb: u64) {
+    // IDA 0x62be8 `startFreeMemoryChecker`: logs, prints memory, stops
+    // the bouncer (0x62bfe..0x62c1a), takes the settings-service flags
+    // (0x62c3c..0x62c74) and schedules the timer at rate/1000 s when
+    // active (0x62c78..tail).
+    MEMMANAGER.start_checker(active, rate, threshold_kb);
 }
 
 // 0x62d08 — -[RobloxMemoryManager stopFreeMemoryChecker]
 // type: void __cdecl(RobloxMemoryManager *self, SEL)
 #[doc(alias = "-[RobloxMemoryManager stopFreeMemoryChecker]")]
-pub fn stub_62d08() -> ! {
-    todo!("0x62d08 -[RobloxMemoryManager stopFreeMemoryChecker]")
+pub fn stub_62d08() {
+    // IDA 0x62d08 `stopFreeMemoryChecker`: invalidates the timer
+    // (0x62d28..0x62d42).
+    MEMMANAGER.stop_checker();
 }
 
 // 0x62d48 — -[RobloxMemoryManager checkFreeMemory:]
 // type: void __cdecl(RobloxMemoryManager *self, SEL, id)
 #[doc(alias = "-[RobloxMemoryManager checkFreeMemory:]")]
-pub fn stub_62d48() -> ! {
-    todo!("0x62d48 -[RobloxMemoryManager checkFreeMemory:]")
+pub fn stub_62d48(free_bytes: u64) -> bool {
+    // IDA 0x62d48 `checkFreeMemory:`: free KB at/above threshold only
+    // logs usage (0x62d82..0x62e34); below tracks the OutOfMemory_EarlyExit
+    // event and warns the game (0x62d90..0x62e52).
+    MEMMANAGER.check_free(free_bytes)
 }
 
 // 0x62e5c — -[RobloxMemoryManager logMemUsage:]
 // type: void __cdecl(RobloxMemoryManager *self, SEL, id)
 #[doc(alias = "-[RobloxMemoryManager logMemUsage:]")]
-pub fn stub_62e5c() -> ! {
-    todo!("0x62e5c -[RobloxMemoryManager logMemUsage:]")
+pub fn stub_62e5c(used: u64, verbose: bool) -> bool {
+    // IDA 0x62e5c `logMemUsage:`: when used moved 100000+ since the last
+    // report (0x62e90..0x62e96), re-records and logs used/delta/free in
+    // KB (0x62e98..0x62ef4, verbose picks the format).
+    MEMMANAGER.log_mem_usage(used, verbose)
 }
 
 // 0x631f8 — -[CameraMove init:]
 // type: id __cdecl(CameraMove *self, SEL, CGRect)
 #[doc(alias = "-[CameraMove init:]")]
-pub fn stub_631f8() -> ! {
-    todo!("0x631f8 -[CameraMove init:]")
+pub fn stub_631f8() -> Option<ControlId> {
+    // IDA 0x631f8 `-[CameraMove init:]`: super `-[ThumbStickControl init:]`
+    // (0x6322a) plus the jumpButton.png image on the inner view
+    // (0x63254..0x63274).
+    CAMERA_MOVE.init_camera()
 }
 
 // 0x63280 — -[CameraMove touchesBegan:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesBegan:withEvent:]")]
-pub fn stub_63280() -> ! {
-    todo!("0x63280 -[CameraMove touchesBegan:withEvent:]")
+pub fn stub_63280(touches: &[ControlTouch], inside_outer: bool, now: f64) -> bool {
+    // IDA 0x63280 `-[CameraMove touchesBegan:withEvent:]`: super
+    // `touchesBegan:` first (0x632a8); a single touch that tracks stamps
+    // `moveBeginTime` (0x632c0..0x632e4).
+    CAMERA_MOVE.touches_began(touches, inside_outer, now)
 }
 
 // 0x632f0 — -[CameraMove touchesEnded:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesEnded:withEvent:]")]
-pub fn stub_632f0() -> ! {
-    todo!("0x632f0 -[CameraMove touchesEnded:withEvent:]")
+pub fn stub_632f0(touches: &[ControlTouch]) {
+    // IDA 0x632f0 `-[CameraMove touchesEnded:withEvent:]`: enumerate the
+    // touches; the tracked `thumbstickTouch` lifting runs `cancelMovement`
+    // (0x63326..0x633a4).
+    CAMERA_MOVE.end_touches(touches);
 }
 
 // 0x633c0 — -[CameraMove touchesCancelled:withEvent:]
 // type: void __cdecl(CameraMove *self, SEL, id, id)
 #[doc(alias = "-[CameraMove touchesCancelled:withEvent:]")]
-pub fn stub_633c0() -> ! {
-    todo!("0x633c0 -[CameraMove touchesCancelled:withEvent:]")
+pub fn stub_633c0(touches: &[ControlTouch]) {
+    // IDA 0x633c0 `-[CameraMove touchesCancelled:withEvent:]`: same shape
+    // as `touchesEnded:` above; the tracked touch runs `cancelMovement`.
+    CAMERA_MOVE.end_touches(touches);
 }
 
 // 0x63490 — -[CameraMove cancelMovement]
