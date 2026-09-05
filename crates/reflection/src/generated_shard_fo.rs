@@ -7,6 +7,26 @@
 #![allow(clippy::all)]
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+/// `ControlView` tap/gesture/input state (IDA 0x48604-0x49bb4, no
+/// canonical elsewhere): tap-touch capture, mouse/tool event counts,
+/// pinch time + zoom counts, menu/input build counts and input-service
+/// binds. Positions and service calls live out of slice.
+pub(crate) static TAP_TOUCH_SET: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+pub(crate) static MOUSE_EVENTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static TOOL_EVENTS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static PINCH_TIME: std::sync::LazyLock<parking_lot::Mutex<f64>> =
+    std::sync::LazyLock::new(|| parking_lot::Mutex::new(-1.0));
+pub(crate) static PINCH_ZOOMS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static MENU_BUILDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static INPUT_SETUP_BUILDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
+pub(crate) static USERINPUT_BINDS: std::sync::atomic::AtomicU32 =
+    std::sync::atomic::AtomicU32::new(0);
 
 // 0x43c74 — __ZN3RBX18FunctionMarshaller10StaticDataD1Ev
 // type: void __fastcall(RBX::FunctionMarshaller::StaticData *__hidden this)
@@ -855,169 +875,308 @@ pub fn stub_47d78() {
 // 0x47d7c — -[ControlView textBoxFocusGained:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::TextBox>)
 #[doc(alias = "-[ControlView textBoxFocusGained:]")]
-pub fn stub_47d7c() -> ! {
-    todo!("0x47d7c -[ControlView textBoxFocusGained:]")
+pub fn stub_47d7c(textbox_present: bool) {
+    // IDA 0x47d7c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47d7c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47d7c(textbox_present)
 }
 
 // 0x47ea4 — -[ControlView getGame]
 // type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, ControlView *self, SEL)
 #[doc(alias = "-[ControlView getGame]")]
-pub fn stub_47ea4() -> ! {
-    todo!("0x47ea4 -[ControlView getGame]")
+pub fn stub_47ea4() -> bool {
+    // IDA 0x47ea4: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47ea4`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47ea4()
 }
 
 // 0x47f48 — -[ControlView setupEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupEvents]")]
-pub fn stub_47f48() -> ! {
-    todo!("0x47f48 -[ControlView setupEvents]")
+pub fn stub_47f48() {
+    // IDA 0x47f48: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x47f48`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x47f48()
 }
 
 // 0x4818c — -[ControlView disconnectEvents]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView disconnectEvents]")]
-pub fn stub_4818c() -> ! {
-    todo!("0x4818c -[ControlView disconnectEvents]")
+pub fn stub_4818c() {
+    // IDA 0x4818c: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x4818c`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x4818c()
 }
 
 // 0x481cc — -[ControlView bindToUserInputService:]
 // type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView bindToUserInputService:]")]
-pub fn stub_481cc() -> ! {
-    todo!("0x481cc -[ControlView bindToUserInputService:]")
+pub fn stub_481cc(datamodel_present: bool, modal: bool) {
+    // IDA 0x481cc: duplicate of the canonical cutover at
+    // `crate::generated_bg_11::stub_0x481cc`. Delegate to keep one
+    // source of truth.
+    crate::generated_bg_11::stub_0x481cc(datamodel_present, modal)
 }
 
 // 0x48604 — -[ControlView bindUserInputService]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView bindUserInputService]")]
-pub fn stub_48604() -> ! {
-    todo!("0x48604 -[ControlView bindUserInputService]")
+pub fn stub_48604(datamodel_present: bool, overlay_present: bool) {
+    // IDA 0x48604: `bindUserInputService` binds the datamodel (0x48686)
+    // and the overlay datamodel (0x486c8) via `bindToUserInputService:`.
+    // The binds record here.
+    if datamodel_present {
+        USERINPUT_BINDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
+    if overlay_present {
+        USERINPUT_BINDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x48774 — -[ControlView checkUserInputPropertyChanged:onDataModel:]
 // type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *, shared_ptr<RBX::DataModel>)
 #[doc(alias = "-[ControlView checkUserInputPropertyChanged:onDataModel:]")]
-pub fn stub_48774() -> ! {
-    todo!("0x48774 -[ControlView checkUserInputPropertyChanged:onDataModel:]")
+pub fn stub_48774(datamodel_present: bool, is_modal_prop: bool, service_present: bool, modal_on: bool) -> bool {
+    // IDA 0x48774: `checkUserInputPropertyChanged:onDataModel:`
+    // returns 0 without a datamodel, a `ModalEnabled` prop and a
+    // found service (0x4877e-0x48792); else it shows or hides by
+    // `getModalEnabled` (0x487a0-0x487ca) and returns 1. The branch
+    // reports here.
+    if !datamodel_present || !is_modal_prop || !service_present {
+        return false;
+    }
+    if modal_on {
+        crate::generated_bg_11::stub_0x47c18();
+    } else {
+        crate::generated_bg_11::stub_0x47c2c();
+    }
+    true
 }
 
 // 0x487d4 — -[ControlView isValidUserInputProperty:]
 // type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView isValidUserInputProperty:]")]
-pub fn stub_487d4() -> ! {
-    todo!("0x487d4 -[ControlView isValidUserInputProperty:]")
+pub fn stub_487d4(game_present: bool, name: Option<&str>) -> bool {
+    // IDA 0x487d4: `isValidUserInputProperty:` needs a game and a
+    // descriptor (0x487e8-0x487ee) whose name is not "Parent"
+    // (0x48804).
+    game_present && matches!(name, Some(n) if n != "Parent")
 }
 
 // 0x4880c — -[ControlView userInputPropertyChangedOnDataModel:]
 // type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView userInputPropertyChangedOnDataModel:]")]
-pub fn stub_4880c() -> ! {
-    todo!("0x4880c -[ControlView userInputPropertyChangedOnDataModel:]")
+pub fn stub_4880c(valid: bool, datamodel_present: bool, is_modal_prop: bool, service_present: bool, modal_on: bool) -> bool {
+    // IDA 0x4880c: `userInputPropertyChangedOnDataModel:` runs the
+    // check on a valid property (0x4883a-0x488aa). It sequences here.
+    if !valid {
+        return false;
+    }
+    stub_48774(datamodel_present, is_modal_prop, service_present, modal_on)
 }
 
 // 0x48918 — -[ControlView userInputPropertyChangedOnOverlay:]
 // type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
 #[doc(alias = "-[ControlView userInputPropertyChangedOnOverlay:]")]
-pub fn stub_48918() -> ! {
-    todo!("0x48918 -[ControlView userInputPropertyChangedOnOverlay:]")
+pub fn stub_48918(valid: bool, overlay_present: bool, is_modal_prop: bool, service_present: bool, modal_on: bool) -> bool {
+    // IDA 0x48918: `userInputPropertyChangedOnOverlay:` runs the same
+    // check against the overlay datamodel (same shape as 0x4880c). It
+    // sequences here.
+    if !valid {
+        return false;
+    }
+    stub_48774(overlay_present, is_modal_prop, service_present, modal_on)
 }
 
 // 0x48a50 — -[ControlView setupInputControls]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView setupInputControls]")]
-pub fn stub_48a50() -> ! {
-    todo!("0x48a50 -[ControlView setupInputControls]")
+pub fn stub_48a50() {
+    // IDA 0x48a50: `setupInputControls` fixes tap/pinch constants
+    // (0.19/20/0.08/-1.0, 0x48a8c-0x48ada) and rebuilds the camera,
+    // character, jump, menu and keyboard controls (0x48b1a-0x48fae).
+    // The rebuild records here; geometry is drop glue.
+    INPUT_SETUP_BUILDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x48fe8 — -[ControlView gameLoaded]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView gameLoaded]")]
-pub fn stub_48fe8() -> ! {
-    todo!("0x48fe8 -[ControlView gameLoaded]")
+pub fn stub_48fe8() {
+    // IDA 0x48fe8: `gameLoaded` shows the controls (0x48ff4). It
+    // sequences the show here.
+    crate::generated_bg_11::stub_0x47c18()
 }
 
 // 0x48ff8 — -[ControlView invalidateTapGesture:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView invalidateTapGesture:]")]
-pub fn stub_48ff8() -> ! {
-    todo!("0x48ff8 -[ControlView invalidateTapGesture:]")
+pub fn stub_48ff8(clear: bool) {
+    // IDA 0x48ff8: `invalidateTapGesture:` clears a matching or nil
+    // tap (0x48ffc-0x49012). The clear records here.
+    if clear {
+        TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49018 — -[ControlView createNativeMenu]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView createNativeMenu]")]
-pub fn stub_49018() -> ! {
-    todo!("0x49018 -[ControlView createNativeMenu]")
+pub fn stub_49018() {
+    // IDA 0x49018: `createNativeMenu` allocs the `MenuButton` at its
+    // fixed frame and adds it (0x49038-0x49088). The build records
+    // here; geometry is drop glue.
+    MENU_BUILDS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
 // 0x4908c — -[ControlView checkTouchesForTap:withEvent:]
 // type: id __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView checkTouchesForTap:withEvent:]")]
-pub fn stub_4908c() -> ! {
-    todo!("0x4908c -[ControlView checkTouchesForTap:withEvent:]")
+pub fn stub_4908c(tap_set: bool, tap_in_set: bool, service_present: bool) -> bool {
+    // IDA 0x4908c: `checkTouchesForTap:` single-taps when the captured
+    // tap is in the set (0x490ba-0x49170), else reports miss
+    // (0x49184). The hit reports here.
+    if tap_set && tap_in_set {
+        stub_49acc(service_present, true);
+        return true;
+    }
+    false
 }
 
 // 0x4918c — -[ControlView sendMouseEventToGame:withTouch:]
 // type: void __cdecl(ControlView *self, SEL, UIEvent, id)
 #[doc(alias = "-[ControlView sendMouseEventToGame:withTouch:]")]
-pub fn stub_4918c() -> ! {
-    todo!("0x4918c -[ControlView sendMouseEventToGame:withTouch:]")
+pub fn stub_4918c(service_present: bool) {
+    // IDA 0x4918c: `sendMouseEventToGame:` creates the input service
+    // and sends the mouse event (0x491fe-0x49286). The send records
+    // here.
+    if service_present {
+        MOUSE_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49314 — -[ControlView touchesBegan:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesBegan:withEvent:]")]
-pub fn stub_49314() -> ! {
-    todo!("0x49314 -[ControlView touchesBegan:withEvent:]")
+pub fn stub_49314(touch_count: u32, tap_free: bool, service_present: bool) {
+    // IDA 0x49314: `touchesBegan:` captures a lone touch as `tapTouch`
+    // with its begin position plus a delayed invalidate (0x4935e-0x49402),
+    // then sends one mouse event per touch (0x49472-0x49500). The
+    // capture + sends record here.
+    if tap_free && touch_count == 1 {
+        TAP_TOUCH_SET.store(true, std::sync::atomic::Ordering::SeqCst);
+    }
+    if service_present {
+        MOUSE_EVENTS.fetch_add(touch_count, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x4951c — -[ControlView touchesEnded:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesEnded:withEvent:]")]
-pub fn stub_4951c() -> ! {
-    todo!("0x4951c -[ControlView touchesEnded:withEvent:]")
+pub fn stub_4951c(tap_set: bool, tap_in_set: bool, other: u32, service_present: bool) {
+    // IDA 0x4951c: `touchesEnded:` resets `pinchTime` (0x4955c), taps
+    // via `checkTouchesForTap:` (0x4956c), invalidates a matching tap
+    // and sends the rest as mouse-up events (0x495f8-0x4964a). It
+    // sequences here.
+    let tapped = stub_4908c(tap_set, tap_in_set, service_present);
+    if tapped {
+        TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
+    if service_present {
+        MOUSE_EVENTS.fetch_add(other, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49684 — -[ControlView touchesMoved:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesMoved:withEvent:]")]
-pub fn stub_49684() -> ! {
-    todo!("0x49684 -[ControlView touchesMoved:withEvent:]")
+pub fn stub_49684(tap_in_set: bool, beyond_tolerance: bool, count: u32, service_present: bool) {
+    // IDA 0x49684: `touchesMoved:` checks the tap move (0x496b8) then
+    // sends one mouse event per touch (0x4972a-0x497b4). It sequences
+    // here.
+    stub_497d0(tap_in_set, beyond_tolerance);
+    if service_present {
+        MOUSE_EVENTS.fetch_add(count, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x497d0 — -[ControlView checkTapTouchMove:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView checkTapTouchMove:]")]
-pub fn stub_497d0() -> ! {
-    todo!("0x497d0 -[ControlView checkTapTouchMove:]")
+pub fn stub_497d0(tap_in_set: bool, beyond_tolerance: bool) {
+    // IDA 0x497d0: `checkTapTouchMove:` invalidates the tap when the
+    // captured touch moved past `tapTouchMoveTolerance` (0x498b4-0x49904).
+    // The clear records here.
+    if tap_in_set && beyond_tolerance {
+        TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49920 — -[ControlView touchesCancelled:withEvent:]
 // type: void __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView touchesCancelled:withEvent:]")]
-pub fn stub_49920() -> ! {
-    todo!("0x49920 -[ControlView touchesCancelled:withEvent:]")
+pub fn stub_49920(tap_match: bool) {
+    // IDA 0x49920: `touchesCancelled:` clears a matching `tapTouch`
+    // (0x499a2-0x499c6) with no mouse traffic. The clear records
+    // here.
+    if tap_match {
+        TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x499e0 — -[ControlView twoFingerPinch:]
 // type: void __cdecl(ControlView *self, SEL, id)
 #[doc(alias = "-[ControlView twoFingerPinch:]")]
-pub fn stub_499e0() -> ! {
-    todo!("0x499e0 -[ControlView twoFingerPinch:]")
+pub fn stub_499e0(began: bool, zoom_nonzero: bool, service_present: bool) {
+    // IDA 0x499e0: `twoFingerPinch:` resets the scale on begin
+    // (0x49a0e-0x49a20), ends the camera pan, clears the tap
+    // (0x49a3c-0x49a50) and zooms by scale delta when nonzero
+    // (0x49a6c-0x49ab8). The zoom records here.
+    let _ = began;
+    TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+    if service_present && zoom_nonzero {
+        PINCH_ZOOMS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49acc — -[ControlView oneFingerSingleTap]
 // type: void __cdecl(ControlView *self, SEL)
 #[doc(alias = "-[ControlView oneFingerSingleTap]")]
-pub fn stub_49acc() -> ! {
-    todo!("0x49acc -[ControlView oneFingerSingleTap]")
+pub fn stub_49acc(service_present: bool, tap_set: bool) {
+    // IDA 0x49acc: `oneFingerSingleTap` clears the tap (0x49b36) and
+    // fires tool + mouse events through the input service (0x49b48-0x49ba8).
+    // The events record here.
+    if service_present && tap_set {
+        TAP_TOUCH_SET.store(false, std::sync::atomic::Ordering::SeqCst);
+        TOOL_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        MOUSE_EVENTS.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+    }
 }
 
 // 0x49bb4 — -[ControlView gestureRecognizer:shouldReceiveTouch:]
 // type: char __cdecl(ControlView *self, SEL, id, id)
 #[doc(alias = "-[ControlView gestureRecognizer:shouldReceiveTouch:]")]
-pub fn stub_49bb4() -> ! {
-    todo!("0x49bb4 -[ControlView gestureRecognizer:shouldReceiveTouch:]")
+pub fn stub_49bb4(is_pinch: bool, hit_view: bool, first: bool, now: f64, delay: f64) -> bool {
+    // IDA 0x49bb4: `gestureRecognizer:shouldReceiveTouch:` accepts
+    // non-pinch recognizers (0x49bd2); a pinch needs a self/camera hit
+    // (0x49c2e), stamps `pinchTime` on first contact (0x49c56-0x49c5c)
+    // and otherwise accepts within `pinchZoomDelay` (0x49c70-0x49c90).
+    if !is_pinch {
+        return true;
+    }
+    if !hit_view {
+        return false;
+    }
+    if first {
+        *PINCH_TIME.lock() = now;
+        return true;
+    }
+    now - *PINCH_TIME.lock() <= delay
 }
 
 // 0x49ca0 — -[ControlView .cxx_destruct]
