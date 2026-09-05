@@ -6,6 +6,43 @@
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
+/// HTTP completion: `boost::function<void(string*, exception*)>` (IDA 0x3168b0: response body + error).
+pub type HttpDoneCallback = SharedPtr<dyn Fn(Option<String>, Option<String>)>;
+
+/// RBX::Http client init state (IDA 0x3165b0: default API selector, -1 = Uninitialized).
+#[derive(Debug)]
+pub struct HttpInit {
+    pub default_api: i32,
+    pub pool_threads: u32,
+}
+
+impl HttpInit {
+    /// Fresh client before init (defaultApi = Uninitialized).
+    pub fn uninitialized() -> Self {
+        HttpInit { default_api: -1, pool_threads: 0 }
+    }
+}
+
+/// RBX::Http response locks (IDA 0x31e45c/0x31e558: roblox/cdn statics, nullable during teardown).
+#[derive(Clone, Debug, Default)]
+pub struct HttpLocks {
+    pub roblox: Option<SharedPtr<QueueMutex>>,
+    pub cdn: Option<SharedPtr<QueueMutex>>,
+}
+
+/// RBX::Http::MutexGuard (IDA 0x318100: unlocks on drop; no state of its own).
+#[derive(Debug, Default)]
+pub struct HttpMutexGuard;
+
+/// LuaWebService callback bind tuple (IDA 0x347518: result + url + variant/string callbacks; the weak service retain is caller-held).
+#[derive(Clone)]
+pub struct LuaCallbackBind {
+    pub result: HttpRequestResult,
+    pub url: String,
+    pub on_variants: SharedPtr<dyn Fn()>,
+    pub on_string: SharedPtr<dyn Fn(String)>,
+}
+
 /// AsyncHttpQueue::AsyncRetryTask (IDA 0x301b4c: 12-byte deque element).
 #[derive(Clone, Copy, Debug, Default)]
 pub struct AsyncRetryTask {
@@ -712,132 +749,153 @@ pub fn stub_302cdc(type_name: &str) -> bool { // IDA 0x302cdc: deleter query —
 // 0x302cf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX18HttpQueueStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
 // demangled: boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
 #[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
-pub fn stub_302cf4() -> ! {
-    todo!("0x302cf4 boost::detail::sp_counted_impl_pd<RBX::HttpQueueStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+pub fn stub_302cf4<T>(_v: &SharedPtr<T>) -> bool { // IDA 0x302cf4: get_untyped_deleter (unconditional deleter address → non-null).
+    true
 }
 
 // 0x302cf8 — __ZNSt10_List_baseIN3RBX14AsyncHttpQueue9FailedUrlESaIS2_EE8_M_clearEv
 // demangled: std::_List_base<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_clear(void)
 // type: int(void)
 #[doc(alias = "std::_List_base<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_clear(void)")]
-pub fn stub_302cf8() -> ! {
-    todo!("0x302cf8 std::_List_base<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_clear(void)")
+pub fn stub_302cf8(q: &mut Vec<crate::generated_164::FailedUrl>) { // IDA 0x302cf8: FailedUrl list clear; reuses the sibling-owned type.
+    q.clear();
 }
 
 // 0x316590 — __ZN3RBX4Http21getRobloxResponceLockEv
 // demangled: RBX::Http::getRobloxResponceLock(void)
 // type: _DWORD __fastcall(RBX::Http *__hidden this)
 #[doc(alias = "RBX::Http::getRobloxResponceLock(void)")]
-pub fn stub_316590() -> ! {
-    todo!("0x316590 RBX::Http::getRobloxResponceLock(void)")
+pub fn stub_316590(locks: &HttpLocks) -> Option<SharedPtr<QueueMutex>> { // IDA 0x316590: returns the static roblox response lock (null during teardown).
+    locks.roblox.clone()
 }
 
 // 0x3165a0 — __ZN3RBX4Http18getCdnResponceLockEv
 // demangled: RBX::Http::getCdnResponceLock(void)
 // type: _DWORD __fastcall(RBX::Http *__hidden this)
 #[doc(alias = "RBX::Http::getCdnResponceLock(void)")]
-pub fn stub_3165a0() -> ! {
-    todo!("0x3165a0 RBX::Http::getCdnResponceLock(void)")
+pub fn stub_3165a0(locks: &HttpLocks) -> Option<SharedPtr<QueueMutex>> { // IDA 0x3165a0: returns the static cdn response lock (null during teardown).
+    locks.cdn.clone()
 }
 
 // 0x3165b0 — __ZN3RBX4Http4initENS0_3APIE
 // demangled: RBX::Http::init(RBX::Http::API)
 #[doc(alias = "RBX::Http::init(RBX::Http::API)")]
-pub fn stub_3165b0() -> ! {
-    todo!("0x3165b0 RBX::Http::init(RBX::Http::API)")
+pub fn stub_3165b0(st: &mut HttpInit, api: i32) { // IDA 0x3165b0: ReleaseAssert when already initialized (Http.cpp:67); one-time 8-thread pool; latch default API.
+    assert!(st.default_api == -1, "Http::defaultApi==Http::Uninitialized (Http.cpp:67)");
+    if st.pool_threads == 0 {
+        st.pool_threads = 8;
+    }
+    st.default_api = api;
 }
 
 // 0x316738 — __ZN3RBX4Http14ThrowIfFailureEbPKcS2_
 // demangled: RBX::Http::ThrowIfFailure(bool,char const*,char const*)
 // type: void __fastcall(RBX::Http *this, const char *, const char *, const char *)
 #[doc(alias = "RBX::Http::ThrowIfFailure(bool,char const*,char const*)")]
-pub fn stub_316738() -> ! {
-    todo!("0x316738 RBX::Http::ThrowIfFailure(bool,char const*,char const*)")
+pub fn stub_316738(ok: bool, what: &str, why: &str) { // IDA 0x316738: null self → throw std::runtime_error ("%s: %s"); maps to panic with the same message.
+    if !ok {
+        panic!("{}: {}", what, why);
+    }
 }
 
 // 0x316814 — __ZN3RBX4Http15httpGetPostImplEbRSibRKSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEEbRSs
 // demangled: RBX::Http::httpGetPostImpl(bool,std::istream &,bool,std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<std::string const,std::string>>> const&,bool,std::string &)
 #[doc(alias = "RBX::Http::httpGetPostImpl(bool,std::istream &,bool,std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<std::string const,std::string>>> const&,bool,std::string &)")]
-pub fn stub_316814() -> ! {
-    todo!("0x316814 RBX::Http::httpGetPostImpl(bool,std::istream &,bool,std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<std::string const,std::string>>> const&,bool,std::string &)")
+pub fn stub_316814(url: &str, is_post: bool, body: Option<&[u8]>, verify_trust: bool, init_trust: &mut dyn FnMut(), is_roblox_site: &mut dyn FnMut(&str) -> bool, fetch: &mut dyn FnMut(&str, bool, Option<&[u8]>) -> HttpRequestResult) -> HttpRequestResult { // IDA 0x316814: one-time trust init; off-site with verification → ThrowIfFailure; otherwise the Cocoa fetch.
+    if verify_trust {
+        init_trust();
+        if !is_roblox_site(url) {
+            stub_316738(false, url, "Trust check failed");
+        }
+    }
+    fetch(url, is_post, body)
 }
 
 // 0x31688c — __ZN3RBX4Http4postERSibRSsb
 // demangled: RBX::Http::post(std::istream &,bool,std::string &,bool)
 // type: _DWORD __fastcall(RBX::Http *__hidden this, std::istream *, bool, std::string *, bool)
 #[doc(alias = "RBX::Http::post(std::istream &,bool,std::string &,bool)")]
-pub fn stub_31688c() -> ! {
-    todo!("0x31688c RBX::Http::post(std::istream &,bool,std::string &,bool)")
+pub fn stub_31688c(url: &str, body: &[u8], post: &mut dyn FnMut(&str, &[u8]) -> HttpRequestResult) -> HttpRequestResult { // IDA 0x31688c: sync POST via httpGetPostImpl (post=true).
+    post(url, body)
 }
 
 // 0x3168b0 — __ZN3RBX4Http3getEN5boost8functionIFvPSsPSt9exceptionEEEb
 // demangled: RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)")]
-pub fn stub_3168b0() -> ! {
-    todo!("0x3168b0 RBX::Http::get(boost::function<void ()(std::string *,std::exception *)>,bool)")
+pub fn stub_3168b0(url: &str, schedule_get: &mut dyn FnMut(&str)) { // IDA 0x3168b0: bind doGet and schedule on the Http pool (bind/thread-pool folded into the closure).
+    schedule_get(url);
 }
 
 // 0x316f2c — __ZN3RBX4Http4postERKSsbN5boost8functionIFvPSsPSt9exceptionEEEb
 // demangled: RBX::Http::post(std::string const&,bool,boost::function<void ()(std::string *,std::exception *)>,bool)
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
 #[doc(alias = "RBX::Http::post(std::string const&,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")]
-pub fn stub_316f2c() -> ! {
-    todo!("0x316f2c RBX::Http::post(std::string const&,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")
+pub fn stub_316f2c(url: &str, data: &str, flag_a: bool, done: HttpDoneCallback, flag_b: bool, schedule_post: &mut dyn FnMut(&str, &str, bool, HttpDoneCallback, bool)) { // IDA 0x316f2c: bind doPost(url, data, flags, callback) and schedule on the Http pool (bind/thread-pool folded into the closure).
+    schedule_post(url, data, flag_a, done, flag_b);
 }
 
 // 0x317570 — __ZN3RBX4Http4postEN5boost10shared_ptrISiEEbNS1_8functionIFvPSsPSt9exceptionEEEb
 // demangled: RBX::Http::post(boost::shared_ptr<std::istream>,bool,boost::function<void ()(std::string *,std::exception *)>,bool)
 #[doc(alias = "RBX::Http::post(rbx_core::SharedPtr<std::istream>,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")]
-pub fn stub_317570() -> ! {
-    todo!("0x317570 RBX::Http::post(boost::shared_ptr<std::istream>,bool,boost::function<void ()(std::string *,std::exception *)>,bool)")
+pub fn stub_317570(url: &str, body: SharedPtr<String>, flag_a: bool, flag_b: bool, done: HttpDoneCallback, schedule_stream: &mut dyn FnMut(&str, SharedPtr<String>, bool, bool, HttpDoneCallback)) { // IDA 0x317570: bind doPostStream(url, body stream, flags, callback) and schedule on the Http pool.
+    schedule_stream(url, body, flag_a, flag_b, done);
 }
 
 // 0x317de0 — __ZN3RBX4Http3getERSsb
 // demangled: RBX::Http::get(std::string &,bool)
 // type: _DWORD __fastcall(RBX::Http *__hidden this, std::string *, bool)
 #[doc(alias = "RBX::Http::get(std::string &,bool)")]
-pub fn stub_317de0() -> ! {
-    todo!("0x317de0 RBX::Http::get(std::string &,bool)")
+pub fn stub_317de0(url: &str, count_cdn: bool, fetch: &mut dyn FnMut(&str) -> HttpRequestResult, count: &mut dyn FnMut()) -> HttpRequestResult { // IDA 0x317de0: timestamped sync GET via httpGetPostImpl; CDN success counted by caller flag.
+    let r = fetch(url);
+    if count_cdn {
+        count();
+    }
+    r
 }
 
 // 0x3180dc — __ZN3RBX4Http12isRobloxSiteEPKc
 // demangled: RBX::Http::isRobloxSite(char const*)
 // type: _DWORD __fastcall(RBX::Http *__hidden this, const char *)
 #[doc(alias = "RBX::Http::isRobloxSite(char const*)")]
-pub fn stub_3180dc() -> ! {
-    todo!("0x3180dc RBX::Http::isRobloxSite(char const*)")
+pub fn stub_3180dc(host: &str, check: &mut dyn FnMut(&str) -> bool) -> bool { // IDA 0x3180dc: rbx_isRobloxSite predicate.
+    check(host)
 }
 
 // 0x318100 — __ZN3RBX4Http10MutexGuardD1Ev
 // demangled: RBX::Http::MutexGuard::~MutexGuard()
 // type: void __fastcall(RBX::Http::MutexGuard *__hidden this)
 #[doc(alias = "RBX::Http::MutexGuard::~MutexGuard()")]
-pub fn stub_318100() -> ! {
-    todo!("0x318100 RBX::Http::MutexGuard::~MutexGuard()")
+pub fn stub_318100(_g: HttpMutexGuard) { // IDA 0x318100: MutexGuard dtor thunk (unlock folded into drop).
+    drop(_g);
 }
 
 // 0x31e45c — __ZN3RBX4Http10MutexGuardD2Ev
 // demangled: RBX::Http::MutexGuard::~MutexGuard()
 // type: void __fastcall(RBX::Http::MutexGuard *__hidden this)
 #[doc(alias = "RBX::Http::MutexGuard::~MutexGuard()")]
-pub fn stub_31e45c() -> ! {
-    todo!("0x31e45c RBX::Http::MutexGuard::~MutexGuard()")
+pub fn stub_31e45c(locks: &mut HttpLocks) { // IDA 0x31e45c: MutexGuard dtor — destroy both response locks and null them (drop).
+    locks.roblox = None;
+    locks.cdn = None;
 }
 
 // 0x31e558 — __ZN3RBX4Http10MutexGuardC2Ev
 // demangled: RBX::Http::MutexGuard::MutexGuard(void)
 // type: _DWORD __fastcall(RBX::Http::MutexGuard *__hidden this)
 #[doc(alias = "RBX::Http::MutexGuard::MutexGuard(void)")]
-pub fn stub_31e558() -> ! {
-    todo!("0x31e558 RBX::Http::MutexGuard::MutexGuard(void)")
+pub fn stub_31e558(locks: &mut HttpLocks) { // IDA 0x31e558: MutexGuard ctor — create both response locks.
+    locks.roblox = Some(SharedPtr::new(QueueMutex::new(())));
+    locks.cdn = Some(SharedPtr::new(QueueMutex::new(())));
 }
 
 // 0x346168 — __ZN3RBX13LuaWebService11RawCallbackEN5boost8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS1_8functionIFvSsEEES8_
 // demangled: RBX::LuaWebService::RawCallback(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)
 #[doc(alias = "RBX::LuaWebService::RawCallback(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
-pub fn stub_346168() -> ! {
-    todo!("0x346168 RBX::LuaWebService::RawCallback(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_346168(ok: bool, dispatch: &mut dyn FnMut() -> bool, on_error: &mut dyn FnMut(&str)) { // IDA 0x346168: valid service + clean dispatch → return; else "RawCallback error" to the error callback.
+    if ok && dispatch() {
+        return;
+    }
+    on_error("RawCallback error");
 }
 
 // 0x346620 — __ZN3RBX13LuaWebService19asyncRequestNoCacheERKSsfN5boost8functionIFvNS3_10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIS1_S8_EEEEEEEENS_14AsyncHttpQueue9ResultJobE
@@ -852,49 +910,62 @@ pub fn stub_346620(url: &str) -> crate::player::WebRequest {
 // 0x347178 — __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE5resetIS5_EEvPT_
 // demangled: void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)
 #[doc(alias = "void rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")]
-pub fn stub_347178() -> ! {
-    todo!("0x347178 void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")
+pub fn stub_347178<T>(dst: &mut SharedPtr<T>, value: T) { // IDA 0x347178: shared_ptr<AsyncHttpCache> reset (release old, take new); Arc swap.
+    *dst = SharedPtr::new(value);
 }
 
 // 0x3471a4 — __ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEE5resetIS5_EEvPT_
 // demangled: void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)
 #[doc(alias = "void rbx_core::SharedPtr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")]
-pub fn stub_3471a4() -> ! {
-    todo!("0x3471a4 void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")
+pub fn stub_3471a4<T>(dst: &mut SharedPtr<T>, value: T) { // IDA 0x3471a4: shared_ptr<CachedRawLuaWebServiceInfo cache> reset; Arc swap.
+    *dst = SharedPtr::new(value);
 }
 
 // 0x3471d0 — __ZN3RBX13LuaWebService21TryRawDispatchRequestISsEEbPNS_14AsyncHttpCacheINS0_26CachedRawLuaWebServiceInfoELb1EEERKSsN5boost8functionIFvT_EEENS9_IFvSsEEE
 // demangled: bool RBX::LuaWebService::TryRawDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)
 // type: int __fastcall(int, int, int, int)
 #[doc(alias = "bool RBX::LuaWebService::TryRawDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
-pub fn stub_3471d0() -> ! {
-    todo!("0x3471d0 bool RBX::LuaWebService::TryRawDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+pub fn stub_3471d0(cached: Option<&str>, on_hit: &mut dyn FnMut(&str), on_empty: &mut dyn FnMut(&str)) -> bool { // IDA 0x3471d0: cache hit with body → hit callback, TRUE; empty body → empty callback ("Raw Request: string is empty"), TRUE; miss → FALSE.
+    match cached {
+        Some(body) if !body.is_empty() => {
+            on_hit(body);
+            true
+        }
+        Some(_) => {
+            on_empty("Raw Request: string is empty");
+            true
+        }
+        None => false,
+    }
 }
 
 // 0x347518 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS2_10Reflection7VariantESaISB_EEEEEEENS7_IFvSsEEES4_NS_3argILi1EEESsSH_SJ_EENS_3_bi6bind_tIT_PFSO_T0_T1_T2_T3_T4_ENSM_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESV_SX_SY_SZ_S10_S11_
 // demangled: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_347518() -> ! {
-    todo!("0x347518 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_347518(result: HttpRequestResult, url: String, on_variants: SharedPtr<dyn Fn()>, on_string: SharedPtr<dyn Fn(String)>) -> LuaCallbackBind { // IDA 0x347518: bind tuple ctor (weak service + result + url + callbacks; weak retain caller-held).
+    LuaCallbackBind { result, url, on_variants, on_string }
 }
 
 // 0x347a14 — __ZN3RBX13LuaWebService8CallbackIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEvNS2_8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS2_8functionIFvT_EEENSF_IFvSsEEE
 // demangled: void RBX::LuaWebService::Callback<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
 #[doc(alias = "void RBX::LuaWebService::Callback<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_347a14() -> ! {
-    todo!("0x347a14 void RBX::LuaWebService::Callback<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_347a14(ok: bool, dispatch: &mut dyn FnMut() -> bool, on_error: &mut dyn FnMut(&str)) { // IDA 0x347a14: valid service + clean dispatch → return; else "LuaWebService error" to the error callback.
+    if ok && dispatch() {
+        return;
+    }
+    on_error("LuaWebService error");
 }
 
 // 0x347e10 — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS3_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS3_10Reflection7VariantESaISC_EEEEEEENS8_IFvSsEEEENS0_5list5INS0_5valueIS5_EENS_3argILi1EEENSO_ISsEENSO_ISI_EENSO_ISK_EEEEED1Ev
 // demangled: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<rbx_core::WeakPtr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()")]
-pub fn stub_347e10() -> ! {
-    todo!("0x347e10 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()")
+pub fn stub_347e10(bind: LuaCallbackBind) { // IDA 0x347e10: bind_t dtor (callback clears + string/weak releases folded into drop).
+    drop(bind);
 }
 
 // 0x3480fc — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS2_10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS7_IFvSsEEES4_NS_3argILi1EEESsSM_SO_EENS_3_bi6bind_tIT_PFST_T0_T1_T2_T3_T4_ENSR_9list_av_5IT5_T6_T7_T8_T9_E4typeEEES10_S12_S13_S14_S15_S16_
 // demangled: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)
 #[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(rbx_core::WeakPtr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),rbx_core::WeakPtr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")]
-pub fn stub_3480fc() -> ! {
-    todo!("0x3480fc boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+pub fn stub_3480fc(result: HttpRequestResult, url: String, on_map: SharedPtr<dyn Fn()>, on_string: SharedPtr<dyn Fn(String)>) -> LuaCallbackBind { // IDA 0x3480fc: bind tuple ctor (map-variant callback flavor; same layout as 0x347518).
+    LuaCallbackBind { result, url, on_variants: on_map, on_string }
 }
