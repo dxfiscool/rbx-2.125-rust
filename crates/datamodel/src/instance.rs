@@ -1951,8 +1951,13 @@ pub struct BodyGyro {
 
 /// Rust model of `RBX::Handles` (IDA `0x5681f4`): the handles leaf; members
 /// land with the GUI batch.
+/// `int_value` is the `int` member behind
+/// `BoundProp<int, Mutability1>::BoundProp<Handles>` (IDA `0x56b3ac`) with its
+/// `BoundPropGetSet<Handles>::getValue` (IDA `0x56b544`) / `setValue` (IDA
+/// `0x56b550`) accessors.
 #[derive(Default)]
 pub struct Handles {
+    pub int_value: i32,
     _opaque: (),
 }
 

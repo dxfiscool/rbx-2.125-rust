@@ -9,6 +9,120 @@
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+use parking_lot::Mutex;
+use std::sync::Arc;
+use crate::instance::Handles;
+
+/// Raw `RBX::NormalId` face tag crossing the `Handles` remote events (IDA
+/// `0x569b7c`, `0x56a77c`); same storage-only treatment as
+/// `FaceInstance::face` (IDA `0x4a94fc`).
+pub type HandlesNormalId = u32;
+
+/// Slot callback behind the 2-arg `Handles` event `(NormalId, float)` (IDA
+/// `0x56b7c8` `signal_with_args<2>`).
+pub type HandlesHandler2 = Arc<dyn Fn(HandlesNormalId, f32) + Send + Sync>;
+
+/// Slot callback behind the 1-arg `Handles` event `(NormalId,)` (IDA
+/// `0x56a77c` replicate path).
+pub type HandlesHandler1 = Arc<dyn Fn(HandlesNormalId) + Send + Sync>;
+
+/// Rust model of `rbx::signals::signal<void ()(RBX::NormalId, float)>` (IDA
+/// `0x56b874` `disconnectAll` target): the slot list behind
+/// `EventDescImpl<2, Handles, ...>`; `Mutex` replaces the member-signal word.
+#[derive(Default)]
+pub struct HandlesSignal2 {
+    slots: Mutex<Vec<HandlesHandler2>>,
+}
+
+impl HandlesSignal2 {
+    pub fn connect(&self, handler: HandlesHandler2) {
+        self.slots.lock().push(handler);
+    }
+    pub fn emit(&self, normal: HandlesNormalId, value: f32) {
+        let live = self.slots.lock().clone();
+        for slot in &live {
+            slot(normal, value);
+        }
+    }
+    pub fn disconnect_all(&self) {
+        self.slots.lock().clear();
+    }
+    pub fn len(&self) -> usize {
+        self.slots.lock().len()
+    }
+}
+
+/// Rust model of `rbx::signals::signal<void ()(RBX::NormalId)>` (IDA
+/// `0x56adc8` `remove` family): 1-arg twin of `HandlesSignal2`.
+#[derive(Default)]
+pub struct HandlesSignal1 {
+    slots: Mutex<Vec<HandlesHandler1>>,
+}
+
+impl HandlesSignal1 {
+    pub fn connect(&self, handler: HandlesHandler1) {
+        self.slots.lock().push(handler);
+    }
+    pub fn emit(&self, normal: HandlesNormalId) {
+        let live = self.slots.lock().clone();
+        for slot in &live {
+            slot(normal);
+        }
+    }
+    pub fn disconnect_all(&self) {
+        self.slots.lock().clear();
+    }
+    pub fn len(&self) -> usize {
+        self.slots.lock().len()
+    }
+}
+
+/// Rust model of `RBX::Reflection::EventDescImpl<2, Handles, void
+/// ()(NormalId, float), remote_signal, member>` (IDA `0x56b7c0`
+/// `isBroadcast`, `0x56c9c0` `EventDesc::C2`): the member signal (`+40`) and
+/// the broadcast flag (`+44 & 1`) plus the replication half invoked by
+/// `sendEvent`/`replicateEvent`.
+#[derive(Default)]
+pub struct HandlesEvent2Desc {
+    pub name: String,
+    pub broadcast: bool,
+    pub signal: HandlesSignal2,
+    pub remote: HandlesSignal2,
+}
+
+/// Rust model of `RBX::Reflection::EventDescImpl<1, Handles, void
+/// ()(NormalId), remote_signal, member>` (IDA `0x56a77c`): 1-arg twin of
+/// `HandlesEvent2Desc`.
+#[derive(Default)]
+pub struct HandlesEvent1Desc {
+    pub name: String,
+    pub broadcast: bool,
+    pub signal: HandlesSignal1,
+    pub remote: HandlesSignal1,
+}
+
+/// Rust model of `RBX::Reflection::GenericSlotWrapper` restricted to the
+/// 2-arg `Handles` slot (IDA `0x56b9a4` `execute2<NormalId, float>`): the
+/// native handler stands in for the Lua frame until the script bridge exists.
+pub struct HandlesSlotWrapper2 {
+    pub handler: HandlesHandler2,
+}
+
+impl HandlesSlotWrapper2 {
+    /// IDA `0x56b9a4`: packs the 2-`Variant` vector with the `NormalId`/`float`
+    /// singletons, dispatches the wrapped slot (`*a1 + 8`), destroys the vector.
+    pub fn execute2(&self, normal: HandlesNormalId, value: f32) {
+        (self.handler)(normal, value);
+    }
+}
+
+/// Rust model of `RBX::Reflection::BoundProp<int, Mutability1>` over
+/// `RBX::Handles` (IDA `0x56b3ac`): the name/category words; the bound member
+/// is `Handles::int_value`, so the member offset collapses.
+pub struct HandlesIntProp {
+    pub name: String,
+    pub category: String,
+}
 
 // 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev
 // type: void __fastcall(RBX::ForceField *__hidden this)
@@ -240,8 +354,14 @@ pub use rbx_core::generated_core_shard_ig::stub_569b64 as stub_0x569b64;
 // 0x569b7c — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceES3_f
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::replicateEvent(RBX::Reflection::EventSource *,RBX::NormalId,float)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceES3_f")]
-pub fn stub_0x569b7c() -> ! {
-    todo!("0x569b7c RBX::Reflection::RemoteEventDescImpl<2,RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::replicateEvent(RBX::Reflection::EventSource *,RBX::NormalId,float)")
+pub fn stub_0x569b7c(desc: &HandlesEvent2Desc, normal: HandlesNormalId, value: f32) {
+    // IDA 0x569b7c `RemoteEventDescImpl<2, Handles, void(NormalId,
+    // float)>::replicateEvent`: packs the 2-`Variant` vector with the
+    // `NormalId`/`float` type singletons (`getSingleton<NormalId>(2)`,
+    // `getSingleton<float>(4)`, 0x569c16-0x569c40), fires the replication
+    // half (`*a2 + 12`, 0x569c54), then destroys the vector (0x569c5e).
+    // Emitting the typed remote signal is the same delivery.
+    desc.remote.emit(normal, value);
 }
 
 // 0x569ce8 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEfEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf2IvNS2_19EventReplicatorImplILi2ENS2_7HandlesES4_EES3_fEENS8_5list3INS8_5valueIPSE_EENS7_3argILi1EEENSK_ILi2EEEEEEEEENS0_10connectionERKT_
@@ -359,8 +479,13 @@ pub use rbx_core::generated_core_shard_ig::stub_56a768 as stub_0x56a768;
 // 0x56a77c — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceES3_
 #[doc(alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>>::replicateEvent(RBX::Reflection::EventSource *,RBX::NormalId)")]
 #[doc(alias = "__ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7HandlesEFvNS_8NormalIdEEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceES3_")]
-pub fn stub_0x56a77c() -> ! {
-    todo!("0x56a77c RBX::Reflection::RemoteEventDescImpl<1,RBX::Handles,void ()(RBX::NormalId),rbx::remote_signal<void ()(RBX::NormalId)>>::replicateEvent(RBX::Reflection::EventSource *,RBX::NormalId)")
+pub fn stub_0x56a77c(desc: &HandlesEvent1Desc, normal: HandlesNormalId) {
+    // IDA 0x56a77c `RemoteEventDescImpl<1, Handles, void(NormalId)>::
+    // replicateEvent`: 1-arg twin of 0x569b7c — packs the 1-`Variant` vector
+    // with the `NormalId` singleton (`getSingleton<NormalId>(2)`, 0x56a814),
+    // fires the replication half (`*a2 + 12`, 0x56a834), destroys the vector
+    // (0x56a83e).
+    desc.remote.emit(normal);
 }
 
 // 0x56a8c8 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE7connectIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_19EventReplicatorImplILi1ENS2_7HandlesES4_EES3_EENS8_5list2INS8_5valueIPSE_EENS7_3argILi1EEEEEEEEENS0_10connectionERKT_
@@ -462,8 +587,17 @@ pub use rbx_core::generated_core_shard_ig::stub_56b1ac as stub_0x56b1ac;
 // 0x56b3ac — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_7HandlesEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Handles>(char const*,char const*,int RBX::Handles::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 #[doc(alias = "__ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_7HandlesEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
-pub fn stub_0x56b3ac() -> ! {
-    todo!("0x56b3ac RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Handles>(char const*,char const*,int RBX::Handles::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+pub fn stub_0x56b3ac(name: &str, category: &str) -> HandlesIntProp {
+    // IDA 0x56b3ac `BoundProp<int, Mutability1>::BoundProp<Handles>`: runs
+    // the `Described<Handles>` + `TypedPropertyDescriptor<int>` bases
+    // (0x56b3d2-0x56b434), installs the `BoundProp` vtable (`off_12324C8`,
+    // 0x56b452), allocates the `BoundPropGetSet<Handles>` at `+40`
+    // (`off_1263A28`, 0x56b460-0x56b496, old payload deleted), then clears
+    // the read/write-only flag bits at `+28` through the `+12`/`+8` virtuals
+    // (0x56b4a6-0x56b4cc). The member offset collapses into
+    // `Handles::int_value`; flags are never read/write-only for a get/set
+    // pair.
+    HandlesIntProp { name: name.to_string(), category: category.to_string() }
 }
 
 // 0x56b53c — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_7HandlesEE10isReadOnlyEv
@@ -479,15 +613,25 @@ pub use rbx_reflection::generated::stub_0x56b540 as stub_0x56b540;
 // 0x56b544 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_7HandlesEE8getValueEPKNS0_13DescribedBaseE
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Handles>::getValue(RBX::Reflection::DescribedBase const*)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_7HandlesEE8getValueEPKNS0_13DescribedBaseE")]
-pub fn stub_0x56b544() -> ! {
-    todo!("0x56b544 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Handles>::getValue(RBX::Reflection::DescribedBase const*)const")
+pub fn stub_0x56b544(_desc: &HandlesIntProp, handles: &Handles) -> i32 {
+    // IDA 0x56b544 `BoundPropGetSet<Handles>::getValue`: `*(*(a1 + 8) + a2 -
+    // 36)` (0x56b54c) — the bound `int` member on the adjusted instance.
+    handles.int_value
 }
 
 // 0x56b550 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_7HandlesEE8setValueEPNS0_13DescribedBaseERKi
 #[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Handles>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_7HandlesEE8setValueEPNS0_13DescribedBaseERKi")]
-pub fn stub_0x56b550() -> ! {
-    todo!("0x56b550 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Handles>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+pub fn stub_0x56b550(_desc: &HandlesIntProp, handles: &mut Handles, value: i32) {
+    // IDA 0x56b550 `BoundPropGetSet<Handles>::setValue`: no-op when
+    // `*(v4 + result) == *a3` (0x56b568), else stores the word (0x56b56c),
+    // runs the change virtual when the flag words are set (0x56b576-0x56b58c),
+    // and `raisePropertyChanged`s (0x56b59a). The store is the observable
+    // state change; the notification collapses here, as in
+    // `FaceInstance::setFace` (IDA `0x4a94fc`).
+    if handles.int_value != value {
+        handles.int_value = value;
+    }
 }
 
 // 0x56b5a0 — __ZN3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEED0Ev
@@ -510,29 +654,46 @@ pub use rbx_reflection::generated::stub_0x56b7b8 as stub_0x56b7b8;
 // 0x56b7c0 — __ZNK3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE11isBroadcastEv
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::isBroadcast(void)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE11isBroadcastEv")]
-pub fn stub_0x56b7c0() -> ! {
-    todo!("0x56b7c0 RBX::Reflection::RemoteEventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::isBroadcast(void)const")
+pub fn stub_0x56b7c0(desc: &HandlesEvent2Desc) -> bool {
+    // IDA 0x56b7c0 `RemoteEventDesc<Handles, void(NormalId,
+    // float)>::isBroadcast`: `*(a1 + 44) & 1` (0x56b7c6).
+    desc.broadcast
 }
 
 // 0x56b7c8 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
 #[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi2ENS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE")]
-pub fn stub_0x56b7c8() -> ! {
-    todo!("0x56b7c8 RBX::Reflection::EventDescImpl<2,RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x56b7c8(desc: &HandlesEvent2Desc, normal: HandlesNormalId, value: f32) {
+    // IDA 0x56b7c8 `EventDescImpl<2, Handles, void(NormalId,
+    // float)>::fireEvent`: asserts `args.size() == 2` (Event.h:349,
+    // 0x56b7e2-0x56b828), `any_cast`s the `NormalId`/`float` args out of the
+    // `Variant` vector (0x56b838-0x56b84e), then
+    // `signal_with_args<2>::operator()` fans out to each connected wrapper's
+    // `execute2`. `generated_05::Variant` has no `Float` arm, so the float
+    // crosses as `Variant::Int` bits; the typed signature guarantees the
+    // arity and the casts.
+    desc.signal.emit(normal, value);
 }
 
 // 0x56b864 — __ZNK3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
 #[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 #[doc(alias = "__ZNK3RBX10Reflection15RemoteEventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE")]
-pub fn stub_0x56b864() -> ! {
-    todo!("0x56b864 RBX::Reflection::RemoteEventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+pub fn stub_0x56b864(desc: &HandlesEvent2Desc, normal: HandlesNormalId, value: f32) {
+    // IDA 0x56b864 `RemoteEventDesc<Handles, void(NormalId,
+    // float)>::sendEvent`: tail-calls the remote half's virtual at `*a2 + 12`
+    // with the `Variant` vector. Emitting the remote signal is that delivery.
+    desc.remote.emit(normal, value);
 }
 
 // 0x56b874 — __ZNK3RBX10Reflection13EventDescBaseINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE
 #[doc(alias = "RBX::Reflection::EventDescBase<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescBaseINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE")]
-pub fn stub_0x56b874() -> ! {
-    todo!("0x56b874 RBX::Reflection::EventDescBase<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+pub fn stub_0x56b874(desc: &HandlesEvent2Desc) {
+    // IDA 0x56b874 `EventDescBase<Handles, void(NormalId,
+    // float)>::disconnectAll`: adjusts the source to the member signal
+    // (`a2 ? a2 - 36 : 0`, 0x56b874-0x56b87a) and `signal::disconnectAll`s it
+    // (`*(a1 + 40) + v10`). Collapses to clearing the payload-side list.
+    desc.signal.disconnect_all();
 }
 
 // 0x56b888 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_8NormalIdERKfNS_10shared_ptrIS3_EENS_3argILi1EEENSB_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISG_T0_T1_T2_EENSE_9list_av_3IT3_T4_T5_E4typeEEEMSJ_FSG_SK_SL_ESO_SP_SQ_
@@ -545,8 +706,14 @@ pub use rbx_core::boost_core_i::stub_56b888 as stub_0x56b888;
 // 0x56b9a4 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_8NormalIdEfEEvRKT_RKT0_
 #[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<RBX::NormalId,float>(RBX::NormalId const&,float const&)")]
 #[doc(alias = "__ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_8NormalIdEfEEvRKT_RKT0_")]
-pub fn stub_0x56b9a4() -> ! {
-    todo!("0x56b9a4 void RBX::Reflection::GenericSlotWrapper::execute2<RBX::NormalId,float>(RBX::NormalId const&,float const&)")
+pub fn stub_0x56b9a4(wrapper: &HandlesSlotWrapper2, normal: HandlesNormalId, value: f32) {
+    // IDA 0x56b9a4 `GenericSlotWrapper::execute2<NormalId, float>`: packs the
+    // 2-`Variant` vector with the `NormalId`/`float` singletons
+    // (`getSingleton<NormalId>(2)`, `getSingleton<float>(4)`, 0x56ba3c-0x56ba66),
+    // dispatches the wrapped slot (`*a1 + 8`, 0x56ba76), destroys the vector
+    // (0x56ba80). The Lua frame underneath is the handler until the script
+    // bridge exists.
+    wrapper.execute2(normal, value);
 }
 
 // 0x56bb0c — __ZN5boost9function2IvN3RBX8NormalIdEfE5clearEv
@@ -676,11 +843,102 @@ pub use rbx_core::boost_core_i::stub_56c990 as stub_0x56c990;
 // 0x56c9c0 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
-pub fn stub_0x56c9c0() -> ! {
-    todo!("0x56c9c0 RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::EventDesc(rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+pub fn stub_0x56c9c0(
+    this: *mut HandlesEvent2Desc,
+    name: &str,
+    permissions: u32,
+    attributes: u32,
+) {
+    // IDA 0x56c9c0 `EventDesc<Handles, void(NormalId, float)>::EventDesc` C2:
+    // runs the `Described<Handles>` + `EventDescriptor` bases (0x56c9fc +
+    // 0x56ca1a), stores the member signal pointer at `+40` (0x56ca3e),
+    // installs the `EventDesc` vtable (`off_1263B58`, 0x56ca42), declares the
+    // two `Name`s and appends the two signature items —
+    // `NormalId` (`getSingleton<NormalId>(2)`, 0x56ca6e) and `float`
+    // (`getSingleton<float>(7)`, 0x56caaa) — via `_M_create_node` + `hook`
+    // (0x56ca8c-0x56cace). The member pointer collapses into the payload's
+    // member signals; the item types are comment-only.
+    // SAFETY: `this` must point to valid uninitialized `HandlesEvent2Desc` storage.
+    let _ = permissions;
+    let _ = attributes;
+    unsafe {
+        core::ptr::write(
+            this,
+            HandlesEvent2Desc { name: name.to_string(), ..Default::default() },
+        );
+    }
 }
 
 // 0x56cbb0 — __ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::Handles,void ()(RBX::NormalId,float),rbx::remote_signal<void ()(RBX::NormalId,float)>,rbx::remote_signal<void ()(RBX::NormalId,float)> RBX::Handles::*>::~EventDesc()")]
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7HandlesEFvNS_8NormalIdEfEN3rbx13remote_signalIS4_EEMS2_S7_ED1Ev")]
 pub use rbx_reflection::generated::stub_0x56cbb0 as stub_0x56cbb0;
+
+#[cfg(test)]
+mod handles_remote_tests {
+    use super::*;
+    use std::sync::atomic::{AtomicI32, Ordering};
+
+    #[test]
+    fn int_prop_round_trip() {
+        let desc = stub_0x56b3ac("Style", "Appearance");
+        assert_eq!(desc.name, "Style");
+        let mut handles = Handles::default();
+        assert_eq!(stub_0x56b544(&desc, &handles), 0);
+        stub_0x56b550(&desc, &mut handles, 2);
+        assert_eq!(stub_0x56b544(&desc, &handles), 2);
+        stub_0x56b550(&desc, &mut handles, 2);
+        assert_eq!(handles.int_value, 2);
+    }
+
+    #[test]
+    fn broadcast_fire_send_disconnect() {
+        let mut storage = HandlesEvent2Desc::default();
+        stub_0x56c9c0(&mut storage as *mut HandlesEvent2Desc, "Changed", 0, 0);
+        assert_eq!(storage.name, "Changed");
+        assert!(!stub_0x56b7c0(&storage));
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        storage.signal.connect(Arc::new(move |normal: u32, value: f32| {
+            probe.store(normal as i32 + value as i32, Ordering::Relaxed);
+        }));
+        assert_eq!(storage.signal.len(), 1);
+        stub_0x56b7c8(&storage, 3, 2.0);
+        assert_eq!(seen.load(Ordering::Relaxed), 5);
+        let remote = Arc::new(AtomicI32::new(0));
+        let rp = Arc::clone(&remote);
+        storage.remote.connect(Arc::new(move |normal: u32, value: f32| {
+            rp.store(100 + normal as i32 + value as i32, Ordering::Relaxed);
+        }));
+        stub_0x56b864(&storage, 1, 4.0);
+        assert_eq!(remote.load(Ordering::Relaxed), 105);
+        stub_0x569b7c(&storage, 2, 6.0);
+        assert_eq!(remote.load(Ordering::Relaxed), 108);
+        stub_0x56b874(&storage);
+        assert_eq!(storage.signal.len(), 0);
+        stub_0x56b7c8(&storage, 9, 9.0);
+        assert_eq!(seen.load(Ordering::Relaxed), 5);
+    }
+
+    #[test]
+    fn replicate1_and_execute2() {
+        let desc = HandlesEvent1Desc { name: "Touched".to_string(), ..Default::default() };
+        assert!(!desc.broadcast);
+        let remote = Arc::new(AtomicI32::new(0));
+        let rp = Arc::clone(&remote);
+        desc.remote.connect(Arc::new(move |normal: u32| {
+            rp.store(normal as i32, Ordering::Relaxed);
+        }));
+        stub_0x56a77c(&desc, 4);
+        assert_eq!(remote.load(Ordering::Relaxed), 4);
+        let seen = Arc::new(AtomicI32::new(0));
+        let probe = Arc::clone(&seen);
+        let wrapper = HandlesSlotWrapper2 {
+            handler: Arc::new(move |normal: u32, value: f32| {
+                probe.store(normal as i32 + value as i32, Ordering::Relaxed);
+            }),
+        };
+        stub_0x56b9a4(&wrapper, 5, 7.0);
+        assert_eq!(seen.load(Ordering::Relaxed), 12);
+    }
+}
